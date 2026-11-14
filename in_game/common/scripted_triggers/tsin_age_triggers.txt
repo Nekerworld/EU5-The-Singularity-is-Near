@@ -1,7 +1,4 @@
-﻿# Vanilla game_triggers.txt assumes age 6 is the last age. These replacements keep
-# current_age_or_later = { age = age_5_absolutism / age_6_revolutions } true in age 7.
-# Recorded in docs/overrides.md.
-
+﻿# GENERATED late-era continuity bridge. Other helpers below remain hand-maintained.
 TRY_REPLACE:current_later_age_5_absolutism_trigger = {
 	custom_tooltip = {
 		text = current_age_at_least_5_tt
@@ -9,29 +6,94 @@ TRY_REPLACE:current_later_age_5_absolutism_trigger = {
 			current_age = age_5_absolutism
 			current_age = age_6_revolutions
 			current_age = age_7_industrialization
+			current_age = age_8_world_wars
+			current_age = age_9_atomic
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
 		}
 	}
 }
-
 TRY_REPLACE:current_later_age_6_revolutions_trigger = {
 	custom_tooltip = {
 		text = current_age_at_least_6_tt
 		OR = {
 			current_age = age_6_revolutions
 			current_age = age_7_industrialization
+			current_age = age_8_world_wars
+			current_age = age_9_atomic
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_7_industrialization_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_7_tt
+		OR = {
+			current_age = age_7_industrialization
+			current_age = age_8_world_wars
+			current_age = age_9_atomic
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_8_world_wars_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_8_tt
+		OR = {
+			current_age = age_8_world_wars
+			current_age = age_9_atomic
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_9_atomic_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_9_tt
+		OR = {
+			current_age = age_9_atomic
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_10_information_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_10_tt
+		OR = {
+			current_age = age_10_information
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_11_artificial_intelligence_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_11_tt
+		OR = {
+			current_age = age_11_artificial_intelligence
+			current_age = age_12_space
+		}
+	}
+}
+current_later_age_12_space_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_12_tt
+		OR = {
+			current_age = age_12_space
 		}
 	}
 }
 
-current_later_age_7_industrialization_trigger = {
-	custom_tooltip = {
-		text = current_age_at_least_7_tt
-		current_age = age_7_industrialization
-	}
-}
-
 # Age 7 specialization choices (tsin_04_choices.txt): the specialization picked in ages_of_eu.1 opens
-# its ten choices at once; the others open when the paired institution is embraced (docs/tech_tree_age7.md).
+# its branches subject to prerequisites; other specializations open after the paired institution is embraced.
 tsin_adm_specialization_open_trigger = {
 	OR = {
 		age_preference = adm

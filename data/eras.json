@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "eras": [
+    {
+      "number": 7,
+      "id": "age_7_industrialization",
+      "start_year": 1837,
+      "name": {
+        "english": "Industry",
+        "korean": "산업"
+      },
+      "concept": {
+        "english": "Industrialization, urbanization and electrification.",
+        "korean": "산업화·도시화·전기화."
+      },
+      "implementation": "content"
+    },
+    {
+      "number": 8,
+      "id": "age_8_world_wars",
+      "start_year": 1900,
+      "name": {
+        "english": "World Wars",
+        "korean": "대전"
+      },
+      "concept": {
+        "english": "Mass mobilization, industrial warfare and competing political orders.",
+        "korean": "대중 동원·산업 전쟁·정치 질서의 재편."
+      },
+      "implementation": "skeleton"
+    },
+    {
+      "number": 9,
+      "id": "age_9_atomic",
+      "start_year": 1945,
+      "name": {
+        "english": "Atomic Power",
+        "korean": "원자력"
+      },
+      "concept": {
+        "english": "Nuclear deterrence, international institutions and mass consumption.",
+        "korean": "핵 억지·국제 질서·대량소비사회."
+      },
+      "implementation": "skeleton"
+    },
+    {
+      "number": 10,
+      "id": "age_10_information",
+      "start_year": 1990,
+      "name": {
+        "english": "Information",
+        "korean": "정보화"
+      },
+      "concept": {
+        "english": "Digital networks, global supply chains and the knowledge economy.",
+        "korean": "디지털 네트워크·세계 공급망·지식경제."
+      },
+      "implementation": "skeleton"
+    },
+    {
+      "number": 11,
+      "id": "age_11_artificial_intelligence",
+      "start_year": 2035,
+      "name": {
+        "english": "Artificial Intelligence",
+        "korean": "인공지능"
+      },
+      "concept": {
+        "english": "Intelligent automation and the transformation of work, government and society.",
+        "korean": "지능형 자동화와 노동·통치·사회 체계의 변화."
+      },
+      "implementation": "skeleton"
+    },
+    {
+      "number": 12,
+      "id": "age_12_space",
+      "start_year": 2120,
+      "name": {
+        "english": "Space Settlement",
+        "korean": "우주 개척"
+      },
+      "concept": {
+        "english": "Permanent off-world societies, space industry and the path toward interstellar civilization.",
+        "korean": "지구 밖 상주 사회·우주 산업·성간문명으로의 확장."
+      },
+      "implementation": "skeleton"
+    }
+  ],
+  "space_milestone_year": 2200,
+  "game_end_date": "2337.12.31"
+}

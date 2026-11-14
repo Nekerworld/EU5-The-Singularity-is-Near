@@ -1,20 +1,20 @@
 <p align="center">
-  <img src="readme_media/banner.png" alt="The Singularity is Near — Europa Universalis V 제7시대 산업" width="100%">
+  <img src="readme_media/banner.png" alt="The Singularity is Near — Europa Universalis V 산업화 확장과 제8~12시대 뼈대" width="100%">
 </p>
 
 <p align="center">
   <img alt="version" src="https://img.shields.io/badge/version-0.7.0%20(개발%20중)-2f6b4f">
   <img alt="game" src="https://img.shields.io/badge/Europa%20Universalis%20V-1.4.x-b8892b">
   <img alt="languages" src="https://img.shields.io/badge/언어-English%20%7C%20한국어-2f5a8a">
-  <img alt="status" src="https://img.shields.io/badge/상태-게임%20안%20시험%20전-a23b2a">
+  <img alt="status" src="https://img.shields.io/badge/상태-인게임%20검증%20중-a23b2a">
 </p>
 
 > **유로파 유니버설리스 5가 1836년에 끝날 필요는 없습니다.**
 >
-> The Singularity is Near(특이점이 온다)는 바닐라 여섯 시대 뒤에 **제7시대 「산업」(1837~1900)** 을 더하고, 게임 종료일을 **2337년**까지 늘리는 대형 확장 모드입니다. 증기 기관에서 시작해 별에 닿을 때까지 인류의 길을 따라가는 장기 프로젝트의 첫 시대입니다.
+> The Singularity is Near(특이점이 온다)는 바닐라 여섯 시대 뒤에 **제7시대 「산업」(1837~1900)의 콘텐츠**와 **제8~12시대의 뼈대**를 더하고, 게임 종료일을 **2337년**까지 늘리는 확장 모드입니다. 현재 실제 콘텐츠 개발 범위는 제7시대이며, 이후 시대는 이름·시작 연도·기본 규칙·현지화만 등록되어 있습니다.
 
 > [!WARNING]
-> 0.7.0은 **게임 안에서 아직 시험하지 않은 개발 빌드**입니다. 스크립트 검사(`tools/validate.py`, `tools/audit.py`)는 통과했지만, 각 기능이 게임에서 의도대로 동작하는지는 확인 중입니다. 문서마다 "사용자 확인 필요" 항목이 있습니다.
+> 0.7.0은 **인게임 검증 중인 개발 빌드**입니다. 일부 기능은 플레이에서 확인했지만, 새 관리 UI와 제8~12시대 전환은 추가 검증이 필요합니다. 제8~12시대의 전용 기술·시대관·이벤트·새 밸런스는 아직 구현하지 않았습니다.
 
 ---
 
@@ -42,13 +42,21 @@
 
 ## 1. 이 모드가 하는 일
 
-<p align="center"><img src="readme_media/ages_timeline.png" alt="시대 연표" width="100%"></p>
+```mermaid
+flowchart LR
+    A["VII 산업<br/>1837~1900<br/>콘텐츠 구현·검증 중"] --> B["VIII 대전<br/>1900~1945<br/>뼈대"]
+    B --> C["IX 원자력<br/>1945~1990<br/>뼈대"]
+    C --> D["X 정보화<br/>1990~2035<br/>뼈대"]
+    D --> E["XI 인공지능<br/>2035~2120<br/>뼈대"]
+    E --> F["XII 우주 개척<br/>2120~<br/>뼈대"]
+```
 
-바닐라 EU5는 1337년에 시작해 여섯 시대(전통, 르네상스, 대항해, 개혁, 절대주의, 혁명)를 지나 **1836년 12월 31일**에 끝납니다. 이 모드는 그 뒤에 일곱 번째 시대를 잇습니다.
+바닐라 EU5는 1337년에 시작해 여섯 시대(전통, 르네상스, 대항해, 개혁, 절대주의, 혁명)를 지나 **1836년 12월 31일**에 끝납니다. 이 모드는 그 뒤에 제7~12시대를 잇습니다. 콘텐츠가 있는 제7시대와 이후 시대 뼈대는 구분해서 개발합니다.
 
 | | 바닐라 | 이 모드 |
 |---|---|---|
-| 마지막 시대 | 제6시대 「혁명」 (1737~) | **제7시대 「산업」 (1837~)** |
+| 등록된 마지막 시대 | 제6시대 「혁명」 (1737~) | **제12시대 「우주 개척」 (2120~, 뼈대)** |
+| 실제 콘텐츠 개발 범위 | 제1~6시대 | **제7시대 「산업」** |
 | 종료일 | 1836.12.31 | **2337.12.31** |
 | 새 제도 | — | 산업자본주의, 대중사회, 전기화 |
 | 제6시대 콘텐츠 | 1837년에 끝남 | 제국주의·민족주의 전쟁명분, 혁명, 의회 안건 등이 제7시대에도 이어짐 |
@@ -106,6 +114,24 @@ flowchart LR
 
 ## 4. 시대와 제도
 
+### 전체 시대 구분과 현재 구현 상태
+
+| 시대 | 기간 | 컨셉 | 구현 상태 |
+|---|---|---|---|
+| VII 산업 | 1837~1900 | 공장·도시·국민국가·전기화 | 콘텐츠 구현, 인게임 검증 중 |
+| VIII 대전 | 1900~1945 | 대중 동원·총력전·제국 질서 재편 | 시대 뼈대만 |
+| IX 원자력 | 1945~1990 | 핵 억지·국제 질서·대량소비 | 시대 뼈대만 |
+| X 정보화 | 1990~2035 | 네트워크·세계 공급망·지식경제 | 시대 뼈대만 |
+| XI 인공지능 | 2035~2120 | 지능형 자동화·노동과 통치의 전환 | 시대 뼈대만 |
+| XII 우주 개척 | 2120~2200 이후 | 지외 정착·우주 산업·성간문명 | 시대 뼈대만 |
+
+경계 연도는 다음 시대의 시작 연도입니다. 우주 개척의 2200년은 장기 개발 목표이며 새 시대 경계나 게임 종료일이 아닙니다. 기존 **2337.12.31 종료일은 유지**합니다.
+
+현재 전환 기준은 시대 정의의 시작 연도입니다. 세계적 보급 조건에 따른 동적 전환은 아직 구현하지 않았습니다. 후속 시대는 7시대의 경제·수요·기본 수치를 임시로 이어받으며, 전용 기술·이벤트·시대관과 새 시대 보너스를 추가하지 않았습니다. 아이콘과 기술 화면 배경은 기존 7시대 이미지를 수정 없이 임시 재사용합니다.
+
+시대 등록 원본은 [`data/eras.json`](data/eras.json), 생성기는 [`tools/gen_era_skeleton.py`](tools/gen_era_skeleton.py)입니다. 정확한 ID와 검증 절차는 [`docs/future_era_skeleton.md`](docs/future_era_skeleton.md)에 있습니다.
+
+
 ### 새 제도 3종
 
 | 제도 | 목표 발생 시기 | 여는 것 |
@@ -118,11 +144,11 @@ flowchart LR
 
 ### 특화 선택지를 모두 열기
 
-바닐라는 시대 시작 때 고른 특화(행정·외교·군사) 하나의 선택지만 보여 줍니다. 제7시대에는 고른 특화의 선택지가 바로 열리고, 나머지 둘은 짝이 되는 제도를 수용하면 열립니다.
+바닐라는 시대 시작 때 고른 특화(행정·외교·군사) 하나의 선택지만 보여 줍니다. 제7시대에는 고른 특화의 첫 단계가 바로 열리고, 나머지 둘은 짝이 되는 제도를 수용하면 열립니다. 특화 기술 30개는 총 10개 분기·2~4단계이며 후속 기술에는 선행 기술이 필요합니다.
 
 ```mermaid
 flowchart LR
-    A["시대 시작 이벤트<br/>특화 선택"] -->|고른 특화| N["선택지 10개<br/>바로 연구 가능"]
+    A["시대 시작 이벤트<br/>특화 선택"] -->|고른 특화| N["분기 첫 기술<br/>후속 기술은 선행 연구 필요"]
     MS["대중사회 수용"] --> ADM["행정 선택지 10개"]
     IC["산업자본주의 수용"] --> DIP["외교 선택지 10개"]
     EL["전기화 수용"] --> MIL["군사 선택지 10개"]
@@ -390,6 +416,15 @@ stateDiagram-v2
 
 ## 12. 인터페이스와 게임 규칙
 
+### 독립 TSIN 관리창
+
+왼쪽 아래 **TSIN 관리** 버튼에서 국가 통계·경제·인구와 사회·기업과 금융·위기와 정책·과학기술의 6개 탭을 엽니다. 창과 버튼 묶음은 이동할 수 있고, 현재 지표 35개·상태 카드 16개·기본 화면/지도 연결 10개를 제공합니다.
+
+GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 보여 줍니다. 중등·고등교육은 현재치와 목표치를 구분합니다. 미집계 값은 —로 표시하며, 기존 세이브의 실제 기준 연도는 다음 연간 집계 후 기록합니다. Glorp는 선택 사항이며 같은 공통 지표 정의를 사용합니다. 재실행 후 실제 화면 배치는 확인이 필요합니다.
+
+이후 시대는 공통 창을 다시 만드는 대신 모듈과 지표 등록을 추가합니다. [`ui/dashboard_registry.json`](ui/dashboard_registry.json), [`docs/dashboard_framework.md`](docs/dashboard_framework.md)를 참고하십시오.
+
+
 ### 지도 모드 16종
 
 | | | | |
@@ -467,20 +502,17 @@ readme_media/    이 README의 그림 (tools/make_readme_media.py로 생성)
 
 ## 16. 앞으로의 계획
 
-```mermaid
-flowchart LR
-    A["제7시대 「산업」<br/>1837~<br/>0.6 콘텐츠 완성<br/>0.7 산업 사회"] --> B["1.0<br/>게임 안 시험<br/>밸런스 측정<br/>전용 그림"]
-    B --> C["제8시대 이념 갈등 (계획)<br/>총파업과 혁명<br/>대공황형 금융 위기<br/>총력전"]
-    C --> D["그 너머<br/>인류의 우주 진출 🚀"]
-```
+1. 제7시대의 장기 진행·성능·밸런스와 새 공통 관리창을 인게임에서 검증합니다.
+2. 이미 등록한 제8시대 「대전」에 총력동원·기계화·대중정치 콘텐츠를 개발합니다.
+3. 제9시대 원자력 → 제10시대 정보화 → 제11시대 인공지능 → 제12시대 우주 개척 순으로 확장합니다.
 
-제7시대는 노동 불만, 사회주의 세포, 교육률, 주가 지수, 추정 GDP 같은 값을 남겨 두어, 다음 시대가 이를 이어받을 수 있게 했습니다(`docs/age8_handoff.md`).
+후속 시대의 역사적 사건·새 시대관·기술은 설계안이며 아직 게임 객체로 추가하지 않았습니다. 7시대의 교육·사회운동·GDP·기업 데이터는 유지하고 이후 모듈이 이어받도록 합니다. 시대 뼈대만으로 1900년 이후의 완성된 현대전·정치·우주 시뮬레이션이 제공되는 것은 아닙니다.
 
 ---
 
 ## English summary
 
-**The Singularity is Near** extends Europa Universalis V past its 1836 end date with a seventh age, **the Age of Industry (1837–1900)**, and keeps the game running until **2337**. It is the first step of a long-term project that follows humanity from the steam engine to the stars.
+**The Singularity is Near** extends Europa Universalis V past its 1836 end date with playable industrialization content in **Age VII (1837–1900)** and **era scaffolds VIII–XII**, while keeping the game running until **2337**. It is the first step of a long-term project that follows humanity from the steam engine to the stars.
 
 - **Three institutions:** Industrial Capitalism, Mass Society, Electrification (not before 1870).
 - **161 advances**, all three specializations eventually open (each unlocked by its paired institution).
@@ -491,7 +523,11 @@ flowchart LR
 - **19 units**, 16 map modes, 14 hints, 76 encyclopedia entries, 6 game rules, 180 events. Full English and Korean localization.
 - Vanilla age VI content (imperialism and nationalist casus belli, revolutions, parliament agendas) keeps working in the new age.
 
-**Status:** 0.7.0 is a development build that has not been tested in game yet. Do not remove the mod from a save that used it. Bug reports with `error.log` are welcome.
+**Future-era scaffolds:** VIII World Wars (1900), IX Atomic Power (1945), X Information (1990), XI Artificial Intelligence (2035), XII Space Settlement (2120). They currently reuse age-VII defaults and placeholder art. No dedicated future advances, institutions, events or new balancing are implemented; 2200 is a project milestone, not the end date.
+
+**Interface:** a standalone six-tab dashboard and optional Glorp adapter share registered metrics, compact K/M/B/T formatting and the ten-observation GDP history. Era and UI generators have check-only modes.
+
+**Status:** 0.7.0 is a development build undergoing in-game verification. Some features have been tested; the latest dashboard and future-era transitions still require runtime checks. Do not remove the mod from a save that used it. Bug reports with `error.log` are welcome.
 
 ---
 

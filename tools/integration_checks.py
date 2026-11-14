@@ -94,6 +94,21 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
             errors.extend('integration: dashboard ' + message for message in check_provider_links(data, root))
         except (ValueError, KeyError, TypeError) as exc:
             errors.append(f'integration: invalid dashboard registry: {exc}')
+    era_registry = root / 'data/eras.json'
+    if era_registry.exists():
+        try:
+            import json
+            from gen_era_skeleton import build as build_eras, validate as validate_eras
+            data = json.loads(pdx.read_text(era_registry))
+            rows = validate_eras(data)
+            counts.update(registered_mod_eras=len(rows), future_era_scaffolds=len(rows)-1)
+            for rel, expected in build_eras(root, data).items():
+                p = root / rel
+                actual = (p.read_bytes() if isinstance(expected, bytes) else pdx.read_text(p)) if p.exists() else None
+                if actual != expected:
+                    errors.append(f'integration: generated era scaffold is outdated: {rel}')
+        except (ValueError, KeyError, TypeError) as exc:
+            errors.append(f'integration: invalid era registry: {exc}')
     return errors, counts
 
 

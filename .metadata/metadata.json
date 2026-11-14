@@ -4,7 +4,7 @@
   "version": "0.7.0",
   "game_id": "eu5",
   "supported_game_version": "1.4.*",
-  "short_description": "Extends Europa Universalis V into a seventh age (Industrialization, 1837-1900): new institutions, advances, industrial economy, mass society and electrification. Long-term goal: humanity's road to the stars.",
+  "short_description": "Industrialization content for Age VII, with era VIII–XII scaffolds from World Wars to Space Settlement. Future-era technologies and events are not implemented.",
   "tags": [
     "Gameplay",
     "Historical"
