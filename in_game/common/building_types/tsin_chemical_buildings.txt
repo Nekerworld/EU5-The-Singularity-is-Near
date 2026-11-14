@@ -169,7 +169,7 @@ tsin_blasting_works = {
 	audio_category = industry
 	is_foreign = no
 	pop_type = laborers
-	max_levels = 1
+	max_levels = tsin_blasting_works_max_level
 
 	employment_size = rural_peasant_enhance_employment
 
@@ -202,6 +202,16 @@ tsin_blasting_works = {
 			icon = tsin_explosives
 			tsin_explosives = 0.05
 			tools = 0.02
+			category = building_maintenance
+		}
+
+		# 0.7 tech tier, unlocked by tsin_deep_coal_mining_advance: pumps keep the shafts dry, less blasting (0.28 vs 0.31)
+		tsin_blasting_works_steam_pumping = {
+			icon_type = goods
+			icon = tsin_engines
+			tsin_explosives = 0.03
+			coal = 0.05
+			tsin_engines = 0.005
 			category = building_maintenance
 		}
 	}

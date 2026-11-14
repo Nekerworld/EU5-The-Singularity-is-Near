@@ -82,8 +82,39 @@
 | `tsin_railway_station` | 수도 또는 수도와 철도(`has_road_of_type_to`)로 이어진 도시. `local_market_access` +10%. 유지: 석탄 0.1, 도구 0.05, 기관 0.03. 연결이 끊기면 철거(바닐라 `local_governor`의 `remove_if` 방식) | `in_game/common/building_types/tsin_railway_buildings.txt` |
 | 철도 건설·유지 수요 | 바닐라 값에 석탄 0.5·도구 0.25(건설), 석탄 0.01(유지) 추가. 제6시대에도 지을 수 있도록 제7시대 상품은 넣지 않았다 | `in_game/common/goods_demand/tsin_railroad_demands.txt` (`docs/overrides.md`) |
 
+## 자동화 업그레이드 (0.7)
+
+바닐라 공장 6종을 제자리에서 개축(`obsolete`)한다. 건물마다 원래 재화 1종만 내고, 생산 방식은 "증기 동력 → 전동기" 기술 단계 둘뿐이다. 원료 비율은 바닐라 공장 방식을 그대로 따르고, 산출 가치 = 투입 비용 × 1.35가 되게 맞췄다. 고용은 `tsin_mechanized_mill_employment`(0.15, 바닐라 0.25).
+
+| 업그레이드 | 바닐라 원본 | 재화 | 증기(산출 6) 투입 | 전동기(산출 7) 투입 | 해금 |
+|---|---|---|---|---|---|
+| `tsin_automated_iron_mill` | `iron_mill` | 도구 | 13.33 | 15.55 | `tsin_interchangeable_parts_advance` |
+| `tsin_automated_furniture_mill` | `furniture_mill` | 가구 | 13.34 | 15.55 | 같음 |
+| `tsin_automated_paper_mill` | `paper_mill`(목재 펄프) | 종이 | 8.89 | 10.37 | `tsin_continuous_process_advance` |
+| `tsin_automated_glass_mill` | `glass_mill` | 유리 | 13.33 | 15.55 | 같음 |
+| `tsin_automated_printing_mill` | `printing_mill` | 서적 | 13.33 | 15.55 | `tsin_rotary_press_advance` |
+| `tsin_automated_fine_cloth_mill` | `fine_cloth_mill` | 고급 직물 | 26.67 | 31.11 | `tsin_power_jacquard_advance` |
+
+- 증기 단계의 동력: 기관 0.15, 석탄 0.5. 전동기 단계의 동력: 전력 0.8, 기관 0.05. 전동기 단계는 모두 `tsin_electric_motor_advance`가 연다.
+- 산출 1단위당 원료는 바닐라보다 7~34% 적다(종이가 가장 크게 준다).
+- 자동화 공장은 `tsin_location_automated_mill_levels`로 묶여 공장 일자리(`tsin_location_industrial_jobs`)와 산업화 지도 모드에 들어간다.
+- 정의: `in_game/common/building_types/tsin_automation_buildings.txt`. 해금 기술: `tsin_2_building_unlocks.txt`.
+
+### 시장 접근도 상한 `tsin_automation_max_level`
+
+바닐라 `mills_max_level`은 시장 접근도가 0.75 미만이면 (접근도 + 0.25)를 곱한다. 자동화 공장은 산출이 커서 시장이 필요하므로 같은 조건에서 한 번 더 곱한다. 예: 접근도 0.5인 도시는 바닐라 공장 상한이 75%, 자동화 공장 상한은 약 56%이다. 철도역(`local_market_access` +10%)이 접근도를 0.75 위로 올리면 감소가 사라지므로, 철도망이 자동화의 전제 조건 역할을 한다. 정의: `in_game/common/script_values/tsin_building_caps.txt`.
+
+## 채굴 단계 (0.7)
+
+- `tsin_blasting_works`: `tsin_deep_coal_mining_advance`가 최대 레벨을 1 → 2로 올리고(`tsin_blasting_works_max_level`), 증기 양수 방식 `tsin_blasting_works_steam_pumping`(폭약 0.03, 석탄 0.05, 기관 0.005, 유지비 0.28)을 연다. 기존 유지 방식(0.31)도 남는다. 심부 탄광 기술은 이제 다이너마이트 기술도 선행으로 요구한다.
+- `tsin_steam_sawmill`: 바닐라 `lumber_mill`을 개축한다. 증기 톱(도구 0.4, 석탄 0.3, 기관 0.033 → 목재 1.6) → 전기 톱(도구 0.4, 전력 0.3, 기관 0.025 → 목재 1.8). 바닐라 제재소(도구 0.417 → 목재 1)와 같은 `rural_profit_margin` 1.2배이다. 고용 0.6(바닐라 1.0). 해금 `tsin_steam_sawmill_advance`, 전기 톱은 `tsin_electric_motor_advance`. 정의: `tsin_extraction_buildings.txt`.
+
 ## 사용자 확인 필요
 
+- 자동화 공장이 건물 화면에서 바닐라 공장의 개축 대상으로 보이는지, 개축 뒤 레벨이 유지되는지
+- `tsin_automation_max_level`의 설명 줄(`TSIN_BUILDING_LEVEL_AUTOMATION_MARKET_ACCESS`)이 상한 툴팁에 보이는지
+- 발파 채굴장의 건물 보정치(원자재 산출 +15%)가 레벨마다 쌓이는지. 쌓이지 않으면 2레벨은 일자리만 늘린다
+- 증기 제재소가 `rgo_building_category`에서 바닐라 제재소처럼 목재를 내는지
 - `has_road_of_type_to`가 철도 경로 전체를 따라가는지(바닐라 `flavor_mug.txt`의 라호르→쿨나 예시로 보아 경로 검사로 추정), 수도 외 도시에서 철도역이 지어지고 연결이 끊기면 철거되는지
 - `TRY_REPLACE`로 바꾼 철도 건설 수요가 건설 화면에 석탄·도구로 표시되는지
 - 비료·폭약이 부족할 때 시비 농지·발파 채굴장의 보정치가 약해지는지. 약해지지 않는다면 비료·폭약은 유지비일 뿐이고, 수요 연결은 시장 가격으로만 작동한다.
@@ -101,7 +132,7 @@
   - 고무: 이벤트 `tsin_economy.80` 고무 붐이 열대 밀림 농촌 지역(`tsin_potential_rubber_location_trigger`)의 원자재를 `change_raw_material = goods:tsin_rubber`로 바꾼다. 특허권은 최대 3곳과 강제 노동 지점 수정자, 국가 감독은 1곳.
   - 석유: 결정 `tsin_prospect_for_oil`이 바닐라 `prospect_for_coal`과 같은 방식으로 `scripted_geography:tsin_potential_oil`(바쿠, 왈라키아, 갈리치아, 펜실베이니아, 수마트라, 버마 등 19세기 유전 지역)의 한 곳을 유전으로 바꾼다. 비용은 바닐라 `coal_prospecting_cost`.
 - 수요: 주민 수요는 넣지 않았다(1337년부터 공급 없는 수요가 생기지 않게). 7시대 생산 방식으로만 쓴다.
-  - `tsin_machine_works` 둘째 칸 `tsin_machine_works_oil_lubrication`: 구리 0.2, 석유 0.15 → 기관 0.33.
+  - `tsin_machine_works` 둘째 칸 `tsin_machine_works_oil_lubrication`: 구리 0.2, 석유 0.15 → 기관 0.27(0.7에서 0.33 → 0.27, 이윤율 1.65 → 1.35).
   - `tsin_mechanized_textile_mill` 둘째 칸 `tsin_mechanized_rubber_belts`: 기관 0.3, 석탄 0.5, 고무 0.1, 공구 0.1 → 직물 1.75.
 - 그림: 고무는 바닐라 `fiber_crops`, 석유는 `tar` 아이콘의 색조를 바꾼 임시 그림.
 

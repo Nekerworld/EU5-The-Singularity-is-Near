@@ -1,3 +1,12 @@
 ﻿# Age VII building values (compare mills_employment = 0.25 in vanilla default_values.txt).
 
 tsin_mechanized_mill_employment = 0.15
+
+# compare rural_peasant_produce_employment = 1.0
+tsin_steam_sawmill_employment = 0.6
+
+# compare rural_peasant_enhance_employment = 0.25 (tsin_fertilized_fields)
+tsin_mechanized_farm_employment = 0.15
+
+# Housing employs only caretakers (tsin_tenement, tsin_model_dwellings).
+tsin_housing_employment = 0.05

@@ -1,0 +1,70 @@
+﻿# Age VII extraction upgrades.
+# Prices: lumber 1.5, tools 3, coal 2, tsin_engines 6, tsin_electricity 3. Vanilla lumber_mill: 1.25 -> 1.5 (rural_profit_margin 0.2).
+
+# Upgrades lumber_mill in place. Tech tiers only: steam saw (base) -> electric saw (tsin_electric_motor_advance).
+tsin_steam_sawmill = {
+	audio_tier = 2
+	is_foreign = no
+	max_levels = rural_building_cap
+	startup_ramp_target = rural_startup_ramp_target
+	pop_type = laborers
+
+	employment_size = tsin_steam_sawmill_employment
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	location_potential = {
+		OR = {
+			vegetation = woods
+			vegetation = forest
+			vegetation = farmland
+			vegetation = jungle
+		}
+		NOT = {
+			raw_material = goods:lumber
+		}
+	}
+
+	category = rgo_building_category
+
+	obsolete = lumber_mill
+
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		# inputs 2.0 -> 1.6 lumber (2.4)
+		tsin_steam_sawmill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			produced = lumber
+			output = 1.6
+
+			tools = 0.4
+			coal = 0.3
+			tsin_engines = 0.033
+
+			debug_max_profit = rural_profit_margin
+			category = building_maintenance
+		}
+
+		# inputs 2.25 -> 1.8 lumber (2.7)
+		tsin_steam_sawmill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			produced = lumber
+			output = 1.8
+
+			tools = 0.4
+			tsin_electricity = 0.3
+			tsin_engines = 0.025
+
+			debug_max_profit = rural_profit_margin
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = basic_construction_needs
+}

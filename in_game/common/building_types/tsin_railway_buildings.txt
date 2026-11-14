@@ -1,11 +1,12 @@
 ﻿# Age VII railway station: market access for towns joined to the capital by vanilla railroad.
 # Maintenance: coal 0.1 (0.2), tools 0.05 (0.15), tsin_engines 0.03 (0.18).
+# Two levels (tsin_railway_station_max_level); the telegraph tier saves coal and engines.
 
 tsin_railway_station = {
 	audio_tier = 2
 	is_foreign = no
 	pop_type = laborers
-	max_levels = 1
+	max_levels = tsin_railway_station_max_level
 
 	employment_size = tiny_rural_peasant_enhance_employment
 
@@ -53,10 +54,19 @@ tsin_railway_station = {
 			tsin_engines = 0.03
 			category = building_maintenance
 		}
+		tsin_railway_station_telegraph = {
+			icon_type = goods
+			icon = tsin_electricity
+			coal = 0.07
+			tools = 0.05
+			tsin_engines = 0.02
+			tsin_electricity = 0.01
+			category = building_maintenance
+		}
 	}
 
 	modifier = {
-		local_market_access = 0.1
+		local_market_access = 0.075
 	}
 
 	construction_demand = tsin_factory_construction

@@ -78,14 +78,14 @@ tsin_machine_works = {
 			category = mills_input
 		}
 
-		# inputs 1.2 -> 0.33 engines (1.98); oil fields come from tsin_prospect_for_oil
+		# inputs 1.2 -> 0.27 engines (1.62); oil fields come from tsin_prospect_for_oil
 		tsin_machine_works_oil_lubrication = {
 			icon_type = goods
 			icon = tsin_oil
 			copper = 0.2
 			tsin_oil = 0.15
 			produced = tsin_engines
-			output = 0.33
+			output = 0.27
 
 			debug_max_profit = mills_profit_margin
 			category = mills_input

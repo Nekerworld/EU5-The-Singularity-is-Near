@@ -7,6 +7,8 @@ tsin_industrial_capitalism_plausible_location = {
 		has_building_with_at_least_one_level = textile_mill
 		has_building_with_at_least_one_level = iron_mill
 		has_building_with_at_least_one_level = steel_mill
+		has_building_with_at_least_one_level = tsin_mechanized_textile_mill
+		has_building_with_at_least_one_level = tsin_automated_iron_mill
 	}
 	num_pop_type:laborers > 20
 	total_building_levels > 150
@@ -27,7 +29,7 @@ tsin_mass_society_plausible_location = {
 
 tsin_electrification_plausible_location = {
 	has_institution = institution:tsin_industrial_capitalism
-	has_building_with_at_least_one_level = university
+	tsin_has_university_tier_trigger = yes
 	average_location_literacy > 50
 	total_building_levels > 200
 	owner = {

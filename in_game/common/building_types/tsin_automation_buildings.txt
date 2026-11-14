@@ -1,0 +1,374 @@
+﻿# Age VII automation tier: upgrades the six vanilla mills in place (obsolete), one good each.
+# Production methods are tech tiers only: steam power (base, output 6) -> electric motor (output 7,
+# unlocked by tsin_electric_motor_advance). Raw inputs keep the vanilla mill recipe in proportion and are
+# scaled so that output value = input value * 1.35 (mills_profit_margin), as in vanilla mills.
+# Prices: iron 3, coal 2, tools 3, sand 0.5, stone 1, alum 3, lumber 1.5, dyes 4, lead 2, paper 2, cloth 3,
+# glass 3, furniture 3, books 3, fine_cloth 6, tsin_engines 6, tsin_electricity 3.
+
+tsin_automated_iron_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = iron_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 13.33 -> 6 tools (18.0)
+		tsin_automated_iron_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			iron = 3.266
+			coal = 1.318
+			tsin_engines = 0.15
+			produced = tools
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 15.55 -> 7 tools (21.0)
+		tsin_automated_iron_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			iron = 3.672
+			coal = 0.919
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = tools
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	custom_tags = { lategame_manufactory }
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+tsin_automated_glass_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = glass_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 13.33 -> 6 glass (18.0)
+		tsin_automated_glass_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			lumber = 0.715
+			sand = 4.293
+			stone = 0.358
+			tools = 1.717
+			coal = 1.573
+			alum = 0.187
+			tsin_engines = 0.15
+			produced = glass
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 15.55 -> 7 glass (21.0)
+		tsin_automated_glass_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			lumber = 0.804
+			sand = 4.827
+			stone = 0.403
+			tools = 1.93
+			coal = 1.206
+			alum = 0.21
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = glass
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	custom_tags = { lategame_manufactory }
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+tsin_automated_paper_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = paper_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# wood pulp recipe; inputs 8.89 -> 6 paper (12.0)
+		tsin_automated_paper_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			lumber = 4.659
+			coal = 0.5
+			tsin_engines = 0.15
+			produced = paper
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 10.37 -> 7 paper (14.0)
+		tsin_automated_paper_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			lumber = 5.114
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = paper
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	custom_tags = { lategame_manufactory }
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+tsin_automated_furniture_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = consumer_goods_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = furniture_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 13.34 -> 6 furniture (18.0)
+		tsin_automated_furniture_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			lumber = 4.936
+			dyes = 0.576
+			tools = 0.576
+			coal = 0.5
+			tsin_engines = 0.15
+			produced = furniture
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 15.55 -> 7 furniture (21.0)
+		tsin_automated_furniture_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			lumber = 5.55
+			dyes = 0.647
+			tools = 0.647
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = furniture
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+tsin_automated_printing_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = consumer_goods_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = printing_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# rotary press; inputs 13.33 -> 6 books (18.0)
+		tsin_automated_printing_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			lead = 0.728
+			paper = 4.006
+			tools = 0.072
+			lumber = 1.165
+			coal = 0.5
+			tsin_engines = 0.15
+			produced = books
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 15.55 -> 7 books (21.0)
+		tsin_automated_printing_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			lead = 0.819
+			paper = 4.505
+			tools = 0.081
+			lumber = 1.309
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = books
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+tsin_automated_fine_cloth_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = tsin_automation_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = consumer_goods_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = fine_cloth_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# power Jacquard loom; inputs 26.67 -> 6 fine cloth (36.0)
+		tsin_automated_fine_cloth_mill_steam = {
+			icon_type = goods
+			icon = tsin_engines
+			cloth = 7.573
+			dyes = 0.512
+			coal = 0.5
+			tsin_engines = 0.15
+			produced = fine_cloth
+			output = 6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 31.11 -> 7 fine cloth (42.0)
+		tsin_automated_fine_cloth_mill_electric = {
+			icon_type = goods
+			icon = tsin_electricity
+			cloth = 8.687
+			dyes = 0.587
+			tsin_electricity = 0.8
+			tsin_engines = 0.05
+			produced = fine_cloth
+			output = 7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	custom_tags = { lategame_manufactory }
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}

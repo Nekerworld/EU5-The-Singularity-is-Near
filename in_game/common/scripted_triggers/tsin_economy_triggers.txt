@@ -24,7 +24,20 @@ tsin_location_has_factory_trigger = {
 		has_building_with_at_least_one_level = steel_mill
 		has_building_with_at_least_one_level = tsin_machine_works
 		has_building_with_at_least_one_level = tsin_mechanized_textile_mill
+		has_building_with_at_least_one_level = tsin_automated_iron_mill
+		has_building_with_at_least_one_level = tsin_automated_glass_mill
+		has_building_with_at_least_one_level = tsin_automated_paper_mill
+		has_building_with_at_least_one_level = tsin_automated_furniture_mill
+		has_building_with_at_least_one_level = tsin_automated_printing_mill
+		has_building_with_at_least_one_level = tsin_automated_fine_cloth_mill
+		has_building_with_at_least_one_level = tsin_farm_machinery_works
+		has_building_with_at_least_one_level = tsin_nitrogen_fixation_plant
 	}
+}
+
+# Scope: location. Population is above tsin_crowding_threshold of capacity.
+tsin_location_crowded_trigger = {
+	location_population_percentage > tsin_crowding_threshold
 }
 
 # Scope: country. Owns at least one location with a factory.
@@ -45,4 +58,55 @@ tsin_potential_rubber_location_trigger = {
 	vegetation = jungle
 	climate = tropical
 	NOT = { raw_material = goods:tsin_rubber }
+}
+
+# Scope: country. A living company chairman (in_game/events/tsin_corporate.txt).
+tsin_has_chairman_trigger = {
+	has_variable = tsin_chairman
+	var:tsin_chairman = { is_alive = yes }
+}
+
+# Scope: country. Countries that write TSIN_ECON lines: players, great powers, countries with a stock market and
+# countries with the national statistics bureau.
+tsin_economy_log_target_trigger = {
+	OR = {
+		is_ai = no
+		is_great_power = yes
+		has_variable = tsin_has_stock_market
+		has_reform = government_reform:tsin_national_statistics_bureau
+	}
+}
+
+# Scope: location. Crowded city or town without modern waterworks (tsin_cholera; an old aqueduct does not help).
+tsin_cholera_risk_location_trigger = {
+	OR = {
+		is_city = yes
+		location_rank ?= location_rank:town
+	}
+	tsin_location_crowded_trigger = yes
+	NOT = { has_building_with_at_least_one_level = tsin_waterworks }
+}
+
+# Scope: country. Population pressure that sends emigrants overseas (tsin_great_migration).
+tsin_migration_push_trigger = {
+	is_subject = no
+	OR = {
+		has_country_modifier = tsin_grain_invasion_crisis
+		has_active_disaster = disaster_type:tsin_great_hunger
+		has_active_disaster = disaster_type:tsin_cholera
+		any_owned_location = {
+			count >= 3
+			tsin_location_crowded_trigger = yes
+		}
+	}
+}
+
+# Scope: country. Overseas lands that draw emigrants (tsin_great_migration).
+tsin_migration_pull_trigger = {
+	capital ?= {
+		OR = {
+			continent = continent:america
+			continent = continent:oceania
+		}
+	}
 }
