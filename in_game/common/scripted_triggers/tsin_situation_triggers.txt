@@ -1,0 +1,12 @@
+﻿# Situation participation triggers (country scope).
+
+# Industrial great power: same rank test as vanilla cb_imperialism create_enabled, plus industrial capitalism.
+tsin_scramble_participant_trigger = {
+	is_subject = no
+	has_embraced_institution = institution:tsin_industrial_capitalism
+	OR = {
+		country_rank = country_rank:rank_kingdom
+		country_rank = country_rank:rank_empire
+		is_emperor = yes
+	}
+}

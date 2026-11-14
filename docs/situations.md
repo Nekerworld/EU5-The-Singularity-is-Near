@@ -32,3 +32,16 @@
 - 모드 GUI 파일이 상황 화면에 연결되는지(파일 이름 규칙 추정), 화면이 비지 않는지
 - `years_since_situation_start`에 따른 단계 전환과 두 결말
 - 매달 `every_country`가 성능에 주는 영향(`docs/perf_baseline.md` 절차)
+
+## tsin_scramble_for_colonies (식민지 쟁탈전)
+
+- 파일: `in_game/common/situations/tsin_scramble_for_colonies.txt`, 참여 조건 `in_game/common/scripted_triggers/tsin_situation_triggers.txt`, 이벤트 `in_game/events/tsin_scramble.txt`, 수정자 `main_menu/common/static_modifiers/tsin_scramble_modifiers.txt`, GUI `in_game/gui/panels/situation/tsin_scramble_for_colonies.gui`, 힌트 `hint_tsin_scramble_for_colonies`.
+- 시작: 1870년 이후, 참여 조건(`tsin_scramble_participant_trigger`: 종속국 아님, 산업자본주의 수용, 왕국·제국 등급 또는 황제)을 만족하는 나라가 4개 이상, 한 판에 한 번(`tsin_scramble_happened`).
+- 참여국 등급 조건은 바닐라 `cb_imperialism`의 `create_enabled`와 같게 맞췄다. 모드가 `zzz_tsin_age7_imperialism.txt`로 이 전쟁명분을 7시대에도 쓸 수 있게 했으므로, 쟁탈전 참여국은 식민과 제국주의 전쟁 두 경로로 땅을 넓힌다.
+- 시작 시 참여국에 `tsin_scramble_colonial_drive`(식민 범위 +25%, 식민 이주 +25%, 식민 유지 효율 +10%)와 `tsin_scramble.1`.
+- 10년째: 식민 회의 `tsin_scramble.2` 한 번. 세력권 수용(땅 차지 적대감 -15%, 화해 쪽 가치관) 또는 모든 권리 주장(식민 범위 +25%, 받는 적대감 +10%, 호전 쪽 가치관).
+- 매달 참여국마다 약 0.4% 확률로 `tsin_scramble.3` 식민지 저항(금 2배 비용 또는 이주 -20% 감쇠 수정자).
+- 30년 뒤 종료: 수정자 제거와 `tsin_scramble.10`.
+- 지도: 참여국 영토는 높음, 주인 없는 땅은 중간 색.
+
+사용자 확인 필요: `has_owner = no`와 `is_ownable = yes`를 지역 툴팁·지도 색에서 함께 쓰는 동작, `antagonism_taking_land_giving_modifier`의 부호 의미(음수가 적대감 감소인지), 상황 GUI 연결.

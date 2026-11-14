@@ -9,3 +9,13 @@ hint_tsin_long_depression = {
 	}
 	sort_priority = 200
 }
+
+hint_tsin_scramble_for_colonies = {
+	priority = {
+		can_see_situation = situation:tsin_scramble_for_colonies
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_scramble_for_colonies }
+	}
+	sort_priority = 150
+}

@@ -102,6 +102,8 @@ EXTRA = [
     ("illustrations/missions/generic_capital_economy.dds", "illustrations/missions/tsin_industrialization.dds", 30),
     ("icons/situations/little_ice_age.dds", "icons/situations/tsin_long_depression.dds", 150),
     ("illustrations/situation/little_ice_age.dds", "illustrations/situation/tsin_long_depression.dds", 150),
+    ("icons/situations/colonial_revolution.dds", "icons/situations/tsin_scramble_for_colonies.dds", 60),
+    ("illustrations/situation/colonial_revolution.dds", "illustrations/situation/tsin_scramble_for_colonies.dds", 60),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330)):

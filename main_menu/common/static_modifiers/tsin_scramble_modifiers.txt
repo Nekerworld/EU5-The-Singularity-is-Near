@@ -1,0 +1,36 @@
+﻿# Scramble for Colonies (situations/tsin_scramble_for_colonies.txt).
+
+tsin_scramble_colonial_drive = {
+	game_data = {
+		category = country
+	}
+	colonial_range_modifier = 0.25
+	colonial_migration_size_modifier = 0.25
+	colonial_maintenance_efficiency = 0.1
+}
+
+# tsin_scramble.2: agreed spheres of influence
+tsin_scramble_spheres = {
+	game_data = {
+		category = country
+	}
+	antagonism_taking_land_giving_modifier = -0.15
+}
+
+# tsin_scramble.2: open rivalry
+tsin_scramble_rivalry = {
+	game_data = {
+		category = country
+	}
+	colonial_range_modifier = 0.25
+	antagonism_received_modifier = 0.1
+}
+
+# tsin_scramble.3: punitive expedition aftermath
+tsin_colonial_resistance = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	colonial_migration_size_modifier = -0.2
+}

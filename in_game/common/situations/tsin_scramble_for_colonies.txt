@@ -1,0 +1,106 @@
+﻿# The Scramble for Colonies (M3). Industrial great powers race for the remaining lands.
+# Works with cb_imperialism, which zzz_tsin_age7_imperialism.txt keeps available from age VI on.
+# A conference after 10 years lets each participant choose spheres or open rivalry; ends after 30 years.
+
+tsin_scramble_for_colonies = {
+	monthly_spawn_chance = monthly_spawn_chance_very_low
+	hint_tag = hint_tsin_scramble_for_colonies
+
+	can_start = {
+		current_year >= 1870
+		NOT = { has_global_variable = tsin_scramble_happened }
+		any_country = {
+			count >= 4
+			tsin_scramble_participant_trigger = yes
+		}
+	}
+
+	visible = {
+		tsin_scramble_participant_trigger = yes
+	}
+
+	outcome = {
+		name = "tsin_scramble_for_colonies_partition_complete"
+		trigger = {
+			situation:tsin_scramble_for_colonies = { years_since_situation_start > 30 }
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_scramble_happened value = 1 }
+		every_country = {
+			limit = { tsin_scramble_participant_trigger = yes }
+			add_country_modifier = { modifier = tsin_scramble_colonial_drive months = -1 }
+			trigger_event_non_silently = tsin_scramble.1
+		}
+	}
+
+	on_monthly = {
+		if = {
+			limit = {
+				NOT = { has_global_variable = tsin_scramble_conference_held }
+				situation:tsin_scramble_for_colonies = { years_since_situation_start >= 10 }
+			}
+			set_global_variable = { name = tsin_scramble_conference_held value = 1 }
+			every_country = {
+				limit = { has_country_modifier = tsin_scramble_colonial_drive }
+				trigger_event_non_silently = tsin_scramble.2
+			}
+		}
+		every_country = {
+			limit = { has_country_modifier = tsin_scramble_colonial_drive }
+			random_list = {
+				1000 = { }
+				4 = { trigger_event_non_silently = tsin_scramble.3 }
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { has_country_modifier = tsin_scramble_colonial_drive }
+			remove_country_modifier = tsin_scramble_colonial_drive
+			trigger_event_non_silently = tsin_scramble.10
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_scramble_colonial_drive } }
+			custom_tooltip = tsin_scramble_for_colonies_participant_tt
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = no
+			}
+			custom_tooltip = tsin_scramble_for_colonies_unclaimed_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_scramble_colonial_drive } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = no
+			}
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_SCRAMBLE_PARTICIPANT"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_SCRAMBLE_UNCLAIMED"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+}

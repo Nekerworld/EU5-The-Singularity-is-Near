@@ -1,0 +1,109 @@
+﻿namespace = tsin_scramble
+
+# Scramble for Colonies situation events (situations/tsin_scramble_for_colonies.txt).
+# Not flavor events: they do not spend the yearly tsin_ budget.
+
+# The race begins
+tsin_scramble.1 = {
+	type = country_event
+	title = tsin_scramble.1.title
+	desc = tsin_scramble.1.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_scramble.1.a
+	}
+}
+
+# The colonial conference
+tsin_scramble.2 = {
+	type = country_event
+	title = tsin_scramble.2.title
+	desc = tsin_scramble.2.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	# Accept spheres of influence
+	option = {
+		name = tsin_scramble.2.a
+		add_country_modifier = { modifier = tsin_scramble_spheres years = modifier_duration_years_extended mode = add_and_extend }
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_minor_move_to_right
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Press every claim
+	option = {
+		name = tsin_scramble.2.b
+		add_country_modifier = { modifier = tsin_scramble_rivalry years = modifier_duration_years_extended mode = add_and_extend }
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = societal_value_minor_move_to_left
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Resistance in the colonies
+tsin_scramble.3 = {
+	type = country_event
+	title = tsin_scramble.3.title
+	desc = tsin_scramble.3.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		has_country_modifier = tsin_scramble_colonial_drive
+	}
+
+	# Send a punitive expedition
+	option = {
+		name = tsin_scramble.3.a
+		change_gold_effect = { scale = -2 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Pull the settlers back
+	option = {
+		name = tsin_scramble.3.b
+		add_country_modifier = { modifier = tsin_colonial_resistance years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The partition is complete
+tsin_scramble.10 = {
+	type = country_event
+	title = tsin_scramble.10.title
+	desc = tsin_scramble.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_scramble.10.a
+	}
+}
