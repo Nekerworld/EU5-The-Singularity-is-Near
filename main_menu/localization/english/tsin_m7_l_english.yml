@@ -1,0 +1,18 @@
+﻿l_english:
+
+ # Time compression and population governor (docs/tempo.md)
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_1: "Industrial Acceleration I"
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_2: "Industrial Acceleration II"
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_3: "Industrial Acceleration III"
+ STATIC_MODIFIER_NAME_tsin_industrial_population_boom: "Industrial Population Boom"
+ STATIC_MODIFIER_NAME_tsin_population_brake_1: "World Population Restraint (Mild)"
+ STATIC_MODIFIER_NAME_tsin_population_brake_2: "World Population Restraint (Moderate)"
+ STATIC_MODIFIER_NAME_tsin_population_brake_3: "World Population Restraint (Severe)"
+ STATIC_MODIFIER_NAME_tsin_population_pressure: "Population Pressure"
+ STATIC_MODIFIER_NAME_tsin_demographic_transition_1: "Demographic Transition (Early)"
+ STATIC_MODIFIER_NAME_tsin_demographic_transition_2: "Demographic Transition (Late)"
+ rule_tsin_population_governor: "World Population Governor"
+ setting_tsin_population_governor_on: "On"
+ setting_tsin_population_governor_on_desc: "When world population runs above the historical curve (1.6x the 1837 figure by 1900, 5.5x by 2000, never above 7x), the fastest-growing countries have their growth restrained first."
+ setting_tsin_population_governor_off: "Off"
+ setting_tsin_population_governor_off_desc: "Disables the world population governor. For testing and comparison; population may grow to absurd levels."

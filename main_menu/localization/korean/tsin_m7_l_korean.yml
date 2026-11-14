@@ -1,0 +1,18 @@
+﻿l_korean:
+
+ # 시간 압축과 인구 조절기 (docs/tempo.md)
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_1: "산업 가속 1단계"
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_2: "산업 가속 2단계"
+ STATIC_MODIFIER_NAME_tsin_industrial_acceleration_3: "산업 가속 3단계"
+ STATIC_MODIFIER_NAME_tsin_industrial_population_boom: "산업 인구 붐"
+ STATIC_MODIFIER_NAME_tsin_population_brake_1: "세계 인구 조절 (약)"
+ STATIC_MODIFIER_NAME_tsin_population_brake_2: "세계 인구 조절 (중)"
+ STATIC_MODIFIER_NAME_tsin_population_brake_3: "세계 인구 조절 (강)"
+ STATIC_MODIFIER_NAME_tsin_population_pressure: "인구 압력"
+ STATIC_MODIFIER_NAME_tsin_demographic_transition_1: "인구 변천 (초기)"
+ STATIC_MODIFIER_NAME_tsin_demographic_transition_2: "인구 변천 (후기)"
+ rule_tsin_population_governor: "세계 인구 조절기"
+ setting_tsin_population_governor_on: "켬"
+ setting_tsin_population_governor_on_desc: "세계 인구가 역사 목표 곡선(1900년 1837년의 1.6배, 2000년 5.5배, 최대 7배)을 넘으면 빠르게 늘어나는 나라부터 인구 증가에 제동을 건다."
+ setting_tsin_population_governor_off: "끔"
+ setting_tsin_population_governor_off_desc: "세계 인구 조절기를 끈다. 시험과 비교용이며 인구가 비현실적으로 늘어날 수 있다."

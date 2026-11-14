@@ -1,0 +1,142 @@
+﻿# Time compression and population caps (docs/tempo.md). root = country, called from tsin_tempo_yearly_pulse.
+
+# World population governor. The first country to pulse each ~year updates the global brake tier.
+tsin_update_world_governor_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tsin_governor_updated_recently } }
+		set_global_variable = { name = tsin_governor_updated_recently value = yes days = 360 }
+		if = {
+			limit = { NOT = { has_global_variable = tsin_world_pop_base } }
+			tsin_init_world_pop_base_effect = yes
+		}
+		set_global_variable = { name = tsin_world_pop_ratio value = tsin_world_pop_ratio }
+		set_global_variable = { name = tsin_world_pop_multiple value = tsin_world_pop_growth_multiple }
+		if = {
+			limit = { has_game_rule = tsin_population_governor_off }
+			set_global_variable = { name = tsin_population_brake value = 0 }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					global_var:tsin_world_pop_multiple >= tsin_pop_absolute_cap_multiplier
+					global_var:tsin_world_pop_ratio >= 1.25
+				}
+			}
+			set_global_variable = { name = tsin_population_brake value = 3 }
+		}
+		else_if = {
+			limit = { global_var:tsin_world_pop_ratio >= 1.1 }
+			set_global_variable = { name = tsin_population_brake value = 2 }
+		}
+		else_if = {
+			limit = { global_var:tsin_world_pop_ratio >= 1.0 }
+			set_global_variable = { name = tsin_population_brake value = 1 }
+		}
+		else = {
+			set_global_variable = { name = tsin_population_brake value = 0 }
+		}
+	}
+}
+
+# Base = current world population over this year's target, so a save that enters after 1837 back-computes its 1837 base.
+tsin_init_world_pop_base_effect = {
+	set_global_variable = {
+		name = tsin_world_pop_base
+		value = {
+			value = tsin_obs_world_population
+			divide = tsin_pop_target_multiplier
+		}
+	}
+	set_global_variable = { name = tsin_population_brake value = 0 }
+}
+
+tsin_update_country_tempo_effect = {
+	# Industrial acceleration tier
+	set_variable = { name = tsin_acceleration_tier value = 0 }
+	if = {
+		limit = { tsin_acceleration_points >= 5 }
+		set_variable = { name = tsin_acceleration_tier value = 3 }
+	}
+	else_if = {
+		limit = { tsin_acceleration_points >= 3 }
+		set_variable = { name = tsin_acceleration_tier value = 2 }
+	}
+	else_if = {
+		limit = { tsin_acceleration_points >= 2 }
+		set_variable = { name = tsin_acceleration_tier value = 1 }
+	}
+	remove_country_modifier = tsin_industrial_acceleration_1
+	remove_country_modifier = tsin_industrial_acceleration_2
+	remove_country_modifier = tsin_industrial_acceleration_3
+	if = {
+		limit = { var:tsin_acceleration_tier = 3 }
+		add_country_modifier = { modifier = tsin_industrial_acceleration_3 }
+	}
+	else_if = {
+		limit = { var:tsin_acceleration_tier = 2 }
+		add_country_modifier = { modifier = tsin_industrial_acceleration_2 }
+	}
+	else_if = {
+		limit = { var:tsin_acceleration_tier = 1 }
+		add_country_modifier = { modifier = tsin_industrial_acceleration_1 }
+	}
+
+	# Brake: tiers 1-2 only hit countries growing faster than 1% a year, tier 3 hits everyone.
+	remove_country_modifier = tsin_population_brake_1
+	remove_country_modifier = tsin_population_brake_2
+	remove_country_modifier = tsin_population_brake_3
+	remove_country_modifier = tsin_industrial_population_boom
+	if = {
+		limit = {
+			has_global_variable = tsin_population_brake
+			global_var:tsin_population_brake = 3
+		}
+		add_country_modifier = { modifier = tsin_population_brake_3 }
+	}
+	else_if = {
+		limit = {
+			has_global_variable = tsin_population_brake
+			global_var:tsin_population_brake = 2
+			tsin_country_pop_growth_rate > 0.01
+		}
+		add_country_modifier = { modifier = tsin_population_brake_2 }
+	}
+	else_if = {
+		limit = {
+			has_global_variable = tsin_population_brake
+			global_var:tsin_population_brake = 1
+			tsin_country_pop_growth_rate > 0.01
+		}
+		add_country_modifier = { modifier = tsin_population_brake_1 }
+	}
+	else_if = {
+		limit = {
+			var:tsin_acceleration_tier >= 2
+			OR = {
+				NOT = { has_global_variable = tsin_population_brake }
+				global_var:tsin_population_brake = 0
+			}
+		}
+		add_country_modifier = { modifier = tsin_industrial_population_boom }
+	}
+
+	# Country brake
+	remove_country_modifier = tsin_population_pressure
+	if = {
+		limit = { tsin_country_pop_growth_rate > tsin_population_pressure_threshold }
+		add_country_modifier = { modifier = tsin_population_pressure }
+	}
+	set_variable = { name = tsin_last_population value = total_population }
+
+	# Demographic transition
+	remove_country_modifier = tsin_demographic_transition_1
+	remove_country_modifier = tsin_demographic_transition_2
+	if = {
+		limit = { tsin_demographic_stage >= 2 }
+		add_country_modifier = { modifier = tsin_demographic_transition_2 }
+	}
+	else_if = {
+		limit = { tsin_demographic_stage >= 1 }
+		add_country_modifier = { modifier = tsin_demographic_transition_1 }
+	}
+}

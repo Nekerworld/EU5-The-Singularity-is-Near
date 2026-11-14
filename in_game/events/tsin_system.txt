@@ -14,8 +14,42 @@ tsin_system.1 = {
 	}
 
 	immediate = {
-		set_global_variable = { name = tsin_version value = 1 }
+		set_global_variable = { name = tsin_version value = 3 }
 		set_global_variable = { name = tsin_migrated_save value = 1 }
+		tsin_init_world_pop_base_effect = yes
+	}
+}
+
+# Hidden: version 1 -> 3 (0.7). Saves from 0.6 get the world population base back-computed
+# from this year's target curve, and the new global state starts empty. Version 3: countries that issued
+# the modernizing edict before tsin_defensive_modernization existed resume at stage 1.
+tsin_system.3 = {
+	type = country_event
+	title = empty_text
+	desc = empty_text
+	outcome = neutral
+	hidden = yes
+
+	trigger = {
+		has_global_variable = tsin_version
+		global_var:tsin_version < 3
+	}
+
+	immediate = {
+		set_global_variable = { name = tsin_version value = 3 }
+		if = {
+			limit = { NOT = { has_global_variable = tsin_world_pop_base } }
+			tsin_init_world_pop_base_effect = yes
+		}
+		every_country = {
+			limit = {
+				has_variable = tsin_flavor_reform_edict_done
+				NOT = { has_variable = tsin_modernization_stage }
+				NOT = { has_variable = tsin_modernized }
+				NOT = { has_variable = tsin_modernization_failed }
+			}
+			set_variable = { name = tsin_modernization_stage value = 1 }
+		}
 	}
 }
 
@@ -34,6 +68,30 @@ tsin_system.2 = {
 
 	option = {
 		name = tsin_system.2.a
+	}
+}
+
+# Age of Industry specializations (docs/tech_tree_age7.md). The age start window may not list choices
+# without `for`, so this explains which are open now and which open with each institution.
+tsin_system.4 = {
+	type = country_event
+	title = tsin_system.4.title
+	desc = tsin_system.4.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/advances/age_7_industrialization.dds"
+
+	trigger = {
+		is_ai = no
+		current_age = age_7_industrialization
+		NOT = { has_variable = tsin_specialization_notice_shown }
+	}
+
+	immediate = {
+		set_variable = tsin_specialization_notice_shown
+	}
+
+	option = {
+		name = tsin_system.4.a
 	}
 }
 
@@ -103,5 +161,64 @@ tsin_system.12 = {
 
 	option = {
 		name = tsin_system.12.a
+	}
+}
+
+# Economy report (tsin_economy_snapshot_decision, docs/economic_statistics.md)
+tsin_system.30 = {
+	type = country_event
+	title = tsin_system.30.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_reform = government_reform:tsin_national_statistics_bureau }
+				desc = tsin_system.30.desc_bureau
+			}
+			triggered_desc = {
+				desc = tsin_system.30.desc
+			}
+		}
+	}
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/tsin_mass_society.dds"
+
+	trigger = {
+		is_ai = no
+		has_variable = tsin_gdp
+	}
+
+	option = {
+		name = tsin_system.30.a
+	}
+}
+
+# Hidden: one TSIN_ECON line for this country (tsin_economy_snapshot_effect)
+tsin_system.31 = {
+	type = country_event
+	title = empty_text
+	desc = empty_text
+	outcome = neutral
+	hidden = yes
+
+	immediate = {
+		debug_log = tsin_economy_log_line
+	}
+}
+
+# Education report (docs/education.md): shown to players when the ladder starts and when a stage changes.
+tsin_system.20 = {
+	type = country_event
+	title = tsin_system.20.title
+	desc = tsin_system.20.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/tsin_mass_society.dds"
+
+	trigger = {
+		is_ai = no
+		has_variable = tsin_secondary_education
+	}
+
+	option = {
+		name = tsin_system.20.a
 	}
 }
