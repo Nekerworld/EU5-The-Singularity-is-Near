@@ -120,3 +120,16 @@
  tsin_expedition.21.title: "The Pack Ice Wins"
  tsin_expedition.21.desc: "The pack ice proved impassable even for an iron-reinforced hull. The ship has returned, but the pole remains out of reach."
  tsin_expedition.21.a: "The ice will not hold forever."
+
+ tsin_open_treaty_port: "Open a Treaty Port"
+ tsin_open_treaty_port_desc: "One of their harbour towns shall be opened to our merchants, under terms they had no say in."
+ tsin_open_treaty_port_entry: "[target.GetOwner.GetFlagIcon] Open [target.GetName] as a Treaty Port"
+ tsin_open_treaty_port_entry_short: "[target.GetOwner.GetFlagIconWithNoTooltip] Treaty Port in [target.GetNameWithNoTooltip]"
+ tsin_open_treaty_port_select_location: "Select the port [location|e] to open:"
+ tsin_open_treaty_port_no_locations: "$no_valid_locations$"
+ DIPLOREASON_TSIN_PORT_VALUE: "Value of the Port"
+ antagonism_tsin_treaty_port: "Forced open a treaty port in a [peace_treaty|e]"
+
+ STATIC_MODIFIER_NAME_tsin_treaty_port: "Treaty Port"
+ STATIC_MODIFIER_NAME_tsin_unequal_treaty: "Unequal Treaty"
+ STATIC_MODIFIER_NAME_tsin_treaty_port_concessions: "Treaty Port Concessions"

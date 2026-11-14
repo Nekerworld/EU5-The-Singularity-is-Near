@@ -1,0 +1,24 @@
+﻿tsin_treaty_port = {
+	game_data = {
+		category = location
+	}
+	local_market_access = 0.1
+	local_migration_attraction = 0.25
+	local_max_control = -0.1
+	local_unrest = 0.25
+}
+
+tsin_unequal_treaty = {
+	game_data = {
+		category = country
+	}
+	max_tariff = -0.05
+	monthly_prestige = -0.05
+}
+
+tsin_treaty_port_concessions = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+}

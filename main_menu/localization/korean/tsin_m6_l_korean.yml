@@ -120,3 +120,16 @@
  tsin_expedition.21.title: "유빙의 승리"
  tsin_expedition.21.desc: "철판으로 보강한 선체로도 유빙은 뚫리지 않았다. 배는 돌아왔지만 극점은 여전히 닿을 수 없는 곳에 있다."
  tsin_expedition.21.a: "얼음이 영원히 버티지는 못한다."
+
+ tsin_open_treaty_port: "조약항 개항"
+ tsin_open_treaty_port_desc: "그들의 항구 도시 하나를 우리 상인에게 연다. 조건은 그들이 정할 수 없다."
+ tsin_open_treaty_port_entry: "[target.GetOwner.GetFlagIcon] [target.GetName] 조약항 개항"
+ tsin_open_treaty_port_entry_short: "[target.GetOwner.GetFlagIconWithNoTooltip] [target.GetNameWithNoTooltip] 조약항"
+ tsin_open_treaty_port_select_location: "개항할 항구 [location|e]을 고르십시오:"
+ tsin_open_treaty_port_no_locations: "$no_valid_locations$"
+ DIPLOREASON_TSIN_PORT_VALUE: "항구의 가치"
+ antagonism_tsin_treaty_port: "[peace_treaty|e]으로 조약항을 강제로 열었음"
+
+ STATIC_MODIFIER_NAME_tsin_treaty_port: "조약항"
+ STATIC_MODIFIER_NAME_tsin_unequal_treaty: "불평등 조약"
+ STATIC_MODIFIER_NAME_tsin_treaty_port_concessions: "조약항 이권"

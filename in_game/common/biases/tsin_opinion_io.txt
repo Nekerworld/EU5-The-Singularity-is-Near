@@ -2,3 +2,9 @@
 io_opinion_tsin_customs_union = {
 	value = 10
 }
+
+# Antagonism from the tsin_open_treaty_port peace treaty.
+antagonism_tsin_treaty_port = {
+	value = 1
+	yearly_decay = 2
+}

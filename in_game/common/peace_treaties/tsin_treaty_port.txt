@@ -1,0 +1,108 @@
+﻿# Age VII treaty port (M6). The loser opens one of its non-capital port towns to the winner's trade.
+# Only a country with more advances than the loser can demand it. The opened port and both countries get
+# modifiers for 30 years; var:tsin_treaty_ports_opened on the loser feeds the modernization content.
+
+tsin_open_treaty_port = {
+	category = misc
+
+	cost = {
+		add = {
+			desc = "DIPLOREASON_BASE"
+			value = 10
+		}
+		add = {
+			desc = "DIPLOREASON_TSIN_PORT_VALUE"
+			value = "scope:target.location_peace_cost(scope:loser|scope:winner)"
+			multiply = 0.5
+		}
+		max = 40
+	}
+
+	base_antagonism = 1
+	antagonism_type = antagonism_tsin_treaty_port
+
+	are_targets_exclusive = yes
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		scope:winner = {
+			num_of_advances_researched > scope:loser.num_of_advances_researched
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		source = recipient
+		target_flag = target
+		name = "tsin_open_treaty_port_select_location"
+		none_available_msg_key = "tsin_open_treaty_port_no_locations"
+		column = {
+			data = name
+		}
+		column = {
+			data = population
+		}
+		visible = {
+			owner = scope:recipient
+			is_port = yes
+			is_capital = no
+			NOT = { location_rank = location_rank:rural_settlement }
+			NOT = { has_variable = tsin_treaty_port_of }
+		}
+	}
+
+	allow = {
+	}
+
+	effect = {
+		scope:target = {
+			set_variable = {
+				name = tsin_treaty_port_of
+				value = scope:winner
+				years = 30
+			}
+			add_location_modifier = {
+				modifier = tsin_treaty_port
+				years = 30
+				mode = add_and_extend
+			}
+		}
+		scope:loser = {
+			add_country_modifier = {
+				modifier = tsin_unequal_treaty
+				years = 30
+				mode = add_and_extend
+			}
+			if = {
+				limit = { has_variable = tsin_treaty_ports_opened }
+				change_variable = { name = tsin_treaty_ports_opened add = 1 }
+			}
+			else = {
+				set_variable = { name = tsin_treaty_ports_opened value = 1 }
+			}
+		}
+		scope:winner = {
+			add_country_modifier = {
+				modifier = tsin_treaty_port_concessions
+				years = 30
+				mode = add_and_extend
+			}
+		}
+	}
+
+	ai_desire = {
+		add = {
+			desc = "BASE"
+			value = 5
+		}
+		if = {
+			limit = {
+				scope:loser = { is_rebel_country = yes }
+			}
+			multiply = {
+				desc = "DIPLOREASON_CIVIL_WAR"
+				value = 0
+			}
+		}
+	}
+}
