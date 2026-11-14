@@ -2,6 +2,7 @@
 # Do not edit by hand; re-run the generator after a game patch.
 
 namespace = culture_japan
+
 REPLACE:culture_japan.10 = { #Rise of Urban Culture
 	type = country_event
 	title = culture_japan.10.title

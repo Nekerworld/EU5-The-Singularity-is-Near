@@ -1,0 +1,583 @@
+﻿namespace = tsin_civic
+
+# Civic life around the age VII upgrade buildings (docs/replaced_buildings.md). Vanilla events that look for the
+# old university or naval base skip upgraded locations; these take their place and ask for the upgrade ids.
+# Research university .10-.50, steam port .60-.80, waterworks .90-.100, prefecture .110, automated mill .120.
+# Fired from tsin_civic_yearly_pulse and spend the yearly flavor budget.
+
+# The Humboldtian reform: research and teaching under one roof
+tsin_civic.10 = {
+	type = country_event
+	title = tsin_civic.10.title
+	desc = tsin_civic.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_humboldt_done }
+		any_owned_location = { has_building_with_at_least_one_level = tsin_research_university }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_humboldt_done
+	}
+
+	# Freedom of teaching and learning
+	option = {
+		name = tsin_civic.10.a
+		add_country_modifier = { modifier = tsin_humboldt_reform years = 20 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# The ministry sets the curriculum
+	option = {
+		name = tsin_civic.10.b
+		add_country_modifier = { modifier = tsin_state_curriculum years = 20 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# An explosion in the laboratory
+tsin_civic.20 = {
+	type = country_event
+	title = tsin_civic.20.title
+	desc = tsin_civic.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_lab_accident_cooldown }
+		has_advance = tsin_experimental_science_advance
+		any_owned_location = { has_building_with_at_least_one_level = tsin_research_university }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_lab_accident_cooldown years = 25 }
+		random_owned_location = {
+			limit = { has_building_with_at_least_one_level = tsin_research_university }
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# Pay for new safety rules
+	option = {
+		name = tsin_civic.20.a
+		change_gold_effect = { scale = -2 }
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_laboratory_safety years = 15 } }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Science has its price
+	option = {
+		name = tsin_civic.20.b
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_laboratory_fear years = 5 } }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Students on the barricades
+tsin_civic.30 = {
+	type = country_event
+	title = tsin_civic.30.title
+	desc = tsin_civic.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_student_protest_cooldown }
+		has_embraced_institution = institution:tsin_mass_society
+		any_owned_location = { has_building_with_at_least_one_level = tsin_research_university }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_student_protest_cooldown years = 20 }
+		random_owned_location = {
+			limit = { has_building_with_at_least_one_level = tsin_research_university }
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# Close the university for a term
+	option = {
+		name = tsin_civic.30.a
+		scope:tsin_civic_location = { add_location_modifier = { modifier = student_protests years = 2 mode = add_and_extend } }
+		add_stability = stability_weak_bonus
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_left
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Hear the students out
+	option = {
+		name = tsin_civic.30.b
+		scope:tsin_civic_location = { add_location_modifier = { modifier = student_protests years = 5 mode = add_and_extend } }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Women at the lecture hall door
+tsin_civic.40 = {
+	type = country_event
+	title = tsin_civic.40.title
+	desc = tsin_civic.40.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1865
+		NOT = { has_variable = tsin_civic_women_students_done }
+		any_owned_location = { has_building_with_at_least_one_level = tsin_research_university }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_women_students_done
+	}
+
+	# Open the universities to women
+	option = {
+		name = tsin_civic.40.a
+		add_country_modifier = { modifier = tsin_women_students months = -1 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Separate colleges, separate degrees
+	option = {
+		name = tsin_civic.40.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# An international prize for one of our professors
+tsin_civic.50 = {
+	type = country_event
+	title = tsin_civic.50.title
+	desc = tsin_civic.50.desc
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_prize_cooldown }
+		has_advance = tsin_engineering_education_advance
+		total_effective_building_levels:tsin_research_university >= 3
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_prize_cooldown years = 15 }
+	}
+
+	# Celebrate national science
+	option = {
+		name = tsin_civic.50.a
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Fund an institute in the laureate's name
+	option = {
+		name = tsin_civic.50.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_research_institute years = 15 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# A regular steamship line
+tsin_civic.60 = {
+	type = country_event
+	title = tsin_civic.60.title
+	desc = tsin_civic.60.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_steamship_line_done }
+		any_owned_location = { has_building_with_at_least_one_level = tsin_steam_port }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_steamship_line_done
+		random_owned_location = {
+			limit = { has_building_with_at_least_one_level = tsin_steam_port }
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# A mail subsidy for the line
+	option = {
+		name = tsin_civic.60.a
+		change_gold_effect = { scale = -2 }
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_steamship_line years = 30 } }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave it to the shipping companies
+	option = {
+		name = tsin_civic.60.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The dockers strike
+tsin_civic.70 = {
+	type = country_event
+	title = tsin_civic.70.title
+	desc = tsin_civic.70.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_dock_strike_cooldown }
+		has_variable = tsin_labor_unionism
+		var:tsin_labor_unionism >= 20
+		any_owned_location = { has_building_with_at_least_one_level = tsin_steam_port }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_dock_strike_cooldown years = 15 }
+		random_owned_location = {
+			limit = { has_building_with_at_least_one_level = tsin_steam_port }
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# The dockers' tanner: a penny more an hour
+	option = {
+		name = tsin_civic.70.a
+		change_gold_effect = { scale = -2 }
+		change_variable = { name = tsin_labor_unionism add = 5 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Bring in strikebreakers
+	option = {
+		name = tsin_civic.70.b
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_dock_strike years = 2 } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The emigrant ships
+tsin_civic.80 = {
+	type = country_event
+	title = tsin_civic.80.title
+	desc = tsin_civic.80.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_emigrant_ships_cooldown }
+		any_owned_location = {
+			has_building_with_at_least_one_level = tsin_steam_port
+			tsin_location_crowded_trigger = yes
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_emigrant_ships_cooldown years = 20 }
+		random_owned_location = {
+			limit = {
+				has_building_with_at_least_one_level = tsin_steam_port
+				tsin_location_crowded_trigger = yes
+			}
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# Assisted passage to our colonies
+	option = {
+		name = tsin_civic.80.a
+		add_country_modifier = { modifier = tsin_assisted_passage years = 15 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Let them go where they will
+	option = {
+		name = tsin_civic.80.b
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_emigrant_port years = 15 } }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The Great Stink: the capital river turns into a sewer
+tsin_civic.90 = {
+	type = country_event
+	title = tsin_civic.90.title
+	desc = tsin_civic.90.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_great_stink_done }
+		has_advance = tsin_modern_sewerage_advance
+		capital ?= {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+			NOT = { has_building_with_at_least_one_level = tsin_waterworks }
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_great_stink_done
+	}
+
+	# Build the intercepting sewers now
+	option = {
+		name = tsin_civic.90.a
+		capital = {
+			construct_building = {
+				building_type = building_type:tsin_waterworks
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_event"
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Soak the curtains in lime and wait for rain
+	option = {
+		name = tsin_civic.90.b
+		capital = { add_location_modifier = { modifier = tsin_great_stink years = 5 } }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The pump handle: a physician maps the deaths around one well
+tsin_civic.100 = {
+	type = country_event
+	title = tsin_civic.100.title
+	desc = tsin_civic.100.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_pump_handle_done }
+		any_owned_location = { has_building_with_at_least_one_level = tsin_waterworks }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_pump_handle_done
+	}
+
+	# Water carries the disease: filter and chlorinate
+	option = {
+		name = tsin_civic.100.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_water_theory months = -1 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Bad air, as the board of health says
+	option = {
+		name = tsin_civic.100.b
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Home rule for the towns
+tsin_civic.110 = {
+	type = country_event
+	title = tsin_civic.110.title
+	desc = tsin_civic.110.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_home_rule_cooldown }
+		any_owned_location = { has_building_with_at_least_one_level = tsin_prefecture }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_civic_home_rule_cooldown years = 30 }
+	}
+
+	# Elected town councils
+	option = {
+		name = tsin_civic.110.a
+		add_country_modifier = { modifier = tsin_municipal_self_government years = 20 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# The prefect answers to the ministry
+	option = {
+		name = tsin_civic.110.b
+		add_country_modifier = { modifier = tsin_prefectoral_centralism years = 20 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The first unattended process
+tsin_civic.120 = {
+	type = country_event
+	title = tsin_civic.120.title
+	desc = tsin_civic.120.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_civic_automation_demo_done }
+		any_owned_location = { tsin_location_automated_mill_levels > 0 }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_civic_automation_demo_done
+		random_owned_location = {
+			limit = { tsin_location_automated_mill_levels > 0 }
+			save_scope_as = tsin_civic_location
+		}
+	}
+
+	# Show it to the world
+	option = {
+		name = tsin_civic.120.a
+		add_prestige = prestige_mild_bonus
+		scope:tsin_civic_location = { add_location_modifier = { modifier = tsin_automation_showcase years = 10 } }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Promise the workers no one will be dismissed
+	option = {
+		name = tsin_civic.120.b
+		tsin_change_labor_grievance_effect = { VALUE = -5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

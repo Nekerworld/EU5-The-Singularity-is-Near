@@ -2,6 +2,7 @@
 # Do not edit by hand; re-run the generator after a game patch.
 
 namespace = random_event
+
 REPLACE:random_event.26 = {
 	type = country_event
 

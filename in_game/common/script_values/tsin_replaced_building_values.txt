@@ -1,0 +1,7 @@
+﻿# Country scope. Vanilla building counts that also include the age VII upgrade (docs/replaced_buildings.md).
+# Used by tools/gen_age7_patches.py in place of total_effective_building_levels:<vanilla building>.
+
+tsin_total_university_levels = {
+	value = total_effective_building_levels:university
+	add = total_effective_building_levels:tsin_research_university
+}

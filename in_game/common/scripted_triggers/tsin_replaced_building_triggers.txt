@@ -1,0 +1,45 @@
+﻿# Location-scope triggers that accept a vanilla building or its age VII upgrade (docs/replaced_buildings.md).
+
+tsin_has_university_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = university
+		has_building_with_at_least_one_level = tsin_research_university
+	}
+}
+
+tsin_has_port_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = naval_base
+		has_building_with_at_least_one_level = tsin_steam_port
+	}
+}
+
+tsin_has_waterworks_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = aqueduct_system
+		has_building_with_at_least_one_level = tsin_waterworks
+	}
+}
+
+tsin_has_chancery_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = provincial_chancery
+		has_building_with_at_least_one_level = tsin_prefecture
+	}
+}
+
+tsin_has_textile_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = textile_mill
+		has_building_with_at_least_one_level = fine_cloth_mill
+		has_building_with_at_least_one_level = tsin_mechanized_textile_mill
+		has_building_with_at_least_one_level = tsin_automated_fine_cloth_mill
+	}
+}
+
+tsin_has_printing_tier_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = printing_mill
+		has_building_with_at_least_one_level = tsin_automated_printing_mill
+	}
+}

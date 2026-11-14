@@ -2,6 +2,7 @@
 # Do not edit by hand; re-run the generator after a game patch.
 
 namespace = cultural_event
+
 REPLACE:cultural_event.2 = {
 	type = country_event
 	title = cultural_event.2.title

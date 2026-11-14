@@ -2,6 +2,7 @@
 # Do not edit by hand; re-run the generator after a game patch.
 
 namespace = parliaments
+
 scripted_trigger is_revolutionary_issue = {
 	parliament_issue ?= {
 		OR = {
@@ -25,9 +26,9 @@ REPLACE:parliaments.5 = {
 	}
 
 	trigger = {
-		total_effective_building_levels:university > 0
+		tsin_total_university_levels > 0
 		any_owned_location = {
-			has_building_with_at_least_one_level = university
+			OR = { has_building_with_at_least_one_level = university has_building_with_at_least_one_level = tsin_research_university }
 		}
 		parliament_issue ?= {
 			OR = {
@@ -40,7 +41,7 @@ REPLACE:parliaments.5 = {
 	immediate = {
 		random_owned_location = {
 			limit = {
-				has_building_with_at_least_one_level = university
+				OR = { has_building_with_at_least_one_level = university has_building_with_at_least_one_level = tsin_research_university }
 			}
 			save_scope_as = target_location
 			event_illustration_estate_in_location_effect = { estate_type = estate_type:burghers_estate }

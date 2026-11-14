@@ -2,6 +2,7 @@
 # Do not edit by hand; re-run the generator after a game patch.
 
 namespace = societal_values
+
 REPLACE:societal_values.306 = {
 	type = country_event
 	title = societal_values.306.title

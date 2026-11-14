@@ -13,6 +13,17 @@ Rewrites (code only, comments untouched):
   any     : birth_age = age:age_6_revolutions -> OR = { birth_age = age:age_6_revolutions birth_age = age:age_7_industrialization }
   switch = { trigger = current_age ... age_6_revolutions = { X } } -> adds age_7_industrialization = { X }
 
+Replaced buildings (docs/replaced_buildings.md): every emitted object, plus the
+objects in BUILDING_TARGETS, also accepts the age VII upgrade of a vanilla
+building (`obsolete = <old>`):
+  has_building_with_at_least_one_level = old -> OR = { ... = old ... = new }
+  has_building = building_type:old            -> OR = { ... :old ... :new }
+  building_type = building_type:old (in an OR) -> both ids
+  total_effective_building_levels:university  -> tsin_total_university_levels
+
+DLC `INJECT:` blocks into an emitted object are re-applied after the
+replacement so the DLC content is not lost.
+
 Re-run after every game patch:  python tools/gen_age7_patches.py
 Report: tools/out/age7_patch_report.md
 """
@@ -47,6 +58,55 @@ EXCLUDED_DIRS = {
 # Objects deliberately left age-6 only. key -> reason
 EXCLUDED_OBJECTS: dict[str, str] = {}
 
+# vanilla building -> age VII upgrade with `obsolete = <vanilla>`
+BUILDING_UPGRADES = {
+    "university": "tsin_research_university",
+    "naval_base": "tsin_steam_port",
+    "aqueduct_system": "tsin_waterworks",
+    "provincial_chancery": "tsin_prefecture",
+    "textile_mill": "tsin_mechanized_textile_mill",
+    "lumber_mill": "tsin_steam_sawmill",
+    "iron_mill": "tsin_automated_iron_mill",
+    "glass_mill": "tsin_automated_glass_mill",
+    "paper_mill": "tsin_automated_paper_mill",
+    "furniture_mill": "tsin_automated_furniture_mill",
+    "printing_mill": "tsin_automated_printing_mill",
+    "fine_cloth_mill": "tsin_automated_fine_cloth_mill",
+}
+# country-scope script values that sum a vanilla building and its upgrade (tsin_replaced_building_values.txt)
+BUILDING_LEVEL_VALUES = {"university": "tsin_total_university_levels"}
+# Objects still active in age VII that reference a replaced building (docs/replaced_buildings.md, group A).
+BUILDING_TARGETS: dict[str, set[str]] = {
+    "in_game/common/scripted_triggers/location_triggers.txt": {"has_dock_infrastructure"},
+    "in_game/common/scripted_triggers/unit_triggers.txt": {
+        "unit_ship_of_the_line_location_trigger", "unit_war_galleon_location_trigger"},
+    "in_game/common/laws/01_common.txt": {
+        "education_elites_law", "press_law", "education_masses_law", "immigration_law", "slavery_laws"},
+    "in_game/common/estate_privileges/clergy_estate.txt": {"clergy_lecture_oaths"},
+    "in_game/common/parliament_issues/05_burghers_estate_parliament_issues.txt": {
+        "sponsor_a_university", "expand_docks", "expand_dry_docks", "expand_shipyards",
+        "expand_grand_shipyards", "expand_naval_bases"},
+    "in_game/common/missions/generic_progress_and_literacy_mission_pack.txt": {"progress_and_literacy"},
+    "in_game/common/religious_order_callings/00_monastic.txt": {"scholars_calling"},
+    "in_game/common/religious_order_zeal_modifiers/00_catholic.txt": {"zeal_seat_of_learning"},
+    "in_game/common/town_rights/byzantine_greek_roman.txt": {"scholai_literacy_rights"},
+    "in_game/events/economy/building_events.txt": {"building.1", "building.2"},
+    "in_game/events/economy/industrialization_events.txt": {
+        "industrialization_events.10", "industrialization_events.13",
+        "industrialization_events.15", "industrialization_events.22"},
+}
+
+# Vanilla laws decided by bills (docs/legislation.md): every policy gets the bill lock in its allow.
+BILL_LAWS = {"press_law", "education_masses_law", "immigration_law", "slavery_laws"}
+BILL_LOCK = "tsin_policy_enactable_trigger = yes"
+
+_OLD = "|".join(BUILDING_UPGRADES)
+RE_B_LEVEL = re.compile(r"(?<![\w])has_building_with_at_least_one_level\s*=\s*(" + _OLD + r")(?![\w])")
+RE_B_HAS = re.compile(r"(?<![\w])has_building\s*=\s*building_type:(" + _OLD + r")(?![\w])")
+RE_B_TYPE = re.compile(r"(?<![\w])building_type\s*=\s*building_type:(" + _OLD + r")(?![\w])")
+RE_B_TOTAL = re.compile(r"(?<![\w])total_effective_building_levels:(" + "|".join(BUILDING_LEVEL_VALUES) + r")(?![\w])")
+RE_OPEN_KEY = re.compile(r"([A-Za-z0-9_:.@]+)\s*=\s*$")
+
 RE_CUR = re.compile(r"current_age\s*=\s*" + AGE6 + r"\b")
 RE_BIRTH = re.compile(r"birth_age\s*=\s*age:" + AGE6 + r"\b")
 RE_SWITCH = re.compile(r"switch\s*=\s*\{\s*trigger\s*=\s*current_age\b")
@@ -71,6 +131,69 @@ def rewrite_code(text: str, main_menu: bool) -> str:
         code = RE_BIRTH.sub(f"OR = {{ birth_age = age:{AGE6} birth_age = age:{AGE7} }}", code)
         out_lines.append(code + comment)
     return "\n".join(out_lines)
+
+
+def enclosing_key(clean: str, pos: int) -> str:
+    """Key of the innermost `key = {` block that contains position `pos`."""
+    depth = 0
+    for k in range(pos - 1, -1, -1):
+        c = clean[k]
+        if c == "}":
+            depth += 1
+        elif c == "{":
+            if depth == 0:
+                m = RE_OPEN_KEY.search(clean, 0, k)
+                return m.group(1) if m else ""
+            depth -= 1
+    return ""
+
+
+def rewrite_buildings(text: str) -> tuple[str, int]:
+    """Make checks for a replaced vanilla building also accept its upgrade (code only)."""
+    clean = pdx.strip_comments(text)
+    edits: list[tuple[int, int, str]] = []
+    for m in RE_B_LEVEL.finditer(clean):
+        old = m.group(1)
+        new = BUILDING_UPGRADES[old]
+        edits.append((m.start(), m.end(), f"OR = {{ has_building_with_at_least_one_level = {old} "
+                                          f"has_building_with_at_least_one_level = {new} }}"))
+    for m in RE_B_HAS.finditer(clean):
+        old = m.group(1)
+        new = BUILDING_UPGRADES[old]
+        edits.append((m.start(), m.end(), f"OR = {{ has_building = building_type:{old} "
+                                          f"has_building = building_type:{new} }}"))
+    for m in RE_B_TYPE.finditer(clean):
+        if enclosing_key(clean, m.start()) != "OR":
+            continue  # effect parameter (construct_building etc.), not a trigger
+        old = m.group(1)
+        edits.append((m.start(), m.end(), f"building_type = building_type:{old} "
+                                          f"building_type = building_type:{BUILDING_UPGRADES[old]}"))
+    for m in RE_B_TOTAL.finditer(clean):
+        edits.append((m.start(), m.end(), BUILDING_LEVEL_VALUES[m.group(1)]))
+    for start, end, repl in sorted(edits, reverse=True):
+        text = text[:start] + repl + text[end:]
+    return text, len(edits)
+
+
+def add_bill_locks(text: str) -> tuple[str, int]:
+    """Put the bill lock into the allow of every policy of a law block `law = { ... }`."""
+    clean = pdx.strip_comments(text)
+    law_open = clean.index("{")
+    inserts: list[tuple[int, str]] = []
+    for blk in pdx.top_level_blocks(clean[law_open + 1:pdx.matching_brace(clean, law_open)]):
+        if blk.key in ("potential", "allow"):
+            continue
+        p_open = law_open + 1 + blk.start + blk.text.index("{")
+        p_close = pdx.matching_brace(clean, p_open)
+        allow = next((b for b in pdx.top_level_blocks(clean[p_open + 1:p_close]) if b.key == "allow"), None)
+        if allow:
+            a_open = p_open + 1 + allow.start + allow.text.index("{")
+            inserts.append((a_open + 1, f" {BILL_LOCK} "))
+        else:
+            inserts.append((p_open + 1, f"\n\t\tallow = {{ {BILL_LOCK} }}"))
+    for pos, s in sorted(inserts, reverse=True):
+        text = text[:pos] + s + text[pos:]
+    return text, len(inserts)
 
 
 def add_switch_branches(text: str) -> tuple[str, int]:
@@ -127,6 +250,22 @@ def needs_patch(code: str) -> bool:
     return False
 
 
+def collect_dlc_injects(game: Path) -> dict[tuple[str, str], list[tuple[str, str]]]:
+    """(vanilla dir, object key) -> [(dlc file, `INJECT:key = {...}` text)] for every DLC folder."""
+    out: dict[tuple[str, str], list[tuple[str, str]]] = defaultdict(list)
+    dlc_root = game / "dlc"
+    if not dlc_root.exists():
+        return out
+    for dlc in sorted(p for p in dlc_root.iterdir() if p.is_dir()):
+        for path in pdx.iter_script_files(dlc, SCAN_DIRS):
+            r = rel(path, dlc)
+            for blk in pdx.top_level_blocks(pdx.read_text(path)):
+                m = re.match(r"(?:TRY_)?INJECT:(.+)$", blk.key)
+                if m:
+                    out[(Path(r).parent.as_posix(), m.group(1))].append((rel(path, game), blk.text))
+    return out
+
+
 def main() -> int:
     game = pdx.game_root()
     mod = pdx.MOD_ROOT
@@ -138,6 +277,7 @@ def main() -> int:
     for old in mod.rglob(f"{PREFIX}*.txt"):
         old.unlink()
 
+    dlc_injects = collect_dlc_injects(game)
     report: dict[str, list[str]] = defaultdict(list)
     total = 0
     for path in pdx.iter_script_files(game, SCAN_DIRS):
@@ -145,7 +285,8 @@ def main() -> int:
         if r in EXCLUDED_FILES or any(r.startswith(d + "/") for d in EXCLUDED_DIRS):
             continue
         text = pdx.read_text(path)
-        if AGE6 not in text:
+        targets = BUILDING_TARGETS.get(r, set())
+        if AGE6 not in text and not targets:
             continue
         is_event = r.startswith("in_game/events/")
         main_menu = r.startswith("main_menu/")
@@ -159,17 +300,29 @@ def main() -> int:
                 continue
             code = pdx.strip_comments(blk.text)
             used_locals = referenced_locals(code, local_defs)
-            if not (needs_patch(code) or any(needs_patch(pdx.strip_comments(local_defs[k].text)) for k in used_locals)):
+            if not (blk.key in targets or needs_patch(code)
+                    or any(needs_patch(pdx.strip_comments(local_defs[k].text)) for k in used_locals)):
                 continue
+            n_building = 0
             for k in used_locals:
-                out_locals[k] = rewrite_code(local_defs[k].text, main_menu)
+                local_text, n = rewrite_buildings(rewrite_code(local_defs[k].text, main_menu))
+                out_locals[k] = local_text
+                n_building += n
             if blk.key in EXCLUDED_OBJECTS:
                 report[r].append(f"- `{blk.key}` 제외: {EXCLUDED_OBJECTS[blk.key]}")
                 continue
             new_text, n_switch = add_switch_branches(blk.text)
             new_text = rewrite_code(new_text, main_menu)
+            new_text, n = rewrite_buildings(new_text)
+            n_building += n
+            n_locks = 0
+            if blk.key in BILL_LAWS:
+                new_text, n_locks = add_bill_locks(new_text)
             op = "REPLACE" if is_event else "TRY_REPLACE"
             new_text = f"{op}:{new_text}"
+            injects = [] if is_event else dlc_injects.get((Path(r).parent.as_posix(), blk.key), [])
+            for dlc_rel, inject_text in injects:
+                new_text += f"\n\n# re-applied from {dlc_rel}\n{inject_text}"
             used_vars = [v for v in variables if re.search(re.escape(v) + r"\b", code)]
             out_blocks.append((blk.key, new_text, used_vars))
             kinds = []
@@ -179,6 +332,12 @@ def main() -> int:
                 kinds.append("birth_age")
             if n_switch:
                 kinds.append(f"switch+{n_switch}")
+            if n_building:
+                kinds.append(f"buildings+{n_building}")
+            if n_locks:
+                kinds.append(f"bill_locks+{n_locks}")
+            if injects:
+                kinds.append(f"dlc_inject+{len(injects)}")
             report[r].append(f"- `{blk.key}` ({', '.join(kinds)})")
         if not out_blocks:
             continue
