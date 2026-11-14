@@ -1,0 +1,157 @@
+﻿# Customs union (M3, optional). Members exempt each other from import tariffs through the vanilla
+# tariff_exemption relation, created both ways on join and removed on leave. One union per country.
+tsin_customs_union = {
+	has_target = no
+	unique = no
+	expel_members_who_are_attackers_at_war_with_other_members = yes
+	expel_members_who_are_defenders_at_war_with_other_members = yes
+	has_leader_country = yes
+	leader_type = country
+	leader_change_method = score
+	months_between_leader_changes = 120
+	annulled_by_peace_treaty = yes
+	annullment_favours_required = 15
+
+	show_on_diplomatic_map = yes
+	leader_color = define:NMapColors|INTERNATIONAL_ORGANIZATION_LEADER_COLOR
+
+	create_visible_trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		is_subject = no
+		has_markets = yes
+		has_embraced_institution = institution:tsin_industrial_capitalism
+	}
+
+	invite_visible_trigger = {
+		always = yes
+	}
+
+	diplomatic_capacity_cost = {
+		scope:recipient = {
+			add = {
+				desc = "UPKEEP_NUM_MEMBERS"
+				value = total_members
+				multiply = 0.25
+			}
+		}
+	}
+
+	modifier = {
+		max_tariff = -0.05
+		global_merchant_power = 0.05
+	}
+
+	leader_modifier = {
+		global_merchant_power = 0.1
+	}
+
+	can_join_trigger = {
+		is_subject = no
+		is_rebel_country = no
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = {
+			is_member_of_international_organization_of_type = {
+				type = tsin_customs_union
+			}
+		}
+		trigger_if = {
+			limit = { exists = scope:recipient }
+			scope:recipient = {
+				NOT = {
+					any_international_organization_member = {
+						OR = {
+							is_rival_of = root
+							is_enemy_of = root
+							has_blocked_treaties = root
+						}
+					}
+				}
+			}
+		}
+		trigger_else = {
+			NOT = { has_blocked_treaties = scope:actor }
+			scope:actor = {
+				NOT = { is_rival_of = root }
+				NOT = { is_enemy_of = root }
+			}
+		}
+	}
+
+	auto_leave_trigger = {
+		OR = {
+			is_subject = yes
+			is_rebel_country = yes
+			scope:recipient = {
+				any_international_organization_member = {
+					is_rival_of = root
+				}
+			}
+		}
+	}
+
+	auto_disband_trigger = {
+		total_members < 2
+	}
+	disband_minimum_member_count = 1
+
+	on_joined = {
+		scope:recipient = {
+			every_international_organization_member = {
+				limit = { NOT = { this = root } }
+				save_temporary_scope_as = tsin_union_partner
+				root = {
+					tsin_add_mutual_tariff_exemption_effect = { PARTNER = scope:tsin_union_partner }
+				}
+			}
+		}
+	}
+
+	on_left = {
+		scope:recipient = {
+			every_international_organization_member = {
+				limit = { NOT = { this = root } }
+				save_temporary_scope_as = tsin_union_partner
+				root = {
+					tsin_remove_mutual_tariff_exemption_effect = { PARTNER = scope:tsin_union_partner }
+				}
+			}
+		}
+	}
+
+	ai_desire_to_join = {
+		add = {
+			desc = "DIPLOREASON_BASE"
+			value = -25
+		}
+		if = {
+			limit = { has_embraced_institution = institution:tsin_industrial_capitalism }
+			add = {
+				desc = "tsin_customs_union_industrial_reason"
+				value = 25
+			}
+		}
+		if = {
+			limit = { exists = scope:recipient }
+			add = {
+				desc = "game_concept_opinion"
+				scope:recipient = {
+					every_international_organization_member = {
+						root = {
+							add = {
+								value = this_opinion_of_prev
+								multiply = 0.2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_desire_to_allow_new_member = {
+		add = {
+			desc = "DIPLOREASON_BASE"
+			value = 10
+		}
+	}
+}

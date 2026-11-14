@@ -1,0 +1,64 @@
+﻿# Customs union helpers (international_organizations/tsin_customs_union.txt). root = country.
+# tariff_exemption is oneway (first = market owner waiving tariffs, second = exempt country), so both directions are set.
+
+tsin_add_mutual_tariff_exemption_effect = {
+	if = {
+		limit = {
+			NOT = {
+				giving_scripted_relation = {
+					type = relation_type:tariff_exemption
+					target = $PARTNER$
+				}
+			}
+		}
+		create_relation = {
+			first = root
+			second = $PARTNER$
+			type = relation_type:tariff_exemption
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				receiving_scripted_relation = {
+					type = relation_type:tariff_exemption
+					target = $PARTNER$
+				}
+			}
+		}
+		create_relation = {
+			first = $PARTNER$
+			second = root
+			type = relation_type:tariff_exemption
+		}
+	}
+}
+
+tsin_remove_mutual_tariff_exemption_effect = {
+	if = {
+		limit = {
+			giving_scripted_relation = {
+				type = relation_type:tariff_exemption
+				target = $PARTNER$
+			}
+		}
+		remove_relation = {
+			first = root
+			second = $PARTNER$
+			type = relation_type:tariff_exemption
+		}
+	}
+	if = {
+		limit = {
+			receiving_scripted_relation = {
+				type = relation_type:tariff_exemption
+				target = $PARTNER$
+			}
+		}
+		remove_relation = {
+			first = $PARTNER$
+			second = root
+			type = relation_type:tariff_exemption
+		}
+	}
+}

@@ -231,3 +231,11 @@
  TSIN_INVESTMENT_FOREIGN_MAPMODE_TT: "[ROOT.GetLocation.GetName] has [buildings|e] owned by foreign countries."
  TSIN_INVESTMENT_STATE_MAPMODE_TT: "The factories of [ROOT.GetLocation.GetName] work under the state industry policy."
  TSIN_INVESTMENT_DOMESTIC_MAPMODE_TT: "The factories of [ROOT.GetLocation.GetName] are run by domestic capital."
+
+ tsin_customs_union: "Customs Union"
+ tsin_customs_union_desc: "A Customs Union is a group of [countries|e] that agree not to levy tariffs on goods entering each other's [markets|e]. A new member exchanges tariff exemptions with every other member, and loses them on leaving."
+ tsin_customs_union_hint_1: "Leaving may also cancel tariff exemptions that were agreed separately before joining."
+ search_filter_international_organization_type_tsin_customs_union_name: "Customs union"
+ search_filter_international_organization_type_tsin_customs_union_desc: "Show only customs union organizations"
+ io_opinion_tsin_customs_union: "In Customs Union Together"
+ tsin_customs_union_industrial_reason: "Embraced industrial capitalism"

@@ -1,0 +1,4 @@
+﻿# Automatic opinion between members of tsin_ international organizations.
+io_opinion_tsin_customs_union = {
+	value = 10
+}
