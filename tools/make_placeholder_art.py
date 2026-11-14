@@ -1,4 +1,4 @@
-﻿"""Build placeholder age-7 and institution DDS files by recolouring vanilla art.
+"""Build placeholder age-7 and institution DDS files by recolouring vanilla art.
 
 Final art should replace these files (same paths, same size/format):
   icons/age/age_7_industrialization.dds              256x256 (vanilla DXT5)
@@ -50,7 +50,7 @@ def save_uncompressed_dds(im: Image.Image, path: Path) -> None:
     )
     r, g, b, a = im.split()
     data = Image.merge("RGBA", (b, g, r, a)).tobytes()
-    path.write_bytes(header + data)
+    pdx.write_bytes(path, header + data)
 
 
 def roman_vii(icon: Image.Image) -> Image.Image:

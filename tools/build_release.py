@@ -68,6 +68,14 @@ def main() -> int:
     if dest == root or (root in dest.parents and out_dir not in dest.parents):
         sys.exit("refusing to stage inside the mod folder (only tools/out/ is allowed)")
 
+    # Source modules must be deployed even when --skip-checks is requested.
+    from era_layout import sync as sync_eras, check as check_eras
+    deployed = sync_eras(ROOT)
+    layout_errors = check_eras(ROOT)
+    if layout_errors:
+        for message in layout_errors: print('PROBLEM', message)
+        return 1
+    print(f'era runtime files refreshed: {deployed}')
     meta = json.loads((ROOT / ".metadata" / "metadata.json").read_text(encoding="utf-8-sig"))
     problems = check_release_files(meta)
     if not args.skip_checks and not run_checks():

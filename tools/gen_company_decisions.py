@@ -11,6 +11,8 @@ location with the most company building levels) and lists the stock at 100.
 from __future__ import annotations
 
 from pathlib import Path
+import pdx
+import os
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DECISIONS = ROOT / "in_game/common/decisions/tsin_company_decisions.txt"
@@ -261,9 +263,9 @@ def decisions() -> str:
 
 
 def main() -> None:
-    OUT_DECISIONS.write_text(decisions(), encoding="utf-8-sig")
-    OUT_VALUES.write_text(values(), encoding="utf-8-sig")
-    OUT_EFFECTS.write_text(effects(), encoding="utf-8-sig")
+    pdx.write_bytes(OUT_DECISIONS, decisions().replace("\n", os.linesep).encode("utf-8-sig"))
+    pdx.write_bytes(OUT_VALUES, values().replace("\n", os.linesep).encode("utf-8-sig"))
+    pdx.write_bytes(OUT_EFFECTS, effects().replace("\n", os.linesep).encode("utf-8-sig"))
     for p in (OUT_DECISIONS, OUT_VALUES, OUT_EFFECTS):
         print("wrote", p.relative_to(ROOT))
 

@@ -276,8 +276,9 @@ def main() -> int:
         return 1
 
     # clear previous output
-    for old in mod.rglob(f"{PREFIX}*.txt"):
-        old.unlink()
+    for database in SCAN_DIRS:
+        for old in (mod / database).rglob(f"{PREFIX}*.txt"):
+            old.unlink()
 
     dlc_injects = collect_dlc_injects(game)
     report: dict[str, list[str]] = defaultdict(list)

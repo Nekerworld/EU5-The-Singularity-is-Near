@@ -1,4 +1,4 @@
-﻿"""Cross-file UI and execution wiring checks for TSIN.
+"""Cross-file UI and execution wiring checks for TSIN.
 
 Unlike syntax/reference checks, these reject defined features without a usable
 entry point. The game remains necessary for layout and runtime validation.
@@ -18,6 +18,8 @@ def group_ids(text: str) -> dict[str, set[int]]:
 
 def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
+    from era_layout import check as check_era_layout
+    errors.extend('integration: '+message for message in check_era_layout(root))
     counts: dict[str, int] = {}
     # A disaster/situation key is also its dynamically loaded GUI filename.
     for database, panel in [('disasters', 'disaster'), ('situations', 'situation')]:

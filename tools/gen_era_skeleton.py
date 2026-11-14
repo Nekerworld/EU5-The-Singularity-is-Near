@@ -52,7 +52,7 @@ def build(root, data):
             for key,value in values.items():loc[lang].append(f' {key}: {json.dumps(value,ensure_ascii=False)}')
         for sub in ['icons/age','illustrations/advances']:
             rel=f'main_menu/gfx/interface/{sub}/{row["id"]}.dds'
-            result[rel]=(root/f'main_menu/gfx/interface/{sub}/{rows[0]["id"]}.dds').read_bytes()
+            result[rel]=pdx.read_bytes(root/f'main_menu/gfx/interface/{sub}/{rows[0]["id"]}.dds')
     result['in_game/common/age/zz_tsin_future_ages.txt']='\n\n'.join(future)+'\n'
     old=pdx.read_text(root/'in_game/common/scripted_triggers/tsin_age_triggers.txt')
     marker='# Age 7 specialization choices'
@@ -87,7 +87,7 @@ def main():
             if not p.exists() or (p.read_bytes()!=data if isinstance(data,bytes) else pdx.read_text(p)!=data): errors.append(rel)
         else:
             p.parent.mkdir(parents=True,exist_ok=True)
-            if isinstance(data,bytes):p.write_bytes(data)
+            if isinstance(data,bytes):pdx.write_bytes(p,data)
             else:pdx.write_text_bom(p,data)
     for rel in errors:print('OUTDATED',rel)
     print(f'{len(output)} generated era files; {len(errors)} mismatches')

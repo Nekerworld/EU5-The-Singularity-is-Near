@@ -47,7 +47,7 @@ def main() -> int:
         for good in goods:
             parts.append(f"# {good}")
             parts.extend(blocks_for(kind, TEMPLATE, good))
-        path.write_text("\n\n".join(parts) + "\n", encoding="utf-8-sig")
+        pdx.write_text_bom(path, "\n\n".join(parts) + "\n")
         print(f"wrote {path.relative_to(pdx.MOD_ROOT)} ({len(goods)} goods)")
     return 0
 

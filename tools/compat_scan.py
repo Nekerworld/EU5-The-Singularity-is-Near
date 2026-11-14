@@ -68,7 +68,7 @@ class ModIndex:
             if not p.is_file() or p.suffix.lower() not in SCAN_EXT:
                 continue
             rel = p.relative_to(root).parts
-            if rel[0].startswith(".") or rel[0] in ("docs", "tools", "repo"):
+            if rel[0].startswith(".") or rel[0] in ("docs", "tools", "repo") or re.fullmatch(r"era_\d+", rel[0]):
                 continue
             rel_s = "/".join(rel)
             self.paths.add(rel_s.lower())

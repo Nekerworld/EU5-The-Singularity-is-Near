@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
   <img src="readme_media/banner.png" alt="The Singularity is Near — Europa Universalis V 산업화 확장과 제8~12시대 뼈대" width="100%">
 </p>
 
@@ -490,17 +490,22 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 ## 15. 개발자용 안내
 
+제7시대 콘텐츠 원본 348개는 [`era_7/`](era_7/README.md)에 모았습니다. 전역 UI·통계·공통 프레임워크·시대 연결 패치·제8~12시대 뼈대는 기존 경로를 유지합니다. 게임은 기존 `in_game`/`main_menu` 경로를 읽으므로, 원본을 수정하거나 저장소를 처음 받은 뒤에는 **`python tools/sync_eras.py`를 실행한 다음 게임을 시작**하세요. 생성기는 원본과 실행용 파일을 함께 갱신하며 배포 도구도 자동 동기화합니다. 구조와 새 파일 등록 방법은 `era_7/README.md` 참고.
+
+
 ```
 in_game/         게임 스크립트 (시대, 발전, 건물, 이벤트, 상황, 재난, 법, 결단, 지도 모드, GUI …)
 main_menu/       현지화(영어·한국어), 정적 보정치, 백과사전, 게임 규칙, 아이콘
 loading_screen/  defines (종료일 등)
 docs/            설계 문서 50여 개 (체계마다 하나, "사용자 확인 필요" 목록 포함)
+era_7/           제7시대 편집 원본과 실행 경로 manifest
 tools/           검사·생성 도구 (Python)
 readme_media/    이 README의 그림 (tools/make_readme_media.py로 생성)
 ```
 
 | 도구 | 하는 일 |
 |---|---|
+| `tools/sync_eras.py` | 시대별 원본을 게임 경로에 동기화 (`--check`: 검사만, `--register`: 새 파일 등록) |
 | `tools/validate.py` | 문법, 참조, 읽는 순서, 이벤트 형식, 현지화, 백과사전 링크 검사 (오류 0이어야 함) |
 | `tools/audit.py` | AI 가중치, 영어·한국어 짝, 공장 이윤율, 성능 위험 스코프 검사 |
 | `tools/gen_age7_patches.py` | 제6시대 하드코딩 객체를 제7시대용으로 재생성 |

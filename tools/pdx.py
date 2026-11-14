@@ -24,13 +24,27 @@ def workshop_root() -> Path:
     return Path(os.environ.get("TSIN_WORKSHOP", DEFAULT_WORKSHOP))
 
 
+def content_path(path: Path) -> Path:
+    """Resolve a game-relative path to its era-owned authoring source, if registered."""
+    from era_layout import source_path
+    return source_path(path, MOD_ROOT)
+
+
+def read_bytes(path: Path) -> bytes:
+    return content_path(path).read_bytes()
+
+
 def read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8-sig", errors="replace")
+    return content_path(path).read_text(encoding="utf-8-sig", errors="replace")
+
+
+def write_bytes(path: Path, data: bytes) -> None:
+    from era_layout import write_bytes as write_content
+    write_content(path, data, MOD_ROOT)
 
 
 def write_text_bom(path: Path, text: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8-sig", newline="\n")
+    write_bytes(path, text.replace('\r\n', '\n').encode('utf-8-sig'))
 
 
 def code_mask(text: str) -> list[bool]:
