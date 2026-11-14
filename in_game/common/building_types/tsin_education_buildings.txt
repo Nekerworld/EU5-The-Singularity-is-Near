@@ -1,0 +1,130 @@
+﻿# Age VII education ladder buildings (docs/education.md).
+# The annual aggregate (tsin_aggregate_effects.txt) counts levels x course tier into secondary and
+# higher education capacity; keep the production method keys in sync with tsin_education_values.txt.
+
+# Public secondary school (new slot).
+tsin_public_school = {
+	audio_tier = 2
+	is_foreign = no
+	pop_type = burghers
+	max_levels = tsin_public_school_max_level
+	forbidden_for_estates = yes
+
+	category = cultural_category
+
+	employment_size = generic_burgher_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	AI_ignore_available_worker_flag = yes
+
+	build_time = generic_town_build_time
+
+	modifier = {
+		local_max_literacy = 5
+		local_monthly_literacy = 0.05
+		local_pop_promotion_speed = 0.0005
+	}
+
+	unique_production_methods = {
+		tsin_public_school_basic = {
+			icon_type = goods
+			icon = books
+			paper = 0.2
+			books = 0.1
+			category = building_maintenance
+		}
+		tsin_public_school_vocational = {
+			icon_type = goods
+			icon = tools
+			paper = 0.2
+			books = 0.15
+			tools = 0.05
+			category = building_maintenance
+		}
+		tsin_public_school_comprehensive = {
+			icon_type = goods
+			icon = books
+			paper = 0.25
+			books = 0.2
+			glass = 0.05
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+}
+
+# Research university: replaces university and keeps its modifiers, with up to three levels.
+tsin_research_university = {
+	audio_tier = 3
+	is_foreign = no
+	pop_type = clergy
+	max_levels = tsin_research_university_max_level
+	obsolete = university
+
+	category = cultural_category
+	employment_size = religious_building_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	AI_ignore_available_worker_flag = yes
+
+	expensive = yes
+
+	build_time = large_cultural_building_time
+
+	forbidden_for_estates = yes
+
+	allow = {
+		is_core_of = owner
+		owner = { modifier:university_construction_blocked = no }
+	}
+
+	modifier = {
+		local_cultural_influence = 0.5
+		local_burghers_max_literacy = 10
+		local_nobles_max_literacy = 10
+		local_monthly_literacy = 0.1
+		local_migration_attraction = 0.05
+		local_pop_promotion_speed = 0.001
+		local_institution_growth_modifier = 0.33
+	}
+
+	unique_production_methods = {
+		tsin_research_university_lectures = {
+			icon_type = goods
+			icon = books
+			paper = 0.5
+			books = 0.25
+			glass = 0.25
+			beeswax = 0.05
+			category = building_maintenance
+		}
+		tsin_research_university_laboratory = {
+			icon_type = goods
+			icon = glass
+			paper = 0.5
+			books = 0.3
+			glass = 0.4
+			tools = 0.05
+			category = building_maintenance
+		}
+		tsin_research_university_institute = {
+			icon_type = goods
+			icon = tools
+			paper = 0.5
+			books = 0.3
+			glass = 0.3
+			tools = 0.15
+			tsin_electricity = 0.1
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = university_construction
+}

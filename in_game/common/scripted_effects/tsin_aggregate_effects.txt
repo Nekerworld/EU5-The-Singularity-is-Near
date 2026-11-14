@@ -1,0 +1,179 @@
+﻿# Annual country aggregate (docs/education.md, docs/labor.md, docs/economic_statistics.md). root = country.
+# Vanilla has no country-wide building level sums, so one pass over owned towns and cities collects every
+# total that labor conditions, GDP, education and acceleration need. Nothing else iterates owned locations yearly.
+
+tsin_annual_country_aggregate_effect = {
+	set_variable = { name = tsin_agg_urban_pop value = 0 }
+	set_variable = { name = tsin_agg_factory_jobs value = 0 }
+	set_variable = { name = tsin_agg_laborers value = 0 }
+	set_variable = { name = tsin_agg_conditions_weighted value = 0 }
+	set_variable = { name = tsin_socialist_cells value = 0 }
+	set_variable = { name = tsin_agg_school_levels value = 0 }
+	set_variable = { name = tsin_agg_university_levels value = 0 }
+	set_variable = { name = tsin_agg_tax_base value = 0 }
+
+	every_owned_location = {
+		limit = {
+			OR = {
+				is_city = yes
+				location_rank ?= location_rank:town
+				location_rank ?= location_rank:megalopolis
+			}
+		}
+		set_local_variable = { name = tsin_agg_l_pop value = population }
+		set_local_variable = { name = tsin_agg_l_jobs value = tsin_location_industrial_jobs }
+		set_local_variable = { name = tsin_agg_l_laborers value = num_pop_type:laborers }
+		set_local_variable = { name = tsin_agg_l_schools value = tsin_location_school_levels }
+		set_local_variable = { name = tsin_agg_l_universities value = tsin_location_university_levels }
+		set_local_variable = { name = tsin_agg_l_tax_base value = location_tax_base }
+		owner = {
+			change_variable = { name = tsin_agg_urban_pop add = local_var:tsin_agg_l_pop }
+			change_variable = { name = tsin_agg_factory_jobs add = local_var:tsin_agg_l_jobs }
+			change_variable = { name = tsin_agg_laborers add = local_var:tsin_agg_l_laborers }
+			change_variable = { name = tsin_agg_school_levels add = local_var:tsin_agg_l_schools }
+			change_variable = { name = tsin_agg_university_levels add = local_var:tsin_agg_l_universities }
+			change_variable = { name = tsin_agg_tax_base add = local_var:tsin_agg_l_tax_base }
+		}
+
+		# Factory locations only: labor conditions and socialist cells (docs/labor.md)
+		if = {
+			limit = { local_var:tsin_agg_l_jobs > 0 }
+			set_local_variable = { name = tsin_agg_l_conditions value = tsin_location_labor_conditions }
+			set_variable = { name = tsin_labor_conditions value = local_var:tsin_agg_l_conditions }
+			owner = {
+				change_variable = {
+					name = tsin_agg_conditions_weighted
+					add = {
+						value = local_var:tsin_agg_l_conditions
+						multiply = local_var:tsin_agg_l_jobs
+					}
+				}
+			}
+			tsin_socialist_cell_tick_effect = yes
+		}
+		else_if = {
+			limit = { has_variable = tsin_labor_conditions }
+			remove_variable = tsin_labor_conditions
+		}
+		if = {
+			limit = { has_variable = tsin_socialist_cell }
+			owner = { change_variable = { name = tsin_socialist_cells add = 1 } }
+		}
+	}
+
+	# Factory share of the whole population, 0..1 (tsin_acceleration_points, tsin_labor_grievance_target)
+	set_variable = { name = tsin_factory_share value = 0 }
+	if = {
+		limit = { total_population > 0 }
+		set_variable = {
+			name = tsin_factory_share
+			value = {
+				value = var:tsin_agg_factory_jobs
+				divide = total_population
+				max = 1
+			}
+		}
+	}
+
+	# Factory jobs over urban laborers, 0..1
+	set_variable = { name = tsin_factory_worker_share value = 0 }
+	if = {
+		limit = { var:tsin_agg_laborers > 0 }
+		set_variable = {
+			name = tsin_factory_worker_share
+			value = {
+				value = var:tsin_agg_factory_jobs
+				divide = var:tsin_agg_laborers
+				max = 1
+			}
+		}
+	}
+
+	# Job-weighted labor conditions, 0..1 (0.5 without factories)
+	set_variable = { name = tsin_labor_conditions value = 0.5 }
+	if = {
+		limit = { var:tsin_agg_factory_jobs > 0 }
+		set_variable = {
+			name = tsin_labor_conditions
+			value = {
+				value = var:tsin_agg_conditions_weighted
+				divide = var:tsin_agg_factory_jobs
+			}
+		}
+	}
+
+	tsin_update_education_effect = yes
+	tsin_update_gdp_effect = yes
+}
+
+# location scope, factory locations only, local_var:tsin_agg_l_conditions set.
+# From 1885 a cell may form where conditions are bad; an existing cell may spread to another factory town of its market.
+tsin_socialist_cell_tick_effect = {
+	if = {
+		limit = {
+			current_year >= 1885
+			NOT = { has_variable = tsin_socialist_cell }
+			local_var:tsin_agg_l_conditions < tsin_socialist_cell_conditions_threshold
+			local_var:tsin_agg_l_jobs >= tsin_socialist_cell_min_jobs
+		}
+		random = {
+			chance = 10
+			set_variable = tsin_socialist_cell
+		}
+	}
+	else_if = {
+		limit = { has_variable = tsin_socialist_cell }
+		random = {
+			chance = 5
+			market ?= {
+				random_location_in_market = {
+					limit = {
+						is_city = yes
+						NOT = { has_variable = tsin_socialist_cell }
+						tsin_location_industrial_jobs >= tsin_socialist_cell_min_jobs
+						tsin_location_labor_conditions < 0.5
+					}
+					set_variable = tsin_socialist_cell
+				}
+			}
+		}
+	}
+}
+
+# Estimated GDP, per capita and yearly growth (docs/economic_statistics.md). After the education update, which the
+# productivity term reads.
+tsin_update_gdp_effect = {
+	if = {
+		limit = { has_variable = tsin_gdp }
+		set_variable = { name = tsin_gdp_prev value = var:tsin_gdp }
+	}
+	set_variable = { name = tsin_gdp value = tsin_gdp_estimate }
+	set_variable = { name = tsin_gdp_per_capita value = 0 }
+	if = {
+		limit = { total_population > 0 }
+		set_variable = {
+			name = tsin_gdp_per_capita
+			value = {
+				value = var:tsin_gdp
+				divide = total_population
+			}
+		}
+	}
+	set_variable = { name = tsin_gdp_growth value = 0 }
+	if = {
+		limit = {
+			has_variable = tsin_gdp_prev
+			var:tsin_gdp_prev > 0
+		}
+		set_variable = {
+			name = tsin_gdp_growth
+			value = {
+				value = var:tsin_gdp
+				divide = var:tsin_gdp_prev
+				subtract = 1
+				multiply = 100
+			}
+		}
+	}
+	tsin_log_economy_effect = yes
+}

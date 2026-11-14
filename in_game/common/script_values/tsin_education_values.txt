@@ -1,0 +1,227 @@
+﻿# Education ladder (docs/education.md): literacy (vanilla) -> secondary (0..90) -> higher (0..60).
+# Capacity comes from the annual aggregate (tsin_agg_school_levels, tsin_agg_university_levels).
+
+# Population (same unit as total_population) one level can teach at the lowest course tier.
+tsin_school_seats_per_level = 60
+tsin_university_seats_per_level = 40
+
+# Share of the gap to the target closed each year (yearly steps are capped at 3 and 2 points
+# in tsin_update_education_effect).
+tsin_education_approach = 0.1
+
+# location scope
+tsin_location_school_levels = {
+	value = "location_building_level(building_type:tsin_public_school)"
+}
+
+tsin_location_university_levels = {
+	value = "location_building_level(building_type:university)"
+	add = "location_building_level(building_type:tsin_research_university)"
+}
+
+# country scope. Course tiers come from the owner's advances, so no production method lookup is needed.
+tsin_school_course_factor = {
+	value = 1
+	if = {
+		limit = { has_advance = tsin_vocational_education_advance }
+		add = 0.5
+	}
+	if = {
+		limit = { has_advance = tsin_engineering_education_advance }
+		add = 0.5
+	}
+}
+
+tsin_university_course_factor = {
+	value = 1
+	if = {
+		limit = { has_advance = tsin_experimental_science_advance }
+		add = 0.5
+	}
+	if = {
+		limit = { has_advance = tsin_engineering_education_advance }
+		add = 0.5
+	}
+}
+
+tsin_secondary_education_cap = {
+	value = average_country_literacy
+	multiply = 0.9
+	max = 90
+}
+
+tsin_higher_education_cap = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_secondary_education }
+		value = var:tsin_secondary_education
+		multiply = 0.6
+	}
+	max = 60
+}
+
+tsin_secondary_education_target = {
+	value = 0
+	if = {
+		limit = {
+			has_variable = tsin_agg_school_levels
+			total_population > 0
+		}
+		add = {
+			value = var:tsin_agg_school_levels
+			multiply = tsin_school_seats_per_level
+			multiply = tsin_school_course_factor
+			divide = total_population
+			multiply = 100
+		}
+	}
+	if = {
+		limit = { has_policy = policy:secular_education }
+		add = 5
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_policy = policy:basic_religious_education
+				has_policy = policy:scottish_presbyterian_education
+			}
+		}
+		add = 2
+	}
+	else_if = {
+		limit = { has_policy = policy:uneducated_masses_education }
+		subtract = 5
+	}
+	if = {
+		limit = { has_variable = tsin_factory_share }
+		add = {
+			value = var:tsin_factory_share
+			multiply = 20
+		}
+	}
+	min = 0
+	max = tsin_secondary_education_cap
+}
+
+tsin_higher_education_target = {
+	value = 0
+	if = {
+		limit = {
+			has_variable = tsin_agg_university_levels
+			total_population > 0
+		}
+		add = {
+			value = var:tsin_agg_university_levels
+			multiply = tsin_university_seats_per_level
+			multiply = tsin_university_course_factor
+			divide = total_population
+			multiply = 100
+		}
+	}
+	if = {
+		limit = { has_reform = government_reform:tsin_national_laboratory }
+		add = 1.5
+	}
+	min = 0
+	max = tsin_higher_education_cap
+}
+
+# Stage 0..4 for the modifiers: secondary 10/25/45/70, higher 2/6/15/30.
+tsin_secondary_education_stage = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_secondary_education }
+		if = {
+			limit = { var:tsin_secondary_education >= 70 }
+			value = 4
+		}
+		else_if = {
+			limit = { var:tsin_secondary_education >= 45 }
+			value = 3
+		}
+		else_if = {
+			limit = { var:tsin_secondary_education >= 25 }
+			value = 2
+		}
+		else_if = {
+			limit = { var:tsin_secondary_education >= 10 }
+			value = 1
+		}
+	}
+}
+
+tsin_higher_education_stage = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_higher_education }
+		if = {
+			limit = { var:tsin_higher_education >= 30 }
+			value = 4
+		}
+		else_if = {
+			limit = { var:tsin_higher_education >= 15 }
+			value = 3
+		}
+		else_if = {
+			limit = { var:tsin_higher_education >= 6 }
+			value = 2
+		}
+		else_if = {
+			limit = { var:tsin_higher_education >= 2 }
+			value = 1
+		}
+	}
+}
+
+# country scope, for the education report and observer log (0 before the ladder starts).
+tsin_country_secondary_education = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_secondary_education }
+		value = var:tsin_secondary_education
+	}
+}
+
+tsin_country_higher_education = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_higher_education }
+		value = var:tsin_higher_education
+	}
+}
+
+tsin_country_secondary_education_target = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_secondary_education_target }
+		value = var:tsin_secondary_education_target
+	}
+}
+
+tsin_country_higher_education_target = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_higher_education_target }
+		value = var:tsin_higher_education_target
+	}
+}
+
+tsin_country_school_levels = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_agg_school_levels }
+		value = var:tsin_agg_school_levels
+	}
+}
+
+tsin_country_university_levels = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_agg_university_levels }
+		value = var:tsin_agg_university_levels
+	}
+}
+
+tsin_country_literacy = {
+	value = average_country_literacy
+}

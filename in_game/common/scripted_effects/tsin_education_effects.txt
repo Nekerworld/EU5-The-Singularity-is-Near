@@ -1,0 +1,120 @@
+﻿# Education ladder (docs/education.md). root = country, called at the end of the annual aggregate.
+# Starts when mass society is embraced; until then the rates do not exist.
+
+tsin_update_education_effect = {
+	if = {
+		limit = {
+			NOT = { has_variable = tsin_secondary_education }
+			has_embraced_institution = institution:tsin_mass_society
+		}
+		# The existing educated elite: secondary = literacy x 0.15, higher = secondary x 0.2
+		set_variable = {
+			name = tsin_secondary_education
+			value = {
+				value = average_country_literacy
+				multiply = 0.15
+			}
+		}
+		set_variable = {
+			name = tsin_higher_education
+			value = {
+				value = var:tsin_secondary_education
+				multiply = 0.2
+			}
+		}
+	}
+	if = {
+		limit = { has_variable = tsin_secondary_education }
+		set_variable = { name = tsin_secondary_education_target value = tsin_secondary_education_target }
+		change_variable = {
+			name = tsin_secondary_education
+			add = {
+				value = var:tsin_secondary_education_target
+				subtract = var:tsin_secondary_education
+				multiply = tsin_education_approach
+				min = -3
+				max = 3
+			}
+		}
+		clamp_variable = { name = tsin_secondary_education min = 0 max = 90 }
+
+		set_variable = { name = tsin_higher_education_target value = tsin_higher_education_target }
+		change_variable = {
+			name = tsin_higher_education
+			add = {
+				value = var:tsin_higher_education_target
+				subtract = var:tsin_higher_education
+				multiply = tsin_education_approach
+				min = -2
+				max = 2
+			}
+		}
+		clamp_variable = { name = tsin_higher_education min = 0 max = 60 }
+
+		tsin_update_education_modifiers_effect = yes
+	}
+}
+
+# At most two education modifiers per country: one secondary stage, one higher stage.
+tsin_update_education_modifiers_effect = {
+	set_local_variable = {
+		name = tsin_education_stage_code
+		value = {
+			value = tsin_secondary_education_stage
+			multiply = 10
+			add = tsin_higher_education_stage
+		}
+	}
+	if = {
+		limit = {
+			is_ai = no
+			OR = {
+				NOT = { has_variable = tsin_education_stage_code }
+				NOT = { var:tsin_education_stage_code = local_var:tsin_education_stage_code }
+			}
+		}
+		trigger_event_non_silently = tsin_system.20
+	}
+	set_variable = { name = tsin_education_stage_code value = local_var:tsin_education_stage_code }
+
+	remove_country_modifier = tsin_secondary_education_1
+	remove_country_modifier = tsin_secondary_education_2
+	remove_country_modifier = tsin_secondary_education_3
+	remove_country_modifier = tsin_secondary_education_4
+	remove_country_modifier = tsin_higher_education_1
+	remove_country_modifier = tsin_higher_education_2
+	remove_country_modifier = tsin_higher_education_3
+	remove_country_modifier = tsin_higher_education_4
+	if = {
+		limit = { tsin_secondary_education_stage = 4 }
+		add_country_modifier = { modifier = tsin_secondary_education_4 }
+	}
+	else_if = {
+		limit = { tsin_secondary_education_stage = 3 }
+		add_country_modifier = { modifier = tsin_secondary_education_3 }
+	}
+	else_if = {
+		limit = { tsin_secondary_education_stage = 2 }
+		add_country_modifier = { modifier = tsin_secondary_education_2 }
+	}
+	else_if = {
+		limit = { tsin_secondary_education_stage = 1 }
+		add_country_modifier = { modifier = tsin_secondary_education_1 }
+	}
+	if = {
+		limit = { tsin_higher_education_stage = 4 }
+		add_country_modifier = { modifier = tsin_higher_education_4 }
+	}
+	else_if = {
+		limit = { tsin_higher_education_stage = 3 }
+		add_country_modifier = { modifier = tsin_higher_education_3 }
+	}
+	else_if = {
+		limit = { tsin_higher_education_stage = 2 }
+		add_country_modifier = { modifier = tsin_higher_education_2 }
+	}
+	else_if = {
+		limit = { tsin_higher_education_stage = 1 }
+		add_country_modifier = { modifier = tsin_higher_education_1 }
+	}
+}
