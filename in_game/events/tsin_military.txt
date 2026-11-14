@@ -1,0 +1,166 @@
+﻿namespace = tsin_military
+
+# Military flavor (M6). .10 and .20 fire once per country after the matching advance;
+# .30 can repeat during wars (10-year cooldown). Fired from tsin_military_yearly_pulse; spends the flavor budget.
+
+# Re-arming with breech-loading rifles
+tsin_military.10 = {
+	type = country_event
+	title = tsin_military.10.title
+	desc = tsin_military.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_rifling_advance
+		NOT = { has_variable = tsin_military_rearm_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_military_rearm_done
+	}
+
+	# Re-arm the whole army at once
+	option = {
+		name = tsin_military.10.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_military_full_rearmament years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Convert the old muskets in the arsenals
+	option = {
+		name = tsin_military.10.b
+		add_country_modifier = { modifier = tsin_military_converted_muskets years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# The old drill has won every war so far
+	option = {
+		name = tsin_military.10.c
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# The first ironclads
+tsin_military.20 = {
+	type = country_event
+	title = tsin_military.20.title
+	desc = tsin_military.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_ironclad_advance
+		any_owned_location = { is_coastal = yes }
+		NOT = { has_variable = tsin_military_ironclad_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_military_ironclad_done
+	}
+
+	# A crash programme of armoured ships
+	option = {
+		name = tsin_military.20.a
+		change_gold_effect = { scale = -4 }
+		add_country_modifier = { modifier = tsin_military_ironclad_programme years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Coastal defence first
+	option = {
+		name = tsin_military.20.b
+		add_country_modifier = { modifier = tsin_military_coastal_defence years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Let other navies make the costly mistakes
+	option = {
+		name = tsin_military.20.c
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# War correspondents
+tsin_military.30 = {
+	type = country_event
+	title = tsin_military.30.title
+	desc = tsin_military.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		at_war = yes
+		has_advance = tsin_telegraph_telephone_advance
+		NOT = { has_variable = tsin_military_press_cooldown }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_military_press_cooldown value = yes years = 10 }
+	}
+
+	# Censor the dispatches
+	option = {
+		name = tsin_military.30.a
+		add_stability = stability_weak_bonus
+		change_variable = { name = tsin_liberalism add = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Feed the patriotic press
+	option = {
+		name = tsin_military.30.b
+		add_country_modifier = { modifier = tsin_military_patriotic_press years = modifier_duration_years_short mode = add_and_extend }
+		change_variable = { name = tsin_nationalism add = 5 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Let the correspondents report freely
+	option = {
+		name = tsin_military.30.c
+		add_war_exhaustion = war_exhaustion_weak_penalty
+		change_variable = { name = tsin_liberalism subtract = 5 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
