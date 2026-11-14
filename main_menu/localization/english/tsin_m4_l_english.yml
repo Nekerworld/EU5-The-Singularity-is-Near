@@ -242,7 +242,7 @@
  LEGEND_KEY_TSIN_URBAN_SHARE_LOW: "No burghers or laborers"
  mapmode_tsin_labor_unrest_name: "Labor Unrest"
  MAPMODE_TSIN_LABOR_UNREST: "#T $mapmode_tsin_labor_unrest_name$#!\n$mapmode_common_start$ [locations|e] that saw a strike or street fighting in the last five years. Other factory locations are shaded by the strength of their owner's labor movement."
- TSIN_LABOR_UNREST_MAPMODE_TT: "The labor movement in the country owning [ROOT.GetLocation.GetName] stands at [ROOT.ScriptValue('tsin_location_labor_pressure')|%0]."
+ TSIN_LABOR_UNREST_MAPMODE_TT: "The labor movement in the country owning [ROOT.GetLocation.GetName] stands at [ROOT.ScriptValue('tsin_location_labor_pressure')|%0]. Labor grievance: [ROOT.ScriptValue('tsin_location_owner_labor_grievance')|0]/100."
  LEGEND_KEY_TSIN_STRIKE_BROKEN: "Strike broken by force"
  LEGEND_KEY_TSIN_RECENT_STRIKE: "Recent strike"
  LEGEND_KEY_TSIN_LABOR_PRESSURE: "Factory location in a country with a strong labor movement"

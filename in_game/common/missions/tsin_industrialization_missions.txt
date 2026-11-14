@@ -102,4 +102,79 @@ tsin_industrialization = {
 			add_country_modifier = { modifier = tsin_mission_industrial_nation years = modifier_duration_years_extended mode = add_and_extend }
 		}
 	}
+
+	# 0.7 side missions: automation, housing, legislation, the stock market, the agricultural revolution.
+	tsin_mission_automation = {
+		icon = industrial_expansion_advance
+		requires = { tsin_mission_machine_works }
+		enabled = {
+			any_owned_location = {
+				tsin_location_automated_mill_levels > 0
+				count >= 3
+			}
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_automation years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_housing_relief = {
+		icon = urbanization
+		requires = { tsin_mission_urban_growth }
+		enabled = {
+			any_owned_location = {
+				OR = {
+					has_building_with_at_least_one_level = tsin_tenement
+					has_building_with_at_least_one_level = tsin_model_dwellings
+				}
+				count >= 3
+			}
+			capital = {
+				tsin_location_crowded_trigger = no
+			}
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_housing_relief years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_pass_bill = {
+		icon = urbanization
+		requires = { tsin_mission_urban_growth }
+		enabled = {
+			has_variable = tsin_bills_passed
+			var:tsin_bills_passed >= 1
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_pass_bill years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_stock_index = {
+		icon = swiss_clockwork
+		requires = { tsin_mission_machine_works }
+		enabled = {
+			has_variable = tsin_stock_index
+			var:tsin_stock_index >= 150
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_stock_index years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_mechanized_farms = {
+		icon = industrialization_advance
+		requires = { tsin_mission_first_factories }
+		enabled = {
+			total_effective_building_levels:tsin_mechanized_farm >= 10
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_mechanized_farms years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
 }

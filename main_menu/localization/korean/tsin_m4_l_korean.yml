@@ -242,7 +242,7 @@
  LEGEND_KEY_TSIN_URBAN_SHARE_LOW: "시민·노동자 없음"
  mapmode_tsin_labor_unrest_name: "노동 불안"
  MAPMODE_TSIN_LABOR_UNREST: "#T $mapmode_tsin_labor_unrest_name$#!\n최근 5년 안에 파업이나 시가전이 벌어진 [locations|e]을 표시합니다. 그 밖의 공장 지점은 소유국의 노동 운동 세기에 따라 칠합니다."
- TSIN_LABOR_UNREST_MAPMODE_TT: "[ROOT.GetLocation.GetName] 소유국의 노동 운동 세기는 [ROOT.ScriptValue('tsin_location_labor_pressure')|%0]입니다."
+ TSIN_LABOR_UNREST_MAPMODE_TT: "[ROOT.GetLocation.GetName] 소유국의 노동 운동 세기는 [ROOT.ScriptValue('tsin_location_labor_pressure')|%0]입니다. 노동 불만은 [ROOT.ScriptValue('tsin_location_owner_labor_grievance')|0]/100입니다."
  LEGEND_KEY_TSIN_STRIKE_BROKEN: "파업이 진압된 곳"
  LEGEND_KEY_TSIN_RECENT_STRIKE: "최근 파업이 있었던 곳"
  LEGEND_KEY_TSIN_LABOR_PRESSURE: "노동 운동이 강한 나라의 공장 지점"

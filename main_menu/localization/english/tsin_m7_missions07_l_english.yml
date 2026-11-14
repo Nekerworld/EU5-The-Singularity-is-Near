@@ -1,0 +1,18 @@
+﻿l_english:
+
+ # 0.7 side missions of tsin_industrialization
+ tsin_mission_automation: "Automated Works"
+ tsin_mission_automation_desc: "Have 3 [locations|e] with automated factory upgrades."
+ tsin_mission_housing_relief: "Relieve the Crowding"
+ tsin_mission_housing_relief_desc: "Have 3 [locations|e] with $tsin_tenement$ or $tsin_model_dwellings$, and keep the capital from overcrowding."
+ tsin_mission_pass_bill: "The First Bill"
+ tsin_mission_pass_bill_desc: "Pass a bill through parliament."
+ tsin_mission_stock_index: "Bull Market"
+ tsin_mission_stock_index_desc: "Raise the national stock index to 150 or more."
+ tsin_mission_mechanized_farms: "Mechanized Agriculture"
+ tsin_mission_mechanized_farms_desc: "Build 10 or more levels of $tsin_mechanized_farm$ in total."
+ STATIC_MODIFIER_NAME_tsin_mission_automation: "Automated Works"
+ STATIC_MODIFIER_NAME_tsin_mission_housing_relief: "Crowding Relieved"
+ STATIC_MODIFIER_NAME_tsin_mission_pass_bill: "Legislative Experience"
+ STATIC_MODIFIER_NAME_tsin_mission_stock_index: "Bull Market"
+ STATIC_MODIFIER_NAME_tsin_mission_mechanized_farms: "Mechanized Agriculture"

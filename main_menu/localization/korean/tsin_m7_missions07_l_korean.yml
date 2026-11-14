@@ -1,0 +1,18 @@
+﻿l_korean:
+
+ # 0.7 side missions of tsin_industrialization
+ tsin_mission_automation: "자동화 공장"
+ tsin_mission_automation_desc: "자동화 업그레이드를 한 공장이 있는 [location|e] 3곳을 확보하십시오."
+ tsin_mission_housing_relief: "과밀 해소"
+ tsin_mission_housing_relief_desc: "$tsin_tenement$ 또는 $tsin_model_dwellings$가 있는 [location|e] 3곳을 두고, 수도가 과밀하지 않게 하십시오."
+ tsin_mission_pass_bill: "첫 법안 통과"
+ tsin_mission_pass_bill_desc: "의회에서 법안을 하나 통과시키십시오."
+ tsin_mission_stock_index: "강세장"
+ tsin_mission_stock_index_desc: "국가 주가 종합지수를 150 이상으로 올리십시오."
+ tsin_mission_mechanized_farms: "기계화 농업"
+ tsin_mission_mechanized_farms_desc: "$tsin_mechanized_farm$를 모두 합쳐 10레벨 이상 지으십시오."
+ STATIC_MODIFIER_NAME_tsin_mission_automation: "자동화 공장"
+ STATIC_MODIFIER_NAME_tsin_mission_housing_relief: "과밀 해소"
+ STATIC_MODIFIER_NAME_tsin_mission_pass_bill: "입법 경험"
+ STATIC_MODIFIER_NAME_tsin_mission_stock_index: "강세장"
+ STATIC_MODIFIER_NAME_tsin_mission_mechanized_farms: "기계화 농업"

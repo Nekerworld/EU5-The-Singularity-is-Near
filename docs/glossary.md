@@ -72,6 +72,27 @@
 ## 5. 바닐라 건물 이름 (사슬 참조)
 직물 공방(cloth_manufactory) → 직물 방직소(textile_mill), 제철소(iron_mill), 제강소(steel_mill). 신규 상위 건물 이름은 이 어조를 따른다(예: 역직기 방직소, 기계 공작소, 베서머 제강소).
 
+## 5-1. 0.7 신규 용어 (산업 사회로의 진입)
+| ID | 영어 | 한국어 |
+|---|---|---|
+| tsin_secondary_education | Secondary Education Rate | 중등교육률 |
+| tsin_higher_education | Higher Education Rate | 고등교육률 |
+| tsin_research_university | Research University | 연구 대학 |
+| tsin_public_school | Public Secondary School | 공립 중등학교 |
+| tsin_tenement / tsin_model_dwellings | Workers' Tenements / Model Dwellings | 노동자 연립주택 / 모범 주택 |
+| tsin_farm_machinery | Farm Machinery | 농기계 |
+| tsin_mechanized_farm | Mechanized Farm | 기계화 농장 |
+| tsin_labor_conditions | Labor Conditions | 노동 조건 |
+| tsin_labor_grievance | Labor Grievance | 노동 불만 |
+| tsin_stock_index | Stock Index | 주가 지수 |
+| tsin_population_governor | Population Governor | 인구 조절기 |
+| tsin_bill | Bill | 법안 |
+| tsin_cholera | Cholera Pandemic | 콜레라 대유행 |
+| tsin_great_migration | The Great Migration | 대이주 |
+| tsin_grain_invasion | Grain Invasion | 곡물 침공 |
+
+교육 사다리: 문해력 = 초등, 중등교육률 = 중학교·고등학교, 고등교육률 = 대학. 문해력은 바닐라 값을 그대로 쓴다.
+
 ## 6. 문체
 - 설명문은 바닐라처럼 "~합니다"체를 쓴다.
 - 수치·보정치 이름은 바닐라 수정자 현지화를 재사용하고 새로 쓰지 않는다.

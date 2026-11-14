@@ -25,12 +25,25 @@ tsin_location_vanilla_mill_levels = {
 	add = "location_building_level(building_type:steel_mill)"
 }
 
+# Upgraded mills that use tsin_mechanized_mill_employment (tsin_automation_buildings.txt).
+tsin_location_automated_mill_levels = {
+	value = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+	add = "location_building_level(building_type:tsin_automated_iron_mill)"
+	add = "location_building_level(building_type:tsin_automated_glass_mill)"
+	add = "location_building_level(building_type:tsin_automated_paper_mill)"
+	add = "location_building_level(building_type:tsin_automated_furniture_mill)"
+	add = "location_building_level(building_type:tsin_automated_printing_mill)"
+	add = "location_building_level(building_type:tsin_automated_fine_cloth_mill)"
+	add = "location_building_level(building_type:tsin_nitrogen_fixation_plant)"
+}
+
 tsin_location_mill_levels = {
 	value = tsin_location_vanilla_mill_levels
 	add = "location_building_level(building_type:tsin_machine_works)"
-	add = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+	add = tsin_location_automated_mill_levels
 	add = "location_building_level(building_type:tsin_fertilizer_plant)"
 	add = "location_building_level(building_type:tsin_explosives_plant)"
+	add = "location_building_level(building_type:tsin_farm_machinery_works)"
 }
 
 # Factory jobs in the location, in pop-size units (employment_size 1 = 1000 people).
@@ -39,9 +52,10 @@ tsin_location_industrial_jobs = {
 	add = "location_building_level(building_type:tsin_machine_works)"
 	add = "location_building_level(building_type:tsin_fertilizer_plant)"
 	add = "location_building_level(building_type:tsin_explosives_plant)"
+	add = "location_building_level(building_type:tsin_farm_machinery_works)"
 	multiply = mills_employment
 	add = {
-		value = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+		value = tsin_location_automated_mill_levels
 		multiply = tsin_mechanized_mill_employment
 	}
 }
@@ -59,3 +73,204 @@ tsin_location_industrial_share = {
 
 # 0..1 scale used by tsin_industrialization: saturates at this factory-job share.
 tsin_map_industrial_share_saturation = 0.25
+
+# Education map mode (docs/education.md): owner's rates; higher education 30 or more is full color.
+tsin_location_owner_education_factor = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_higher_education } }
+		value = owner.var:tsin_higher_education
+		divide = 30
+		max = 1
+	}
+}
+
+tsin_location_owner_secondary_education = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_secondary_education } }
+		value = owner.var:tsin_secondary_education
+	}
+}
+
+tsin_location_owner_higher_education = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_higher_education } }
+		value = owner.var:tsin_higher_education
+	}
+}
+
+tsin_location_owner_literacy = {
+	value = 0
+	if = {
+		limit = { exists = owner }
+		value = owner.average_country_literacy
+	}
+}
+
+# 0.7 map modes (docs/mapmode_framework.md).
+
+# Share of factory levels that are automated upgrades, 0..1 (tsin_automation).
+tsin_location_automation_share = {
+	value = 0
+	if = {
+		limit = { tsin_location_mill_levels > 0 }
+		value = tsin_location_automated_mill_levels
+		divide = tsin_location_mill_levels
+		max = 1
+	}
+}
+
+# Factory site quality, 0..1: market access, coal or iron, a railway station, city rank (tsin_industrial_siting).
+tsin_location_siting_score = {
+	value = market_access
+	multiply = 0.4
+	if = {
+		limit = {
+			OR = {
+				raw_material = goods:coal
+				raw_material = goods:iron
+			}
+		}
+		add = 0.25
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_railway_station }
+		add = 0.2
+	}
+	if = {
+		limit = {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+		add = 0.15
+	}
+	max = 1
+}
+
+# Modern infrastructure buildings in the location, 0..5 (tsin_infrastructure).
+tsin_location_infrastructure_count = {
+	value = 0
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_railway_station }
+		add = 1
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_waterworks }
+		add = 1
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_steam_port }
+		add = 1
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_electric_lighting }
+		add = 1
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_prefecture }
+		add = 1
+	}
+}
+
+tsin_location_infrastructure_factor = {
+	value = tsin_location_infrastructure_count
+	divide = 5
+}
+
+# Owner's per-capita GDP over the highest in the world last year, 0..1 (tsin_gdp_per_capita).
+tsin_location_gdp_pc_factor = {
+	value = 0
+	if = {
+		limit = {
+			owner ?= { has_variable = tsin_gdp_per_capita }
+			has_global_variable = tsin_world_gdp_pc_max
+			global_var:tsin_world_gdp_pc_max > 0
+		}
+		value = owner.var:tsin_gdp_per_capita
+		divide = global_var:tsin_world_gdp_pc_max
+		max = 1
+	}
+}
+
+# Owner's agricultural revolution stage: advances of tsin_8_agricultural_revolution.txt, 0..7 (tsin_agriculture).
+tsin_location_owner_agriculture_stage = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_advance = tsin_agricultural_chemistry_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_mechanical_reaper_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_canning_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_steam_threshing_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_refrigerated_transport_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_intensive_farming_advance } }
+		add = 1
+	}
+	if = {
+		limit = { owner ?= { has_advance = tsin_nitrogen_fixation_advance } }
+		add = 1
+	}
+}
+
+# Monthly food balance per pop of the location's market (vanilla market_food_balance map mode).
+tsin_location_market_food_per_pop = {
+	value = 0
+	if = {
+		limit = { market ?= { market_population > 0 } }
+		value = market.market_monthly_food_balance
+		divide = market.market_population
+	}
+}
+
+# Agricultural stage (60%) and food surplus up to 1 per pop (40%), 0..1.
+tsin_location_agriculture_factor = {
+	value = tsin_location_owner_agriculture_stage
+	divide = 7
+	multiply = 0.6
+	add = {
+		value = tsin_location_market_food_per_pop
+		min = 0
+		max = 1
+		multiply = 0.4
+	}
+}
+
+# Population over capacity, 0..1, for the tsin_housing gradient.
+tsin_location_crowding_factor = {
+	value = tsin_location_crowding
+	min = 0
+	max = 1
+}
+
+# Company building levels of the owner's companies, 0..1 at 10 levels (tsin_corporations).
+tsin_location_company_factor = {
+	value = tsin_location_owner_company_levels
+	divide = 10
+	max = 1
+}
+
+# Owner's labor grievance, 0..100 (tsin_labor_unrest tooltip).
+tsin_location_owner_labor_grievance = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_labor_grievance } }
+		value = owner.var:tsin_labor_grievance
+	}
+}

@@ -89,3 +89,44 @@ tsin_mission_treaty_revision = {
 	diplomatic_reputation = 1
 	research_speed_modifier = 0.03
 }
+
+# 0.7 side missions of tsin_industrialization
+tsin_mission_automation = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.02
+	global_mills_build_buildings_efficiency = 0.05
+}
+
+tsin_mission_housing_relief = {
+	game_data = {
+		category = country
+	}
+	global_population_capacity_modifier = 0.03
+	peasants_estate_target_satisfaction = 0.03
+}
+
+tsin_mission_pass_bill = {
+	game_data = {
+		category = country
+	}
+	change_policy_cost_modifier = -0.1
+	country_cabinet_efficiency = 0.02
+}
+
+tsin_mission_stock_index = {
+	game_data = {
+		category = country
+	}
+	bank_interest = -0.005
+	global_burghers_estate_power = 0.05
+}
+
+tsin_mission_mechanized_farms = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+	global_tsin_farm_machinery_output_modifier = 0.1
+}

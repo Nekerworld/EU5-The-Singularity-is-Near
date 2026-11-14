@@ -55,6 +55,15 @@
 | `tsin_labor_unrest` | population | M4 | 최근 파업 지점(위치 변수) → 공장 지점은 소유국 노동 운동 세기 → 공장 없음 |
 | `tsin_radicalism` | population | M4 | 소유국 최강 운동 × 지점 불만 |
 | `tsin_electrification` | economy | M5 | 지점이 속한 시장의 전력 충족률: 충분(최대) → 부족(낮음~높음 그라데이션) → 미연결(최소) |
+| `tsin_education` | population | 0.7 | 소유국 고등교육률, 연구 대학 지점 강조 (`docs/education.md`) |
+| `tsin_automation` | economy | 0.7 | 자동화 공장 비중(중간~최대) → 자동화 없는 공장(낮음) → 공장 없음(최소) |
+| `tsin_industrial_siting` | economy | 0.7 | 입지 점수: 시장 접근도 × 0.4 + 석탄·철광 0.25 + 철도역 0.2 + 도시 등급 0.15 |
+| `tsin_infrastructure` | economy | 0.7 | 철도역·상하수도·증기선 항만·도시 조명망·도청 개수 ÷ 5 |
+| `tsin_labor_conditions` | population | 0.7 | 공장 지점의 `tsin_location_labor_conditions`. 0.3 미만은 최소색, 공장 없는 지점은 칠하지 않음 |
+| `tsin_housing` | population | 0.7 | 모범 주택(최대) → 연립주택(높음) → 과밀(최소) → 수용력 대비 인구 그라데이션 |
+| `tsin_gdp_per_capita` | economy | 0.7 | 소유국 1인당 추정 GDP ÷ 지난해 세계 최고값(`global_var:tsin_world_gdp_pc_max`) |
+| `tsin_corporations` | economy | 0.7 | 소유국 기업 본사(최대) → 기업 건물 레벨(10레벨에서 높음) → 없음 |
+| `tsin_agriculture` | demography | 0.7 | 기계화 농장(최대) → 시장 식량 부족(최소) → 농업 단계 60% + 1인당 식량 잉여 40% |
 
 ## 산업 투자 지도 모드의 범위
 
@@ -97,3 +106,13 @@
 색은 계획의 3색 범례를 따른다. 수요가 있는데 충족률이 1보다 작으면 부족(충족률로 낮음~높음 그라데이션), 공급이 있으면 충분, 둘 다 없으면 미연결이다.
 
 사용자 확인 필요: 스크립트 값 안에서 `market ?= { add = "goods_supply_in_market(goods:tsin_electricity)" }` 형식이 값을 돌려주는지(바닐라 `byz_values.txt`가 `capital ?= { market ?= { ... } }` 범위 전환을 씀), 지점 범위에서 `market` 연결이 동작하는지.
+
+## 0.7 지도 모드
+
+위치 값은 `tsin_map_values.txt` 끝(0.7 절)과 생성 파일 `tsin_company_generated_values.txt`(`tsin_location_owner_company_levels`, `tsin_location_company_hq`)에 있다.
+
+- 1인당 GDP의 기준값 `global_var:tsin_world_gdp_pc_max`는 `tsin_update_world_gdp_effect`가 1년에 한 번(`tsin_tempo_yearly_pulse`, 360일 시한 전역 변수) 모든 나라를 돌아 정한다.
+- 농업 모드의 식량 잉여는 바닐라 `market_food_balance` 지도 모드와 같은 식(`market.market_monthly_food_balance ÷ market.market_population`)이다.
+- 노동 불안 모드 툴팁에 소유국 노동 불만(`tsin_location_owner_labor_grievance`)을 더했다.
+
+사용자 확인 필요: 지점 범위에서 `this = owner.var:tsin_hq_<기업>` 비교(본사 판정), `raw_material = goods:coal`을 스크립트 값 `limit`에서 쓰는 것, `market ?= { market_population > 0 }` 조건, 입지·GDP 색 분포가 지도에서 구분될 만큼 퍼지는지.

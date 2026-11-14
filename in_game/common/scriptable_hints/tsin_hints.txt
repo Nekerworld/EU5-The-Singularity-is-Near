@@ -75,3 +75,82 @@ hint_tsin_radical_movements = {
 	sort_priority = 100
 	hint_tag = tsin_movements_concept
 }
+
+hint_tsin_grain_invasion = {
+	priority = {
+		can_see_situation = situation:tsin_grain_invasion
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_grain_invasion }
+	}
+	sort_priority = 200
+}
+
+hint_tsin_national_unification = {
+	priority = {
+		can_see_situation = situation:tsin_national_unification
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_national_unification }
+	}
+	sort_priority = 200
+}
+
+hint_tsin_defensive_modernization = {
+	priority = {
+		can_see_situation = situation:tsin_defensive_modernization
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_defensive_modernization }
+	}
+	sort_priority = 200
+}
+
+hint_tsin_great_migration = {
+	priority = {
+		can_see_situation = situation:tsin_great_migration
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_great_migration }
+	}
+	sort_priority = 200
+}
+
+# 0.7 mechanic hints
+hint_tsin_labor_grievance = {
+	priority = {
+		has_variable = tsin_labor_grievance
+		var:tsin_labor_grievance >= 50
+	}
+	hide = {
+		NOT = { has_variable = tsin_labor_grievance }
+	}
+	sort_priority = 100
+	hint_tag = tsin_labor_conditions_concept
+}
+
+hint_tsin_first_bill = {
+	priority = {
+		tsin_bill_system_active_trigger = yes
+		NOT = { has_variable = tsin_bills_passed }
+	}
+	hide = {
+		OR = {
+			tsin_bill_system_active_trigger = no
+			has_variable = tsin_bills_passed
+		}
+	}
+	sort_priority = 90
+	hint_tag = tsin_bills_concept
+}
+
+hint_tsin_stock_crash = {
+	priority = {
+		has_country_modifier = tsin_stock_crash
+	}
+	hide = {
+		NOT = { has_country_modifier = tsin_stock_crash }
+	}
+	sort_priority = 120
+	hint_tag = tsin_stock_index_concept
+}
