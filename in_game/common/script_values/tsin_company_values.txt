@@ -1,15 +1,7 @@
-﻿# Industrial company limit and count (country scope), used by tsin_company_decisions.txt.
+﻿# Industrial company limit (country scope), used by tsin_company_decisions.txt. The count and the stock
+# market values are generated into tsin_company_generated_values.txt (tools/gen_company_decisions.py).
 
-tsin_company_count = {
-	value = 0
-	if = { limit = { has_country_modifier = tsin_company_steel } add = 1 }
-	if = { limit = { has_country_modifier = tsin_company_machinery } add = 1 }
-	if = { limit = { has_country_modifier = tsin_company_textile } add = 1 }
-	if = { limit = { has_country_modifier = tsin_company_chemical } add = 1 }
-	if = { limit = { has_country_modifier = tsin_company_railway } add = 1 }
-}
-
-# 1 base, +1 stock exchange, +1 mixed or private investment policy (max 3 of 5).
+# 1 base, +1 stock exchange, +1 mixed or private investment policy (max 4 of 6 with the expansion charter).
 tsin_company_limit = {
 	value = 1
 	if = { limit = { has_advance = tsin_stock_exchange_advance } add = 1 }
@@ -22,4 +14,27 @@ tsin_company_limit = {
 		}
 		add = 1
 	}
+	if = {
+		limit = { has_variable = tsin_charter_expansion }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_antitrust_policy }
+		subtract = 1
+	}
+	min = 1
+}
+
+# Company charters (tsin_charter_decisions.txt): monopoly, investment, expansion.
+tsin_charter_count = {
+	value = 0
+	if = { limit = { has_variable = tsin_charter_monopoly } add = 1 }
+	if = { limit = { has_variable = tsin_charter_investment } add = 1 }
+	if = { limit = { has_variable = tsin_charter_expansion } add = 1 }
+}
+
+# 1, +1 with the stock exchange.
+tsin_charter_limit = {
+	value = 1
+	if = { limit = { has_advance = tsin_stock_exchange_advance } add = 1 }
 }

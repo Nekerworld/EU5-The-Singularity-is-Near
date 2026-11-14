@@ -1,0 +1,304 @@
+﻿namespace = tsin_corporate
+
+# Company chairman (docs/corporations.md). A country with companies keeps one chairman: a burgher character saved
+# in var:tsin_chairman. tsin_corporate.10 appoints a new one from tsin_stock_monthly_pulse when there is none or he
+# has died; .20-.60 come from tsin_corporate_yearly_pulse and spend the yearly flavor budget.
+
+# Stock report (tsin_stock_report_decision): stock prices, the national index with its 8-quarter mean, the
+# world index and the company values.
+tsin_corporate.100 = {
+	type = country_event
+	title = tsin_corporate.100.title
+	desc = tsin_corporate.100.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		is_ai = no
+		has_variable = tsin_has_stock_market
+	}
+
+	option = {
+		name = tsin_corporate.100.a
+	}
+}
+
+# A new chairman
+tsin_corporate.10 = {
+	type = country_event
+	title = tsin_corporate.10.title
+	desc = tsin_corporate.10.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_company_count > 0
+		tsin_has_chairman_trigger = no
+	}
+
+	immediate = {
+		create_character = {
+			culture = root.culture
+			religion = root.religion
+			min_age = 35
+			max_age = 55
+			adm = { 40 90 }
+			dip = { 30 70 }
+			mil = { 0 30 }
+			estate = estate_type:burghers_estate
+			save_scope_as = tsin_chairman
+		}
+		set_variable = { name = tsin_chairman value = scope:tsin_chairman }
+	}
+
+	# Confirm the board's choice
+	option = {
+		name = tsin_corporate.10.a
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Seat a state commissioner on the board
+	option = {
+		name = tsin_corporate.10.b
+		add_stability = stability_weak_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		tsin_scale_stocks_effect = { FACTOR = 0.95 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The chairman wants a title
+tsin_corporate.20 = {
+	type = country_event
+	title = tsin_corporate.20.title
+	desc = tsin_corporate.20.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+		NOT = { has_variable = tsin_corporate_title_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_corporate_title_done
+		var:tsin_chairman = { save_scope_as = tsin_chairman }
+	}
+
+	# Ennoble him
+	option = {
+		name = tsin_corporate.20.a
+		add_prestige = prestige_mild_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Titles are not for sale
+	option = {
+		name = tsin_corporate.20.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A loan from the company
+tsin_corporate.30 = {
+	type = country_event
+	title = tsin_corporate.30.title
+	desc = tsin_corporate.30.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+		NOT = { has_country_modifier = tsin_corporate_loan }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		var:tsin_chairman = { save_scope_as = tsin_chairman }
+	}
+
+	# Accept the loan
+	option = {
+		name = tsin_corporate.30.a
+		change_gold_effect = { scale = 3 }
+		add_country_modifier = { modifier = tsin_corporate_loan years = 10 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# The treasury needs no favors
+	option = {
+		name = tsin_corporate.30.b
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The chairman endows a university chair
+tsin_corporate.40 = {
+	type = country_event
+	title = tsin_corporate.40.title
+	desc = tsin_corporate.40.desc
+	outcome = positive
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+		any_owned_location = { tsin_has_university_tier_trigger = yes }
+		NOT = { has_country_modifier = tsin_corporate_endowment }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		var:tsin_chairman = { save_scope_as = tsin_chairman }
+	}
+
+	# Name the chair after him
+	option = {
+		name = tsin_corporate.40.a
+		add_country_modifier = { modifier = tsin_corporate_endowment years = 20 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Tax the fortune instead
+	option = {
+		name = tsin_corporate.40.b
+		change_gold_effect = { scale = 2 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Bribery scandal
+tsin_corporate.50 = {
+	type = country_event
+	title = tsin_corporate.50.title
+	desc = tsin_corporate.50.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+		NOT = { has_variable = tsin_corporate_scandal_cooldown }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_corporate_scandal_cooldown years = 15 }
+		var:tsin_chairman = { save_scope_as = tsin_chairman }
+		tsin_scale_stocks_effect = { FACTOR = 0.9 }
+	}
+
+	# Prosecute: the board must find a new chairman
+	option = {
+		name = tsin_corporate.50.a
+		remove_variable = tsin_chairman
+		add_stability = stability_weak_bonus
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Hush it up
+	option = {
+		name = tsin_corporate.50.b
+		add_political_influence = political_influence_mild_penalty
+		add_country_modifier = { modifier = tsin_corporate_cover_up years = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The chairman runs for parliament
+tsin_corporate.60 = {
+	type = country_event
+	title = tsin_corporate.60.title
+	desc = tsin_corporate.60.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+		has_parliament = yes
+		NOT = { has_country_modifier = tsin_corporate_lobby }
+		NOT = { has_variable = tsin_corporate_politics_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_corporate_politics_done
+		var:tsin_chairman = { save_scope_as = tsin_chairman }
+	}
+
+	# Welcome business into politics
+	option = {
+		name = tsin_corporate.60.a
+		add_country_modifier = { modifier = tsin_corporate_lobby years = 20 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Keep the boardroom out of the chamber
+	option = {
+		name = tsin_corporate.60.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

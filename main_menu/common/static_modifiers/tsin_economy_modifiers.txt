@@ -144,3 +144,22 @@ tsin_rubber_concession_terror = {
 	local_unrest = 1
 	local_monthly_control = -0.01
 }
+
+# tsin_economy.140 option a: speculative boom (raises the stock rise chance, tsin_company_effects.txt)
+tsin_speculative_boom = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.05
+	bank_interest = -0.005
+}
+
+# tsin_economy.150: market crash
+tsin_stock_crash = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_mills_build_buildings_efficiency = -0.1
+	burghers_estate_target_satisfaction = -0.05
+}

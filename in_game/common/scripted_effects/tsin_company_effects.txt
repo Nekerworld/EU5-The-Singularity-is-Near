@@ -1,0 +1,205 @@
+﻿# Stock market (docs/corporations.md). Per-company effects are generated into tsin_company_generated_effects.txt.
+
+# Scope: country. One quarterly step of the stock STOCK. var:tsin_stock_up holds the chance of a rise from
+# the market price of the company's good; shocks and education move it, then it is kept within 0.2 .. 0.8.
+tsin_stock_random_walk_effect = {
+	if = {
+		limit = { has_country_modifier = tsin_financial_panic }
+		change_variable = { name = tsin_stock_up subtract = 0.15 }
+	}
+	if = {
+		limit = { has_country_modifier = tsin_depression_panic }
+		change_variable = { name = tsin_stock_up subtract = 0.2 }
+	}
+	if = {
+		limit = { has_country_modifier = tsin_depression_slump }
+		change_variable = { name = tsin_stock_up subtract = 0.1 }
+	}
+	if = {
+		limit = { has_country_modifier = tsin_stock_crash }
+		change_variable = { name = tsin_stock_up subtract = 0.1 }
+	}
+	if = {
+		limit = {
+			has_variable = tsin_labor_grievance
+			var:tsin_labor_grievance >= 60
+		}
+		change_variable = { name = tsin_stock_up subtract = 0.05 }
+	}
+	if = {
+		limit = { tsin_country_higher_education >= 20 }
+		change_variable = { name = tsin_stock_up add = 0.05 }
+	}
+	if = {
+		limit = { has_country_modifier = tsin_speculative_boom }
+		change_variable = { name = tsin_stock_up add = 0.1 }
+	}
+	if = {
+		limit = { has_variable = tsin_charter_investment }
+		change_variable = { name = tsin_stock_up add = 0.05 }
+	}
+	if = {
+		limit = {
+			tsin_has_chairman_trigger = yes
+			var:tsin_chairman = { adm >= 70 }
+		}
+		change_variable = { name = tsin_stock_up add = 0.05 }
+	}
+	else_if = {
+		limit = {
+			tsin_has_chairman_trigger = yes
+			var:tsin_chairman = { adm < 50 }
+		}
+		change_variable = { name = tsin_stock_up subtract = 0.03 }
+	}
+	if = {
+		limit = { has_country_modifier = tsin_corporate_cover_up }
+		change_variable = { name = tsin_stock_up subtract = 0.03 }
+	}
+	clamp_variable = { name = tsin_stock_up min = 0.2 max = 0.8 }
+	if = {
+		limit = { has_policy = policy:tsin_gold_standard_policy }
+		random_list = {
+			6 = { set_variable = { name = tsin_stock_step value = 0.03 } }
+			3 = { set_variable = { name = tsin_stock_step value = 0.06 } }
+			1 = { set_variable = { name = tsin_stock_step value = 0.1 } }
+		}
+	}
+	else = {
+		random_list = {
+			4 = { set_variable = { name = tsin_stock_step value = 0.03 } }
+			3 = { set_variable = { name = tsin_stock_step value = 0.06 } }
+			2 = { set_variable = { name = tsin_stock_step value = 0.1 } }
+			1 = { set_variable = { name = tsin_stock_step value = 0.15 } }
+		}
+	}
+	set_variable = { name = tsin_stock_rise value = 0 }
+	random = {
+		chance = {
+			value = var:tsin_stock_up
+			multiply = 100
+		}
+		set_variable = { name = tsin_stock_rise value = 1 }
+	}
+	if = {
+		limit = { var:tsin_stock_rise = 1 }
+		change_variable = {
+			name = $STOCK$
+			multiply = {
+				value = 1
+				add = var:tsin_stock_step
+			}
+		}
+	}
+	else = {
+		change_variable = {
+			name = $STOCK$
+			multiply = {
+				value = 1
+				subtract = var:tsin_stock_step
+			}
+		}
+	}
+	clamp_variable = { name = $STOCK$ min = 10 max = 1000 }
+	remove_variable = tsin_stock_up
+	remove_variable = tsin_stock_step
+	remove_variable = tsin_stock_rise
+}
+
+# Scope: country. National index after the stock step, with an 8-quarter history. Booms and crashes compare
+# the new index with the history before it is shifted in.
+tsin_update_stock_index_effect = {
+	set_variable = { name = tsin_stock_index value = tsin_stock_index_value }
+	tsin_stock_market_events_effect = yes
+	tsin_shift_stock_history_effect = yes
+}
+
+# Scope: country. Speculative boom (tsin_economy.140) when the index runs 50% above its recent mean;
+# a boom can end in a crash (tsin_economy.150), as can a fall to 60% of the mean.
+tsin_stock_market_events_effect = {
+	if = {
+		limit = {
+			tsin_stock_index_history_count >= 4
+			NOT = { has_country_modifier = tsin_speculative_boom }
+			NOT = { has_country_modifier = tsin_stock_crash }
+			NOT = { has_variable = tsin_boom_cooldown }
+			var:tsin_stock_index > {
+				value = tsin_stock_index_history_mean
+				multiply = 1.5
+			}
+		}
+		set_variable = { name = tsin_boom_cooldown years = 8 }
+		trigger_event_non_silently = tsin_economy.140
+	}
+	else_if = {
+		limit = {
+			has_country_modifier = tsin_speculative_boom
+			NOT = { has_variable = tsin_crash_cooldown }
+		}
+		random = {
+			chance = 12
+			set_variable = { name = tsin_crash_cooldown years = 5 }
+			trigger_event_non_silently = tsin_economy.150
+		}
+	}
+	else_if = {
+		limit = {
+			tsin_stock_index_history_count >= 4
+			NOT = { has_country_modifier = tsin_stock_crash }
+			NOT = { has_variable = tsin_crash_cooldown }
+			var:tsin_stock_index < {
+				value = tsin_stock_index_history_mean
+				multiply = 0.6
+			}
+		}
+		set_variable = { name = tsin_crash_cooldown years = 5 }
+		trigger_event_non_silently = tsin_economy.150
+	}
+}
+
+# Scope: country. Charters end with the companies (tsin_charter_decisions.txt).
+tsin_revoke_company_charters_effect = {
+	if = {
+		limit = { has_variable = tsin_charter_monopoly }
+		remove_variable = tsin_charter_monopoly
+		remove_country_modifier = tsin_charter_monopoly
+	}
+	if = {
+		limit = { has_variable = tsin_charter_investment }
+		remove_variable = tsin_charter_investment
+		remove_country_modifier = tsin_charter_investment
+	}
+	if = {
+		limit = { has_variable = tsin_charter_expansion }
+		remove_variable = tsin_charter_expansion
+		remove_country_modifier = tsin_charter_expansion
+	}
+}
+
+# Scope: country. Once a year the first country to pulse rebuilds the world industrial index: the mean of the
+# national indices of every country with a stock market.
+tsin_update_world_stock_index_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tsin_world_index_timer } }
+		set_global_variable = { name = tsin_world_index_timer value = yes days = 360 }
+		set_global_variable = { name = tsin_world_index_sum value = 0 }
+		set_global_variable = { name = tsin_world_index_count value = 0 }
+		every_country = {
+			limit = { has_variable = tsin_stock_index }
+			change_global_variable = { name = tsin_world_index_sum add = var:tsin_stock_index }
+			change_global_variable = { name = tsin_world_index_count add = 1 }
+		}
+		if = {
+			limit = { global_var:tsin_world_index_count > 0 }
+			set_global_variable = {
+				name = tsin_world_stock_index
+				value = {
+					value = global_var:tsin_world_index_sum
+					divide = global_var:tsin_world_index_count
+				}
+			}
+		}
+		remove_global_variable = tsin_world_index_sum
+		remove_global_variable = tsin_world_index_count
+	}
+}

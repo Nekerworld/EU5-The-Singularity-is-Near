@@ -44,3 +44,89 @@ tsin_company_railway = {
 	global_road_building_time = -0.1
 	building_upkeep_efficiency = -0.01
 }
+
+# Company charters (docs/corporations.md).
+tsin_company_farm_machinery = {
+	game_data = {
+		category = country
+	}
+	global_tsin_farm_machinery_output_modifier = 0.1
+	global_wheat_output_modifier = 0.02
+	building_upkeep_efficiency = -0.01
+}
+
+# tsin_charter_decisions.txt
+tsin_charter_monopoly = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.03
+	global_burghers_estate_power = 0.1
+	peasants_estate_target_satisfaction = -0.05
+}
+
+tsin_charter_investment = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.1
+	bank_interest = -0.005
+}
+
+tsin_charter_expansion = {
+	game_data = {
+		category = country
+	}
+	global_burghers_estate_power = 0.05
+	building_upkeep_efficiency = -0.01
+}
+
+tsin_charter_colonial_company = {
+	game_data = {
+		category = country
+	}
+	create_colonial_charter_cost_modifier = -0.25
+	colonial_maintenance_efficiency = 0.1
+	colonial_migration_size_modifier = 0.15
+}
+
+tsin_trust_busting = {
+	game_data = {
+		category = country
+	}
+	burghers_estate_target_satisfaction = -0.05
+	peasants_estate_target_satisfaction = 0.05
+}
+
+# in_game/events/tsin_corporate.txt
+tsin_corporate_loan = {
+	game_data = {
+		category = country
+	}
+	bank_interest = 0.005
+}
+
+tsin_corporate_endowment = {
+	game_data = {
+		category = country
+	}
+	global_burghers_estate_power = 0.05
+	global_production_efficiency = 0.01
+}
+
+tsin_corporate_cover_up = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	burghers_estate_target_satisfaction = 0.05
+	peasants_estate_target_satisfaction = -0.05
+}
+
+tsin_corporate_lobby = {
+	game_data = {
+		category = country
+	}
+	global_burghers_estate_power = 0.1
+	peasants_estate_target_satisfaction = -0.03
+}

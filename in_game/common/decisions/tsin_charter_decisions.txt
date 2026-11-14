@@ -1,0 +1,193 @@
+﻿# Company charters (docs/corporations.md). Monopoly, investment and expansion need a stock market (at least one
+# company); at most tsin_charter_limit of the three at once. The colonial charter is separate and needs the
+# scramble for colonies. Dissolving the companies revokes all of them (tsin_dissolve_all_companies_effect).
+
+tsin_grant_colonial_charter_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_steel.dds"
+
+	potential = {
+		current_age = age_7_industrialization
+		tsin_company_count > 0
+		NOT = { has_variable = tsin_charter_colonial }
+	}
+
+	allow = {
+		has_country_modifier = tsin_scramble_colonial_drive
+		gold >= tsin_gold_cost_3
+	}
+
+	ai_will_do = {
+		value = 40
+	}
+
+	option = {
+		name = tsin_grant_colonial_charter_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -3 }
+			add_stability = stability_weak_penalty
+			set_variable = tsin_charter_colonial
+			add_country_modifier = { modifier = tsin_charter_colonial_company months = -1 }
+			custom_tooltip = tsin_grant_colonial_charter_decision.tt
+		}
+	}
+}
+
+tsin_charter_monopoly_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_steel.dds"
+
+	potential = {
+		has_variable = tsin_has_stock_market
+		NOT = { has_variable = tsin_charter_monopoly }
+	}
+
+	allow = {
+		tsin_company_count > 0
+		tsin_charter_count < tsin_charter_limit
+		NOT = { has_policy = policy:tsin_antitrust_policy }
+		gold >= tsin_gold_cost_3
+	}
+
+	ai_will_do = {
+		value = 20
+		if = {
+			limit = { tsin_company_count >= 2 }
+			add = 20
+		}
+	}
+
+	option = {
+		name = tsin_charter_monopoly_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -3 }
+			set_variable = tsin_charter_monopoly
+			add_country_modifier = { modifier = tsin_charter_monopoly months = -1 }
+			tsin_scale_stocks_effect = { FACTOR = 1.1 }
+			add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		}
+	}
+}
+
+tsin_charter_investment_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tsin_engines.dds"
+
+	potential = {
+		has_variable = tsin_has_stock_market
+		NOT = { has_variable = tsin_charter_investment }
+	}
+
+	allow = {
+		tsin_company_count > 0
+		tsin_charter_count < tsin_charter_limit
+		gold >= tsin_gold_cost_3
+	}
+
+	ai_will_do = {
+		value = 30
+	}
+
+	option = {
+		name = tsin_charter_investment_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -3 }
+			set_variable = tsin_charter_investment
+			add_country_modifier = { modifier = tsin_charter_investment months = -1 }
+		}
+	}
+}
+
+tsin_charter_expansion_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cloth.dds"
+
+	potential = {
+		has_variable = tsin_has_stock_market
+		NOT = { has_variable = tsin_charter_expansion }
+	}
+
+	allow = {
+		tsin_company_count > 0
+		tsin_charter_count < tsin_charter_limit
+		has_advance = tsin_stock_exchange_advance
+		gold >= tsin_gold_cost_4
+	}
+
+	ai_will_do = {
+		value = 20
+	}
+
+	option = {
+		name = tsin_charter_expansion_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -4 }
+			set_variable = tsin_charter_expansion
+			add_country_modifier = { modifier = tsin_charter_expansion months = -1 }
+		}
+	}
+}
+
+# Players only: the stock report (tsin_corporate.100).
+tsin_stock_report_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tsin_engines.dds"
+
+	potential = {
+		is_ai = no
+		has_variable = tsin_has_stock_market
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_stock_report_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			trigger_event_non_silently = tsin_corporate.100
+		}
+	}
+}
+
+tsin_revoke_charters_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_steel.dds"
+
+	potential = {
+		tsin_charter_count > 0
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+		if = {
+			limit = {
+				has_variable = tsin_charter_monopoly
+				has_policy = policy:tsin_antitrust_policy
+			}
+			add = 100
+		}
+	}
+
+	option = {
+		name = tsin_revoke_charters_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			tsin_revoke_company_charters_effect = yes
+			tsin_scale_stocks_effect = { FACTOR = 0.95 }
+		}
+	}
+}
