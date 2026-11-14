@@ -1,0 +1,119 @@
+﻿# Encyclopedia entries of the world and history area (docs/encyclopedia.md).
+# Hub tsin_industrial_world_concept, tsin_treaty_port_concept and tsin_industrial_age_situations are defined in
+# tsin_concepts.txt, which is read before this file. Loc: tsin_concepts_world_l_*.yml.
+
+# Situations of the age (family = the situation list entry)
+tsin_long_depression_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_long_depression"
+}
+
+tsin_grain_invasion_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_grain_invasion"
+}
+
+tsin_great_migration_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_great_migration"
+}
+
+tsin_springtime_of_nations_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_springtime_of_nations"
+}
+
+tsin_national_unification_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_national_unification"
+}
+
+tsin_defensive_modernization_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_defensive_modernization"
+}
+
+tsin_scramble_for_colonies_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_scramble_for_colonies"
+}
+
+tsin_world_exhibition_concept = {
+	family = tsin_industrial_age_situations
+	texture = "situations/tsin_world_exhibition"
+}
+
+# Disasters
+tsin_industrial_disasters_concept = {
+	family = tsin_industrial_world_concept
+	texture = "flat_icons/disaster"
+}
+
+tsin_cholera_concept = {
+	family = tsin_industrial_disasters_concept
+	texture = "disasters/tsin_cholera"
+}
+
+tsin_great_hunger_concept = {
+	family = tsin_industrial_disasters_concept
+	texture = "disasters/tsin_great_hunger"
+}
+
+tsin_millenarian_rebellion_concept = {
+	family = tsin_industrial_disasters_concept
+	texture = "disasters/tsin_millenarian_rebellion"
+}
+
+tsin_secession_crisis_concept = {
+	family = tsin_industrial_disasters_concept
+	texture = "disasters/tsin_secession_crisis"
+}
+
+# Missions, expeditions, great powers
+tsin_industrial_missions_concept = {
+	family = tsin_industrial_world_concept
+	texture = "missions/_default"
+}
+
+tsin_expeditions_concept = {
+	family = tsin_industrial_world_concept
+	texture = "map_modes/expeditions"
+}
+
+tsin_great_power_politics_concept = {
+	family = tsin_industrial_world_concept
+	texture = "flat_icons/great_power_score"
+}
+
+# Frontier, culture and science, the late century
+tsin_frontier_concept = {
+	family = tsin_industrial_world_concept
+	texture = "trade_goods/icon_goods_goods_gold"
+}
+
+tsin_culture_science_concept = {
+	family = tsin_industrial_world_concept
+	texture = "flat_icons/art_works"
+}
+
+tsin_late_century_concept = {
+	family = tsin_industrial_world_concept
+	texture = "alerts_icons/rebellious"
+}
+
+# Guides: map modes, hints, flavor events
+tsin_map_modes_concept = {
+	family = tsin_industrial_world_concept
+	texture = "map_modes/tsin_industrial_institutions"
+	shown_in_loading_screen = yes
+}
+
+tsin_hints_concept = {
+	family = tsin_industrial_world_concept
+	texture = "alerts_icons/actions_available"
+}
+
+tsin_flavor_events_concept = {
+	family = tsin_industrial_world_concept
+	texture = "events/event"
+}
