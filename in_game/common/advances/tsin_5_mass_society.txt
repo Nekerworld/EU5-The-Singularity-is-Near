@@ -45,6 +45,8 @@ tsin_universal_education_advance = {
 	global_max_literacy = 10
 	global_monthly_literacy = 0.02
 
+	unlock_law = tsin_church_state_law
+
 	requires = tsin_mass_society_advance
 	ai_weight = { add = 25 }
 }
@@ -67,6 +69,8 @@ tsin_mass_communication_advance = {
 	global_monthly_literacy = 0.01
 	country_cabinet_efficiency = 0.05
 
+	unlock_law = tsin_assembly_law
+
 	requires = tsin_mass_society_advance
 }
 
@@ -75,6 +79,8 @@ tsin_labor_movement_advance = {
 	icon = peasants_rights_laws_advance
 
 	global_pop_promotion_speed = 0.05
+
+	unlock_law = tsin_labor_law
 
 	requires = tsin_mass_society_advance
 }
@@ -85,6 +91,8 @@ tsin_social_insurance_advance = {
 
 	global_life_expectancy = 2
 	peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+
+	unlock_law = tsin_welfare_law
 
 	requires = tsin_labor_movement_advance
 	requires = tsin_mass_communication_advance

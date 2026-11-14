@@ -36,6 +36,8 @@ tsin_mass_society_advance = {
 	global_max_literacy = 10
 	non_rural_migration_attraction = 0.5
 	global_cloth_pop_demand = 0.1
+	unlock_law = tsin_taxation_law
+	unlock_law = tsin_land_reform_law
 	depth = 0
 	ai_weight = { add = 50 }
 

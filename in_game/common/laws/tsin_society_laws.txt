@@ -1,0 +1,266 @@
+﻿# Age VII mass society laws (M4). Each law is opened by an advance (unlock_law); which policy is enacted
+# is left to the player, parliament and estate preferences. Education, press, immigration and slavery
+# use the vanilla laws (education_masses_law, press_law, immigration_law, slavery_laws).
+
+# Labour: child labour, working hours, factory safety. Unlocked by tsin_labor_movement_advance.
+tsin_labor_law = {
+	law_category = socioeconomic
+
+	tsin_unregulated_labor_policy = {
+		country_modifier = {
+			global_production_efficiency = small_production_efficiency_bonus
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	tsin_factory_acts_policy = {
+		country_modifier = {
+			global_laborers_max_literacy = 5
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			monthly_towards_humanist = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			clergy_estate
+			peasants_estate
+		}
+		years = 2
+	}
+
+	tsin_labor_protection_policy = {
+		allow = {
+			has_advance = tsin_social_insurance_advance
+		}
+		country_modifier = {
+			global_production_efficiency = small_production_efficiency_penalty
+			global_laborers_max_literacy = 5
+			peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 3
+	}
+}
+
+# Welfare. Unlocked by tsin_social_insurance_advance.
+tsin_welfare_law = {
+	law_category = socioeconomic
+
+	tsin_charity_relief_policy = {
+		country_modifier = {
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			clergy_estate
+		}
+		years = 2
+	}
+
+	tsin_poor_law_policy = {
+		country_modifier = {
+			tax_income_efficiency = tiny_tax_income_efficiency_penalty
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			global_life_expectancy = 1
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	tsin_social_insurance_policy = {
+		country_modifier = {
+			tax_income_efficiency = small_tax_income_efficiency_penalty
+			peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+			global_life_expectancy = 2
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+			crown_estate
+		}
+		years = 3
+	}
+}
+
+# Direct taxation. Unlocked by tsin_mass_society_advance.
+tsin_taxation_law = {
+	law_category = socioeconomic
+
+	tsin_indirect_taxation_policy = {
+		country_modifier = {
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+		}
+		estate_preferences = {
+			burghers_estate
+			nobles_estate
+		}
+		years = 2
+	}
+
+	tsin_income_tax_policy = {
+		country_modifier = {
+			tax_income_efficiency = small_tax_income_efficiency_bonus
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 2
+	}
+
+	tsin_progressive_taxation_policy = {
+		allow = {
+			has_advance = tsin_mass_communication_advance
+		}
+		country_modifier = {
+			tax_income_efficiency = medium_tax_income_efficiency_bonus
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 3
+	}
+}
+
+# Association and assembly (clubs, unions, parties). Unlocked by tsin_mass_communication_advance.
+tsin_assembly_law = {
+	law_category = socioeconomic
+
+	tsin_assembly_banned_policy = {
+		country_modifier = {
+			global_crown_estate_power = 0.1
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_absolutism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+			nobles_estate
+		}
+		years = 2
+	}
+
+	tsin_licensed_associations_policy = {
+		country_modifier = {
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	tsin_free_association_policy = {
+		allow = {
+			has_advance = tsin_labor_movement_advance
+		}
+		country_modifier = {
+			global_crown_estate_power = -0.1
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			monthly_towards_liberalism = societal_value_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+			burghers_estate
+		}
+		years = 2
+	}
+}
+
+# Land reform and the end of serfdom. Unlocked by tsin_mass_society_advance.
+tsin_land_reform_law = {
+	law_category = socioeconomic
+
+	tsin_serfdom_retained_policy = {
+		country_modifier = {
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_serfdom = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			nobles_estate
+		}
+		years = 2
+	}
+
+	tsin_redemption_payments_policy = {
+		country_modifier = {
+			nobles_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			non_rural_migration_attraction = 0.1
+			monthly_towards_free_subjects = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+			burghers_estate
+		}
+		years = 3
+	}
+
+	tsin_full_emancipation_policy = {
+		country_modifier = {
+			global_nobles_estate_power = -0.1
+			nobles_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
+			non_rural_migration_attraction = 0.25
+			monthly_towards_free_subjects = societal_value_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 3
+	}
+}
+
+# Church and state. Unlocked by tsin_universal_education_advance.
+tsin_church_state_law = {
+	law_category = socioeconomic
+
+	tsin_established_church_policy = {
+		country_modifier = {
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+			monthly_towards_spiritualist = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			clergy_estate
+		}
+		years = 2
+	}
+
+	tsin_concordat_policy = {
+		country_modifier = {
+			clergy_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			global_max_literacy = 5
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 2
+	}
+
+	tsin_separation_of_church_and_state_policy = {
+		country_modifier = {
+			global_clergy_estate_power = -0.1
+			clergy_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			global_max_literacy = 5
+			monthly_towards_humanist = societal_value_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 3
+	}
+}
