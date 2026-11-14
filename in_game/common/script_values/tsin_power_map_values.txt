@@ -1,0 +1,27 @@
+﻿# Location-scope values for the tsin_electrification map mode (docs/mapmode_framework.md).
+# Electricity is a market good (docs/gate_g.md), so supply and demand are read from the location's market.
+
+tsin_location_power_supply = {
+	value = 0
+	market ?= {
+		add = "goods_supply_in_market(goods:tsin_electricity)"
+	}
+}
+
+tsin_location_power_demand = {
+	value = 0
+	market ?= {
+		add = "goods_demand_in_market(goods:tsin_electricity)"
+	}
+}
+
+# Share of market demand that is supplied, 0..1. 1 when there is no demand.
+tsin_location_power_ratio = {
+	value = 1
+	if = {
+		limit = { tsin_location_power_demand > 0 }
+		value = tsin_location_power_supply
+		divide = tsin_location_power_demand
+	}
+	max = 1
+}

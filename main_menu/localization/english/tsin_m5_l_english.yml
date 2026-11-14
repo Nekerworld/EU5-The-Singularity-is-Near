@@ -52,3 +52,10 @@
  tsin_electric_lighting_maintenance: "Network Operation"
  tsin_mechanized_electric_drive: "Electric Drive"
  tsin_fertilizer_electrochemical: "Electrochemical Fertilizer"
+
+ mapmode_tsin_electrification_name: "Electric Power"
+ MAPMODE_TSIN_ELECTRIFICATION: "#T $mapmode_tsin_electrification_name$#!\nShows whether $tsin_electricity$ supply in the [market|e] of each [locations|e] covers demand. Shortages are paler, and markets with no electricity at all are shown as unconnected."
+ TSIN_ELECTRIFICATION_MAPMODE_TT: "Market power in [ROOT.GetLocation.GetName]: supply [ROOT.ScriptValue('tsin_location_power_supply')|1], demand [ROOT.ScriptValue('tsin_location_power_demand')|1], covered [ROOT.ScriptValue('tsin_location_power_ratio')|%0]."
+ LEGEND_KEY_TSIN_POWER_SUPPLIED: "Power Supplied"
+ LEGEND_KEY_TSIN_POWER_SHORTAGE: "Power Shortage"
+ LEGEND_KEY_TSIN_POWER_NONE: "Not Connected"

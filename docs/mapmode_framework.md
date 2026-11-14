@@ -54,6 +54,7 @@
 | `tsin_urbanization` | population | M4 | 시민+노동자 비중 그라데이션(50%에서 최대), 도시·대도시는 최대색 |
 | `tsin_labor_unrest` | population | M4 | 최근 파업 지점(위치 변수) → 공장 지점은 소유국 노동 운동 세기 → 공장 없음 |
 | `tsin_radicalism` | population | M4 | 소유국 최강 운동 × 지점 불만 |
+| `tsin_electrification` | economy | M5 | 지점이 속한 시장의 전력 충족률: 충분(최대) → 부족(낮음~높음 그라데이션) → 미연결(최소) |
 
 ## 산업 투자 지도 모드의 범위
 
@@ -82,3 +83,17 @@
 - **생활수준:** 바닐라 `satisfaction` 지도 모드(범주 population, `color_mode = satisfaction`)가 이미 지점 만족도를 보여 주므로 따로 만들지 않았다. 급진성 설명에 바닐라 지도 모드를 안내한다.
 
 사용자 확인 필요: 스크립트 값의 `owner.var:` 읽기가 지도 모드에서 동작하는지(바닐라 `rise_of_the_ottomans` 이벤트에 같은 형식이 있음), `average_satisfaction`이 0~1 범위인지, 이벤트로 지점에 `years`가 붙은 변수를 둘 수 있는지.
+
+## 전력 지도 모드 (M5)
+
+위치 값은 `in_game/common/script_values/tsin_power_map_values.txt`에 있다. 전력은 시장 상품이라(`docs/gate_g.md`) 지점의 `market`에서 바닐라 시장 값 `goods_supply_in_market`, `goods_demand_in_market`를 읽는다. 바닐라 법(`01_common.txt`)이 `capital.market` 안에서 같은 값을 쓴다.
+
+| 값 | 의미 |
+|---|---|
+| `tsin_location_power_supply` | 시장의 `tsin_electricity` 공급 |
+| `tsin_location_power_demand` | 시장의 `tsin_electricity` 수요 |
+| `tsin_location_power_ratio` | 공급 ÷ 수요, 최대 1. 수요가 없으면 1 |
+
+색은 계획의 3색 범례를 따른다. 수요가 있는데 충족률이 1보다 작으면 부족(충족률로 낮음~높음 그라데이션), 공급이 있으면 충분, 둘 다 없으면 미연결이다.
+
+사용자 확인 필요: 스크립트 값 안에서 `market ?= { add = "goods_supply_in_market(goods:tsin_electricity)" }` 형식이 값을 돌려주는지(바닐라 `byz_values.txt`가 `capital ?= { market ?= { ... } }` 범위 전환을 씀), 지점 범위에서 `market` 연결이 동작하는지.

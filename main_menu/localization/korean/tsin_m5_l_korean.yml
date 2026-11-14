@@ -52,3 +52,10 @@
  tsin_electric_lighting_maintenance: "조명망 운영"
  tsin_mechanized_electric_drive: "전동기"
  tsin_fertilizer_electrochemical: "전기화학 비료"
+
+ mapmode_tsin_electrification_name: "전력"
+ MAPMODE_TSIN_ELECTRIFICATION: "#T $mapmode_tsin_electrification_name$#!\n각 [locations|e]이 속한 [market|e]에서 $tsin_electricity$ 공급이 수요를 채우는지 표시합니다. 부족할수록 색이 옅어지며, 전력이 전혀 없는 시장은 미연결로 칠합니다."
+ TSIN_ELECTRIFICATION_MAPMODE_TT: "[ROOT.GetLocation.GetName]의 시장 전력 공급 [ROOT.ScriptValue('tsin_location_power_supply')|1], 수요 [ROOT.ScriptValue('tsin_location_power_demand')|1], 충족률 [ROOT.ScriptValue('tsin_location_power_ratio')|%0]."
+ LEGEND_KEY_TSIN_POWER_SUPPLIED: "전력 충분"
+ LEGEND_KEY_TSIN_POWER_SHORTAGE: "전력 부족"
+ LEGEND_KEY_TSIN_POWER_NONE: "전력망 미연결"
