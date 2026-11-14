@@ -458,3 +458,84 @@ tsin_economy.70 = {
 		}
 	}
 }
+
+# Rubber boom: turns tropical jungle locations into rubber gathering (tsin_rubber has no starting locations)
+tsin_economy.80 = {
+	type = country_event
+	title = tsin_economy.80.title
+	desc = tsin_economy.80.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1870
+		has_advance = tsin_industrial_capitalism_advance
+		NOT = { has_variable = tsin_rubber_boom_done }
+		any_owned_location = {
+			tsin_potential_rubber_location_trigger = yes
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_rubber_boom_done
+	}
+
+	# Grant concessions to rubber companies
+	option = {
+		name = tsin_economy.80.a
+		ordered_owned_location = {
+			limit = { tsin_potential_rubber_location_trigger = yes }
+			order_by = {
+				value = relative_raw_material_price
+				multiply = -1
+			}
+			max = 3
+			custom_tooltip = {
+				text = tsin_economy.80.convert_tt
+				change_raw_material = goods:tsin_rubber
+			}
+			add_location_modifier = { modifier = tsin_rubber_concession_terror years = modifier_duration_years_normal mode = add_and_extend }
+		}
+		add_country_modifier = { modifier = tsin_rubber_concessions years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Plant rubber under state supervision
+	option = {
+		name = tsin_economy.80.b
+		change_gold_effect = { scale = -2 }
+		ordered_owned_location = {
+			limit = { tsin_potential_rubber_location_trigger = yes }
+			order_by = {
+				value = relative_raw_material_price
+				multiply = -1
+			}
+			max = 1
+			custom_tooltip = {
+				text = tsin_economy.80.convert_tt
+				change_raw_material = goods:tsin_rubber
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave the forests alone
+	option = {
+		name = tsin_economy.80.c
+		ai_chance = {
+			factor = 3
+		}
+	}
+}

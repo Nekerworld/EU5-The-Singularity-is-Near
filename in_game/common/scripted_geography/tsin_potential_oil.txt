@@ -1,0 +1,43 @@
+﻿# Oil fields known or opened before 1900, for the tsin_prospect_for_oil decision.
+tsin_potential_oil = {
+	location = {
+		# Absheron
+		baku
+		qobustan
+		maraza
+
+		# Terek and Kuban
+		terek
+		maykop
+
+		# Wallachia
+		ploesti
+		targoviste
+		buzau
+		valenii_de_munte
+
+		# Galicia
+		drohobych
+		sambir
+		kolomyia
+
+		# Pennsylvania
+		tionesta
+		kittaning
+		allegheny
+
+		# Kanawha
+		kanawha
+
+		# Sumatra
+		palembang
+		jambi
+
+		# Burma
+		magway
+		salin
+
+		# Borneo
+		tenggarong
+	}
+}

@@ -23,3 +23,26 @@ tsin_explosives = {
 	default_market_price = 5
 	transport_cost = 1
 }
+
+# Raw goods (M3). No location starts with them: tsin_economy.80 turns jungle locations into rubber,
+# and the tsin_prospect_for_oil decision opens oil fields. Demand comes from age VII production methods.
+tsin_rubber = {
+	method = gathering
+	category = raw_material
+	color = goods_tsin_rubber
+	default_market_price = 4
+	transport_cost = 1
+
+	location_potential = {
+		vegetation = jungle
+		climate = tropical
+	}
+}
+
+tsin_oil = {
+	method = mining
+	category = raw_material
+	color = goods_tsin_oil
+	default_market_price = 4
+	transport_cost = 1.5
+}

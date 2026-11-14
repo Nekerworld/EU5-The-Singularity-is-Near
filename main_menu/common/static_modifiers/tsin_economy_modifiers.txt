@@ -127,3 +127,20 @@ tsin_foreign_engineers = {
 	research_speed_modifier = 0.05
 	global_mills_build_buildings_efficiency = 0.05
 }
+
+# tsin_economy.80 option a
+tsin_rubber_concessions = {
+	game_data = {
+		category = country
+	}
+	global_tsin_rubber_output_modifier = 0.25
+}
+
+# tsin_economy.80 option a, on each converted location
+tsin_rubber_concession_terror = {
+	game_data = {
+		category = location
+	}
+	local_unrest = 1
+	local_monthly_control = -0.01
+}

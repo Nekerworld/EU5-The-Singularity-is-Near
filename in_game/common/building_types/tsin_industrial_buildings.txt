@@ -1,6 +1,6 @@
 ﻿# Age VII industrial buildings.
 # Inputs are priced so that output value is about input cost * (1 + mills_profit_margin), as in vanilla mills.
-# Prices: iron 3, coal 2, tools 3, steel 5, copper 3, lumber 1.5, glass 3, cotton 3, wool 2.5, fiber_crops 2, dyes 4, tsin_engines 6.
+# Prices: iron 3, coal 2, tools 3, steel 5, copper 3, lumber 1.5, glass 3, cotton 3, wool 2.5, fiber_crops 2, dyes 4, tsin_engines 6, tsin_rubber 4, tsin_oil 4.
 
 # Gate E test building: two slots, each with alternative production methods; one method is advance-locked.
 tsin_machine_works = {
@@ -71,6 +71,19 @@ tsin_machine_works = {
 			icon = glass
 			copper = 0.2
 			glass = 0.25
+			produced = tsin_engines
+			output = 0.33
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 1.2 -> 0.33 engines (1.98); oil fields come from tsin_prospect_for_oil
+		tsin_machine_works_oil_lubrication = {
+			icon_type = goods
+			icon = tsin_oil
+			copper = 0.2
+			tsin_oil = 0.15
 			produced = tsin_engines
 			output = 0.33
 
@@ -152,6 +165,21 @@ tsin_mechanized_textile_mill = {
 			tsin_engines = 0.35
 			coal = 0.6
 			tools = 0.2
+			produced = cloth
+			output = 1.75
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 3.5 -> 1.75 cloth (5.25); rubber comes from tsin_economy.80
+		tsin_mechanized_rubber_belts = {
+			icon_type = goods
+			icon = tsin_rubber
+			tsin_engines = 0.3
+			coal = 0.5
+			tsin_rubber = 0.1
+			tools = 0.1
 			produced = cloth
 			output = 1.75
 

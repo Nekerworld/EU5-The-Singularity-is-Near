@@ -92,3 +92,17 @@
 - 기계 공장이 강철 가격 상승에 반응해 주철 틀로 돌아가는지(AI·자동 선택이 있는 경우)
 - 함선 건조 시 기관 수요가 시장에 잡히는지
 - 산업 장려 화면에 `tsin_machinery`가 제7시대 이후에만 보이는지
+
+## 고무와 석유 (M3, 선택)
+
+- 상품: `tsin_rubber`(채집, 가격 4, `location_potential`은 열대 밀림), `tsin_oil`(채굴, 가격 4, 운송비 1.5). 시작 시 어느 지역도 이 원자재를 갖지 않는다.
+- 채취 권한: `can_extract_tsin_rubber`는 `tsin_industrial_capitalism_advance`, `can_extract_tsin_oil`은 `tsin_machine_tools_advance`가 준다(바닐라 원자재도 `can_extract_X`가 있어야 RGO가 돈다).
+- 공급:
+  - 고무: 이벤트 `tsin_economy.80` 고무 붐이 열대 밀림 농촌 지역(`tsin_potential_rubber_location_trigger`)의 원자재를 `change_raw_material = goods:tsin_rubber`로 바꾼다. 특허권은 최대 3곳과 강제 노동 지점 수정자, 국가 감독은 1곳.
+  - 석유: 결정 `tsin_prospect_for_oil`이 바닐라 `prospect_for_coal`과 같은 방식으로 `scripted_geography:tsin_potential_oil`(바쿠, 왈라키아, 갈리치아, 펜실베이니아, 수마트라, 버마 등 19세기 유전 지역)의 한 곳을 유전으로 바꾼다. 비용은 바닐라 `coal_prospecting_cost`.
+- 수요: 주민 수요는 넣지 않았다(1337년부터 공급 없는 수요가 생기지 않게). 7시대 생산 방식으로만 쓴다.
+  - `tsin_machine_works` 둘째 칸 `tsin_machine_works_oil_lubrication`: 구리 0.2, 석유 0.15 → 기관 0.33.
+  - `tsin_mechanized_textile_mill` 둘째 칸 `tsin_mechanized_rubber_belts`: 기관 0.3, 석탄 0.5, 고무 0.1, 공구 0.1 → 직물 1.75.
+- 그림: 고무는 바닐라 `fiber_crops`, 석유는 `tar` 아이콘의 색조를 바꾼 임시 그림.
+
+사용자 확인 필요: `change_raw_material`이 상품의 `location_potential`과 어긋날 때의 동작, 수요가 생산 방식뿐일 때 고무·석유 가격이 안정되는지, 시추 결정 AI가 적절히 쓰는지.

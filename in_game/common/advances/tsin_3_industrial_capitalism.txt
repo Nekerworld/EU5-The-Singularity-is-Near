@@ -29,6 +29,7 @@ tsin_machine_tools_advance = {
 
 	global_tsin_engines_output_modifier = 0.2
 	global_tools_output_modifier = 0.15
+	can_extract_tsin_oil = yes
 
 	requires = tsin_industrial_capitalism_advance
 	ai_weight = { add = 25 }

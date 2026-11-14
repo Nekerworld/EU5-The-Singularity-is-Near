@@ -106,7 +106,7 @@ EXTRA = [
     ("illustrations/situation/colonial_revolution.dds", "illustrations/situation/tsin_scramble_for_colonies.dds", 60),
 ]
 
-for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330)):
+for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240)):
     EXTRA += [
         (f"icons/trade_goods/icon_goods_{_src}.dds", f"icons/trade_goods/icon_goods_{_good}.dds", _deg),
         (f"icons/trade_goods/illustrations/icon_goods_{_src}.dds", f"icons/trade_goods/illustrations/icon_goods_{_good}.dds", _deg),

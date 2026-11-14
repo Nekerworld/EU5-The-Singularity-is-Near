@@ -39,3 +39,10 @@ tsin_has_factories_trigger = {
 		tsin_location_has_factory_trigger = yes
 	}
 }
+# location scope: rural tropical jungle that can carry the tsin_rubber RGO (matches tsin_rubber location_potential)
+tsin_potential_rubber_location_trigger = {
+	is_city = no
+	vegetation = jungle
+	climate = tropical
+	NOT = { raw_material = goods:tsin_rubber }
+}
