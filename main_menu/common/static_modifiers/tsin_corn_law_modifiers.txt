@@ -1,0 +1,40 @@
+﻿# Corn laws (M3): one of the two is active at a time, set by parliament agendas in tsin_parliament_agendas.txt.
+
+tsin_corn_laws_protection = {
+	game_data = {
+		category = country
+	}
+	max_tariff = 0.05
+	nobles_estate_target_satisfaction = 0.025
+	burghers_estate_target_satisfaction = -0.025
+	non_rural_migration_attraction = -0.25
+}
+
+tsin_corn_laws_repealed = {
+	game_data = {
+		category = country
+	}
+	max_tariff = -0.05
+	burghers_estate_target_satisfaction = 0.025
+	nobles_estate_target_satisfaction = -0.025
+	non_rural_migration_attraction = 0.25
+	global_production_efficiency = 0.01
+}
+
+# tsin_corn_laws.3 bread riots
+tsin_bread_riots = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	peasants_estate_target_satisfaction = -0.1
+}
+
+# tsin_corn_laws.2 landowner compensation
+tsin_landowner_compensation = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	nobles_estate_target_satisfaction = 0.05
+}

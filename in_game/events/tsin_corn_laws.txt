@@ -1,0 +1,160 @@
+﻿namespace = tsin_corn_laws
+
+# Corn law chain (M3). .1 and .3 are flavor events from tsin_economy_yearly_pulse and spend the
+# yearly budget; .2 follows the parliament agenda pa_tsin_repeal_corn_laws.
+
+# Free-trade league agitates against grain duties
+tsin_corn_laws.1 = {
+	type = country_event
+	title = tsin_corn_laws.1.title
+	desc = tsin_corn_laws.1.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_country_modifier = tsin_corn_laws_repealed }
+		societal_value:mercantilism_vs_free_trade < 90
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+	}
+
+	# Back the league
+	option = {
+		name = tsin_corn_laws.1.a
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_right
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				societal_value:mercantilism_vs_free_trade > 0
+			}
+		}
+	}
+
+	# Ban the meetings
+	option = {
+		name = tsin_corn_laws.1.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				stability < 0
+			}
+		}
+	}
+
+	# Let the debate run its course
+	option = {
+		name = tsin_corn_laws.1.c
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_tiny_move_to_right
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Grain duties repealed
+tsin_corn_laws.2 = {
+	type = country_event
+	title = tsin_corn_laws.2.title
+	desc = tsin_corn_laws.2.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	# Compensate the landowners
+	option = {
+		name = tsin_corn_laws.2.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_landowner_compensation years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# The market will decide
+	option = {
+		name = tsin_corn_laws.2.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Bread riots under grain protection
+tsin_corn_laws.3 = {
+	type = country_event
+	title = tsin_corn_laws.3.title
+	desc = tsin_corn_laws.3.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_country_modifier = tsin_corn_laws_protection
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+	}
+
+	# Buy grain abroad
+	option = {
+		name = tsin_corn_laws.3.a
+		change_gold_effect = { scale = -2 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Restore order
+	option = {
+		name = tsin_corn_laws.3.b
+		add_country_modifier = { modifier = tsin_bread_riots years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Suspend the grain duties
+	option = {
+		name = tsin_corn_laws.3.c
+		remove_country_modifier = tsin_corn_laws_protection
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 2
+		}
+	}
+}

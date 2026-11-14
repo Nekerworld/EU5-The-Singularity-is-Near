@@ -1,0 +1,61 @@
+﻿# Age VII parliament agendas (M3 corn laws). Mirrors vanilla pa_move_towards_free_trade / mercantilism.
+# Exactly one of tsin_corn_laws_protection / tsin_corn_laws_repealed is active after the first vote.
+
+pa_tsin_repeal_corn_laws = {
+	estate = burghers_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_country_modifier = tsin_corn_laws_repealed }
+	}
+
+	on_accept = {
+		if = {
+			limit = { has_country_modifier = tsin_corn_laws_protection }
+			remove_country_modifier = tsin_corn_laws_protection
+		}
+		add_country_modifier = { modifier = tsin_corn_laws_repealed months = -1 }
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_right
+		}
+		trigger_event_non_silently = tsin_corn_laws.2
+	}
+
+	chance = {
+		value = 10
+		if = {
+			limit = { societal_value:mercantilism_vs_free_trade > 0 }
+			add = 10
+		}
+	}
+}
+
+pa_tsin_protect_grain = {
+	estate = nobles_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_country_modifier = tsin_corn_laws_protection }
+	}
+
+	on_accept = {
+		if = {
+			limit = { has_country_modifier = tsin_corn_laws_repealed }
+			remove_country_modifier = tsin_corn_laws_repealed
+		}
+		add_country_modifier = { modifier = tsin_corn_laws_protection months = -1 }
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_left
+		}
+	}
+
+	chance = {
+		value = 10
+		if = {
+			limit = { societal_value:mercantilism_vs_free_trade < 0 }
+			add = 10
+		}
+	}
+}
