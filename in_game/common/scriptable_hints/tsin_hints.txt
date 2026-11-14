@@ -39,3 +39,39 @@ hint_tsin_world_exhibition = {
 	}
 	sort_priority = 150
 }
+
+# Mechanic hints. Evaluated often, so only cheap country-level triggers.
+hint_tsin_electric_power = {
+	priority = {
+		has_advance = tsin_dynamo_advance
+		total_effective_building_levels:tsin_power_station < 1
+	}
+	hide = {
+		NOT = { has_advance = tsin_dynamo_advance }
+	}
+	sort_priority = 50
+	hint_tag = tsin_electric_power_concept
+}
+
+hint_tsin_unequal_treaty = {
+	priority = {
+		has_country_modifier = tsin_unequal_treaty
+	}
+	hide = {
+		NOT = { has_country_modifier = tsin_unequal_treaty }
+	}
+	sort_priority = 100
+	hint_tag = tsin_treaty_port_concept
+}
+
+hint_tsin_radical_movements = {
+	priority = {
+		has_variable = tsin_radicalism
+		var:tsin_radicalism >= 60
+	}
+	hide = {
+		NOT = { has_variable = tsin_radicalism }
+	}
+	sort_priority = 100
+	hint_tag = tsin_movements_concept
+}

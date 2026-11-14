@@ -1,0 +1,23 @@
+﻿# Encyclopedia entries for The Singularity is Near. Loc: game_concept_<key>, game_concept_<key>_desc (tsin_m6_l_*.yml).
+
+tsin_electric_power_concept = {
+	texture = "map_modes/tsin_electrification"
+	shown_in_loading_screen = yes
+}
+
+tsin_industrial_investment_concept = {
+	texture = "map_modes/tsin_industrial_investment"
+}
+
+tsin_movements_concept = {
+	texture = "map_modes/tsin_radicalism"
+	shown_in_loading_screen = yes
+}
+
+tsin_treaty_port_concept = {
+	texture = "location_icons/market_access"
+}
+
+tsin_industrial_age_situations = {
+	texture = "flat_icons/situations"
+}
