@@ -125,6 +125,8 @@ EXTRA = [
     ("icons/buildings/iron_foundry.dds", "icons/buildings/tsin_power_station.dds", 50),
     ("icons/buildings/lighthouse_of_alexandria.dds", "icons/buildings/tsin_electric_lighting.dds", 50),
     ("icons/map_modes/market_food_balance.dds", "icons/map_modes/tsin_electrification.dds", 50),
+    ("icons/situations/columbian_exchange.dds", "icons/situations/tsin_world_exhibition.dds", 180),
+    ("illustrations/situation/columbian_exchange.dds", "illustrations/situation/tsin_world_exhibition.dds", 180),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50)):

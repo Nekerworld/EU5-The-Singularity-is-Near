@@ -1,0 +1,40 @@
+﻿# World exhibition (M5). The decision marks the host and sets a global variable;
+# the situation tsin_world_exhibition starts from that variable, runs one year, then applies the results.
+
+tsin_hold_world_exhibition_decision = {
+	decision_category = government_decisions
+	image = "gfx/interface/illustrations/situation/tsin_world_exhibition.dds"
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_global_variable = tsin_world_exhibition_pending }
+		NOT = { has_global_variable = tsin_world_exhibition_cooldown }
+		NOT = { is_situation_active = situation:tsin_world_exhibition }
+	}
+
+	allow = {
+		at_war = no
+		gold >= tsin_gold_cost_4
+		capital ?= {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+		tsin_world_exhibition_leader_trigger = yes
+	}
+
+	ai_will_do = {
+		value = 30
+	}
+
+	option = {
+		name = tsin_hold_world_exhibition_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -4 }
+			add_country_modifier = { modifier = tsin_exhibition_hosting months = -1 }
+			set_global_variable = { name = tsin_world_exhibition_pending value = 1 }
+		}
+	}
+}

@@ -10,6 +10,7 @@
 | `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5 | 발명 플레이버 |
 | `tsin_abolition` | `in_game/events/tsin_abolition.txt` | M4 | 노예무역 금지, 해방 (예산 제외) |
 | `tsin_springtime` | `in_game/events/tsin_springtime.txt` | M4 | 국민의 봄 상황 (예산 제외) |
+| `tsin_exhibition` | `in_game/events/tsin_exhibition.txt` | M5 | 만국박람회 상황 (예산 제외) |
 | `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
 | `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
@@ -101,6 +102,8 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_springtime.1` | 바리케이드 (상황 시작) | 상황 대상국 | 헌법 / 진압 / 관망 (docs/situations.md) |
 | `tsin_springtime.2` | 수도의 시가전 | 상황 대상국, 월 약 3% | 협상(금 -2, 자유주의 -5) / 진압(안정도 -, 자유주의 +5) |
 | `tsin_springtime.10` | 봄의 끝 | 상황 종료 | 첫 선택에 따라 한 선택지만 보임 |
+| `tsin_exhibition.1` | 박람회 개막 | 만국박람회 시작, 개최국 | 기계관(생산 효율 +2%, 시민 만족) / 과학 궁전(연구 +5%, 최대 문해율 +2) / 국가의 영광(위신, 안정도) |
+| `tsin_exhibition.10` | 박람회 폐막 | 만국박람회 끝, 개최국 | 위신 큰 보너스 |
 | `tsin_hunger.1` | 들판의 병충해 (나라당 한 번) | 매년 2%, 평민 인구 60% 초과 | 3년 `tsin_crop_blight` |
 | `tsin_hunger.2` | 기근 (재난 시작) | - | 곡물 수입(금 -4) / 수출 지속(평민 불만, 민족주의 +15) / 공공 사업(금 -2, 안정도 -) |
 | `tsin_hunger.3` | 이민선 | 재난 중 | 떠나게 둠(대이민 감쇠) / 식민지 뱃삯(금 -2, 더 긴 대이민) |

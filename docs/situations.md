@@ -1,4 +1,4 @@
-# 모드 상황(situation)
+﻿# 모드 상황(situation)
 
 바닐라 상황의 제7시대 연속성은 `docs/continuity.md`에 있다. 이 문서는 모드가 새로 만든 상황을 다룬다.
 
@@ -74,3 +74,21 @@
 | 그림 | `peasants_war`의 색상만 바꾼 임시 그림 |
 
 사용자 확인 필요: 재난 패널이 `icons/disasters/tsin_great_hunger.dds`를 쓰는지, 이주 보정치가 실제로 인구 유출을 늘리는지, `any_owned_location`의 `count`와 `province = { is_starving }` 판정 비용이 월간 재난 검사에서 문제가 없는지.
+
+## 만국박람회 `tsin_world_exhibition` (M5)
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | 결정 `in_game/common/decisions/tsin_exhibition_decisions.txt`, 상황 `in_game/common/situations/tsin_world_exhibition.txt`, 이벤트 `in_game/events/tsin_exhibition.txt`, 보정치 `main_menu/common/static_modifiers/tsin_exhibition_modifiers.txt` |
+| 개최 결정 | `tsin_hold_world_exhibition_decision`: 제7시대 이후, 전쟁 중 아님, 금 `tsin_gold_cost_4`, 수도가 도시·대도시, `tsin_world_exhibition_leader_trigger`(연구한 기술 수가 자기보다 많은 나라가 8곳 미만). 효과: 금 -4, `tsin_exhibition_hosting`(상인 힘 +0.1), 전역 변수 `tsin_world_exhibition_pending` |
+| 시작 | 상황은 효과로 직접 시작할 수 없어서(바닐라에 `start_situation`이 없음) `can_start`가 대기 변수와 개최국 보정치를 보고, 월 확률 `monthly_spawn_chance_unique`(1)로 다음 달에 시작한다 |
+| 시작 효과 | 대기 변수 삭제. 개최국보다 `num_of_advances_researched`가 적은 모든 나라에 `tsin_exhibition_visitors`(연구 속도 +5%, 6년) = 기술 전파. 개최국에 `tsin_exhibition.1` |
+| 끝 | 1년 뒤. 개최국 보정치 삭제, `tsin_exhibition.10`(위신 +15). 전역 변수 `tsin_world_exhibition_cooldown` 5년 |
+| 반복 | 쿨다운이 끝나면 다른 나라가 다시 개최할 수 있다. 개최 조건이 기술 상위 8개국이라 선두국 사이에서 돌아간다 |
+
+사용자 확인 필요:
+- `monthly_spawn_chance_unique`로 결정 다음 달에 상황이 시작되는지. 시작되지 않으면 대기 변수가 남아 결정이 다시 뜨지 않으므로, 개발용 결정으로 변수를 지우고 확인한다.
+- 같은 상황이 끝난 뒤 다시 시작되는지(반복 개최).
+- 상황 GUI(`in_game/gui/panels/situation/tsin_world_exhibition.gui`)와 힌트가 열리는지.
+- `num_of_advances_researched < scope:tsin_exhibition_host.num_of_advances_researched` 비교가 동작하는지(바닐라 `steal_technology.txt`에 같은 형식이 있음).
+

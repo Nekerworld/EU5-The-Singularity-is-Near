@@ -29,3 +29,13 @@ hint_tsin_springtime_of_nations = {
 	}
 	sort_priority = 150
 }
+
+hint_tsin_world_exhibition = {
+	priority = {
+		can_see_situation = situation:tsin_world_exhibition
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_world_exhibition }
+	}
+	sort_priority = 150
+}

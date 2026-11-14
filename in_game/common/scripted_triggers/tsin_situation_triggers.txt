@@ -29,3 +29,13 @@ tsin_springtime_unrest_trigger = {
 		}
 	}
 }
+
+# Country scope. Among the eight countries with the most researched advances (ties count in favour).
+tsin_world_exhibition_leader_trigger = {
+	NOT = {
+		any_country = {
+			count >= 8
+			num_of_advances_researched > root.num_of_advances_researched
+		}
+	}
+}

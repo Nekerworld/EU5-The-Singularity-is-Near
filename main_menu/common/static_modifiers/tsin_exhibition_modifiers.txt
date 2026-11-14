@@ -1,0 +1,28 @@
+﻿tsin_exhibition_hosting = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.1
+}
+
+tsin_exhibition_visitors = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+}
+
+tsin_exhibition_machine_hall = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.02
+}
+
+tsin_exhibition_science_palace = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+	global_max_literacy = 2
+}

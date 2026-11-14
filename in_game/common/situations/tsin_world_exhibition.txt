@@ -1,0 +1,85 @@
+﻿# World exhibition (M5). Started by tsin_hold_world_exhibition_decision through the global variable
+# tsin_world_exhibition_pending. Lasts one year. At the opening every country with fewer researched advances
+# than the host gains research speed for 6 years (technology diffusion); at the end the host gains prestige.
+# A 5-year global cooldown follows, so the exhibition recurs with different hosts.
+
+tsin_world_exhibition = {
+	monthly_spawn_chance = monthly_spawn_chance_unique
+	hint_tag = hint_tsin_world_exhibition
+
+	can_start = {
+		has_global_variable = tsin_world_exhibition_pending
+		any_country = { has_country_modifier = tsin_exhibition_hosting }
+	}
+
+	visible = {
+		NOT = { country_type = pop }
+		NOT = { country_type = building }
+	}
+
+	outcome = {
+		name = "tsin_world_exhibition_closed"
+		trigger = {
+			situation:tsin_world_exhibition = { years_since_situation_start >= 1 }
+		}
+	}
+
+	on_start = {
+		remove_global_variable = tsin_world_exhibition_pending
+		random_country = {
+			limit = { has_country_modifier = tsin_exhibition_hosting }
+			save_scope_as = tsin_exhibition_host
+		}
+		scope:tsin_exhibition_host ?= {
+			every_country = {
+				limit = {
+					NOT = { this = scope:tsin_exhibition_host }
+					NOT = { country_type = pop }
+					NOT = { country_type = building }
+					num_of_advances_researched < scope:tsin_exhibition_host.num_of_advances_researched
+				}
+				add_country_modifier = { modifier = tsin_exhibition_visitors years = 6 mode = add_and_extend }
+			}
+			trigger_event_non_silently = tsin_exhibition.1
+		}
+	}
+
+	on_ended = {
+		set_global_variable = { name = tsin_world_exhibition_cooldown value = 1 years = 5 }
+		every_country = {
+			limit = { has_country_modifier = tsin_exhibition_hosting }
+			remove_country_modifier = tsin_exhibition_hosting
+			trigger_event_non_silently = tsin_exhibition.10
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_exhibition_hosting } }
+			custom_tooltip = tsin_world_exhibition_host_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_exhibition_hosting } }
+			value = define:NMapColors|MAP_COLOR_MAX
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_exhibition_visitors } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_EXHIBITION_HOST"
+		color = define:NMapColors|MAP_COLOR_MAX
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_EXHIBITION_VISITORS"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+}
