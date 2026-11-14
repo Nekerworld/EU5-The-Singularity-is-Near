@@ -17,6 +17,7 @@ tools/gen_age7_patches.py and writes it to a separate local mod whose files sort
   inject   DLC and playset INJECT blocks into objects replaced above, replayed afterwards
   age      playset injects of AI privilege limits into age 6, carried over to age 7
   text     TEXT_PATCHES: small edits of named playset objects (setting ranges that end before 1837)
+  gui      GUI_FIXES: winning .gui files that call data functions the game removed or renamed
   manual   tools/compat_manual/<profile>/{in_game,main_menu} copied over the generated files
 
 Each playset gets its own output mod (PROFILES), so two playsets never share one generated patch.
@@ -76,6 +77,17 @@ TEXT_PATCHES = [
     TextPatch("in_game/common/scripted_effects", "aamo_register_cmf_mod",
               r"(setting_id\s*=\s*end_year\b[^{}]*?max_value\s*=\s*)1837\b", r"\g<1>2337",
               "AAMO 종료 연도 설정 상한 1837 → 2337(기본값 1737과 사용자 설정은 그대로)"),
+]
+
+# Data functions removed or renamed by the game: (pattern, replacement, reason). Applied to every .gui file
+# that wins in the playset (main mod included); the fixed copy is written to the same path.
+GUI_FIXES = [
+    (r'visible\s*=\s*"\[UniqueContentItem\.IsReligiousOrderSetup\]"', "visible = no",
+     "1.4에서 없어진 UniqueContentItem.IsReligiousOrderSetup(종교 기사단 설정 카드 숨김)"),
+    (r"UniqueContentItem\.IsReligiousOrderSetup\b", "UniqueContentItem.IsCalling",
+     "1.4에서 없어진 UniqueContentItem.IsReligiousOrderSetup(Or 목록에서 중복 항목으로 대체)"),
+    (r"\bWillRunOutOfFoodStochpile\b", "WillRunOutOfFoodStockpile",
+     "바닐라에서 이름이 바뀐 Market.WillRunOutOfFoodStockpile"),
 ]
 
 
@@ -308,6 +320,29 @@ def age7_estate_injects(roots: list[Path], names: list[str]) -> tuple[list[tuple
     return out, notes
 
 
+def gui_fixes(roots: list[Path]) -> tuple[dict[str, str], list[str]]:
+    """{gui rel path: fixed text} for winning .gui files that call removed data functions."""
+    effective: dict[str, Path] = {}
+    for root in roots + [pdx.MOD_ROOT]:
+        for sub in GENERATED_DIRS:
+            for p in sorted((root / sub).rglob("*.gui")):
+                effective[p.relative_to(root).as_posix()] = p
+    out: dict[str, str] = {}
+    notes: list[str] = []
+    for rel, p in sorted(effective.items()):
+        text = pdx.read_text(p)
+        reasons = []
+        for pattern, repl, reason in GUI_FIXES:
+            text, n = re.subn(pattern, repl, text)
+            if n:
+                reasons.append(f"{reason} {n}곳")
+        if reasons:
+            out[rel] = text
+            owner = mod_name(next(r for r in roots + [pdx.MOD_ROOT] if p.is_relative_to(r)))
+            notes.append(f"- `{rel}` ← {owner}: {', '.join(reasons)}")
+    return out, notes
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--playset")
@@ -352,7 +387,7 @@ def main() -> int:
         report += [warning] if warning else []
         if not reasons:
             continue
-        op = "REPLACE" if key[0] == "in_game/events" else "TRY_REPLACE"
+        op = "" if key[0] == "in_game/events" else "TRY_REPLACE"
         replace_items[winner.rel].append(rewritten(winner, op))
         replace_notes[winner.rel].add(winner.mod_name)
         replaced.add(key)
@@ -385,6 +420,9 @@ def main() -> int:
     report += ["", "## 제7시대 계층 AI 특권 한도", ""]
     report += [f"- {src}: 제6시대 값을 제7시대에 이어 붙임" for src, _ in age_items] + [f"- {n}" for n in age_notes]
 
+    gui_items, gui_notes = gui_fixes(roots)
+    report += ["", "## GUI 데이터 함수 수정", ""] + (gui_notes or ["- 없음"])
+
     manual = MANUAL_ROOT / slug
     manual_files = sorted(p for sub in GENERATED_DIRS if (manual / sub).exists()
                           for p in (manual / sub).rglob("*") if p.is_file())
@@ -394,7 +432,8 @@ def main() -> int:
     n_inject = sum(len(v) for v in inject_items.values())
     summary = (f"교체 {len(replaced)}개(" + ", ".join(f"{k} {v}" for k, v in sorted(counts.items()))
                + f"), on_action 파일 {len(on_action_files)}개({sum(map(len, on_action_files.values()))}블록), "
-               f"주입 {n_inject}개(DLC {n_dlc}), 시대 계층 주입 {len(age_items)}개, 수동 파일 {len(manual_files)}개")
+               f"주입 {n_inject}개(DLC {n_dlc}), 시대 계층 주입 {len(age_items)}개, GUI 수정 {len(gui_items)}개, "
+               f"수동 파일 {len(manual_files)}개")
     report.insert(4, summary)
 
     if not args.dry_run:
@@ -412,6 +451,8 @@ def main() -> int:
             pdx.write_text_bom(compat_root / rel, note + file_override(patched[0].src, patched))
         if age_items:
             write_file(compat_root / AGE_FILE, [src for src, _ in age_items], [(t, [], [], {}) for _, t in age_items])
+        for rel, text in gui_items.items():
+            pdx.write_text_bom(compat_root / rel, text)
         for p in manual_files:
             dest = compat_root / p.relative_to(manual)
             dest.parent.mkdir(parents=True, exist_ok=True)

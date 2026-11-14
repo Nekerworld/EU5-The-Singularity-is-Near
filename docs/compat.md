@@ -60,7 +60,7 @@ python tools/compat_scan.py --mods 3620382806    # 창작마당 id 또는 모드
 3. **개인 플레이셋용 호환 패치 모드:** 아래 "플레이셋 호환 패치" 절. 다른 모드의 내용을 복사하므로 창작마당에는 올리지 않는다.
 4. **사용자 확인 필요:**
    - `TRY_REPLACE`보다 먼저 읽힌 `INJECT`가 실제로 사라지는지. Formable Nations Reworked를 켜고 해당 형성 국가의 징병법 정책 목록을 확인한다.
-   - 이벤트 `REPLACE:`의 실제 우선순위. Estates Combined를 켜고 `societal_values.2100` 등의 내용이 어느 쪽인지 확인한다.
+   - 이벤트 재정의의 실제 우선순위. 2026-11-14부터 이벤트는 `REPLACE:` 없이 같은 id로 다시 정의한다(`docs/overrides.md` 1절). Estates Combined를 켜고 `societal_values.2100` 등의 내용이 어느 쪽인지 확인한다.
 
 ## 플레이셋 호환 패치 (로컬 전용)
 
@@ -91,6 +91,8 @@ python tools/gen_playset_compat.py --playset "이름" --dry-run   # 보고서만
   - `TEXT_PATCHES`: 이름을 지정한 객체의 작은 수정. 지금은 AAMO CMF 설정 `end_year`의 상한 1837 → 2337 하나다. 기본값 1737과 이미 저장된 설정값은 바꾸지 않는다. 대상 문자열이 정확히 한 번 나오지 않으면 적용하지 않고 보고서에 경고를 남긴다.
 - on_action: 키별로 여러 파일이 병합되므로 키를 교체하지 않는다. 변환이 필요한 블록이 있는 파일은 같은 상대 경로로 파일 전체를 복사해 덮어쓰고, 그 블록만 바꾼다. 다른 파일의 같은 on_action 연결은 그대로 병합된다.
 - 주입 재적용: 교체한 객체에 들어가던 DLC와 다른 모드의 `INJECT`/`TRY_INJECT`를 교체 뒤에 다시 넣는다(DLC 먼저).
+- 이벤트: 접두어 없이 같은 id로 다시 정의한다(`REPLACE:`는 이벤트에서 새 id로 읽힌다).
+- GUI 데이터 함수(`GUI_FIXES`): 플레이셋에서 이기는 `.gui` 파일 가운데 게임이 없애거나 이름을 바꾼 데이터 함수를 부르는 파일을 같은 경로로 복사해 고친다. 지금은 Community Mod Framework 로비 화면의 `UniqueContentItem.IsReligiousOrderSetup`(1.4에서 없어짐)과 More economic data `outliner_entries.gui`의 `WillRunOutOfFoodStochpile`(바닐라 `WillRunOutOfFoodStockpile`) 두 가지다. 원본은 저장소에 넣지 않고 생성할 때마다 읽는다.
 - 시대 계층 한도: 플레이셋 모드가 `age_6_revolutions`에 주입한 `max/min_ai_privilege_per_estate` 가운데 `tsin_age_7.txt`에 없는 계층을 `TRY_INJECT:age_7_industrialization`으로 옮긴다(`in_game/common/age/zzzzz_tsin_compat_age7_estates.txt`). 그 밖의 시대 키는 보고서에 수동 검토로 남긴다.
 - 건드리지 않는 것:
   - 본 모드가 의도적으로 바꾸는 객체(손으로 쓴 덮어쓰기, `tsin_` 객체)
