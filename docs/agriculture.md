@@ -12,7 +12,7 @@
 - 그래서 월간 식량 보정치(`local_/global_monthly_food_modifier`)와 식량 용량(`global_food_capacity_modifier`)이 곧 인구 증가 보정이 된다. 모드는 이 define을 바꾸지 않는다.
 - 식량 부패 `global_food_decay`는 바닐라 국가 기본값이 0.005이다(`auto_modifiers/country.txt`). 통조림 −0.002, 냉동 운송 −0.001로 합계 60%를 줄인다.
 
-## 기술 줄기 `tsin_8_agricultural_revolution.txt`
+## 기술 줄기 `tsin_08_agricultural_revolution.txt`
 
 | 기술 | 시기 | 선행 | 효과 |
 |---|---|---|---|

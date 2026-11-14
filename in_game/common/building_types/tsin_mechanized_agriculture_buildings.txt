@@ -1,6 +1,7 @@
 ﻿# Age VII agricultural revolution (0.7). One good per building, tech-tier production methods only.
 # Prices: iron 3, steel 5, lumber 1.5, tools 3, coal 2, stone 1, tsin_engines 6, tsin_electricity 3,
 # tsin_fertilizer 2.5, tsin_farm_machinery 5. Mill outputs = input cost * 1.35 (mills_profit_margin).
+# Must sort after tsin_chemical_buildings.txt: `obsolete` only finds buildings read earlier.
 
 # New slot: the only maker of tsin_farm_machinery. Tiers: iron (base) -> steel -> steam traction.
 tsin_farm_machinery_works = {

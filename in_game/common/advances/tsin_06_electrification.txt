@@ -1,6 +1,6 @@
 ﻿############################
 # age_7_industrialization - electrification tree (M5)
-# Root: tsin_electrification_advance (tsin_0_age_of_industrialization.txt).
+# Root: tsin_electrification_advance (tsin_00_age_of_industrialization.txt).
 # Electricity is a market good (docs/gate_g.md): power stations make it, electric production methods use it.
 ############################
 

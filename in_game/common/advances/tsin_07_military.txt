@@ -1,6 +1,6 @@
 ﻿############################
 # age_7_industrialization - military tree (M6)
-# Root: tsin_reserve_system_advance (tsin_1_common_unlocks.txt). Units: unit_types/tsin_age7_units.txt.
+# Root: tsin_reserve_system_advance (tsin_01_common_unlocks.txt). Units: unit_types/tsin_age7_units.txt.
 ############################
 
 # Land

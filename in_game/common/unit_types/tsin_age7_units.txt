@@ -1,4 +1,4 @@
-﻿# Age VII buildable units (M6), unlocked by tsin_7_military.txt. Built on the age 7 templates in tsin_age_templates.txt.
+﻿# Age VII buildable units (M6), unlocked by tsin_07_military.txt. Built on the age 7 templates in tsin_00_age_templates.txt.
 # Illustrations fall back to the age 6 generic art (in_game/gfx/unit_illustrations, min_age tiers).
 # Stats after copy_from are added to the template (vanilla n_ship_of_the_line: movement_speed = -1).
 

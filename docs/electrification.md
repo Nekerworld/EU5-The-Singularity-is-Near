@@ -20,7 +20,7 @@
 
 ## 기술 8개
 
-`in_game/common/advances/tsin_6_electrification.txt`. 뿌리는 `tsin_electrification_advance`(시대관 수용 필요)다.
+`in_game/common/advances/tsin_06_electrification.txt`. 뿌리는 `tsin_electrification_advance`(시대관 수용 필요)다.
 
 | 기술 | 선행 | 효과 |
 |---|---|---|

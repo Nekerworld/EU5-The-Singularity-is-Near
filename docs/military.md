@@ -2,7 +2,7 @@
 
 ## 기술 9개
 
-`in_game/common/advances/tsin_7_military.txt`. 뿌리는 공통 해금 `tsin_reserve_system_advance`(예비군 제도)다. 0.7부터 `for = mil`을 지웠다. 바닐라처럼 `for`는 특화 선택지에만 쓰고, 유닛 해금은 행정·외교 특화 나라도 연구할 수 있다(`docs/tech_tree_age7.md`). 0.7에서 늘어난 기술과 유닛은 아래 "0.7 추가" 절에 있다.
+`in_game/common/advances/tsin_07_military.txt`. 뿌리는 공통 해금 `tsin_reserve_system_advance`(예비군 제도)다. 0.7부터 `for = mil`을 지웠다. 바닐라처럼 `for`는 특화 선택지에만 쓰고, 유닛 해금은 행정·외교 특화 나라도 연구할 수 있다(`docs/tech_tree_age7.md`). 0.7에서 늘어난 기술과 유닛은 아래 "0.7 추가" 절에 있다.
 
 | 기술 | 선행 | 효과 |
 |---|---|---|
@@ -38,7 +38,7 @@
 
 ## 유닛
 
-`in_game/common/unit_types/tsin_age7_units.txt`. 제7시대 템플릿(`tsin_age_templates.txt`)을 `copy_from`으로 받는다. 바닐라 `n_ship_of_the_line`(`movement_speed = -1`, `hull_size = 20`)처럼 `copy_from` 뒤의 능력치는 템플릿에 더하는 값으로 썼다.
+`in_game/common/unit_types/tsin_age7_units.txt`. 제7시대 템플릿(`tsin_00_age_templates.txt`)을 `copy_from`으로 받는다. 바닐라 `n_ship_of_the_line`(`movement_speed = -1`, `hull_size = 20`)처럼 `copy_from` 뒤의 능력치는 템플릿에 더하는 값으로 썼다.
 
 | 유닛 | 템플릿 | 템플릿 대비 | 물자 |
 |---|---|---|---|

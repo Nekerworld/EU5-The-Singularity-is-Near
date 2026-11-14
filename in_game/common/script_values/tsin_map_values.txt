@@ -196,7 +196,7 @@ tsin_location_gdp_pc_factor = {
 	}
 }
 
-# Owner's agricultural revolution stage: advances of tsin_8_agricultural_revolution.txt, 0..7 (tsin_agriculture).
+# Owner's agricultural revolution stage: advances of tsin_08_agricultural_revolution.txt, 0..7 (tsin_agriculture).
 tsin_location_owner_agriculture_stage = {
 	value = 0
 	if = {

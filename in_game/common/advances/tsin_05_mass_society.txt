@@ -1,6 +1,6 @@
 ﻿############################
 # age_7_industrialization - mass society tree (M4)
-# Root: tsin_mass_society_advance (tsin_0_age_of_industrialization.txt).
+# Root: tsin_mass_society_advance (tsin_00_age_of_industrialization.txt).
 # Laws are only unlocked here; enacting them is left to parliament and the estates.
 ############################
 

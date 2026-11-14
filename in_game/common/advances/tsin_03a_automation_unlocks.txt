@@ -1,49 +1,10 @@
 ﻿############################
-# age_7_industrialization - building and production method unlocks
+# age_7_industrialization - 0.7 automation upgrades of the vanilla mills
+# After tsin_03_industrial_capitalism.txt: tsin_interchangeable_parts_advance requires tsin_machine_tools_advance,
+# and a requires to an advance in a later file is dropped.
 ############################
 
-tsin_machine_works_advance = {
-	age = age_7_industrialization
-	research_cost = -0.75
-
-	unlock_building = tsin_machine_works
-
-	requires = tsin_steam_age_advance
-	ai_weight = { add = 25 }
-}
-
-tsin_steel_frame_engines_advance = {
-	age = age_7_industrialization
-	icon = industrialization_advance
-	research_cost = -0.75
-
-	unlock_production_method = tsin_machine_works_steel_frame
-
-	requires = tsin_machine_works_advance
-	ai_weight = { add = 25 }
-}
-
-tsin_mechanized_textile_mill_advance = {
-	age = age_7_industrialization
-	research_cost = -0.75
-
-	unlock_building = tsin_mechanized_textile_mill
-
-	requires = tsin_machine_works_advance
-	ai_weight = { add = 25 }
-}
-
-tsin_steam_sawmill_advance = {
-	age = age_7_industrialization
-	icon = lumber_improvements_absolutism
-
-	unlock_building = tsin_steam_sawmill
-
-	requires = tsin_machine_works_advance
-	ai_weight = { add = 20 }
-}
-
-# 0.7 automation upgrades of the vanilla mills (tsin_automation_buildings.txt); electric tiers come from tsin_electric_motor_advance.
+# Automation upgrades (tsin_automation_buildings.txt); electric tiers come from tsin_electric_motor_advance.
 tsin_interchangeable_parts_advance = {
 	age = age_7_industrialization
 	icon = slitting_mills

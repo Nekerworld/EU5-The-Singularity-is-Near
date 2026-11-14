@@ -1,6 +1,6 @@
 # 대중사회 (M4)
 
-## 기술 (`in_game/common/advances/tsin_5_mass_society.txt`)
+## 기술 (`in_game/common/advances/tsin_05_mass_society.txt`)
 
 뿌리는 `tsin_mass_society_advance`(대중사회 시대관 수용 필요). 기술은 법률을 열기만 하고, 시행은 의회와 계층에 맡긴다.
 

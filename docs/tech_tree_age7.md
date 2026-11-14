@@ -15,18 +15,22 @@
 `for =`는 선택지 파일에서만 쓴다. 유닛 해금에는 `for`가 없어 모든 나라가 연구한다.
 
 ## 2. 이 모드의 구성 (0.6 → 0.7)
+
+같은 폴더의 파일은 이름순으로 읽히고, 뒤 파일의 기술을 가리키는 `requires`는 "Failed to read key reference"로 버려진다. 그래서 번호를 두 자리로 맞췄다(`tsin_10`이 `tsin_05`보다 뒤). 건물 `obsolete`, 유닛 `copy_from`도 같다.
+
 | 파일 | 0.6 | 0.7 | 내용 |
 |---|---|---|---|
-| `tsin_0_age_of_industrialization.txt` | 4 | 4 | 뿌리: 증기 시대(무료), 제도 3개 |
-| `tsin_1_common_unlocks.txt` | 3 | 3 | 예비군 제도(군사 트리 뿌리), 요새·보급 한도 |
-| `tsin_2_building_unlocks.txt` | 3 | 8 | 건물·업그레이드·생산 방식 해금 |
-| `tsin_3_industrial_capitalism.txt` | 9 | 17 | 산업자본주의 줄기 |
-| `tsin_4_choices.txt` | 30 | 30 | 특화 선택지(전부 열기, 아래 3절) |
-| `tsin_5_mass_society.txt` | 8 | 18 | 대중사회 줄기, 고등교육 3개, 주거·가스 조명 |
-| `tsin_6_electrification.txt` | 8 | 11 | 전기화 줄기 |
-| `tsin_7_military.txt` | 9 | 29 | 군사 일반 10개와 신규 유닛 10종 |
-| `tsin_8_agricultural_revolution.txt` | 0 | 8 | 농업 혁명 |
-| `tsin_9_general.txt` | 0 | 16 | 무료 트리 행정·외교 일반 |
+| `tsin_00_age_of_industrialization.txt` | 4 | 4 | 뿌리: 증기 시대(무료), 제도 3개 |
+| `tsin_01_common_unlocks.txt` | 3 | 3 | 예비군 제도(군사 트리 뿌리), 요새·보급 한도 |
+| `tsin_02_building_unlocks.txt` | 3 | 4 | 건물·업그레이드·생산 방식 해금 |
+| `tsin_03_industrial_capitalism.txt` | 9 | 17 | 산업자본주의 줄기 |
+| `tsin_03a_automation_unlocks.txt` | 0 | 4 | 바닐라 공방 자동화 개축(`tsin_machine_tools_advance` 뒤라 산업자본주의 파일 다음에 읽혀야 함) |
+| `tsin_04_choices.txt` | 30 | 30 | 특화 선택지(전부 열기, 아래 3절) |
+| `tsin_05_mass_society.txt` | 8 | 18 | 대중사회 줄기, 고등교육 3개, 주거·가스 조명 |
+| `tsin_06_electrification.txt` | 8 | 11 | 전기화 줄기 |
+| `tsin_07_military.txt` | 9 | 29 | 군사 일반 10개와 신규 유닛 10종 |
+| `tsin_08_agricultural_revolution.txt` | 0 | 8 | 농업 혁명 |
+| `tsin_09_general.txt` | 0 | 16 | 무료 트리 행정·외교 일반 |
 | `tsin_10_government_religion.txt` | 0 | 17 | 정부 유형 4, 종교 13 |
 | **합계** | **74** | **161** | 실제 개수는 `python tools/audit.py`가 센다 |
 

@@ -45,8 +45,8 @@
 | 시대 시작 이벤트 | 바닐라 `ages_of_eu.1`이 모든 시대 공통이다(`on_new_age`). 행정·외교·군사 선호 선택이 그대로 뜬다. 이 모드는 안내 이벤트 `tsin_system.2`만 덧붙인다 | `in_game/events/tsin_system.txt` |
 | 패권국 | 바닐라 패권국 5종에는 시대 조건이 없다. 시대 블록의 `hegemons_allowed = yes`로 제7시대에도 유지 | `in_game/common/age/tsin_age_7.txt` |
 | 승리 카드 | 시대 블록 `victory_card`에 제6시대와 같은 구조로 지정 | 같은 파일 |
-| 시대 선택 발전 | 바닐라 `4_choices_*`처럼 행정·외교·군사 10개씩, 총 30개. 효과 키와 크기는 바닐라 선택 발전에서 쓰는 것만 골랐다 | `in_game/common/advances/tsin_4_choices.txt` |
-| 공통 해금 골격 | 예비군 제도(징집군 2종 해금), 요새 한도, 보급 한도. 모두 `tsin_steam_age_advance` 뒤에 연결 | `in_game/common/advances/tsin_1_common_unlocks.txt` |
+| 시대 선택 발전 | 바닐라 `4_choices_*`처럼 행정·외교·군사 10개씩, 총 30개. 효과 키와 크기는 바닐라 선택 발전에서 쓰는 것만 골랐다 | `in_game/common/advances/tsin_04_choices.txt` |
+| 공통 해금 골격 | 예비군 제도(징집군 2종 해금), 요새 한도, 보급 한도. 모두 `tsin_steam_age_advance` 뒤에 연결 | `in_game/common/advances/tsin_01_common_unlocks.txt` |
 | 실제 유닛 해금 | 제7시대 유닛 템플릿만 있고 실제 유닛은 M6(`m6-military`)에서 추가한다. 그 전까지 제7시대 군대는 제6시대 유닛을 쓴다 | — |
 
 ## 덮어쓰기 위험

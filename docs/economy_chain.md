@@ -20,9 +20,9 @@
 | 소비(제조업 1종) | `tsin_mechanized_textile_mill` | 같은 파일 |
 | 함선 수요 | `tsin_*_7_construction/repair`에 기관 추가 | `in_game/common/goods_demand/tsin_navy_demands.txt` |
 | 건설 수요 | `tsin_factory_construction` (도구 0.6, 석조 3.5, 강철 0.5, 기관 0.2) | `in_game/common/goods_demand/tsin_construction_demands.txt` |
-| 소비 수요 | `tsin_mass_society_advance`에 `global_cloth_pop_demand = 0.1` | `in_game/common/advances/tsin_0_age_of_industrialization.txt` |
+| 소비 수요 | `tsin_mass_society_advance`에 `global_cloth_pop_demand = 0.1` | `in_game/common/advances/tsin_00_age_of_industrialization.txt` |
 | 산업 장려 | `tsin_machinery` (기관) | `in_game/common/industry_types/tsin_industries.txt` |
-| 해금 | `tsin_machine_works_advance` → `tsin_steel_frame_engines_advance`, `tsin_mechanized_textile_mill_advance` | `in_game/common/advances/tsin_2_building_unlocks.txt` |
+| 해금 | `tsin_machine_works_advance` → `tsin_steel_frame_engines_advance`, `tsin_mechanized_textile_mill_advance` | `in_game/common/advances/tsin_02_building_unlocks.txt` |
 
 ## goods_demand 연결 방식
 
@@ -58,7 +58,7 @@
 | 상품별 보정치 | `python tools/goods_modifiers.py` 인자 없이 실행하면 모드 상품 전체를 다시 생성 | `tsin_goods_modifier_types.txt`, `tsin_goods_modifier_icons.txt` |
 | 생산 | `tsin_fertilizer_plant`, `tsin_explosives_plant` (공장, 슬롯 1개에 방식 2개) | `in_game/common/building_types/tsin_chemical_buildings.txt` |
 | 소비 | `tsin_fertilized_fields`, `tsin_blasting_works` (바닐라 `windmill`·`local_smelters`와 같은 `rgo_enhancement_category`, 최대 1레벨) | 같은 파일 |
-| 해금 | `tsin_improved_fertilizer_advance` → `tsin_dynamite_advance` | `in_game/common/advances/tsin_3_industrial_capitalism.txt` |
+| 해금 | `tsin_improved_fertilizer_advance` → `tsin_dynamite_advance` | `in_game/common/advances/tsin_03_industrial_capitalism.txt` |
 
 바닐라 RGO는 투입재가 없으므로, 농업·광업과의 연결은 바닐라 풍차·현지 제련소 방식을 따랐다. 유지 방식이 비료·폭약을 소비하고, 건물 보정치가 원자재 산출을 올린다.
 
@@ -77,7 +77,7 @@
 
 | 객체 | 내용 | 파일 |
 |---|---|---|
-| `tsin_railway_network_advance` | `railroad_advance`와 산업자본주의 뿌리 기술 필요. 철도역 해금, 철도 건설비 -10% | `tsin_3_industrial_capitalism.txt` |
+| `tsin_railway_network_advance` | `railroad_advance`와 산업자본주의 뿌리 기술 필요. 철도역 해금, 철도 건설비 -10% | `tsin_03_industrial_capitalism.txt` |
 | `tsin_steel_rolling_stock_advance` | 철도 건설비 -20%, 도로 건설 시간 -20% | 같은 파일 |
 | `tsin_railway_station` | 수도 또는 수도와 철도(`has_road_of_type_to`)로 이어진 도시. `local_market_access` +10%. 유지: 석탄 0.1, 도구 0.05, 기관 0.03. 연결이 끊기면 철거(바닐라 `local_governor`의 `remove_if` 방식) | `in_game/common/building_types/tsin_railway_buildings.txt` |
 | 철도 건설·유지 수요 | 바닐라 값에 석탄 0.5·도구 0.25(건설), 석탄 0.01(유지) 추가. 제6시대에도 지을 수 있도록 제7시대 상품은 넣지 않았다 | `in_game/common/goods_demand/tsin_railroad_demands.txt` (`docs/overrides.md`) |
@@ -98,7 +98,7 @@
 - 증기 단계의 동력: 기관 0.15, 석탄 0.5. 전동기 단계의 동력: 전력 0.8, 기관 0.05. 전동기 단계는 모두 `tsin_electric_motor_advance`가 연다.
 - 산출 1단위당 원료는 바닐라보다 7~34% 적다(종이가 가장 크게 준다).
 - 자동화 공장은 `tsin_location_automated_mill_levels`로 묶여 공장 일자리(`tsin_location_industrial_jobs`)와 산업화 지도 모드에 들어간다.
-- 정의: `in_game/common/building_types/tsin_automation_buildings.txt`. 해금 기술: `tsin_2_building_unlocks.txt`.
+- 정의: `in_game/common/building_types/tsin_automation_buildings.txt`. 해금 기술: `tsin_03a_automation_unlocks.txt`.
 
 ### 시장 접근도 상한 `tsin_automation_max_level`
 
