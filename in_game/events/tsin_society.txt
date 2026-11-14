@@ -106,7 +106,10 @@ tsin_society.20 = {
 	# Break the strike
 	option = {
 		name = tsin_society.20.b
-		scope:tsin_strike_location = { set_variable = { name = tsin_labor_unrest value = 3 years = 5 } }
+		scope:tsin_strike_location = {
+			set_variable = { name = tsin_labor_unrest value = 3 years = 5 }
+			set_variable = { name = tsin_strike_suppressed value = yes years = 10 }
+		}
 		add_country_modifier = { modifier = tsin_strike_broken years = modifier_duration_years_short mode = add_and_extend }
 		change_variable = { name = tsin_labor_unionism add = 10 }
 		change_variable = { name = tsin_socialism add = 5 }
@@ -204,7 +207,7 @@ tsin_society.40 = {
 	# Take the wind out of the socialists' sails
 	option = {
 		name = tsin_society.40.a
-		add_policy = policy:tsin_social_insurance_policy
+		tsin_table_bill_effect = { POLICY = policy:tsin_social_insurance_policy BONUS = 0.15 }
 		change_variable = { name = tsin_socialism subtract = 20 }
 		ai_chance = {
 			factor = 10
@@ -248,7 +251,7 @@ tsin_society.50 = {
 	# Pass a factory act
 	option = {
 		name = tsin_society.50.a
-		add_policy = policy:tsin_factory_acts_policy
+		tsin_table_bill_effect = { POLICY = policy:tsin_factory_acts_policy BONUS = 0.15 }
 		change_societal_value = {
 			type = spiritualist_vs_humanist
 			value = societal_value_minor_move_to_right
@@ -368,6 +371,586 @@ tsin_society.70 = {
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
 		ai_chance = {
 			factor = 7
+		}
+	}
+}
+
+# A factory accident
+tsin_society.80 = {
+	type = country_event
+	title = tsin_society.80.title
+	desc = tsin_society.80.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_variable = tsin_factory_share
+		var:tsin_factory_share >= 0.03
+		NOT = { has_variable = tsin_society_accident_done }
+		any_owned_location = {
+			has_variable = tsin_labor_conditions
+			var:tsin_labor_conditions < 0.5
+			NOT = { has_variable = tsin_recent_accident }
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_society_accident_done value = yes years = 10 }
+		random_owned_location = {
+			limit = {
+				has_variable = tsin_labor_conditions
+				var:tsin_labor_conditions < 0.5
+				NOT = { has_variable = tsin_recent_accident }
+			}
+			save_scope_as = tsin_accident_location
+			set_variable = { name = tsin_recent_accident value = yes years = 5 }
+		}
+	}
+
+	# Compensate the families
+	option = {
+		name = tsin_society.80.a
+		change_gold_effect = { scale = -2 }
+		tsin_change_labor_grievance_effect = { VALUE = -5 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Open a public inquiry
+	option = {
+		name = tsin_society.80.b
+		trigger = { has_advance = tsin_labor_movement_advance }
+		scope:tsin_accident_location = { remove_variable = tsin_recent_accident }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		tsin_change_labor_grievance_effect = { VALUE = -3 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# The workers were careless
+	option = {
+		name = tsin_society.80.c
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		change_variable = { name = tsin_labor_unionism add = 3 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# A socialist reading circle
+tsin_society.90 = {
+	type = country_event
+	title = tsin_society.90.title
+	desc = tsin_society.90.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_variable = tsin_socialist_cells
+		var:tsin_socialist_cells >= 1
+		NOT = { has_variable = tsin_society_circle_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_society_circle_done value = yes years = 10 }
+		random_owned_location = {
+			limit = { has_variable = tsin_socialist_cell }
+			save_scope_as = tsin_cell_location
+		}
+	}
+
+	# Raid the circle
+	option = {
+		name = tsin_society.90.a
+		scope:tsin_cell_location = {
+			remove_variable = tsin_socialist_cell
+			set_variable = { name = tsin_strike_suppressed value = yes years = 10 }
+		}
+		change_variable = { name = tsin_socialism add = 3 }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Let them read
+	option = {
+		name = tsin_society.90.b
+		change_variable = { name = tsin_socialism add = 5 }
+		change_societal_value = {
+			type = traditionalist_vs_innovative
+			value = societal_value_minor_move_to_right
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Draw them into the unions
+	option = {
+		name = tsin_society.90.c
+		trigger = { has_estate_privilege = estate_privilege:tsin_union_recognition }
+		change_variable = { name = tsin_labor_unionism add = 5 }
+		change_variable = { name = tsin_socialism subtract = 3 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A May Day demonstration
+tsin_society.100 = {
+	type = country_event
+	title = tsin_society.100.title
+	desc = tsin_society.100.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1886
+		has_variable = tsin_labor_grievance
+		var:tsin_labor_grievance >= 50
+		NOT = { has_variable = tsin_society_may_day_done }
+		any_owned_location = { tsin_location_has_factory_trigger = yes }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_society_may_day_done value = yes years = 15 }
+		random_owned_location = {
+			limit = { tsin_location_has_factory_trigger = yes }
+			save_scope_as = tsin_demonstration_location
+		}
+	}
+
+	# Promise shorter hours
+	option = {
+		name = tsin_society.100.a
+		tsin_change_labor_grievance_effect = { VALUE = -10 }
+		change_variable = { name = tsin_labor_unionism add = 5 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Disperse the crowd
+	option = {
+		name = tsin_society.100.b
+		scope:tsin_demonstration_location = {
+			set_variable = { name = tsin_strike_suppressed value = yes years = 10 }
+		}
+		add_stability = stability_weak_penalty
+		change_variable = { name = tsin_socialism add = 8 }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Let them march
+	option = {
+		name = tsin_society.100.c
+		change_variable = { name = tsin_socialism add = 3 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The International Workingmen's Association (once per world; feeds the age VIII handoff)
+tsin_society.110 = {
+	type = country_event
+	title = tsin_society.110.title
+	desc = tsin_society.110.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1864
+		NOT = { has_global_variable = tsin_first_international_founded }
+		has_variable = tsin_socialism
+		var:tsin_socialism >= 30
+		any_owned_location = { tsin_location_has_factory_trigger = yes }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_global_variable = tsin_first_international_founded
+	}
+
+	# Ban the association
+	option = {
+		name = tsin_society.110.a
+		change_variable = { name = tsin_socialism add = 3 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Tolerate it as a debating club
+	option = {
+		name = tsin_society.110.b
+		change_variable = { name = tsin_socialism add = 8 }
+		change_variable = { name = tsin_labor_unionism add = 3 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# An anarchist assassination
+tsin_society.120 = {
+	type = country_event
+	title = tsin_society.120.title
+	desc = tsin_society.120.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1881
+		NOT = { has_variable = tsin_society_assassination_done }
+		has_variable = tsin_labor_grievance
+		var:tsin_labor_grievance >= 60
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_society_assassination_done value = yes years = 20 }
+	}
+
+	# Emergency laws against the anarchists
+	option = {
+		name = tsin_society.120.a
+		add_country_modifier = { modifier = tsin_anti_anarchist_laws years = 10 }
+		change_variable = { name = tsin_socialism subtract = 5 }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Mourn, but do not change the law
+	option = {
+		name = tsin_society.120.b
+		add_stability = stability_weak_penalty
+		change_variable = { name = tsin_liberalism add = 3 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# A commune in the capital after a lost war: a rare local uprising, never a new regime
+tsin_society.125 = {
+	type = country_event
+	title = tsin_society.125.title
+	desc = tsin_society.125.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1860
+		at_war = no
+		war_exhaustion >= 5
+		NOT = { has_variable = tsin_commune_uprising_happened }
+		has_variable = tsin_socialism
+		var:tsin_socialism >= 40
+		capital ?= {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_commune_uprising_happened
+		capital = { save_scope_as = tsin_commune_location }
+	}
+
+	# Storm the barricades
+	option = {
+		name = tsin_society.125.a
+		scope:tsin_commune_location = {
+			add_location_modifier = { modifier = tsin_bloody_week years = 10 mode = add_and_extend }
+		}
+		change_variable = { name = tsin_socialism subtract = 10 }
+		tsin_change_labor_grievance_effect = { VALUE = 15 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Grant the city self-government
+	option = {
+		name = tsin_society.125.b
+		scope:tsin_commune_location = {
+			add_location_modifier = { modifier = tsin_municipal_commune years = 10 mode = add_and_extend }
+		}
+		change_variable = { name = tsin_socialism add = 5 }
+		change_variable = { name = tsin_liberalism add = 5 }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# City life (0.7, docs/event_framework.md). Once per country, after the matching advance.
+
+# The Great Stink: the river through the capital smells too foul for parliament to sit
+tsin_society.130 = {
+	type = country_event
+	title = tsin_society.130.title
+	desc = tsin_society.130.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_urban_planning_advance
+		NOT = { has_variable = tsin_society_great_stink_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_society_great_stink_done
+	}
+
+	# Intercepting sewers along the embankment
+	option = {
+		name = tsin_society.130.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_intercepting_sewers years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Soak the curtains in lime and wait for rain
+	option = {
+		name = tsin_society.130.b
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Public parks: the lungs of the city
+tsin_society.140 = {
+	type = country_event
+	title = tsin_society.140.title
+	desc = tsin_society.140.desc
+	outcome = positive
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_municipal_charters_advance
+		NOT = { has_variable = tsin_society_parks_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_society_parks_done
+	}
+
+	# Lay out a people's park
+	option = {
+		name = tsin_society.140.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_public_parks years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Sell the land to the builders
+	option = {
+		name = tsin_society.140.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Night schools for working men
+tsin_society.150 = {
+	type = country_event
+	title = tsin_society.150.title
+	desc = tsin_society.150.desc
+	outcome = positive
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_vocational_education_advance
+		tsin_has_factory_trigger = yes
+		NOT = { has_variable = tsin_society_night_school_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_society_night_school_done
+	}
+
+	# State evening classes
+	option = {
+		name = tsin_society.150.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_night_schools years = modifier_duration_years_long mode = add_and_extend }
+		tsin_change_labor_grievance_effect = { VALUE = -2 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave it to the parish
+	option = {
+		name = tsin_society.150.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The census asks too much
+tsin_society.160 = {
+	type = country_event
+	title = tsin_society.160.title
+	desc = tsin_society.160.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_national_census_advance
+		NOT = { has_variable = tsin_society_census_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_society_census_done
+	}
+
+	# Ask about language, faith and trade
+	option = {
+		name = tsin_society.160.a
+		add_country_modifier = { modifier = tsin_detailed_census years = modifier_duration_years_long mode = add_and_extend }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Count heads, nothing more
+	option = {
+		name = tsin_society.160.b
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Riots against compulsory vaccination
+tsin_society.170 = {
+	type = country_event
+	title = tsin_society.170.title
+	desc = tsin_society.170.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_vaccination_campaigns_advance
+		NOT = { has_variable = tsin_society_vaccination_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_society_vaccination_done
+	}
+
+	# Vaccination stays compulsory
+	option = {
+		name = tsin_society.170.a
+		add_country_modifier = { modifier = tsin_compulsory_vaccination years = modifier_duration_years_long mode = add_and_extend }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# A conscience clause for objectors
+	option = {
+		name = tsin_society.170.b
+		add_country_modifier = { modifier = tsin_voluntary_vaccination years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
 		}
 	}
 }

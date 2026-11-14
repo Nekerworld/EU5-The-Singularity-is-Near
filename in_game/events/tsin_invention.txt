@@ -116,7 +116,7 @@ tsin_invention.30 = {
 	trigger = {
 		tsin_flavor_budget_available_trigger = yes
 		current_year >= 1875
-		has_advance = tsin_machine_tools_advance
+		has_advance = tsin_refrigerated_transport_advance
 		any_owned_non_rural_location = { is_coastal = yes }
 		NOT = { has_variable = tsin_invention_refrigeration_done }
 	}
@@ -365,6 +365,145 @@ tsin_invention.70 = {
 		name = tsin_invention.70.c
 		ai_chance = {
 			factor = 2
+		}
+	}
+}
+
+# Late inventions (0.7). Same pattern: once per country, after the matching advance.
+
+# Vulcanized rubber
+tsin_invention.80 = {
+	type = country_event
+	title = tsin_invention.80.title
+	desc = tsin_invention.80.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_vulcanization_advance
+		NOT = { has_variable = tsin_invention_rubber_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_rubber_done
+	}
+
+	# License the patent to the rubber works
+	option = {
+		name = tsin_invention.80.a
+		add_country_modifier = { modifier = tsin_invention_rubber_licenses years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Belts and hoses for the state works
+	option = {
+		name = tsin_invention.80.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_invention_rubber_state_works years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}
+
+# The internal combustion engine
+tsin_invention.90 = {
+	type = country_event
+	title = tsin_invention.90.title
+	desc = tsin_invention.90.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_internal_combustion_advance
+		NOT = { has_variable = tsin_invention_engine_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_engine_done
+	}
+
+	# License the engine to private works
+	option = {
+		name = tsin_invention.90.a
+		add_country_modifier = { modifier = tsin_invention_engine_licenses years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# A state motor laboratory
+	option = {
+		name = tsin_invention.90.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_invention_engine_laboratory years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}
+
+# Wireless telegraphy
+tsin_invention.100 = {
+	type = country_event
+	title = tsin_invention.100.title
+	desc = tsin_invention.100.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_wireless_telegraphy_advance
+		NOT = { has_variable = tsin_invention_wireless_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_wireless_done
+	}
+
+	# Wireless for the merchant lines
+	option = {
+		name = tsin_invention.100.a
+		add_country_modifier = { modifier = tsin_invention_wireless_commercial years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Wireless for the fleet
+	option = {
+		name = tsin_invention.100.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_invention_wireless_naval years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
 		}
 	}
 }

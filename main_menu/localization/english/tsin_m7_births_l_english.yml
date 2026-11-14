@@ -1,0 +1,6 @@
+﻿l_english:
+
+ # Birthplace modifiers of the age VII institutions
+ STATIC_MODIFIER_NAME_tsin_industrial_capitalism_birth: "Birthplace of $tsin_industrial_capitalism$"
+ STATIC_MODIFIER_NAME_tsin_mass_society_birth: "Birthplace of $tsin_mass_society$"
+ STATIC_MODIFIER_NAME_tsin_electrification_birth: "Birthplace of $tsin_electrification$"

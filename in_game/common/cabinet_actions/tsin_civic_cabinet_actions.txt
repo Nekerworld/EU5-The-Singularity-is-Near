@@ -1,0 +1,84 @@
+﻿# Age VII civic cabinet actions (0.7, docs/tempo.md and docs/housing.md).
+
+# Unlocked by tsin_anesthesia_advance. Ends the tsin_cholera disaster faster (tsin_cholera end trigger).
+tsin_public_health_campaign = {
+	ability = adm
+	allow_multiple = no
+
+	country_modifier = {
+		global_disease_resistance = 0.1
+		global_life_expectancy = 1
+		global_population_growth = 0.0001
+	}
+
+	ai_will_do = {
+		add = {
+			value = 10
+			if = {
+				limit = { has_active_disaster = disaster_type:tsin_cholera }
+				add = 100
+			}
+		}
+	}
+}
+
+# Unlocked by tsin_urban_planning_advance. Province-targeted, like tsin_encourage_industry.
+tsin_urban_renewal = {
+	ability = adm
+	helps_with = "location"
+
+	allow_multiple = yes
+
+	potential = {
+		num_locations > 0
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target
+		ai_interaction_source_list = {
+			scope:actor = {
+				capital.province = {
+					add_to_list = source
+				}
+			}
+		}
+		name = "tsin_urban_renewal_select_province"
+		none_available_msg_key = "tsin_urban_renewal_no_provinces"
+		column = {
+			data = name
+		}
+		column = {
+			data = population
+		}
+		visible = {
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = tsin_urban_renewal interaction_target = target } }
+		}
+	}
+
+	location_modifier = {
+		local_population_capacity_modifier = 0.05
+		local_unrest = -0.5
+		local_disease_resistance = 0.1
+		local_construction_speed = 0.15
+	}
+
+	map_marker = {
+		show_for_owner = yes
+	}
+
+	ai_will_do = {
+		add = {
+			value = 5
+			if = {
+				limit = {
+					scope:actor = {
+						is_subject = yes
+					}
+				}
+				add = -1000
+			}
+		}
+	}
+}

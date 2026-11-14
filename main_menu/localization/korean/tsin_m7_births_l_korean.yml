@@ -1,0 +1,6 @@
+﻿l_korean:
+
+ # Birthplace modifiers of the age VII institutions
+ STATIC_MODIFIER_NAME_tsin_industrial_capitalism_birth: "$tsin_industrial_capitalism$의 발상지"
+ STATIC_MODIFIER_NAME_tsin_mass_society_birth: "$tsin_mass_society$의 발상지"
+ STATIC_MODIFIER_NAME_tsin_electrification_birth: "$tsin_electrification$의 발상지"

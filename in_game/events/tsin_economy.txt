@@ -539,3 +539,368 @@ tsin_economy.80 = {
 		}
 	}
 }
+
+# The trust question: the great companies fix prices and buy up their rivals
+tsin_economy.160 = {
+	type = country_event
+	title = tsin_economy.160.title
+	desc = tsin_economy.160.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1880
+		has_advance = tsin_mass_politics_advance
+		tsin_company_count >= 2
+		NOT = { has_policy = policy:tsin_antitrust_policy }
+		NOT = { has_variable = tsin_trust_question_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_trust_question_done value = yes years = 15 }
+	}
+
+	# Break up the trusts
+	option = {
+		name = tsin_economy.160.a
+		tsin_table_bill_effect = { POLICY = policy:tsin_antitrust_policy BONUS = 0.15 }
+		add_country_modifier = { modifier = tsin_trust_busting years = 5 }
+		tsin_change_labor_grievance_effect = { VALUE = -5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# What is good for the companies is good for the country
+	option = {
+		name = tsin_economy.160.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		change_variable = { name = tsin_socialism add = 3 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Speculative boom (fired by tsin_stock_market_events_effect when the national index runs far above its mean)
+tsin_economy.140 = {
+	type = country_event
+	title = tsin_economy.140.title
+	desc = tsin_economy.140.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	# Let the market run
+	option = {
+		name = tsin_economy.140.a
+		add_country_modifier = { modifier = tsin_speculative_boom years = 2 mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Raise the discount rate
+	option = {
+		name = tsin_economy.140.b
+		tsin_scale_stocks_effect = { FACTOR = 0.9 }
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Market crash (after a speculative boom, or when the index collapses)
+tsin_economy.150 = {
+	type = country_event
+	title = tsin_economy.150.title
+	desc = tsin_economy.150.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		remove_country_modifier = tsin_speculative_boom
+		tsin_scale_stocks_effect = { FACTOR = 0.7 }
+		add_country_modifier = { modifier = tsin_stock_crash years = 3 mode = add_and_extend }
+		set_global_variable = { name = tsin_market_crash_recent value = yes years = 3 }
+	}
+
+	# Rescue the banks
+	option = {
+		name = tsin_economy.150.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_bank_rescue years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Let the weak houses fail
+	option = {
+		name = tsin_economy.150.b
+		add_country_modifier = { modifier = tsin_financial_panic years = modifier_duration_years_short mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Close the exchange
+	option = {
+		name = tsin_economy.150.c
+		set_variable = { name = tsin_stock_timer months = 12 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Infrastructure and finance flavor (0.7, docs/event_framework.md). Once per country, after the matching advance.
+
+# The gauge war: every railway company lays its own track width
+tsin_economy.90 = {
+	type = country_event
+	title = tsin_economy.90.title
+	desc = tsin_economy.90.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_railway_network_advance
+		NOT = { has_variable = tsin_economy_gauge_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_economy_gauge_done
+	}
+
+	# One standard gauge by law
+	option = {
+		name = tsin_economy.90.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_standard_gauge years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Let the companies settle it
+	option = {
+		name = tsin_economy.90.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_country_modifier = { modifier = tsin_gauge_patchwork years = 10 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The gasworks explosion
+tsin_economy.100 = {
+	type = country_event
+	title = tsin_economy.100.title
+	desc = tsin_economy.100.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_gas_lighting_advance
+		NOT = { has_variable = tsin_economy_gasworks_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_economy_gasworks_done
+	}
+
+	# The city buys the gasworks
+	option = {
+		name = tsin_economy.100.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_municipal_gas years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# A safety code for the private companies
+	option = {
+		name = tsin_economy.100.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Coaling stations for the steam lines
+tsin_economy.110 = {
+	type = country_event
+	title = tsin_economy.110.title
+	desc = tsin_economy.110.desc
+	outcome = positive
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_steam_merchant_marine_advance
+		NOT = { has_variable = tsin_economy_coaling_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_economy_coaling_done
+	}
+
+	# Build coaling stations along the routes
+	option = {
+		name = tsin_economy.110.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_coaling_stations years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Subsidize the mail steamers instead
+	option = {
+		name = tsin_economy.110.b
+		add_country_modifier = { modifier = tsin_mail_steamers years = 10 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A limited company vanishes with its shareholders' money
+tsin_economy.120 = {
+	type = country_event
+	title = tsin_economy.120.title
+	desc = tsin_economy.120.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_limited_liability_advance
+		NOT = { has_variable = tsin_economy_bubble_company_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_economy_bubble_company_done
+	}
+
+	# A companies registry and public accounts
+	option = {
+		name = tsin_economy.120.a
+		add_country_modifier = { modifier = tsin_company_registry years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Let the buyer beware
+	option = {
+		name = tsin_economy.120.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A run on a commercial bank
+tsin_economy.130 = {
+	type = country_event
+	title = tsin_economy.130.title
+	desc = tsin_economy.130.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_commercial_banking_advance
+		NOT = { has_variable = tsin_economy_bank_run_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_economy_bank_run_done
+	}
+
+	# Lend to the bank as a last resort
+	option = {
+		name = tsin_economy.130.a
+		change_gold_effect = { scale = -4 }
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Let it fail
+	option = {
+		name = tsin_economy.130.b
+		add_country_modifier = { modifier = tsin_bank_failure years = 3 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

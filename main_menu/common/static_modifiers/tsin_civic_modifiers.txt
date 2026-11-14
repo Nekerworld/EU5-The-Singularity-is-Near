@@ -1,0 +1,118 @@
+﻿# Civic events around the upgrade buildings (in_game/events/tsin_civic.txt, docs/replaced_buildings.md).
+
+tsin_humboldt_reform = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+	global_institution_growth_modifier = 0.1
+}
+
+tsin_state_curriculum = {
+	game_data = {
+		category = country
+	}
+	country_cabinet_efficiency = 0.05
+	global_pop_promotion_speed_modifier = 0.05
+}
+
+tsin_laboratory_safety = {
+	game_data = {
+		category = location
+	}
+	local_unrest = -0.1
+}
+
+tsin_laboratory_fear = {
+	game_data = {
+		category = location
+	}
+	local_unrest = 0.5
+	local_migration_attraction = -0.1
+}
+
+tsin_women_students = {
+	game_data = {
+		category = country
+	}
+	global_max_literacy = 2
+	research_speed_modifier = 0.02
+}
+
+tsin_research_institute = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+}
+
+tsin_steamship_line = {
+	game_data = {
+		category = location
+	}
+	local_market_access = 0.05
+	local_migration_attraction = 0.1
+}
+
+tsin_dock_strike = {
+	game_data = {
+		category = location
+	}
+	local_unrest = 1
+	local_production_efficiency = -0.05
+}
+
+tsin_assisted_passage = {
+	game_data = {
+		category = country
+	}
+	colonial_migration_size_modifier = 0.2
+}
+
+tsin_emigrant_port = {
+	game_data = {
+		category = location
+	}
+	local_migration_attraction = -0.2
+	local_unrest = -0.1
+}
+
+tsin_great_stink = {
+	game_data = {
+		category = location
+	}
+	local_unrest = 0.5
+	local_migration_attraction = -0.1
+}
+
+tsin_water_theory = {
+	game_data = {
+		category = country
+	}
+	national_typhus_resistance_modifier = 0.1
+	global_life_expectancy = 1
+}
+
+tsin_municipal_self_government = {
+	game_data = {
+		category = country
+	}
+	burghers_estate_target_satisfaction = 0.05
+	country_cabinet_efficiency = -0.03
+}
+
+tsin_prefectoral_centralism = {
+	game_data = {
+		category = country
+	}
+	global_integration_speed_modifier = 0.1
+	country_cabinet_efficiency = 0.03
+}
+
+tsin_automation_showcase = {
+	game_data = {
+		category = location
+	}
+	local_production_efficiency = 0.05
+	local_migration_attraction = 0.05
+}

@@ -1,0 +1,113 @@
+﻿# Infrastructure, finance and city life events (in_game/events/tsin_economy.txt .90-.130, tsin_society.txt .130-.170)
+
+# tsin_economy.90 option a
+tsin_standard_gauge = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.1
+	global_production_efficiency = 0.01
+}
+
+# tsin_economy.90 option b
+tsin_gauge_patchwork = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = 0.05
+}
+
+# tsin_economy.100 option a
+tsin_municipal_gas = {
+	game_data = {
+		category = country
+	}
+	global_non_rural_monthly_prosperity = 0.003
+	burghers_estate_target_satisfaction = -0.03
+}
+
+# tsin_economy.110 option a
+tsin_coaling_stations = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.1
+	colonial_range_modifier = 0.1
+}
+
+# tsin_economy.110 option b
+tsin_mail_steamers = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+}
+
+# tsin_economy.120 option a
+tsin_company_registry = {
+	game_data = {
+		category = country
+	}
+	bank_interest = -0.005
+	global_burghers_estate_power = -0.05
+}
+
+# tsin_economy.130 option b
+tsin_bank_failure = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.02
+}
+
+# tsin_society.130 option a
+tsin_intercepting_sewers = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.05
+	global_life_expectancy = 1
+}
+
+# tsin_society.140 option a
+tsin_public_parks = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = 0.03
+	global_life_expectancy = 0.5
+}
+
+# tsin_society.150 option a
+tsin_night_schools = {
+	game_data = {
+		category = country
+	}
+	global_monthly_literacy = 0.01
+	global_pop_promotion_speed_modifier = 0.05
+}
+
+# tsin_society.160 option a
+tsin_detailed_census = {
+	game_data = {
+		category = country
+	}
+	global_monthly_control = 0.005
+	country_cabinet_efficiency = 0.02
+}
+
+# tsin_society.170 option a
+tsin_compulsory_vaccination = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.08
+}
+
+# tsin_society.170 option b
+tsin_voluntary_vaccination = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.03
+}

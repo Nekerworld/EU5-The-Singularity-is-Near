@@ -1,0 +1,26 @@
+﻿# Birthplace modifiers of the age VII institutions. The engine applies <institution>_birth to the
+# spawn location, like vanilla main_menu/common/static_modifiers/institutions.txt.
+
+tsin_industrial_capitalism_birth = {
+	game_data = {
+		category = location
+	}
+	local_production_efficiency = medium_production_efficiency_bonus
+	local_build_buildings_efficiency = 0.25
+}
+
+tsin_mass_society_birth = {
+	game_data = {
+		category = location
+	}
+	local_max_literacy = 10
+	local_pop_promotion_speed_modifier = 0.25
+}
+
+tsin_electrification_birth = {
+	game_data = {
+		category = location
+	}
+	local_build_buildings_efficiency = 0.5
+	local_monthly_prosperity = 0.02
+}

@@ -6,8 +6,8 @@
 |---|---|---|---|
 | `tsin_system` | `in_game/events/tsin_system.txt` | M1 | 숨김 초기화·이전, 시대 시작 안내, 제도 등장 알림 |
 | `tsin_institution` | `in_game/events/tsin_institution.txt` | M3~M5 | 첫 수용국, 수용 시 반발·지지 |
-| `tsin_economy` | `in_game/events/tsin_economy.txt` | M2~M3 | 공장, 원료, 금융 |
-| `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5 | 발명 플레이버 |
+| `tsin_economy` | `in_game/events/tsin_economy.txt` | M2~M3·0.7 | 공장, 원료, 금융. 0.7: .90~.130 궤간·가스 공장·급탄 기지·유령 회사·뱅크런(기술별 1회), .140·.150 증시 |
+| `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5·0.7 | 발명 플레이버. 0.7: .80 가황 고무, .90 내연 기관, .100 무선 전신 |
 | `tsin_abolition` | `in_game/events/tsin_abolition.txt` | M4 | 노예무역 금지, 해방 (예산 제외) |
 | `tsin_springtime` | `in_game/events/tsin_springtime.txt` | M4 | 국민의 봄 상황 (예산 제외) |
 | `tsin_exhibition` | `in_game/events/tsin_exhibition.txt` | M5 | 만국박람회 상황 (예산 제외) |
@@ -15,9 +15,13 @@
 | `tsin_art` | `in_game/events/tsin_art.txt` | M6 | 예술 플레이버 (`tsin_art_yearly_pulse`, 확률 15%) |
 | `tsin_expedition` | `in_game/events/tsin_expedition.txt` | M6 | 탐험 결과 (탐험이 호출, 예산 제외) |
 | `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
-| `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용) |
+| `tsin_society` | `in_game/events/tsin_society.txt` | M4·0.7 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용). 0.7: .130~.170 대악취·공원·야학·국세 조사·종두 반대(기술별 1회) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
 | `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 | 지역 플레이버 (`tsin_flavor_yearly_pulse`, 확률 15%, 태그 조건 금지) |
+| `tsin_corporate` | `in_game/events/tsin_corporate.txt` | 0.7 | 기업 회장(.10 선임은 분기 주가 펄스, .20~.60은 `tsin_corporate_yearly_pulse` 15%, 예산 사용), .100 증권 보고서 (`docs/corporations.md`) |
+| `tsin_cholera` | `in_game/events/tsin_cholera.txt` | 0.7 | 콜레라 대유행 재난 이벤트(예산 미사용, `docs/tempo.md`) |
+| `tsin_working_class` | `in_game/events/tsin_working_class.txt` | 0.7 | 「모던 타임즈」 주제 .10~.80 (`tsin_working_class_yearly_pulse` 15%, 공장 보유국, 예산 사용, `docs/labor.md`) |
+| `tsin_civic` | `in_game/events/tsin_civic.txt` | 0.7 | 업그레이드 건물(연구 대학, 증기선 항만, 상하수도, 도청, 자동화 공장) 둘레의 시민 생활 (`tsin_civic_yearly_pulse`, 확률 12%, 예산 사용, `docs/replaced_buildings.md`) |
 
 - 이벤트 ID는 `<네임스페이스>.<번호>`. 번호는 군 안에서 10 단위로 묶는다(예: 공장 10~19, 원료 20~29).
 - 현지화 키는 `<id>.title`, `<id>.desc`, `<id>.a`, `<id>.b` …. 툴팁은 `<id>.a.tt`.
@@ -115,7 +119,7 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_art.30` | 사진술 (나라당 한 번) | 1840년 이후 | 사진 측량(금 -2, 내각 효율 +3%, 월 위신 +0.05) / 사진관에 맡김(시민 만족) |
 | `tsin_flavor.10` | 항구의 포함 (나라당 한 번) | 1840년 이후, 공장 없음, 기술 수 상위 8국 밖, 읍 이상 항구 보유 | 협상 개항(개항 압력 +1, 상인 힘 +5%, 최대 관세 -5%, 시민 만족) / 거부(위신 +5, 귀족 만족, 민족주의 +5) |
 | `tsin_flavor.20` | 농노 해방 (나라당 한 번) | 1845년 이후, 귀족 농노 특권 또는 농노제 쪽 사회 가치 < -20 | 토지와 함께 해방(특권 철회, 자유 쪽 +20, 귀족 불만, 평민 만족, 도시 이주 +10%, 원자재 -5%) / 토지 없이 해방(특권 철회, 자유 쪽 +10, 평민 불만, 시민 만족, 도시 이주 +25%, 원자재 -10%) / 유지(농노 쪽 +5, 귀족 만족, 평민 불만, 자유주의 +5) |
-| `tsin_flavor.30` | 근대화 칙령 (나라당 한 번) | 개항 압력 있음(`var:tsin_treaty_ports_opened`) | 국가 개편(안정도 -, 성직자 불만, 연구 +5%, 내각 효율 +5%, 자유주의 +5) / 자강(귀족 만족, 공장 건설 효율 +10%, 규율 +2%) / 거부(위신 +5, 성직자 만족, 민족주의 +5) |
+| `tsin_flavor.30` | 근대화 칙령 (0.7부터 방어적 근대화 상황의 1단계, 풍미 예산 미사용, [modernization.md](modernization.md)) | 개항 압력 있음(`var:tsin_treaty_ports_opened`) | 국가 개편(안정도 -, 성직자 불만, 연구 +5%, 내각 효율 +5%, 자유주의 +5) / 자강(귀족 만족, 공장 건설 효율 +10%, 규율 +2%) / 거부(위신 +5, 성직자 만족, 민족주의 +5) |
 | `tsin_expedition.1` | 나일강의 수원 | 나일강 탐험이 세계 최초로 부간다 도착 | 군주 이름(위신 +15) / 지리학회(위신 +10, `tsin_expedition_geographical_society` 20년) |
 | `tsin_expedition.10` | 북서항로 발견 | 북서항로 탐험 종료, 35% | 위신 +15, `tsin_expedition_geographic_fame` 20년 |
 | `tsin_expedition.11` | 얼음에 막혀 돌아오다 | 북서항로 탐험 종료, 65% 또는 이미 발견됨 | 위신 +5 |
@@ -144,4 +148,4 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 - 선택지마다 경제, 정치(계층 만족도, 안정도), 진행(제도 진척, 건물) 사이의 교환이 있어야 한다.
 - 효과 크기는 바닐라 스크립트 값(`institution_progress_*`, `*_mild_bonus` 등)을 우선 쓴다.
 
-바닐라에는 콜레라 질병이 없다. `tsin_society.60`은 도시 위생과 관련된 바닐라 발진티푸스·인플루엔자에 연결했다. 새 질병을 만들려면 `local_<질병>_impact_modifier` 같은 보정치 형식도 함께 정의해야 하므로 이번 단계에서는 하지 않았다.
+바닐라에는 콜레라 질병이 없다. `tsin_society.60`은 도시 위생과 관련된 바닐라 발진티푸스·인플루엔자에 연결했다. 0.7의 콜레라는 질병이 아니라 재난 `tsin_cholera`(`docs/tempo.md`)로 만들었다.

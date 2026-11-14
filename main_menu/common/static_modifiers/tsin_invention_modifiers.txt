@@ -102,3 +102,50 @@ tsin_capital_lighting_franchise = {
 	}
 	local_migration_attraction = 0.1
 }
+
+# tsin_invention.80
+tsin_invention_rubber_licenses = {
+	game_data = {
+		category = country
+	}
+	global_tsin_rubber_output_modifier = 0.1
+}
+
+tsin_invention_rubber_state_works = {
+	game_data = {
+		category = country
+	}
+	global_tsin_rubber_output_modifier = 0.05
+	global_production_efficiency = 0.01
+}
+
+# tsin_invention.90
+tsin_invention_engine_licenses = {
+	game_data = {
+		category = country
+	}
+	global_tsin_engines_output_modifier = 0.1
+}
+
+tsin_invention_engine_laboratory = {
+	game_data = {
+		category = country
+	}
+	global_tsin_engines_output_modifier = 0.05
+	research_speed_modifier = 0.02
+}
+
+# tsin_invention.100
+tsin_invention_wireless_commercial = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+}
+
+tsin_invention_wireless_naval = {
+	game_data = {
+		category = country
+	}
+	navy_heavy_ship_power = 0.05
+}
