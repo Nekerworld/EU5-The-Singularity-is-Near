@@ -64,3 +64,24 @@ tsin_mutual_aid_societies = {
 		monthly_towards_communalism = societal_value_monthly_move
 	}
 }
+
+# 0.7 labor (docs/labor.md): unions are recognized once mutual aid societies exist. Lowers the labor grievance target.
+tsin_union_recognition = {
+	estate = peasants_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	allow = {
+		has_advance = tsin_labor_movement_advance
+		has_estate_privilege = estate_privilege:tsin_mutual_aid_societies
+	}
+
+	country_modifier = {
+		peasants_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_peasants_estate_power = 0.15
+		global_production_efficiency = -0.02
+		monthly_towards_communalism = societal_value_monthly_move
+	}
+}

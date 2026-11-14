@@ -1,0 +1,82 @@
+﻿# Modern Times (in_game/events/tsin_working_class.txt) and standard time (tsin_civic_decisions.txt)
+
+# tsin_standard_time_decision
+tsin_standard_time = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.02
+	country_cabinet_efficiency = 0.03
+}
+
+# tsin_working_class.10 option a
+tsin_sealed_factory_clocks = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.01
+	peasants_estate_target_satisfaction = 0.05
+}
+
+# tsin_working_class.10 option b
+tsin_stolen_minutes = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.03
+	peasants_estate_target_satisfaction = -0.05
+}
+
+# tsin_working_class.20 option a
+tsin_assembly_line_speedup = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.03
+	peasants_estate_target_satisfaction = -0.05
+}
+
+# tsin_working_class.30 option a (lucky outcome)
+tsin_feeding_machine = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.01
+}
+
+# tsin_working_class.40 option a
+tsin_factory_doctors = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.03
+	peasants_estate_target_satisfaction = 0.03
+}
+
+# tsin_working_class.60 option a
+tsin_poor_relief = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = 0.05
+	global_population_growth = 0.0001
+}
+
+# tsin_working_class.60 option b
+tsin_workhouses = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.01
+	peasants_estate_target_satisfaction = -0.05
+}
+
+# tsin_working_class.70 option a
+tsin_consumer_credit = {
+	game_data = {
+		category = country
+	}
+	burghers_estate_target_satisfaction = 0.05
+	global_non_rural_monthly_prosperity = 0.005
+	monthly_inflation = 0.0005
+}

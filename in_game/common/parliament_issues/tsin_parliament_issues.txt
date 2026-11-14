@@ -1,0 +1,36 @@
+﻿# A legislative session devoted to the bill before parliament (docs/legislation.md). Passing it counts as one
+# successful reading and helps the debates; failing it sets the bill back.
+
+tsin_legislative_session = {
+	estate = burghers_estate
+
+	modifier_when_in_debate = {
+		legislative_efficiency = 0.1
+	}
+
+	allow = {
+		tsin_bill_system_active_trigger = yes
+		tsin_has_bill_trigger = yes
+	}
+
+	chance = {
+		add = 3
+		if = {
+			limit = { tsin_bill_reform_pressure_trigger = yes }
+			add = 2
+		}
+	}
+
+	on_debate_passed = {
+		if = {
+			limit = { tsin_has_bill_trigger = yes }
+			change_variable = { name = tsin_bill_successes add = 1 }
+			tsin_change_bill_bonus_effect = { VALUE = 0.1 }
+		}
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+		tsin_change_bill_bonus_effect = { VALUE = -0.1 }
+	}
+}

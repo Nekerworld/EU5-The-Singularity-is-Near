@@ -1,0 +1,18 @@
+﻿# Age VII labor (docs/labor.md): parliament agendas of the commoners.
+
+tsin_factory_inspection_agenda = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = 0.03
+	global_production_efficiency = -0.01
+}
+
+tsin_ten_hour_day = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = 0.05
+	global_life_expectancy = 1
+	global_production_efficiency = -0.03
+}

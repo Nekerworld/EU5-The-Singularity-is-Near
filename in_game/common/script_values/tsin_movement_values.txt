@@ -88,7 +88,7 @@ tsin_nationalism_yearly_growth = {
 	}
 }
 
-# Labor unionism: grows with factories. Satisfied by factory acts / labor protection.
+# Labor unionism: grows with factories and labor grievance (0.7). Satisfied by factory acts / labor protection.
 tsin_labor_unionism_yearly_growth = {
 	value = 0
 	if = {
@@ -97,12 +97,17 @@ tsin_labor_unionism_yearly_growth = {
 	}
 	if = {
 		limit = {
-			any_owned_location = {
-				count >= 5
-				tsin_location_has_factory_trigger = yes
-			}
+			has_variable = tsin_factory_share
+			var:tsin_factory_share >= 0.03
 		}
-		add = 2
+		add = 1
+	}
+	if = {
+		limit = { has_variable = tsin_labor_grievance }
+		add = {
+			value = var:tsin_labor_grievance
+			divide = 25
+		}
 	}
 	if = {
 		limit = { has_policy = policy:tsin_unregulated_labor_policy }
@@ -122,7 +127,7 @@ tsin_labor_unionism_yearly_growth = {
 	}
 }
 
-# Socialism: only grows out of a strong labor movement. Satisfied by social insurance.
+# Socialism: grows out of a strong labor movement and, from 1885, out of socialist cells (0.7). Satisfied by social insurance.
 tsin_socialism_yearly_growth = {
 	value = -1
 	if = {
@@ -130,7 +135,25 @@ tsin_socialism_yearly_growth = {
 			has_variable = tsin_labor_unionism
 			var:tsin_labor_unionism >= 50
 		}
-		add = 3
+		add = 2
+	}
+	if = {
+		limit = {
+			has_variable = tsin_labor_grievance
+			var:tsin_labor_grievance >= 50
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_variable = tsin_socialist_cells
+			var:tsin_socialist_cells > 0
+		}
+		add = {
+			value = var:tsin_socialist_cells
+			divide = 3
+			max = 2
+		}
 	}
 	if = {
 		limit = { societal_value:individualism_vs_communalism > 25 }

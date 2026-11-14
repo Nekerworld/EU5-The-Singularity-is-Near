@@ -1,0 +1,383 @@
+﻿namespace = tsin_working_class
+
+# Modern Times: life by the factory clock and the machine (0.7). Fired from tsin_working_class_yearly_pulse and
+# spend the yearly flavor budget.
+
+# The factory clock: the foremen set the clocks back to steal minutes (needs standard time)
+tsin_working_class.10 = {
+	type = country_event
+	title = tsin_working_class.10.title
+	desc = tsin_working_class.10.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_variable = tsin_standard_time
+		tsin_has_factory_trigger = yes
+		NOT = { has_variable = tsin_factory_clock_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_factory_clock_done
+	}
+
+	# Seal the clocks and post inspectors
+	option = {
+		name = tsin_working_class.10.a
+		add_country_modifier = { modifier = tsin_sealed_factory_clocks years = 20 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Time is money
+	option = {
+		name = tsin_working_class.10.b
+		add_country_modifier = { modifier = tsin_stolen_minutes years = 10 }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The assembly line: the efficiency men want the belt to run faster
+tsin_working_class.20 = {
+	type = country_event
+	title = tsin_working_class.20.title
+	desc = tsin_working_class.20.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		has_advance = tsin_interchangeable_parts_advance
+		NOT = { has_variable = tsin_wc_assembly_line_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_wc_assembly_line_done
+	}
+
+	# Speed up the line
+	option = {
+		name = tsin_working_class.20.a
+		add_country_modifier = { modifier = tsin_assembly_line_speedup years = 10 }
+		tsin_change_labor_grievance_effect = { VALUE = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# A man is not a bolt
+	option = {
+		name = tsin_working_class.20.b
+		tsin_change_labor_grievance_effect = { VALUE = -3 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The feeding machine: an inventor offers to feed the workers without stopping the line
+tsin_working_class.30 = {
+	type = country_event
+	title = tsin_working_class.30.title
+	desc = tsin_working_class.30.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		has_advance = tsin_machine_tools_advance
+		NOT = { has_variable = tsin_wc_feeding_machine_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_wc_feeding_machine_done
+	}
+
+	# Buy it for the state works
+	option = {
+		name = tsin_working_class.30.a
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -2
+		}
+		random_list = {
+			70 = {
+				tsin_change_labor_grievance_effect = { VALUE = 3 }
+				add_prestige = -5
+			}
+			30 = {
+				add_country_modifier = { modifier = tsin_feeding_machine years = 10 }
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+
+	# Lunch is not a waste of time
+	option = {
+		name = tsin_working_class.30.b
+		tsin_change_labor_grievance_effect = { VALUE = -1 }
+		ai_chance = {
+			factor = 8
+		}
+	}
+}
+
+# Nervous breakdown: a worker on the line cannot stop turning bolts
+tsin_working_class.40 = {
+	type = country_event
+	title = tsin_working_class.40.title
+	desc = tsin_working_class.40.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		has_variable = tsin_labor_grievance
+		var:tsin_labor_grievance >= 30
+		NOT = { has_variable = tsin_wc_breakdown_cooldown }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_wc_breakdown_cooldown years = 15 }
+	}
+
+	# Pay for factory doctors
+	option = {
+		name = tsin_working_class.40.a
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -2
+		}
+		tsin_change_labor_grievance_effect = { VALUE = -4 }
+		add_country_modifier = { modifier = tsin_factory_doctors years = 10 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Send him to the asylum
+	option = {
+		name = tsin_working_class.40.b
+		tsin_change_labor_grievance_effect = { VALUE = 2 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The red flag: a man picks up a fallen warning flag and is taken for the leader of a march
+tsin_working_class.50 = {
+	type = country_event
+	title = tsin_working_class.50.title
+	desc = tsin_working_class.50.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		has_variable = tsin_socialism
+		var:tsin_socialism >= 10
+		NOT = { has_variable = tsin_wc_red_flag_cooldown }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_wc_red_flag_cooldown years = 20 }
+	}
+
+	# Try him as a ringleader
+	option = {
+		name = tsin_working_class.50.a
+		add_stability = stability_weak_bonus
+		tsin_change_labor_grievance_effect = { VALUE = 4 }
+		change_variable = { name = tsin_socialism add = 3 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Let the poor fellow go
+	option = {
+		name = tsin_working_class.50.b
+		tsin_change_labor_grievance_effect = { VALUE = -3 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Better fed in jail: in the depression, the cells are warmer than the street
+tsin_working_class.60 = {
+	type = country_event
+	title = tsin_working_class.60.title
+	desc = tsin_working_class.60.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		is_situation_active = situation:tsin_long_depression
+		NOT = { has_variable = tsin_wc_jail_cooldown }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = { name = tsin_wc_jail_cooldown years = 10 }
+	}
+
+	# Open the poor relief
+	option = {
+		name = tsin_working_class.60.a
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -4
+		}
+		tsin_change_labor_grievance_effect = { VALUE = -5 }
+		add_country_modifier = { modifier = tsin_poor_relief years = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# The workhouse, not the dole
+	option = {
+		name = tsin_working_class.60.b
+		tsin_change_labor_grievance_effect = { VALUE = 4 }
+		add_country_modifier = { modifier = tsin_workhouses years = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The department store at night: the clerks dream among goods they cannot buy
+tsin_working_class.70 = {
+	type = country_event
+	title = tsin_working_class.70.title
+	desc = tsin_working_class.70.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		has_advance = tsin_mass_consumption_advance
+		NOT = { has_variable = tsin_wc_department_store_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_wc_department_store_done
+	}
+
+	# Sell on credit and stay open late
+	option = {
+		name = tsin_working_class.70.a
+		add_country_modifier = { modifier = tsin_consumer_credit years = 10 }
+		tsin_change_labor_grievance_effect = { VALUE = 2 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Close the shops on Sunday
+	option = {
+		name = tsin_working_class.70.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		tsin_change_labor_grievance_effect = { VALUE = -2 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The road out: two workers leave the factory town together, at dawn
+tsin_working_class.80 = {
+	type = country_event
+	title = tsin_working_class.80.title
+	desc = tsin_working_class.80.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+		year >= 1870
+		has_variable = tsin_labor_grievance
+		var:tsin_labor_grievance >= 50
+		NOT = { has_variable = tsin_wc_road_out_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_wc_road_out_done
+	}
+
+	# Fund homestead colonies for the unemployed
+	option = {
+		name = tsin_working_class.80.a
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -3
+		}
+		tsin_change_labor_grievance_effect = { VALUE = -6 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Let them go
+	option = {
+		name = tsin_working_class.80.b
+		tsin_change_labor_grievance_effect = { VALUE = -2 }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

@@ -1,7 +1,32 @@
 ﻿# Yearly update of the age VII movement variables (script_values/tsin_movement_values.txt). root = country.
 # Called from tsin_yearly_country_pulse.
 
+# root = country. VALUE = signed change to labor grievance (0..100).
+tsin_change_labor_grievance_effect = {
+	if = {
+		limit = { NOT = { has_variable = tsin_labor_grievance } }
+		set_variable = { name = tsin_labor_grievance value = 0 }
+	}
+	change_variable = { name = tsin_labor_grievance add = $VALUE$ }
+	clamp_variable = { name = tsin_labor_grievance min = 0 max = 100 }
+}
+
 tsin_update_movements_effect = {
+	# Labor grievance closes part of the gap to its target each year; reads the annual aggregate (docs/labor.md)
+	if = {
+		limit = { NOT = { has_variable = tsin_labor_grievance } }
+		set_variable = { name = tsin_labor_grievance value = 0 }
+	}
+	change_variable = {
+		name = tsin_labor_grievance
+		add = {
+			value = tsin_labor_grievance_target
+			subtract = var:tsin_labor_grievance
+			multiply = tsin_labor_grievance_approach
+		}
+	}
+	clamp_variable = { name = tsin_labor_grievance min = 0 max = 100 }
+
 	if = {
 		limit = { has_slavery = yes }
 		if = {

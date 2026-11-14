@@ -1,0 +1,137 @@
+﻿# Age VII labor (0.7, docs/labor.md). Workers are the vanilla laborers pop.
+# Location values read only the location and its owner; country values read the annual aggregate variables.
+
+# Factory jobs over the location's laborers, 0..1 (jobs and pops are both in thousands).
+tsin_location_factory_worker_share = {
+	value = 0
+	if = {
+		limit = { num_pop_type:laborers > 0 }
+		add = tsin_location_industrial_jobs
+		divide = num_pop_type:laborers
+		max = 1
+	}
+}
+
+# Population over capacity, 0..1+ (vanilla value location_population_percentage).
+tsin_location_crowding = {
+	value = location_population_percentage
+}
+
+# Crowding above this share of capacity hurts labor conditions and housing.
+tsin_crowding_threshold = 0.8
+
+# Labor conditions of a factory location, 0 (dreadful) .. 1 (good).
+tsin_location_labor_conditions = {
+	value = 0.5
+	if = {
+		limit = { owner ?= { has_policy = policy:tsin_unregulated_labor_policy } }
+		subtract = 0.15
+	}
+	else_if = {
+		limit = { owner ?= { has_policy = policy:tsin_factory_acts_policy } }
+		add = 0.1
+	}
+	else_if = {
+		limit = { owner ?= { has_policy = policy:tsin_labor_protection_policy } }
+		add = 0.25
+	}
+	if = {
+		limit = { owner ?= { has_policy = policy:tsin_social_insurance_policy } }
+		add = 0.1
+	}
+	else_if = {
+		limit = { owner ?= { has_policy = policy:tsin_poor_law_policy } }
+		add = 0.05
+	}
+	if = {
+		limit = { location_population_percentage > tsin_crowding_threshold }
+		subtract = {
+			value = location_population_percentage
+			subtract = tsin_crowding_threshold
+			max = 0.2
+		}
+	}
+	if = {
+		limit = { has_building_with_at_least_one_level = tsin_model_dwellings }
+		add = 0.1
+	}
+	# Skilled workers (docs/education.md): up to +0.09 at 90 secondary education
+	if = {
+		limit = { owner ?= { has_variable = tsin_secondary_education } }
+		add = {
+			value = owner.var:tsin_secondary_education
+			multiply = 0.001
+		}
+	}
+	if = {
+		limit = { has_variable = tsin_recent_accident }
+		subtract = 0.1
+	}
+	if = {
+		limit = { has_variable = tsin_strike_suppressed }
+		subtract = 0.1
+	}
+	add = {
+		value = average_satisfaction
+		subtract = 0.5
+		multiply = 0.2
+	}
+	min = 0
+	max = 1
+}
+
+# Country labor grievance target, 0..100: poor conditions matter in proportion to how industrial the country is.
+tsin_labor_grievance_target = {
+	value = 0
+	if = {
+		limit = {
+			has_variable = tsin_labor_conditions
+			has_variable = tsin_factory_share
+		}
+		add = 1
+		subtract = var:tsin_labor_conditions
+		multiply = 100
+		multiply = {
+			value = var:tsin_factory_share
+			divide = tsin_labor_grievance_full_share
+			max = 1
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_country_modifier = tsin_depression_panic
+				has_country_modifier = tsin_depression_slump
+			}
+		}
+		add = 10
+	}
+	if = {
+		limit = { has_policy = policy:tsin_free_association_policy }
+		subtract = 5
+	}
+	if = {
+		limit = { has_estate_privilege = estate_privilege:tsin_union_recognition }
+		subtract = 10
+	}
+	if = {
+		limit = { has_country_modifier = tsin_ten_hour_day }
+		subtract = 5
+	}
+	if = {
+		limit = { has_policy = policy:tsin_antitrust_policy }
+		subtract = 3
+	}
+	min = 0
+	max = 100
+}
+
+# Factory share (jobs over total population) at which conditions count in full.
+tsin_labor_grievance_full_share = 0.1
+
+# Share of the gap closed each year.
+tsin_labor_grievance_approach = 0.25
+
+# Socialist cells (1885+): a factory location needs conditions below this to seed a cell.
+tsin_socialist_cell_conditions_threshold = 0.35
+tsin_socialist_cell_min_jobs = 0.5
