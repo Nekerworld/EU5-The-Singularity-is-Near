@@ -46,3 +46,12 @@ tsin_oil = {
 	default_market_price = 4
 	transport_cost = 1.5
 }
+
+# Electricity (M5, docs/gate_g.md). Tradeable like every EU5 good; the high transport cost keeps it
+# inside the market that generates it. No pop demand: consumed by electric production methods.
+tsin_electricity = {
+	category = produced
+	color = goods_tsin_electricity
+	default_market_price = 3
+	transport_cost = 5
+}

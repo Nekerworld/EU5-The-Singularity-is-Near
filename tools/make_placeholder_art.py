@@ -1,4 +1,4 @@
-"""Build placeholder age-7 and institution DDS files by recolouring vanilla art.
+﻿"""Build placeholder age-7 and institution DDS files by recolouring vanilla art.
 
 Final art should replace these files (same paths, same size/format):
   icons/age/age_7_industrialization.dds              256x256 (vanilla DXT5)
@@ -124,7 +124,7 @@ EXTRA = [
     ("icons/privileges/peasants_free_peasantry.dds", "icons/privileges/tsin_mutual_aid_societies.dds", 120),
 ]
 
-for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240)):
+for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50)):
     EXTRA += [
         (f"icons/trade_goods/icon_goods_{_src}.dds", f"icons/trade_goods/icon_goods_{_good}.dds", _deg),
         (f"icons/trade_goods/illustrations/icon_goods_{_src}.dds", f"icons/trade_goods/illustrations/icon_goods_{_good}.dds", _deg),
