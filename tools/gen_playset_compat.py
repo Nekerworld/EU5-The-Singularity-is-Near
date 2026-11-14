@@ -1,4 +1,4 @@
-"""Generate a local-only compatibility mod that carries the age 7 extension over the mods of a playset.
+﻿"""Generate a local-only compatibility mod that carries the age 7 extension over the mods of a playset.
 
 Usage:
   python tools/gen_playset_compat.py                   active playset in playsets.json
@@ -457,6 +457,11 @@ def main() -> int:
             dest = compat_root / p.relative_to(manual)
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, dest)
+        # Regenerate the optional Glorp stats integration after other GUI/manual patches.
+        glorp_source = next((r for r in reversed(roots) if (r / "in_game/gui/glorp.gui").exists()), None)
+        if glorp_source is not None:
+            from gen_glorp_stats_compat import generate as generate_glorp_stats
+            generate_glorp_stats(glorp_source, compat_root)
         write_metadata(compat_root, folder, mod_id, label)
 
     out_report = pdx.MOD_ROOT / "tools" / "out" / f"playset_compat_report_{slug}.md"

@@ -1,0 +1,130 @@
+﻿# Annual GDP samples, newest at 0. Safe to run repeatedly in the same year.
+tsin_record_gdp_history_effect = {
+	if = {
+		limit = { has_variable = tsin_gdp }
+		if = {
+			limit = { has_variable = tsin_gdp_history_year var:tsin_gdp_history_year != current_year }
+			if = {
+				limit = { has_variable = tsin_gdp_hist_8 }
+				set_variable = { name = tsin_gdp_hist_9 value = var:tsin_gdp_hist_8 }
+				set_variable = { name = tsin_gdp_hist_year_9 value = var:tsin_gdp_hist_year_8 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_9
+				remove_variable = tsin_gdp_hist_year_9
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_7 }
+				set_variable = { name = tsin_gdp_hist_8 value = var:tsin_gdp_hist_7 }
+				set_variable = { name = tsin_gdp_hist_year_8 value = var:tsin_gdp_hist_year_7 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_8
+				remove_variable = tsin_gdp_hist_year_8
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_6 }
+				set_variable = { name = tsin_gdp_hist_7 value = var:tsin_gdp_hist_6 }
+				set_variable = { name = tsin_gdp_hist_year_7 value = var:tsin_gdp_hist_year_6 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_7
+				remove_variable = tsin_gdp_hist_year_7
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_5 }
+				set_variable = { name = tsin_gdp_hist_6 value = var:tsin_gdp_hist_5 }
+				set_variable = { name = tsin_gdp_hist_year_6 value = var:tsin_gdp_hist_year_5 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_6
+				remove_variable = tsin_gdp_hist_year_6
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_4 }
+				set_variable = { name = tsin_gdp_hist_5 value = var:tsin_gdp_hist_4 }
+				set_variable = { name = tsin_gdp_hist_year_5 value = var:tsin_gdp_hist_year_4 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_5
+				remove_variable = tsin_gdp_hist_year_5
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_3 }
+				set_variable = { name = tsin_gdp_hist_4 value = var:tsin_gdp_hist_3 }
+				set_variable = { name = tsin_gdp_hist_year_4 value = var:tsin_gdp_hist_year_3 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_4
+				remove_variable = tsin_gdp_hist_year_4
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_2 }
+				set_variable = { name = tsin_gdp_hist_3 value = var:tsin_gdp_hist_2 }
+				set_variable = { name = tsin_gdp_hist_year_3 value = var:tsin_gdp_hist_year_2 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_3
+				remove_variable = tsin_gdp_hist_year_3
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_1 }
+				set_variable = { name = tsin_gdp_hist_2 value = var:tsin_gdp_hist_1 }
+				set_variable = { name = tsin_gdp_hist_year_2 value = var:tsin_gdp_hist_year_1 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_2
+				remove_variable = tsin_gdp_hist_year_2
+			}
+			if = {
+				limit = { has_variable = tsin_gdp_hist_0 }
+				set_variable = { name = tsin_gdp_hist_1 value = var:tsin_gdp_hist_0 }
+				set_variable = { name = tsin_gdp_hist_year_1 value = var:tsin_gdp_hist_year_0 }
+			}
+			else = {
+				remove_variable = tsin_gdp_hist_1
+				remove_variable = tsin_gdp_hist_year_1
+			}
+		}
+		set_variable = { name = tsin_gdp_history_year value = current_year }
+		set_variable = { name = tsin_gdp_hist_year_0 value = current_year }
+		set_variable = { name = tsin_gdp_hist_0 value = var:tsin_gdp }
+		set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp }
+		if = {
+			limit = { has_variable = tsin_gdp_hist_1 var:tsin_gdp_hist_1 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_1 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_2 var:tsin_gdp_hist_2 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_2 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_3 var:tsin_gdp_hist_3 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_3 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_4 var:tsin_gdp_hist_4 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_4 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_5 var:tsin_gdp_hist_5 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_5 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_6 var:tsin_gdp_hist_6 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_6 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_7 var:tsin_gdp_hist_7 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_7 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_8 var:tsin_gdp_hist_8 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_8 }
+		}
+		if = {
+			limit = { has_variable = tsin_gdp_hist_9 var:tsin_gdp_hist_9 > var:tsin_gdp_history_peak }
+			set_variable = { name = tsin_gdp_history_peak value = var:tsin_gdp_hist_9 }
+		}
+	}
+}

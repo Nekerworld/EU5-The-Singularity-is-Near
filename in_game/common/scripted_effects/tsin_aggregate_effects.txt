@@ -175,5 +175,6 @@ tsin_update_gdp_effect = {
 			}
 		}
 	}
+	tsin_record_gdp_history_effect = yes
 	tsin_log_economy_effect = yes
 }

@@ -1,0 +1,253 @@
+﻿types TSINStats {
+    type tsin_glorp_stats_rows = vbox {
+        size = { 430 60 }
+        margin_left = 15
+        spacing = 0
+        tooltip = "TSIN_STATS_PANEL_HELP"
+        hbox = {
+            spacing = 4
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_GDP" }
+                text_single = { fontsize = 14 text = "[Player.Custom('tsin_gdp_compact')]" }
+                alwaystransparent = no
+                tooltipwidget = { tsin_gdp_history_tooltip = {} }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_GDP_PC" }
+                text_single = { fontsize = 14 text = "[Player.Custom('tsin_gdp_pc_compact')]" }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_SECONDARY" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').GetValue|1]%"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_HIGHER" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').GetValue|1]%"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+        }
+        hbox = {
+            spacing = 4
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_GROWTH" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').GetValue|1]%"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_INDUSTRY" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').GetValue|1%]"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_LABOR" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').GetValue|1]"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+            vbox = {
+                size = { 100 30 }
+                datacontext = "[Player]"
+                text_single = { fontsize = 10 text = "TSIN_STATS_STOCK" }
+                text_single = {
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet]"
+                    fontsize = 14
+                    text = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').GetValue|0]"
+                }
+                text_single = {
+                    visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet)]"
+                    text = "TSIN_STATS_NO_DATA"
+                }
+            }
+        }
+    }
+    type tsin_gdp_history_tooltip = SimpleContextualTooltipType {
+        blockoverride "title_icon" {}
+        blockoverride "title_text" { text = "TSIN_STATS_GDP_HISTORY" }
+        blockoverride "tooltip_content" {
+            vbox = {
+                spacing = 5
+                text_single = { maximumsize = { 430 -1 } multiline = yes text = "TSIN_STATS_GDP_HELP" }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_9').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_9').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_9').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_9_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_8').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_8').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_8').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_8_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_7').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_7').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_7').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_7_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_6').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_6').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_6').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_6_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_5').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_5').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_5').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_5_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_4').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_4').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_4').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_4_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_3').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_3').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_3').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_3_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_2').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_2').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_2').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_2_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_1').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_1').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_1').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_1_compact')]" }
+                }
+                hbox = {
+                    spacing = 8
+                    visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_0').IsSet]"
+                    text_single = { size = { 48 20 } text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_year_0').GetValue|0]" }
+                    progressbar = {
+                        size = { 230 12 }
+                        min = 0
+                        max = 1
+                        using = progressbar_bar_small
+                        value = "[Divide_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_hist_0').GetValue), Max_float(FixedPointToFloat(GetPlayer.MakeScope.GetVariable('tsin_gdp_history_peak').GetValue), '(float)1'))]"
+                    }
+                    text_single = { size = { 105 20 } text = "[Player.Custom('tsin_gdp_hist_0_compact')]" }
+                }
+                text_single = { maximumsize = { 430 -1 } multiline = yes text = "TSIN_STATS_HISTORY_HELP" }
+            }
+        }
+    }
+}

@@ -37,6 +37,7 @@ yearly_country_pulse = {
 
 monthly_country_pulse = {
 	on_actions = {
+		tsin_gdp_history_initialization_pulse
 		tsin_bill_monthly_pulse
 		tsin_stock_monthly_pulse
 	}
@@ -522,4 +523,14 @@ tsin_flavor_yearly_pulse = {
 
 		chance_to_happen = 15
 	}
+}
+
+# Seed existing saves once, without recomputing or inventing historical GDP.
+tsin_gdp_history_initialization_pulse = {
+    trigger = {
+        current_age_or_later = { age = age_7_industrialization }
+        has_variable = tsin_gdp
+        NOT = { has_variable = tsin_gdp_history_year }
+    }
+    effect = { tsin_record_gdp_history_effect = yes }
 }
