@@ -145,6 +145,15 @@ def main() -> int:
         years = b["year"] - a["year"]
         growth = (b[key] / a[key]) ** (1 / years) - 1 if b[key] > 0 else -1
         check(f"{label} {int(a['year'])}→{int(b['year'])} 연평균 증가율", round(growth * 100, 2), None, 5, "%")
+    before = [r["flavor"] for r in rows if 1880 <= r["year"] < 1900 and "flavor" in r]
+    after = [r["flavor"] for r in rows if r["year"] >= 1900 and "flavor" in r]
+    if before and after:
+        b_avg, a_avg = sum(before) / len(before), sum(after) / len(after)
+        ok = a_avg <= b_avg * 1.2
+        print(f"  [{'통과' if ok else '벗어남'}] 플레이버 이벤트 연평균 1880~1899 {b_avg:.0f} → 1900 이후 {a_avg:.0f} (늘지 않아야 함)")
+    late = [int(r["year"]) for r in rows if r["year"] > 1900 and r.get("countries", 0) == 0]
+    if late:
+        print(f"  [벗어남] 나라 수 0으로 기록된 해: {late[:10]}")
     return 0
 
 
