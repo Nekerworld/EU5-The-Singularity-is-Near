@@ -41,7 +41,7 @@
   - 행정 선택지: 행정 특화(`age_preference = adm`)이거나 **대중사회** 수용.
   - 외교 선택지: 외교 특화이거나 **산업자본주의** 수용.
   - 군사 선택지: 군사 특화이거나 **전기화** 수용.
-- 고른 특화는 시대 시작부터 바로 연구할 수 있고, 나머지는 잠긴 채 보이다가 제도를 수용하면 열린다. `potential`은 나중에 다시 보이게 할 수 없어 쓰지 않는다.
+- 고른 특화는 시대 시작부터 각 분기의 첫 기술을 연구할 수 있고, 후속 기술은 선행 기술이 필요하다. 나머지 특화는 잠긴 채 보이다가 대응 제도를 수용하면 같은 선행 규칙으로 열린다. `potential`은 나중에 다시 보이게 할 수 없어 쓰지 않는다.
 - AI 가중치: 기본 10, 고른 특화면 +30.
 - 시대 시작 창의 특화 미리보기(`GetCurrentAgeAdvancesList`)는 `for`가 붙은 발전만 보일 가능성이 있다. 그래서 안내 이벤트 `tsin_system.4`가 세 특화의 해금 규칙을 알려 준다. 미리보기가 비는지는 **사용자 확인 필요**이다.
 - 군사 트리 10개와 예비군 제도의 `for = mil`도 지웠다. 0.6에서는 행정·외교 특화 나라가 제7시대 유닛을 끝내 얻지 못했다.
@@ -86,3 +86,19 @@
 - 도로는 바닐라 `railroad_advance`(6시대)가 해금하고, 이 모드는 철도 건설 비용만 줄인다.
 - 정부 개혁 해금(국립 연구소)은 국가 행동·개혁 항목에서 더한다.
 
+
+
+## 2026-11-15 무료 트리 폭 조정
+
+특화 기술 30개가 모두 증기 시대 바로 아래에 배치되던 것을 10개 분기, 2~4단계로 재구성했다. 뿌리 직속 특화 기술은 30개에서 10개로 줄었다. 보너스, 연구 비용, AI 가중치, 특화/제도 allow 조건은 유지했다. 이미 연구한 기술은 유지되며, 미연구 후속 기술에는 새 선행 조건이 적용된다. 전체 무료 트리의 다른 분기는 변경하지 않았다. 실제 트리의 가로 폭과 연결선은 재실행 후 확인한다.
+
+- `tsin_civil_service_exams` → `tsin_statistical_bureau` → `tsin_income_tax` → `tsin_central_banking`
+- `tsin_public_works` → `tsin_scientific_agriculture` → `tsin_mining_engineering`
+- `tsin_national_education` → `tsin_modern_police` → `tsin_parliamentary_procedure`
+- `tsin_consular_service` → `tsin_telegraph_diplomacy` → `tsin_trading_houses` → `tsin_free_trade_doctrine`
+- `tsin_steamship_lines` → `tsin_coaling_stations` → `tsin_ironclad_yards`
+- `tsin_colonial_office` → `tsin_protectorates` → `tsin_great_power_diplomacy`
+- `tsin_officer_schools` → `tsin_general_staff` → `tsin_military_railways` → `tsin_mass_mobilization`
+- `tsin_breech_loading_rifles` → `tsin_rifled_artillery`
+- `tsin_canned_rations` → `tsin_field_medicine`
+- `tsin_steam_navy_doctrine` → `tsin_coastal_batteries`
