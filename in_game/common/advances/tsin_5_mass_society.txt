@@ -72,6 +72,7 @@ tsin_mass_communication_advance = {
 	unlock_law = tsin_assembly_law
 
 	requires = tsin_mass_society_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_labor_movement_advance = {
@@ -83,6 +84,7 @@ tsin_labor_movement_advance = {
 	unlock_law = tsin_labor_law
 
 	requires = tsin_mass_society_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_social_insurance_advance = {
@@ -96,4 +98,5 @@ tsin_social_insurance_advance = {
 
 	requires = tsin_labor_movement_advance
 	requires = tsin_mass_communication_advance
+	ai_weight = { add = 25 }
 }

@@ -25,6 +25,7 @@ tsin_rifling_advance = {
 	army_light_infantry_power = 0.1
 
 	requires = tsin_percussion_cap_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_breech_loading_artillery_advance = {
@@ -36,6 +37,7 @@ tsin_breech_loading_artillery_advance = {
 	army_artillery_power = 0.1
 
 	requires = tsin_rifling_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_repeating_rifle_advance = {
@@ -47,6 +49,7 @@ tsin_repeating_rifle_advance = {
 	army_heavy_infantry_power = 0.1
 
 	requires = tsin_rifling_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_hand_cranked_machine_gun_advance = {
@@ -83,6 +86,7 @@ tsin_ironclad_advance = {
 	unlock_unit = n_tsin_ironclad
 
 	requires = tsin_reserve_system_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_monitor_advance = {
@@ -93,6 +97,7 @@ tsin_monitor_advance = {
 	unlock_unit = n_tsin_monitor
 
 	requires = tsin_ironclad_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_torpedo_advance = {
@@ -104,4 +109,5 @@ tsin_torpedo_advance = {
 	navy_light_ship_power = 0.1
 
 	requires = tsin_ironclad_advance
+	ai_weight = { add = 25 }
 }

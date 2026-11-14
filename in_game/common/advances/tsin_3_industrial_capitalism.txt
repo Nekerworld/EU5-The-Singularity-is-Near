@@ -89,6 +89,7 @@ tsin_dynamite_advance = {
 	expand_rgo_mining_cost_modifier = -0.2
 
 	requires = tsin_improved_fertilizer_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_stock_exchange_advance = {

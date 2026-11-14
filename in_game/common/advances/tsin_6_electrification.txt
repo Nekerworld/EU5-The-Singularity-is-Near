@@ -35,6 +35,7 @@ tsin_central_power_station_advance = {
 	unlock_production_method = tsin_power_station_oil
 
 	requires = tsin_dynamo_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_distribution_grid_advance = {
@@ -55,6 +56,7 @@ tsin_electric_motor_advance = {
 	unlock_production_method = tsin_mechanized_electric_drive
 
 	requires = tsin_dynamo_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_electric_lighting_advance = {
@@ -64,6 +66,7 @@ tsin_electric_lighting_advance = {
 	unlock_building = tsin_electric_lighting
 
 	requires = tsin_dynamo_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_telegraph_telephone_advance = {
@@ -86,4 +89,5 @@ tsin_industrial_electrification_advance = {
 
 	requires = tsin_electric_motor_advance
 	requires = tsin_distribution_grid_advance
+	ai_weight = { add = 25 }
 }

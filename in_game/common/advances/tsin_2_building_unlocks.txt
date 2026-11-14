@@ -9,6 +9,7 @@ tsin_machine_works_advance = {
 	unlock_building = tsin_machine_works
 
 	requires = tsin_steam_age_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_steel_frame_engines_advance = {
@@ -19,6 +20,7 @@ tsin_steel_frame_engines_advance = {
 	unlock_production_method = tsin_machine_works_steel_frame
 
 	requires = tsin_machine_works_advance
+	ai_weight = { add = 25 }
 }
 
 tsin_mechanized_textile_mill_advance = {
@@ -28,4 +30,5 @@ tsin_mechanized_textile_mill_advance = {
 	unlock_building = tsin_mechanized_textile_mill
 
 	requires = tsin_machine_works_advance
+	ai_weight = { add = 25 }
 }

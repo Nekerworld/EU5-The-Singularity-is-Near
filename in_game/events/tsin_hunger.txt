@@ -165,6 +165,9 @@ tsin_hunger.10 = {
 	option = {
 		name = tsin_hunger.10.a
 		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 10
+		}
 	}
 
 	# Reform the land

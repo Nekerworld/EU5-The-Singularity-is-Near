@@ -13,6 +13,7 @@ tsin_steam_age_advance = {
 	unlock_law = tsin_slave_trade_law
 
 	depth = 0
+	ai_weight = { add = 25 }
 }
 
 tsin_industrial_capitalism_advance = {
