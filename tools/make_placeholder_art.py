@@ -5,6 +5,9 @@ Final art should replace these files (same paths, same size/format):
   illustrations/advances/age_7_industrialization.dds 1080x440 (vanilla DXT1)
 Placeholders are written as uncompressed 32-bit DDS.
   python tools/make_placeholder_art.py --thumbnail   only rebuild .metadata/thumbnail.png (512x512)
+  python tools/make_placeholder_art.py --only TEXT   only rebuild targets whose path contains TEXT
+  python tools/make_placeholder_art.py --from-reference   only rebuild targets that have Modern Times art
+Targets listed in REFERENCE take the Modern Times file (resized to the vanilla size) when it is installed.
 """
 from __future__ import annotations
 
@@ -120,6 +123,8 @@ EXTRA = [
     ("icons/government_reforms/illustrations/bureaucratized_administration.dds", "icons/government_reforms/illustrations/tsin_civil_service_examinations.dds", 120),
     ("icons/government_reforms/illustrations/mass_levy_system.dds", "icons/government_reforms/illustrations/tsin_universal_conscription.dds", 120),
     ("icons/government_reforms/illustrations/production_quota_bureaus.dds", "icons/government_reforms/illustrations/tsin_railway_nationalization.dds", 120),
+    ("icons/government_reforms/illustrations/bureaucratized_administration.dds", "icons/government_reforms/illustrations/tsin_national_statistics_bureau.dds", 220),
+    ("icons/government_reforms/illustrations/enlightened_council_reform.dds", "icons/government_reforms/illustrations/tsin_national_laboratory.dds", 200),
     ("icons/privileges/formal_guilds.dds", "icons/privileges/tsin_chambers_of_commerce.dds", 120),
     ("icons/privileges/nobles_offensive_military_doctrine.dds", "icons/privileges/tsin_officer_corps_monopoly.dds", 120),
     ("icons/privileges/appoint_ecclesiastical_offices.dds", "icons/privileges/tsin_church_school_network.dds", 120),
@@ -135,7 +140,47 @@ EXTRA = [
     ("illustrations/work_of_art_and_holy_sites/novel.dds", "illustrations/work_of_art_and_holy_sites/tsin_realist_novel.dds", 150),
 ]
 
-for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50)):
+for _mill in ("iron_mill", "glass_mill", "paper_mill", "furniture_mill", "printing_mill", "fine_cloth_mill"):
+    EXTRA.append((f"icons/buildings/{_mill}.dds", f"icons/buildings/tsin_automated_{_mill}.dds", 50))
+EXTRA.append(("icons/buildings/lumber_mill.dds", "icons/buildings/tsin_steam_sawmill.dds", 50))
+EXTRA += [
+    ("icons/buildings/tools_workshop.dds", "icons/buildings/tsin_farm_machinery_works.dds", 90),
+    ("icons/buildings/farming_village.dds", "icons/buildings/tsin_mechanized_farm.dds", 50),
+    ("icons/buildings/dyes_mill.dds", "icons/buildings/tsin_nitrogen_fixation_plant.dds", 150),
+    ("icons/situations/columbian_exchange.dds", "icons/situations/tsin_grain_invasion.dds", 90),
+    ("illustrations/situation/columbian_exchange.dds", "illustrations/situation/tsin_grain_invasion.dds", 90),
+    ("icons/privileges/peasants_free_peasantry.dds", "icons/privileges/tsin_union_recognition.dds", 200),
+    ("icons/situations/italian_wars.dds", "icons/situations/tsin_national_unification.dds", 30),
+    ("illustrations/situation/italian_wars.dds", "illustrations/situation/tsin_national_unification.dds", 30),
+    ("icons/situations/sengoku.dds", "icons/situations/tsin_defensive_modernization.dds", 160),
+    ("illustrations/situation/sengoku.dds", "illustrations/situation/tsin_defensive_modernization.dds", 160),
+    ("illustrations/disaster/english_civil_war.dds", "illustrations/disaster/tsin_secession_crisis.dds", 220),
+    ("icons/disasters/english_civil_war.dds", "icons/disasters/tsin_secession_crisis.dds", 220),
+    ("illustrations/disaster/peasants_war.dds", "illustrations/disaster/tsin_millenarian_rebellion.dds", 40),
+    ("icons/disasters/peasants_war.dds", "icons/disasters/tsin_millenarian_rebellion.dds", 40),
+    ("icons/buildings/grand_apartment.dds", "icons/buildings/tsin_tenement.dds", 30),
+    ("icons/buildings/grand_apartment.dds", "icons/buildings/tsin_model_dwellings.dds", 120),
+    ("icons/buildings/aqueduct_system.dds", "icons/buildings/tsin_waterworks.dds", 50),
+    ("icons/buildings/naval_base.dds", "icons/buildings/tsin_steam_port.dds", 50),
+    ("icons/buildings/provincial_chancery.dds", "icons/buildings/tsin_prefecture.dds", 50),
+    ("icons/buildings/local_schools.dds", "icons/buildings/tsin_public_school.dds", 50),
+    ("icons/buildings/university.dds", "icons/buildings/tsin_research_university.dds", 50),
+    ("icons/map_modes/literacy.dds", "icons/map_modes/tsin_education.dds", 200),
+    ("icons/map_modes/building_based.dds", "icons/map_modes/tsin_automation.dds", 260),
+    ("icons/map_modes/market_access.dds", "icons/map_modes/tsin_industrial_siting.dds", 40),
+    ("icons/map_modes/roads.dds", "icons/map_modes/tsin_infrastructure.dds", 180),
+    ("icons/map_modes/laborers_percentage.dds", "icons/map_modes/tsin_labor_conditions.dds", 100),
+    ("icons/map_modes/cities.dds", "icons/map_modes/tsin_housing.dds", 20),
+    ("icons/map_modes/tax_base.dds", "icons/map_modes/tsin_gdp_per_capita.dds", 140),
+    ("icons/map_modes/net_building_profit.dds", "icons/map_modes/tsin_corporations.dds", 320),
+    ("icons/map_modes/food_productivity.dds", "icons/map_modes/tsin_agriculture.dds", 80),
+    ("illustrations/situation/great_pestilence.dds", "illustrations/disaster/tsin_cholera.dds", 120),
+    ("icons/situations/great_pestilence.dds", "icons/disasters/tsin_cholera.dds", 120),
+    ("illustrations/situation/treaty_of_tordesillas.dds", "illustrations/situation/tsin_great_migration.dds", 200),
+    ("icons/situations/treaty_of_tordesillas.dds", "icons/situations/tsin_great_migration.dds", 200),
+]
+
+for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50), ("tsin_farm_machinery", "tools", 90)):
     EXTRA += [
         (f"icons/trade_goods/icon_goods_{_src}.dds", f"icons/trade_goods/icon_goods_{_good}.dds", _deg),
         (f"icons/trade_goods/illustrations/icon_goods_{_src}.dds", f"icons/trade_goods/illustrations/icon_goods_{_good}.dds", _deg),
@@ -143,6 +188,33 @@ for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosive
         (f"icons/modifier_types/{_src}_negative.dds", f"icons/modifier_types/{_good}_negative.dds", _deg),
         ("icons/modifier_types/global_steel_pop_demand.dds", f"icons/modifier_types/global_{_good}_pop_demand.dds", _deg),
         (f"icons/modifier_types/{_src}_impacts_inflation.dds", f"icons/modifier_types/{_good}_impacts_inflation.dds", _deg),
+    ]
+
+# Modern Times art (workshop 3792511867, docs/modern_times_reference.md) used instead of the recolour when the
+# reference mod is installed: (path under its main_menu/gfx/interface, mod target).
+REFERENCE_ROOT = pdx.workshop_root() / "3792511867/main_menu/gfx/interface"
+REFERENCE = [
+    ("icons/buildings/mt_steel_factory.dds", "icons/buildings/tsin_automated_iron_mill.dds"),
+    ("icons/buildings/mt_glass_factory.dds", "icons/buildings/tsin_automated_glass_mill.dds"),
+    ("icons/buildings/mt_paper_factory.dds", "icons/buildings/tsin_automated_paper_mill.dds"),
+    ("icons/buildings/mt_furniture_factory.dds", "icons/buildings/tsin_automated_furniture_mill.dds"),
+    ("icons/buildings/mt_textile_factory.dds", "icons/buildings/tsin_mechanized_textile_mill.dds"),
+    ("icons/buildings/mt_mechanized_sawmill.dds", "icons/buildings/tsin_steam_sawmill.dds"),
+    ("icons/buildings/mt_coal_power_plant.dds", "icons/buildings/tsin_power_station.dds"),
+    ("icons/buildings/mt_elite_university.dds", "icons/buildings/tsin_research_university.dds"),
+    ("icons/buildings/mt_ministerial_governor.dds", "icons/buildings/tsin_prefecture.dds"),
+    ("icons/buildings/mt_coal_mine.dds", "icons/buildings/tsin_blasting_works.dds"),
+    ("icons/buildings/mt_tool_factory.dds", "icons/buildings/tsin_machine_works.dds"),
+    ("icons/institutions/mt_heavy_industry.dds", "icons/institutions/tsin_industrial_capitalism.dds"),
+    ("icons/institutions/mt_urbanism.dds", "icons/institutions/tsin_mass_society.dds"),
+    ("icons/age/mt_age_7_victorian_era.dds", "icons/age/age_7_industrialization.dds"),
+    ("illustrations/advances/mt_age_7_victorian_era.dds", "illustrations/advances/age_7_industrialization.dds"),
+]
+for _good in ("electricity", "oil", "rubber"):
+    REFERENCE += [
+        (f"icons/trade_goods/icon_goods_mt_{_good}.dds", f"icons/trade_goods/icon_goods_tsin_{_good}.dds"),
+        (f"icons/trade_goods/illustrations/icon_goods_mt_{_good}.dds",
+         f"icons/trade_goods/illustrations/icon_goods_tsin_{_good}.dds"),
     ]
 
 
@@ -173,12 +245,21 @@ def main() -> int:
         jobs.append((f"illustrations/institutions/{src}.dds", f"illustrations/institutions/{dst}.dds", deg))
     jobs.append(("icons/map_modes/institution.dds", "icons/map_modes/tsin_industrial_institutions.dds", 200))
     jobs.extend(EXTRA)
+    reference = {dst: REFERENCE_ROOT / ref for ref, dst in REFERENCE if (REFERENCE_ROOT / ref).exists()}
+    if "--from-reference" in sys.argv:
+        jobs = [j for j in jobs if j[1] in reference]
+    if "--only" in sys.argv:
+        needle = sys.argv[sys.argv.index("--only") + 1]
+        jobs = [j for j in jobs if needle in j[1]]
     PREVIEW.mkdir(parents=True, exist_ok=True)
     for src, dst, recolour in jobs:
         source = Image.open(SRC / src)
-        im = hue_shift(source, recolour) if isinstance(recolour, int) else tint(source, recolour)
-        if "icons/age" in dst:
-            im = roman_vii(im)
+        if dst in reference:
+            im = Image.open(reference[dst]).convert("RGBA").resize(source.size, Image.LANCZOS)
+        else:
+            im = hue_shift(source, recolour) if isinstance(recolour, int) else tint(source, recolour)
+            if "icons/age" in dst:
+                im = roman_vii(im)
         out = DST / dst
         out.parent.mkdir(parents=True, exist_ok=True)
         save_uncompressed_dds(im, out)
