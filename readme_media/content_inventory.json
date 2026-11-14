@@ -1,0 +1,62 @@
+{
+  "global": {
+    "관리 탭": 6,
+    "공용 지표": 35,
+    "운영 경고": 16,
+    "지도 모드": 16,
+    "힌트": 14,
+    "백과사전": 76,
+    "게임 규칙": 6
+  },
+  "era_7": {
+    "발전": 161,
+    "건물": 26,
+    "유닛": 19,
+    "법": 11,
+    "상황": 8,
+    "재난": 4,
+    "재화": 7,
+    "제도": 3,
+    "기업": 6
+  },
+  "all_events": 180,
+  "eras": [
+    {
+      "number": 7,
+      "id": "age_7_industrialization",
+      "start_year": 1837,
+      "implementation": "content"
+    },
+    {
+      "number": 8,
+      "id": "age_8_world_wars",
+      "start_year": 1900,
+      "implementation": "skeleton"
+    },
+    {
+      "number": 9,
+      "id": "age_9_atomic",
+      "start_year": 1945,
+      "implementation": "skeleton"
+    },
+    {
+      "number": 10,
+      "id": "age_10_information",
+      "start_year": 1990,
+      "implementation": "skeleton"
+    },
+    {
+      "number": 11,
+      "id": "age_11_artificial_intelligence",
+      "start_year": 2035,
+      "implementation": "skeleton"
+    },
+    {
+      "number": 12,
+      "id": "age_12_space",
+      "start_year": 2120,
+      "implementation": "skeleton"
+    }
+  ],
+  "end_year": 2337
+}
