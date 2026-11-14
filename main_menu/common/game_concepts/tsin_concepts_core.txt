@@ -1,0 +1,40 @@
+﻿# Core encyclopedia entries (guide children): the age, its institutions and advances, warfare, continuity
+# with the vanilla age VI, replaced buildings and game rules. Loc in tsin_concepts_core_l_*.yml.
+# tsin_flavor_events_concept is defined in tsin_concepts_world.txt.
+# Read after tsin_concepts.txt, which defines the family tsin_singularity_concept.
+
+tsin_age_of_industry_concept = {
+	family = tsin_singularity_concept
+	texture = "age/age_7_industrialization"
+}
+
+tsin_industrial_institutions_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/tsin_industrial_institutions"
+	shown_in_loading_screen = yes
+}
+
+tsin_age7_advances_concept = {
+	family = tsin_singularity_concept
+	texture = "flat_icons/advances_panel/research_queue"
+}
+
+tsin_age7_military_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/military"
+}
+
+tsin_age6_continuity_concept = {
+	family = tsin_singularity_concept
+	texture = "flat_icons/ages"
+}
+
+tsin_replaced_buildings_concept = {
+	family = tsin_singularity_concept
+	texture = "flat_icons/mass_upgrade"
+}
+
+tsin_game_rules_concept = {
+	family = tsin_singularity_concept
+	texture = "flat_icons/special_conditions"
+}

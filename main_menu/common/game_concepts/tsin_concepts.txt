@@ -1,68 +1,116 @@
-﻿# Encyclopedia entries for The Singularity is Near. Loc: game_concept_<key>, game_concept_<key>_desc (tsin_m6_l_*.yml).
+﻿# Encyclopedia entries for The Singularity is Near (docs/encyclopedia.md).
+# Loc: game_concept_<key>, game_concept_<key>_desc in tsin_concepts_<area>_l_*.yml.
+# One guide entry, five area hubs (family = guide), every other entry under its hub (family = hub).
+# Area entries are defined in tsin_concepts_<area>.txt.
 
-tsin_electric_power_concept = {
-	texture = "map_modes/tsin_electrification"
+tsin_singularity_concept = {
+	alias = { tsin_mod_guide }
+	texture = "age/age_7_industrialization"
 	shown_in_loading_screen = yes
 }
 
-tsin_industrial_investment_concept = {
-	texture = "map_modes/tsin_industrial_investment"
+tsin_industrial_economy_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/tsin_industrialization"
 }
 
-tsin_movements_concept = {
-	texture = "map_modes/tsin_radicalism"
-	shown_in_loading_screen = yes
+tsin_industrial_society_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/tsin_urbanization"
 }
 
-tsin_treaty_port_concept = {
-	texture = "location_icons/market_access"
+tsin_mass_politics_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/government"
 }
 
-tsin_industrial_age_situations = {
-	texture = "flat_icons/situations"
+tsin_industrial_world_concept = {
+	family = tsin_singularity_concept
+	texture = "map_modes/great_powers"
 }
 
-tsin_education_ladder_concept = {
-	texture = "map_modes/tsin_education"
-	shown_in_loading_screen = yes
-}
-
-# 0.7 concepts (docs/encyclopedia.md)
+# Core (guide hub): age, tempo, population
 tsin_time_compression_concept = {
+	family = tsin_singularity_concept
 	texture = "map_modes/advances"
 	shown_in_loading_screen = yes
 }
 
 tsin_population_governor_concept = {
+	family = tsin_singularity_concept
 	texture = "map_modes/population"
 }
 
+# Economy
+tsin_electric_power_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "map_modes/tsin_electrification"
+	shown_in_loading_screen = yes
+}
+
+tsin_industrial_investment_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "map_modes/tsin_industrial_investment"
+}
+
 tsin_agricultural_revolution_concept = {
+	family = tsin_industrial_economy_concept
 	texture = "map_modes/tsin_agriculture"
 }
 
 tsin_automation_concept = {
+	family = tsin_industrial_economy_concept
 	texture = "map_modes/tsin_automation"
 }
 
+# Society
+tsin_movements_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/tsin_radicalism"
+	shown_in_loading_screen = yes
+}
+
+tsin_education_ladder_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/tsin_education"
+	shown_in_loading_screen = yes
+}
+
 tsin_labor_conditions_concept = {
+	family = tsin_industrial_society_concept
 	texture = "map_modes/tsin_labor_conditions"
 	shown_in_loading_screen = yes
 }
 
+# Politics and finance
 tsin_bills_concept = {
+	family = tsin_mass_politics_concept
 	texture = "map_modes/government"
 	shown_in_loading_screen = yes
 }
 
 tsin_corporations_concept = {
+	family = tsin_mass_politics_concept
 	texture = "map_modes/tsin_corporations"
 }
 
 tsin_stock_index_concept = {
+	family = tsin_mass_politics_concept
 	texture = "map_modes/net_building_profit"
 }
 
 tsin_estimated_gdp_concept = {
+	family = tsin_mass_politics_concept
 	texture = "map_modes/tsin_gdp_per_capita"
+}
+
+# World and history
+tsin_treaty_port_concept = {
+	family = tsin_industrial_world_concept
+	texture = "location_icons/market_access"
+}
+
+tsin_industrial_age_situations = {
+	family = tsin_industrial_world_concept
+	texture = "flat_icons/situations"
 }
