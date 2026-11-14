@@ -122,6 +122,8 @@ EXTRA = [
     ("icons/privileges/nobles_offensive_military_doctrine.dds", "icons/privileges/tsin_officer_corps_monopoly.dds", 120),
     ("icons/privileges/appoint_ecclesiastical_offices.dds", "icons/privileges/tsin_church_school_network.dds", 120),
     ("icons/privileges/peasants_free_peasantry.dds", "icons/privileges/tsin_mutual_aid_societies.dds", 120),
+    ("icons/buildings/iron_foundry.dds", "icons/buildings/tsin_power_station.dds", 50),
+    ("icons/buildings/lighthouse_of_alexandria.dds", "icons/buildings/tsin_electric_lighting.dds", 50),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50)):

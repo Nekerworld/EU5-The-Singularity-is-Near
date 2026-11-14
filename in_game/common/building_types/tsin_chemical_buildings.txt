@@ -50,6 +50,20 @@ tsin_fertilizer_plant = {
 			debug_max_profit = mills_profit_margin
 			category = mills_input
 		}
+
+		# inputs 12.0 -> 6.8 fertilizer (17.0); unlocked by tsin_industrial_electrification_advance
+		tsin_fertilizer_electrochemical = {
+			icon_type = goods
+			icon = tsin_electricity
+			tsin_electricity = 2.0
+			saltpeter = 1.5
+			alum = 1.0
+			produced = tsin_fertilizer
+			output = 6.8
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
 	}
 
 	construction_demand = tsin_factory_construction

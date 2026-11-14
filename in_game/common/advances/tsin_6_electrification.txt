@@ -1,0 +1,89 @@
+﻿############################
+# age_7_industrialization - electrification tree (M5)
+# Root: tsin_electrification_advance (tsin_0_age_of_industrialization.txt).
+# Electricity is a market good (docs/gate_g.md): power stations make it, electric production methods use it.
+############################
+
+tsin_practical_electrical_engineering_advance = {
+	age = age_7_industrialization
+	icon = scottish_enlightenment
+
+	research_speed_modifier = 0.05
+	global_copper_output_modifier = 0.1
+
+	requires = tsin_electrification_advance
+	ai_weight = { add = 25 }
+}
+
+# Generation
+tsin_dynamo_advance = {
+	age = age_7_industrialization
+	icon = water_frame
+
+	unlock_building = tsin_power_station
+
+	requires = tsin_practical_electrical_engineering_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_central_power_station_advance = {
+	age = age_7_industrialization
+	icon = austrian_state_industrialization
+
+	global_tsin_electricity_output_modifier = 0.1
+	unlock_production_method = tsin_power_station_hydro
+	unlock_production_method = tsin_power_station_oil
+
+	requires = tsin_dynamo_advance
+}
+
+tsin_distribution_grid_advance = {
+	age = age_7_industrialization
+	icon = contacts_network
+
+	global_tsin_electricity_output_modifier = 0.15
+	global_copper_pop_demand = 0.1
+
+	requires = tsin_central_power_station_advance
+}
+
+# Use
+tsin_electric_motor_advance = {
+	age = age_7_industrialization
+	icon = saxon_industrialization
+
+	unlock_production_method = tsin_mechanized_electric_drive
+
+	requires = tsin_dynamo_advance
+}
+
+tsin_electric_lighting_advance = {
+	age = age_7_industrialization
+	icon = spa_spanish_enlightenment
+
+	unlock_building = tsin_electric_lighting
+
+	requires = tsin_dynamo_advance
+}
+
+tsin_telegraph_telephone_advance = {
+	age = age_7_industrialization
+	icon = swedish_royal_post_office
+
+	country_cabinet_efficiency = 0.05
+	diplomatic_range_modifier = 0.25
+	global_merchant_power = 0.05
+
+	requires = tsin_practical_electrical_engineering_advance
+}
+
+tsin_industrial_electrification_advance = {
+	age = age_7_industrialization
+	icon = industrial_expansion_advance
+
+	global_production_efficiency = small_production_efficiency_bonus
+	unlock_production_method = tsin_fertilizer_electrochemical
+
+	requires = tsin_electric_motor_advance
+	requires = tsin_distribution_grid_advance
+}

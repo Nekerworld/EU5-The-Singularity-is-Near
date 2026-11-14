@@ -199,6 +199,19 @@ tsin_mechanized_textile_mill = {
 			debug_max_profit = mills_profit_margin
 			category = mills_input
 		}
+
+		# inputs 3.45 -> 1.67 cloth (5.0); unlocked by tsin_electric_motor_advance
+		tsin_mechanized_electric_drive = {
+			icon_type = goods
+			icon = tsin_electricity
+			tsin_electricity = 1.0
+			tools = 0.15
+			produced = cloth
+			output = 1.67
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
 	}
 
 	custom_tags = { lategame_manufactory }
