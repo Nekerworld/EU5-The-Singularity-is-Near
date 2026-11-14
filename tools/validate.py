@@ -1,4 +1,4 @@
-"""Static checks for The Singularity is Near. The game itself is the final judge; this
+﻿"""Static checks for The Singularity is Near. The game itself is the final judge; this
 catches the cheap mistakes before a launch.
 
   python tools/validate.py              all checks
@@ -7,6 +7,7 @@ catches the cheap mistakes before a launch.
   python tools/validate.py --compat     objects we replace that workshop mods also touch
 
 Checks:
+  integration  disaster/situation panels, visible map groups, on_action callbacks, literal debug labels
   bom      every .txt/.yml under in_game/main_menu/loading_screen starts with a UTF-8 BOM
   braces   balanced braces per file
   keys     each `key = value` key inside mod objects is known: a modifier type, or a key that
@@ -769,7 +770,7 @@ def main() -> int:
     ap.add_argument("--fix-bom", action="store_true")
     ap.add_argument("--prefix-scan", action="store_true")
     ap.add_argument("--compat", action="store_true")
-    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,names,gfx,loc,order,events,concepts")
+    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,names,gfx,loc,order,events,concepts,integration")
     a = ap.parse_args()
     skip = set(filter(None, a.skip.split(",")))
     if a.prefix_scan:
@@ -801,6 +802,10 @@ def main() -> int:
             check_events()
         if "concepts" not in skip:
             check_concepts()
+        if "integration" not in skip:
+            from integration_checks import check as check_integration
+            integration_errors, _ = check_integration(MOD, GAME)
+            errors.extend(integration_errors)
     for w in warnings:
         print("WARN ", w)
     for e in errors:
