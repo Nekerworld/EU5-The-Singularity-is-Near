@@ -11,7 +11,7 @@
 | `tsin_abolition` | `in_game/events/tsin_abolition.txt` | M4 | 노예무역 금지, 해방 (예산 제외) |
 | `tsin_springtime` | `in_game/events/tsin_springtime.txt` | M4 | 국민의 봄 상황 (예산 제외) |
 | `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
-| `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 보건 |
+| `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
 | `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 이후 | 지역 플레이버 (태그 조건 금지) |
 
@@ -102,6 +102,13 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_hunger.3` | 이민선 | 재난 중 | 떠나게 둠(대이민 감쇠) / 식민지 뱃삯(금 -2, 더 긴 대이민) |
 | `tsin_hunger.4` | 퇴거와 식량 폭동 | 재난 중 | 소작농 편 / 지주 편(민족주의 +5) |
 | `tsin_hunger.10` | 기근 이후 | 재난 종료 | 안정도 + / 농업 개혁(금 -3, 식량 +5%) |
+| `tsin_society.10` | 인민헌장 (20년마다) | 의회 있음, 자유주의 ≥ 40 | 의회 논의(자유주의 -10, 귀족 불만, 자유주의 쪽) / 기각(자유주의 +5, 시민 불만) / 체포(자유주의 -15, 사회주의 +5, 안정도 -) |
+| `tsin_society.20` | 파업 | 노동 운동 ≥ 40, 공장 지점 보유 | 노조 인정(노동 운동 -15, 평민 만족, 시민 불만) / 진압(`tsin_strike_broken` 감쇠, 노동 운동 +10, 사회주의 +5) / 중재(금 -2, 노동 운동 -5) |
+| `tsin_society.30` | 공교육법 (나라당 한 번) | 보통 교육 기술 | 공립 학교(금 -3, 문해율, 성직자 불만) / 교회에 맡김(성직자 만족) |
+| `tsin_society.40` | 사회 보험 | 사회 보험 기술, 사회주의 ≥ 30, 사회 보험 정책 아님 | 정책 시행(사회주의 -20) / 자선(사회주의 +5, 시민 만족) |
+| `tsin_society.50` | 공장의 아이들 | 노동 규제 없음 정책, 공장 지점 2곳 이상 | 공장법 정책 시행(인도주의 쪽) / 방치(노동 운동 +5, 시민 만족) |
+| `tsin_society.60` | 빈민가의 전염병 | 바닐라 발진티푸스 또는 인플루엔자 발생 중 | 하수도(근대 하수도 기술 필요, 금 -3, 두 질병 저항, 기대 수명 +1) / 격리(2년) / 나쁜 공기설 |
+| `tsin_society.70` | 여성에게 투표권을 (15년마다) | 여성 참정권 ≥ 50 | 지방 투표권(운동 -20, 성직자 불만, 인도주의 쪽) / 거부(운동 +5, 성직자 만족) |
 
 곡물법 의회 의제(`in_game/common/parliament_agendas/tsin_parliament_agendas.txt`): 시민 계층의 `pa_tsin_repeal_corn_laws`와 귀족 계층의 `pa_tsin_protect_grain`. 둘 중 하나의 영구 보정치(`tsin_corn_laws_repealed` / `tsin_corn_laws_protection`)만 남고, `mercantilism_vs_free_trade` 축을 조금 움직인다. 사회 가치 값이 자기 쪽이면 의제 확률이 10에서 20으로 오른다. 사용자 확인 필요: 의회 화면에 두 의제가 제7시대 이후에만 나오는지.
 
@@ -112,3 +119,5 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 - 기술을 무상으로 주지 않는다(`add_advance` 같은 효과 금지).
 - 선택지마다 경제, 정치(계층 만족도, 안정도), 진행(제도 진척, 건물) 사이의 교환이 있어야 한다.
 - 효과 크기는 바닐라 스크립트 값(`institution_progress_*`, `*_mild_bonus` 등)을 우선 쓴다.
+
+바닐라에는 콜레라 질병이 없다. `tsin_society.60`은 도시 위생과 관련된 바닐라 발진티푸스·인플루엔자에 연결했다. 새 질병을 만들려면 `local_<질병>_impact_modifier` 같은 보정치 형식도 함께 정의해야 하므로 이번 단계에서는 하지 않았다.

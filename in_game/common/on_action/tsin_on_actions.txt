@@ -16,6 +16,7 @@ yearly_country_pulse = {
 		tsin_invention_yearly_pulse
 		tsin_society_yearly_pulse
 		tsin_hunger_yearly_pulse
+		tsin_society_flavor_pulse
 	}
 }
 
@@ -150,5 +151,23 @@ tsin_hunger_yearly_pulse = {
 	random_events = {
 		10 = tsin_hunger.1
 		chance_to_happen = 2
+	}
+}
+
+# root = country. Society flavor events; the budget trigger caps them per year.
+tsin_society_flavor_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_society.10
+		10 = tsin_society.20
+		10 = tsin_society.30
+		10 = tsin_society.40
+		10 = tsin_society.50
+		10 = tsin_society.60
+		10 = tsin_society.70
+		chance_to_happen = 25
 	}
 }

@@ -75,3 +75,40 @@ tsin_womens_suffrage_agitation = {
 	burghers_estate_target_satisfaction = -0.025
 	monthly_towards_humanist = 0.05
 }
+
+# tsin_society.20 option b
+tsin_strike_broken = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_production_efficiency = -0.03
+}
+
+# tsin_society.30 option a
+tsin_state_schools = {
+	game_data = {
+		category = country
+	}
+	global_monthly_literacy = 0.01
+	global_max_literacy = 5
+}
+
+# tsin_society.60 option a
+tsin_sanitary_reform = {
+	game_data = {
+		category = country
+	}
+	national_typhus_resistance_modifier = 0.25
+	national_influenza_resistance_modifier = 0.1
+	global_life_expectancy = 1
+}
+
+# tsin_society.60 option b
+tsin_quarantine = {
+	game_data = {
+		category = country
+	}
+	national_typhus_resistance_modifier = 0.1
+	global_production_efficiency = -0.02
+}
