@@ -17,6 +17,9 @@ Checks:
            unique production method inputs are goods
   gfx      advance icons, event images, institution and map mode art exist (vanilla, DLC or mod)
   loc      tsin_ objects and event title/desc/option keys have english and korean entries
+  order    requires/obsolete/copy_from point at objects read earlier (file name order)
+  events   event-level outcome = positive/negative/neutral, no REPLACE: prefix, known illustration tags
+  concepts mod encyclopedia entries have loc, icon and a known family; [x|e] links name a concept
 Exit code 1 if any error.
 """
 from __future__ import annotations
@@ -597,6 +600,126 @@ def check_loc() -> None:
 
 # ---------------------------------------------------------------- scans
 
+RE_CONCEPT_LINK = re.compile(r"\[(?:Concept\(\s*'(\w+)'[^\]]*|(\w+))\|[eE]\]")
+
+
+def concept_names(root: Path) -> tuple[dict[str, str], set[str]]:
+    """({concept key: block text}, keys and aliases) of the game_concepts in root."""
+    blocks: dict[str, str] = {}
+    names: set[str] = set()
+    base = root / "main_menu/common/game_concepts"
+    for p in sorted(base.glob("*.txt")) if base.exists() else []:
+        for b in pdx.top_level_blocks(pdx.read_text(p)):
+            blocks[b.key] = b.text
+            names.add(b.key)
+            m = re.search(r"\balias\s*=\s*\{([^{}]*)\}", pdx.strip_comments(b.text))
+            if m:
+                names.update(m.group(1).split())
+    return blocks, names
+
+
+def check_concepts() -> None:
+    """Mod concepts have english/korean name and desc, an icon and a known family; every [x|e] link
+    in mod localization names a concept (vanilla or mod, key or alias)."""
+    vanilla_blocks, vanilla_names = concept_names(GAME)
+    mod_blocks, mod_names = concept_names(MOD)
+    known = vanilla_names | mod_names
+    langs = {lang: loc_keys(lang) for lang in ("english", "korean")}
+    for k, text in mod_blocks.items():
+        clean = pdx.strip_comments(text)
+        for lang, keys in langs.items():
+            for loc in (f"game_concept_{k}", f"game_concept_{k}_desc"):
+                if loc not in keys:
+                    err(f"concept: missing {lang} '{loc}'")
+        tex = re.search(r'\btexture\s*=\s*"([^"]+)"', clean)
+        if not tex:
+            err(f"concept: {k} has no texture")
+        elif not gfx_exists(f"gfx/interface/icons/{tex.group(1)}.dds"):
+            err(f"concept: {k} texture gfx/interface/icons/{tex.group(1)}.dds not found")
+        fam = re.search(r"\bfamily\s*=\s*(\w+)", clean)
+        if fam and fam.group(1) not in vanilla_blocks and fam.group(1) not in mod_blocks:
+            err(f"concept: {k} family {fam.group(1)} is not a concept")
+    base = MOD / "main_menu/localization"
+    for p in sorted(base.rglob("*.yml")) if base.exists() else []:
+        text = p.read_text(encoding="utf-8-sig", errors="replace")
+        for m in RE_CONCEPT_LINK.finditer(text):
+            name = m.group(1) or m.group(2)
+            if name not in known:
+                err(f"concept: {rel(p)} links [{name}|e], which is not a concept or alias")
+
+
+LOAD_ORDER_REFS = {
+    "in_game/common/advances": "requires",
+    "in_game/common/building_types": "obsolete",
+    "in_game/common/unit_types": "copy_from",
+}
+EVENT_OUTCOMES = {"positive", "negative", "neutral"}
+
+
+def depth1(block_text: str) -> str:
+    """Text of a block at its first nesting level only."""
+    c = pdx.strip_comments(block_text)
+    inner = c[c.index("{") + 1:c.rindex("}")]
+    depth, out = 0, []
+    for ch in inner:
+        if ch == "{":
+            depth += 1
+        if depth == 0:
+            out.append(ch)
+        if ch == "}":
+            depth -= 1
+    return "".join(out)
+
+
+def check_load_order() -> None:
+    """References the game resolves while reading: the target must be read earlier (file name order)."""
+    for d, field in LOAD_ORDER_REFS.items():
+        files = sorted((MOD / d).glob("*.txt"), key=lambda p: p.name)
+        pos: dict[str, tuple[int, int, str]] = {}
+        parsed = []
+        for fi, p in enumerate(files):
+            blocks = pdx.top_level_blocks(pdx.read_text(p))
+            parsed.append((fi, p, blocks))
+            for b in blocks:
+                pos[b.key] = (fi, b.start, p.name)
+        for fi, p, blocks in parsed:
+            for b in blocks:
+                for m in re.finditer(rf"\b{field}\s*=\s*(\w+)", pdx.strip_comments(b.text)):
+                    target = pos.get(m.group(1))
+                    if target and (target[0], target[1]) > (fi, b.start):
+                        err(f"load order: {rel(p)} {b.key} {field} = {m.group(1)} is defined later "
+                            f"({target[2]}); the reference is dropped")
+
+
+def illustration_tags() -> set[str]:
+    tags: set[str] = set()
+    for p in (GAME / "in_game/events").rglob("*.txt"):
+        for m in re.finditer(r"illustration_tags\s*=\s*\{([^{}]*)\}", pdx.read_text(p)):
+            tags.update(re.findall(r"=\s*(\w+)", m.group(1)))
+    return tags
+
+
+def check_events() -> None:
+    """Event-level `outcome`, no database prefixes on event ids, known illustration tags."""
+    tags = illustration_tags()
+    for p in sorted((MOD / "in_game/events").rglob("*.txt")):
+        for b in pdx.top_level_blocks(pdx.read_text(p)):
+            if b.local_kind or not re.match(r"^[\w:]+\.\d+$", b.key):
+                continue
+            if ":" in b.key:
+                err(f"event: {rel(p)} {b.key}: events take no REPLACE:/INJECT: prefix (redefine the id instead)")
+            top = depth1(b.text)
+            m = re.search(r"\boutcome\s*=\s*(\w+)", top)
+            if not m:
+                err(f"event: {rel(p)} {b.key} has no outcome (positive/negative/neutral)")
+            elif m.group(1) not in EVENT_OUTCOMES:
+                err(f"event: {rel(p)} {b.key} outcome = {m.group(1)} (positive/negative/neutral)")
+            for t in re.findall(r"illustration_tags\s*=\s*\{([^{}]*)\}", pdx.strip_comments(b.text)):
+                for tag in re.findall(r"=\s*(\w+)", t):
+                    if tags and tag not in tags:
+                        err(f"event: {rel(p)} {b.key} unknown illustration tag {tag}")
+
+
 def prefix_scan() -> None:
     ws = pdx.workshop_root()
     pat = re.compile(r"\b(tsin_\w+|age_7_industrialization)\b")
@@ -639,7 +762,7 @@ def main() -> int:
     ap.add_argument("--fix-bom", action="store_true")
     ap.add_argument("--prefix-scan", action="store_true")
     ap.add_argument("--compat", action="store_true")
-    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,names,gfx,loc")
+    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,names,gfx,loc,order,events,concepts")
     a = ap.parse_args()
     skip = set(filter(None, a.skip.split(",")))
     if a.prefix_scan:
@@ -665,6 +788,12 @@ def main() -> int:
             check_gfx()
         if "loc" not in skip:
             check_loc()
+        if "order" not in skip:
+            check_load_order()
+        if "events" not in skip:
+            check_events()
+        if "concepts" not in skip:
+            check_concepts()
     for w in warnings:
         print("WARN ", w)
     for e in errors:
