@@ -57,3 +57,41 @@
 - `add_policy`로 바닐라 `slavery_outlawed`와 모드 정책을 시행할 수 있는지.
 - `change_variable`의 `add`에 스크립트 값을 넣을 수 있는지, `clamp_variable`이 동작하는지.
 - 노예무역 금지 정책의 수출입 금지 보정치가 실제로 노예 교역을 막는지.
+
+## 의회 의제, 특권, 정부 개혁
+
+빅토리아식 "정부 청원"은 계층별 의회 의제로 근사한다. 의제는 M4 법률의 정책을 직접 바꾼다.
+
+| 의제 | 계층 | 상정 조건 | 통과 효과 |
+|---|---|---|---|
+| `pa_tsin_factory_acts` 공장법 제정 | 평민 | 노동 규제 없음 정책 | 공장법 정책 시행 (대중 통신 기술이 있으면 확률 2배) |
+| `pa_tsin_restore_landlord_rights` 지주 권리 회복 | 귀족 | 유상 해방 정책 | 농노제 유지 정책, 농노제 쪽 이동 |
+| `pa_tsin_railway_charters` 철도 회사 특허 | 시민 | 철도망 기술, 철도 국유화 개혁 없음 | 10년 철도 비용 -10%, 시민 만족 |
+| `pa_tsin_restore_concordat` 정교 협약 회복 | 성직자 | 정교 분리 정책 | 정교 협약 정책, 영성주의 쪽 이동 |
+
+곡물법 의제(M3)와 노예제 폐지 의제(위)도 같은 파일에 있다.
+
+계층 특권 (`in_game/common/estate_privileges/tsin_age7_privileges.txt`, 모두 제7시대 이후):
+
+| 특권 | 계층 | 효과 |
+|---|---|---|
+| `tsin_chambers_of_commerce` 상공회의소 | 시민 | 공장 건설 효율 +10%, 금권정 쪽 |
+| `tsin_officer_corps_monopoly` 장교단 독점 | 귀족 | 육군 사기 +5%, 귀족정 쪽 |
+| `tsin_church_school_network` 교회 학교망 | 성직자 (정교 분리 아님) | 월간 문해율 +0.01, 영성주의 쪽 |
+| `tsin_mutual_aid_societies` 공제 조합 | 평민 (노동 운동 기술 필요) | 기대 수명 +1, 공동체 쪽 |
+
+시대 고유 정부 개혁 (`in_game/common/government_reforms/tsin_age7_reforms.txt`, `age = age_7_industrialization`, 시행 2년):
+
+| 개혁 | 조건 | 효과 |
+|---|---|---|
+| `tsin_factory_inspectorate` 공장 감독관 | 노동 운동 기술 | 생산 효율 -1%, 평민 만족, 노동자 최대 문해율 +5, 공동체 쪽 |
+| `tsin_civil_service_examinations` 공무원 시험제 | 보통 교육 기술 | 내각 효율 +10%, 월간 통제력 +0.01, 귀족 불만, 중앙집권 쪽 |
+| `tsin_universal_conscription` 국민 개병제 | — | 인력 +15%, 보충 속도 +5%, 평민 불만, 양 중시 쪽 |
+| `tsin_railway_nationalization` 철도 국유화 | 철도망 기술 | 철도 비용 -15%, 시민 불만, 중앙집권 쪽 |
+
+그림은 바닐라 개혁·특권 아이콘의 색상만 바꾼 임시 그림이다(`tools/make_placeholder_art.py`).
+
+사용자 확인 필요:
+- 정부 개혁 화면의 시대 열에 제7시대 개혁 4개가 나오는지(`gui/government_reform_per_age.gui`가 새 시대를 자동으로 그리는지).
+- 의제의 `add_policy`가 같은 법의 기존 정책을 바꾸는지.
+- 특권 목록에 제7시대 이후에만 새 특권이 나오는지.

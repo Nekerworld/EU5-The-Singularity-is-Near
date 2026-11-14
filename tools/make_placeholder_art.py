@@ -107,6 +107,14 @@ EXTRA = [
     ("illustrations/situation/little_ice_age.dds", "illustrations/situation/tsin_long_depression.dds", 150),
     ("icons/situations/colonial_revolution.dds", "icons/situations/tsin_scramble_for_colonies.dds", 60),
     ("illustrations/situation/colonial_revolution.dds", "illustrations/situation/tsin_scramble_for_colonies.dds", 60),
+    ("icons/government_reforms/illustrations/the_combination_act.dds", "icons/government_reforms/illustrations/tsin_factory_inspectorate.dds", 120),
+    ("icons/government_reforms/illustrations/bureaucratized_administration.dds", "icons/government_reforms/illustrations/tsin_civil_service_examinations.dds", 120),
+    ("icons/government_reforms/illustrations/mass_levy_system.dds", "icons/government_reforms/illustrations/tsin_universal_conscription.dds", 120),
+    ("icons/government_reforms/illustrations/production_quota_bureaus.dds", "icons/government_reforms/illustrations/tsin_railway_nationalization.dds", 120),
+    ("icons/privileges/formal_guilds.dds", "icons/privileges/tsin_chambers_of_commerce.dds", 120),
+    ("icons/privileges/nobles_offensive_military_doctrine.dds", "icons/privileges/tsin_officer_corps_monopoly.dds", 120),
+    ("icons/privileges/appoint_ecclesiastical_offices.dds", "icons/privileges/tsin_church_school_network.dds", 120),
+    ("icons/privileges/peasants_free_peasantry.dds", "icons/privileges/tsin_mutual_aid_societies.dds", 120),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240)):

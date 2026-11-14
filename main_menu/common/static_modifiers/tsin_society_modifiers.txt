@@ -24,3 +24,12 @@ tsin_apprenticeship_system = {
 	}
 	peasants_estate_target_satisfaction = -0.025
 }
+
+# pa_tsin_railway_charters
+tsin_railway_charters_granted = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.1
+	burghers_estate_target_satisfaction = 0.025
+}

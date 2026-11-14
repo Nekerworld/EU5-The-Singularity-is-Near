@@ -1,0 +1,66 @@
+﻿# Age VII estate privileges (M4). One per estate; approximates Victoria-style interest group demands.
+
+tsin_chambers_of_commerce = {
+	estate = burghers_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	country_modifier = {
+		burghers_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_burghers_estate_power = 0.20
+		global_mills_build_buildings_efficiency = 0.1
+		monthly_towards_plutocracy = societal_value_monthly_move
+	}
+}
+
+tsin_officer_corps_monopoly = {
+	estate = nobles_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	country_modifier = {
+		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_nobles_estate_power = 0.20
+		land_morale_modifier = 0.05
+		monthly_towards_aristocracy = societal_value_monthly_move
+	}
+}
+
+tsin_church_school_network = {
+	estate = clergy_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_policy = policy:tsin_separation_of_church_and_state_policy }
+	}
+
+	country_modifier = {
+		clergy_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_clergy_estate_power = 0.20
+		global_monthly_literacy = 0.01
+		monthly_towards_spiritualist = societal_value_monthly_move
+	}
+}
+
+tsin_mutual_aid_societies = {
+	estate = peasants_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	allow = {
+		has_advance = tsin_labor_movement_advance
+	}
+
+	country_modifier = {
+		peasants_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_peasants_estate_power = 0.20
+		global_life_expectancy = 1
+		monthly_towards_communalism = societal_value_monthly_move
+	}
+}

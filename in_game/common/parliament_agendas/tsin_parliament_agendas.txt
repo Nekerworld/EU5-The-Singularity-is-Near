@@ -87,3 +87,94 @@ pa_tsin_abolish_slavery = {
 		}
 	}
 }
+
+# M4 estate demands (Victoria-style government petitions approximated with agendas).
+pa_tsin_factory_acts = {
+	estate = peasants_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_policy = policy:tsin_unregulated_labor_policy
+	}
+
+	on_accept = {
+		add_policy = policy:tsin_factory_acts_policy
+	}
+
+	chance = {
+		value = 10
+		if = {
+			limit = { has_advance = tsin_mass_communication_advance }
+			add = 10
+		}
+	}
+}
+
+pa_tsin_restore_landlord_rights = {
+	estate = nobles_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_policy = policy:tsin_redemption_payments_policy
+	}
+
+	on_accept = {
+		add_policy = policy:tsin_serfdom_retained_policy
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_minor_move_to_left
+		}
+	}
+
+	chance = {
+		value = 5
+		if = {
+			limit = { societal_value:serfdom_vs_free_subjects < 0 }
+			add = 10
+		}
+	}
+}
+
+pa_tsin_railway_charters = {
+	estate = burghers_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_advance = tsin_railway_network_advance
+		NOT = { has_country_modifier = tsin_railway_charters_granted }
+		NOT = { has_reform = government_reform:tsin_railway_nationalization }
+	}
+
+	on_accept = {
+		add_country_modifier = { modifier = tsin_railway_charters_granted years = 10 }
+	}
+
+	chance = {
+		value = 10
+	}
+}
+
+pa_tsin_restore_concordat = {
+	estate = clergy_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_policy = policy:tsin_separation_of_church_and_state_policy
+	}
+
+	on_accept = {
+		add_policy = policy:tsin_concordat_policy
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_minor_move_to_left
+		}
+	}
+
+	chance = {
+		value = 5
+		if = {
+			limit = { societal_value:spiritualist_vs_humanist < 0 }
+			add = 10
+		}
+	}
+}

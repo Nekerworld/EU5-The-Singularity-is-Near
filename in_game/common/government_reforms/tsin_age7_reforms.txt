@@ -1,0 +1,68 @@
+﻿# Age VII government reforms (M4). Shown in the age column like vanilla age_6_revolutions reforms.
+
+tsin_factory_inspectorate = {
+	age = age_7_industrialization
+
+	allow = {
+		has_advance = tsin_labor_movement_advance
+	}
+
+	country_modifier = {
+		global_production_efficiency = -0.01
+		peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+		global_laborers_max_literacy = 5
+		monthly_towards_communalism = societal_value_monthly_move
+	}
+
+	years = 2
+}
+
+tsin_civil_service_examinations = {
+	age = age_7_industrialization
+
+	allow = {
+		has_advance = tsin_universal_education_advance
+	}
+
+	country_modifier = {
+		country_cabinet_efficiency = 0.1
+		global_monthly_control = 0.01
+		nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		monthly_towards_centralization = societal_value_monthly_move
+	}
+
+	years = 2
+}
+
+tsin_universal_conscription = {
+	age = age_7_industrialization
+
+	societal_values = {
+		quantity_focus
+	}
+
+	country_modifier = {
+		global_manpower_modifier = 0.15
+		regiment_reinforcement_speed = 0.05
+		peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		monthly_towards_quantity = societal_value_monthly_move
+	}
+
+	years = 2
+}
+
+tsin_railway_nationalization = {
+	age = age_7_industrialization
+
+	allow = {
+		has_advance = tsin_railway_network_advance
+	}
+
+	country_modifier = {
+		build_railroad_cost_modifier = -0.15
+		burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		monthly_towards_centralization = societal_value_monthly_move
+	}
+
+	years = 2
+}
