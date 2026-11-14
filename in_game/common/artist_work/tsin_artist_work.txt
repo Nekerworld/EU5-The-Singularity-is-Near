@@ -1,0 +1,58 @@
+﻿# Age VII works of art (M6). Vanilla symphony/motet already continue into age 7 through zzz_tsin_age7_00_default.txt.
+# Values sit between the vanilla painting/novel/symphony entries so no single type dominates.
+
+tsin_romantic_painting = {
+	captured = yes
+	allow = {
+		artist_type = painter
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	woa_type_worth = 350
+	woa_age_gold_per_year = 5
+	woa_tradition_multiplier = 1.4
+	woa_influence_multiplier = 1.0
+	woa_age_tradition_per_year = 0
+	woa_age_influence_per_year = 0
+}
+
+tsin_photograph = {
+	captured = yes
+	allow = {
+		artist_type = painter
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	woa_type_worth = 120
+	woa_age_gold_per_year = 2
+	woa_tradition_multiplier = 0.5
+	woa_influence_multiplier = 1.2
+	woa_age_tradition_per_year = 0
+	woa_age_influence_per_year = 0
+}
+
+tsin_opera = {
+	captured = yes
+	allow = {
+		artist_type = composer
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	woa_type_worth = 500
+	woa_age_gold_per_year = 5
+	woa_tradition_multiplier = 0.8
+	woa_influence_multiplier = 2.0
+	woa_age_tradition_per_year = 0
+	woa_age_influence_per_year = 0
+}
+
+tsin_realist_novel = {
+	captured = yes
+	allow = {
+		artist_type = writer
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	woa_type_worth = 400
+	woa_age_gold_per_year = 4
+	woa_tradition_multiplier = 0.4
+	woa_influence_multiplier = 2.2
+	woa_age_tradition_per_year = 0
+	woa_age_influence_per_year = 0
+}

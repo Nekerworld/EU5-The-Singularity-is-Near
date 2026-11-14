@@ -1,0 +1,132 @@
+﻿namespace = tsin_art
+
+# Art flavor (M6): romanticism, realism, photography. Once per country each.
+# Fired from tsin_art_yearly_pulse; spends the flavor budget.
+
+# Romanticism
+tsin_art.10 = {
+	type = country_event
+	title = tsin_art.10.title
+	desc = tsin_art.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		NOT = { has_variable = tsin_art_romanticism_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_art_romanticism_done
+	}
+
+	# Patronise the poets of the nation
+	option = {
+		name = tsin_art.10.a
+		add_country_modifier = { modifier = tsin_art_national_romanticism years = modifier_duration_years_long mode = add_and_extend }
+		change_variable = { name = tsin_nationalism add = 5 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Keep to classical taste
+	option = {
+		name = tsin_art.10.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Realism
+tsin_art.20 = {
+	type = country_event
+	title = tsin_art.20.title
+	desc = tsin_art.20.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_date > 1850.1.1
+		any_owned_location = { location_rank = location_rank:city }
+		NOT = { has_variable = tsin_art_realism_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_art_realism_done
+	}
+
+	# Let the novels speak of the slums
+	option = {
+		name = tsin_art.20.a
+		add_country_modifier = { modifier = tsin_art_realist_letters years = modifier_duration_years_long mode = add_and_extend }
+		change_variable = { name = tsin_labor_unionism add = 5 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Ban the book for indecency
+	option = {
+		name = tsin_art.20.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		change_variable = { name = tsin_liberalism add = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Photography
+tsin_art.30 = {
+	type = country_event
+	title = tsin_art.30.title
+	desc = tsin_art.30.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_date > 1840.1.1
+		NOT = { has_variable = tsin_art_photography_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_art_photography_done
+	}
+
+	# Fund a photographic survey of the realm
+	option = {
+		name = tsin_art.30.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_art_photographic_survey years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave it to the portrait studios
+	option = {
+		name = tsin_art.30.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}

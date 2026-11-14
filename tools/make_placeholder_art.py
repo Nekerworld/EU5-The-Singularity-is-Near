@@ -127,6 +127,10 @@ EXTRA = [
     ("icons/map_modes/market_food_balance.dds", "icons/map_modes/tsin_electrification.dds", 50),
     ("icons/situations/columbian_exchange.dds", "icons/situations/tsin_world_exhibition.dds", 180),
     ("illustrations/situation/columbian_exchange.dds", "illustrations/situation/tsin_world_exhibition.dds", 180),
+    ("illustrations/work_of_art_and_holy_sites/painting.dds", "illustrations/work_of_art_and_holy_sites/tsin_romantic_painting.dds", 30),
+    ("illustrations/work_of_art_and_holy_sites/miniature_painting.dds", "illustrations/work_of_art_and_holy_sites/tsin_photograph.dds", 200),
+    ("illustrations/work_of_art_and_holy_sites/symphony.dds", "illustrations/work_of_art_and_holy_sites/tsin_opera.dds", 300),
+    ("illustrations/work_of_art_and_holy_sites/novel.dds", "illustrations/work_of_art_and_holy_sites/tsin_realist_novel.dds", 150),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330), ("tsin_rubber", "fiber_crops", 60), ("tsin_oil", "tar", 240), ("tsin_electricity", "coal", 50)):

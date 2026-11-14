@@ -1,0 +1,22 @@
+﻿tsin_art_national_romanticism = {
+	game_data = {
+		category = country
+	}
+	cultural_influence_modifier = 0.1
+}
+
+tsin_art_realist_letters = {
+	game_data = {
+		category = country
+	}
+	cultural_influence_modifier = 0.05
+	global_max_literacy = 2
+}
+
+tsin_art_photographic_survey = {
+	game_data = {
+		category = country
+	}
+	country_cabinet_efficiency = 0.03
+	monthly_prestige = 0.05
+}
