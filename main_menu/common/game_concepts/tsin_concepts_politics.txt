@@ -1,0 +1,50 @@
+﻿# Politics and finance entries (docs/encyclopedia.md). The hub tsin_mass_politics_concept and the entries
+# tsin_bills_concept, tsin_corporations_concept, tsin_stock_index_concept, tsin_estimated_gdp_concept are
+# defined in tsin_concepts.txt. Loc: tsin_concepts_politics_l_*.yml.
+
+# Law and government
+tsin_social_laws_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/laws"
+}
+
+tsin_bill_readings_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/legislative_efficiency"
+}
+
+tsin_industrial_agendas_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/estates_agenda"
+}
+
+tsin_abolition_concept = {
+	family = tsin_mass_politics_concept
+	texture = "map_modes/slaves"
+}
+
+tsin_government_reforms_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/reforms"
+}
+
+# Money and business
+tsin_gold_standard_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/gold"
+}
+
+tsin_company_charters_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/privilege"
+}
+
+tsin_chairman_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/merchant"
+}
+
+tsin_trusts_concept = {
+	family = tsin_mass_politics_concept
+	texture = "flat_icons/market_power"
+}
