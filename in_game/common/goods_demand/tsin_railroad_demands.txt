@@ -1,0 +1,20 @@
+﻿# Full replacement of vanilla railroad demands (special_construction_demands.txt), recorded in docs/overrides.md.
+# Adds coal and tools to the vanilla lumber/masonry/sand/steel. No age VII goods, so railroads stay buildable in age VI.
+
+TRY_REPLACE:build_railroad_demand = {
+	lumber = 0.5
+	masonry = 1
+	sand = 0.25
+	steel = 1
+	coal = 0.5
+	tools = 0.25
+	category = building_construction
+}
+
+TRY_REPLACE:maintain_railroad_demand = {
+	sand = 0.002
+	masonry = 0.01
+	steel = 0.01
+	coal = 0.01
+	category = building_maintenance
+}

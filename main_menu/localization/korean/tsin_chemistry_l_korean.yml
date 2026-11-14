@@ -76,6 +76,13 @@
  tsin_shift_work_advance_desc: "공장의 기계는 밤에도 멈추지 않습니다. 교대 근무는 생산을 늘리지만, 노동자들의 불만도 함께 쌓입니다."
  tsin_steel_rolling_stock_advance: "강철 궤도와 차량"
  tsin_steel_rolling_stock_advance_desc: "강철 레일과 차륜은 쇠보다 오래 견디고 더 무거운 짐을 실어 나릅니다. 철도와 도로를 놓는 비용과 시간이 줄어듭니다."
+ tsin_railway_network_advance: "철도망"
+ tsin_railway_network_advance_desc: "수도에서 뻗어 나간 철도가 지방 도시를 하나로 묶습니다. 철도로 수도와 이어진 도시에 $tsin_railway_station$을 지을 수 있게 됩니다."
+ tsin_railway_station: "철도역"
+ tsin_railway_station_desc: "기관차가 석탄과 물을 채우고 화물을 싣는 $tsin_railway_station$은 이 도시를 넓은 시장에 이어 줍니다. 철도로 수도와 이어져 있어야 하며, 연결이 끊기면 사라집니다."
+ tsin_railway_station_slot_0: "유지"
+ tsin_railway_station_maintenance: "역 운영"
+
  tsin_improved_fertilizer_advance: "개량 비료"
  tsin_improved_fertilizer_advance_desc: "농화학의 발전으로 작물이 무엇을 필요로 하는지 알게 되었습니다. $tsin_fertilizer_plant$과 $tsin_fertilized_fields$를 지을 수 있게 됩니다."
  tsin_dynamite_advance: "다이너마이트"

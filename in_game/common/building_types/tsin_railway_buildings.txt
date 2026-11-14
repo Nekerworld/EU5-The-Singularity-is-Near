@@ -1,0 +1,63 @@
+﻿# Age VII railway station: market access for towns joined to the capital by vanilla railroad.
+# Maintenance: coal 0.1 (0.2), tools 0.05 (0.15), tsin_engines 0.03 (0.18).
+
+tsin_railway_station = {
+	audio_tier = 2
+	is_foreign = no
+	pop_type = laborers
+	max_levels = 1
+
+	employment_size = tiny_rural_peasant_enhance_employment
+
+	category = infrastructure_category
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	location_potential = {
+		OR = {
+			is_capital = yes
+			AND = {
+				exists = owner
+				has_road_of_type_to = {
+					target = owner.capital
+					type = road_type:railroad
+				}
+			}
+		}
+	}
+
+	remove_if = {
+		location = {
+			is_capital = no
+			NOT = {
+				has_road_of_type_to = {
+					target = owner.capital
+					type = road_type:railroad
+				}
+			}
+		}
+		NOT = { owner = { at_war = yes } }
+		NOT = { owner = { in_civil_war = yes } }
+	}
+
+	build_time = infrastructure_build_time
+
+	unique_production_methods = {
+		tsin_railway_station_maintenance = {
+			icon_type = building_type
+			icon = tsin_railway_station
+			coal = 0.1
+			tools = 0.05
+			tsin_engines = 0.03
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		local_market_access = 0.1
+	}
+
+	construction_demand = tsin_factory_construction
+}

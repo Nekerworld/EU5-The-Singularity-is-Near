@@ -76,6 +76,13 @@
  tsin_shift_work_advance_desc: "Factory machines do not stop at night. Shift work raises output, but the workers' grievances pile up with it."
  tsin_steel_rolling_stock_advance: "Steel Rails and Rolling Stock"
  tsin_steel_rolling_stock_advance_desc: "Steel rails and wheels outlast iron and carry heavier loads. Railways and roads cost less and take less time to build."
+ tsin_railway_network_advance: "Railway Network"
+ tsin_railway_network_advance_desc: "Railways spreading out from the capital bind provincial towns together. Allows a $tsin_railway_station$ in towns joined to the capital by railroad."
+ tsin_railway_station: "Railway Station"
+ tsin_railway_station_desc: "Where locomotives take on coal and water and load their freight, a $tsin_railway_station$ ties this town to a wider market. It needs a railroad to the capital and is removed if the link is lost."
+ tsin_railway_station_slot_0: "Upkeep"
+ tsin_railway_station_maintenance: "Station Operation"
+
  tsin_improved_fertilizer_advance: "Improved Fertilizer"
  tsin_improved_fertilizer_advance_desc: "Agricultural chemistry has revealed what crops need. Allows $tsin_fertilizer_plant$ and $tsin_fertilized_fields$."
  tsin_dynamite_advance: "Dynamite"

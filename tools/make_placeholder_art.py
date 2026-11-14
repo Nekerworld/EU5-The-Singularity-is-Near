@@ -98,6 +98,7 @@ EXTRA = [
     ("icons/buildings/cannons_factory.dds", "icons/buildings/tsin_explosives_plant.dds", 330),
     ("icons/buildings/windmill.dds", "icons/buildings/tsin_fertilized_fields.dds", 90),
     ("icons/buildings/local_smelters.dds", "icons/buildings/tsin_blasting_works.dds", 330),
+    ("icons/buildings/bridge_infrastructure.dds", "icons/buildings/tsin_railway_station.dds", 30),
 ]
 
 for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330)):

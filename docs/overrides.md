@@ -27,6 +27,7 @@
 |---|---|---|---|
 | `in_game/common/scripted_triggers/tsin_age_triggers.txt` | `current_later_age_5_absolutism_trigger`, `current_later_age_6_revolutions_trigger` | `game_triggers.txt:89-104` | 제7시대에도 "제5·6시대 이후"가 참이 되도록 |
 | `loading_screen/common/defines/zzz_tsin_defines.txt` | `NGame.END_DATE` | `00_defines.txt:3` | 종료일 연장 |
+| `in_game/common/goods_demand/tsin_railroad_demands.txt` | `build_railroad_demand`, `maintain_railroad_demand` | `special_construction_demands.txt:66-79` | 철도 건설·유지에 석탄·도구 추가(M3). 패치 후 원본 값이 바뀌었는지 확인 |
 
 (새 항목은 이 표에 추가한다.)
 

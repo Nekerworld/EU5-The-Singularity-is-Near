@@ -54,6 +54,18 @@ tsin_steel_rolling_stock_advance = {
 	requires = tsin_bessemer_process_advance
 }
 
+tsin_railway_network_advance = {
+	age = age_7_industrialization
+	icon = modern_road_advance
+
+	unlock_building = tsin_railway_station
+	build_railroad_cost_modifier = -0.1
+
+	requires = tsin_industrial_capitalism_advance
+	requires = railroad_advance
+	ai_weight = { add = 50 }
+}
+
 tsin_improved_fertilizer_advance = {
 	age = age_7_industrialization
 	icon = agriculture_advance

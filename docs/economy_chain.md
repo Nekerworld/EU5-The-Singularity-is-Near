@@ -71,8 +71,21 @@
 | 시비 농지 유지 | 0.31 (비료 0.1, 도구 0.02) | 산출 없음, 보정치 |
 | 발파 채굴장 유지 | 0.31 (폭약 0.05, 도구 0.02) | 산출 없음, 보정치 |
 
+## 철도와 시장 접근도 (M3)
+
+바닐라 `railroad` 도로 유형(제6시대 `railroad_advance`가 해금)을 그대로 쓴다. 바닐라에는 국가 단위 시장 접근도 보정치가 없고 `local_market_access`(지역 단위)만 있으므로, 철도역 건물로 연결했다.
+
+| 객체 | 내용 | 파일 |
+|---|---|---|
+| `tsin_railway_network_advance` | `railroad_advance`와 산업자본주의 뿌리 기술 필요. 철도역 해금, 철도 건설비 -10% | `tsin_3_industrial_capitalism.txt` |
+| `tsin_steel_rolling_stock_advance` | 철도 건설비 -20%, 도로 건설 시간 -20% | 같은 파일 |
+| `tsin_railway_station` | 수도 또는 수도와 철도(`has_road_of_type_to`)로 이어진 도시. `local_market_access` +10%. 유지: 석탄 0.1, 도구 0.05, 기관 0.03. 연결이 끊기면 철거(바닐라 `local_governor`의 `remove_if` 방식) | `in_game/common/building_types/tsin_railway_buildings.txt` |
+| 철도 건설·유지 수요 | 바닐라 값에 석탄 0.5·도구 0.25(건설), 석탄 0.01(유지) 추가. 제6시대에도 지을 수 있도록 제7시대 상품은 넣지 않았다 | `in_game/common/goods_demand/tsin_railroad_demands.txt` (`docs/overrides.md`) |
+
 ## 사용자 확인 필요
 
+- `has_road_of_type_to`가 철도 경로 전체를 따라가는지(바닐라 `flavor_mug.txt`의 라호르→쿨나 예시로 보아 경로 검사로 추정), 수도 외 도시에서 철도역이 지어지고 연결이 끊기면 철거되는지
+- `TRY_REPLACE`로 바꾼 철도 건설 수요가 건설 화면에 석탄·도구로 표시되는지
 - 비료·폭약이 부족할 때 시비 농지·발파 채굴장의 보정치가 약해지는지. 약해지지 않는다면 비료·폭약은 유지비일 뿐이고, 수요 연결은 시장 가격으로만 작동한다.
 - 발파 채굴장이 금·은 광산에도 지어지는지, 화폐 주조에 이상이 없는지
 - 기관 공급이 부족할 때 기관 가격이 오르고, 기계화 방직 공장의 증기 동력 방식 수익이 떨어지는지
