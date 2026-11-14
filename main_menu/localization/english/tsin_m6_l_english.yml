@@ -87,17 +87,17 @@
  tsin_art.30.b: "Leave it to the portrait studios."
 
  tsin_source_of_the_nile_expedition: "Search for the Source of the Nile"
- tsin_source_of_the_nile_expedition_desc: "Send an expedition inland from the East African coast, past the great lakes, to settle the oldest question in geography: where does the Nile begin?"
+ tsin_source_of_the_nile_expedition_desc: "Send an expedition inland from the East African coast, past the great lakes, to settle the oldest question in geography: where does the Nile begin?\n\nSee also: [tsin_expeditions_concept|e]"
  tsin_source_of_the_nile_expedition_historical_info: "Ancient geographers placed the source of the Nile in the 'Mountains of the Moon', and for two thousand years no one could prove them right or wrong. In the mid-19th century, expeditions setting out from the Zanzibar coast reached the great lakes of the interior, and a bitter public dispute followed over which lake, if any, fed the river."
  tsin_source_of_the_nile_expedition_outcome_overview: "$BULLET$The first country in the world to reach [ShowLocationName('buganda')] finds the source of the Nile and chooses between:\n$BULLET_WITH_TAB$#G +15#! [prestige|e].\n$BULLET_WITH_TAB$#G +10#! [prestige|e] and the [ShowModifier('tsin_expedition_geographical_society')] [modifier|e].\n$BULLET$Reaching [ShowLocationName('gondokoro')] completes the expedition and grants #G +10#! [prestige|e] and the [ShowModifier('tsin_expedition_geographic_fame')] [modifier|e].\n$BULLET$A failed expedition costs #R -5#! [prestige|e]."
 
  tsin_northwest_passage_expedition: "Search for the Northwest Passage"
- tsin_northwest_passage_expedition_desc: "Send a ship to the edge of the Arctic ice to look for a sea route between the Atlantic and the Pacific north of the American continent."
+ tsin_northwest_passage_expedition_desc: "Send a ship to the edge of the Arctic ice to look for a sea route between the Atlantic and the Pacific north of the American continent.\n\nSee also: [tsin_expeditions_concept|e]"
  tsin_northwest_passage_expedition_historical_info: "Navigators had sought a northern sea route to Asia since the 16th century. In the 19th century the search became a matter of national pride, and whole expeditions vanished in the ice. The passage proved to exist, but it was too frozen to be of any use to trade."
  tsin_northwest_passage_expedition_outcome_overview: "$BULLET$When the ship reaches the ice edge, there is a #Y 35%#! chance that the passage is found:\n$BULLET_WITH_TAB$#G +15#! [prestige|e] and the [ShowModifier('tsin_expedition_geographic_fame')] [modifier|e].\n$BULLET$Otherwise the ice turns the ship back with #G +5#! [prestige|e], and the expedition can be sent again.\n$BULLET$Once any country finds the passage, no one can launch this expedition again.\n$BULLET$A failed expedition costs #R -5#! [prestige|e]."
 
  tsin_polar_expedition: "Push for the North Pole"
- tsin_polar_expedition_desc: "Send a steam-powered, iron-reinforced ship north of the Arctic Circle to force its way through the pack ice toward the pole."
+ tsin_polar_expedition_desc: "Send a steam-powered, iron-reinforced ship north of the Arctic Circle to force its way through the pack ice toward the pole.\n\nSee also: [tsin_expeditions_concept|e]"
  tsin_polar_expedition_historical_info: "In the late 19th century, expeditions tried to reach the North Pole by ship, by sledge and even by balloon. Some deliberately froze their ships into the ice and let the drift carry them north. For decades, the pack ice defeated every attempt."
  tsin_polar_expedition_outcome_overview: "$BULLET$When the ship reaches the pack ice, there is a #Y 30%#! chance that the pole is reached:\n$BULLET_WITH_TAB$#G +15#! [prestige|e] and the [ShowModifier('tsin_expedition_geographic_fame')] [modifier|e].\n$BULLET$Otherwise the ice turns the ship back with #G +5#! [prestige|e], and the expedition can be sent again.\n$BULLET$Once any country reaches the pole, no one can launch this expedition again.\n$BULLET$A failed expedition costs #R -5#! [prestige|e]."
 
@@ -122,7 +122,7 @@
  tsin_expedition.21.a: "The ice will not hold forever."
 
  tsin_open_treaty_port: "Open a Treaty Port"
- tsin_open_treaty_port_desc: "One of their harbour towns shall be opened to our merchants, under terms they had no say in."
+ tsin_open_treaty_port_desc: "One of their harbour towns shall be opened to our merchants, under terms they had no say in.\n\nSee also: [tsin_treaty_port_concept|e]"
  tsin_open_treaty_port_entry: "[target.GetOwner.GetFlagIcon] Open [target.GetName] as a Treaty Port"
  tsin_open_treaty_port_entry_short: "[target.GetOwner.GetFlagIconWithNoTooltip] Treaty Port in [target.GetNameWithNoTooltip]"
  tsin_open_treaty_port_select_location: "Select the port [location|e] to open:"
@@ -135,7 +135,7 @@
  STATIC_MODIFIER_NAME_tsin_treaty_port_concessions: "Treaty Port Concessions"
 
  tsin_modernization: "Modernizing Reforms"
- tsin_modernization_DESCRIPTION: "Foreign gunboats and unequal treaties have shown how far we have fallen behind. Only by learning the methods of the industrial powers can we stand against them."
+ tsin_modernization_DESCRIPTION: "Foreign gunboats and unequal treaties have shown how far we have fallen behind. Only by learning the methods of the industrial powers can we stand against them.\n\nSee also: [tsin_industrial_missions_concept|e], [tsin_defensive_modernization_concept|e]"
  tsin_modernization_CRITERIA_DESCRIPTION: "With a modern army, schools, factories and railways, we have revised the unequal treaties."
  tsin_modernization_BUTTON_TOOLTIP: "Learn from the foreigners in order to resist them."
  tsin_modernization_BUTTON_DETAILS: "$tsin_modernization_BUTTON_TOOLTIP$"
@@ -178,21 +178,6 @@
  STATIC_MODIFIER_NAME_tsin_flavor_landless_freedmen: "Landless Freedmen"
  STATIC_MODIFIER_NAME_tsin_flavor_reorganization_edict: "Edict of Reorganization"
  STATIC_MODIFIER_NAME_tsin_flavor_self_strengthening: "Self-Strengthening"
-
- game_concept_tsin_electric_power_concept: "Electric Power"
- game_concept_tsin_electric_power_concept_desc: "[ShowGoodsName('tsin_electricity')] is generated by a [ShowBuildingTypeName('tsin_power_station')] from coal, falling water or oil, and is traded in the [market|e] like other [goods|e].\n\nIt is consumed by:\n$BULLET$[ShowBuildingTypeName('tsin_mechanized_textile_mill')] and the six automated mills using the electric drive.\n$BULLET$[ShowBuildingTypeName('tsin_fertilizer_plant')] using the electrochemical method.\n$BULLET$The [ShowBuildingTypeName('tsin_electric_lighting')] of towns and cities.\n\nWhen a market lacks power, these buildings produce less. The $mapmode_tsin_electrification_name$ map mode shows how much of each market's demand is met."
- game_concept_tsin_industrial_investment_concept: "Industrial Investment"
- game_concept_tsin_industrial_investment_concept_desc: "In this age factories are built not only by the state but also by the [estates|e] with their own money. The [ShowLawName('tsin_industrial_investment_law')] law decides who leads:\n$BULLET$State-led industrialization makes the state build factories more efficiently, but raises the cost of estate construction.\n$BULLET$Mixed investment balances the two.\n$BULLET$Private enterprise makes estate construction cheaper. It requires a capitalist [employment_system|e].\n\nThe $mapmode_tsin_industrial_investment_name$ map mode shows foreign-owned buildings and each country's investment policy."
- game_concept_tsin_movements_concept: "Political Movements"
- game_concept_tsin_movements_concept_desc: "In this age ideas spread faster than armies. Every country tracks the strength of its political movements on a scale from 0 to 100: Abolitionism (only where slavery exists), Liberalism, Nationalism, the Labour Movement, Socialism and Women's Suffrage.\n\nMovements grow every year with our laws, policies, [societal_values|e] and [advances|e], and shrink when their demands are met. A movement at 60 or more agitates and applies a penalty until it falls below 50.\n\nThe strongest movement is our radicalism, shown by the $mapmode_tsin_radicalism_name$ map mode."
- game_concept_tsin_treaty_port_concept: "Treaty Port"
- game_concept_tsin_treaty_port_concept_desc: "A country with more [advances|e] than its defeated enemy can demand in a [peace_treaty|e] that one of the enemy's port towns be opened as a treaty port. For 30 years:\n$BULLET$The port gains [market_access|e] and migration, but has lower control and more unrest.\n$BULLET$The loser suffers [ShowModifier('tsin_unequal_treaty')].\n$BULLET$The winner gains [ShowModifier('tsin_treaty_port_concessions')].\n\nCountries forced to open their ports can take the Modernizing Reforms missions. Completing them revises the unequal treaty."
- game_concept_tsin_industrial_age_situations: "Situations of the Age of Industry"
- game_concept_tsin_industrial_age_situations_desc: "The [situations|e] of the [ShowAgeName('age_7_industrialization')]:\n$BULLET$[ShowSituationName('tsin_long_depression')]\n$BULLET$[ShowSituationName('tsin_scramble_for_colonies')]\n$BULLET$[ShowSituationName('tsin_springtime_of_nations')]\n$BULLET$[ShowSituationName('tsin_world_exhibition')]
-$BULLET$[ShowSituationName('tsin_grain_invasion')]
-$BULLET$[ShowSituationName('tsin_national_unification')]
-$BULLET$[ShowSituationName('tsin_defensive_modernization')]
-$BULLET$[ShowSituationName('tsin_great_migration')]"
 
  hint_tsin_electric_power: "[tsin_electric_power_concept|e]"
  hint_tsin_electric_power_hint_text: "We know how to build a [ShowBuildingTypeName('tsin_power_station')], but we have none yet. Without [ShowGoodsName('tsin_electricity')], electric machines and lighting cannot work in our [market|e]."

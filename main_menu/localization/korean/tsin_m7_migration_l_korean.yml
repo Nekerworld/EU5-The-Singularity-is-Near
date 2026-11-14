@@ -2,7 +2,7 @@
 
  # The Great Migration (in_game/common/situations/tsin_great_migration.txt)
  tsin_great_migration: "대이주"
- tsin_great_migration_desc: "과밀한 도시와 굶주린 농촌, 역병과 곡물 위기를 피해 수백만 명이 증기선을 타고 바다를 건넙니다. 이민자를 보내는 나라는 인구 압력을 덜고, 아메리카와 오세아니아의 나라는 새 일손을 얻습니다."
+ tsin_great_migration_desc: "과밀한 도시와 굶주린 농촌, 역병과 곡물 위기를 피해 수백만 명이 증기선을 타고 바다를 건넙니다. 이민자를 보내는 나라는 인구 압력을 덜고, 아메리카와 오세아니아의 나라는 새 일손을 얻습니다.\n\n참고: [tsin_great_migration_concept|e]"
  tsin_great_migration_closes: "이민의 문이 닫히다"
  tsin_great_migration_ebbs: "이주의 물결이 잦아들다"
  tsin_great_migration_sender_tt: "이 [country|e]에서 이민자들이 바다를 건너 떠나고 있습니다."

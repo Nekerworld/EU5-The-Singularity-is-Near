@@ -2,5 +2,5 @@
 
  # National statistics bureau (docs/economic_statistics.md)
  tsin_national_statistics_bureau: "국가 통계국"
- tsin_national_statistics_bureau_desc: "국세 조사와 산업 통계를 맡는 상설 관청을 둡니다. 정책을 바꾸기 전에 숫자부터 봅니다. 경제 통계 보고서가 자세해집니다."
+ tsin_national_statistics_bureau_desc: "국세 조사와 산업 통계를 맡는 상설 관청을 둡니다. 정책을 바꾸기 전에 숫자부터 봅니다. 경제 통계 보고서([tsin_estimated_gdp_concept|e])가 자세해집니다."
  tsin_system.30.desc_bureau: "국가 통계국의 연간 보고서입니다.\n\n$BULLET$추정 국내총생산: [ROOT.ScriptValue('tsin_gdp')|0]\n$BULLET$1인당 생산: [ROOT.ScriptValue('tsin_gdp_per_capita')|3]\n$BULLET$지난해 대비 성장률: [ROOT.ScriptValue('tsin_gdp_growth')|2]%\n$BULLET$인구: [ROOT.ScriptValue('tsin_econ_population')|0]\n$BULLET$생산성 배율: [ROOT.ScriptValue('tsin_gdp_productivity')|2]\n$BULLET$문해율: [ROOT.ScriptValue('tsin_country_literacy')|0], 중등교육률: [ROOT.ScriptValue('tsin_country_secondary_education')|1], 고등교육률: [ROOT.ScriptValue('tsin_country_higher_education')|1]\n$BULLET$공장 노동자 비중: [ROOT.ScriptValue('tsin_econ_factory_share')|%1]\n$BULLET$노동 불만: [ROOT.ScriptValue('tsin_econ_labor_grievance')|0]\n$BULLET$주가 종합지수: [ROOT.ScriptValue('tsin_stock_index_report')|0] (2년 평균 [ROOT.ScriptValue('tsin_stock_index_history_mean')|0], 세계 [ROOT.ScriptValue('tsin_world_stock_index_report')|0])\n$BULLET$기업 가치 합계: [ROOT.ScriptValue('tsin_company_total_value')|0]\n\n추정치는 도시와 마을의 세원, 교역과 세금 수입, 인구의 자급 생산을 더하고 교육 수준으로 생산성을 보정한 값입니다."

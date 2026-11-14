@@ -1,7 +1,7 @@
 ﻿l_korean:
 
  tsin_frontier_land_law: "개척지 토지"
- tsin_frontier_land_law_desc: "나라 안의 빈 땅을 누구에게 줄지 정합니다. 국유지 매각은 지주와 국고를, 자영농지 분배는 이주민을 돕습니다."
+ tsin_frontier_land_law_desc: "나라 안의 빈 땅을 누구에게 줄지 정합니다. 국유지 매각은 지주와 국고를, 자영농지 분배는 이주민을 돕습니다. [tsin_social_laws_concept|e] 가운데 하나이며, [parliament|e]가 있는 대중사회에서는 [policies|e]을 [tsin_bills_concept|e]으로만 바꿀 수 있습니다."
  tsin_frontier_land_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"
  tsin_crown_land_sales_policy: "국유지 매각"
  tsin_crown_land_sales_policy_desc: "빈 땅은 경매로 팔리고, 대개 큰 지주와 투기꾼의 손에 들어갑니다."

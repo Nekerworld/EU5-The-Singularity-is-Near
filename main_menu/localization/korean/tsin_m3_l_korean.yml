@@ -1,6 +1,6 @@
 ﻿l_korean:
  tsin_industrial_investment_law: "산업 투자법"
- tsin_industrial_investment_law_desc: "새 공장과 철도를 누가 짓고 누가 돈을 대는지를 정합니다."
+ tsin_industrial_investment_law_desc: "새 공장과 철도를 누가 짓고 누가 돈을 대는지를 정합니다([tsin_industrial_investment_concept|e]). [tsin_social_laws_concept|e] 가운데 하나이며, [parliament|e]가 있는 대중사회에서는 [policies|e]을 [tsin_bills_concept|e]으로만 바꿀 수 있습니다."
  tsin_industrial_investment_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"
  tsin_state_industry_policy: "국가 주도 산업화"
  tsin_state_industry_policy_desc: "국가가 직접 공장을 세우고 자본을 배분합니다. 정부 사업은 빨라지지만, 계층이 스스로 짓는 건물은 비싸집니다."
@@ -10,15 +10,21 @@
  tsin_private_enterprise_policy_desc: "산업 투자를 민간 자본에 맡깁니다. 계층의 건설 비용이 줄고, 시민 계층이 도로와 원자재 생산 건물을 지을 수 있습니다. [employment_system|e]이 자본주의여야 합니다."
 
  tsin_encourage_industry: "산업 장려"
- tsin_encourage_industry_desc: "선택한 [province|e]에 공장 건설 보조금과 세제 혜택을 줍니다. 공장 건설이 빨라지고 [production_efficiency|e]가 오릅니다."
+ tsin_encourage_industry_desc: "선택한 [province|e]에 공장 건설 보조금과 세제 혜택을 줍니다. [tsin_factories_concept|e] 건설이 빨라지고 [production_efficiency|e]가 오릅니다."
  tsin_encourage_industry_action: "[SCOPE.sProvince('target').GetNameWithNoTooltip]의 산업 장려"
  tsin_encourage_industry_select_province: "산업을 장려할 [province|e]를 고르십시오:"
  tsin_encourage_industry_active: "[SCOPE.sProvince('target').GetNameWithHighlightOnly]의 산업 장려 중"
+ tsin_encourage_industry_action_progress: "$tsin_encourage_industry$"
+ tsin_encourage_industry_action_progress_wordier: "$tsin_encourage_industry_action_progress$"
+ tsin_encourage_industry_action_progress_tooltip: "$tsin_encourage_industry_desc$"
  tsin_encourage_industry_no_provinces: "$no_valid_provinces$"
  tsin_promote_railway_construction: "철도 건설 촉진"
- tsin_promote_railway_construction_desc: "내각이 철도 회사에 토지 수용권과 보조금을 내주어 철도와 도로 건설을 앞당깁니다."
+ tsin_promote_railway_construction_desc: "내각이 철도 회사에 토지 수용권과 보조금을 내주어 철도와 [road|e] 건설을 앞당깁니다([tsin_railways_concept|e])."
  tsin_promote_railway_construction_action: "철도 건설 촉진"
  tsin_promote_railway_construction_active: "철도 건설 촉진 중"
+ tsin_promote_railway_construction_action_progress: "$tsin_promote_railway_construction$"
+ tsin_promote_railway_construction_action_progress_wordier: "$tsin_promote_railway_construction_action_progress$"
+ tsin_promote_railway_construction_action_progress_tooltip: "$tsin_promote_railway_construction_desc$"
 
  STATIC_MODIFIER_NAME_tsin_company_steel: "제철 회사"
  STATIC_MODIFIER_NAME_tsin_company_machinery: "기계 회사"
@@ -41,7 +47,7 @@
  tsin_found_railway_company_decision.desc: "철도를 놓고 운영하는 철도 회사를 세웁니다. [buildings|e] 유지비가 조금 오릅니다. 보유 한도: [ROOT.ScriptValue('tsin_company_limit')|0]개, 현재 [ROOT.ScriptValue('tsin_company_count')|0]개."
  tsin_found_railway_company_decision.a: "회사를 세운다."
  tsin_dissolve_companies_decision.title: "산업 회사 해산"
- tsin_dissolve_companies_decision.desc: "보유한 산업 회사를 모두 해산합니다. 회사의 생산 보너스와 유지비가 함께 사라집니다."
+ tsin_dissolve_companies_decision.desc: "보유한 산업 회사([tsin_corporations_concept|e])를 모두 해산합니다. 회사의 생산 보너스와 유지비가 함께 사라집니다."
  tsin_dissolve_companies_decision.a: "모두 해산한다."
 
  pa_tsin_repeal_corn_laws: "곡물법 폐지"
@@ -71,7 +77,7 @@
  tsin_corn_laws.3.c: "곡물 관세를 중단한다."
 
  tsin_industrialization: "산업 국가로"
- tsin_industrialization_DESCRIPTION: "증기와 강철의 시대에 뒤처지지 않으려면 농촌 경제를 공장과 철도의 경제로 바꾸어야 합니다."
+ tsin_industrialization_DESCRIPTION: "증기와 강철의 시대에 뒤처지지 않으려면 농촌 경제를 공장과 철도의 경제로 바꾸어야 합니다.\n\n참고: [tsin_industrial_missions_concept|e]"
  tsin_industrialization_CRITERIA_DESCRIPTION: "공장과 도시, 철도망을 갖춘 산업 국가가 되었습니다."
  tsin_industrialization_BUTTON_TOOLTIP: "농장에서 공장으로, 마을에서 도시로. 철도가 이 모든 것을 하나로 묶을 것입니다."
  tsin_industrialization_BUTTON_DETAILS: "$tsin_industrialization_BUTTON_TOOLTIP$"
@@ -95,7 +101,7 @@
  STATIC_MODIFIER_NAME_tsin_mission_industrial_nation: "산업 국가"
 
  tsin_long_depression: "대불황"
- tsin_long_depression_desc: "주식 시장의 붕괴가 은행과 철도 회사를 잇달아 무너뜨렸습니다. 산업 국가들은 투자가 멈추고 일자리가 사라지는 긴 불황에 빠졌습니다. 각국은 관세나 공공사업으로 먼저 빠져나올 수도 있지만, 그러지 않으면 불황은 20년 가까이 이어질 수 있습니다."
+ tsin_long_depression_desc: "주식 시장의 붕괴가 은행과 철도 회사를 잇달아 무너뜨렸습니다. 산업 국가들은 투자가 멈추고 일자리가 사라지는 긴 불황에 빠졌습니다. 각국은 [tariffs|e]나 공공사업으로 먼저 빠져나올 수도 있지만, 그러지 않으면 불황은 20년 가까이 이어질 수 있습니다.\n\n참고: [tsin_long_depression_concept|e]"
  tsin_long_depression_recovery: "회복"
  tsin_long_depression_runs_its_course: "긴 불황의 끝"
  tsin_long_depression_panic_tt: "이 [country|e]는 금융 공황을 겪고 있습니다."
@@ -130,7 +136,7 @@
  tsin_depression.10.a: "드디어."
 
  tsin_scramble_for_colonies: "식민지 쟁탈전"
- tsin_scramble_for_colonies_desc: "증기선과 철도, 기관총을 손에 넣은 산업 강국들이 아직 주인 없는 땅을 차지하려고 앞다투어 나섰습니다. 10년 뒤 열릴 식민 회의에서 각국은 세력권을 나눌지, 공공연히 경쟁할지를 정하게 됩니다."
+ tsin_scramble_for_colonies_desc: "증기선과 철도, 기관총을 손에 넣은 산업 강국들이 아직 주인 없는 땅을 차지하려고 앞다투어 나섰습니다. 10년 뒤 열릴 식민 회의에서 각국은 세력권을 나눌지, 공공연히 경쟁할지를 정하게 됩니다.\n\n참고: [tsin_scramble_for_colonies_concept|e]"
  tsin_scramble_for_colonies_partition_complete: "분할 완료"
  tsin_scramble_for_colonies_participant_tt: "이 [location|e]의 소유국은 식민지 쟁탈전에 참여하고 있습니다."
  tsin_scramble_for_colonies_unclaimed_tt: "이 [location|e]는 아직 주인이 없습니다."
@@ -209,8 +215,9 @@
 
  tsin_machine_works_oil_lubrication: "석유 윤활"
  tsin_mechanized_rubber_belts: "고무 구동 벨트"
+ tsin_potential_oil: "석유 매장지"
  tsin_prospect_for_oil.title: "석유 탐사"
- tsin_prospect_for_oil.desc: "땅에서 스며 나오는 검은 기름은 오래전부터 알려져 있었지만, 이제 증기 굴착기로 깊이 뚫으면 등유와 윤활유를 얼마든지 얻을 수 있습니다. [political_influence|e]를 들여 유망한 땅을 조사합시다."
+ tsin_prospect_for_oil.desc: "땅에서 스며 나오는 검은 기름은 오래전부터 알려져 있었지만, 이제 증기 굴착기로 깊이 뚫으면 등유와 윤활유를 얼마든지 얻을 수 있습니다. [political_influence|e]를 들여 유망한 땅을 조사합시다([tsin_oil_prospecting_concept|e])."
  tsin_prospect_for_oil.a: "시추를 시작한다."
  tsin_prospect_for_oil_effect_tt: "[tsin_oil_prospect_location.GetName]에서 이제 [tsin_oil_prospect_location.GetRawMaterial.GetName] 대신 [ShowGoodsName('tsin_oil')]를 생산합니다."
  STATIC_MODIFIER_NAME_tsin_rubber_concessions: "고무 회사 특허권"
@@ -233,7 +240,7 @@
  TSIN_INVESTMENT_DOMESTIC_MAPMODE_TT: "[ROOT.GetLocation.GetName]의 공장은 국내 자본이 운영합니다."
 
  tsin_customs_union: "관세 동맹"
- tsin_customs_union_desc: "관세 동맹은 서로의 [market|e]에 들어오는 상품에 관세를 매기지 않기로 한 [countries|e]의 모임입니다. 가입하면 다른 모든 회원국과 서로 관세 면제를 맺고, 탈퇴하면 그 면제가 사라집니다."
+ tsin_customs_union_desc: "관세 동맹은 서로의 [market|e]에 들어오는 상품에 [tariffs|e]를 매기지 않기로 한 [countries|e]의 모임입니다. 가입하면 다른 모든 회원국과 서로 [tariff_exemptions|e]를 맺고, 탈퇴하면 그 면제가 사라집니다([tsin_customs_union_concept|e])."
  tsin_customs_union_hint_1: "탈퇴하면 가입 전에 따로 맺은 관세 면제도 함께 끊길 수 있습니다."
  search_filter_international_organization_type_tsin_customs_union_name: "관세 동맹"
  search_filter_international_organization_type_tsin_customs_union_desc: "관세 동맹만 표시합니다"

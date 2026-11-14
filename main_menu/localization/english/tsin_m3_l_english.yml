@@ -1,6 +1,6 @@
 ﻿l_english:
  tsin_industrial_investment_law: "Industrial Investment"
- tsin_industrial_investment_law_desc: "This determines who builds and funds new factories and railways."
+ tsin_industrial_investment_law_desc: "This determines who builds and funds new factories and railways ([tsin_industrial_investment_concept|e]). One of the [tsin_social_laws_concept|e]: in a mass society with a [parliament|e], its [policies|e] change only through [tsin_bills_concept|e]."
  tsin_industrial_investment_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"
  tsin_state_industry_policy: "State-Led Industrialization"
  tsin_state_industry_policy_desc: "The state founds factories itself and allocates capital. Government projects go faster, but buildings raised by the estates cost more."
@@ -10,15 +10,21 @@
  tsin_private_enterprise_policy_desc: "Industrial investment is left to private capital. Estate construction costs less, and burghers may build roads and raw material buildings. Requires the capitalist [employment_system|e]."
 
  tsin_encourage_industry: "Encourage Industry"
- tsin_encourage_industry_desc: "Grants factory building subsidies and tax relief in the selected [province|e]. Factories are built faster and [production_efficiency|e] rises."
+ tsin_encourage_industry_desc: "Grants factory building subsidies and tax relief in the selected [province|e]. [tsin_factories_concept|e] are built faster and [production_efficiency|e] rises."
  tsin_encourage_industry_action: "Encourage Industry in [SCOPE.sProvince('target').GetNameWithNoTooltip]"
  tsin_encourage_industry_select_province: "Select the [province|e] in which to encourage industry:"
  tsin_encourage_industry_active: "Encouraging Industry in [SCOPE.sProvince('target').GetNameWithHighlightOnly]"
+ tsin_encourage_industry_action_progress: "$tsin_encourage_industry$"
+ tsin_encourage_industry_action_progress_wordier: "$tsin_encourage_industry_action_progress$"
+ tsin_encourage_industry_action_progress_tooltip: "$tsin_encourage_industry_desc$"
  tsin_encourage_industry_no_provinces: "$no_valid_provinces$"
  tsin_promote_railway_construction: "Promote Railway Construction"
- tsin_promote_railway_construction_desc: "The cabinet grants railway companies rights of way and subsidies, speeding up railway and road construction."
+ tsin_promote_railway_construction_desc: "The cabinet grants railway companies rights of way and subsidies, speeding up railway and [road|e] construction ([tsin_railways_concept|e])."
  tsin_promote_railway_construction_action: "Promote Railway Construction"
  tsin_promote_railway_construction_active: "Promoting Railway Construction"
+ tsin_promote_railway_construction_action_progress: "$tsin_promote_railway_construction$"
+ tsin_promote_railway_construction_action_progress_wordier: "$tsin_promote_railway_construction_action_progress$"
+ tsin_promote_railway_construction_action_progress_tooltip: "$tsin_promote_railway_construction_desc$"
 
  STATIC_MODIFIER_NAME_tsin_company_steel: "Steel Company"
  STATIC_MODIFIER_NAME_tsin_company_machinery: "Machinery Company"
@@ -41,7 +47,7 @@
  tsin_found_railway_company_decision.desc: "Found a company that builds and runs railways. [buildings|e] upkeep rises slightly. Limit: [ROOT.ScriptValue('tsin_company_limit')|0], held: [ROOT.ScriptValue('tsin_company_count')|0]."
  tsin_found_railway_company_decision.a: "Found the company."
  tsin_dissolve_companies_decision.title: "Dissolve Industrial Companies"
- tsin_dissolve_companies_decision.desc: "Dissolve all our industrial companies. Their output bonuses and upkeep disappear together."
+ tsin_dissolve_companies_decision.desc: "Dissolve all our industrial companies ([tsin_corporations_concept|e]). Their output bonuses and upkeep disappear together."
  tsin_dissolve_companies_decision.a: "Dissolve them all."
 
  pa_tsin_repeal_corn_laws: "Repeal the Corn Laws"
@@ -71,7 +77,7 @@
  tsin_corn_laws.3.c: "Suspend the grain duties."
 
  tsin_industrialization: "Towards an Industrial Nation"
- tsin_industrialization_DESCRIPTION: "To keep pace in the age of steam and steel, our rural economy must become one of factories and railways."
+ tsin_industrialization_DESCRIPTION: "To keep pace in the age of steam and steel, our rural economy must become one of factories and railways.\n\nSee also: [tsin_industrial_missions_concept|e]"
  tsin_industrialization_CRITERIA_DESCRIPTION: "We have become an industrial nation of factories, cities and railways."
  tsin_industrialization_BUTTON_TOOLTIP: "From farm to factory, from village to city. The railway will bind it all together."
  tsin_industrialization_BUTTON_DETAILS: "$tsin_industrialization_BUTTON_TOOLTIP$"
@@ -95,7 +101,7 @@
  STATIC_MODIFIER_NAME_tsin_mission_industrial_nation: "Industrial Nation"
 
  tsin_long_depression: "The Long Depression"
- tsin_long_depression_desc: "A stock market crash has brought down banks and railway companies one after another. The industrial nations have sunk into a long depression in which investment stops and jobs vanish. Each country may escape early through tariffs or public works; otherwise the depression may last for nearly twenty years."
+ tsin_long_depression_desc: "A stock market crash has brought down banks and railway companies one after another. The industrial nations have sunk into a long depression in which investment stops and jobs vanish. Each country may escape early through [tariffs|e] or public works; otherwise the depression may last for nearly twenty years.\n\nSee also: [tsin_long_depression_concept|e]"
  tsin_long_depression_recovery: "Recovery"
  tsin_long_depression_runs_its_course: "The Long Slump Ends"
  tsin_long_depression_panic_tt: "This [country|e] is in a financial panic."
@@ -130,7 +136,7 @@
  tsin_depression.10.a: "At last."
 
  tsin_scramble_for_colonies: "The Scramble for Colonies"
- tsin_scramble_for_colonies_desc: "Armed with steamships, railways and machine guns, the industrial powers are racing to seize the lands that still have no master. At a colonial conference in ten years, each power will choose between dividing spheres of influence and open rivalry."
+ tsin_scramble_for_colonies_desc: "Armed with steamships, railways and machine guns, the industrial powers are racing to seize the lands that still have no master. At a colonial conference in ten years, each power will choose between dividing spheres of influence and open rivalry.\n\nSee also: [tsin_scramble_for_colonies_concept|e]"
  tsin_scramble_for_colonies_partition_complete: "Partition Complete"
  tsin_scramble_for_colonies_participant_tt: "The owner of this [location|e] takes part in the scramble."
  tsin_scramble_for_colonies_unclaimed_tt: "This [location|e] has no owner yet."
@@ -209,8 +215,9 @@
 
  tsin_machine_works_oil_lubrication: "Oil Lubrication"
  tsin_mechanized_rubber_belts: "Rubber Drive Belts"
+ tsin_potential_oil: "Oil-Bearing Lands"
  tsin_prospect_for_oil.title: "Prospect for Oil"
- tsin_prospect_for_oil.desc: "The black oil that seeps from the ground has long been known, but steam drills can now reach deep enough to yield kerosene and lubricants in quantity. Let us spend [political_influence|e] surveying promising ground."
+ tsin_prospect_for_oil.desc: "The black oil that seeps from the ground has long been known, but steam drills can now reach deep enough to yield kerosene and lubricants in quantity. Let us spend [political_influence|e] surveying promising ground ([tsin_oil_prospecting_concept|e])."
  tsin_prospect_for_oil.a: "Begin drilling."
  tsin_prospect_for_oil_effect_tt: "[tsin_oil_prospect_location.GetName] will now produce [ShowGoodsName('tsin_oil')], instead of [tsin_oil_prospect_location.GetRawMaterial.GetName]"
  STATIC_MODIFIER_NAME_tsin_rubber_concessions: "Rubber Company Concessions"
@@ -233,7 +240,7 @@
  TSIN_INVESTMENT_DOMESTIC_MAPMODE_TT: "The factories of [ROOT.GetLocation.GetName] are run by domestic capital."
 
  tsin_customs_union: "Customs Union"
- tsin_customs_union_desc: "A Customs Union is a group of [countries|e] that agree not to levy tariffs on goods entering each other's [markets|e]. A new member exchanges tariff exemptions with every other member, and loses them on leaving."
+ tsin_customs_union_desc: "A Customs Union is a group of [countries|e] that agree not to levy [tariffs|e] on goods entering each other's [markets|e]. A new member exchanges [tariff_exemptions|e] with every other member, and loses them on leaving ([tsin_customs_union_concept|e])."
  tsin_customs_union_hint_1: "Leaving may also cancel tariff exemptions that were agreed separately before joining."
  search_filter_international_organization_type_tsin_customs_union_name: "Customs union"
  search_filter_international_organization_type_tsin_customs_union_desc: "Show only customs union organizations"

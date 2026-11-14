@@ -1,7 +1,7 @@
 ﻿l_english:
 
  tsin_frontier_land_law: "Frontier Land"
- tsin_frontier_land_law_desc: "This determines who receives the empty land of the country. Selling crown land helps landlords and the treasury; homesteads help settlers."
+ tsin_frontier_land_law_desc: "This determines who receives the empty land of the country. Selling crown land helps landlords and the treasury; homesteads help settlers. One of the [tsin_social_laws_concept|e]: in a mass society with a [parliament|e], its [policies|e] change only through [tsin_bills_concept|e]."
  tsin_frontier_land_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"
  tsin_crown_land_sales_policy: "Crown Land Sales"
  tsin_crown_land_sales_policy_desc: "Empty land is auctioned off, mostly to great landowners and speculators."

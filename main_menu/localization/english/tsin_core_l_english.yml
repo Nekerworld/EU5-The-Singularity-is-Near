@@ -129,7 +129,7 @@
 
  # Levy units
  a_tsin_reservists: "Reservists"
- a_tsin_reservists_desc: "Former conscripts who return to civilian life after their service but can be recalled by rail and telegraph within days. $a_tsin_reservists$ are drilled, equipped from state arsenals, and far more reliable than raw levies."
+ a_tsin_reservists_desc: "Former conscripts who return to civilian life after their service but can be recalled by rail and telegraph within days. $a_tsin_reservists$ are drilled, equipped from state arsenals, and far more reliable than raw [levies|e]."
  a_tsin_mounted_constabulary: "Mounted Constabulary"
  a_tsin_mounted_constabulary_desc: "Gentlemen volunteers and rural police on horseback. The $a_tsin_mounted_constabulary$ keep order in the countryside and scout ahead of the reserve armies in wartime."
 
@@ -168,7 +168,7 @@
 
  # System events
  tsin_system.2.title: "The Age of Industry"
- tsin_system.2.desc: "The world has entered the [ShowAgeName('age_7_industrialization')]. Three new [institutions|e] will emerge over the coming decades: $tsin_industrial_capitalism$, $tsin_mass_society$ and $tsin_electrification$. Each opens new [advances|e] once embraced.\n\nThis age has no fixed end: the game continues until the year 2337."
+ tsin_system.2.desc: "The world has entered the [ShowAgeName('age_7_industrialization')]. Three new [tsin_industrial_institutions_concept|e] will emerge over the coming decades: $tsin_industrial_capitalism$, $tsin_mass_society$ and $tsin_electrification$. Each opens new [advances|e] once embraced.\n\nThis age has no fixed end: the game continues until the year 2337. The encyclopedia entry [tsin_singularity_concept|e] explains everything the age adds."
  tsin_system.2.a: "Full steam ahead."
  tsin_system.10.title: "$tsin_industrial_capitalism$ Emerges"
  tsin_system.10.desc: "Word reaches us of factories financed by shareholders rather than single masters, and of profits ploughed back into ever larger mills. A new [institution|e], $tsin_industrial_capitalism$, has appeared in the world."

@@ -8,7 +8,7 @@
  setting_tsin_economy_log_on: "On"
  setting_tsin_economy_log_on_desc: "Once a year, the estimated GDP and economic indicators of players, great powers and countries with a stock market are written to the game log. tools/econ_report.py turns them into tables and charts."
  tsin_economy_snapshot_decision.title: "Economic Statistics Report"
- tsin_economy_snapshot_decision.desc: "Our statisticians report the estimated national product, output per head and growth. With the game rule "Economy Statistics Log" on, the statistics of every logged country are written to the game log now."
+ tsin_economy_snapshot_decision.desc: "Our statisticians report the estimated national product ([tsin_estimated_gdp_concept|e]), output per head and growth. With the game rule \"$rule_tsin_economy_log$\" on, the statistics of every logged country are written to the game log now."
  tsin_economy_snapshot_decision.a: "Receive the report."
  tsin_system.30.title: "Economic Statistics Report"
  tsin_system.30.desc: "Our statisticians' yearly estimate.\n\n$BULLET$Estimated national product: [ROOT.ScriptValue('tsin_gdp')|0]\n$BULLET$Output per head: [ROOT.ScriptValue('tsin_gdp_per_capita')|2]\n$BULLET$Growth over last year: [ROOT.ScriptValue('tsin_gdp_growth')|1]%\n$BULLET$Factory worker share: [ROOT.ScriptValue('tsin_econ_factory_share')|%1]\n$BULLET$Stock index: [ROOT.ScriptValue('tsin_stock_index_report')|0]\n\nThe estimate adds the tax base of cities and towns, trade and tax income and the subsistence output of the population, then adjusts productivity for education. It is not computed by the engine, so use it to compare countries."

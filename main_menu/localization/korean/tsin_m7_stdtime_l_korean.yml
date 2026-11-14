@@ -2,9 +2,9 @@
 
  # Standard time and the factory clock
  tsin_standard_time_decision.title: "표준시 채택"
- tsin_standard_time_decision.desc: "도시마다 해를 보고 맞추던 시계를 철도와 전신이 정한 하나의 시간으로 묶습니다. 열차 시간표와 공장 교대가 전국에서 맞아떨어집니다. 철도역 3곳, 전신, 중등교육률 10 이상이 필요합니다."
+ tsin_standard_time_decision.desc: "도시마다 해를 보고 맞추던 시계를 철도와 전신이 정한 하나의 시간으로 묶습니다. 열차 시간표와 공장 교대가 전국에서 맞아떨어집니다. 철도역 3곳([tsin_railways_concept|e]), 전신, 중등교육률([tsin_education_ladder_concept|e]) 10 이상이 필요합니다."
  tsin_standard_time_decision.a: "표준시를 선포한다."
- tsin_standard_time_decision.tt: "산업 가속 점수가 1 오릅니다. 공장이 있으면 \"공장 시계\" 이벤트가 나올 수 있습니다."
+ tsin_standard_time_decision.tt: "산업 가속 점수([tsin_time_compression_concept|e])가 1 오릅니다. 공장이 있으면 \"공장 시계\" 이벤트가 나올 수 있습니다."
  STATIC_MODIFIER_NAME_tsin_standard_time: "표준시"
  STATIC_MODIFIER_NAME_tsin_sealed_factory_clocks: "봉인된 공장 시계"
  STATIC_MODIFIER_NAME_tsin_stolen_minutes: "훔친 몇 분"

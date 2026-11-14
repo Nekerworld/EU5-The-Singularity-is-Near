@@ -2,7 +2,7 @@
 
  # National unification
  tsin_national_unification: "National Unification"
- tsin_national_unification_desc: "A culture group is divided among several independent states. The largest of them, carried by its national movement, may lead the unification. Smaller states join by plebiscite or are brought in by a war of unification."
+ tsin_national_unification_desc: "A [culture_group|e] is divided among several independent states. The largest of them, carried by its national movement, may lead the unification. Smaller states join by plebiscite or are brought in by a war of unification.\n\nSee also: [tsin_national_unification_concept|e]"
  tsin_national_unification_nations_made: "Nations Are Made"
  tsin_national_unification_age_passes: "The Age of Unification Passes"
  tsin_national_unification_unifier_tt: "This [country|e] leads a national unification."
@@ -45,7 +45,7 @@
  tsin_unification.20.a.tt: "If we meet the conditions of a vanilla formable country, we can now form it."
  # Defensive modernization
  tsin_defensive_modernization: "Defensive Modernization"
- tsin_defensive_modernization_desc: "Countries that opened their ports under foreign guns import foreign institutions and machines to survive. They pass through a modernizing edict, a conservative reaction, and then success or failure."
+ tsin_defensive_modernization_desc: "Countries that opened their ports under foreign guns import foreign institutions and machines to survive. They pass through a modernizing edict, a conservative reaction, and then success or failure.\n\nSee also: [tsin_defensive_modernization_concept|e]"
  tsin_defensive_modernization_settled: "Modernization Decided"
  tsin_defensive_modernization_age_passes: "The Age of Open Ports Passes"
  tsin_defensive_modernization_modernized_tt: "This [country|e] has modernized successfully."
@@ -78,7 +78,7 @@
  tsin_modernization.30.a.tt: "The modernizing edict will not return for 20 years."
  # Secession crisis
  tsin_secession_crisis: "The Secession Crisis"
- tsin_secession_crisis_desc: "The republic is split in two over slavery. Abolitionists in the free regions and planters in the slave regions will no longer compromise. The crisis lasts at least three years, and without a compromise the slave regions declare secession."
+ tsin_secession_crisis_desc: "The republic is split in two over slavery. Abolitionists in the free regions and planters in the slave regions will no longer compromise. The crisis lasts at least three years, and without a compromise the slave regions declare secession.\n\nSee also: [tsin_secession_crisis_concept|e]"
  tsin_secessionist_rebels: "Secessionists"
  STATIC_MODIFIER_NAME_tsin_rotten_compromise: "Rotten Compromise"
  STATIC_MODIFIER_NAME_tsin_reconstruction: "Reconstruction"
@@ -105,7 +105,7 @@
  tsin_secession.20.b: "Restore the old order to heal the wounds."
  # Millenarian rebellion
  tsin_millenarian_rebellion: "The Millenarian Rebellion"
- tsin_millenarian_rebellion_desc: "Famine, foreign pressure and heterodox preaching shake a stagnant agrarian empire. A prophet who calls himself a son of heaven leads hundreds of thousands of peasants to build a heavenly kingdom on earth. It lasts at least three years and ends only when the rebels are destroyed."
+ tsin_millenarian_rebellion_desc: "Famine, foreign pressure and heterodox preaching shake a stagnant agrarian empire. A prophet who calls himself a son of heaven leads hundreds of thousands of peasants to build a heavenly kingdom on earth. It lasts at least three years and ends only when the [rebels|e] are destroyed.\n\nSee also: [tsin_millenarian_rebellion_concept|e]"
  tsin_millenarian_rebels: "Millenarian Rebels"
  STATIC_MODIFIER_NAME_tsin_suppression_campaign: "Suppression Campaign"
  STATIC_MODIFIER_NAME_tsin_gentry_armies: "Gentry Armies"

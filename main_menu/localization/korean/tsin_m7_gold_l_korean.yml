@@ -2,10 +2,10 @@
 
  # Monetary standard (in_game/common/laws/tsin_monetary_laws.txt)
  tsin_monetary_standard_law: "화폐 본위"
- tsin_monetary_standard_law_desc: "화폐를 금과 은 가운데 무엇에 묶을지 정합니다."
+ tsin_monetary_standard_law_desc: "화폐를 금과 은 가운데 무엇에 묶을지 정합니다([tsin_gold_standard_concept|e]). [tsin_social_laws_concept|e] 가운데 하나이며, [parliament|e]가 있는 대중사회에서는 [policies|e]을 [tsin_bills_concept|e]으로만 바꿀 수 있습니다."
  tsin_bimetallism_policy: "복본위제"
- tsin_bimetallism_policy_desc: "금화와 은화를 함께 법정 화폐로 씁니다. 물가가 조금씩 오르지만 빚진 농민에게는 숨통이 트입니다."
+ tsin_bimetallism_policy_desc: "금화와 은화를 함께 법정 화폐로 씁니다. 물가가 조금씩 오르지만([inflation|e]) 빚진 농민에게는 숨통이 트입니다."
  tsin_gold_standard_policy: "금본위제"
- tsin_gold_standard_policy_desc: "화폐를 금에만 묶습니다. 물가와 주가가 안정되고 이자가 내리며 금 생산이 늘지만, 물가가 내려가 빚진 농민이 괴롭습니다. 장기 불황이 오면 디플레이션이 더 깊어집니다."
+ tsin_gold_standard_policy_desc: "화폐를 금에만 묶습니다. 물가와 주가([tsin_stock_index_concept|e])가 안정되고 [interest|e]가 내리며 금 생산이 늘지만, 물가가 내려가 빚진 농민이 괴롭습니다. [ShowSituationName('tsin_long_depression')]이 오면 디플레이션이 더 깊어집니다."
  STATIC_MODIFIER_NAME_tsin_gold_standard_deflation: "금본위 디플레이션"
  tsin_monetary_standard_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"

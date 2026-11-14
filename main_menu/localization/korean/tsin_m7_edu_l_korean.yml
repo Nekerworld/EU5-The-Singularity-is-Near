@@ -1,7 +1,7 @@
 ﻿l_korean:
 
  tsin_research_university: "연구 대학"
- tsin_research_university_desc: "강의만 하던 대학이 실험실과 연구소를 갖춘 연구 기관이 됩니다. $university$를 대신하며 바닐라 대학의 효과를 그대로 유지하고, 레벨마다 고등교육 정원을 더합니다."
+ tsin_research_university_desc: "강의만 하던 대학이 실험실과 연구소를 갖춘 연구 기관이 됩니다. $university$를 대신하며 바닐라 대학의 효과를 그대로 유지하고, 레벨마다 [tsin_education_ladder_concept|e]의 고등교육 정원을 더합니다."
  tsin_research_university_slot_0: "연구 대학"
  tsin_research_university_lectures: "강의 중심"
  tsin_research_university_laboratory: "실험실"
@@ -31,5 +31,3 @@
  LEGEND_KEY_TSIN_RESEARCH_UNIVERSITY: "$tsin_research_university$"
  LEGEND_KEY_TSIN_HIGHER_EDUCATION: "고등교육률(높을수록 진함)"
  LEGEND_KEY_TSIN_NO_EDUCATION_LADDER: "교육 단계 시작 전"
- game_concept_tsin_education_ladder_concept: "교육 단계"
- game_concept_tsin_education_ladder_concept_desc: "[ShowInstitutionName('tsin_mass_society')]를 받아들이면 교육이 세 단계로 나뉩니다.\n$BULLET$초등: 바닐라 [literacy|e] 그대로입니다.\n$BULLET$중등교육률(0~90): $tsin_public_school$의 정원과 교육 정책, 공장 비중에서 나옵니다. 공장 생산 효율, 건설 효율, 인구 승급, 공장 노동 조건을 높입니다.\n$BULLET$고등교육률(0~60): $tsin_research_university$와 대학의 정원에서 나옵니다. 연구 속도와 제도 확산을 높입니다.\n\n위 단계는 아래 단계를 넘지 못합니다(중등 ≤ 문해율 × 0.9, 고등 ≤ 중등 × 0.6). 해마다 목표와의 차이의 10%씩, 중등은 최대 3, 고등은 최대 2씩 움직입니다."

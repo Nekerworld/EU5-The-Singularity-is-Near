@@ -1,6 +1,6 @@
 ﻿l_korean:
  tsin_engines: "기관"
- tsin_engines_desc: "증기기관과 그 부품은 공장, 기선, 기관차를 움직이는 산업 시대의 심장입니다. 철이나 강철 틀에 정밀하게 깎은 구리 부속을 맞추어야 하므로, 숙련된 기계 공장만이 이를 만들어 낼 수 있습니다."
+ tsin_engines_desc: "증기기관과 그 부품은 공장, 기선, 기관차를 움직이는 [tsin_industrial_economy_concept|e]의 심장입니다. 철이나 강철 틀에 정밀하게 깎은 구리 부속을 맞추어야 하므로, 숙련된 기계 공장만이 이를 만들어 낼 수 있습니다."
 
  MODIFIER_TYPE_NAME_can_extract_tsin_engines: "기관 생산 가능"
  MODIFIER_TYPE_DESC_can_extract_tsin_engines: "[location|e]에서 [rgo|e]를 통해 [ShowGoodsName('tsin_engines')]을 획득할 수 있게 됩니다."
@@ -24,7 +24,7 @@
  MODIFIER_TYPE_DESC_tsin_engines_used_for_minting: "[ShowGoodsName('tsin_engines')]이 해당 [country|e] 내에서 화폐로 사용되는지를 결정합니다."
 
  tsin_machine_works: "기계 공장"
- tsin_machine_works_desc: "선반과 증기 해머가 늘어선 $tsin_machine_works$에서는 노동자들이 철과 강철로 틀을 짜고 구리 부속을 맞추어 $tsin_engines$을 조립합니다."
+ tsin_machine_works_desc: "선반과 증기 해머가 늘어선 $tsin_machine_works$에서는 노동자들이 철과 강철로 틀을 짜고 구리 부속을 맞추어 $tsin_engines$([tsin_new_goods_concept|e])을 조립합니다."
  tsin_machine_works_slot_0: "틀 방식"
  tsin_machine_works_slot_1: "부속 방식"
  tsin_machine_works_iron_frame: "주철 틀"
@@ -33,7 +33,7 @@
  tsin_machine_works_glass_gauges: "유리 계기"
 
  tsin_mechanized_textile_mill: "기계화 방직 공장"
- tsin_mechanized_textile_mill_desc: "증기 동력 역직기가 물레방아를 대신하면서, 더 적은 노동자로 훨씬 많은 $cloth$을 짜낼 수 있게 되었습니다. 기존 $textile_mill$을 개축하여 세웁니다."
+ tsin_mechanized_textile_mill_desc: "증기 동력 역직기가 물레방아를 대신하면서, 더 적은 노동자로 훨씬 많은 $cloth$을 짜낼 수 있게 되었습니다. 기존 $textile_mill$을 개축하여 세웁니다([tsin_building_upgrades_concept|e])."
  tsin_mechanized_textile_mill_slot_0: "원료 방식"
  tsin_mechanized_textile_mill_slot_1: "동력 방식"
  tsin_mechanized_cotton: "목화 역직기"
@@ -105,7 +105,7 @@
  TSIN_INDUSTRIALIZATION_NONE_MAPMODE_TT: "[ROOT.GetLocation.GetName]에는 공장 단계 [buildings|e]이 없습니다."
 
  tsin_machinery: "기계 공업"
- tsin_machinery_desc: "증기기관과 그 부품을 만드는 공업입니다. 공장, 기선, 철도가 모두 이 산업의 생산물에 기대고 있습니다."
+ tsin_machinery_desc: "증기기관과 그 부품을 만드는 공업입니다. [tsin_factories_concept|e], 기선, [tsin_railways_concept|e]가 모두 이 산업의 생산물에 기대고 있습니다."
 
  tsin_machine_works_advance: "기계 공장"
  tsin_machine_works_advance_desc: "$tsin_machine_works_desc$"

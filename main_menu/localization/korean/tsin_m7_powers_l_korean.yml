@@ -20,5 +20,5 @@
  tsin_powers.30.b: "우리의 힘은 육지에 있다."
  tsin_dual_monarchy_decision: "이중 제국 타협"
  tsin_dual_monarchy_decision.title: "이중 제국 타협"
- tsin_dual_monarchy_decision.desc: "가장 큰 소수 민족에게 자체 의회와 정부를 허락하고, 군주와 외교·군사만 함께 나눕니다. 그 민족의 문화는 수용 문화가 됩니다."
+ tsin_dual_monarchy_decision.desc: "가장 큰 소수 민족에게 자체 의회와 정부를 허락하고, 군주와 외교·군사만 함께 나눕니다. 그 민족의 문화는 [accepted_culture|e]가 됩니다.\n\n참고: [tsin_great_power_politics_concept|e]"
  tsin_dual_monarchy_decision.a: "두 왕관, 하나의 군주."

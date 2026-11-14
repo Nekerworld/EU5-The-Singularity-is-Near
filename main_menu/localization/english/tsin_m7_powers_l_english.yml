@@ -20,5 +20,5 @@
  tsin_powers.30.b: "Our strength lies on land."
  tsin_dual_monarchy_decision: "The Dual Monarchy Compromise"
  tsin_dual_monarchy_decision.title: "The Dual Monarchy Compromise"
- tsin_dual_monarchy_decision.desc: "Grant the largest minority its own parliament and government, sharing only the monarch, foreign affairs and the army. Its culture becomes an accepted culture."
+ tsin_dual_monarchy_decision.desc: "Grant the largest minority its own parliament and government, sharing only the monarch, foreign affairs and the army. Its culture becomes an [accepted_culture|e].\n\nSee also: [tsin_great_power_politics_concept|e]"
  tsin_dual_monarchy_decision.a: "Two crowns, one monarch."

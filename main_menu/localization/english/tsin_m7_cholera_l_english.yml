@@ -2,7 +2,7 @@
 
  # Cholera pandemic (in_game/common/disasters/tsin_cholera.txt)
  tsin_cholera: "Cholera Pandemic"
- tsin_cholera_desc: "Cholera from Asia spreads around the world by steamship and railway. Crowded cities without sewers fall first. Waterworks in the capital and a public health campaign end it sooner."
+ tsin_cholera_desc: "Cholera from Asia spreads around the world by steamship and railway. Crowded cities without sewers fall first. Waterworks in the [capital|e] and a public health campaign end it sooner.\n\nSee also: [tsin_cholera_concept|e]"
  STATIC_MODIFIER_NAME_tsin_cholera_quarantine: "Port Quarantine"
  STATIC_MODIFIER_NAME_tsin_sanitary_science: "Sanitary Science"
  STATIC_MODIFIER_NAME_tsin_sewer_movement: "Sewer Movement"

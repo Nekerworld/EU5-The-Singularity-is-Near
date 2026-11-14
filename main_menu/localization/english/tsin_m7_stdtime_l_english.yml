@@ -2,9 +2,9 @@
 
  # Standard time and the factory clock
  tsin_standard_time_decision.title: "Adopt Standard Time"
- tsin_standard_time_decision.desc: "Bind the clocks that every town set by the sun to the single time of the railway and the telegraph. Train timetables and factory shifts line up across the country. Needs 3 railway stations, the telegraph and secondary education of 10 or more."
+ tsin_standard_time_decision.desc: "Bind the clocks that every town set by the sun to the single time of the railway and the telegraph. Train timetables and factory shifts line up across the country. Needs 3 railway stations ([tsin_railways_concept|e]), the telegraph and secondary education ([tsin_education_ladder_concept|e]) of 10 or more."
  tsin_standard_time_decision.a: "Proclaim standard time."
- tsin_standard_time_decision.tt: "The industrial acceleration score rises by 1. With factories, the \"Factory Clock\" event can happen."
+ tsin_standard_time_decision.tt: "The industrial acceleration score ([tsin_time_compression_concept|e]) rises by 1. With factories, the \"Factory Clock\" event can happen."
  STATIC_MODIFIER_NAME_tsin_standard_time: "Standard Time"
  STATIC_MODIFIER_NAME_tsin_sealed_factory_clocks: "Sealed Factory Clocks"
  STATIC_MODIFIER_NAME_tsin_stolen_minutes: "Stolen Minutes"

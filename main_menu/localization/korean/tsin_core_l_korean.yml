@@ -129,7 +129,7 @@
 
  # 징집군 유닛
  a_tsin_reservists: "예비군"
- a_tsin_reservists_desc: "복무를 마치고 민간인으로 돌아갔지만 철도와 전신으로 며칠 안에 다시 소집될 수 있는 옛 징집병입니다. $a_tsin_reservists$은 훈련을 받았고 국영 병기창에서 장비를 지급받으므로, 갓 소집된 징집병보다 훨씬 믿음직합니다."
+ a_tsin_reservists_desc: "복무를 마치고 민간인으로 돌아갔지만 철도와 전신으로 며칠 안에 다시 소집될 수 있는 옛 징집병입니다. $a_tsin_reservists$은 훈련을 받았고 국영 병기창에서 장비를 지급받으므로, 갓 소집된 [levies|e]보다 훨씬 믿음직합니다."
  a_tsin_mounted_constabulary: "기마 경찰대"
  a_tsin_mounted_constabulary_desc: "말을 탄 신사 의용병과 농촌 경찰입니다. $a_tsin_mounted_constabulary$는 평시에는 시골의 질서를 지키고, 전시에는 예비군에 앞서 정찰을 맡습니다."
 
@@ -168,7 +168,7 @@
 
  # 시스템 이벤트
  tsin_system.2.title: "산업 시대"
- tsin_system.2.desc: "세계가 [ShowAgeName('age_7_industrialization')]에 들어섰습니다. 앞으로 수십 년에 걸쳐 $tsin_industrial_capitalism$, $tsin_mass_society$, $tsin_electrification$라는 세 가지 새로운 [institutions|e]가 나타날 것입니다. 각 제도를 수용하면 새로운 [advances|e]가 열립니다.\n\n이 시대에는 정해진 끝이 없으며, 게임은 2337년까지 계속됩니다."
+ tsin_system.2.desc: "세계가 [ShowAgeName('age_7_industrialization')]에 들어섰습니다. 앞으로 수십 년에 걸쳐 $tsin_industrial_capitalism$, $tsin_mass_society$, $tsin_electrification$라는 세 가지 새로운 [institutions|e]가 나타날 것입니다([tsin_industrial_institutions_concept|e] 참고). 각 제도를 수용하면 새로운 [advances|e]가 열립니다.\n\n이 시대에는 정해진 끝이 없으며, 게임은 2337년까지 계속됩니다. 이 시대가 더하는 모든 것은 백과사전의 [tsin_singularity_concept|e] 항목에서 설명합니다."
  tsin_system.2.a: "전속력으로 전진하라."
  tsin_system.10.title: "$tsin_industrial_capitalism$의 등장"
  tsin_system.10.desc: "한 사람의 장인이 아닌 주주들의 자금으로 세운 공장, 그리고 더 큰 공장에 다시 투입되는 이윤에 관한 소식이 들려옵니다. 새로운 [institution|e]인 $tsin_industrial_capitalism$가 세계에 나타났습니다."

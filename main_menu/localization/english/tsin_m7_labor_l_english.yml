@@ -1,11 +1,11 @@
 ﻿l_english:
 
  tsin_union_recognition: "Union Recognition"
- tsin_union_recognition_desc: "Factory workers' unions are recognized as lawful bodies and bargain collectively with employers. Requires [ShowEstatePrivilegeName('tsin_mutual_aid_societies')] and lowers the labor grievance target by 10."
+ tsin_union_recognition_desc: "Factory workers' unions are recognized as lawful bodies and bargain collectively with employers. Requires [ShowEstatePrivilegeName('tsin_mutual_aid_societies')] and lowers the [tsin_labor_grievance_concept|e] target by 10."
  pa_tsin_factory_inspection: "Stronger Factory Inspection"
- pa_tsin_factory_inspection_desc: "The commons demand more inspectors to look into factory accidents and child labor. Labor grievance falls by 10."
+ pa_tsin_factory_inspection_desc: "The commons demand more inspectors to look into factory accidents and child labor. [tsin_labor_grievance_concept|e] falls by 10."
  pa_tsin_ten_hour_day: "The Ten-Hour Day"
- pa_tsin_ten_hour_day_desc: "The unions demand a law limiting the working day to ten hours. Labor grievance falls by 15 and production efficiency drops slightly."
+ pa_tsin_ten_hour_day_desc: "The unions demand a law limiting the working day to ten hours. [tsin_labor_grievance_concept|e] falls by 15 and [production_efficiency|e] drops slightly."
  STATIC_MODIFIER_NAME_tsin_factory_inspection_agenda: "Stronger Factory Inspection"
  STATIC_MODIFIER_NAME_tsin_ten_hour_day: "The Ten-Hour Day"
  tsin_society.80.title: "A Factory Accident"

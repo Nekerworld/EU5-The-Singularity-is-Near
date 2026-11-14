@@ -1,7 +1,7 @@
 ﻿l_english:
 
  tsin_research_university: "Research University"
- tsin_research_university_desc: "The lecture hall becomes a research institution with laboratories and institutes. Replaces the $university$, keeps all its effects, and adds higher education capacity with every level."
+ tsin_research_university_desc: "The lecture hall becomes a research institution with laboratories and institutes. Replaces the $university$, keeps all its effects, and adds higher education capacity to the [tsin_education_ladder_concept|e] with every level."
  tsin_research_university_slot_0: "Research University"
  tsin_research_university_lectures: "Lecture Halls"
  tsin_research_university_laboratory: "Laboratories"
@@ -31,5 +31,3 @@
  LEGEND_KEY_TSIN_RESEARCH_UNIVERSITY: "$tsin_research_university$"
  LEGEND_KEY_TSIN_HIGHER_EDUCATION: "Higher education (darker is higher)"
  LEGEND_KEY_TSIN_NO_EDUCATION_LADDER: "Education ladder not started"
- game_concept_tsin_education_ladder_concept: "Education Ladder"
- game_concept_tsin_education_ladder_concept_desc: "Once [ShowInstitutionName('tsin_mass_society')] is embraced, education splits into three rungs.\n$BULLET$Primary: vanilla [literacy|e], unchanged.\n$BULLET$Secondary education (0-90): from $tsin_public_school$ capacity, education policy and factory share. Raises production efficiency, construction efficiency, pop promotion and factory labor conditions.\n$BULLET$Higher education (0-60): from $tsin_research_university$ and university capacity. Raises research speed and institution spread.\n\nNo rung can outgrow the one below (secondary ≤ literacy × 0.9, higher ≤ secondary × 0.6). Each year a rate closes 10% of the gap to its target, at most 3 points for secondary and 2 for higher."

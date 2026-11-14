@@ -1,6 +1,6 @@
 ﻿l_english:
  tsin_engines: "Engines"
- tsin_engines_desc: "Steam engines and their parts are the beating heart of the industrial age, driving factories, steamers and locomotives. Fitting machined copper parts onto an iron or steel frame takes skilled machine works to do."
+ tsin_engines_desc: "Steam engines and their parts are the beating heart of the [tsin_industrial_economy_concept|e], driving factories, steamers and locomotives. Fitting machined copper parts onto an iron or steel frame takes skilled machine works to do."
 
  MODIFIER_TYPE_NAME_can_extract_tsin_engines: "Can Extract Engines"
  MODIFIER_TYPE_DESC_can_extract_tsin_engines: "This allows the extraction of [ShowGoodsName('tsin_engines')] by allowing an [rgo|e] in a [location|e]."
@@ -24,7 +24,7 @@
  MODIFIER_TYPE_DESC_tsin_engines_used_for_minting: "This determines if [ShowGoodsName('tsin_engines')] is used for coins in the [country|e]."
 
  tsin_machine_works: "Machine Works"
- tsin_machine_works_desc: "Among the lathes and steam hammers of the $tsin_machine_works$, workers build iron and steel frames and fit copper parts to assemble $tsin_engines$."
+ tsin_machine_works_desc: "Among the lathes and steam hammers of the $tsin_machine_works$, workers build iron and steel frames and fit copper parts to assemble $tsin_engines$ ([tsin_new_goods_concept|e])."
  tsin_machine_works_slot_0: "Frame Method"
  tsin_machine_works_slot_1: "Fittings Method"
  tsin_machine_works_iron_frame: "Cast Iron Frames"
@@ -33,7 +33,7 @@
  tsin_machine_works_glass_gauges: "Glass Gauges"
 
  tsin_mechanized_textile_mill: "Mechanized Textile Mill"
- tsin_mechanized_textile_mill_desc: "With steam-driven power looms replacing the waterwheel, far fewer workers can weave far more $cloth$. Built by refitting an existing $textile_mill$."
+ tsin_mechanized_textile_mill_desc: "With steam-driven power looms replacing the waterwheel, far fewer workers can weave far more $cloth$. Built by refitting an existing $textile_mill$ ([tsin_building_upgrades_concept|e])."
  tsin_mechanized_textile_mill_slot_0: "Fiber Method"
  tsin_mechanized_textile_mill_slot_1: "Power Method"
  tsin_mechanized_cotton: "Cotton Power Looms"
@@ -101,7 +101,7 @@
  TSIN_INDUSTRIALIZATION_NONE_MAPMODE_TT: "[ROOT.GetLocation.GetName] has no factory-tier [buildings|e]."
 
  tsin_machinery: "Machinery"
- tsin_machinery_desc: "The manufacture of steam engines and their parts, on which factories, steamers and railways all depend."
+ tsin_machinery_desc: "The manufacture of steam engines and their parts, on which [tsin_factories_concept|e], steamers and [tsin_railways_concept|e] all depend."
 
  tsin_machine_works_advance: "Machine Works"
  tsin_machine_works_advance_desc: "$tsin_machine_works_desc$"

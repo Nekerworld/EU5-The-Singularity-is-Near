@@ -2,7 +2,7 @@
 
  # Cholera pandemic (in_game/common/disasters/tsin_cholera.txt)
  tsin_cholera: "콜레라 대유행"
- tsin_cholera_desc: "아시아에서 시작된 콜레라가 증기선과 철도를 타고 세계로 퍼집니다. 상하수도 없이 사람이 몰린 도시가 가장 먼저 쓰러집니다. 수도에 상하수도를 놓고 공중보건 운동을 벌이면 더 빨리 끝납니다."
+ tsin_cholera_desc: "아시아에서 시작된 콜레라가 증기선과 철도를 타고 세계로 퍼집니다. 상하수도 없이 사람이 몰린 도시가 가장 먼저 쓰러집니다. [capital|e]에 상하수도를 놓고 공중보건 운동을 벌이면 더 빨리 끝납니다.\n\n참고: [tsin_cholera_concept|e]"
  STATIC_MODIFIER_NAME_tsin_cholera_quarantine: "항구 검역"
  STATIC_MODIFIER_NAME_tsin_sanitary_science: "위생학"
  STATIC_MODIFIER_NAME_tsin_sewer_movement: "하수도 운동"

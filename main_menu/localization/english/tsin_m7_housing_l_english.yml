@@ -1,11 +1,11 @@
 ﻿l_english:
 
  tsin_tenement: "Workers' Tenements"
- tsin_tenement_desc: "Cheap, densely packed tenements for factory hands. They let a city hold more people, but the cramped, damp rooms breed disease."
+ tsin_tenement_desc: "Cheap, densely packed tenements for factory hands. They let a crowded city ([tsin_housing_concept|e]) hold more people, but the cramped, damp rooms breed [diseases|e]."
  tsin_tenement_slot_0: "Tenement Block"
  tsin_tenement_maintenance: "Tenement Upkeep"
  tsin_model_dwellings: "Model Dwellings"
- tsin_model_dwellings_desc: "Workers' housing with light, ventilation and running water. Replaces $tsin_tenement$ and improves labor conditions at the local factories."
+ tsin_model_dwellings_desc: "Workers' housing with light, ventilation and running water. Replaces $tsin_tenement$ and improves [tsin_labor_conditions_concept|e] at the local factories."
  tsin_model_dwellings_slot_0: "Model Dwelling Block"
  tsin_model_dwellings_maintenance: "Model Dwelling Upkeep"
  tsin_housing_reform_advance: "Housing Reform"

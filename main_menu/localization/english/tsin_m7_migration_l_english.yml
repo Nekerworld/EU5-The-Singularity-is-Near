@@ -2,7 +2,7 @@
 
  # The Great Migration (in_game/common/situations/tsin_great_migration.txt)
  tsin_great_migration: "The Great Migration"
- tsin_great_migration_desc: "Fleeing crowded cities, hungry villages, epidemics and the grain crisis, millions cross the ocean by steamship. The countries that send them ease their population pressure; the countries of the Americas and Oceania gain new hands."
+ tsin_great_migration_desc: "Fleeing crowded cities, hungry villages, epidemics and the grain crisis, millions cross the ocean by steamship. The countries that send them ease their population pressure; the countries of the Americas and Oceania gain new hands.\n\nSee also: [tsin_great_migration_concept|e]"
  tsin_great_migration_closes: "The Gates Close"
  tsin_great_migration_ebbs: "The Tide Ebbs"
  tsin_great_migration_sender_tt: "Emigrants are leaving this [country|e] for overseas."
