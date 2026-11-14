@@ -1,0 +1,145 @@
+﻿# The Long Depression (M3). Starts once industrial capitalism is widespread; panic for 2 years,
+# then a slump that each country can end early with a recovery policy (tsin_depression.3).
+# Stages use years_since_situation_start, as in vanilla golden_age_of_piracy.
+
+tsin_long_depression = {
+	monthly_spawn_chance = monthly_spawn_chance_very_low
+	hint_tag = hint_tsin_long_depression
+
+	can_start = {
+		current_year >= 1865
+		NOT = { has_global_variable = tsin_long_depression_happened }
+		any_country = {
+			count >= 6
+			has_embraced_institution = institution:tsin_industrial_capitalism
+		}
+	}
+
+	visible = {
+		has_embraced_institution = institution:tsin_industrial_capitalism
+	}
+
+	outcome = {
+		name = "tsin_long_depression_recovery"
+		trigger = {
+			situation:tsin_long_depression = { years_since_situation_start > 8 }
+			NOT = {
+				any_country = {
+					has_country_modifier = tsin_depression_slump
+				}
+			}
+		}
+	}
+	outcome = {
+		name = "tsin_long_depression_runs_its_course"
+		trigger = {
+			situation:tsin_long_depression = { years_since_situation_start > 20 }
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_long_depression_happened value = 1 }
+		every_country = {
+			limit = { has_embraced_institution = institution:tsin_industrial_capitalism }
+			add_country_modifier = { modifier = tsin_depression_panic months = -1 }
+			trigger_event_non_silently = tsin_depression.1
+		}
+	}
+
+	on_monthly = {
+		if = {
+			limit = {
+				situation:tsin_long_depression = { years_since_situation_start >= 2 }
+			}
+			every_country = {
+				limit = { has_country_modifier = tsin_depression_panic }
+				remove_country_modifier = tsin_depression_panic
+				add_country_modifier = { modifier = tsin_depression_slump months = -1 }
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					has_country_modifier = tsin_depression_panic
+					has_country_modifier = tsin_depression_slump
+				}
+			}
+			random_list = {
+				1000 = { }
+				4 = { trigger_event_non_silently = tsin_depression.2 }
+				4 = { trigger_event_non_silently = tsin_depression.3 }
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = {
+				OR = {
+					has_country_modifier = tsin_depression_panic
+					has_country_modifier = tsin_depression_slump
+					has_country_modifier = tsin_depression_recovered
+				}
+			}
+			if = {
+				limit = { has_country_modifier = tsin_depression_panic }
+				remove_country_modifier = tsin_depression_panic
+			}
+			if = {
+				limit = { has_country_modifier = tsin_depression_slump }
+				remove_country_modifier = tsin_depression_slump
+			}
+			if = {
+				limit = { has_country_modifier = tsin_depression_recovered }
+				remove_country_modifier = tsin_depression_recovered
+			}
+			trigger_event_non_silently = tsin_depression.10
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_panic } }
+			custom_tooltip = tsin_long_depression_panic_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_slump } }
+			custom_tooltip = tsin_long_depression_slump_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_recovered } }
+			custom_tooltip = tsin_long_depression_recovered_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_panic } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_slump } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_depression_recovered } }
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_depression_panic"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_depression_slump"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_depression_recovered"
+		color = define:NMapColors|MAP_COLOR_LOW
+	}
+}

@@ -1,0 +1,47 @@
+﻿# Long Depression stages (situations/tsin_long_depression.txt).
+# Panic: credit freezes, investment stops. Slump: weaker version until a recovery policy or the end.
+
+tsin_depression_panic = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = -0.25
+	global_production_efficiency = -0.05
+	bank_interest = 0.01
+	peasants_estate_target_satisfaction = -0.05
+	burghers_estate_target_satisfaction = -0.05
+}
+
+tsin_depression_slump = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = -0.15
+	global_production_efficiency = -0.03
+	peasants_estate_target_satisfaction = -0.025
+}
+
+tsin_depression_recovered = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.05
+}
+
+# tsin_depression.1 / .2 option: rescued banks
+tsin_bank_rescue = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	bank_interest = -0.005
+	burghers_estate_target_satisfaction = 0.05
+}
+
+# tsin_depression.3 option: protectionist recovery
+tsin_protectionist_recovery = {
+	game_data = {
+		category = country
+	}
+	max_tariff = 0.1
+}

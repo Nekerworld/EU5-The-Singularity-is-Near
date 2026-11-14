@@ -1,0 +1,164 @@
+﻿namespace = tsin_depression
+
+# Long Depression situation events (situations/tsin_long_depression.txt). Not flavor events:
+# they do not spend the yearly tsin_ budget.
+
+# The panic begins
+tsin_depression.1 = {
+	type = country_event
+	title = tsin_depression.1.title
+	desc = tsin_depression.1.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	# Rescue the banks
+	option = {
+		name = tsin_depression.1.a
+		change_gold_effect = { scale = -4 }
+		add_country_modifier = { modifier = tsin_bank_rescue years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Let them fail
+	option = {
+		name = tsin_depression.1.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Print money
+	option = {
+		name = tsin_depression.1.c
+		change_gold_effect = { scale = 2 }
+		add_inflation = inflation_mild_penalty
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# A bank fails
+tsin_depression.2 = {
+	type = country_event
+	title = tsin_depression.2.title
+	desc = tsin_depression.2.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		OR = {
+			has_country_modifier = tsin_depression_panic
+			has_country_modifier = tsin_depression_slump
+		}
+	}
+
+	# Cover the depositors
+	option = {
+		name = tsin_depression.2.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_bank_rescue years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Depositors bear the loss
+	option = {
+		name = tsin_depression.2.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# A recovery policy
+tsin_depression.3 = {
+	type = country_event
+	title = tsin_depression.3.title
+	desc = tsin_depression.3.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_country_modifier = tsin_depression_slump
+	}
+
+	# Raise tariffs
+	option = {
+		name = tsin_depression.3.a
+		remove_country_modifier = tsin_depression_slump
+		add_country_modifier = { modifier = tsin_depression_recovered months = -1 }
+		add_country_modifier = { modifier = tsin_protectionist_recovery years = modifier_duration_years_normal mode = add_and_extend }
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_left
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Public works
+	option = {
+		name = tsin_depression.3.b
+		change_gold_effect = { scale = -4 }
+		remove_country_modifier = tsin_depression_slump
+		add_country_modifier = { modifier = tsin_depression_recovered months = -1 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Wait it out
+	option = {
+		name = tsin_depression.3.c
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# The depression ends
+tsin_depression.10 = {
+	type = country_event
+	title = tsin_depression.10.title
+	desc = tsin_depression.10.desc
+	outcome = positive
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_depression.10.a
+	}
+}

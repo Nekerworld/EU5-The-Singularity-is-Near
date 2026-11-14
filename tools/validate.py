@@ -253,11 +253,14 @@ def check_tsin_names() -> None:
         known.update(re.findall(r"(?m)^@?(tsin_\w+)\s*=", clean))
         known.update(re.findall(r"\b(?:set_variable|set_global_variable|save_scope_as|save_temporary_scope_as)\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bname\s*=\s*(tsin_\w+)", clean))
+    loc = loc_keys("english")
     for p, clean in texts.items():
         unquoted = re.sub(r'"[^"\n]*"', '""', clean)
+        loc_refs = set(re.findall(r"\b(?:custom_tooltip|text|desc|title)\s*=\s*(tsin_\w+)", unquoted))
         for tok in set(re.findall(r"\b(tsin_\w+(?:\.\d+)?)", unquoted)):
-            if tok not in known:
-                err(f"names: {rel(p)} uses '{tok}' which no mod file defines")
+            if tok in known or (tok in loc_refs and tok in loc):
+                continue
+            err(f"names: {rel(p)} uses '{tok}' which no mod file defines")
 
 
 def check_refs() -> None:

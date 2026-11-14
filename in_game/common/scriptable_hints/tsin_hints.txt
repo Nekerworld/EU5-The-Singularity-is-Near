@@ -1,0 +1,11 @@
+﻿# Hints for The Singularity is Near situations. Same shape as vanilla hint_little_ice_age.
+
+hint_tsin_long_depression = {
+	priority = {
+		can_see_situation = situation:tsin_long_depression
+	}
+	hide = {
+		NOT = { is_situation_active = situation:tsin_long_depression }
+	}
+	sort_priority = 200
+}
