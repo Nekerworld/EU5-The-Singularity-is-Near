@@ -1,0 +1,31 @@
+﻿# Springtime of Nations (M4).
+
+# Added by the situation on start, removed when it ends.
+tsin_springtime_barricades = {
+	game_data = {
+		category = country
+	}
+	global_crown_estate_power = -0.1
+	global_monthly_control = -0.01
+	burghers_estate_target_satisfaction = -0.05
+}
+
+# tsin_springtime.1 option a
+tsin_springtime_constitution = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	burghers_estate_target_satisfaction = 0.05
+	global_crown_estate_power = -0.1
+}
+
+# tsin_springtime.1 option b
+tsin_springtime_reaction = {
+	game_data = {
+		category = country
+	}
+	global_crown_estate_power = 0.1
+	burghers_estate_target_satisfaction = -0.05
+	monthly_towards_absolutism = 0.05
+}

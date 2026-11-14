@@ -1,0 +1,87 @@
+﻿# The Springtime of Nations (M4). A short revolutionary wave in age VII, driven by the movement variables
+# (tsin_liberalism, tsin_nationalism, tsin_socialism). Follows vanilla the_revolution: never overlaps it.
+# Lasts 3 years; each affected country chooses concession or repression in tsin_springtime.1.
+
+tsin_springtime_of_nations = {
+	monthly_spawn_chance = monthly_spawn_chance_low
+	hint_tag = hint_tsin_springtime_of_nations
+
+	can_start = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_global_variable = tsin_springtime_happened }
+		NOT = { is_situation_active = situation:the_revolution }
+		any_country = {
+			count >= 3
+			tsin_springtime_unrest_trigger = yes
+		}
+	}
+
+	visible = {
+		NOT = { country_type = pop }
+		NOT = { country_type = building }
+	}
+
+	outcome = {
+		name = "tsin_springtime_of_nations_wave_spent"
+		trigger = {
+			situation:tsin_springtime_of_nations = { years_since_situation_start >= 3 }
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_springtime_happened value = 1 }
+		every_country = {
+			limit = { tsin_springtime_unrest_trigger = yes }
+			add_country_modifier = { modifier = tsin_springtime_barricades months = -1 }
+			trigger_event_non_silently = tsin_springtime.1
+		}
+	}
+
+	on_monthly = {
+		every_country = {
+			limit = { has_country_modifier = tsin_springtime_barricades }
+			random_list = {
+				100 = { }
+				3 = { trigger_event_non_silently = tsin_springtime.2 }
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { has_country_modifier = tsin_springtime_barricades }
+			remove_country_modifier = tsin_springtime_barricades
+			trigger_event_non_silently = tsin_springtime.10
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_springtime_barricades } }
+			custom_tooltip = tsin_springtime_of_nations_affected_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_springtime_barricades } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { tsin_springtime_unrest_trigger = yes } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_SPRINGTIME_AFFECTED"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_SPRINGTIME_RESTLESS"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+}

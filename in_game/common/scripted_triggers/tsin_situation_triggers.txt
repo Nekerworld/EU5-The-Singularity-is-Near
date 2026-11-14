@@ -10,3 +10,22 @@ tsin_scramble_participant_trigger = {
 		is_emperor = yes
 	}
 }
+
+# Springtime of Nations: a country whose liberal, nationalist or socialist movement is strong. root = country.
+tsin_springtime_unrest_trigger = {
+	current_age_or_later = { age = age_7_industrialization }
+	OR = {
+		AND = {
+			has_variable = tsin_liberalism
+			var:tsin_liberalism >= 50
+		}
+		AND = {
+			has_variable = tsin_nationalism
+			var:tsin_nationalism >= 50
+		}
+		AND = {
+			has_variable = tsin_socialism
+			var:tsin_socialism >= 40
+		}
+	}
+}

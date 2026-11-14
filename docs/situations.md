@@ -45,3 +45,18 @@
 - 지도: 참여국 영토는 높음, 주인 없는 땅은 중간 색.
 
 사용자 확인 필요: `has_owner = no`와 `is_ownable = yes`를 지역 툴팁·지도 색에서 함께 쓰는 동작, `antagonism_taking_land_giving_modifier`의 부호 의미(음수가 적대감 감소인지), 상황 GUI 연결.
+
+## 국민의 봄 `tsin_springtime_of_nations` (M4)
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `in_game/common/situations/tsin_springtime_of_nations.txt`, 이벤트 `in_game/events/tsin_springtime.txt`, 보정치 `main_menu/common/static_modifiers/tsin_springtime_modifiers.txt` |
+| 시작 | 제7시대 이후, 바닐라 `the_revolution`이 진행 중이 아님, `tsin_springtime_unrest_trigger`(자유주의 ≥ 50, 민족주의 ≥ 50, 사회주의 ≥ 40 중 하나)를 만족하는 나라 3곳 이상. 한 번만(전역 변수 `tsin_springtime_happened`). 월 확률 `monthly_spawn_chance_low` |
+| 시작 효과 | 조건을 만족하는 나라에 `tsin_springtime_barricades`(왕실 권력 -10%, 월간 통제력 -0.01, 시민 불만)와 `tsin_springtime.1` |
+| 진행 | 대상국마다 매달 약 3% 확률로 `tsin_springtime.2`(시가전: 협상 금 -2·자유주의 -5 / 진압 안정도 -·자유주의 +5) |
+| 끝 | 3년 뒤. `tsin_springtime.10`이 첫 선택에 따라 갈린다: 헌법(자유주의 -10) / 진압(자유주의 +10, 사회주의 +5) / 관망(효과 없음) |
+| 첫 선택 `.1` | 헌법(자유주의 -30, 민족주의 -10, `tsin_springtime_constitution` 감쇠, 귀족 불만, 자유주의 쪽) / 진압(`tsin_springtime_reaction`, 안정도 -, 귀족 만족) / 관망 |
+| 바닐라 관계 | `the_revolution`은 `current_age = age_6_revolutions`에서만 시작하므로 겹치지 않지만, 제7시대 진입 직후 아직 진행 중일 수 있어 `NOT = { is_situation_active = situation:the_revolution }`을 둔다 |
+| 그림 | `the_revolution`의 색상만 바꾼 임시 그림 |
+
+사용자 확인 필요: 상황 화면 GUI(`in_game/gui/panels/situation/tsin_springtime_of_nations.gui`)가 열리는지, 대상국이 한 곳도 없을 때 지도 색이 기본색으로 나오는지.
