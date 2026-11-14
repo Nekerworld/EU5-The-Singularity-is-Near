@@ -1,0 +1,73 @@
+﻿# Age VII cabinet actions, unlocked by advances (unlock_cabinet_action), as in vanilla 3_cabinet_actions_unlocks.txt.
+
+# Unlocked by tsin_industrial_capitalism_advance. Province-targeted, like develop_province.
+tsin_encourage_industry = {
+	ability = adm
+	helps_with = "location"
+
+	allow_multiple = yes
+
+	potential = {
+		num_locations > 0
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target
+		ai_interaction_source_list = {
+			scope:actor = {
+				capital.province = {
+					add_to_list = source
+				}
+			}
+		}
+		name = "tsin_encourage_industry_select_province"
+		none_available_msg_key = "tsin_encourage_industry_no_provinces"
+		column = {
+			data = name
+		}
+		column = {
+			data = development
+		}
+		column = {
+			data = population
+		}
+		visible = {
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = tsin_encourage_industry interaction_target = target } }
+		}
+	}
+
+	location_modifier = {
+		local_mills_build_buildings_efficiency = 0.25
+		local_production_efficiency = small_production_efficiency_bonus
+	}
+
+	map_marker = {
+		show_for_owner = yes
+	}
+
+	ai_will_do = {
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						is_subject = yes
+					}
+				}
+				value = -1000
+			}
+		}
+	}
+}
+
+# Unlocked by tsin_railway_network_advance.
+tsin_promote_railway_construction = {
+	ability = dip
+	allow_multiple = no
+
+	country_modifier = {
+		build_railroad_cost_modifier = -0.25
+		global_road_building_time = -0.15
+	}
+}

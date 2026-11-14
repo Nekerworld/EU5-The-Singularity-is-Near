@@ -21,6 +21,7 @@ tsin_industrial_capitalism_advance = {
 	global_production_efficiency = medium_production_efficiency_bonus
 	global_mills_build_buildings_efficiency = 0.25
 	unlock_law = tsin_industrial_investment_law
+	unlock_cabinet_action = tsin_encourage_industry
 	depth = 0
 	ai_weight = { add = 100 }
 

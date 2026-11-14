@@ -59,6 +59,7 @@ tsin_railway_network_advance = {
 	icon = modern_road_advance
 
 	unlock_building = tsin_railway_station
+	unlock_cabinet_action = tsin_promote_railway_construction
 	build_railroad_cost_modifier = -0.1
 
 	requires = tsin_industrial_capitalism_advance

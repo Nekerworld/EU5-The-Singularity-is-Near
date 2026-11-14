@@ -23,3 +23,14 @@
 - `has_employment_system = employment_system:capitalism` 문법(바닐라에는 `has_employment_system = root` 형태만 있다)
 - 정책에 따라 계층이 공장을 짓는 빈도가 실제로 달라지는지(관찰 모드 100년 비교, `docs/balance_targets.md`)
 - 법이 사회경제 범주에 표시되는지
+
+## 내각 행동 (M3)
+
+빅토리아 3의 주 단위 칙령을 EU5 내각 행동으로 근사했다. 파일: `in_game/common/cabinet_actions/tsin_industry_cabinet_actions.txt`.
+
+| 행동 | 해금 | 대상 | 효과 |
+|---|---|---|---|
+| `tsin_encourage_industry` 산업 장려 | `tsin_industrial_capitalism_advance` | 주(province), 여러 개 동시 가능 | 지역 공장 건설 효율 +25%, 지역 생산 효율 `small_production_efficiency_bonus` |
+| `tsin_promote_railway_construction` 철도 건설 촉진 | `tsin_railway_network_advance` | 국가, 1개만 | 철도 건설비 -25%, 도로 건설 시간 -15% |
+
+사용자 확인 필요: 내각 화면에 두 행동이 해금 후에만 보이는지, 주 선택 화면과 지도 표식이 정상인지.
