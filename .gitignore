@@ -1,0 +1,13 @@
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.cursor/
+
+# Python tool caches
+tools/__pycache__/
+*.pyc
+
+# Local test output from tools/validate.py
+tools/out/

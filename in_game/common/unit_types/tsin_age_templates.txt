@@ -1,0 +1,147 @@
+﻿# Age VII templates, continuing 00_age_templates_land.txt / 00_age_templates_navy.txt.
+# Ladder per age: infantry +0.5 strength, +0.75 power; artillery gains the most.
+
+a_age_7_industrialization_light_infantry = {
+	copy_from = a_light_infantry
+	hide = yes
+	buildable = no
+	max_strength = 3.5
+	combat_power = 3.75
+	age = "age_7_industrialization"
+}
+
+a_age_7_industrialization_heavy_infantry = {
+	copy_from = a_heavy_infantry
+	hide = yes
+	buildable = no
+	max_strength = 3.5
+	combat_power = 3.75
+	age = "age_7_industrialization"
+}
+
+a_age_7_industrialization_light_cavalry = {
+	copy_from = a_light_cavalry
+	hide = yes
+	buildable = no
+	max_strength = 1.2
+	combat_power = 3.5
+	age = "age_7_industrialization"
+}
+
+a_age_7_industrialization_heavy_cavalry = {
+	copy_from = a_heavy_cavalry
+	hide = yes
+	buildable = no
+	max_strength = 1.2
+	combat_power = 3.5
+	age = "age_7_industrialization"
+}
+
+a_age_7_industrialization_auxiliary = {
+	category = army_auxiliary
+	hide = yes
+	buildable = no
+	max_strength = 0.3
+	combat_power = 0.3
+	age = "age_7_industrialization"
+}
+
+a_age_7_industrialization_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 1.6
+	combat_power = 9.5
+	bombard_efficiency = 0.40
+	artillery_barrage = 11
+	age = "age_7_industrialization"
+}
+
+##################################################
+# Navy: steam and iron
+
+n_age_7_industrialization_galley = {
+	category = navy_galley
+	use_ship_names = yes
+	buildable = no
+	maritime_presence = ship_very_large_maritime
+	movement_speed = 6.0
+	crew_size = 0.200
+	hull_size = 22
+	cannons = 32
+	blockade_capacity = 0.6
+	maintenance_demand = tsin_galley_7_maintenance
+	construction_demand = tsin_galley_7_construction
+	repair_demand = tsin_galley_7_repair
+	age = "age_7_industrialization"
+}
+
+n_age_7_industrialization_light_ship = {
+	category = navy_light_ship
+	use_ship_names = yes
+	buildable = no
+	maritime_presence = ship_giant_maritime
+	movement_speed = 16
+	hull_size = 26
+	cannons = 30
+	crew_size = 0.125
+	blockade_capacity = 3.5
+	maintenance_demand = tsin_light_ship_7_maintenance
+	construction_demand = tsin_light_ship_7_construction
+	repair_demand = tsin_light_ship_7_repair
+	age = "age_7_industrialization"
+}
+
+n_age_7_industrialization_transport = {
+	category = navy_transport
+	use_ship_names = yes
+	buildable = no
+	maritime_presence = ship_small_mid_maritime
+	movement_speed = 11
+	hull_size = 42
+	cannons = 12
+	crew_size = 0.100
+	transport_capacity = 2.0
+	food_storage_per_strength = 1200
+	maintenance_demand = tsin_transport_7_maintenance
+	construction_demand = tsin_transport_7_construction
+	repair_demand = tsin_transport_7_repair
+	age = "age_7_industrialization"
+}
+
+n_age_7_industrialization_heavy_ship = {
+	category = navy_heavy_ship
+	use_ship_names = yes
+	buildable = no
+	maritime_presence = ship_low_large_maritime
+	movement_speed = 10
+	hull_size = 80
+	cannons = 150
+	crew_size = 0.900
+	blockade_capacity = 1.5
+	maintenance_demand = tsin_heavy_ship_7_maintenance
+	construction_demand = tsin_heavy_ship_7_construction
+	repair_demand = tsin_heavy_ship_7_repair
+	age = "age_7_industrialization"
+}
+
+##################################################
+# Levy units (see levies/tsin_industrial_levies.txt)
+
+a_tsin_reservists = {
+	copy_from = a_age_7_industrialization_light_infantry
+	buildable = no
+	levy = yes
+	gfx_tags = { musket_tag light_tag }
+}
+
+a_tsin_mounted_constabulary = {
+	copy_from = a_age_7_industrialization_heavy_cavalry
+	strength_damage_taken = -0.25
+	morale_damage_taken = -0.25
+	buildable = no
+	levy = yes
+	maintenance_demand = heavy_cavalry_maintenance
+	construction_demand = heavy_cavalry_construction
+	gfx_tags = { heavy_tag }
+}

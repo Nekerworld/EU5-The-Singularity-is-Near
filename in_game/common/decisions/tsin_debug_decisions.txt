@@ -1,0 +1,83 @@
+﻿# The Singularity is Near - developer decisions.
+# debug_only keeps these invisible outside debug mode. Age changes and institution
+# spawns have no script effect; use the console commands listed in docs/debug.md.
+
+tsin_debug_rerun_init_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_rerun_init_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			remove_global_variable = tsin_version
+			remove_global_variable = tsin_migrated_save
+			trigger_event_silently = { id = tsin_system.1 }
+		}
+	}
+}
+
+tsin_debug_reset_notices_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_reset_notices_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			remove_variable = tsin_notified_industrial_capitalism
+			remove_variable = tsin_notified_mass_society
+			remove_variable = tsin_notified_electrification
+		}
+	}
+}
+
+tsin_debug_institution_progress_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_institution_progress_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			capital = {
+				change_institution_progress = { type = institution:tsin_industrial_capitalism value = 25 }
+				change_institution_progress = { type = institution:tsin_mass_society value = 25 }
+				change_institution_progress = { type = institution:tsin_electrification value = 25 }
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+﻿# Vanilla game_triggers.txt assumes age 6 is the last age. These replacements keep
+# current_age_or_later = { age = age_5_absolutism / age_6_revolutions } true in age 7.
+# Recorded in docs/overrides.md.
+
+TRY_REPLACE:current_later_age_5_absolutism_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_5_tt
+		OR = {
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+			current_age = age_7_industrialization
+		}
+	}
+}
+
+TRY_REPLACE:current_later_age_6_revolutions_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_6_tt
+		OR = {
+			current_age = age_6_revolutions
+			current_age = age_7_industrialization
+		}
+	}
+}
+
+current_later_age_7_industrialization_trigger = {
+	custom_tooltip = {
+		text = current_age_at_least_7_tt
+		current_age = age_7_industrialization
+	}
+}
+
+# Short helpers for mod content.
+tsin_is_age_7_trigger = {
+	current_age = age_7_industrialization
+}

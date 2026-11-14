@@ -1,0 +1,31 @@
+﻿# The Singularity is Near - age 7 common unlocks (skeleton; content milestones add more).
+
+tsin_reserve_system_advance = {
+	age = age_7_industrialization
+	icon = levee_en_masse_advance
+	for = mil
+
+	requires = tsin_steam_age_advance
+	unlock_levy = levy_tsin_reservists
+	unlock_levy = levy_tsin_mounted_constabulary
+
+	ai_weight = { add = 50 }
+}
+
+tsin_fort_limit_7_advance = {
+	age = age_7_industrialization
+	icon = defensive_mentality
+
+	requires = tsin_steam_age_advance
+
+	fort_limit_modifier = 0.1
+}
+
+tsin_supply_limit_7_advance = {
+	age = age_7_industrialization
+	icon = expanded_supply_trains
+
+	requires = tsin_steam_age_advance
+
+	global_supply_limit_modifier = 0.1
+}

@@ -1,0 +1,150 @@
+﻿# The Singularity is Near - map modes.
+# @variables are file-local, so the vanilla gradient values are restated here
+# (resolved values of @data_* and @flatmap_* in vanilla map_modes.txt).
+
+@tsin_zoom_step_near = 2
+@tsin_zoom_step_flatmap = 12
+@tsin_zoom_step_flatmap_far = 21
+
+@tsin_data_gradient_alpha_inside = 1
+@tsin_data_gradient_alpha_outside = 1
+@tsin_data_gradient_width = 0.875
+@tsin_data_gradient_color_mult = 0.9
+@tsin_data_edge_width = 0
+@tsin_data_edge_sharpness = 0
+@tsin_data_edge_alpha = 0
+@tsin_data_edge_color_mult = 0
+@tsin_data_before_lighting_blend = 0.5
+@tsin_data_after_lighting_blend = 0.5
+
+@tsin_flatmap_gradient_alpha_inside = 0.75
+@tsin_flatmap_gradient_alpha_outside = 1
+@tsin_flatmap_gradient_width = 0.25
+@tsin_flatmap_gradient_color_mult = 0.9
+@tsin_flatmap_edge_width = 0.03
+@tsin_flatmap_edge_sharpness = 0
+@tsin_flatmap_edge_alpha = 1
+@tsin_flatmap_edge_color_mult = 0.7
+@tsin_flatmap_before_lighting_blend = 0.5
+@tsin_flatmap_after_lighting_blend = 0.5
+
+@tsin_flatmap_far_gradient_width = 0.875
+@tsin_flatmap_far_edge_width = 0.045
+
+# Gate H: spread of the three age-7 institutions per location.
+tsin_industrial_institutions = {
+	map_color = {
+		if = {
+			limit = {
+				has_owner = yes
+				has_institution = institution:tsin_electrification
+			}
+			value = define:NMapColors|MAP_COLOR_MAX
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				has_institution = institution:tsin_mass_society
+			}
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = {
+				has_owner = yes
+				has_institution = institution:tsin_industrial_capitalism
+			}
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else_if = {
+			limit = { has_owner = yes }
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+	}
+	tooltip_key = {
+	}
+
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_ELECTRIFICATION"
+		color = define:NMapColors|MAP_COLOR_MAX
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_MASS_SOCIETY"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_INDUSTRIAL_CAPITALISM"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+	legend_key = {
+		desc = "LEGEND_KEY_TSIN_NO_INSTITUTION"
+		color = define:NMapColors|MAP_COLOR_LOW
+	}
+
+	small_map_names = location
+	medium_map_names = country
+	large_map_names = country
+
+	small_tooltip_context = location
+	medium_tooltip_context = location
+	large_tooltip_context = location
+
+	flatmap_behaviour = Always
+	force_brown_in_flatmap = only_in_rg_colorblind_mode
+	use_fow = no
+
+	category = demography
+	index = 90
+
+	map_markers = {
+		market_marker = no
+		fort_marker = no
+		toll_marker = no
+	}
+
+	gradient_parameters = {
+		zoom_step = @tsin_zoom_step_near
+
+		gradient_alpha_inside = 	@tsin_data_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_data_gradient_alpha_outside
+		gradient_width = 			@tsin_data_gradient_width
+		gradient_color_mult =		@tsin_data_gradient_color_mult
+		edge_width = 				@tsin_data_edge_width
+		edge_sharpness = 			@tsin_data_edge_sharpness
+		edge_alpha = 				@tsin_data_edge_alpha
+		edge_color_mult = 			@tsin_data_edge_color_mult
+		before_lighting_blend =		@tsin_data_before_lighting_blend
+		after_lighting_blend =		@tsin_data_after_lighting_blend
+	}
+
+	flatmap_gradient_parameters = {
+		zoom_step = @tsin_zoom_step_flatmap
+
+		gradient_alpha_inside = 	@tsin_flatmap_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_flatmap_gradient_alpha_outside
+		gradient_width = 			@tsin_flatmap_gradient_width
+		gradient_color_mult =		@tsin_flatmap_gradient_color_mult
+		edge_width = 				@tsin_flatmap_edge_width
+		edge_sharpness = 			@tsin_flatmap_edge_sharpness
+		edge_alpha = 				@tsin_flatmap_edge_alpha
+		edge_color_mult = 			@tsin_flatmap_edge_color_mult
+		before_lighting_blend =		@tsin_flatmap_before_lighting_blend
+		after_lighting_blend =		@tsin_flatmap_after_lighting_blend
+	}
+	flatmap_gradient_parameters = {
+		zoom_step = @tsin_zoom_step_flatmap_far
+
+		gradient_alpha_inside = 	@tsin_flatmap_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_flatmap_gradient_alpha_outside
+		gradient_width = 			@tsin_flatmap_far_gradient_width
+		gradient_color_mult =		@tsin_flatmap_gradient_color_mult
+		edge_width = 				@tsin_flatmap_far_edge_width
+		edge_sharpness = 			@tsin_flatmap_edge_sharpness
+		edge_alpha = 				@tsin_flatmap_edge_alpha
+		edge_color_mult = 			@tsin_flatmap_edge_color_mult
+		before_lighting_blend =		@tsin_flatmap_before_lighting_blend
+		after_lighting_blend =		@tsin_flatmap_after_lighting_blend
+	}
+
+	refresh_colors_on_selection_change = yes
+	color_refresh_counters = { Day }
+}

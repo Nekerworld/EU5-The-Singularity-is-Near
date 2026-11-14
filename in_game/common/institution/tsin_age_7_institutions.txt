@@ -1,0 +1,150 @@
+﻿# Age VII institutions. Same structure as vanilla age_6_revolutions_institutions.txt.
+# Date gates keep spawns inside the targets in docs/balance_targets.md.
+
+tsin_industrial_capitalism = {
+	age = age_7_industrialization
+
+	location = manchester	#fallback for when no valid
+
+	can_spawn = {
+		current_date > 1840.1.1
+		OR = {
+			AND = {
+				has_game_rule = institution_spawn_random_city
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				has_institution = institution:industrialization
+			}
+			AND = {
+				has_game_rule = institution_spawn_fixed_historical
+				this = location:manchester
+			}
+			AND = {
+				has_game_rule = institution_spawn_plausible
+				tsin_industrial_capitalism_plausible_location = yes
+			}
+		}
+	}
+
+	promote_chance = {
+		add = {
+			value = average_location_literacy
+		}
+		add = {
+			value = num_pop_type:laborers
+			multiply = 5
+		}
+		add = {
+			value = num_pop_type:burghers
+			multiply = 5
+		}
+	}
+
+	spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+	spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+	spread_from_any_import = institution_trade_spread_value_late
+	spread_from_any_export = institution_trade_spread_value_late
+	spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+	spread_scale_on_control_if_owner_embraced = 2
+	spread_embraced_to_capital = institution_total_embraced_to_capital_late
+	spread_to_market_member = institution_spread_to_market_member_late
+	spread_to_market_center = institution_spread_to_market_center
+}
+
+tsin_mass_society = {
+	age = age_7_industrialization
+
+	location = paris	#fallback for when no valid
+
+	can_spawn = {
+		current_date > 1845.1.1
+		OR = {
+			AND = {
+				has_game_rule = institution_spawn_random_city
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				has_institution = institution:enlightenment
+			}
+			AND = {
+				has_game_rule = institution_spawn_fixed_historical
+				this = location:paris
+			}
+			AND = {
+				has_game_rule = institution_spawn_plausible
+				tsin_mass_society_plausible_location = yes
+			}
+		}
+	}
+
+	promote_chance = {
+		add = {
+			value = average_location_literacy
+			multiply = 2
+		}
+		add = {
+			value = num_pop_type:laborers
+			multiply = 5
+		}
+	}
+
+	spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+	spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+	spread_from_any_import = institution_trade_spread_value_late
+	spread_from_any_export = institution_trade_spread_value_late
+	spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+	spread_scale_on_control_if_owner_embraced = 2
+	spread_embraced_to_capital = institution_total_embraced_to_capital_late
+	spread_to_market_member = institution_spread_to_market_member_late
+	spread_to_market_center = institution_spread_to_market_center
+}
+
+tsin_electrification = {
+	age = age_7_industrialization
+
+	location = berlin	#fallback for when no valid
+
+	can_spawn = {
+		current_date > 1870.1.1
+		OR = {
+			AND = {
+				has_game_rule = institution_spawn_random_city
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				has_institution = institution:tsin_industrial_capitalism
+			}
+			AND = {
+				has_game_rule = institution_spawn_fixed_historical
+				this = location:berlin
+			}
+			AND = {
+				has_game_rule = institution_spawn_plausible
+				tsin_electrification_plausible_location = yes
+			}
+		}
+	}
+
+	promote_chance = {
+		add = {
+			value = average_location_literacy
+		}
+		add = {
+			value = total_building_levels
+		}
+	}
+
+	spread_from_friendly_coast_border_location = institution_base_spread_from_friendly_neighbor_with_late
+	spread_from_any_coast_border_location = institution_base_spread_from_neighbor_with_late
+	spread_from_any_import = institution_trade_spread_value_late
+	spread_from_any_export = institution_trade_spread_value_late
+	spread_from_was_possible_spawn = institution_spread_from_was_possible_spawn_late
+	spread_scale_on_control_if_owner_embraced = 2
+	spread_embraced_to_capital = institution_total_embraced_to_capital_late
+	spread_to_market_member = institution_spread_to_market_member_late
+	spread_to_market_center = institution_spread_to_market_center
+}

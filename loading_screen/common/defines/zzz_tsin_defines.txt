@@ -1,0 +1,6 @@
+﻿# The Singularity is Near - only the keys this mod changes.
+# Merged per key over vanilla 00_defines.txt (and mods that replace it, e.g. 3631410954).
+
+NGame = {
+	END_DATE = "2337.12.31"
+}

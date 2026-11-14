@@ -1,0 +1,107 @@
+﻿namespace = tsin_system
+
+# Hidden: save migration. Runs from the yearly pulse once age 7 is active and the
+# global setup from on_new_age_global never ran (mod enabled on an existing save).
+tsin_system.1 = {
+	type = country_event
+	title = empty_text
+	desc = empty_text
+	outcome = neutral
+	hidden = yes
+
+	trigger = {
+		NOT = { has_global_variable = tsin_version }
+	}
+
+	immediate = {
+		set_global_variable = { name = tsin_version value = 1 }
+		set_global_variable = { name = tsin_migrated_save value = 1 }
+	}
+}
+
+# Age of Industry begins (player notice, complements ages_of_eu.1)
+tsin_system.2 = {
+	type = country_event
+	title = tsin_system.2.title
+	desc = tsin_system.2.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/advances/age_7_industrialization.dds"
+
+	trigger = {
+		is_ai = no
+		current_age = age_7_industrialization
+	}
+
+	option = {
+		name = tsin_system.2.a
+	}
+}
+
+# Institution appeared: Industrial Capitalism
+tsin_system.10 = {
+	type = country_event
+	title = tsin_system.10.title
+	desc = tsin_system.10.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/tsin_industrial_capitalism.dds"
+
+	trigger = {
+		is_ai = no
+		knows_about_institution = institution:tsin_industrial_capitalism
+		NOT = { has_variable = tsin_notified_industrial_capitalism }
+	}
+
+	immediate = {
+		set_variable = tsin_notified_industrial_capitalism
+	}
+
+	option = {
+		name = tsin_system.10.a
+	}
+}
+
+# Institution appeared: Mass Society
+tsin_system.11 = {
+	type = country_event
+	title = tsin_system.11.title
+	desc = tsin_system.11.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/tsin_mass_society.dds"
+
+	trigger = {
+		is_ai = no
+		knows_about_institution = institution:tsin_mass_society
+		NOT = { has_variable = tsin_notified_mass_society }
+	}
+
+	immediate = {
+		set_variable = tsin_notified_mass_society
+	}
+
+	option = {
+		name = tsin_system.11.a
+	}
+}
+
+# Institution appeared: Electrification
+tsin_system.12 = {
+	type = country_event
+	title = tsin_system.12.title
+	desc = tsin_system.12.desc
+	outcome = neutral
+	image = "gfx/interface/illustrations/institutions/tsin_electrification.dds"
+
+	trigger = {
+		is_ai = no
+		knows_about_institution = institution:tsin_electrification
+		NOT = { has_variable = tsin_notified_electrification }
+	}
+
+	immediate = {
+		set_variable = tsin_notified_electrification
+	}
+
+	option = {
+		name = tsin_system.12.a
+	}
+}

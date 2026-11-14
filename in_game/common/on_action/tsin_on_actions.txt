@@ -1,0 +1,81 @@
+﻿# The Singularity is Near - on_action hooks.
+# Vanilla hooks are extended by merging an on_actions list; vanilla bodies are left untouched.
+
+on_new_age = {
+	on_actions = { tsin_on_new_age }
+}
+
+on_new_age_global = {
+	on_actions = { tsin_on_new_age_global }
+}
+
+yearly_country_pulse = {
+	on_actions = { tsin_yearly_country_pulse }
+}
+
+on_institution_embraced = {
+	on_actions = { tsin_on_institution_embraced }
+}
+
+# root = country
+tsin_on_new_age = {
+	trigger = {
+		current_age = age_7_industrialization
+	}
+	events = {
+		tsin_system.2
+	}
+}
+
+tsin_on_new_age_global = {
+	effect = {
+		if = {
+			limit = {
+				current_age = age_7_industrialization
+				NOT = { has_global_variable = tsin_version }
+			}
+			set_global_variable = { name = tsin_version value = 1 }
+			set_global_variable = { name = tsin_age_7_started value = 1 }
+		}
+	}
+}
+
+# root = country. Also migrates saves that entered age 7 before the mod was enabled.
+tsin_yearly_country_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	events = {
+		tsin_system.1
+		tsin_system.10
+		tsin_system.11
+		tsin_system.12
+	}
+}
+
+# root = country, scope:target = institution
+tsin_on_institution_embraced = {
+	effect = {
+		if = {
+			limit = {
+				scope:target = institution:tsin_industrial_capitalism
+				NOT = { has_global_variable = tsin_first_embraced_industrial_capitalism }
+			}
+			set_global_variable = { name = tsin_first_embraced_industrial_capitalism value = root }
+		}
+		else_if = {
+			limit = {
+				scope:target = institution:tsin_mass_society
+				NOT = { has_global_variable = tsin_first_embraced_mass_society }
+			}
+			set_global_variable = { name = tsin_first_embraced_mass_society value = root }
+		}
+		else_if = {
+			limit = {
+				scope:target = institution:tsin_electrification
+				NOT = { has_global_variable = tsin_first_embraced_electrification }
+			}
+			set_global_variable = { name = tsin_first_embraced_electrification value = root }
+		}
+	}
+}

@@ -1,0 +1,15 @@
+﻿p_building_age_7_industrialization_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+p_expensive_building_age_7_industrialization_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}

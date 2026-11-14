@@ -1,0 +1,78 @@
+﻿# Age VII - Industry (1837-1900). Values follow the vanilla age progression; see docs/balance_targets.md.
+
+age_7_industrialization = {
+	year = 1837
+	price_stability = 0.02
+	max_price = 6
+	hegemons_allowed = yes
+	known_goods_demand_threshold = 5
+	burgher_max_trade_range = 1400
+	bureaucracy_maintenance_multiplier = 1.2
+
+	months_for_exploration_spread = 120
+	unique = {
+		global_war_score_efficiency = 1.0
+		subject_loyalty = -40
+	}
+
+	modifier = {
+		expected_army_size_modifier = 32.0
+		levy_maintenance_modifier = 1.0
+
+		lack_of_control_impact_on_warscore = 1.0
+
+		estate_building_destruction_satisfaction_impact = -0.4
+
+		construction_center_max_level = 6
+
+		global_free_building_levels_modifier = 1.0
+
+		global_navy_levy_size_modifier = -2.0
+
+		subject_pays_colonial_cost_modifier = 2.0
+
+		antagonism_culture_influence = 0.15
+		antagonism_societal_value_influence = 0.25
+		antagonism_government_type_influence = 0.25
+
+		global_population_growth = 0.001
+	}
+
+	goods_demand = {
+		global_liquor_pop_demand    = 1.25	# temperance movements begin to bite
+		global_tobacco_pop_demand   = 1.5	# cigars, then cigarettes
+		global_coffee_pop_demand    = 1.5	# working-class stimulant
+		global_sugar_pop_demand     = 2.0	# beet sugar makes it a staple
+		global_tea_pop_demand       = 1.75	# mass consumption in Britain and Russia
+		global_coal_pop_demand      = 0.75	# domestic heating and gas lighting in towns
+		global_cloth_pop_demand     = 0.5	# cheap factory textiles
+		global_glass_pop_demand     = 0.25	# windows for the urban masses
+	}
+
+	mercenaries = -0.95
+	mercenary_starting_experience = 5
+	war_score_from_battles = -0.2
+
+	efficiency = 0.05
+	victory_card = 6
+
+	max_ai_privilege_per_estate = {
+		nobles_estate = 0
+		clergy_estate = 0
+		burghers_estate = 0
+		peasants_estate = 0
+		dhimmi_estate = 0
+		tribes_estate = 0
+		cossacks_estate = 0
+	}
+
+	min_ai_privilege_per_estate = {
+		nobles_estate = 0
+		clergy_estate = 0
+		burghers_estate = 0
+		peasants_estate = 0
+		dhimmi_estate = 0
+		tribes_estate = 0
+		cossacks_estate = 0
+	}
+}

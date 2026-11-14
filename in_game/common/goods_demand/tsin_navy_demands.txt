@@ -1,0 +1,96 @@
+﻿# Age VII ship demands: steam engines and iron hulls shift demand from lumber/cloth to steel/coal/tools.
+
+tsin_galley_7_construction = {
+	naval_supplies = 0.8
+	tools = 1.5
+	steel = 1.0
+	cannons = 4.0
+	lumber = 14.0
+	category = ship_construction
+}
+tsin_galley_7_repair = {
+	naval_supplies = 0.15
+	lumber = 2.5
+	steel = 0.15
+	category = ship_repair
+}
+tsin_galley_7_maintenance = {
+	naval_supplies = 0.4
+	coal = 0.3
+	cannons = 0.4
+	liquor = 0.1
+	salt = 0.1
+	category = ship_maintenance
+}
+
+tsin_light_ship_7_construction = {
+	naval_supplies = 0.8
+	tools = 1.5
+	steel = 2.0
+	lumber = 14.0
+	cannons = 3.5
+	copper = 0.5
+	category = ship_construction
+}
+tsin_light_ship_7_repair = {
+	naval_supplies = 0.15
+	lumber = 2.5
+	steel = 0.3
+	category = ship_repair
+}
+tsin_light_ship_7_maintenance = {
+	naval_supplies = 0.4
+	coal = 0.5
+	cannons = 0.3
+	liquor = 0.1
+	salt = 0.1
+	category = ship_maintenance
+}
+
+tsin_transport_7_construction = {
+	naval_supplies = 0.8
+	tools = 1.5
+	steel = 2.5
+	lumber = 26.0
+	cannons = 1.5
+	cloth = 1.0
+	category = ship_construction
+}
+tsin_transport_7_repair = {
+	naval_supplies = 0.15
+	lumber = 4.5
+	steel = 0.4
+	category = ship_repair
+}
+tsin_transport_7_maintenance = {
+	naval_supplies = 0.4
+	coal = 0.6
+	cannons = 0.2
+	liquor = 0.1
+	salt = 0.1
+	category = ship_maintenance
+}
+
+tsin_heavy_ship_7_construction = {
+	naval_supplies = 1.5
+	tools = 2.0
+	steel = 10.0
+	lumber = 30.0
+	cannons = 18.0
+	copper = 2.0
+	category = ship_construction
+}
+tsin_heavy_ship_7_repair = {
+	naval_supplies = 0.3
+	lumber = 5
+	steel = 1.5
+	category = ship_repair
+}
+tsin_heavy_ship_7_maintenance = {
+	naval_supplies = 0.8
+	coal = 1.5
+	cannons = 1.5
+	liquor = 0.1
+	salt = 0.1
+	category = ship_maintenance
+}

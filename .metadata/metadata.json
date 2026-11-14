@@ -1,0 +1,14 @@
+{
+  "name": "The Singularity is Near",
+  "id": "chris.the_singularity_is_near",
+  "version": "0.1.0",
+  "game_id": "eu5",
+  "supported_game_version": "1.4.*",
+  "short_description": "Extends Europa Universalis V into a seventh age (Industrialization, 1837-1900): new institutions, advances, industrial economy, mass society and electrification. Long-term goal: humanity's road to the stars.",
+  "tags": [
+    "Gameplay",
+    "Historical"
+  ],
+  "relationships": [],
+  "game_custom_data": {}
+}

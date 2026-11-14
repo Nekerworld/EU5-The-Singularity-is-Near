@@ -1,0 +1,7 @@
+﻿p_building_age_7_industrialization = {
+	gold = build_price_age_of_industry
+}
+
+p_expensive_building_age_7_industrialization = {
+	gold = expensive_build_price_age_of_industry
+}

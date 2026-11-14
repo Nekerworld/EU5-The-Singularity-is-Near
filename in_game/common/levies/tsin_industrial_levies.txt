@@ -1,0 +1,20 @@
+﻿# Age VII generic levies. The engine raises the strongest eligible levy (see vanilla levies/readme.txt),
+# so these out-power levy_conscripts / levy_gendarmerie once unlocked by tsin_reserve_system_advance.
+
+levy_tsin_reservists = {
+	size = levy_generic_infantry_size
+	unit = a_tsin_reservists
+
+	allowed_pop_type = peasants
+	allowed_pop_type = laborers
+	allowed_pop_type = soldiers
+	allowed_pop_type = burghers
+}
+
+levy_tsin_mounted_constabulary = {
+	size = levy_generic_noble_cavalry_size
+
+	allowed_pop_type = nobles
+
+	unit = a_tsin_mounted_constabulary
+}
