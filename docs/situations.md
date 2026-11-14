@@ -60,3 +60,17 @@
 | 그림 | `the_revolution`의 색상만 바꾼 임시 그림 |
 
 사용자 확인 필요: 상황 화면 GUI(`in_game/gui/panels/situation/tsin_springtime_of_nations.gui`)가 열리는지, 대상국이 한 곳도 없을 때 지도 색이 기본색으로 나오는지.
+
+## 대기근 `tsin_great_hunger` (M4, 재난)
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `in_game/common/disasters/tsin_great_hunger.txt`, 이벤트 `in_game/events/tsin_hunger.txt`, 보정치 `main_menu/common/static_modifiers/tsin_hunger_modifiers.txt` |
+| 흉작 | `tsin_hunger_yearly_pulse`(매년 2%)가 평민 인구 60% 초과 국가에 `tsin_hunger.1`을 띄워 3년짜리 `tsin_crop_blight`(월간 식량 -15%)를 건다. 나라당 한 번 |
+| 시작 | 제7시대 이후, 다른 재난 없음, 평화, 평민 만족도 < 0.5, 그리고 병충해 보정치 또는 굶주리는 주(`is_starving`)에 속한 지점 3곳 이상. 나라당 한 번(`fire_only_once`) |
+| 재난 보정치 | 평민 목표 만족 -10%, 이주 속도 +25%, 식민 이주 규모 +25%, 이주 매력 -25% (바닐라 이주 체계로 인구가 빠져나감) |
+| 진행 | 시작 시 `.2`(곡물 수입 / 수출 지속(민족주의 +15) / 공공 사업). 매달 약 3%로 `.3` 이민선 또는 `.4` 퇴거와 폭동 |
+| 끝 | 시작 후 4년이 지나고 병충해가 사라지면. `.10`(안정도 + / 농업 개혁 금 -3) |
+| 그림 | `peasants_war`의 색상만 바꾼 임시 그림 |
+
+사용자 확인 필요: 재난 패널이 `icons/disasters/tsin_great_hunger.dds`를 쓰는지, 이주 보정치가 실제로 인구 유출을 늘리는지, `any_owned_location`의 `count`와 `province = { is_starving }` 판정 비용이 월간 재난 검사에서 문제가 없는지.

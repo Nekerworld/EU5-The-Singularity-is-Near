@@ -15,6 +15,7 @@ yearly_country_pulse = {
 		tsin_economy_yearly_pulse
 		tsin_invention_yearly_pulse
 		tsin_society_yearly_pulse
+		tsin_hunger_yearly_pulse
 	}
 }
 
@@ -137,5 +138,17 @@ tsin_on_institution_embraced = {
 			}
 			set_global_variable = { name = tsin_first_embraced_electrification value = root }
 		}
+	}
+}
+
+# root = country. Rare crop blight that can start the tsin_great_hunger disaster.
+tsin_hunger_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_variable = tsin_great_hunger_happened }
+	}
+	random_events = {
+		10 = tsin_hunger.1
+		chance_to_happen = 2
 	}
 }

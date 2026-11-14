@@ -10,6 +10,7 @@
 | `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5 | 발명 플레이버 |
 | `tsin_abolition` | `in_game/events/tsin_abolition.txt` | M4 | 노예무역 금지, 해방 (예산 제외) |
 | `tsin_springtime` | `in_game/events/tsin_springtime.txt` | M4 | 국민의 봄 상황 (예산 제외) |
+| `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
 | `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 보건 |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
 | `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 이후 | 지역 플레이버 (태그 조건 금지) |
@@ -96,6 +97,11 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_springtime.1` | 바리케이드 (상황 시작) | 상황 대상국 | 헌법 / 진압 / 관망 (docs/situations.md) |
 | `tsin_springtime.2` | 수도의 시가전 | 상황 대상국, 월 약 3% | 협상(금 -2, 자유주의 -5) / 진압(안정도 -, 자유주의 +5) |
 | `tsin_springtime.10` | 봄의 끝 | 상황 종료 | 첫 선택에 따라 한 선택지만 보임 |
+| `tsin_hunger.1` | 들판의 병충해 (나라당 한 번) | 매년 2%, 평민 인구 60% 초과 | 3년 `tsin_crop_blight` |
+| `tsin_hunger.2` | 기근 (재난 시작) | - | 곡물 수입(금 -4) / 수출 지속(평민 불만, 민족주의 +15) / 공공 사업(금 -2, 안정도 -) |
+| `tsin_hunger.3` | 이민선 | 재난 중 | 떠나게 둠(대이민 감쇠) / 식민지 뱃삯(금 -2, 더 긴 대이민) |
+| `tsin_hunger.4` | 퇴거와 식량 폭동 | 재난 중 | 소작농 편 / 지주 편(민족주의 +5) |
+| `tsin_hunger.10` | 기근 이후 | 재난 종료 | 안정도 + / 농업 개혁(금 -3, 식량 +5%) |
 
 곡물법 의회 의제(`in_game/common/parliament_agendas/tsin_parliament_agendas.txt`): 시민 계층의 `pa_tsin_repeal_corn_laws`와 귀족 계층의 `pa_tsin_protect_grain`. 둘 중 하나의 영구 보정치(`tsin_corn_laws_repealed` / `tsin_corn_laws_protection`)만 남고, `mercantilism_vs_free_trade` 축을 조금 움직인다. 사회 가치 값이 자기 쪽이면 의제 확률이 10에서 20으로 오른다. 사용자 확인 필요: 의회 화면에 두 의제가 제7시대 이후에만 나오는지.
 

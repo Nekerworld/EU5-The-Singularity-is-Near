@@ -1,0 +1,183 @@
+﻿namespace = tsin_hunger
+
+# The Great Hunger (disasters/tsin_great_hunger.txt). .1 is a rare yearly pulse event; the rest are disaster events.
+# Not flavor events: they do not spend the yearly tsin_ budget.
+
+# Blight in the fields
+tsin_hunger.1 = {
+	type = country_event
+	title = tsin_hunger.1.title
+	desc = tsin_hunger.1.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_country_modifier = tsin_crop_blight }
+		NOT = { has_variable = tsin_great_hunger_happened }
+		"pop_type_percentage_in_country(pop_type:peasants)" > 0.6
+	}
+
+	immediate = {
+		set_variable = tsin_great_hunger_happened
+		add_country_modifier = { modifier = tsin_crop_blight years = 3 }
+	}
+
+	option = {
+		name = tsin_hunger.1.a
+	}
+}
+
+# The famine begins
+tsin_hunger.2 = {
+	type = country_event
+	title = tsin_hunger.2.title
+	desc = tsin_hunger.2.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	# Buy grain abroad
+	option = {
+		name = tsin_hunger.2.a
+		change_gold_effect = { scale = -4 }
+		add_country_modifier = { modifier = tsin_famine_relief years = 3 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# The market must not be disturbed
+	option = {
+		name = tsin_hunger.2.b
+		add_country_modifier = { modifier = tsin_food_exports_continue years = 4 }
+		change_variable = { name = tsin_nationalism add = 15 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Public works for the hungry
+	option = {
+		name = tsin_hunger.2.c
+		change_gold_effect = { scale = -2 }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# The emigrant ships
+tsin_hunger.3 = {
+	type = country_event
+	title = tsin_hunger.3.title
+	desc = tsin_hunger.3.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_country_modifier = tsin_mass_emigration }
+	}
+
+	# Let them go
+	option = {
+		name = tsin_hunger.3.a
+		add_country_modifier = { modifier = tsin_mass_emigration years = modifier_duration_years_normal }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Pay their passage to our colonies
+	option = {
+		name = tsin_hunger.3.b
+		trigger = {
+			any_subject = { is_subject_type = colonial_nation }
+		}
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_mass_emigration years = modifier_duration_years_long }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# Evictions and food riots
+tsin_hunger.4 = {
+	type = country_event
+	title = tsin_hunger.4.title
+	desc = tsin_hunger.4.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	# Side with the tenants
+	option = {
+		name = tsin_hunger.4.a
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Uphold the landlords' rights
+	option = {
+		name = tsin_hunger.4.b
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		change_variable = { name = tsin_nationalism add = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# After the hunger
+tsin_hunger.10 = {
+	type = country_event
+	title = tsin_hunger.10.title
+	desc = tsin_hunger.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	# Never again
+	option = {
+		name = tsin_hunger.10.a
+		add_stability = stability_weak_bonus
+	}
+
+	# Reform the land
+	option = {
+		name = tsin_hunger.10.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_agricultural_reform years = modifier_duration_years_extended }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}

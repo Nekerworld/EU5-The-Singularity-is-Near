@@ -1,0 +1,45 @@
+﻿# The Great Hunger (M4).
+
+# tsin_hunger.1: the blight itself. Starts the disaster while active.
+tsin_crop_blight = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = -0.15
+}
+
+# tsin_hunger.2 option a
+tsin_famine_relief = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.1
+	peasants_estate_target_satisfaction = 0.05
+}
+
+# tsin_hunger.2 option b
+tsin_food_exports_continue = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = -0.1
+	burghers_estate_target_satisfaction = 0.025
+}
+
+# tsin_hunger.3 option a
+tsin_mass_emigration = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_migration_speed = 0.25
+	colonial_migration_size_modifier = 0.5
+}
+
+# tsin_hunger.10 option b
+tsin_agricultural_reform = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+}

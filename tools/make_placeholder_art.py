@@ -109,6 +109,8 @@ EXTRA = [
     ("illustrations/situation/colonial_revolution.dds", "illustrations/situation/tsin_scramble_for_colonies.dds", 60),
     ("icons/situations/the_revolution.dds", "icons/situations/tsin_springtime_of_nations.dds", 90),
     ("illustrations/situation/the_revolution.dds", "illustrations/situation/tsin_springtime_of_nations.dds", 90),
+    ("illustrations/disaster/peasants_war.dds", "illustrations/disaster/tsin_great_hunger.dds", 200),
+    ("icons/disasters/peasants_war.dds", "icons/disasters/tsin_great_hunger.dds", 200),
     ("icons/government_reforms/illustrations/the_combination_act.dds", "icons/government_reforms/illustrations/tsin_factory_inspectorate.dds", 120),
     ("icons/government_reforms/illustrations/bureaucratized_administration.dds", "icons/government_reforms/illustrations/tsin_civil_service_examinations.dds", 120),
     ("icons/government_reforms/illustrations/mass_levy_system.dds", "icons/government_reforms/illustrations/tsin_universal_conscription.dds", 120),

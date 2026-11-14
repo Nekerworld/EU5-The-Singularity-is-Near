@@ -1,0 +1,59 @@
+﻿# The Great Hunger (M4). A crop blight (tsin_hunger.1) or starving provinces plus a discontented peasantry
+# start a famine that drives mass emigration (vanilla migration modifiers). Runs at least 4 years.
+
+tsin_great_hunger = {
+	image = "gfx/interface/illustrations/disaster/tsin_great_hunger.dds"
+
+	monthly_spawn_chance = monthly_spawn_chance_medium
+	fire_only_once = yes
+
+	can_start = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_any_active_disaster = no
+		at_war = no
+		country_has_estate = estate_type:peasants_estate
+		estate_satisfaction:peasants_estate < 0.5
+		OR = {
+			has_country_modifier = tsin_crop_blight
+			any_owned_location = {
+				count >= 3
+				province = { is_starving = yes }
+			}
+		}
+	}
+
+	can_end = {
+		NOT = { has_variable = tsin_great_hunger_running }
+		NOT = { has_country_modifier = tsin_crop_blight }
+	}
+
+	modifier = {
+		peasants_estate_target_satisfaction = -0.1
+		global_migration_speed = 0.25
+		colonial_migration_size_modifier = 0.25
+		global_migration_attraction = -0.25
+	}
+
+	on_start = {
+		set_variable = { name = tsin_great_hunger_running value = yes years = 4 }
+		trigger_event_non_silently = tsin_hunger.2
+	}
+
+	on_monthly = {
+		random_list = {
+			3 = { custom_tooltip = an_event_occurs_tt }
+			97 = { custom_tooltip = no_event_occurs_tt }
+		}
+		hidden_effect = {
+			random_list = {
+				970 = { }
+				15 = { trigger_event_silently = tsin_hunger.3 }
+				15 = { trigger_event_silently = tsin_hunger.4 }
+			}
+		}
+	}
+
+	on_end = {
+		trigger_event_non_silently = tsin_hunger.10
+	}
+}
