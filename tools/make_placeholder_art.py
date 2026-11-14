@@ -4,6 +4,7 @@ Final art should replace these files (same paths, same size/format):
   icons/age/age_7_industrialization.dds              256x256 (vanilla DXT5)
   illustrations/advances/age_7_industrialization.dds 1080x440 (vanilla DXT1)
 Placeholders are written as uncompressed 32-bit DDS.
+  python tools/make_placeholder_art.py --thumbnail   only rebuild .metadata/thumbnail.png (512x512)
 """
 from __future__ import annotations
 
@@ -145,7 +146,24 @@ for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosive
     ]
 
 
+def make_thumbnail() -> Path:
+    """512x512 workshop thumbnail (.metadata/thumbnail.png) from the mod's own age VII art."""
+    scene = Image.open(DST / "illustrations/advances/age_7_industrialization.dds").convert("RGBA")
+    w, h = scene.size
+    scene = scene.crop(((w - h) // 2, 0, (w + h) // 2, h)).resize((512, 512), Image.LANCZOS)
+    scene = ImageEnhance.Brightness(scene).enhance(0.8)
+    medal = Image.open(DST / "icons/age/age_7_industrialization.dds").convert("RGBA").resize((300, 300), Image.LANCZOS)
+    scene.alpha_composite(medal, ((512 - 300) // 2, (512 - 300) // 2))
+    out = pdx.MOD_ROOT / ".metadata/thumbnail.png"
+    scene.convert("RGB").save(out, optimize=True)
+    return out
+
+
 def main() -> int:
+    if "--thumbnail" in sys.argv:
+        out = make_thumbnail()
+        print(out, Image.open(out).size, out.stat().st_size // 1024, "KB")
+        return 0
     jobs = [
         ("icons/age/age_6_revolutions.dds", "icons/age/age_7_industrialization.dds", (235, 190, 130)),
         ("illustrations/advances/age_6_revolutions.dds", "illustrations/advances/age_7_industrialization.dds", (210, 200, 185)),
