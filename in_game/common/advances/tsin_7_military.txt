@@ -1,0 +1,107 @@
+﻿############################
+# age_7_industrialization - military tree (M6)
+# Root: tsin_reserve_system_advance (tsin_1_common_unlocks.txt). Units: unit_types/tsin_age7_units.txt.
+############################
+
+# Land
+tsin_percussion_cap_advance = {
+	age = age_7_industrialization
+	icon = flintlock_gun
+	for = mil
+
+	unlock_unit = a_tsin_line_riflemen
+	military_tactics = 0.25
+
+	requires = tsin_reserve_system_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_rifling_advance = {
+	age = age_7_industrialization
+	icon = long_rifle
+	for = mil
+
+	unlock_unit = a_tsin_rifle_skirmishers
+	army_light_infantry_power = 0.1
+
+	requires = tsin_percussion_cap_advance
+}
+
+tsin_breech_loading_artillery_advance = {
+	age = age_7_industrialization
+	icon = imperial_artillery
+	for = mil
+
+	unlock_unit = a_tsin_breech_loading_battery
+	army_artillery_power = 0.1
+
+	requires = tsin_rifling_advance
+}
+
+tsin_repeating_rifle_advance = {
+	age = age_7_industrialization
+	icon = nav_riflemen_march
+	for = mil
+
+	unlock_unit = a_tsin_mounted_rifles
+	army_heavy_infantry_power = 0.1
+
+	requires = tsin_rifling_advance
+}
+
+tsin_hand_cranked_machine_gun_advance = {
+	age = age_7_industrialization
+	icon = kor_gunpowder_engines
+	for = mil
+
+	army_heavy_infantry_power = 0.1
+	army_light_infantry_power = 0.05
+	land_morale_modifier = 0.05
+
+	requires = tsin_repeating_rifle_advance
+	requires = tsin_breech_loading_artillery_advance
+}
+
+tsin_general_staff_advance = {
+	age = age_7_industrialization
+	icon = nav_the_national_military_academy
+	for = mil
+
+	discipline = 0.05
+	regiment_reinforcement_speed = 0.1
+
+	requires = tsin_percussion_cap_advance
+	ai_weight = { add = 25 }
+}
+
+# Navy
+tsin_ironclad_advance = {
+	age = age_7_industrialization
+	icon = nav_shipyards_ironworks
+	for = mil
+
+	unlock_unit = n_tsin_ironclad
+
+	requires = tsin_reserve_system_advance
+}
+
+tsin_monitor_advance = {
+	age = age_7_industrialization
+	icon = khm_modern_navy
+	for = mil
+
+	unlock_unit = n_tsin_monitor
+
+	requires = tsin_ironclad_advance
+}
+
+tsin_torpedo_advance = {
+	age = age_7_industrialization
+	icon = imperial_school_of_naval_engineering
+	for = mil
+
+	unlock_unit = n_tsin_torpedo_boat
+	navy_light_ship_power = 0.1
+
+	requires = tsin_ironclad_advance
+}

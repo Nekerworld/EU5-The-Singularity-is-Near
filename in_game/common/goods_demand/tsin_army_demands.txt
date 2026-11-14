@@ -1,0 +1,82 @@
+﻿# Age VII unit goods (M6). Land units otherwise reuse vanilla rifle_infantry_* and heavy_cavalry_*.
+
+tsin_breech_artillery_construction = {
+	cannons = 1.5
+	steel = 1.5
+	copper = 0.5
+	tools = 0.3
+	category = regiment_construction
+}
+tsin_breech_artillery_maintenance = {
+	cannons = 0.6
+	tsin_explosives = 0.2 # shells
+	copper = 0.1
+	category = regiment_maintenance
+}
+
+tsin_repeater_construction = {
+	firearms = 1.5
+	steel = 0.3
+	horses = 0.5
+	leather = 0.2
+	category = regiment_construction
+}
+
+tsin_ironclad_construction = {
+	tsin_engines = 4.0
+	steel = 25.0
+	cannons = 20.0
+	tools = 3.0
+	lumber = 10.0
+	copper = 2.0
+	category = ship_construction
+}
+tsin_ironclad_repair = {
+	tsin_engines = 0.4
+	steel = 3.0
+	tools = 0.5
+	category = ship_repair
+}
+tsin_ironclad_maintenance = {
+	coal = 3.0
+	cannons = 1.5
+	naval_supplies = 0.5
+	category = ship_maintenance
+}
+
+tsin_monitor_construction = {
+	tsin_engines = 2.0
+	steel = 12.0
+	cannons = 8.0
+	tools = 2.0
+	category = ship_construction
+}
+tsin_monitor_repair = {
+	tsin_engines = 0.2
+	steel = 1.5
+	tools = 0.3
+	category = ship_repair
+}
+tsin_monitor_maintenance = {
+	coal = 1.5
+	cannons = 0.8
+	category = ship_maintenance
+}
+
+tsin_torpedo_boat_construction = {
+	tsin_engines = 1.5
+	steel = 4.0
+	tsin_explosives = 2.0
+	tools = 1.0
+	category = ship_construction
+}
+tsin_torpedo_boat_repair = {
+	tsin_engines = 0.15
+	steel = 0.5
+	category = ship_repair
+}
+tsin_torpedo_boat_maintenance = {
+	coal = 0.6
+	tsin_explosives = 0.2
+	category = ship_maintenance
+}

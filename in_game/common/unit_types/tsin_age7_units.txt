@@ -1,0 +1,103 @@
+﻿# Age VII buildable units (M6), unlocked by tsin_7_military.txt. Built on the age 7 templates in tsin_age_templates.txt.
+# Illustrations fall back to the age 6 generic art (in_game/gfx/unit_illustrations, min_age tiers).
+# Stats after copy_from are added to the template (vanilla n_ship_of_the_line: movement_speed = -1).
+
+a_tsin_line_riflemen = {
+	copy_from = a_age_7_industrialization_heavy_infantry
+
+	mercenaries_per_location = {
+		pop_type = laborers
+		multiply = 0.1
+	}
+
+	maintenance_demand = rifle_infantry_maintenance
+	construction_demand = rifle_infantry_construction
+
+	gfx_tags = { rifle_tag medium_tag }
+}
+
+a_tsin_rifle_skirmishers = {
+	copy_from = a_age_7_industrialization_light_infantry
+
+	initiative = 5
+	flanking_ability = 0.25
+
+	mercenaries_per_location = {
+		pop_type = peasants
+		multiply = 0.05
+	}
+
+	maintenance_demand = rifle_infantry_maintenance
+	construction_demand = rifle_infantry_construction
+
+	gfx_tags = { rifle_tag light_tag }
+	color = unit_rifle_green
+}
+
+a_tsin_breech_loading_battery = {
+	copy_from = a_age_7_industrialization_artillery
+
+	combat_power = 1.5
+	artillery_barrage = 2
+
+	mercenaries_per_location = {
+		pop_type = burghers
+		multiply = 0.05
+	}
+
+	maintenance_demand = tsin_breech_artillery_maintenance
+	construction_demand = tsin_breech_artillery_construction
+}
+
+a_tsin_mounted_rifles = {
+	copy_from = a_age_7_industrialization_light_cavalry
+
+	combat_power = 0.5
+	initiative = 3
+
+	maintenance_demand = heavy_cavalry_maintenance
+	construction_demand = tsin_repeater_construction
+}
+
+##################################################
+# Navy
+
+n_tsin_ironclad = {
+	copy_from = n_age_7_industrialization_heavy_ship
+	buildable = yes
+
+	hull_size = 40
+	cannons = 20
+	movement_speed = -1
+
+	maintenance_demand = tsin_ironclad_maintenance
+	construction_demand = tsin_ironclad_construction
+	repair_demand = tsin_ironclad_repair
+}
+
+# Low, slow coastal turret ship: galley category so it fights in coastal waters.
+n_tsin_monitor = {
+	copy_from = n_age_7_industrialization_galley
+	buildable = yes
+
+	hull_size = 23
+	cannons = 28
+	movement_speed = -1
+
+	maintenance_demand = tsin_monitor_maintenance
+	construction_demand = tsin_monitor_construction
+	repair_demand = tsin_monitor_repair
+}
+
+n_tsin_torpedo_boat = {
+	copy_from = n_age_7_industrialization_light_ship
+	buildable = yes
+
+	hull_size = -12
+	cannons = 6
+	movement_speed = 4
+
+	maintenance_demand = tsin_torpedo_boat_maintenance
+	construction_demand = tsin_torpedo_boat_construction
+	repair_demand = tsin_torpedo_boat_repair
+}
