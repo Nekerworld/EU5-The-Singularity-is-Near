@@ -296,6 +296,7 @@ tsin_bill_monthly_pulse = {
 # root = country. Quarterly stock market step (docs/corporations.md). Only countries with companies pay for it.
 tsin_stock_monthly_pulse = {
 	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
 		NOT = { has_variable = tsin_stock_timer }
 		OR = {
 			has_variable = tsin_has_stock_market

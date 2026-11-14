@@ -13,7 +13,7 @@
 
 ## 공통 규칙
 
-- **범주와 순서:** 바닐라 `category`(`economy`, `population`, `demography` 등)에 넣고 `index`는 90 이상을 써서 바닐라 항목 뒤에 붙인다.
+- **범주와 표시 그룹:** 바닐라 `category`를 사용한다. `index`는 정렬 순서가 아니라 UI가 요청하는 그룹 번호다. 현재 기본 UI와 Good Interface가 모두 표시하는 그룹에 맞춰 TSIN은 `economy = 3`, `population = 1`, `demography = 3`을 사용한다. 90 이상의 번호는 UI 표시 그룹에서 빠지므로 사용하지 않는다. 카테고리 또는 UI를 변경하면 `hud_bot.gui`의 `GetMapModeGroupFromCategory` 호출과 대조한다.
 - **색:** `define:NMapColors|...`만 쓴다. 색맹 설정과 바닐라 색감을 그대로 따르기 위해서다.
   - 연속 값: `lerp = { min_color = MAP_COLOR_LOW max_color = MAP_COLOR_HIGH factor = {...} }`
   - 단계 값: `MAP_COLOR_LOW` → `MAP_COLOR_MID` → `MAP_COLOR_HIGH` → `MAP_COLOR_MAX`

@@ -148,13 +148,13 @@
  tsin_heavy_ship_7_repair: "[ShowShortAgeNameWithNoTooltip('age_7_industrialization')] Heavy Ship Repair"
 
  # Debug decisions (debug mode only)
- tsin_debug_rerun_init_decision.title: "[TSIN DEBUG] Rerun Initialization"
+ tsin_debug_rerun_init_decision.title: "(TSIN DEBUG) Rerun Initialization"
  tsin_debug_rerun_init_decision.desc: "Clears the mod's global setup variables and runs the migration event again."
  tsin_debug_rerun_init_decision.a: "Rerun"
- tsin_debug_reset_notices_decision.title: "[TSIN DEBUG] Reset Institution Notices"
+ tsin_debug_reset_notices_decision.title: "(TSIN DEBUG) Reset Institution Notices"
  tsin_debug_reset_notices_decision.desc: "Clears this country's institution notification flags so the notices can fire again."
  tsin_debug_reset_notices_decision.a: "Reset"
- tsin_debug_institution_progress_decision.title: "[TSIN DEBUG] Institution Progress in Capital"
+ tsin_debug_institution_progress_decision.title: "(TSIN DEBUG) Institution Progress in Capital"
  tsin_debug_institution_progress_decision.desc: "Adds 25 progress for each age-7 institution in the capital. Only works for institutions that have already appeared."
  tsin_debug_institution_progress_decision.a: "Add progress"
 

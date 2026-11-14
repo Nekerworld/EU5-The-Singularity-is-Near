@@ -148,13 +148,13 @@
  tsin_heavy_ship_7_repair: "[ShowShortAgeNameWithNoTooltip('age_7_industrialization')] 중함선 수리"
 
  # 개발용 결단 (디버그 모드 전용)
- tsin_debug_rerun_init_decision.title: "[TSIN 디버그] 초기화 재실행"
+ tsin_debug_rerun_init_decision.title: "(TSIN 디버그) 초기화 재실행"
  tsin_debug_rerun_init_decision.desc: "모드의 전역 설정 변수를 지우고 이전용 이벤트를 다시 실행합니다."
  tsin_debug_rerun_init_decision.a: "재실행"
- tsin_debug_reset_notices_decision.title: "[TSIN 디버그] 제도 알림 초기화"
+ tsin_debug_reset_notices_decision.title: "(TSIN 디버그) 제도 알림 초기화"
  tsin_debug_reset_notices_decision.desc: "이 국가의 제도 알림 표시를 지워 알림이 다시 뜨게 합니다."
  tsin_debug_reset_notices_decision.a: "초기화"
- tsin_debug_institution_progress_decision.title: "[TSIN 디버그] 수도 제도 진척"
+ tsin_debug_institution_progress_decision.title: "(TSIN 디버그) 수도 제도 진척"
  tsin_debug_institution_progress_decision.desc: "수도에서 제7시대 제도마다 진척도를 25 올립니다. 이미 등장한 제도에만 효과가 있습니다."
  tsin_debug_institution_progress_decision.a: "진척 추가"
 

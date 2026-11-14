@@ -93,7 +93,7 @@ tsin_industrial_institutions = {
 	use_fow = no
 
 	category = demography
-	index = 90
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -209,7 +209,7 @@ tsin_industrialization = {
 	use_fow = no
 
 	category = economy
-	index = 90
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -359,7 +359,7 @@ tsin_industrial_investment = {
 	use_fow = no
 
 	category = economy
-	index = 91
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -472,7 +472,7 @@ tsin_urbanization = {
 	use_fow = no
 
 	category = population
-	index = 90
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -598,7 +598,7 @@ tsin_labor_unrest = {
 	use_fow = no
 
 	category = population
-	index = 91
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -693,7 +693,7 @@ tsin_radicalism = {
 	use_fow = no
 
 	category = population
-	index = 92
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -807,7 +807,7 @@ tsin_electrification = {
 	use_fow = no
 
 	category = economy
-	index = 92
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -920,7 +920,7 @@ tsin_education = {
 	use_fow = no
 
 	category = population
-	index = 93
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -1033,7 +1033,7 @@ tsin_automation = {
 	use_fow = no
 
 	category = economy
-	index = 93
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -1128,7 +1128,7 @@ tsin_industrial_siting = {
 	use_fow = no
 
 	category = economy
-	index = 94
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -1234,7 +1234,7 @@ tsin_infrastructure = {
 	use_fow = no
 
 	category = economy
-	index = 95
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -1344,7 +1344,7 @@ tsin_labor_conditions = {
 	use_fow = no
 
 	category = population
-	index = 94
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -1468,7 +1468,7 @@ tsin_housing = {
 	use_fow = no
 
 	category = population
-	index = 95
+	index = 1
 
 	map_markers = {
 		market_marker = no
@@ -1574,7 +1574,7 @@ tsin_gdp_per_capita = {
 	use_fow = no
 
 	category = economy
-	index = 96
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -1687,7 +1687,7 @@ tsin_corporations = {
 	use_fow = no
 
 	category = economy
-	index = 97
+	index = 3
 
 	map_markers = {
 		market_marker = no
@@ -1804,7 +1804,7 @@ tsin_agriculture = {
 	use_fow = no
 
 	category = demography
-	index = 91
+	index = 3
 
 	map_markers = {
 		market_marker = no
