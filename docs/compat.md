@@ -50,10 +50,46 @@ python tools/compat_scan.py --mods 3620382806    # 창작마당 id 또는 모드
 
 1. **지금 할 수 있는 것:** 위 모드를 함께 쓰면 이 표의 객체에서 상대 모드의 변경이 사라진다는 점을 창작마당 설명(`docs/release.md`)에 적는다. 게임이 깨지지는 않는다.
 2. **이 모드를 빼면 생기는 손실:** 위 객체는 제7시대 연장 패치 대상이다. 상대 쪽이 이기게 하면 그 객체만 제7시대에 "제6시대가 아님"으로 판정된다(예: 해당 사회 가치관 이벤트가 1837년 뒤에 안 뜸).
-3. **호환 패치 후보 (구현하지 않음):**
-   - `tools/gen_age7_patches.py`가 바닐라 대신 플레이셋에서 최종 적용되는 정의(예: Estates Combined의 이벤트)를 원본으로 삼아 패치를 생성하게 한다.
-   - 결과는 별도 로컬 모드로 내보낸다.
-   - 다른 모드의 내용을 복사해 배포하게 되므로, 이 패치는 사용자 개인 플레이셋용으로만 쓴다. 창작마당에는 올리지 않는다.
+3. **개인 플레이셋용 호환 패치 모드:** 아래 "플레이셋 호환 패치" 절. 다른 모드의 내용을 복사하므로 창작마당에는 올리지 않는다.
 4. **사용자 확인 필요:**
    - `TRY_REPLACE`보다 먼저 읽힌 `INJECT`가 실제로 사라지는지. Formable Nations Reworked를 켜고 해당 형성 국가의 징병법 정책 목록을 확인한다.
    - 이벤트 `REPLACE:`의 실제 우선순위. Estates Combined를 켜고 `societal_values.2100` 등의 내용이 어느 쪽인지 확인한다.
+
+## 플레이셋 호환 패치 (로컬 전용)
+
+```
+python tools/gen_playset_compat.py                   # 활성 플레이셋
+python tools/gen_playset_compat.py --playset "이름"
+```
+
+- 출력: `Documents/Paradox Interactive/Europa Universalis V/mod/The Singularity Is Near - Playset Compat/`
+  - 개발 폴더와 git 밖에 있다.
+  - 다른 모드의 내용이 들어 있으므로 **업로드 금지**다.
+- 보고서: `tools/out/playset_compat_report.md`
+- 생성 방식:
+  - 플레이셋 모드의 객체마다, 이 모드가 없을 때 이길 정의를 고른다. 같은 경로는 목록 뒤 모드, 다른 파일은 파일 이름순으로 정한다.
+  - 그 정의에 `gen_age7_patches.py`와 같은 제7시대 변환을 적용한다.
+  - 교체 파일은 `zzzz_tsin_compat_*`, 주입 파일은 `zzzzz_tsin_compat_injections.txt`로 쓴다. 이름순으로 본 모드의 `zzz_tsin_age7_*`보다 뒤에 읽힌다.
+- 교체 대상:
+  - 본 모드의 `zzz_tsin_age7_*`가 바닐라 복사본으로 지우던 객체. 상대 모드 정의를 복원하면서 제7시대 연장도 유지한다.
+  - 플레이셋 모드가 새로 만든 객체 가운데 제6시대 검사가 있는 것(예: National Destinies 관료제, Oikoumenē 언어 이름 목록, AI 모드의 시대별 값).
+- 주입 재적용: 교체한 객체에 들어가던 다른 모드의 `INJECT`/`TRY_INJECT`를 교체 뒤에 다시 넣는다.
+- 건드리지 않는 것:
+  - 본 모드가 의도적으로 바꾸는 객체(손으로 쓴 덮어쓰기, `tsin_` 객체)
+  - on_action(목록이 병합되므로 교체하면 다른 모드의 연결이 끊긴다)
+  - `gen_age7_patches.py`가 제외하는 폴더(시대, 기술, 제도, 유닛, 가격)
+
+2026-11-14 "1.3 complete enhancement" 결과: 객체 185개 교체(본 모드가 지우던 정의 복원 54개, 제6시대 검사 연장 131개), 주입 2개 재적용, 파일 64개. 생성 파일의 괄호 균형과 남은 `current_age = age_6_revolutions`가 없음은 확인했다.
+
+### 쓰는 법
+
+1. 실행기에서 플레이셋에 **The Singularity is Near**와 **The Singularity Is Near - Playset Compat**를 추가한다. 둘 다 목록 맨 뒤에 둔다.
+2. 플레이셋의 모드를 추가·제거하거나 창작마당 모드가 업데이트되면 `python tools/gen_playset_compat.py`를 다시 실행한다.
+3. 본 모드의 `gen_age7_patches.py`를 다시 돌린 뒤에도 이 도구를 다시 실행한다.
+
+### 사용자 확인 필요
+
+- Estates Combined를 켠 상태에서 `societal_values.2100` 등이 그 모드의 내용인지, 1837년 뒤에도 뜨는지
+- 잉글랜드 문화 인물 이름이 Oikoumenē 목록에서 나오는지
+- Formable Nations Reworked의 징병법 정책이 법 화면에 보이는지
+- 로그(`python tools/scan_logs.py`)에 `zzzz_tsin_compat_` 파일 관련 오류가 없는지
