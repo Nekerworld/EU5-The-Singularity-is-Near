@@ -107,6 +107,7 @@ tsin_electrification = {
 
 	location = berlin	#fallback for when no valid
 
+	# Never needs electrification buildings or advances (no circular unlock); machine tools is an industrial capitalism advance.
 	can_spawn = {
 		current_date > 1870.1.1
 		OR = {
@@ -117,14 +118,17 @@ tsin_electrification = {
 					location_rank = location_rank:megalopolis
 				}
 				has_institution = institution:tsin_industrial_capitalism
+				owner ?= { has_advance = tsin_machine_tools_advance }
 			}
 			AND = {
 				has_game_rule = institution_spawn_fixed_historical
+				current_date > 1875.1.1
 				this = location:berlin
 			}
 			AND = {
 				has_game_rule = institution_spawn_plausible
 				tsin_electrification_plausible_location = yes
+				owner ?= { has_advance = tsin_machine_tools_advance }
 			}
 		}
 	}
