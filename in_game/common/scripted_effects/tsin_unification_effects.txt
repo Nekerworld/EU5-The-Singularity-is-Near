@@ -1,0 +1,49 @@
+﻿# National unification (docs/unification.md). root = country; runs yearly while the situation is active.
+
+tsin_unification_check_effect = {
+	if = {
+		limit = { has_variable = tsin_unifier }
+		# Every independent kin state has joined: the nation is made
+		if = {
+			limit = {
+				NOT = { any_country = { tsin_unification_kin_trigger = yes } }
+			}
+			trigger_event_non_silently = tsin_unification.20
+		}
+		else = {
+			every_country = {
+				limit = { tsin_unification_kin_trigger = yes }
+				set_variable = { name = tsin_unification_kin value = yes years = 2 }
+			}
+			random = {
+				chance = 15
+				trigger_event_non_silently = tsin_unification.10
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			tsin_unification_candidate_trigger = yes
+			NOT = { has_variable = tsin_unification_kin }
+			# The culture group is split: at least two other independent states share it
+			any_country = {
+				count >= 2
+				tsin_unification_kin_trigger = yes
+			}
+			# Only the largest state of the group takes up the cause
+			NOT = {
+				any_country = {
+					tsin_unification_kin_trigger = yes
+					total_population > root.total_population
+				}
+			}
+			NOT = {
+				any_country = {
+					tsin_unification_kin_trigger = yes
+					has_variable = tsin_unifier
+				}
+			}
+		}
+		trigger_event_non_silently = tsin_unification.1
+	}
+}

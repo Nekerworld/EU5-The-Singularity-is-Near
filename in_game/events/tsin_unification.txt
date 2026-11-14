@@ -1,0 +1,198 @@
+﻿namespace = tsin_unification
+
+# National unification (0.7, docs/unification.md). System events of the tsin_national_unification situation;
+# they do not use the flavor budget.
+
+# The national question: the largest state of a divided culture group may take up the cause
+tsin_unification.1 = {
+	type = country_event
+	title = tsin_unification.1.title
+	desc = tsin_unification.1.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_unification_candidate_trigger = yes
+		NOT = { has_variable = tsin_unifier }
+	}
+
+	# Lead the national cause
+	option = {
+		name = tsin_unification.1.a
+		set_variable = tsin_unifier
+		add_country_modifier = { modifier = tsin_unification_drive months = -1 }
+		change_variable = { name = tsin_nationalism add = 5 }
+		every_country = {
+			limit = { tsin_unification_kin_trigger = yes }
+			set_variable = { name = tsin_unification_kin value = yes years = 2 }
+		}
+		custom_tooltip = tsin_unification.1.a.tt
+		ai_chance = {
+			factor = 8
+		}
+	}
+
+	# This is not the time
+	option = {
+		name = tsin_unification.1.b
+		set_variable = { name = tsin_unification_declined value = yes years = 10 }
+		change_variable = { name = tsin_nationalism add = 5 }
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# A plebiscite: the unifier asks a smaller kin state to join
+tsin_unification.10 = {
+	type = country_event
+	title = tsin_unification.10.title
+	desc = tsin_unification.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_variable = tsin_unifier
+		any_country = {
+			tsin_unification_kin_trigger = yes
+			is_great_power = no
+			total_population < root.total_population
+			NOT = { has_variable = tsin_unification_refused }
+		}
+	}
+
+	immediate = {
+		save_scope_as = tsin_unifier
+		random_country = {
+			limit = {
+				tsin_unification_kin_trigger = yes
+				is_great_power = no
+				total_population < root.total_population
+				NOT = { has_variable = tsin_unification_refused }
+			}
+			save_scope_as = tsin_plebiscite_target
+		}
+	}
+
+	# Call the plebiscite
+	option = {
+		name = tsin_unification.10.a
+		scope:tsin_plebiscite_target = { trigger_event_non_silently = tsin_unification.11 }
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The plebiscite reaches us: join the nation or stay apart
+tsin_unification.11 = {
+	type = country_event
+	title = tsin_unification.11.title
+	desc = tsin_unification.11.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		exists = scope:tsin_unifier
+		is_subject = no
+	}
+
+	# Join the nation
+	option = {
+		name = tsin_unification.11.a
+		scope:tsin_unifier = {
+			trigger_event_non_silently = tsin_unification.12
+			annex_country_diplomatically = { country = root }
+		}
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				has_variable = tsin_nationalism
+				var:tsin_nationalism >= 50
+			}
+			modifier = {
+				factor = 0.25
+				at_war = yes
+			}
+		}
+	}
+
+	# Stay apart
+	option = {
+		name = tsin_unification.11.b
+		set_variable = { name = tsin_unification_refused value = yes years = 10 }
+		scope:tsin_unifier = { trigger_event_non_silently = tsin_unification.13 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The plebiscite passed
+tsin_unification.12 = {
+	type = country_event
+	title = tsin_unification.12.title
+	desc = tsin_unification.12.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = tsin_unification.12.a
+		change_variable = { name = tsin_nationalism subtract = 5 }
+	}
+}
+
+# The plebiscite was refused
+tsin_unification.13 = {
+	type = country_event
+	title = tsin_unification.13.title
+	desc = tsin_unification.13.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = tsin_unification.13.a
+		custom_tooltip = tsin_unification.13.a.tt
+		change_variable = { name = tsin_nationalism add = 5 }
+	}
+}
+
+# The nation is made: no independent state of the culture group is left outside it
+tsin_unification.20 = {
+	type = country_event
+	title = tsin_unification.20.title
+	desc = tsin_unification.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		has_variable = tsin_unifier
+	}
+
+	immediate = {
+		remove_variable = tsin_unifier
+		remove_country_modifier = tsin_unification_drive
+		set_variable = tsin_unified_nation
+	}
+
+	option = {
+		name = tsin_unification.20.a
+		add_country_modifier = { modifier = tsin_national_unity years = 20 }
+		add_stability = stability_weak_bonus
+		change_variable = { name = tsin_nationalism subtract = 20 }
+		custom_tooltip = tsin_unification.20.a.tt
+	}
+}

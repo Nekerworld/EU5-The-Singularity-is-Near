@@ -45,3 +45,26 @@ tsin_flavor_end_serfdom_effect = {
 		revoke_estate_privilege = estate_privilege:noble_serfdom_rights
 	}
 }
+
+# The modernizing edict (tsin_flavor.30 a/b) opens stage 1 of tsin_defensive_modernization.
+tsin_start_modernization_effect = {
+	set_variable = tsin_flavor_reform_edict_done
+	set_variable = { name = tsin_modernization_stage value = 1 }
+	set_variable = { name = tsin_modernization_cooldown value = yes years = 3 }
+}
+
+# Rejecting the edict (tsin_flavor.30 c). The edict returns after 10 years; the second refusal ends in failure.
+tsin_refuse_modernization_effect = {
+	if = {
+		limit = { NOT = { has_variable = tsin_modernization_refusals } }
+		set_variable = { name = tsin_modernization_refusals value = 0 }
+	}
+	change_variable = { name = tsin_modernization_refusals add = 1 }
+	if = {
+		limit = { var:tsin_modernization_refusals >= 2 }
+		trigger_event_non_silently = tsin_modernization.30
+	}
+	else = {
+		set_variable = { name = tsin_modernization_refused value = yes years = 10 }
+	}
+}

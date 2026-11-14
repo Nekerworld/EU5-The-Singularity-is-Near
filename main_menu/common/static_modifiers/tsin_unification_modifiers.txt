@@ -1,0 +1,17 @@
+﻿# National unification (docs/unification.md).
+
+tsin_unification_drive = {
+	game_data = {
+		category = country
+	}
+	global_integration_speed_modifier = 0.1
+	diplomatic_range_modifier = 0.1
+}
+
+tsin_national_unity = {
+	game_data = {
+		category = country
+	}
+	global_integration_speed_modifier = 0.25
+	global_production_efficiency = 0.02
+}

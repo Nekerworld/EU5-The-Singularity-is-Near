@@ -1,0 +1,101 @@
+﻿# Defensive Modernization (0.7, docs/modernization.md). Countries forced to open their ports
+# (var:tsin_treaty_ports_opened: treaty port peace or tsin_flavor.10) go through stages:
+# modernizing edict (tsin_flavor.30) -> conservative reaction (tsin_modernization.10) -> success (.20) or failure (.30).
+# No country tags. Stage events are fired from tsin_modernization_yearly_pulse and do not use the flavor budget.
+
+tsin_defensive_modernization = {
+	monthly_spawn_chance = monthly_spawn_chance_medium
+	hint_tag = hint_tsin_defensive_modernization
+
+	can_start = {
+		current_year >= 1840
+		NOT = { has_global_variable = tsin_defensive_modernization_happened }
+		any_country = { has_variable = tsin_treaty_ports_opened }
+	}
+
+	visible = {
+		has_variable = tsin_treaty_ports_opened
+	}
+
+	outcome = {
+		name = "tsin_defensive_modernization_settled"
+		trigger = {
+			current_year >= 1880
+			NOT = {
+				any_country = {
+					has_variable = tsin_treaty_ports_opened
+					NOT = { has_variable = tsin_modernized }
+					NOT = { has_variable = tsin_modernization_failed }
+				}
+			}
+		}
+	}
+	outcome = {
+		name = "tsin_defensive_modernization_age_passes"
+		trigger = {
+			current_year >= 1900
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_defensive_modernization_happened value = 1 }
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_variable = tsin_modernized } }
+			custom_tooltip = tsin_defensive_modernization_modernized_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_modernization_failed } }
+			custom_tooltip = tsin_defensive_modernization_failed_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_modernization_stage } }
+			custom_tooltip = tsin_defensive_modernization_reforming_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_treaty_ports_opened } }
+			custom_tooltip = tsin_defensive_modernization_pressured_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_variable = tsin_modernized } }
+			value = define:NMapColors|MAP_COLOR_MAX
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_modernization_failed } }
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_modernization_stage } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_treaty_ports_opened } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "tsin_defensive_modernization_modernized_legend"
+		color = define:NMapColors|MAP_COLOR_MAX
+	}
+	legend_key = {
+		desc = "tsin_defensive_modernization_reforming_legend"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "tsin_defensive_modernization_pressured_legend"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+	legend_key = {
+		desc = "tsin_defensive_modernization_failed_legend"
+		color = define:NMapColors|MAP_COLOR_LOW
+	}
+}

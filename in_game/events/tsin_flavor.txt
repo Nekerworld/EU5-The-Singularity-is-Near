@@ -1,7 +1,8 @@
 ﻿namespace = tsin_flavor
 
 # Regional flavor (M6): opening pressure, emancipation of the serfs, modernizing edict. Once per country each.
-# Conditions are country states, never tags. Fired from tsin_flavor_yearly_pulse; spends the flavor budget.
+# Conditions are country states, never tags. .10 and .20 are fired from tsin_flavor_yearly_pulse and spend the
+# flavor budget; .30 is the first stage of the tsin_defensive_modernization situation (docs/modernization.md).
 
 # Gunboats in the harbour
 tsin_flavor.10 = {
@@ -137,19 +138,17 @@ tsin_flavor.30 = {
 	}
 
 	trigger = {
-		tsin_flavor_budget_available_trigger = yes
 		has_variable = tsin_treaty_ports_opened
 		NOT = { has_variable = tsin_flavor_reform_edict_done }
-	}
-
-	immediate = {
-		tsin_spend_flavor_budget_effect = yes
-		set_variable = tsin_flavor_reform_edict_done
+		NOT = { has_variable = tsin_modernization_refused }
+		NOT = { has_variable = tsin_modernization_failed }
+		NOT = { has_variable = tsin_modernized }
 	}
 
 	# Proclaim a sweeping reorganization of the state
 	option = {
 		name = tsin_flavor.30.a
+		tsin_start_modernization_effect = yes
 		add_stability = stability_weak_penalty
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
 		add_country_modifier = { modifier = tsin_flavor_reorganization_edict years = modifier_duration_years_long mode = add_and_extend }
@@ -166,6 +165,7 @@ tsin_flavor.30 = {
 	# Adopt foreign machines, keep our own institutions
 	option = {
 		name = tsin_flavor.30.b
+		tsin_start_modernization_effect = yes
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
 		add_country_modifier = { modifier = tsin_flavor_self_strengthening years = modifier_duration_years_long mode = add_and_extend }
 		ai_chance = {
@@ -176,6 +176,7 @@ tsin_flavor.30 = {
 	# Reject the foreign ways
 	option = {
 		name = tsin_flavor.30.c
+		tsin_refuse_modernization_effect = yes
 		add_prestige = prestige_weak_bonus
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
 		change_variable = { name = tsin_nationalism add = 5 }

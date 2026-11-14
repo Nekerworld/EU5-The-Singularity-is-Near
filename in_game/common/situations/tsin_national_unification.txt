@@ -1,0 +1,104 @@
+﻿# National Unification (0.7, docs/unification.md). A culture group split among several independent states
+# finds a champion: the largest of them with a strong national movement. No country tags: the yearly check
+# (tsin_unification_check_effect) works from culture groups. The champion gets plebiscites
+# (tsin_unification.10) and a unification casus belli (cb_tsin_national_unification).
+
+tsin_national_unification = {
+	monthly_spawn_chance = monthly_spawn_chance_low
+	hint_tag = hint_tsin_national_unification
+
+	can_start = {
+		current_year >= 1848
+		NOT = { has_global_variable = tsin_national_unification_happened }
+		any_country = {
+			is_subject = no
+			has_variable = tsin_nationalism
+			var:tsin_nationalism >= 30
+		}
+	}
+
+	visible = {
+		OR = {
+			has_variable = tsin_unifier
+			has_variable = tsin_unified_nation
+			has_variable = tsin_unification_kin
+		}
+	}
+
+	outcome = {
+		name = "tsin_national_unification_nations_made"
+		trigger = {
+			current_year >= 1871
+			any_country = { has_variable = tsin_unified_nation }
+			NOT = { any_country = { has_variable = tsin_unifier } }
+		}
+	}
+	outcome = {
+		name = "tsin_national_unification_age_passes"
+		trigger = {
+			current_year >= 1900
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_national_unification_happened value = 1 }
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { has_variable = tsin_unifier }
+			remove_variable = tsin_unifier
+			remove_country_modifier = tsin_unification_drive
+		}
+		every_country = {
+			limit = { has_variable = tsin_unification_kin }
+			remove_variable = tsin_unification_kin
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_variable = tsin_unifier } }
+			custom_tooltip = tsin_national_unification_unifier_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_unified_nation } }
+			custom_tooltip = tsin_national_unification_unified_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_unification_kin } }
+			custom_tooltip = tsin_national_unification_kin_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_variable = tsin_unified_nation } }
+			value = define:NMapColors|MAP_COLOR_MAX
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_unifier } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { has_variable = tsin_unification_kin } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "tsin_national_unification_unified_legend"
+		color = define:NMapColors|MAP_COLOR_MAX
+	}
+	legend_key = {
+		desc = "tsin_national_unification_unifier_legend"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "tsin_national_unification_kin_legend"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+}

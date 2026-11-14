@@ -1,0 +1,11 @@
+﻿# The Secession Crisis (docs/secession.md).
+
+# Scope: location. Slaves over the population, 0..1.
+tsin_location_slave_share = {
+	value = 0
+	if = {
+		limit = { population > 0 }
+		add = num_pop_type:slaves
+		divide = population
+	}
+}

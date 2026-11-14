@@ -1,0 +1,82 @@
+﻿# The Secession Crisis (0.7, docs/secession.md). A slaveholding republic split between free and slave
+# regions, with a strong abolitionist movement, slides toward civil war: a crisis phase of at least 3 years
+# (tsin_secession.1-.3), then the slave regions secede as rebels (tsin_secession.10) unless a compromise is
+# struck; reunion (tsin_secession.20) once the rebels are beaten. No country tags.
+
+tsin_secession_crisis = {
+	image = "gfx/interface/illustrations/disaster/tsin_secession_crisis.dds"
+
+	monthly_spawn_chance = monthly_spawn_chance_low
+	fire_only_once = yes
+
+	can_start = {
+		current_age_or_later = { age = age_7_industrialization }
+		government_type = government_type:republic
+		has_slavery = yes
+		has_variable = tsin_abolitionism
+		var:tsin_abolitionism >= 50
+		has_any_active_disaster = no
+		in_civil_war = no
+		at_war = no
+		tsin_divided_house_trigger = yes
+	}
+
+	can_end = {
+		has_variable = tsin_secession_resolved
+	}
+
+	modifier = {
+		pop_join_rebel_threshold = 0.05
+		monthly_rebel_growth = 0.01
+		monthly_war_exhaustion = 0.1
+	}
+
+	on_start = {
+		set_variable = { name = tsin_secession_crisis_running value = yes years = 3 }
+		trigger_event_non_silently = tsin_secession.1
+	}
+
+	on_monthly = {
+		random_list = {
+			6 = { custom_tooltip = an_event_occurs_tt }
+			94 = { custom_tooltip = no_event_occurs_tt }
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = tsin_secession_war
+					NOT = { any_rebel = { rebel_name_key = tsin_secessionist_rebels } }
+				}
+				trigger_event_non_silently = tsin_secession.20
+			}
+			else_if = {
+				limit = {
+					NOT = { has_variable = tsin_secession_war }
+					NOT = { has_variable = tsin_secession_crisis_running }
+				}
+				trigger_event_non_silently = tsin_secession.10
+			}
+			else_if = {
+				limit = { NOT = { has_variable = tsin_secession_war } }
+				random_list = {
+					94 = { }
+					3 = { trigger_event_silently = tsin_secession.2 }
+					3 = { trigger_event_silently = tsin_secession.3 }
+				}
+			}
+		}
+	}
+
+	on_end = {
+		remove_variable = tsin_secession_crisis_running
+		remove_variable = tsin_secession_war
+		remove_variable = tsin_secession_resolved
+		if = {
+			limit = { any_rebel = { rebel_name_key = tsin_secessionist_rebels } }
+			random_rebel = {
+				limit = { rebel_name_key = tsin_secessionist_rebels }
+				root = { destroy_rebel = prev }
+			}
+		}
+	}
+}

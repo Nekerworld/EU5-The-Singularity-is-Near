@@ -37,3 +37,29 @@ tsin_flavor_self_strengthening = {
 	global_mills_build_buildings_efficiency = 0.1
 	discipline = 0.02
 }
+
+# Defensive modernization (docs/modernization.md).
+tsin_modernization_new_army = {
+	game_data = {
+		category = country
+	}
+	discipline = 0.03
+	global_mills_build_buildings_efficiency = 0.05
+}
+
+tsin_modernized_state = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.1
+	country_cabinet_efficiency = 0.05
+	global_production_efficiency = 0.03
+}
+
+tsin_failed_modernization = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = -0.05
+	global_merchant_power = -0.05
+}

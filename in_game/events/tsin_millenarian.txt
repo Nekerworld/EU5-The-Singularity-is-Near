@@ -1,0 +1,187 @@
+﻿namespace = tsin_millenarian
+
+# The Millenarian Rebellion (0.7, docs/mass_rebellion.md). Disaster events of tsin_millenarian_rebellion.
+
+# A prophet proclaims the heavenly kingdom
+tsin_millenarian.1 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_millenarian.1.title
+	desc = tsin_millenarian.1.desc
+	image = "gfx/interface/illustrations/disaster/tsin_millenarian_rebellion.dds"
+
+	immediate = {
+		create_rebel = {
+			category = estate
+			estate = peasants_estate
+			name = tsin_millenarian_rebels
+			save_scope_as = tsin_millenarian_rebels_scope
+		}
+		ordered_province = {
+			limit = {
+				population > 0
+				NOT = { any_location_in_province = { is_capital = yes } }
+			}
+			order_by = {
+				value = population
+				if = {
+					limit = { province_satisfaction > 0.1 }
+					divide = province_satisfaction
+				}
+				else = { divide = 0.1 }
+			}
+			max = 8
+			hidden_effect = {
+				every_location_in_province = {
+					change_control = control_mild_penalty
+					every_pop = {
+						limit = { owner = root }
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:tsin_millenarian_rebels_scope
+					}
+				}
+			}
+		}
+	}
+
+	# Crush the heretics with the imperial army
+	option = {
+		name = tsin_millenarian.1.a
+		custom_tooltip = tsin_millenarian.1.tt
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_suppression_campaign years = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Let the provincial gentry raise their own armies
+	option = {
+		name = tsin_millenarian.1.b
+		custom_tooltip = tsin_millenarian.1.tt
+		add_country_modifier = { modifier = tsin_gentry_armies years = 15 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The heavenly capital: the rebels hold a great city and their own court
+tsin_millenarian.2 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_millenarian.2.title
+	desc = tsin_millenarian.2.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		any_rebel = { rebel_name_key = tsin_millenarian_rebels }
+	}
+
+	# Raise new taxes for the war
+	option = {
+		name = tsin_millenarian.2.a
+		change_gold_effect = { scale = 2 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Offer amnesty to those who lay down their arms
+	option = {
+		name = tsin_millenarian.2.b
+		add_prestige = prestige_weak_penalty
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Foreign-officered troops offer their services
+tsin_millenarian.3 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_millenarian.3.title
+	desc = tsin_millenarian.3.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		any_rebel = { rebel_name_key = tsin_millenarian_rebels }
+		NOT = { has_country_modifier = tsin_ever_victorious_army }
+	}
+
+	# Hire them
+	option = {
+		name = tsin_millenarian.3.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_ever_victorious_army years = 5 }
+		change_variable = { name = tsin_nationalism add = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# No foreigners in our army
+	option = {
+		name = tsin_millenarian.3.b
+		add_prestige = prestige_weak_bonus
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Famine behind the lines
+tsin_millenarian.4 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_millenarian.4.title
+	desc = tsin_millenarian.4.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	# Open the granaries
+	option = {
+		name = tsin_millenarian.4.a
+		change_gold_effect = { scale = -1 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# The army eats first
+	option = {
+		name = tsin_millenarian.4.b
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# After the rebellion
+tsin_millenarian.10 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_millenarian.10.title
+	desc = tsin_millenarian.10.desc
+	image = "gfx/interface/illustrations/disaster/tsin_millenarian_rebellion.dds"
+
+	option = {
+		name = tsin_millenarian.10.a
+		add_country_modifier = { modifier = tsin_rebellion_devastation years = 15 }
+		add_stability = stability_weak_bonus
+	}
+}

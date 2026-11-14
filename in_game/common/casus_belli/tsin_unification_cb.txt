@@ -1,0 +1,28 @@
+﻿#root is country
+#scope:target is the target
+# National unification (docs/unification.md): the champion of a divided culture group against a kin state.
+
+cb_tsin_national_unification = {
+	speed = 8
+	create_visible = {
+		has_variable = tsin_unifier
+	}
+	create_enabled = {
+		has_variable = tsin_unifier
+		is_subject = no
+		scope:target = { tsin_unification_kin_trigger = yes }
+	}
+
+	province = {
+		dominant_culture ?= { has_shared_culture_group = scope:actor.culture }
+	}
+
+	war_goal_type = take_province_nationalist
+
+	ai_will_do = {
+		add = {
+			desc = "BASE"
+			value = 30
+		}
+	}
+}

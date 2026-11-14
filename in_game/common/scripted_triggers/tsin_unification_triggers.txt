@@ -1,0 +1,19 @@
+﻿# National unification (docs/unification.md). Culture groups only, never country tags.
+
+# Scope: country. An independent state of the same culture group as root (the would-be unifier), other than root.
+# root is the unifier in tsin_unification_check_effect, the unifier's events and cb_tsin_national_unification.
+tsin_unification_kin_trigger = {
+	is_subject = no
+	NOT = { this = root }
+	culture ?= { has_shared_culture_group = root.culture }
+}
+
+# Scope: country. Could champion its culture group: independent, a strong national movement, not done yet.
+tsin_unification_candidate_trigger = {
+	is_subject = no
+	at_war = no
+	has_variable = tsin_nationalism
+	var:tsin_nationalism >= 30
+	NOT = { has_variable = tsin_unified_nation }
+	NOT = { has_variable = tsin_unification_declined }
+}

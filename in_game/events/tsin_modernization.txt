@@ -1,0 +1,132 @@
+﻿namespace = tsin_modernization
+
+# Defensive modernization stages (0.7, docs/modernization.md). The edict is tsin_flavor.30;
+# var:tsin_modernization_stage is 1 after the edict and 2 after the conservative reaction is overcome.
+# Fired from tsin_modernization_yearly_pulse; no flavor budget.
+
+# The conservative reaction: the old guard rises against the reforms
+tsin_modernization.10 = {
+	type = country_event
+	title = tsin_modernization.10.title
+	desc = tsin_modernization.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		has_variable = tsin_modernization_stage
+		var:tsin_modernization_stage = 1
+		NOT = { has_variable = tsin_modernization_cooldown }
+	}
+
+	# Crush the old guard
+	option = {
+		name = tsin_modernization.10.a
+		set_variable = { name = tsin_modernization_stage value = 2 }
+		set_variable = { name = tsin_modernization_cooldown value = yes years = 5 }
+		add_stability = stability_mild_penalty
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_country_modifier = { modifier = tsin_modernization_new_army years = 10 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				stability < -25
+			}
+		}
+	}
+
+	# Buy them off with offices and pensions
+	option = {
+		name = tsin_modernization.10.b
+		set_variable = { name = tsin_modernization_stage value = 2 }
+		set_variable = { name = tsin_modernization_cooldown value = yes years = 8 }
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -6
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Yield to the reaction
+	option = {
+		name = tsin_modernization.10.c
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		trigger_event_non_silently = tsin_modernization.30
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				stability < 0
+			}
+		}
+	}
+}
+
+# The reforms take root
+tsin_modernization.20 = {
+	type = country_event
+	title = tsin_modernization.20.title
+	desc = tsin_modernization.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		has_variable = tsin_modernization_stage
+		var:tsin_modernization_stage = 2
+		NOT = { has_variable = tsin_modernization_cooldown }
+		tsin_has_factory_trigger = yes
+		stability >= 0
+	}
+
+	immediate = {
+		remove_variable = tsin_modernization_stage
+		remove_variable = tsin_modernization_refusals
+		set_variable = tsin_modernized
+	}
+
+	option = {
+		name = tsin_modernization.20.a
+		add_country_modifier = { modifier = tsin_modernized_state years = 30 }
+		add_prestige = prestige_mild_bonus
+		change_variable = { name = tsin_nationalism add = 5 }
+	}
+}
+
+# The reforms collapse
+tsin_modernization.30 = {
+	type = country_event
+	title = tsin_modernization.30.title
+	desc = tsin_modernization.30.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_modernized }
+		NOT = { has_variable = tsin_modernization_failed }
+	}
+
+	immediate = {
+		remove_variable = tsin_modernization_stage
+		remove_variable = tsin_modernization_cooldown
+		remove_variable = tsin_modernization_refusals
+		remove_variable = tsin_flavor_reform_edict_done
+		set_variable = { name = tsin_modernization_failed value = yes years = 20 }
+	}
+
+	option = {
+		name = tsin_modernization.30.a
+		add_country_modifier = { modifier = tsin_failed_modernization years = 15 }
+		change_variable = { name = tsin_nationalism add = 10 }
+		custom_tooltip = tsin_modernization.30.a.tt
+	}
+}

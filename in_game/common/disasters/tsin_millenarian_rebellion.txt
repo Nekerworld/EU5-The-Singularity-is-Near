@@ -1,0 +1,63 @@
+﻿# The Millenarian Rebellion (0.7, docs/mass_rebellion.md). A stagnant agrarian empire under famine, opening
+# pressure and religious division sees a prophet raise a vast peasant army (tsin_millenarian.1). It ends once the
+# rebels are destroyed, after at least 3 years, and leaves the devastated provinces to rebuild. No country tags.
+
+tsin_millenarian_rebellion = {
+	image = "gfx/interface/illustrations/disaster/tsin_millenarian_rebellion.dds"
+
+	monthly_spawn_chance = monthly_spawn_chance_low
+	fire_only_once = yes
+
+	can_start = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_any_active_disaster = no
+		in_civil_war = no
+		tsin_country_world_pop_share >= 0.03
+		NOT = { tsin_has_factory_trigger = yes }
+		tsin_millenarian_pressure >= 2
+	}
+
+	can_end = {
+		NOT = { has_variable = tsin_millenarian_running }
+		NOT = { any_rebel = { rebel_name_key = tsin_millenarian_rebels } }
+	}
+
+	modifier = {
+		pop_join_rebel_threshold = 0.05
+		monthly_rebel_growth = 0.02
+		monthly_war_exhaustion = 0.1
+		peasants_estate_target_satisfaction = -0.1
+	}
+
+	on_start = {
+		set_variable = { name = tsin_millenarian_running value = yes years = 3 }
+		trigger_event_non_silently = tsin_millenarian.1
+	}
+
+	on_monthly = {
+		random_list = {
+			6 = { custom_tooltip = an_event_occurs_tt }
+			94 = { custom_tooltip = no_event_occurs_tt }
+		}
+		hidden_effect = {
+			random_list = {
+				94 = { }
+				2 = { trigger_event_silently = tsin_millenarian.2 }
+				2 = { trigger_event_silently = tsin_millenarian.3 }
+				2 = { trigger_event_silently = tsin_millenarian.4 }
+			}
+		}
+	}
+
+	on_end = {
+		remove_variable = tsin_millenarian_running
+		trigger_event_non_silently = tsin_millenarian.10
+		if = {
+			limit = { any_rebel = { rebel_name_key = tsin_millenarian_rebels } }
+			random_rebel = {
+				limit = { rebel_name_key = tsin_millenarian_rebels }
+				root = { destroy_rebel = prev }
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+﻿# The Secession Crisis (docs/secession.md).
+
+# Scope: location. A slave region: slaves are a fifth of the population or more.
+tsin_slave_region_location_trigger = {
+	tsin_location_slave_share >= 0.2
+}
+
+# Scope: country. A house divided: both slave regions and free regions are large.
+tsin_divided_house_trigger = {
+	any_owned_location = {
+		count >= 8
+		tsin_slave_region_location_trigger = yes
+	}
+	any_owned_location = {
+		count >= 8
+		population > 0
+		num_pop_type:slaves = 0
+	}
+}

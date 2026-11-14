@@ -1,0 +1,33 @@
+﻿# The Millenarian Rebellion (docs/mass_rebellion.md).
+
+tsin_suppression_campaign = {
+	game_data = {
+		category = country
+	}
+	discipline = 0.03
+	global_manpower_modifier = 0.1
+}
+
+tsin_gentry_armies = {
+	game_data = {
+		category = country
+	}
+	global_manpower_modifier = 0.2
+	nobles_estate_target_satisfaction = 0.05
+	global_estate_max_tax = -0.05
+}
+
+tsin_ever_victorious_army = {
+	game_data = {
+		category = country
+	}
+	discipline = 0.05
+}
+
+tsin_rebellion_devastation = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.05
+	peasants_estate_target_satisfaction = 0.05
+}

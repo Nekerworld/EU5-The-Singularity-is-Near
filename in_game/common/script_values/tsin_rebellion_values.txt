@@ -1,0 +1,60 @@
+﻿# The Millenarian Rebellion (docs/mass_rebellion.md). root = country.
+
+# Population over the 1837 world population (tsin_world_pop_base), so it does not drift with growth.
+tsin_country_world_pop_share = {
+	value = 0
+	if = {
+		limit = {
+			has_global_variable = tsin_world_pop_base
+			global_var:tsin_world_pop_base > 0
+		}
+		add = total_population
+		divide = global_var:tsin_world_pop_base
+	}
+}
+
+# Stress points: famine, opening pressure, a discontented peasantry, religious division. Checked cheapest first.
+tsin_millenarian_pressure = {
+	value = 0
+	if = {
+		limit = { has_country_modifier = tsin_crop_blight }
+		add = 1
+	}
+	if = {
+		limit = { has_variable = tsin_treaty_ports_opened }
+		add = 1
+	}
+	if = {
+		limit = {
+			country_has_estate = estate_type:peasants_estate
+			estate_satisfaction:peasants_estate < 0.4
+		}
+		add = 1
+	}
+	if = {
+		limit = { stability < 0 }
+		add = 1
+	}
+	if = {
+		limit = {
+			any_owned_location = {
+				count >= 20
+				dominant_religion ?= { NOT = { this = root.religion } }
+			}
+		}
+		add = 1
+	}
+}
+
+# Share of the population neither of the primary nor of an accepted culture, 0..1.
+tsin_minority_culture_share = {
+	value = 0
+	if = {
+		limit = { total_population > 0 }
+		add = total_population
+		subtract = total_primary_culture_population
+		subtract = total_accepted_culture_population
+		divide = total_population
+		min = 0
+	}
+}

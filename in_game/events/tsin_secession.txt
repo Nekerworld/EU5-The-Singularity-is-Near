@@ -1,0 +1,194 @@
+﻿namespace = tsin_secession
+
+# The Secession Crisis (0.7, docs/secession.md). Disaster events of tsin_secession_crisis; no flavor budget.
+
+# A house divided
+tsin_secession.1 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_secession.1.title
+	desc = tsin_secession.1.desc
+	image = "gfx/interface/illustrations/disaster/tsin_secession_crisis.dds"
+
+	option = {
+		name = tsin_secession.1.a
+		custom_tooltip = tsin_secession.1.a.tt
+	}
+}
+
+# Bleeding frontier: armed bands fight over whether a new territory will allow slavery
+tsin_secession.2 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_secession.2.title
+	desc = tsin_secession.2.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_secession_war }
+	}
+
+	# Send federal troops to keep the peace
+	option = {
+		name = tsin_secession.2.a
+		add_stability = stability_weak_penalty
+		change_gold_effect = { scale = -1 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Let the settlers decide
+	option = {
+		name = tsin_secession.2.b
+		change_variable = { name = tsin_abolitionism add = 5 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A grand compromise is proposed
+tsin_secession.3 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_secession.3.title
+	desc = tsin_secession.3.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_secession_war }
+		NOT = { has_variable = tsin_secession_compromise_refused }
+	}
+
+	# Accept the compromise: the crisis ends, slavery stays
+	option = {
+		name = tsin_secession.3.a
+		set_variable = tsin_secession_resolved
+		change_variable = { name = tsin_abolitionism subtract = 30 }
+		add_country_modifier = { modifier = tsin_rotten_compromise years = 20 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# No more compromises with slavery
+	option = {
+		name = tsin_secession.3.b
+		set_variable = tsin_secession_compromise_refused
+		change_variable = { name = tsin_abolitionism add = 5 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Secession: the slave regions leave the republic
+tsin_secession.10 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_secession.10.title
+	desc = tsin_secession.10.desc
+	image = "gfx/interface/illustrations/disaster/tsin_secession_crisis.dds"
+
+	trigger = {
+		NOT = { has_variable = tsin_secession_war }
+		NOT = { has_variable = tsin_secession_resolved }
+	}
+
+	# Preserve the union by force
+	option = {
+		name = tsin_secession.10.a
+		set_variable = tsin_secession_war
+		create_rebel = {
+			category = estate
+			estate = nobles_estate
+			rebel_gov_type = republic
+			name = tsin_secessionist_rebels
+			save_scope_as = tsin_secessionists
+		}
+		hidden_effect = {
+			every_owned_location = {
+				limit = {
+					tsin_slave_region_location_trigger = yes
+					is_capital = no
+				}
+				change_control = control_mild_penalty
+				every_pop = {
+					limit = { owner = root }
+					add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+					change_pop_allegiance = scope:tsin_secessionists
+				}
+			}
+		}
+		custom_tooltip = tsin_secession.10.a.tt
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# One last compromise, whatever it costs
+	option = {
+		name = tsin_secession.10.b
+		set_variable = tsin_secession_resolved
+		add_stability = stability_mild_penalty
+		change_variable = { name = tsin_abolitionism subtract = 20 }
+		add_country_modifier = { modifier = tsin_rotten_compromise years = 30 }
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# The union restored
+tsin_secession.20 = {
+	type = country_event
+	category = disaster_event
+	title = tsin_secession.20.title
+	desc = tsin_secession.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		has_variable = tsin_secession_war
+		NOT = { has_variable = tsin_secession_resolved }
+	}
+
+	immediate = {
+		set_variable = tsin_secession_resolved
+	}
+
+	# Emancipation and reconstruction
+	option = {
+		name = tsin_secession.20.a
+		tsin_enact_policy_effect = { POLICY = policy:slavery_outlawed }
+		custom_tooltip = tsin_abolition.emancipate_tt
+		hidden_effect = { tsin_emancipate_all_slaves_effect = yes }
+		add_country_modifier = { modifier = tsin_reconstruction years = 15 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Restore the old order to heal the wounds
+	option = {
+		name = tsin_secession.20.b
+		add_stability = stability_mild_bonus
+		change_variable = { name = tsin_abolitionism subtract = 20 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
