@@ -12,15 +12,33 @@ on_new_age_global = {
 yearly_country_pulse = {
 	on_actions = {
 		tsin_observer_yearly_pulse
+		tsin_tempo_yearly_pulse
 		tsin_yearly_country_pulse
 		tsin_economy_yearly_pulse
 		tsin_invention_yearly_pulse
+		tsin_invention_education_pulse
+		tsin_agriculture_yearly_pulse
+		tsin_unification_yearly_pulse
+		tsin_modernization_yearly_pulse
+		tsin_frontier_yearly_pulse
+		tsin_powers_yearly_pulse
+		tsin_culture_yearly_pulse
+		tsin_civic_yearly_pulse
+		tsin_corporate_yearly_pulse
+		tsin_working_class_yearly_pulse
 		tsin_military_yearly_pulse
 		tsin_art_yearly_pulse
 		tsin_flavor_yearly_pulse
 		tsin_society_yearly_pulse
 		tsin_hunger_yearly_pulse
 		tsin_society_flavor_pulse
+	}
+}
+
+monthly_country_pulse = {
+	on_actions = {
+		tsin_bill_monthly_pulse
+		tsin_stock_monthly_pulse
 	}
 }
 
@@ -35,6 +53,7 @@ tsin_on_new_age = {
 	}
 	events = {
 		tsin_system.2
+		tsin_system.4
 	}
 }
 
@@ -45,9 +64,24 @@ tsin_on_new_age_global = {
 				current_age = age_7_industrialization
 				NOT = { has_global_variable = tsin_version }
 			}
-			set_global_variable = { name = tsin_version value = 1 }
+			set_global_variable = { name = tsin_version value = 3 }
 			set_global_variable = { name = tsin_age_7_started value = 1 }
+			tsin_init_world_pop_base_effect = yes
 		}
+	}
+}
+
+# root = country. World governor (once a year), the annual country aggregate, then tiers that read it (docs/tempo.md).
+tsin_tempo_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	effect = {
+		tsin_update_world_governor_effect = yes
+		tsin_update_world_stock_index_effect = yes
+		tsin_update_world_gdp_effect = yes
+		tsin_annual_country_aggregate_effect = yes
+		tsin_update_country_tempo_effect = yes
 	}
 }
 
@@ -62,6 +96,8 @@ tsin_yearly_country_pulse = {
 	}
 	events = {
 		tsin_system.1
+		tsin_system.3
+		tsin_system.4
 		tsin_system.10
 		tsin_system.11
 		tsin_system.12
@@ -102,6 +138,12 @@ tsin_economy_yearly_pulse = {
 		40 = tsin_economy.61
 		10 = tsin_economy.70
 		10 = tsin_economy.80
+		10 = tsin_economy.160
+		5 = tsin_economy.90
+		5 = tsin_economy.100
+		5 = tsin_economy.110
+		5 = tsin_economy.120
+		5 = tsin_economy.130
 
 		chance_to_happen = 25
 	}
@@ -121,8 +163,241 @@ tsin_invention_yearly_pulse = {
 		10 = tsin_invention.50
 		10 = tsin_invention.60
 		10 = tsin_invention.70
+		10 = tsin_invention.80
+		10 = tsin_invention.90
+		10 = tsin_invention.100
 
 		chance_to_happen = 20
+	}
+}
+
+# root = country. Higher education (docs/education.md) gives a second, smaller roll at the same inventions.
+tsin_invention_education_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+		tsin_higher_education_stage >= 2
+	}
+	random_events = {
+		10 = tsin_invention.10
+		10 = tsin_invention.20
+		10 = tsin_invention.30
+		10 = tsin_invention.40
+		10 = tsin_invention.50
+		10 = tsin_invention.60
+		10 = tsin_invention.70
+		10 = tsin_invention.80
+		10 = tsin_invention.90
+		10 = tsin_invention.100
+
+		chance_to_happen = 10
+	}
+}
+
+# root = country. National unification (docs/unification.md); only champions and would-be champions run the check.
+tsin_unification_yearly_pulse = {
+	trigger = {
+		is_situation_active = situation:tsin_national_unification
+		OR = {
+			has_variable = tsin_unifier
+			tsin_unification_candidate_trigger = yes
+		}
+	}
+	effect = {
+		tsin_unification_check_effect = yes
+	}
+}
+
+# root = country. Defensive modernization stages (docs/modernization.md); pressured countries only, no flavor budget.
+tsin_modernization_yearly_pulse = {
+	trigger = {
+		is_situation_active = situation:tsin_defensive_modernization
+		has_variable = tsin_treaty_ports_opened
+		NOT = { has_variable = tsin_modernized }
+		NOT = { has_variable = tsin_modernization_failed }
+	}
+	random_events = {
+		10 = tsin_flavor.30
+		10 = tsin_modernization.10
+		10 = tsin_modernization.20
+
+		chance_to_happen = 25
+	}
+}
+
+# root = country. Gold rushes and homestead frontiers (docs/frontier.md); no flavor budget.
+tsin_frontier_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	effect = {
+		if = {
+			limit = { has_policy = policy:tsin_homestead_policy }
+			tsin_homestead_frontier_effect = yes
+		}
+	}
+	random_events = {
+		10 = tsin_frontier.10
+		10 = tsin_frontier.20
+		10 = tsin_frontier.30
+
+		chance_to_happen = 10
+	}
+}
+
+# root = country. The concert of the powers (docs/great_powers.md); great powers at peace only, no flavor budget.
+tsin_powers_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		is_great_power = yes
+		at_war = no
+	}
+	random_events = {
+		10 = tsin_powers.10
+		10 = tsin_powers.20
+		10 = tsin_powers.30
+
+		chance_to_happen = 15
+	}
+}
+
+# root = country. Science and culture (docs/culture_science.md); no flavor budget.
+tsin_culture_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	random_events = {
+		10 = tsin_culture.10
+		10 = tsin_culture.20
+		10 = tsin_culture.30
+		5 = tsin_culture.40
+
+		chance_to_happen = 8
+	}
+}
+
+# root = country. Bill readings every 3 months (docs/legislation.md). Only countries with a bill pay for it.
+tsin_bill_monthly_pulse = {
+	trigger = {
+		has_variable = tsin_bill_policy
+		NOT = { has_variable = tsin_bill_check_timer }
+	}
+	effect = {
+		if = {
+			limit = { tsin_bill_system_active_trigger = yes }
+			tsin_bill_reading_effect = yes
+		}
+		else = {
+			tsin_clear_bill_effect = yes
+		}
+	}
+}
+
+# root = country. Quarterly stock market step (docs/corporations.md). Only countries with companies pay for it.
+tsin_stock_monthly_pulse = {
+	trigger = {
+		NOT = { has_variable = tsin_stock_timer }
+		OR = {
+			has_variable = tsin_has_stock_market
+			tsin_company_count > 0
+		}
+	}
+	effect = {
+		set_variable = { name = tsin_stock_timer months = 3 }
+		if = {
+			limit = { NOT = { has_variable = tsin_has_stock_market } }
+			tsin_init_existing_companies_effect = yes
+		}
+		else_if = {
+			limit = { tsin_company_count > 0 }
+			tsin_update_stocks_effect = yes
+			if = {
+				limit = { tsin_has_chairman_trigger = no }
+				trigger_event_non_silently = tsin_corporate.10
+			}
+		}
+		else = {
+			tsin_dissolve_all_companies_effect = yes
+		}
+	}
+}
+
+# root = country. Civic life around the upgrade buildings (docs/replaced_buildings.md).
+tsin_working_class_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+	}
+	random_events = {
+		10 = tsin_working_class.10
+		10 = tsin_working_class.20
+		5 = tsin_working_class.30
+		10 = tsin_working_class.40
+		5 = tsin_working_class.50
+		10 = tsin_working_class.60
+		5 = tsin_working_class.70
+		5 = tsin_working_class.80
+
+		chance_to_happen = 15
+	}
+}
+
+tsin_corporate_yearly_pulse = {
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_chairman_trigger = yes
+	}
+	random_events = {
+		5 = tsin_corporate.20
+		10 = tsin_corporate.30
+		5 = tsin_corporate.40
+		5 = tsin_corporate.50
+		5 = tsin_corporate.60
+
+		chance_to_happen = 15
+	}
+}
+
+tsin_civic_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_civic.10
+		5 = tsin_civic.20
+		5 = tsin_civic.30
+		5 = tsin_civic.40
+		3 = tsin_civic.50
+		10 = tsin_civic.60
+		5 = tsin_civic.70
+		5 = tsin_civic.80
+		10 = tsin_civic.90
+		5 = tsin_civic.100
+		5 = tsin_civic.110
+		10 = tsin_civic.120
+
+		chance_to_happen = 12
+	}
+}
+
+# root = country. Agricultural revolution flavor; each event checks its own advance and fires once per country.
+tsin_agriculture_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_agriculture.10
+		10 = tsin_agriculture.20
+		10 = tsin_agriculture.30
+		10 = tsin_agriculture.40
+		10 = tsin_agriculture.50
+		10 = tsin_agriculture.60
+		10 = tsin_agriculture.70
+
+		chance_to_happen = 15
 	}
 }
 
@@ -192,6 +467,17 @@ tsin_society_flavor_pulse = {
 		10 = tsin_society.50
 		10 = tsin_society.60
 		10 = tsin_society.70
+		10 = tsin_society.80
+		10 = tsin_society.90
+		10 = tsin_society.100
+		5 = tsin_society.110
+		5 = tsin_society.120
+		3 = tsin_society.125
+		5 = tsin_society.130
+		5 = tsin_society.140
+		5 = tsin_society.150
+		5 = tsin_society.160
+		5 = tsin_society.170
 		chance_to_happen = 25
 	}
 }
@@ -232,7 +518,6 @@ tsin_flavor_yearly_pulse = {
 	random_events = {
 		10 = tsin_flavor.10
 		10 = tsin_flavor.20
-		10 = tsin_flavor.30
 
 		chance_to_happen = 15
 	}

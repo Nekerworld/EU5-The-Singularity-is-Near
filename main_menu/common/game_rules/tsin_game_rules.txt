@@ -28,6 +28,40 @@ tsin_electrification_timing = {
 	}
 }
 
+# Read by tsin_update_world_governor_effect (in_game/common/scripted_effects/tsin_tempo_effects.txt).
+tsin_population_governor = {
+	default = tsin_population_governor_on
+	tsin_population_governor_on = {
+		flag = general_rule
+	}
+	tsin_population_governor_off = {
+		flag = general_rule
+	}
+}
+
+# Read by tsin_bill_system_active_trigger (in_game/common/scripted_triggers/tsin_legislation_triggers.txt).
+tsin_bill_system = {
+	default = tsin_bill_system_on
+	tsin_bill_system_on = {
+		flag = general_rule
+	}
+	tsin_bill_system_off = {
+		flag = general_rule
+	}
+}
+
+# Read by tsin_log_economy_effect (in_game/common/scripted_effects/tsin_aggregate_effects.txt). TSIN_ECON lines
+# for tools/econ_report.py.
+tsin_economy_log = {
+	default = tsin_economy_log_off
+	tsin_economy_log_off = {
+		flag = general_rule
+	}
+	tsin_economy_log_on = {
+		flag = general_rule
+	}
+}
+
 # Read by tsin_observer_yearly_pulse (in_game/common/on_action/tsin_on_actions.txt). Measurement only.
 tsin_observer_log = {
 	default = tsin_observer_log_off
