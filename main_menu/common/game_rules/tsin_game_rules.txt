@@ -1,0 +1,29 @@
+﻿# Game rules for The Singularity is Near (M6). Institution spawn follows the vanilla institution_spawn_rule.
+
+# Read by tsin_flavor_events_per_year (in_game/common/script_values/tsin_event_values.txt).
+tsin_flavor_event_frequency = {
+	default = tsin_flavor_events_normal
+	tsin_flavor_events_normal = {
+		flag = flavour_rule
+	}
+	tsin_flavor_events_low = {
+		flag = flavour_rule
+	}
+	tsin_flavor_events_high = {
+		flag = flavour_rule
+	}
+	tsin_flavor_events_off = {
+		flag = flavour_rule
+	}
+}
+
+# Read by tsin_electrification can_spawn (in_game/common/institution/tsin_age_7_institutions.txt).
+tsin_electrification_timing = {
+	default = tsin_electrification_historical
+	tsin_electrification_historical = {
+		flag = flavour_rule
+	}
+	tsin_electrification_free = {
+		flag = flavour_rule
+	}
+}

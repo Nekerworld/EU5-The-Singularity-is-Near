@@ -1,7 +1,22 @@
 ﻿# The Singularity is Near - event framework values.
 
 # Upper bound of tsin_ flavor events a country can receive per year (all groups together).
-tsin_flavor_events_per_year = 3
+# Game rule tsin_flavor_event_frequency: off 0, low 1, normal 3, high 5.
+tsin_flavor_events_per_year = {
+	value = 3
+	if = {
+		limit = { has_game_rule = tsin_flavor_events_low }
+		value = 1
+	}
+	else_if = {
+		limit = { has_game_rule = tsin_flavor_events_high }
+		value = 5
+	}
+	else_if = {
+		limit = { has_game_rule = tsin_flavor_events_off }
+		value = 0
+	}
+}
 
 # Gold paid by change_gold_effect = { scale = -N }, for AI affordability checks (gold < tsin_gold_cost_N).
 # scaled_gold_for_effect is linear in scope:scale and defaults to scale 1.

@@ -109,7 +109,10 @@ tsin_electrification = {
 
 	# Never needs electrification buildings or advances (no circular unlock); machine tools is an industrial capitalism advance.
 	can_spawn = {
-		current_date > 1870.1.1
+		OR = {
+			has_game_rule = tsin_electrification_free
+			current_date > 1870.1.1
+		}
 		OR = {
 			AND = {
 				has_game_rule = institution_spawn_random_city
@@ -122,8 +125,17 @@ tsin_electrification = {
 			}
 			AND = {
 				has_game_rule = institution_spawn_fixed_historical
-				current_date > 1875.1.1
 				this = location:berlin
+				OR = {
+					AND = {
+						NOT = { has_game_rule = tsin_electrification_free }
+						current_date > 1875.1.1
+					}
+					AND = {
+						has_game_rule = tsin_electrification_free
+						owner ?= { has_advance = tsin_machine_tools_advance }
+					}
+				}
 			}
 			AND = {
 				has_game_rule = institution_spawn_plausible
