@@ -1,0 +1,171 @@
+﻿namespace = tsin_cholera
+
+# Cholera pandemic (in_game/common/disasters/tsin_cholera.txt). .1 start, .2 city outbreak, .3 the pump handle,
+# .10 end. Not flavor events: they belong to the disaster and do not spend the flavor budget.
+
+# Cholera reaches our cities
+tsin_cholera.1 = {
+	type = country_event
+	title = tsin_cholera.1.title
+	desc = tsin_cholera.1.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = sad
+	}
+
+	# Quarantine the ports
+	option = {
+		name = tsin_cholera.1.a
+		add_country_modifier = { modifier = tsin_cholera_quarantine years = 2 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Trade must go on
+	option = {
+		name = tsin_cholera.1.b
+		change_variable = { name = tsin_cholera_progress subtract = 6 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Outbreak in a crowded city
+tsin_cholera.2 = {
+	type = country_event
+	title = tsin_cholera.2.title
+	desc = tsin_cholera.2.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = sad
+	}
+
+	trigger = {
+		has_variable = tsin_cholera_outbreaks
+		var:tsin_cholera_outbreaks < tsin_cholera_max_outbreaks
+		any_owned_location = { tsin_cholera_risk_location_trigger = yes }
+	}
+
+	immediate = {
+		change_variable = { name = tsin_cholera_outbreaks add = 1 }
+		ordered_owned_location = {
+			limit = { tsin_cholera_risk_location_trigger = yes }
+			order_by = population
+			max = 1
+			save_scope_as = tsin_cholera_city
+		}
+	}
+
+	# Bury the dead
+	option = {
+		name = tsin_cholera.2.a
+		scope:tsin_cholera_city = {
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = tsin_cholera_outbreak_loss
+					multiply = -1
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Open emergency hospitals
+	option = {
+		name = tsin_cholera.2.b
+		change_gold_effect = { scale = -1 }
+		scope:tsin_cholera_city = {
+			every_pop = {
+				add_pop_size = {
+					value = pop_size
+					multiply = tsin_cholera_outbreak_loss
+					multiply = -0.5
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# The pump handle: a physician maps the deaths around one well
+tsin_cholera.3 = {
+	type = country_event
+	title = tsin_cholera.3.title
+	desc = tsin_cholera.3.desc
+	outcome = positive
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_cholera_pump_done }
+	}
+
+	immediate = {
+		set_variable = tsin_cholera_pump_done
+	}
+
+	# Remove the pump handle
+	option = {
+		name = tsin_cholera.3.a
+		change_variable = { name = tsin_cholera_progress add = 12 }
+		add_country_modifier = { modifier = tsin_sanitary_science years = 20 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# It is the miasma, everyone knows it
+	option = {
+		name = tsin_cholera.3.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The pandemic passes
+tsin_cholera.10 = {
+	type = country_event
+	title = tsin_cholera.10.title
+	desc = tsin_cholera.10.desc
+	outcome = positive
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	# Build sewers so it never returns
+	option = {
+		name = tsin_cholera.10.a
+		add_country_modifier = { modifier = tsin_sewer_movement years = 15 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Give thanks and move on
+	option = {
+		name = tsin_cholera.10.b
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

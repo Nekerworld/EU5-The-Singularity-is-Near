@@ -1,0 +1,64 @@
+﻿namespace = tsin_migration
+
+# The Great Migration (in_game/common/situations/tsin_great_migration.txt). Fired once per country by
+# tsin_refresh_great_migration_effect: .1 when it first sends emigrants, .2 when it first receives them.
+
+# The emigrant ships
+tsin_migration.1 = {
+	type = country_event
+	title = tsin_migration.1.title
+	desc = tsin_migration.1.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = sad
+	}
+
+	# Let them go, and let them send money home
+	option = {
+		name = tsin_migration.1.a
+		add_country_modifier = { modifier = tsin_emigrant_remittances years = 20 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Our people are needed here
+	option = {
+		name = tsin_migration.1.b
+		add_country_modifier = { modifier = tsin_emigration_restricted years = 20 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The huddled masses
+tsin_migration.2 = {
+	type = country_event
+	title = tsin_migration.2.title
+	desc = tsin_migration.2.desc
+	outcome = mixed
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	# Open the door
+	option = {
+		name = tsin_migration.2.a
+		add_country_modifier = { modifier = tsin_open_door years = 20 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Natives first
+	option = {
+		name = tsin_migration.2.b
+		add_country_modifier = { modifier = tsin_nativist_laws years = 20 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}

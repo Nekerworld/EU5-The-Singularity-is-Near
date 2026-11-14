@@ -1,0 +1,14 @@
+﻿l_korean:
+
+ # Standard time and the factory clock
+ tsin_standard_time_decision.title: "표준시 채택"
+ tsin_standard_time_decision.desc: "도시마다 해를 보고 맞추던 시계를 철도와 전신이 정한 하나의 시간으로 묶습니다. 열차 시간표와 공장 교대가 전국에서 맞아떨어집니다. 철도역 3곳, 전신, 중등교육률 10 이상이 필요합니다."
+ tsin_standard_time_decision.a: "표준시를 선포한다."
+ tsin_standard_time_decision.tt: "산업 가속 점수가 1 오릅니다. 공장이 있으면 \"공장 시계\" 이벤트가 나올 수 있습니다."
+ STATIC_MODIFIER_NAME_tsin_standard_time: "표준시"
+ STATIC_MODIFIER_NAME_tsin_sealed_factory_clocks: "봉인된 공장 시계"
+ STATIC_MODIFIER_NAME_tsin_stolen_minutes: "훔친 몇 분"
+ tsin_working_class.10.title: "공장 시계"
+ tsin_working_class.10.desc: "직공들이 공장 시계가 아침에는 빠르고 저녁에는 느리게 간다고 항의합니다. 감독들이 시곗바늘을 몰래 돌려 하루에 몇 분씩 더 일을 시킨다는 것입니다. 기계에 맞춰 사는 사람들에게 시간은 곧 임금입니다."
+ tsin_working_class.10.a: "시계를 봉인하고 감독관을 보낸다."
+ tsin_working_class.10.b: "시간은 돈이다."

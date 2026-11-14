@@ -1,0 +1,54 @@
+﻿# The Great Migration (in_game/common/situations/tsin_great_migration.txt)
+
+tsin_emigration_wave = {
+	game_data = {
+		category = country
+	}
+	global_migration_speed = 0.2
+	colonial_migration_size_modifier = 0.25
+	global_migration_attraction = -0.1
+}
+
+tsin_immigrant_nation = {
+	game_data = {
+		category = country
+	}
+	global_migration_attraction = 0.25
+	global_population_capacity_modifier = 0.02
+}
+
+# tsin_migration.1 option a
+tsin_emigrant_remittances = {
+	game_data = {
+		category = country
+	}
+	global_migration_speed = 0.1
+	peasants_estate_target_satisfaction = 0.05
+}
+
+# tsin_migration.1 option b
+tsin_emigration_restricted = {
+	game_data = {
+		category = country
+	}
+	global_migration_speed = -0.15
+	peasants_estate_target_satisfaction = -0.05
+}
+
+# tsin_migration.2 option a
+tsin_open_door = {
+	game_data = {
+		category = country
+	}
+	global_migration_attraction = 0.15
+	global_burghers_estate_power = 0.05
+}
+
+# tsin_migration.2 option b
+tsin_nativist_laws = {
+	game_data = {
+		category = country
+	}
+	global_migration_attraction = -0.15
+	peasants_estate_target_satisfaction = 0.03
+}

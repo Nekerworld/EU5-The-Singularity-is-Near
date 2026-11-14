@@ -1,0 +1,8 @@
+﻿# Cholera pandemic (in_game/common/disasters/tsin_cholera.txt)
+
+# Monthly progress needed to end it: 60 = 5 years untreated, about 2 years with waterworks and the campaign.
+tsin_cholera_end_progress = 60
+# Outbreak events that kill population, per pandemic.
+tsin_cholera_max_outbreaks = 6
+# Share of a city's population each outbreak kills.
+tsin_cholera_outbreak_loss = 0.03

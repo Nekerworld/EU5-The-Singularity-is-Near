@@ -1,0 +1,55 @@
+﻿# The Great Migration (in_game/common/situations/tsin_great_migration.txt). Any scope; runs once a year.
+# Senders: tsin_migration_push_trigger. Receivers: capital in the Americas or Oceania and not a sender.
+# A country's first time on either side brings its event (tsin_migration.1 / .2).
+tsin_refresh_great_migration_effect = {
+	set_global_variable = { name = tsin_migration_refresh value = yes days = 360 }
+	every_country = {
+		limit = {
+			OR = {
+				has_country_modifier = tsin_emigration_wave
+				tsin_migration_push_trigger = yes
+			}
+		}
+		if = {
+			limit = { tsin_migration_push_trigger = yes }
+			if = {
+				limit = { NOT = { has_country_modifier = tsin_emigration_wave } }
+				add_country_modifier = { modifier = tsin_emigration_wave months = -1 }
+				if = {
+					limit = { NOT = { has_variable = tsin_migration_sender_seen } }
+					set_variable = tsin_migration_sender_seen
+					trigger_event_non_silently = tsin_migration.1
+				}
+			}
+		}
+		else = {
+			remove_country_modifier = tsin_emigration_wave
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_country_modifier = tsin_immigrant_nation
+				tsin_migration_pull_trigger = yes
+			}
+		}
+		if = {
+			limit = {
+				tsin_migration_pull_trigger = yes
+				NOT = { has_country_modifier = tsin_emigration_wave }
+			}
+			if = {
+				limit = { NOT = { has_country_modifier = tsin_immigrant_nation } }
+				add_country_modifier = { modifier = tsin_immigrant_nation months = -1 }
+				if = {
+					limit = { NOT = { has_variable = tsin_migration_receiver_seen } }
+					set_variable = tsin_migration_receiver_seen
+					trigger_event_non_silently = tsin_migration.2
+				}
+			}
+		}
+		else = {
+			remove_country_modifier = tsin_immigrant_nation
+		}
+	}
+}

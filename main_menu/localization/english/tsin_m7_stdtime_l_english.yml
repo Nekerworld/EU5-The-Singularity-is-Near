@@ -1,0 +1,14 @@
+﻿l_english:
+
+ # Standard time and the factory clock
+ tsin_standard_time_decision.title: "Adopt Standard Time"
+ tsin_standard_time_decision.desc: "Bind the clocks that every town set by the sun to the single time of the railway and the telegraph. Train timetables and factory shifts line up across the country. Needs 3 railway stations, the telegraph and secondary education of 10 or more."
+ tsin_standard_time_decision.a: "Proclaim standard time."
+ tsin_standard_time_decision.tt: "The industrial acceleration score rises by 1. With factories, the \"Factory Clock\" event can happen."
+ STATIC_MODIFIER_NAME_tsin_standard_time: "Standard Time"
+ STATIC_MODIFIER_NAME_tsin_sealed_factory_clocks: "Sealed Factory Clocks"
+ STATIC_MODIFIER_NAME_tsin_stolen_minutes: "Stolen Minutes"
+ tsin_working_class.10.title: "The Factory Clock"
+ tsin_working_class.10.desc: "The hands complain that the factory clock runs fast in the morning and slow in the evening. The foremen, they say, secretly move the hands to squeeze a few more minutes of work out of every day. For people who live by the machine, time is wages."
+ tsin_working_class.10.a: "Seal the clocks and send inspectors."
+ tsin_working_class.10.b: "Time is money."

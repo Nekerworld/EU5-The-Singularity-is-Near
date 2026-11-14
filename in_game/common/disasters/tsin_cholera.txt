@@ -1,0 +1,70 @@
+﻿# Cholera pandemic (0.7, docs/tempo.md "배출구"). Strikes countries with crowded cities that lack waterworks between
+# 1830 and 1875. Each outbreak (tsin_cholera.2) kills 3% of one crowded city without waterworks, at most
+# tsin_cholera_max_outbreaks times, so the loss stays controlled. var:tsin_cholera_progress counts to
+# tsin_cholera_end_progress; waterworks in the capital and the public health campaign
+# (tsin_public_health_campaign, read through global_disease_resistance) make it count faster.
+
+tsin_cholera = {
+	image = "gfx/interface/illustrations/disaster/tsin_cholera.dds"
+
+	monthly_spawn_chance = monthly_spawn_chance_low
+
+	can_start = {
+		current_age_or_later = { age = age_7_industrialization }
+		current_year >= 1830
+		current_year < 1876
+		has_any_active_disaster = no
+		NOT = { has_variable = tsin_cholera_cooldown }
+		any_owned_location = {
+			count >= 2
+			tsin_cholera_risk_location_trigger = yes
+		}
+	}
+
+	can_end = {
+		has_variable = tsin_cholera_progress
+		var:tsin_cholera_progress >= tsin_cholera_end_progress
+	}
+
+	modifier = {
+		global_population_growth = -0.001
+		global_non_rural_monthly_prosperity = -0.005
+		global_migration_speed = 0.1
+	}
+
+	on_start = {
+		set_variable = { name = tsin_cholera_progress value = 0 }
+		set_variable = { name = tsin_cholera_outbreaks value = 0 }
+		trigger_event_non_silently = tsin_cholera.1
+	}
+
+	on_monthly = {
+		change_variable = { name = tsin_cholera_progress add = 1 }
+		if = {
+			limit = { capital ?= { has_building_with_at_least_one_level = tsin_waterworks } }
+			change_variable = { name = tsin_cholera_progress add = 1 }
+		}
+		if = {
+			limit = { modifier:global_disease_resistance >= 0.1 }
+			change_variable = { name = tsin_cholera_progress add = 1 }
+		}
+		random_list = {
+			4 = { custom_tooltip = an_event_occurs_tt }
+			96 = { custom_tooltip = no_event_occurs_tt }
+		}
+		hidden_effect = {
+			random_list = {
+				960 = { }
+				30 = { trigger_event_silently = tsin_cholera.2 }
+				10 = { trigger_event_silently = tsin_cholera.3 }
+			}
+		}
+	}
+
+	on_end = {
+		remove_variable = tsin_cholera_progress
+		remove_variable = tsin_cholera_outbreaks
+		set_variable = { name = tsin_cholera_cooldown years = 20 }
+		trigger_event_non_silently = tsin_cholera.10
+	}
+}

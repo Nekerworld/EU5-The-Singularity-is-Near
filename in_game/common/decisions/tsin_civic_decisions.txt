@@ -1,0 +1,40 @@
+﻿# Age VII civic decisions (0.7).
+
+# Standard time (docs/tempo.md): railway time for the whole country. Needs railway stations, the telegraph
+# (the telegraph tier of the railway station) and a secondary-educated public. Adds one acceleration point
+# (tsin_acceleration_points) and brings the factory clock (tsin_working_class.10).
+tsin_standard_time_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tsin_engines.dds"
+
+	potential = {
+		has_advance = tsin_railway_network_advance
+		NOT = { has_variable = tsin_standard_time }
+	}
+
+	allow = {
+		has_advance = tsin_telegraph_telephone_advance
+		any_owned_location = {
+			count >= 3
+			has_building_with_at_least_one_level = tsin_railway_station
+		}
+		tsin_country_secondary_education >= 10
+		gold >= tsin_gold_cost_2
+	}
+
+	ai_will_do = {
+		value = 50
+	}
+
+	option = {
+		name = tsin_standard_time_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			change_gold_effect = { scale = -2 }
+			set_variable = tsin_standard_time
+			add_country_modifier = { modifier = tsin_standard_time months = -1 }
+			add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+			custom_tooltip = tsin_standard_time_decision.tt
+		}
+	}
+}

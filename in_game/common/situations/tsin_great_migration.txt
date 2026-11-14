@@ -1,0 +1,109 @@
+﻿# The Great Migration (0.7, docs/tempo.md "배출구"). Countries under population pressure (crowded cities, famine,
+# cholera, the grain crisis) send emigrants overseas; countries whose capital lies in the Americas or Oceania
+# draw them in. Membership is refreshed once a year (global_var:tsin_migration_refresh). Vanilla migration
+# modifiers carry the effect.
+
+tsin_great_migration = {
+	monthly_spawn_chance = monthly_spawn_chance_low
+	hint_tag = hint_tsin_great_migration
+
+	can_start = {
+		current_year >= 1845
+		NOT = { has_global_variable = tsin_great_migration_happened }
+		any_country = {
+			count >= 2
+			tsin_migration_push_trigger = yes
+		}
+	}
+
+	visible = {
+		OR = {
+			has_country_modifier = tsin_emigration_wave
+			has_country_modifier = tsin_immigrant_nation
+			tsin_migration_pull_trigger = yes
+		}
+	}
+
+	outcome = {
+		name = "tsin_great_migration_closes"
+		trigger = {
+			situation:tsin_great_migration = { years_since_situation_start > 40 }
+		}
+	}
+	outcome = {
+		name = "tsin_great_migration_ebbs"
+		trigger = {
+			situation:tsin_great_migration = { years_since_situation_start > 10 }
+			NOT = {
+				any_country = {
+					has_country_modifier = tsin_emigration_wave
+				}
+			}
+		}
+	}
+
+	on_start = {
+		set_global_variable = { name = tsin_great_migration_happened value = 1 }
+		tsin_refresh_great_migration_effect = yes
+	}
+
+	on_monthly = {
+		if = {
+			limit = { NOT = { has_global_variable = tsin_migration_refresh } }
+			tsin_refresh_great_migration_effect = yes
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = {
+				OR = {
+					has_country_modifier = tsin_emigration_wave
+					has_country_modifier = tsin_immigrant_nation
+				}
+			}
+			if = {
+				limit = { has_country_modifier = tsin_emigration_wave }
+				remove_country_modifier = tsin_emigration_wave
+			}
+			if = {
+				limit = { has_country_modifier = tsin_immigrant_nation }
+				remove_country_modifier = tsin_immigrant_nation
+			}
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_emigration_wave } }
+			custom_tooltip = tsin_great_migration_sender_tt
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_immigrant_nation } }
+			custom_tooltip = tsin_great_migration_receiver_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_emigration_wave } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_immigrant_nation } }
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_emigration_wave"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_immigrant_nation"
+		color = define:NMapColors|MAP_COLOR_LOW
+	}
+}

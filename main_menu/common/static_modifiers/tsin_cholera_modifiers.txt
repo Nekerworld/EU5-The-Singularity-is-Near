@@ -1,0 +1,28 @@
+﻿# Cholera pandemic (in_game/events/tsin_cholera.txt)
+
+# tsin_cholera.1 option a
+tsin_cholera_quarantine = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.1
+	global_production_efficiency = -0.03
+}
+
+# tsin_cholera.3 option a
+tsin_sanitary_science = {
+	game_data = {
+		category = country
+	}
+	global_disease_resistance = 0.05
+	global_life_expectancy = 1
+}
+
+# tsin_cholera.10 option a
+tsin_sewer_movement = {
+	game_data = {
+		category = country
+	}
+	global_population_capacity_modifier = 0.03
+	global_disease_resistance = 0.05
+}
