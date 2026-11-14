@@ -22,3 +22,7 @@
  tsin_cholera.10.desc: "Cholera has finally retreated. The survivors demand clean water and sewers."
  tsin_cholera.10.a: "Build sewers so it never returns."
  tsin_cholera.10.b: "Give thanks and move on."
+
+ TSIN_CHOLERA_PANEL_PROGRESS: "Recovery progress"
+ TSIN_CHOLERA_PANEL_OUTBREAKS: "City outbreaks"
+ TSIN_CHOLERA_PANEL_HELP: "Recovery progress increases each month. Waterworks in the capital and higher disease resistance speed recovery. Once unlocked, assign the Public Health Campaign in the cabinet screen. Check the end requirements tab for the exact conditions."
