@@ -1,0 +1,128 @@
+﻿# Age VII infrastructure upgrades (docs/infrastructure.md).
+# Upgrades replace a vanilla building with obsolete = <old>; references to the old id are handled in
+# docs/replaced_buildings.md.
+
+# Waterworks: replaces aqueduct_system, but can be built in any town.
+tsin_waterworks = {
+	audio_tier = 3
+	content_priority = 100
+	is_foreign = no
+	max_levels = 1
+	pop_type = laborers
+	forbidden_for_estates = yes
+	obsolete = aqueduct_system
+
+	employment_size = generic_peasant_building_employment
+
+	category = infrastructure_category
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = infrastructure_build_time
+
+	unique_production_methods = {
+		tsin_waterworks_maintenance = {
+			icon_type = goods
+			icon = coal
+			coal = 0.2
+			tools = 0.1
+			tsin_engines = 0.02
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = tsin_infrastructure_construction
+
+	modifier = {
+		local_disease_resistance = 0.15
+		local_population_capacity_modifier = 0.05
+		local_monthly_food_modifier = monthly_food_productivity_mild_bonus
+		local_monthly_prosperity = 0.001
+	}
+}
+
+# Steam port: the age VII top of the naval chain (dock .. naval_base).
+tsin_steam_port = {
+	audio_tier = 6
+	is_foreign = no
+	max_levels = 1
+	pop_type = soldiers
+	forbidden_for_estates = yes
+	obsolete = naval_base
+
+	category = naval_category
+
+	employment_size = naval_base_employment
+
+	location_potential = {
+		is_port = yes
+	}
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = large_port_building_time
+
+	unique_production_methods = {
+		tsin_steam_port_maintenance = {
+			icon_type = goods
+			icon = coal
+			coal = 1.0
+			steel = 0.5
+			tools = 1.5
+			tsin_engines = 0.2
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = port_building_construction
+
+	modifier = {
+		max_ships_built_at_same_time = 14
+		local_sailors = 0.25
+		can_build_ships_in_this_location = yes
+		harbor_suitability = 0.35
+		local_navy_attrition = -1
+		local_repair_speed = 0.12
+		local_market_access = 0.05
+		local_migration_attraction = 0.05
+	}
+}
+
+# Prefecture: replaces provincial_chancery and opens to any state with a professional bureaucracy.
+tsin_prefecture = {
+	audio_tier = 2
+	is_foreign = no
+	pop_type = burghers
+	max_levels = chancery_max_level
+	obsolete = provincial_chancery
+
+	category = government_category
+
+	employment_size = generic_burgher_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	expensive = yes
+	build_time = generic_town_build_time
+
+	allow = {
+		is_core_of = owner
+	}
+
+	modifier = {
+		local_burghers_max_literacy = 5
+		local_nobles_max_literacy = 5
+		local_pop_join_rebel_threshold = -0.1
+		local_max_control = 0.05
+	}
+
+	possible_production_methods = { chancery_maintenance }
+
+	construction_demand = town_building_construction
+}

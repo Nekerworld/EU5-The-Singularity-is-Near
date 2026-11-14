@@ -1,0 +1,13 @@
+﻿l_korean:
+
+ tsin_tenement: "노동자 연립주택"
+ tsin_tenement_desc: "공장 노동자들을 위해 값싸게 빽빽이 지은 연립주택입니다. 도시가 더 많은 인구를 품게 해 주지만, 비좁고 습한 방은 질병의 온상이 됩니다."
+ tsin_tenement_slot_0: "연립주택 구역"
+ tsin_tenement_maintenance: "연립주택 유지"
+ tsin_model_dwellings: "모범 주택"
+ tsin_model_dwellings_desc: "채광과 환기, 상수도를 갖춘 노동자 주택입니다. $tsin_tenement$을 대신하며, 이곳 공장의 노동 조건을 개선합니다."
+ tsin_model_dwellings_slot_0: "모범 주택 구역"
+ tsin_model_dwellings_maintenance: "모범 주택 유지"
+ tsin_housing_reform_advance: "주택 개혁"
+ tsin_housing_reform_advance_desc: "박애주의 주택 회사와 위생 개혁가들이 노동자에게 밝고 깨끗한 집을 지어 주자고 나섭니다. $tsin_model_dwellings$을 해금합니다."
+ TSIN_BUILDING_LEVEL_MODERN_SEWERAGE: "$tsin_modern_sewerage_advance$"
