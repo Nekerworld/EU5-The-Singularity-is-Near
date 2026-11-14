@@ -30,6 +30,29 @@ current_later_age_7_industrialization_trigger = {
 	}
 }
 
+# Age 7 specialization choices (tsin_4_choices.txt): the specialization picked in ages_of_eu.1 opens
+# its ten choices at once; the others open when the paired institution is embraced (docs/tech_tree_age7.md).
+tsin_adm_specialization_open_trigger = {
+	OR = {
+		age_preference = adm
+		has_embraced_institution = institution:tsin_mass_society
+	}
+}
+
+tsin_dip_specialization_open_trigger = {
+	OR = {
+		age_preference = dip
+		has_embraced_institution = institution:tsin_industrial_capitalism
+	}
+}
+
+tsin_mil_specialization_open_trigger = {
+	OR = {
+		age_preference = mil
+		has_embraced_institution = institution:tsin_electrification
+	}
+}
+
 # Short helpers for mod content.
 tsin_is_age_7_trigger = {
 	current_age = age_7_industrialization

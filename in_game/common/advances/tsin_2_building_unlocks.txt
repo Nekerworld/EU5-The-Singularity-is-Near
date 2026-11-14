@@ -32,3 +32,58 @@ tsin_mechanized_textile_mill_advance = {
 	requires = tsin_machine_works_advance
 	ai_weight = { add = 25 }
 }
+
+tsin_steam_sawmill_advance = {
+	age = age_7_industrialization
+	icon = lumber_improvements_absolutism
+
+	unlock_building = tsin_steam_sawmill
+
+	requires = tsin_machine_works_advance
+	ai_weight = { add = 20 }
+}
+
+# 0.7 automation upgrades of the vanilla mills (tsin_automation_buildings.txt); electric tiers come from tsin_electric_motor_advance.
+tsin_interchangeable_parts_advance = {
+	age = age_7_industrialization
+	icon = slitting_mills
+
+	unlock_building = tsin_automated_iron_mill
+	unlock_building = tsin_automated_furniture_mill
+
+	requires = tsin_machine_works_advance
+	requires = tsin_machine_tools_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_continuous_process_advance = {
+	age = age_7_industrialization
+	icon = paper_guild_wood_pulp_maintenance_advance
+
+	unlock_building = tsin_automated_paper_mill
+	unlock_building = tsin_automated_glass_mill
+
+	requires = tsin_interchangeable_parts_advance
+	ai_weight = { add = 20 }
+}
+
+tsin_rotary_press_advance = {
+	age = age_7_industrialization
+	icon = ven_printing_industry
+
+	unlock_building = tsin_automated_printing_mill
+
+	requires = tsin_interchangeable_parts_advance
+	ai_weight = { add = 20 }
+}
+
+tsin_power_jacquard_advance = {
+	age = age_7_industrialization
+	icon = muc_silk_looms
+
+	unlock_building = tsin_automated_fine_cloth_mill
+
+	requires = tsin_interchangeable_parts_advance
+	requires = tsin_mechanized_textile_mill_advance
+	ai_weight = { add = 20 }
+}

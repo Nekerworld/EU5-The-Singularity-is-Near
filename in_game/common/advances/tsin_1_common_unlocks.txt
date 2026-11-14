@@ -3,7 +3,6 @@
 tsin_reserve_system_advance = {
 	age = age_7_industrialization
 	icon = levee_en_masse_advance
-	for = mil
 
 	requires = tsin_steam_age_advance
 	unlock_levy = levy_tsin_reservists

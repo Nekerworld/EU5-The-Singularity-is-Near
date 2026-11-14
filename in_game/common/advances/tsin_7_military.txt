@@ -7,7 +7,6 @@
 tsin_percussion_cap_advance = {
 	age = age_7_industrialization
 	icon = flintlock_gun
-	for = mil
 
 	unlock_unit = a_tsin_line_riflemen
 	military_tactics = 0.25
@@ -19,7 +18,6 @@ tsin_percussion_cap_advance = {
 tsin_rifling_advance = {
 	age = age_7_industrialization
 	icon = long_rifle
-	for = mil
 
 	unlock_unit = a_tsin_rifle_skirmishers
 	army_light_infantry_power = 0.1
@@ -31,7 +29,6 @@ tsin_rifling_advance = {
 tsin_breech_loading_artillery_advance = {
 	age = age_7_industrialization
 	icon = imperial_artillery
-	for = mil
 
 	unlock_unit = a_tsin_breech_loading_battery
 	army_artillery_power = 0.1
@@ -43,7 +40,6 @@ tsin_breech_loading_artillery_advance = {
 tsin_repeating_rifle_advance = {
 	age = age_7_industrialization
 	icon = nav_riflemen_march
-	for = mil
 
 	unlock_unit = a_tsin_mounted_rifles
 	army_heavy_infantry_power = 0.1
@@ -55,7 +51,6 @@ tsin_repeating_rifle_advance = {
 tsin_hand_cranked_machine_gun_advance = {
 	age = age_7_industrialization
 	icon = kor_gunpowder_engines
-	for = mil
 
 	army_heavy_infantry_power = 0.1
 	army_light_infantry_power = 0.05
@@ -68,7 +63,6 @@ tsin_hand_cranked_machine_gun_advance = {
 tsin_general_staff_advance = {
 	age = age_7_industrialization
 	icon = nav_the_national_military_academy
-	for = mil
 
 	discipline = 0.05
 	regiment_reinforcement_speed = 0.1
@@ -81,7 +75,6 @@ tsin_general_staff_advance = {
 tsin_ironclad_advance = {
 	age = age_7_industrialization
 	icon = nav_shipyards_ironworks
-	for = mil
 
 	unlock_unit = n_tsin_ironclad
 
@@ -92,7 +85,6 @@ tsin_ironclad_advance = {
 tsin_monitor_advance = {
 	age = age_7_industrialization
 	icon = khm_modern_navy
-	for = mil
 
 	unlock_unit = n_tsin_monitor
 
@@ -103,11 +95,225 @@ tsin_monitor_advance = {
 tsin_torpedo_advance = {
 	age = age_7_industrialization
 	icon = imperial_school_of_naval_engineering
-	for = mil
 
 	unlock_unit = n_tsin_torpedo_boat
 	navy_light_ship_power = 0.1
 
 	requires = tsin_ironclad_advance
+	ai_weight = { add = 25 }
+}
+
+############################
+# 0.7: general military advances (docs/military.md)
+############################
+
+tsin_modern_tactics_advance = {
+	age = age_7_industrialization
+	icon = military_tactics_advance_6
+
+	combat_speed_modifier = 0.1
+
+	requires = tsin_general_staff_advance
+}
+
+tsin_railway_mobilization_advance = {
+	age = age_7_industrialization
+	icon = army_country_movement_speed_advance
+
+	army_movement_speed = 0.1
+	regiment_recruit_speed = 0.2
+
+	requires = tsin_general_staff_advance
+	requires = tsin_railway_network_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_field_fortification_advance = {
+	age = age_7_industrialization
+	icon = defensive_army
+
+	military_tactics = 0.25
+
+	requires = tsin_rifling_advance
+}
+
+tsin_conscription_reserves_advance = {
+	age = age_7_industrialization
+	icon = recruitment_law_advance
+
+	global_manpower_modifier = 0.25
+
+	requires = tsin_reserve_system_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_siege_engineering_advance = {
+	age = age_7_industrialization
+	icon = siege_ability_revolutions
+
+	siege_ability = 0.2
+
+	requires = tsin_breech_loading_artillery_advance
+}
+
+tsin_assault_doctrine_advance = {
+	age = age_7_industrialization
+	icon = infiltration_tactics
+
+	assault_ability = 0.2
+
+	requires = tsin_siege_engineering_advance
+}
+
+tsin_rifled_siege_guns_advance = {
+	age = age_7_industrialization
+	icon = russian_artillery_yard
+
+	artillery_bonus_vs_fort = 1
+
+	requires = tsin_siege_engineering_advance
+}
+
+tsin_naval_gunnery_advance = {
+	age = age_7_industrialization
+	icon = naval_doctrines_advance
+
+	naval_morale = 0.2
+
+	requires = tsin_ironclad_advance
+}
+
+tsin_steam_repair_advance = {
+	age = age_7_industrialization
+	icon = rudimentary_coastal_ship_repair
+
+	ship_repair_at_sea = 0.01
+
+	requires = tsin_ironclad_advance
+}
+
+tsin_military_medicine_advance = {
+	age = age_7_industrialization
+	icon = assistance_to_the_suffering
+
+	casualty_pop_losses = -0.05
+
+	requires = tsin_general_staff_advance
+}
+
+############################
+# 0.7: unit advances, a later tier in each category (docs/military.md)
+# Late units sit behind long chains and steel/electric cross requirements, never year conditions.
+############################
+
+tsin_lancers_advance = {
+	age = age_7_industrialization
+	icon = ayu_prestigious_cavalry
+
+	unlock_unit = a_tsin_lancers
+
+	requires = tsin_percussion_cap_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_railway_supply_corps_advance = {
+	age = age_7_industrialization
+	icon = railroad_advance
+
+	unlock_unit = a_tsin_railway_supply_corps
+
+	requires = tsin_railway_mobilization_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_maxim_gun_advance = {
+	age = age_7_industrialization
+	icon = gunpowder_advance
+
+	unlock_unit = a_tsin_machine_gun_detachment
+	army_auxiliary_power = 0.1
+
+	requires = tsin_hand_cranked_machine_gun_advance
+	requires = tsin_bessemer_process_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_smokeless_powder_advance = {
+	age = age_7_industrialization
+	icon = teu_infantry_tactics
+
+	unlock_unit = a_tsin_bolt_action_infantry
+	army_heavy_infantry_power = 0.1
+
+	requires = tsin_repeating_rifle_advance
+	requires = tsin_dynamite_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_jaeger_advance = {
+	age = age_7_industrialization
+	icon = hun_revolutionized_military_tactics
+
+	unlock_unit = a_tsin_jaegers
+
+	requires = tsin_smokeless_powder_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_quick_firing_artillery_advance = {
+	age = age_7_industrialization
+	icon = raj_expanded_artillery_arm
+
+	unlock_unit = a_tsin_quick_firing_battery
+	army_artillery_power = 0.1
+
+	requires = tsin_maxim_gun_advance
+	requires = tsin_smokeless_powder_advance
+	requires = tsin_open_hearth_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_steam_transport_advance = {
+	age = age_7_industrialization
+	icon = ship_building_advance
+
+	unlock_unit = n_tsin_steam_transport
+
+	requires = tsin_reserve_system_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_protected_cruiser_advance = {
+	age = age_7_industrialization
+	icon = spa_naval_reforms
+
+	unlock_unit = n_tsin_protected_cruiser
+
+	requires = tsin_monitor_advance
+	requires = tsin_bessemer_process_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_destroyer_advance = {
+	age = age_7_industrialization
+	icon = ven_ship_mounted_gunpowder_weapons
+
+	unlock_unit = n_tsin_destroyer
+
+	requires = tsin_torpedo_advance
+	requires = tsin_protected_cruiser_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_pre_dreadnought_advance = {
+	age = age_7_industrialization
+	icon = modernized_royal_scots_navy
+
+	unlock_unit = n_tsin_pre_dreadnought
+	navy_heavy_ship_power = 0.1
+
+	requires = tsin_protected_cruiser_advance
+	requires = tsin_naval_gunnery_advance
+	requires = tsin_open_hearth_advance
 	ai_weight = { add = 25 }
 }

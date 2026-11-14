@@ -80,3 +80,120 @@ tsin_torpedo_boat_maintenance = {
 	tsin_explosives = 0.2
 	category = ship_maintenance
 }
+
+# 0.7 units (docs/military.md)
+tsin_railway_supply_construction = {
+	tsin_engines = 0.3
+	steel = 0.5
+	tools = 0.3
+	category = regiment_construction
+}
+tsin_railway_supply_maintenance = {
+	coal = 0.3
+	tools = 0.1
+	category = regiment_maintenance
+}
+
+tsin_machine_gun_construction = {
+	firearms = 1.0
+	steel = 0.6
+	tools = 0.3
+	category = regiment_construction
+}
+tsin_machine_gun_maintenance = {
+	firearms = 0.3
+	tsin_explosives = 0.1 # cartridges
+	category = regiment_maintenance
+}
+
+tsin_smokeless_infantry_construction = {
+	firearms = 1.5
+	steel = 0.3
+	cloth = 0.5
+	category = regiment_construction
+}
+tsin_smokeless_infantry_maintenance = {
+	firearms = 0.4
+	tsin_explosives = 0.1 # smokeless powder
+	cloth = 0.2
+	category = regiment_maintenance
+}
+
+tsin_quick_firing_artillery_construction = {
+	cannons = 1.5
+	steel = 2.0
+	tsin_engines = 0.2
+	tools = 0.3
+	category = regiment_construction
+}
+tsin_quick_firing_artillery_maintenance = {
+	cannons = 0.6
+	tsin_explosives = 0.35
+	category = regiment_maintenance
+}
+
+tsin_steam_transport_construction = {
+	tsin_engines = 1.5
+	steel = 6.0
+	lumber = 6.0
+	tools = 1.0
+	category = ship_construction
+}
+tsin_steam_transport_repair = {
+	tsin_engines = 0.15
+	steel = 0.6
+	category = ship_repair
+}
+tsin_steam_transport_maintenance = {
+	coal = 0.8
+	naval_supplies = 0.2
+	category = ship_maintenance
+}
+
+tsin_cruiser_construction = {
+	tsin_engines = 3.0
+	steel = 14.0
+	cannons = 8.0
+	tools = 2.0
+	category = ship_construction
+}
+tsin_cruiser_repair = {
+	tsin_engines = 0.3
+	steel = 1.5
+	tools = 0.3
+	category = ship_repair
+}
+tsin_cruiser_maintenance = {
+	coal = 1.5
+	cannons = 0.6
+	category = ship_maintenance
+}
+
+tsin_destroyer_construction = {
+	tsin_engines = 2.0
+	steel = 6.0
+	tsin_explosives = 2.5
+	tools = 1.0
+	category = ship_construction
+}
+
+tsin_pre_dreadnought_construction = {
+	tsin_engines = 6.0
+	steel = 40.0
+	cannons = 25.0
+	tsin_electricity = 2.0
+	tools = 4.0
+	category = ship_construction
+}
+tsin_pre_dreadnought_repair = {
+	tsin_engines = 0.6
+	steel = 5.0
+	tools = 0.8
+	category = ship_repair
+}
+tsin_pre_dreadnought_maintenance = {
+	coal = 4.5
+	cannons = 2.0
+	naval_supplies = 0.5
+	category = ship_maintenance
+}

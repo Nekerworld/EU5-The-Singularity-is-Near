@@ -2,7 +2,7 @@
 
 ## 기술 9개
 
-`in_game/common/advances/tsin_7_military.txt`. 뿌리는 공통 해금 `tsin_reserve_system_advance`(예비군 제도)다. 모두 `for = mil`.
+`in_game/common/advances/tsin_7_military.txt`. 뿌리는 공통 해금 `tsin_reserve_system_advance`(예비군 제도)다. 0.7부터 `for = mil`을 지웠다. 바닐라처럼 `for`는 특화 선택지에만 쓰고, 유닛 해금은 행정·외교 특화 나라도 연구할 수 있다(`docs/tech_tree_age7.md`). 0.7에서 늘어난 기술과 유닛은 아래 "0.7 추가" 절에 있다.
 
 | 기술 | 선행 | 효과 |
 |---|---|---|
@@ -15,6 +15,26 @@
 | 철갑함 | 예비군 제도 | `n_tsin_ironclad` 해금 |
 | 모니터함 | 철갑함 | `n_tsin_monitor` 해금 |
 | 어뢰 | 철갑함 | `n_tsin_torpedo_boat` 해금, 경함 전력 +10% |
+
+### 0.7 추가: 군사 일반 10개와 유닛 해금 10개
+일반 기술(같은 파일): 근대 전술(전투 속도 +10%), 철도 동원(이동 +10%, 모집 +20%, 철도망 교차 선행), 야전 축성(군사 전술 +0.25), 징병 예비(인력 +25%), 공성 공학(공성 +0.2), 강습 교리(강습 +0.2), 강선 공성포(요새 대상 포병 +1), 해군 포술(해군 사기 +0.2), 증기 수리(해상 수리 +1%), 군 의학(인구 손실 -5%).
+
+유닛 해금(시대 전반과 후반에 상위 유닛이 한 번 더 나오는 바닐라 흐름):
+
+| 기술 | 선행 | 유닛 | 시기(선도국) |
+|---|---|---|---|
+| 창기병 | 뇌관식 소총 | `a_tsin_lancers` 중기병 | 전반 |
+| 철도 보급대 | 철도 동원 | `a_tsin_railway_supply_corps` 보조 | 1860년대 |
+| 맥심 기관총 | 수동 기관총, 베서머 | `a_tsin_machine_gun_detachment` 보조 | 1880년대 |
+| 무연 화약 | 연발총, 다이너마이트 | `a_tsin_bolt_action_infantry` 중보병 | 1880년대 |
+| 엽병 | 무연 화약 | `a_tsin_jaegers` 경보병 | 후반 |
+| 속사포 | 맥심 기관총, 무연 화약, 평로법 | `a_tsin_quick_firing_battery` 포병 | 1890년대 |
+| 증기 수송선 | 예비군 제도 | `n_tsin_steam_transport` 수송 | 전반 |
+| 방호 순양함 | 모니터함, 베서머 | `n_tsin_protected_cruiser` 경함 | 1880년대 |
+| 구축함 | 어뢰, 방호 순양함 | `n_tsin_destroyer` 경함 | 1890년대 |
+| 전노급 전함 | 방호 순양함, 해군 포술, 평로법 | `n_tsin_pre_dreadnought` 중함 | 1890년대 |
+
+후반 유닛은 연도 조건 없이 긴 선행 사슬과 강철 교차 선행으로 늦춘다. 물자는 `tsin_army_demands.txt`의 0.7 절(무연 화약 보병은 폭약 소모, 전노급 전함은 전기 소모)이다.
 
 ## 유닛
 

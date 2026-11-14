@@ -54,6 +54,13 @@ tsin_electric_motor_advance = {
 	icon = saxon_industrialization
 
 	unlock_production_method = tsin_mechanized_electric_drive
+	unlock_production_method = tsin_automated_iron_mill_electric
+	unlock_production_method = tsin_automated_glass_mill_electric
+	unlock_production_method = tsin_automated_paper_mill_electric
+	unlock_production_method = tsin_automated_furniture_mill_electric
+	unlock_production_method = tsin_automated_printing_mill_electric
+	unlock_production_method = tsin_automated_fine_cloth_mill_electric
+	unlock_production_method = tsin_steam_sawmill_electric
 
 	requires = tsin_dynamo_advance
 	ai_weight = { add = 25 }
@@ -63,7 +70,7 @@ tsin_electric_lighting_advance = {
 	age = age_7_industrialization
 	icon = spa_spanish_enlightenment
 
-	unlock_building = tsin_electric_lighting
+	unlock_production_method = tsin_electric_lighting_maintenance
 
 	requires = tsin_dynamo_advance
 	ai_weight = { add = 25 }
@@ -76,8 +83,10 @@ tsin_telegraph_telephone_advance = {
 	country_cabinet_efficiency = 0.05
 	diplomatic_range_modifier = 0.25
 	global_merchant_power = 0.05
+	unlock_production_method = tsin_railway_station_telegraph
 
 	requires = tsin_practical_electrical_engineering_advance
+	ai_weight = { add = 20 }
 }
 
 tsin_industrial_electrification_advance = {
@@ -90,4 +99,36 @@ tsin_industrial_electrification_advance = {
 	requires = tsin_electric_motor_advance
 	requires = tsin_distribution_grid_advance
 	ai_weight = { add = 25 }
+}
+
+# 0.7: chemistry, engines and radio (docs/tech_tree_age7.md)
+tsin_electrochemistry_advance = {
+	age = age_7_industrialization
+	icon = blg_galvanism
+
+	global_alum_output_modifier = 0.2
+	global_saltpeter_output_modifier = 0.1
+
+	requires = tsin_central_power_station_advance
+}
+
+tsin_internal_combustion_advance = {
+	age = age_7_industrialization
+	icon = kor_gunpowder_engines
+
+	army_movement_speed = 0.05
+	global_tsin_oil_pop_demand = 0.1
+
+	requires = tsin_electric_motor_advance
+}
+
+tsin_wireless_telegraphy_advance = {
+	age = age_7_industrialization
+	icon = newspapers_advance
+
+	naval_range = 500
+	diplomatic_range_modifier = 0.2
+
+	requires = tsin_telegraph_telephone_advance
+	requires = tsin_distribution_grid_advance
 }

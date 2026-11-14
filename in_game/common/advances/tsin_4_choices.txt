@@ -1,4 +1,6 @@
 ﻿# The Singularity is Near - age 7 choice advances (10 per category, like vanilla 4_choices_*).
+# From age 7 every specialization is researchable (docs/tech_tree_age7.md): no `for`, placed in the free tree,
+# open at once for the chosen specialization and after embracing the paired institution for the others.
 
 ############################
 # adm
@@ -6,7 +8,15 @@
 tsin_civil_service_exams = {
 	age = age_7_industrialization
 	icon = bureaucracy_law_advance
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	global_bureaucracy_maintenance_efficiency = 0.04
 }
@@ -14,15 +24,32 @@ tsin_civil_service_exams = {
 tsin_statistical_bureau = {
 	age = age_7_industrialization
 	icon = late_ottoman_bureaucracy
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	global_monthly_control = 0.001
+	unlock_government_reform = tsin_national_statistics_bureau
 }
 
 tsin_income_tax = {
 	age = age_7_industrialization
 	icon = gel_healthy_economy
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	tax_income_efficiency = small_tax_income_efficiency_bonus
 }
@@ -30,7 +57,15 @@ tsin_income_tax = {
 tsin_central_banking = {
 	age = age_7_industrialization
 	icon = swiss_banking
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	bank_interest = -0.01
 }
@@ -38,7 +73,15 @@ tsin_central_banking = {
 tsin_public_works = {
 	age = age_7_industrialization
 	icon = industry_promotion_advance
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	global_build_buildings_efficiency = 0.2
 }
@@ -46,7 +89,15 @@ tsin_public_works = {
 tsin_scientific_agriculture = {
 	age = age_7_industrialization
 	icon = industrial_expansion_advance
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	food_consumption_modifier = -0.10
 }
@@ -54,7 +105,15 @@ tsin_scientific_agriculture = {
 tsin_mining_engineering = {
 	age = age_7_industrialization
 	icon = coal_improvements_revolutions
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	expand_rgo_mining_cost_modifier = -0.1
 }
@@ -62,7 +121,15 @@ tsin_mining_engineering = {
 tsin_national_education = {
 	age = age_7_industrialization
 	icon = prestigious_schools
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	global_max_literacy = 5
 }
@@ -70,7 +137,15 @@ tsin_national_education = {
 tsin_modern_police = {
 	age = age_7_industrialization
 	icon = an_iron_fist
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	global_separatism = -0.1
 }
@@ -78,7 +153,15 @@ tsin_modern_police = {
 tsin_parliamentary_procedure = {
 	age = age_7_industrialization
 	icon = national_assemblies_advance
-	for = adm
+	requires = tsin_steam_age_advance
+	allow = { tsin_adm_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = adm }
+			add = 30
+		}
+	}
 
 	legislative_efficiency = 0.10
 }
@@ -89,7 +172,15 @@ tsin_parliamentary_procedure = {
 tsin_telegraph_diplomacy = {
 	age = age_7_industrialization
 	icon = swedish_royal_post_office
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	monthly_diplomats = 0.1
 }
@@ -97,7 +188,15 @@ tsin_telegraph_diplomacy = {
 tsin_consular_service = {
 	age = age_7_industrialization
 	icon = foreign_relations_bureau
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	max_diplomats = 1
 }
@@ -105,7 +204,15 @@ tsin_consular_service = {
 tsin_free_trade_doctrine = {
 	age = age_7_industrialization
 	icon = free_trade
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	global_merchant_capacity_modifier = 0.10
 }
@@ -113,7 +220,15 @@ tsin_free_trade_doctrine = {
 tsin_steamship_lines = {
 	age = age_7_industrialization
 	icon = overseas_trade
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	trade_range_modifier = 0.5
 }
@@ -121,7 +236,15 @@ tsin_steamship_lines = {
 tsin_trading_houses = {
 	age = age_7_industrialization
 	icon = merchants_and_trade
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	global_trade_center_power = 0.05
 }
@@ -129,7 +252,15 @@ tsin_trading_houses = {
 tsin_protectorates = {
 	age = age_7_industrialization
 	icon = international_influences
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	subject_loyalty = 5
 }
@@ -137,7 +268,15 @@ tsin_protectorates = {
 tsin_colonial_office = {
 	age = age_7_industrialization
 	icon = distant_trade_ventures
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	colonial_migration_size_modifier = 0.25
 }
@@ -145,7 +284,15 @@ tsin_colonial_office = {
 tsin_great_power_diplomacy = {
 	age = age_7_industrialization
 	icon = international_nobility
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	diplomatic_reputation = diplomatic_reputation_mild_bonus
 }
@@ -153,7 +300,15 @@ tsin_great_power_diplomacy = {
 tsin_coaling_stations = {
 	age = age_7_industrialization
 	icon = imperial_school_of_naval_engineering
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	naval_unit_attrition = -0.25
 }
@@ -161,7 +316,15 @@ tsin_coaling_stations = {
 tsin_ironclad_yards = {
 	age = age_7_industrialization
 	icon = nav_shipyards_ironworks
-	for = dip
+	requires = tsin_steam_age_advance
+	allow = { tsin_dip_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = dip }
+			add = 30
+		}
+	}
 
 	ship_build_speed = 0.25
 }
@@ -172,7 +335,15 @@ tsin_ironclad_yards = {
 tsin_general_staff = {
 	age = age_7_industrialization
 	icon = nav_the_national_military_academy
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	army_initiative = 0.25
 }
@@ -180,7 +351,15 @@ tsin_general_staff = {
 tsin_breech_loading_rifles = {
 	age = age_7_industrialization
 	icon = long_rifle
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	discipline = 0.05
 }
@@ -188,7 +367,15 @@ tsin_breech_loading_rifles = {
 tsin_rifled_artillery = {
 	age = age_7_industrialization
 	icon = russian_artillery_yard
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	army_artillery_power = 0.1
 }
@@ -196,7 +383,15 @@ tsin_rifled_artillery = {
 tsin_military_railways = {
 	age = age_7_industrialization
 	icon = railroad_advance
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	regiment_recruit_speed = 0.5
 }
@@ -204,7 +399,15 @@ tsin_military_railways = {
 tsin_field_medicine = {
 	age = age_7_industrialization
 	icon = sanitation_advance
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	land_unit_attrition = -0.1
 }
@@ -212,7 +415,15 @@ tsin_field_medicine = {
 tsin_mass_mobilization = {
 	age = age_7_industrialization
 	icon = levee_en_masse_advance
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	global_manpower_modifier = 0.10
 }
@@ -220,7 +431,15 @@ tsin_mass_mobilization = {
 tsin_officer_schools = {
 	age = age_7_industrialization
 	icon = nav_riflemen_march
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	train_general_cost_modifier = -0.1
 }
@@ -228,7 +447,15 @@ tsin_officer_schools = {
 tsin_canned_rations = {
 	age = age_7_industrialization
 	icon = medicinal_infusions
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	morale_recovery_in_friendly = 0.05
 }
@@ -236,7 +463,15 @@ tsin_canned_rations = {
 tsin_steam_navy_doctrine = {
 	age = age_7_industrialization
 	icon = naval_doctrines_advance
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	naval_morale_modifier = 0.1
 }
@@ -244,7 +479,15 @@ tsin_steam_navy_doctrine = {
 tsin_coastal_batteries = {
 	age = age_7_industrialization
 	icon = imperial_artillery
-	for = mil
+	requires = tsin_steam_age_advance
+	allow = { tsin_mil_specialization_open_trigger = yes }
+	ai_weight = {
+		add = 10
+		if = {
+			limit = { age_preference = mil }
+			add = 30
+		}
+	}
 
 	global_garrison_size_modifier = 0.20
 }

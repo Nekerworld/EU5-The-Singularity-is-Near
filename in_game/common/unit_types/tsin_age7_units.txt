@@ -101,3 +101,149 @@ n_tsin_torpedo_boat = {
 	construction_demand = tsin_torpedo_boat_construction
 	repair_demand = tsin_torpedo_boat_repair
 }
+
+##################################################
+# 0.7: a second, later tier in each category, as vanilla ages do (docs/military.md)
+
+a_tsin_lancers = {
+	copy_from = a_age_7_industrialization_heavy_cavalry
+
+	combat_power = 0.5
+	initiative = 2
+
+	gfx_tags = { cuirassier_tag heavy_tag }
+	maintenance_demand = heavy_cavalry_maintenance
+	construction_demand = heavy_cavalry_construction
+}
+
+a_tsin_railway_supply_corps = {
+	copy_from = a_age_7_industrialization_auxiliary
+
+	max_strength = 0.1
+
+	mercenaries_per_location = {
+		pop_type = laborers
+		multiply = 0.01
+	}
+
+	gfx_tags = { medium_tag }
+	maintenance_demand = tsin_railway_supply_maintenance
+	construction_demand = tsin_railway_supply_construction
+}
+
+a_tsin_machine_gun_detachment = {
+	copy_from = a_age_7_industrialization_auxiliary
+
+	combat_power = 1.2
+
+	mercenaries_per_location = {
+		pop_type = laborers
+		multiply = 0.01
+	}
+
+	gfx_tags = { rifle_tag medium_tag }
+	maintenance_demand = tsin_machine_gun_maintenance
+	construction_demand = tsin_machine_gun_construction
+}
+
+a_tsin_bolt_action_infantry = {
+	copy_from = a_age_7_industrialization_heavy_infantry
+
+	max_strength = 0.25
+	combat_power = 0.75
+
+	mercenaries_per_location = {
+		pop_type = laborers
+		multiply = 0.1
+	}
+
+	gfx_tags = { rifle_tag medium_tag }
+	maintenance_demand = tsin_smokeless_infantry_maintenance
+	construction_demand = tsin_smokeless_infantry_construction
+}
+
+a_tsin_jaegers = {
+	copy_from = a_age_7_industrialization_light_infantry
+
+	max_strength = 0.25
+	combat_power = 0.75
+	initiative = 6
+	flanking_ability = 0.3
+
+	mercenaries_per_location = {
+		pop_type = peasants
+		multiply = 0.05
+	}
+
+	gfx_tags = { rifle_tag light_tag }
+	color = unit_rifle_green
+	maintenance_demand = tsin_smokeless_infantry_maintenance
+	construction_demand = tsin_smokeless_infantry_construction
+}
+
+a_tsin_quick_firing_battery = {
+	copy_from = a_age_7_industrialization_artillery
+
+	combat_power = 3
+	artillery_barrage = 4
+
+	mercenaries_per_location = {
+		pop_type = burghers
+		multiply = 0.05
+	}
+
+	maintenance_demand = tsin_quick_firing_artillery_maintenance
+	construction_demand = tsin_quick_firing_artillery_construction
+}
+
+n_tsin_steam_transport = {
+	copy_from = n_age_7_industrialization_transport
+	buildable = yes
+
+	hull_size = 10
+	movement_speed = 3
+	transport_capacity = 0.5
+
+	maintenance_demand = tsin_steam_transport_maintenance
+	construction_demand = tsin_steam_transport_construction
+	repair_demand = tsin_steam_transport_repair
+}
+
+n_tsin_protected_cruiser = {
+	copy_from = n_age_7_industrialization_light_ship
+	buildable = yes
+
+	hull_size = 14
+	cannons = 16
+	movement_speed = 2
+
+	maintenance_demand = tsin_cruiser_maintenance
+	construction_demand = tsin_cruiser_construction
+	repair_demand = tsin_cruiser_repair
+}
+
+n_tsin_destroyer = {
+	copy_from = n_age_7_industrialization_light_ship
+	buildable = yes
+
+	hull_size = -6
+	cannons = 12
+	movement_speed = 6
+
+	maintenance_demand = tsin_torpedo_boat_maintenance
+	construction_demand = tsin_destroyer_construction
+	repair_demand = tsin_torpedo_boat_repair
+}
+
+n_tsin_pre_dreadnought = {
+	copy_from = n_age_7_industrialization_heavy_ship
+	buildable = yes
+
+	hull_size = 70
+	cannons = 60
+	movement_speed = 2
+
+	maintenance_demand = tsin_pre_dreadnought_maintenance
+	construction_demand = tsin_pre_dreadnought_construction
+	repair_demand = tsin_pre_dreadnought_repair
+}

@@ -1,0 +1,216 @@
+﻿############################
+# age_7_industrialization - government type and religion advances (0.7)
+# Same form as vanilla government_*.txt and religion_*.txt: government = <type> or a religion potential.
+# No country tag conditions (docs/tech_tree_age7.md).
+############################
+
+# Government types
+tsin_constitutional_monarchy_advance = {
+	age = age_7_industrialization
+	icon = monarchy_royal_court_advance
+	government = monarchy
+
+	monthly_legitimacy = 0.1
+	country_cabinet_efficiency = 0.1
+}
+
+tsin_merit_civil_service_advance = {
+	age = age_7_industrialization
+	icon = republican_assembly_advance
+	government = republic
+
+	monthly_republican_tradition = 0.1
+	global_bureaucracy_maintenance_efficiency = 0.05
+}
+
+tsin_ultramontanism_advance = {
+	age = age_7_industrialization
+	icon = theocracy_divine_cause_law_advance
+	government = theocracy
+
+	monthly_devotion = 0.1
+	monthly_religious_influence = 0.1
+}
+
+tsin_steppe_modernization_advance = {
+	age = age_7_industrialization
+	icon = steppe_horde_tribal_modernization_law_advance
+	government = steppe_horde
+
+	monthly_horde_unity = 0.1
+	global_manpower_modifier = 0.1
+}
+
+# Religions
+tsin_social_catholicism_advance = {
+	age = age_7_industrialization
+	icon = catholic_sunday_schools
+
+	potential = {
+		religion = religion:catholic
+	}
+
+	peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+
+	requires = tsin_labor_movement_advance
+}
+
+tsin_catholic_revival_advance = {
+	age = age_7_industrialization
+	icon = catholic_pilgrimages
+
+	potential = {
+		religion = religion:catholic
+	}
+
+	clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+	monthly_religious_influence = 0.1
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_social_gospel_advance = {
+	age = age_7_industrialization
+	icon = protestant_sunday_schools
+
+	potential = {
+		is_protestant = yes
+	}
+
+	global_life_expectancy = 1
+	global_monthly_literacy = 0.01
+
+	requires = tsin_labor_movement_advance
+}
+
+tsin_higher_criticism_advance = {
+	age = age_7_industrialization
+	icon = protestant_innovation
+
+	potential = {
+		is_protestant = yes
+	}
+
+	research_speed_modifier = 0.03
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_slavophile_revival_advance = {
+	age = age_7_industrialization
+	icon = byz_heart_of_orthodoxy_advance
+
+	potential = {
+		religion = religion:orthodox
+	}
+
+	cultural_influence_modifier = 0.1
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_synodal_reform_advance = {
+	age = age_7_industrialization
+	icon = dan_danish_orthodoxy
+
+	potential = {
+		religion = religion:orthodox
+	}
+
+	global_monthly_literacy = 0.01
+
+	requires = tsin_nation_state_advance
+}
+
+tsin_islamic_modernism_advance = {
+	age = age_7_industrialization
+	icon = islamic_schoolars
+
+	potential = {
+		religion.group = religion_group:muslim
+	}
+
+	research_speed_modifier = 0.03
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_pan_islamism_advance = {
+	age = age_7_industrialization
+	icon = islamic_golden_age
+
+	potential = {
+		religion.group = religion_group:muslim
+	}
+
+	monthly_religious_influence = 0.1
+	tolerance_heretic = 1
+
+	requires = tsin_nation_state_advance
+}
+
+tsin_buddhist_revival_advance = {
+	age = age_7_industrialization
+	icon = buddhist_universities
+
+	potential = {
+		religion.group = religion_group:buddhist
+	}
+
+	global_monthly_literacy = 0.01
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_hindu_reform_movement_advance = {
+	age = age_7_industrialization
+	icon = bhakti_movement
+
+	potential = {
+		religion = religion:hindu
+	}
+
+	global_max_literacy = 5
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_jewish_reform_movement_advance = {
+	age = age_7_industrialization
+	icon = schools_of_thought
+
+	potential = {
+		religion = religion:judaism
+	}
+
+	research_speed_modifier = 0.03
+	global_burghers_max_literacy = 5
+
+	requires = tsin_steam_age_advance
+}
+
+tsin_state_shinto_advance = {
+	age = age_7_industrialization
+	icon = fukko_shinto
+
+	potential = {
+		religion = religion:shinto
+	}
+
+	global_integration_speed_modifier = 0.1
+
+	requires = tsin_nation_state_advance
+}
+
+tsin_miaphysite_schools_advance = {
+	age = age_7_industrialization
+	icon = cradle_of_monasticism
+
+	potential = {
+		religion = religion:miaphysite
+	}
+
+	global_monthly_literacy = 0.01
+
+	requires = tsin_steam_age_advance
+}

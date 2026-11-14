@@ -1,0 +1,164 @@
+﻿############################
+# age_7_industrialization - free tree, general administrative and diplomatic advances (0.7)
+# Root: tsin_steam_age_advance. Values follow 0_age_of_revolutions.txt (docs/tech_tree_age7.md).
+############################
+
+# Administration
+tsin_professional_bureaucracy_advance = {
+	age = age_7_industrialization
+	icon = nav_efficient_bureaucracy
+
+	global_max_bureaucracy_slots = 1
+	unlock_building = tsin_prefecture
+
+	requires = tsin_steam_age_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_ministerial_government_advance = {
+	age = age_7_industrialization
+	icon = foreign_relations_bureau
+
+	government_size = 1
+
+	requires = tsin_professional_bureaucracy_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_municipal_charters_advance = {
+	age = age_7_industrialization
+	icon = urbanization_decrees
+
+	capital_possible_town_rights = 1
+	global_integration_speed_modifier = 0.1
+
+	requires = tsin_ministerial_government_advance
+}
+
+tsin_steam_construction_advance = {
+	age = age_7_industrialization
+	icon = construction_speed_revolutions
+
+	global_construction_speed = 0.1
+
+	requires = tsin_steam_age_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_macadam_roads_advance = {
+	age = age_7_industrialization
+	icon = modern_road_advance
+
+	global_road_building_time = -0.2
+	build_modern_road_cost_modifier = -0.2
+
+	requires = tsin_steam_construction_advance
+}
+
+# Public health
+tsin_anesthesia_advance = {
+	age = age_7_industrialization
+	icon = hospital_advance
+
+	casualty_pop_losses = -0.05
+	global_life_expectancy = 1
+	unlock_cabinet_action = tsin_public_health_campaign
+
+	requires = tsin_steam_age_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_antiseptic_surgery_advance = {
+	age = age_7_industrialization
+	icon = medicinal_infusions
+
+	global_disease_resistance = 0.05
+	global_life_expectancy = 1
+
+	requires = tsin_anesthesia_advance
+}
+
+tsin_vaccination_campaigns_advance = {
+	age = age_7_industrialization
+	icon = gel_healthy_economy
+
+	global_disease_resistance = 0.05
+
+	requires = tsin_antiseptic_surgery_advance
+}
+
+tsin_quinine_prophylaxis_advance = {
+	age = age_7_industrialization
+	icon = colonial_policy_advance
+
+	national_malaria_resistance_modifier = 0.3
+
+	requires = tsin_anesthesia_advance
+}
+
+# Diplomacy
+tsin_steam_packet_diplomacy_advance = {
+	age = age_7_industrialization
+	icon = experienced_diplomats
+
+	diplomatic_range_modifier = 0.25
+
+	requires = tsin_steam_age_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_gunboat_diplomacy_advance = {
+	age = age_7_industrialization
+	icon = royal_navy
+
+	power_projection = 5
+
+	requires = tsin_steam_packet_diplomacy_advance
+}
+
+tsin_concert_of_powers_advance = {
+	age = age_7_industrialization
+	icon = international_influences
+
+	antagonism_received_modifier = -0.1
+
+	requires = tsin_steam_packet_diplomacy_advance
+}
+
+tsin_international_law_advance = {
+	age = age_7_industrialization
+	icon = laws
+
+	global_war_score_efficiency = 0.1
+
+	requires = tsin_concert_of_powers_advance
+}
+
+tsin_informal_empire_advance = {
+	age = age_7_industrialization
+	icon = subject_income_reformation_advance
+
+	subject_income_modifier = 0.05
+	subject_opinions = 10
+
+	requires = tsin_gunboat_diplomacy_advance
+}
+
+tsin_intelligence_service_advance = {
+	age = age_7_industrialization
+	icon = counter_espionage_action_advance
+
+	spy_network_construction = 0.2
+
+	requires = tsin_international_law_advance
+}
+
+tsin_colonial_frontier_advance = {
+	age = age_7_industrialization
+	icon = colonial_ambition
+
+	colonial_range = 1000
+	naval_range = 500
+
+	requires = tsin_quinine_prophylaxis_advance
+}
