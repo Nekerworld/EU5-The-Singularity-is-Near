@@ -1,0 +1,91 @@
+﻿############################
+# age_7_industrialization - mass society tree (M4)
+# Root: tsin_mass_society_advance (tsin_0_age_of_industrialization.txt).
+# Laws are only unlocked here; enacting them is left to parliament and the estates.
+############################
+
+# Cities: planning
+tsin_urban_planning_advance = {
+	age = age_7_industrialization
+	icon = city_building_advance
+
+	global_population_capacity_modifier = 0.1
+	non_rural_migration_attraction = 0.25
+
+	requires = tsin_mass_society_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_modern_sewerage_advance = {
+	age = age_7_industrialization
+	icon = sanitation_advance
+
+	global_disease_resistance = 0.1
+	global_life_expectancy = 3
+
+	requires = tsin_urban_planning_advance
+}
+
+tsin_mass_consumption_advance = {
+	age = age_7_industrialization
+	icon = national_trade
+
+	global_furniture_pop_demand = 0.1
+	global_paper_pop_demand = 0.1
+	burghers_estate_target_satisfaction = small_permanent_target_satisfaction
+
+	requires = tsin_urban_planning_advance
+}
+
+# Education
+tsin_universal_education_advance = {
+	age = age_7_industrialization
+	icon = dutch_education
+
+	global_max_literacy = 10
+	global_monthly_literacy = 0.02
+
+	requires = tsin_mass_society_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_vocational_education_advance = {
+	age = age_7_industrialization
+	icon = imperial_school_of_naval_engineering
+
+	global_laborers_max_literacy = 10
+	global_production_efficiency = small_production_efficiency_bonus
+
+	requires = tsin_universal_education_advance
+}
+
+# Public opinion and labour
+tsin_mass_communication_advance = {
+	age = age_7_industrialization
+	icon = newspapers_advance
+
+	global_monthly_literacy = 0.01
+	country_cabinet_efficiency = 0.05
+
+	requires = tsin_mass_society_advance
+}
+
+tsin_labor_movement_advance = {
+	age = age_7_industrialization
+	icon = peasants_rights_laws_advance
+
+	global_pop_promotion_speed = 0.05
+
+	requires = tsin_mass_society_advance
+}
+
+tsin_social_insurance_advance = {
+	age = age_7_industrialization
+	icon = hospital_advance
+
+	global_life_expectancy = 2
+	peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+
+	requires = tsin_labor_movement_advance
+	requires = tsin_mass_communication_advance
+}
