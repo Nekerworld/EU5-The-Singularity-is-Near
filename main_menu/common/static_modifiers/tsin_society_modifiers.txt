@@ -33,3 +33,45 @@ tsin_railway_charters_granted = {
 	build_railroad_cost_modifier = -0.1
 	burghers_estate_target_satisfaction = 0.025
 }
+
+# Movement agitation (tsin_movement_tick_effect): active from 60 until the movement falls below 50.
+tsin_liberalism_agitation = {
+	game_data = {
+		category = country
+	}
+	burghers_estate_target_satisfaction = -0.05
+	monthly_towards_liberalism = 0.05
+}
+
+tsin_nationalism_agitation = {
+	game_data = {
+		category = country
+	}
+	global_manpower_modifier = 0.05
+	monthly_towards_belligerent = 0.05
+}
+
+tsin_labor_unionism_agitation = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = -0.05
+	global_production_efficiency = -0.02
+}
+
+tsin_socialism_agitation = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = -0.05
+	burghers_estate_target_satisfaction = -0.025
+	monthly_towards_communalism = 0.05
+}
+
+tsin_womens_suffrage_agitation = {
+	game_data = {
+		category = country
+	}
+	burghers_estate_target_satisfaction = -0.025
+	monthly_towards_humanist = 0.05
+}

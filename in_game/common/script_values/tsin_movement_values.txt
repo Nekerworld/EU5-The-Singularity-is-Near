@@ -37,3 +37,136 @@ tsin_abolitionism_yearly_growth = {
 		subtract = 4
 	}
 }
+
+# Agitation thresholds: the tsin_<movement>_agitation modifier is added at >= start and removed below end.
+tsin_movement_agitation_start = 60
+tsin_movement_agitation_end = 50
+
+# Liberalism: constitutional and press demands. Satisfied by free association.
+tsin_liberalism_yearly_growth = {
+	value = 1
+	if = {
+		limit = { has_embraced_institution = institution:tsin_mass_society }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:free_press }
+		add = 1
+	}
+	if = {
+		limit = { societal_value:absolutism_vs_liberalism > 25 }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_assembly_banned_policy }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_free_association_policy }
+		subtract = 4
+	}
+}
+
+# Nationalism: grows with mass communication, faster in subjects.
+tsin_nationalism_yearly_growth = {
+	value = 1
+	if = {
+		limit = { has_advance = tsin_mass_communication_advance }
+		add = 1
+	}
+	if = {
+		limit = { is_subject = yes }
+		add = 2
+	}
+	if = {
+		limit = { societal_value:belligerent_vs_conciliatory < -25 }
+		add = 1
+	}
+	if = {
+		limit = { is_subject = no }
+		subtract = 1
+	}
+}
+
+# Labor unionism: grows with factories. Satisfied by factory acts / labor protection.
+tsin_labor_unionism_yearly_growth = {
+	value = 0
+	if = {
+		limit = { has_advance = tsin_labor_movement_advance }
+		add = 2
+	}
+	if = {
+		limit = {
+			any_owned_location = {
+				count >= 5
+				tsin_location_has_factory_trigger = yes
+			}
+		}
+		add = 2
+	}
+	if = {
+		limit = { has_policy = policy:tsin_unregulated_labor_policy }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_factory_acts_policy }
+		subtract = 2
+	}
+	if = {
+		limit = { has_policy = policy:tsin_labor_protection_policy }
+		subtract = 4
+	}
+	if = {
+		limit = { has_policy = policy:tsin_assembly_banned_policy }
+		subtract = 1
+	}
+}
+
+# Socialism: only grows out of a strong labor movement. Satisfied by social insurance.
+tsin_socialism_yearly_growth = {
+	value = -1
+	if = {
+		limit = {
+			has_variable = tsin_labor_unionism
+			var:tsin_labor_unionism >= 50
+		}
+		add = 3
+	}
+	if = {
+		limit = { societal_value:individualism_vs_communalism > 25 }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_unregulated_labor_policy }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_assembly_banned_policy }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_social_insurance_policy }
+		subtract = 3
+	}
+}
+
+# Women's suffrage: needs universal education. No law satisfies it yet (left for a later age).
+tsin_womens_suffrage_yearly_growth = {
+	value = 0
+	if = {
+		limit = { has_advance = tsin_universal_education_advance }
+		add = 1
+	}
+	if = {
+		limit = { has_advance = tsin_mass_communication_advance }
+		add = 1
+	}
+	if = {
+		limit = { societal_value:spiritualist_vs_humanist > 25 }
+		add = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_assembly_banned_policy }
+		subtract = 1
+	}
+}

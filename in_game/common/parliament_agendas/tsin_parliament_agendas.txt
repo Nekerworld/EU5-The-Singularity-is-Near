@@ -107,6 +107,13 @@ pa_tsin_factory_acts = {
 			limit = { has_advance = tsin_mass_communication_advance }
 			add = 10
 		}
+		if = {
+			limit = {
+				has_variable = tsin_labor_unionism
+				var:tsin_labor_unionism >= 50
+			}
+			add = 10
+		}
 	}
 }
 
@@ -176,5 +183,66 @@ pa_tsin_restore_concordat = {
 			limit = { societal_value:spiritualist_vs_humanist < 0 }
 			add = 10
 		}
+	}
+}
+
+# M4 movement demands.
+pa_tsin_freedom_of_association = {
+	estate = burghers_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_advance = tsin_labor_movement_advance
+		has_variable = tsin_liberalism
+		var:tsin_liberalism >= 50
+		OR = {
+			has_policy = policy:tsin_assembly_banned_policy
+			has_policy = policy:tsin_licensed_associations_policy
+		}
+	}
+
+	on_accept = {
+		add_policy = policy:tsin_free_association_policy
+		change_variable = { name = tsin_liberalism subtract = 20 }
+	}
+
+	chance = {
+		value = 10
+		if = {
+			limit = { var:tsin_liberalism >= 75 }
+			add = 10
+		}
+	}
+}
+
+pa_tsin_social_insurance = {
+	estate = peasants_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_advance = tsin_social_insurance_advance
+		OR = {
+			AND = {
+				has_variable = tsin_socialism
+				var:tsin_socialism >= 40
+			}
+			AND = {
+				has_variable = tsin_labor_unionism
+				var:tsin_labor_unionism >= 60
+			}
+		}
+		OR = {
+			has_policy = policy:tsin_charity_relief_policy
+			has_policy = policy:tsin_poor_law_policy
+		}
+	}
+
+	on_accept = {
+		add_policy = policy:tsin_social_insurance_policy
+		change_variable = { name = tsin_socialism subtract = 20 }
+	}
+
+	chance = {
+		value = 10
 	}
 }

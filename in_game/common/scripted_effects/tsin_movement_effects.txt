@@ -11,8 +11,36 @@ tsin_update_movements_effect = {
 		change_variable = { name = tsin_abolitionism add = tsin_abolitionism_yearly_growth }
 		clamp_variable = { name = tsin_abolitionism min = 0 max = tsin_movement_max }
 	}
+	tsin_movement_tick_effect = { VAR = tsin_liberalism GROWTH = tsin_liberalism_yearly_growth AGITATION = tsin_liberalism_agitation }
+	tsin_movement_tick_effect = { VAR = tsin_nationalism GROWTH = tsin_nationalism_yearly_growth AGITATION = tsin_nationalism_agitation }
+	tsin_movement_tick_effect = { VAR = tsin_labor_unionism GROWTH = tsin_labor_unionism_yearly_growth AGITATION = tsin_labor_unionism_agitation }
+	tsin_movement_tick_effect = { VAR = tsin_socialism GROWTH = tsin_socialism_yearly_growth AGITATION = tsin_socialism_agitation }
+	tsin_movement_tick_effect = { VAR = tsin_womens_suffrage GROWTH = tsin_womens_suffrage_yearly_growth AGITATION = tsin_womens_suffrage_agitation }
 }
 
+# One movement: grow, clamp to 0..tsin_movement_max, toggle the agitation modifier with hysteresis.
+tsin_movement_tick_effect = {
+	if = {
+		limit = { NOT = { has_variable = $VAR$ } }
+		set_variable = { name = $VAR$ value = 0 }
+	}
+	change_variable = { name = $VAR$ add = $GROWTH$ }
+	clamp_variable = { name = $VAR$ min = 0 max = tsin_movement_max }
+	if = {
+		limit = {
+			NOT = { has_country_modifier = $AGITATION$ }
+			var:$VAR$ >= tsin_movement_agitation_start
+		}
+		add_country_modifier = { modifier = $AGITATION$ months = -1 }
+	}
+	else_if = {
+		limit = {
+			has_country_modifier = $AGITATION$
+			var:$VAR$ < tsin_movement_agitation_end
+		}
+		remove_country_modifier = $AGITATION$
+	}
+}
 # Frees every slave pop of root (pattern of the vanilla slaves rebel demand).
 tsin_emancipate_all_slaves_effect = {
 	every_pop = {

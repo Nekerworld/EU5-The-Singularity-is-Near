@@ -253,6 +253,7 @@ def check_tsin_names() -> None:
         known.update(re.findall(r"(?m)^@?(tsin_\w+)\s*=", clean))
         known.update(re.findall(r"\b(?:set_variable|set_global_variable|save_scope_as|save_temporary_scope_as)\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bname\s*=\s*(tsin_\w+)", clean))
+        known.update(re.findall(r"\bVAR\s*=\s*(tsin_\w+)", clean))  # tsin_movement_tick_effect sets $VAR$
     loc = loc_keys("english")
     for p, clean in texts.items():
         unquoted = re.sub(r'"[^"\n]*"', '""', clean)
