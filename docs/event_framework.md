@@ -90,6 +90,10 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_invention.10` | 베서머 전로 (나라당 한 번) | `tsin_bessemer_process_advance` 연구 | 사용권 판매(강철 +10%, 시민 만족) / 국영 제강소(금 -3, 강철 +10%, 철도 비용 -10%) |
 | `tsin_invention.20` | 다이너마이트 (나라당 한 번) | `tsin_dynamite_advance` 연구 | 새 광산(석탄 +10%, 철 +5%) / 철도 터널(금 -2, 도로 건설 시간 -15%, 철도 비용 -10%) / 사용 제한(안정도 +) |
 | `tsin_invention.30` | 냉동선 (나라당 한 번) | 1875년 이후, `tsin_machine_tools_advance` 연구, 해안 도시 보유 | 냉동육(금 -2, 가축 +15%) / 냉장 어선단(금 -2, 생선 +15%) / 해운 회사에 맡김 |
+| `tsin_invention.40` | 발전기 (나라당 한 번) | `tsin_dynamo_advance` 연구 | 민간 전기 회사(전력 산출 +10%, 시민 만족) / 국영 발전 사업(금 -3, 전력 +10%, 구리 +10%) |
+| `tsin_invention.50` | 전화 (나라당 한 번) | `tsin_telegraph_telephone_advance` 연구 | 국영 전화망(금 -2, 내각 효율 +5%) / 민간 전화 회사(상인 힘 +0.1, 시민 만족) |
+| `tsin_invention.60` | 백열등 (나라당 한 번) | `tsin_electric_lighting_advance` 연구 | 야간 조업(생산 효율 +2%, 평민 불만) / 열람실 조명(금 -2, 최대 문해율 +2) |
+| `tsin_invention.70` | 수도의 전등 (나라당 한 번) | 백열등 이벤트 뒤, 수도가 도시·대도시 | 시영 전등(금 -3, 수도 불안 -0.05, 이주 매력 +0.1) / 민간 특허(수도 이주 매력 +0.1, 시민 만족) / 가스등 유지 |
 | `tsin_abolition.1` | 폐지론자 청원 (나라당 한 번) | 노예제 존재, 폐지 운동 ≥ 40 | 수용(운동 +10, 성직자 만족, 귀족 불만) / 해군 단속(노예무역 금지 정책 시행, 통치자 `protecting_against_slave_trade`, 시민 불만) / 탄압(운동 -20, `tsin_abolitionists_suppressed`, 안정도 -) |
 | `tsin_abolition.2` | 해방 | 제7시대, `slavery_outlawed`, 노예 인구 남음 | 즉시 해방(귀족·시민 불만, `tsin_emancipation_shock` 감쇠) / 보상 해방(금 -4) / 도제 기간(6년 뒤 `.3`) |
 | `tsin_abolition.3` | 도제 기간의 끝 | `.2` 도제 선택 후 수정자 만료 | 모든 노예 해방 |

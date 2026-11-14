@@ -97,6 +97,10 @@ tsin_invention_yearly_pulse = {
 		10 = tsin_invention.10
 		10 = tsin_invention.20
 		10 = tsin_invention.30
+		10 = tsin_invention.40
+		10 = tsin_invention.50
+		10 = tsin_invention.60
+		10 = tsin_invention.70
 
 		chance_to_happen = 20
 	}

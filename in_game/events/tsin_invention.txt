@@ -162,3 +162,209 @@ tsin_invention.30 = {
 		}
 	}
 }
+
+# Electrical inventions (M5). Same pattern as above: once per country, after the matching advance.
+
+# The dynamo
+tsin_invention.40 = {
+	type = country_event
+	title = tsin_invention.40.title
+	desc = tsin_invention.40.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_dynamo_advance
+		NOT = { has_variable = tsin_invention_dynamo_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_dynamo_done
+	}
+
+	# Charter private electrical firms
+	option = {
+		name = tsin_invention.40.a
+		add_country_modifier = { modifier = tsin_invention_electrical_firms years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Build state power works
+	option = {
+		name = tsin_invention.40.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_invention_state_power_works years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}
+
+# The telephone
+tsin_invention.50 = {
+	type = country_event
+	title = tsin_invention.50.title
+	desc = tsin_invention.50.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_telegraph_telephone_advance
+		NOT = { has_variable = tsin_invention_telephone_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_telephone_done
+	}
+
+	# Put the exchanges under the state post office
+	option = {
+		name = tsin_invention.50.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_invention_state_telephone years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# License private telephone companies
+	option = {
+		name = tsin_invention.50.b
+		add_country_modifier = { modifier = tsin_invention_telephone_companies years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# The incandescent lamp
+tsin_invention.60 = {
+	type = country_event
+	title = tsin_invention.60.title
+	desc = tsin_invention.60.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_electric_lighting_advance
+		NOT = { has_variable = tsin_invention_lamp_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_lamp_done
+	}
+
+	# Light the factories and run night shifts
+	option = {
+		name = tsin_invention.60.a
+		add_country_modifier = { modifier = tsin_invention_night_shifts years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Light schools, libraries and reading rooms
+	option = {
+		name = tsin_invention.60.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_invention_lit_reading_rooms years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# Electric lighting comes to the capital
+tsin_invention.70 = {
+	type = country_event
+	title = tsin_invention.70.title
+	desc = tsin_invention.70.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_electric_lighting_advance
+		has_variable = tsin_invention_lamp_done
+		NOT = { has_variable = tsin_invention_city_lights_done }
+		capital ?= {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_city_lights_done
+		capital = { save_scope_as = tsin_lit_capital }
+	}
+
+	# A municipal power and lighting company
+	option = {
+		name = tsin_invention.70.a
+		change_gold_effect = { scale = -3 }
+		scope:tsin_lit_capital = {
+			add_location_modifier = { modifier = tsin_capital_municipal_lights years = modifier_duration_years_long mode = add_and_extend }
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Grant a private lighting franchise
+	option = {
+		name = tsin_invention.70.b
+		scope:tsin_lit_capital = {
+			add_location_modifier = { modifier = tsin_capital_lighting_franchise years = modifier_duration_years_long mode = add_and_extend }
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Keep the gas lamps for now
+	option = {
+		name = tsin_invention.70.c
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
