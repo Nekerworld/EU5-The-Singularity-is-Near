@@ -1,0 +1,39 @@
+﻿# Age VII mass society map values (M4). root = location. Only reads the location and its owner.
+
+# Urban workforce share: burghers and laborers over the whole population.
+tsin_location_urban_share = {
+	value = 0
+	if = {
+		limit = { population > 0 }
+		add = num_pop_type:burghers
+		add = num_pop_type:laborers
+		divide = population
+	}
+}
+
+tsin_map_urban_share_saturation = 0.5
+
+# Owner's labor movement strength, 0..1.
+tsin_location_labor_pressure = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_labor_unionism } }
+		add = owner.var:tsin_labor_unionism
+		divide = tsin_movement_max
+	}
+}
+
+# Owner's strongest movement (tsin_radicalism, 0..100) weighted by local discontent, 0..1.
+tsin_location_radicalism = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_radicalism } }
+		add = owner.var:tsin_radicalism
+		divide = tsin_movement_max
+		multiply = {
+			value = 1.5
+			subtract = average_satisfaction
+		}
+		max = 1
+	}
+}

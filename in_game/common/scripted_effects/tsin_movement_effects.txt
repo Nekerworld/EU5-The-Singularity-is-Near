@@ -16,6 +16,25 @@ tsin_update_movements_effect = {
 	tsin_movement_tick_effect = { VAR = tsin_labor_unionism GROWTH = tsin_labor_unionism_yearly_growth AGITATION = tsin_labor_unionism_agitation }
 	tsin_movement_tick_effect = { VAR = tsin_socialism GROWTH = tsin_socialism_yearly_growth AGITATION = tsin_socialism_agitation }
 	tsin_movement_tick_effect = { VAR = tsin_womens_suffrage GROWTH = tsin_womens_suffrage_yearly_growth AGITATION = tsin_womens_suffrage_agitation }
+
+	# Strongest movement, read by the tsin_radicalism map mode
+	set_variable = { name = tsin_radicalism value = 0 }
+	tsin_radicalism_consider_effect = { VAR = tsin_abolitionism }
+	tsin_radicalism_consider_effect = { VAR = tsin_liberalism }
+	tsin_radicalism_consider_effect = { VAR = tsin_nationalism }
+	tsin_radicalism_consider_effect = { VAR = tsin_labor_unionism }
+	tsin_radicalism_consider_effect = { VAR = tsin_socialism }
+	tsin_radicalism_consider_effect = { VAR = tsin_womens_suffrage }
+}
+
+tsin_radicalism_consider_effect = {
+	if = {
+		limit = {
+			has_variable = $VAR$
+			var:$VAR$ > var:tsin_radicalism
+		}
+		set_variable = { name = tsin_radicalism value = var:$VAR$ }
+	}
 }
 
 # One movement: grow, clamp to 0..tsin_movement_max, toggle the agitation modifier with hysteresis.

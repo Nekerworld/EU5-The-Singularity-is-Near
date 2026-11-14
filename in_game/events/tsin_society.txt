@@ -94,6 +94,7 @@ tsin_society.20 = {
 	# Recognize the union
 	option = {
 		name = tsin_society.20.a
+		scope:tsin_strike_location = { set_variable = { name = tsin_labor_unrest value = 1 years = 5 } }
 		change_variable = { name = tsin_labor_unionism subtract = 15 }
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
@@ -105,6 +106,7 @@ tsin_society.20 = {
 	# Break the strike
 	option = {
 		name = tsin_society.20.b
+		scope:tsin_strike_location = { set_variable = { name = tsin_labor_unrest value = 3 years = 5 } }
 		add_country_modifier = { modifier = tsin_strike_broken years = modifier_duration_years_short mode = add_and_extend }
 		change_variable = { name = tsin_labor_unionism add = 10 }
 		change_variable = { name = tsin_socialism add = 5 }
@@ -117,6 +119,7 @@ tsin_society.20 = {
 	# Arbitration
 	option = {
 		name = tsin_society.20.c
+		scope:tsin_strike_location = { set_variable = { name = tsin_labor_unrest value = 2 years = 5 } }
 		change_gold_effect = { scale = -2 }
 		change_variable = { name = tsin_labor_unionism subtract = 5 }
 		ai_chance = {

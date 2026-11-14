@@ -90,6 +90,7 @@ tsin_springtime.2 = {
 	# Send in the troops
 	option = {
 		name = tsin_springtime.2.b
+		capital ?= { set_variable = { name = tsin_labor_unrest value = 3 years = 5 } }
 		add_stability = stability_weak_penalty
 		change_variable = { name = tsin_liberalism add = 5 }
 		ai_chance = {

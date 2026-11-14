@@ -1,4 +1,4 @@
-# 지도 모드 공통 틀
+﻿# 지도 모드 공통 틀
 
 ## 파일
 
@@ -51,6 +51,9 @@
 | `tsin_industrial_institutions` | demography | M1 | 관문 H 시험용 겸 제7시대 제도 확산 |
 | `tsin_industrialization` | economy | M2 | 공장 일자리 비중 그라데이션, 툴팁 `TSIN_INDUSTRIALIZATION_MAPMODE_TT` |
 | `tsin_industrial_investment` | economy | M3 | 외국 소유 건물(`num_foreign_buildings`)과 소유국의 투자 정책으로 5단계 |
+| `tsin_urbanization` | population | M4 | 시민+노동자 비중 그라데이션(50%에서 최대), 도시·대도시는 최대색 |
+| `tsin_labor_unrest` | population | M4 | 최근 파업 지점(위치 변수) → 공장 지점은 소유국 노동 운동 세기 → 공장 없음 |
+| `tsin_radicalism` | population | M4 | 소유국 최강 운동 × 지점 불만 |
 
 ## 산업 투자 지도 모드의 범위
 
@@ -62,3 +65,20 @@
 색: 외국 소유 건물이 있는 공업 지점(최대) → 외국 소유 건물만 있는 지점(높음) → 소유국이 `tsin_state_industry_policy`인 공업 지점(중간) → 그 밖의 공업 지점(낮음) → 공장 없음(최소).
 
 사용자 확인 필요: `num_foreign_buildings`를 지도 모드 `map_color`의 `limit`에서 써도 되는지, `has_policy = policy:tsin_state_industry_policy`가 모드 정책에 동작하는지.
+
+## 대중사회 지도 모드 (M4)
+
+위치 값은 `in_game/common/script_values/tsin_society_map_values.txt`에 있다. 모두 지점 자신과 소유국 변수만 읽는다.
+
+| 값 | 의미 |
+|---|---|
+| `tsin_location_urban_share` | (`num_pop_type:burghers` + `num_pop_type:laborers`) ÷ `population` |
+| `tsin_location_labor_pressure` | 소유국 `tsin_labor_unionism` ÷ 100 |
+| `tsin_location_radicalism` | 소유국 `tsin_radicalism` ÷ 100 × (1.5 − `average_satisfaction`), 최대 1 |
+
+- **도시화:** 계획의 "도시 인구 비율 또는 도시 등급 대비 인구" 가운데 인구 비율을 택했다. EU5에는 도시 인구라는 값이 따로 없어서, 농업 밖에서 일하는 시민·노동자 비중으로 근사했다. 도시 등급은 `location_rank`로 따로 칠한다.
+- **노동 불안:** 위치 변수 `tsin_labor_unrest`(1 인정, 2 중재, 3 진압)를 `tsin_society.20` 파업 이벤트가 그 공장 지점에, `tsin_springtime.2`의 진압 선택이 수도에 5년 동안 남긴다. 변수가 없는 공장 지점은 소유국 노동 운동 세기로 칠한다.
+- **급진성:** `tsin_update_movements_effect`가 매년 여섯 운동 가운데 가장 큰 값을 국가 변수 `tsin_radicalism`에 담는다. 바닐라 `movements`는 종교·문화 운동이라 이념 확산을 담을 수 없어(`docs/mass_society.md`), 그 지도 모드를 쓰지 않았다.
+- **생활수준:** 바닐라 `satisfaction` 지도 모드(범주 population, `color_mode = satisfaction`)가 이미 지점 만족도를 보여 주므로 따로 만들지 않았다. 급진성 설명에 바닐라 지도 모드를 안내한다.
+
+사용자 확인 필요: 스크립트 값의 `owner.var:` 읽기가 지도 모드에서 동작하는지(바닐라 `rise_of_the_ottomans` 이벤트에 같은 형식이 있음), `average_satisfaction`이 0~1 범위인지, 이벤트로 지점에 `years`가 붙은 변수를 둘 수 있는지.
