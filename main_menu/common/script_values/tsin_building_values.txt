@@ -1,0 +1,3 @@
+﻿# Age VII building values (compare mills_employment = 0.25 in vanilla default_values.txt).
+
+tsin_mechanized_mill_employment = 0.15

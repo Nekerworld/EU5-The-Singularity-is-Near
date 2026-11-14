@@ -1,0 +1,10 @@
+﻿# Age VII factory construction: mill_construction plus steel and engines.
+
+tsin_factory_construction = {
+	tools = 0.6
+	masonry = 3.5
+	steel = 0.5
+	tsin_engines = 0.2
+
+	category = building_construction
+}

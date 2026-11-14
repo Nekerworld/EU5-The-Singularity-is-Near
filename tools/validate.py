@@ -180,6 +180,8 @@ def check_keys() -> None:
         if p.name.startswith("zzz_tsin_age7_"):
             continue  # vanilla copies
         d = db_dir_of(p)
+        if d.endswith("named_colors"):
+            continue
         known = vocab(d) | mods | gv | mine
         clean = pdx.strip_comments(pdx.read_text(p))
         for blk in pdx.top_level_blocks(clean):
@@ -226,6 +228,20 @@ REF_FIELD = {
 }
 
 
+_unique_pm_cache: set[str] = set()
+
+
+def unique_pm_names() -> set[str]:
+    """Production methods defined inline in building_types (unique_production_methods)."""
+    if not _unique_pm_cache:
+        for root in (GAME, MOD):
+            base = root / "in_game/common/building_types"
+            for p in base.rglob("*.txt") if base.exists() else []:
+                clean = pdx.strip_comments(pdx.read_text(p))
+                _unique_pm_cache.update(re.findall(r"(\w+)\s*=\s*\{\s*icon_type\b", clean))
+    return _unique_pm_cache
+
+
 def check_refs() -> None:
     for p in mod_files((".txt",)):
         if p.name.startswith("zzz_tsin_age7_"):
@@ -245,6 +261,8 @@ def check_refs() -> None:
             if field == "produced" and "building_types" not in rel(p) and "production_methods" not in rel(p):
                 continue
             if name in ("yes", "no"):
+                continue
+            if field == "unlock_production_method" and name in unique_pm_names():
                 continue
             if name not in db_keys(d):
                 err(f"refs: {rel(p)} {field} = {name} not found in {d}")
@@ -282,6 +300,31 @@ def check_gfx() -> None:
                     continue
                 if not gfx_exists(f"gfx/interface/icons/map_modes/{b.key}.dds"):
                     err(f"gfx: map mode {b.key} has no gfx/interface/icons/map_modes/{b.key}.dds")
+        if "common/building_types" in r:
+            for b in pdx.top_level_blocks(clean):
+                if not gfx_exists(f"gfx/interface/icons/buildings/{b.key}.dds"):
+                    err(f"gfx: building {b.key} has no gfx/interface/icons/buildings/{b.key}.dds")
+            for kind, icon in re.findall(r"\bicon_type\s*=\s*(\w+)\s+icon\s*=\s*(\w+)", clean):
+                path = {
+                    "goods": f"gfx/interface/icons/trade_goods/icon_goods_{icon}.dds",
+                    "building_type": f"gfx/interface/icons/buildings/{icon}.dds",
+                }.get(kind)
+                if path and not gfx_exists(path):
+                    err(f"gfx: {r} production method icon {kind}/{icon} has no {path}")
+        if "common/industry_types" in r:
+            for b in pdx.top_level_blocks(clean):
+                if not gfx_exists(f"gfx/interface/icons/industry_types/{b.key}.dds"):
+                    err(f"gfx: industry type {b.key} has no gfx/interface/icons/industry_types/{b.key}.dds")
+        if "common/goods/" in r:
+            for b in pdx.top_level_blocks(clean):
+                for path in (f"gfx/interface/icons/trade_goods/icon_goods_{b.key}.dds",
+                             f"gfx/interface/icons/trade_goods/illustrations/icon_goods_{b.key}.dds"):
+                    if not gfx_exists(path):
+                        err(f"gfx: goods {b.key} has no {path}")
+        if "common/modifier_icons" in r:
+            for path in re.findall(r'"(gfx/[^"]+\.dds)"', clean):
+                if not gfx_exists(path):
+                    err(f"gfx: {r} modifier icon {path} not found")
 
 
 # ---------------------------------------------------------------- localisation
@@ -304,6 +347,7 @@ LOC_DBS = {
     "in_game/common/advances": ["{k}", "{k}_desc"],
     "in_game/common/goods": ["{k}"],
     "in_game/common/building_types": ["{k}", "{k}_desc"],
+    "in_game/common/industry_types": ["{k}", "{k}_desc"],
     "in_game/common/situations": ["{k}", "{k}_desc"],
     "in_game/common/disasters": ["{k}", "{k}_desc"],
     "in_game/common/laws": ["{k}", "{k}_desc"],

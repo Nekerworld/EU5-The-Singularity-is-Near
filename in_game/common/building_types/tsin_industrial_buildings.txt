@@ -1,0 +1,182 @@
+﻿# Age VII industrial buildings.
+# Inputs are priced so that output value is about input cost * (1 + mills_profit_margin), as in vanilla mills.
+# Prices: iron 3, coal 2, tools 3, steel 5, copper 3, lumber 1.5, glass 3, cotton 3, wool 2.5, fiber_crops 2, dyes 4, tsin_engines 6.
+
+# Gate E test building: two slots, each with alternative production methods; one method is advance-locked.
+tsin_machine_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 12.0 -> 2.7 engines (16.2)
+		tsin_machine_works_iron_frame = {
+			icon_type = goods
+			icon = iron
+			iron = 2.25
+			coal = 1.5
+			tools = 0.75
+			produced = tsin_engines
+			output = 2.7
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# unlocked by tsin_steel_frame_engines_advance; inputs 12.5 -> 3.0 engines (18.0)
+		tsin_machine_works_steel_frame = {
+			icon_type = goods
+			icon = steel
+			steel = 1.8
+			coal = 1.0
+			tools = 0.5
+			produced = tsin_engines
+			output = 3.0
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	unique_production_methods = {
+		# inputs 1.35 -> 0.3 engines (1.8)
+		tsin_machine_works_copper_fittings = {
+			icon_type = goods
+			icon = copper
+			copper = 0.3
+			lumber = 0.3
+			produced = tsin_engines
+			output = 0.3
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 1.35 -> 0.33 engines (1.98)
+		tsin_machine_works_glass_gauges = {
+			icon_type = goods
+			icon = glass
+			copper = 0.2
+			glass = 0.25
+			produced = tsin_engines
+			output = 0.33
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+# Automation tier: upgrades textile_mill in place, fewer workers, engines and coal as a second input slot.
+tsin_mechanized_textile_mill = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	category = consumer_goods_category
+	employment_size = tsin_mechanized_mill_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = textile_mill
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 12.6 -> 5.67 cloth (17.0)
+		tsin_mechanized_cotton = {
+			icon_type = goods
+			icon = cotton
+			cotton = 3.6
+			dyes = 0.45
+			produced = cloth
+			output = 5.67
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 12.5 -> 5.63 cloth
+		tsin_mechanized_wool = {
+			icon_type = goods
+			icon = wool
+			wool = 4.2
+			dyes = 0.5
+			produced = cloth
+			output = 5.63
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 12.6 -> 5.67 cloth
+		tsin_mechanized_fiber_crops = {
+			icon_type = goods
+			icon = fiber_crops
+			fiber_crops = 5.3
+			dyes = 0.5
+			produced = cloth
+			output = 5.67
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	unique_production_methods = {
+		# inputs 3.9 -> 1.75 cloth (5.25)
+		tsin_mechanized_steam_power = {
+			icon_type = goods
+			icon = tsin_engines
+			tsin_engines = 0.35
+			coal = 0.6
+			tools = 0.2
+			produced = cloth
+			output = 1.75
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 1.35 -> 0.6 cloth (1.8)
+		tsin_mechanized_water_power = {
+			icon_type = goods
+			icon = lumber
+			lumber = 0.5
+			tools = 0.2
+			produced = cloth
+			output = 0.6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	custom_tags = { lategame_manufactory }
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}

@@ -1,0 +1,14 @@
+﻿# Age VII industry promotions (see vanilla industry_types/01_industries.txt).
+
+tsin_machinery = {
+	color = hsv { 0.07 0.45 0.55 }
+
+	potential = {
+		num_locations > 0
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	goods = { tsin_engines }
+	output = industry_promotion_output
+	pop_demand = industry_promotion_pop_demand
+}

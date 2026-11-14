@@ -1,6 +1,7 @@
-﻿# Age VII ship demands: steam engines and iron hulls shift demand from lumber/cloth to steel/coal/tools.
+﻿# Age VII ship demands: steam engines and iron hulls shift demand from lumber/cloth to steel/coal/tools/engines.
 
 tsin_galley_7_construction = {
+	tsin_engines = 0.3
 	naval_supplies = 0.8
 	tools = 1.5
 	steel = 1.0
@@ -9,6 +10,7 @@ tsin_galley_7_construction = {
 	category = ship_construction
 }
 tsin_galley_7_repair = {
+	tsin_engines = 0.03
 	naval_supplies = 0.15
 	lumber = 2.5
 	steel = 0.15
@@ -24,6 +26,7 @@ tsin_galley_7_maintenance = {
 }
 
 tsin_light_ship_7_construction = {
+	tsin_engines = 0.8
 	naval_supplies = 0.8
 	tools = 1.5
 	steel = 2.0
@@ -33,6 +36,7 @@ tsin_light_ship_7_construction = {
 	category = ship_construction
 }
 tsin_light_ship_7_repair = {
+	tsin_engines = 0.08
 	naval_supplies = 0.15
 	lumber = 2.5
 	steel = 0.3
@@ -48,6 +52,7 @@ tsin_light_ship_7_maintenance = {
 }
 
 tsin_transport_7_construction = {
+	tsin_engines = 1.0
 	naval_supplies = 0.8
 	tools = 1.5
 	steel = 2.5
@@ -57,6 +62,7 @@ tsin_transport_7_construction = {
 	category = ship_construction
 }
 tsin_transport_7_repair = {
+	tsin_engines = 0.1
 	naval_supplies = 0.15
 	lumber = 4.5
 	steel = 0.4
@@ -72,6 +78,7 @@ tsin_transport_7_maintenance = {
 }
 
 tsin_heavy_ship_7_construction = {
+	tsin_engines = 3.0
 	naval_supplies = 1.5
 	tools = 2.0
 	steel = 10.0
@@ -81,6 +88,7 @@ tsin_heavy_ship_7_construction = {
 	category = ship_construction
 }
 tsin_heavy_ship_7_repair = {
+	tsin_engines = 0.3
 	naval_supplies = 0.3
 	lumber = 5
 	steel = 1.5

@@ -1,0 +1,9 @@
+﻿# Age VII produced goods.
+# Engines are an intermediate good like steel: no pop demand, consumed by mills, ships and construction.
+
+tsin_engines = {
+	category = produced
+	color = goods_tsin_engines
+	default_market_price = 6
+	transport_cost = 1
+}

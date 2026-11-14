@@ -82,6 +82,20 @@ INSTITUTIONS = [
     ("scientific_revolution", "tsin_electrification", 60),
 ]
 
+# Goods, modifier-type, building and map mode placeholders: (vanilla source, mod target, hue shift)
+EXTRA = [
+    ("icons/trade_goods/icon_goods_steel.dds", "icons/trade_goods/icon_goods_tsin_engines.dds", 30),
+    ("icons/trade_goods/illustrations/icon_goods_steel.dds", "icons/trade_goods/illustrations/icon_goods_tsin_engines.dds", 30),
+    ("icons/modifier_types/steel_positive.dds", "icons/modifier_types/tsin_engines_positive.dds", 30),
+    ("icons/modifier_types/steel_negative.dds", "icons/modifier_types/tsin_engines_negative.dds", 30),
+    ("icons/modifier_types/global_steel_pop_demand.dds", "icons/modifier_types/global_tsin_engines_pop_demand.dds", 30),
+    ("icons/modifier_types/steel_impacts_inflation.dds", "icons/modifier_types/tsin_engines_impacts_inflation.dds", 30),
+    ("icons/buildings/steel_mill.dds", "icons/buildings/tsin_machine_works.dds", 30),
+    ("icons/buildings/textile_mill.dds", "icons/buildings/tsin_mechanized_textile_mill.dds", 200),
+    ("icons/map_modes/building_based.dds", "icons/map_modes/tsin_industrialization.dds", 30),
+    ("icons/industry_types/crafts.dds", "icons/industry_types/tsin_machinery.dds", 30),
+]
+
 
 def main() -> int:
     jobs = [
@@ -92,6 +106,7 @@ def main() -> int:
         jobs.append((f"icons/institutions/{src}.dds", f"icons/institutions/{dst}.dds", deg))
         jobs.append((f"illustrations/institutions/{src}.dds", f"illustrations/institutions/{dst}.dds", deg))
     jobs.append(("icons/map_modes/institution.dds", "icons/map_modes/tsin_industrial_institutions.dds", 200))
+    jobs.extend(EXTRA)
     PREVIEW.mkdir(parents=True, exist_ok=True)
     for src, dst, recolour in jobs:
         source = Image.open(SRC / src)
