@@ -1,0 +1,113 @@
+﻿# Age VII modernization reform mission pack (M6, optional). For countries under pressure to open up:
+# forced to open a treaty port (var:tsin_treaty_ports_opened), or still without a single factory after 1850.
+# No country tags. The final task revises the unequal treaty (removes tsin_unequal_treaty).
+
+tsin_modernization = {
+	icon = tsin_modernization
+	repeatable = no
+	player_playstyle = administrative
+	visible = {
+		game_has_missions_enabled = yes
+		current_age_or_later = { age = age_7_industrialization }
+		exists = capital
+		OR = {
+			has_variable = tsin_treaty_ports_opened
+			AND = {
+				current_date >= 1850.1.1
+				NOT = { tsin_has_factory_trigger = yes }
+			}
+		}
+		has_enabled_mission_trigger = { type = tsin_modernization }
+	}
+
+	enabled = {
+		exists = capital
+	}
+
+	chance = 3600
+
+	on_completion = {
+		disable_mission_effect = { type = tsin_modernization }
+	}
+
+	tsin_mission_foreign_advisors = {
+		icon = diplomatic_training
+		requires = { }
+		enabled = {
+			has_advance = tsin_steam_age_advance
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_foreign_advisors years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_army_reform = {
+		icon = drill_army_advance
+		requires = { tsin_mission_foreign_advisors }
+		enabled = {
+			has_advance = tsin_percussion_cap_advance
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_army_reform years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_state_arsenal = {
+		icon = industrialization_advance
+		requires = { tsin_mission_foreign_advisors }
+		enabled = {
+			tsin_has_factory_trigger = yes
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_state_arsenal years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_modern_schools = {
+		icon = dutch_education
+		requires = { tsin_mission_foreign_advisors }
+		enabled = {
+			has_advance = tsin_mass_society_advance
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_modern_schools years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_modern_communications = {
+		icon = railroad_advance
+		requires = { tsin_mission_state_arsenal }
+		enabled = {
+			any_owned_location = {
+				is_capital = no
+				has_road_of_type_to = {
+					target = root.capital
+					type = road_type:railroad
+				}
+			}
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_modern_communications years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_treaty_revision = {
+		final = yes
+		icon = a_modern_nation
+		requires = { tsin_mission_army_reform tsin_mission_modern_schools tsin_mission_modern_communications }
+		enabled = {
+			tsin_has_factories_trigger = { COUNT = 3 }
+			at_war = no
+		}
+		duration = 0
+		on_completion = {
+			remove_country_modifier = tsin_unequal_treaty
+			add_country_modifier = { modifier = tsin_mission_treaty_revision years = modifier_duration_years_extended mode = add_and_extend }
+		}
+	}
+}

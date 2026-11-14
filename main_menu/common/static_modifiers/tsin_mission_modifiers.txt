@@ -42,3 +42,50 @@ tsin_mission_industrial_nation = {
 	}
 	global_production_efficiency = 0.03
 }
+
+# Rewards of the tsin_modernization mission pack.
+
+tsin_mission_foreign_advisors = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+}
+
+tsin_mission_army_reform = {
+	game_data = {
+		category = country
+	}
+	discipline = 0.03
+	land_morale_modifier = 0.05
+}
+
+tsin_mission_state_arsenal = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.1
+}
+
+tsin_mission_modern_schools = {
+	game_data = {
+		category = country
+	}
+	global_max_literacy = 3
+	global_institution_growth_modifier = 0.05
+}
+
+tsin_mission_modern_communications = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.15
+}
+
+tsin_mission_treaty_revision = {
+	game_data = {
+		category = country
+	}
+	diplomatic_reputation = 1
+	research_speed_modifier = 0.03
+}

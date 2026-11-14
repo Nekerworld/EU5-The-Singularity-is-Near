@@ -103,6 +103,7 @@ EXTRA = [
     ("icons/buildings/local_smelters.dds", "icons/buildings/tsin_blasting_works.dds", 330),
     ("icons/buildings/bridge_infrastructure.dds", "icons/buildings/tsin_railway_station.dds", 30),
     ("illustrations/missions/generic_capital_economy.dds", "illustrations/missions/tsin_industrialization.dds", 30),
+    ("illustrations/missions/generic_progress_and_literacy.dds", "illustrations/missions/tsin_modernization.dds", 180),
     ("icons/situations/little_ice_age.dds", "icons/situations/tsin_long_depression.dds", 150),
     ("illustrations/situation/little_ice_age.dds", "illustrations/situation/tsin_long_depression.dds", 150),
     ("icons/situations/colonial_revolution.dds", "icons/situations/tsin_scramble_for_colonies.dds", 60),
