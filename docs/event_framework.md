@@ -79,6 +79,9 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_corn_laws.1` | 반곡물법 연맹 | 제7시대, 곡물법 미폐지, 자유무역 값 < 90 | 지지(자유무역 쪽 이동, 시민 만족, 귀족 불만) / 집회 금지(귀족 만족, 시민 불만, 안정도 -) / 방관(자유무역 쪽 약간) |
 | `tsin_corn_laws.2` | 곡물법 폐지 후속 (의제 `pa_tsin_repeal_corn_laws` 통과 시) | - | 지주 보상(금 -3, 귀족 만족 감쇠 보정) / 시장에 맡김(귀족 불만, 시민 만족) |
 | `tsin_corn_laws.3` | 빵 폭동 | 곡물 관세 보호 중 | 곡물 수입(금 -2, 평민 만족) / 질서 회복(평민 목표 만족 -10% 감쇠) / 관세 중단(보호 해제, 귀족 불만) |
+| `tsin_invention.10` | 베서머 전로 (나라당 한 번) | `tsin_bessemer_process_advance` 연구 | 사용권 판매(강철 +10%, 시민 만족) / 국영 제강소(금 -3, 강철 +10%, 철도 비용 -10%) |
+| `tsin_invention.20` | 다이너마이트 (나라당 한 번) | `tsin_dynamite_advance` 연구 | 새 광산(석탄 +10%, 철 +5%) / 철도 터널(금 -2, 도로 건설 시간 -15%, 철도 비용 -10%) / 사용 제한(안정도 +) |
+| `tsin_invention.30` | 냉동선 (나라당 한 번) | 1875년 이후, `tsin_machine_tools_advance` 연구, 해안 도시 보유 | 냉동육(금 -2, 가축 +15%) / 냉장 어선단(금 -2, 생선 +15%) / 해운 회사에 맡김 |
 
 곡물법 의회 의제(`in_game/common/parliament_agendas/tsin_parliament_agendas.txt`): 시민 계층의 `pa_tsin_repeal_corn_laws`와 귀족 계층의 `pa_tsin_protect_grain`. 둘 중 하나의 영구 보정치(`tsin_corn_laws_repealed` / `tsin_corn_laws_protection`)만 남고, `mercantilism_vs_free_trade` 축을 조금 움직인다. 사회 가치 값이 자기 쪽이면 의제 확률이 10에서 20으로 오른다. 사용자 확인 필요: 의회 화면에 두 의제가 제7시대 이후에만 나오는지.
 

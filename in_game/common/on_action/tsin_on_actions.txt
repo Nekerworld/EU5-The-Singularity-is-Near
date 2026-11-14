@@ -13,6 +13,7 @@ yearly_country_pulse = {
 	on_actions = {
 		tsin_yearly_country_pulse
 		tsin_economy_yearly_pulse
+		tsin_invention_yearly_pulse
 	}
 }
 
@@ -74,6 +75,21 @@ tsin_economy_yearly_pulse = {
 		5 = tsin_corn_laws.3
 
 		chance_to_happen = 25
+	}
+}
+
+# root = country. Invention flavor; each event checks its own advance and fires once per country.
+tsin_invention_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_invention.10
+		10 = tsin_invention.20
+		10 = tsin_invention.30
+
+		chance_to_happen = 20
 	}
 }
 

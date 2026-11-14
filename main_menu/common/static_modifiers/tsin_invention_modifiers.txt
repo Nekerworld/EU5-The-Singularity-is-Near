@@ -1,0 +1,46 @@
+﻿# Invention flavor (in_game/events/tsin_invention.txt).
+
+tsin_invention_bessemer_licenses = {
+	game_data = {
+		category = country
+	}
+	global_steel_output_modifier = 0.1
+}
+
+tsin_invention_bessemer_state_works = {
+	game_data = {
+		category = country
+	}
+	global_steel_output_modifier = 0.1
+	build_railroad_cost_modifier = -0.1
+}
+
+tsin_invention_dynamite_mines = {
+	game_data = {
+		category = country
+	}
+	global_coal_output_modifier = 0.1
+	global_iron_output_modifier = 0.05
+}
+
+tsin_invention_dynamite_tunnels = {
+	game_data = {
+		category = country
+	}
+	global_road_building_time = -0.15
+	build_railroad_cost_modifier = -0.1
+}
+
+tsin_invention_refrigerated_meat = {
+	game_data = {
+		category = country
+	}
+	global_livestock_output_modifier = 0.15
+}
+
+tsin_invention_cold_storage_fleets = {
+	game_data = {
+		category = country
+	}
+	global_fish_output_modifier = 0.15
+}

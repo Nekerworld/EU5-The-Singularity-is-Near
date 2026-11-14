@@ -1,0 +1,164 @@
+﻿namespace = tsin_invention
+
+# Invention flavor (M3). Each fires once per country, only after the matching advance is researched,
+# and asks where to invest the new technique. Fired from tsin_invention_yearly_pulse; spends the flavor budget.
+
+# The Bessemer converter
+tsin_invention.10 = {
+	type = country_event
+	title = tsin_invention.10.title
+	desc = tsin_invention.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_bessemer_process_advance
+		NOT = { has_variable = tsin_invention_bessemer_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_bessemer_done
+	}
+
+	# License the process to private ironmasters
+	option = {
+		name = tsin_invention.10.a
+		add_country_modifier = { modifier = tsin_invention_bessemer_licenses years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Build state converters for rails and guns
+	option = {
+		name = tsin_invention.10.b
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_invention_bessemer_state_works years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}
+
+# Dynamite
+tsin_invention.20 = {
+	type = country_event
+	title = tsin_invention.20.title
+	desc = tsin_invention.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_dynamite_advance
+		NOT = { has_variable = tsin_invention_dynamite_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_dynamite_done
+	}
+
+	# Open new mines
+	option = {
+		name = tsin_invention.20.a
+		add_country_modifier = { modifier = tsin_invention_dynamite_mines years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Blast tunnels and cuttings for the railways
+	option = {
+		name = tsin_invention.20.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_invention_dynamite_tunnels years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Restrict it for fear of accidents
+	option = {
+		name = tsin_invention.20.c
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Refrigerated ships
+tsin_invention.30 = {
+	type = country_event
+	title = tsin_invention.30.title
+	desc = tsin_invention.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		current_year >= 1875
+		has_advance = tsin_machine_tools_advance
+		any_owned_non_rural_location = { is_coastal = yes }
+		NOT = { has_variable = tsin_invention_refrigeration_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_invention_refrigeration_done
+	}
+
+	# Ship chilled meat from the pastures
+	option = {
+		name = tsin_invention.30.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_invention_refrigerated_meat years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Fit out cold-storage fishing fleets
+	option = {
+		name = tsin_invention.30.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_invention_cold_storage_fleets years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave it to the shipping lines
+	option = {
+		name = tsin_invention.30.c
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
