@@ -1,0 +1,39 @@
+﻿tsin_flavor_opened_ports = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+	max_tariff = -0.05
+}
+
+tsin_flavor_land_redemption = {
+	game_data = {
+		category = country
+	}
+	non_rural_migration_attraction = 0.1
+	global_raw_material_output = -0.05
+}
+
+tsin_flavor_landless_freedmen = {
+	game_data = {
+		category = country
+	}
+	non_rural_migration_attraction = 0.25
+	global_raw_material_output = -0.1
+}
+
+tsin_flavor_reorganization_edict = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+	country_cabinet_efficiency = 0.05
+}
+
+tsin_flavor_self_strengthening = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.1
+	discipline = 0.02
+}

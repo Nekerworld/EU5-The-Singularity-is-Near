@@ -98,7 +98,7 @@
 | 패전국 | `tsin_unequal_treaty` 불평등 조약 | 최대 관세 -5%, 월 위신 -0.05 |
 | 승전국 | `tsin_treaty_port_concessions` 조약항 이권 | 상인 힘 +5% |
 
-지점에는 `var:tsin_treaty_port_of`(승전국, 30년), 패전국에는 개항 횟수 `var:tsin_treaty_ports_opened`가 남는다. 근대화 개혁 내용이 이 횟수를 "개항 압력"으로 쓴다.
+지점에는 `var:tsin_treaty_port_of`(승전국, 30년), 패전국에는 개항 횟수 `var:tsin_treaty_ports_opened`가 남는다. 근대화 개혁 임무 팩(`tsin_modernization`)과 근대화 칙령 이벤트(`tsin_flavor.30`)가 이 횟수를 "개항 압력"으로 쓴다. 공통 효과는 `tsin_add_opening_pressure_effect`(`scripted_effects/tsin_event_effects.txt`)이고, 지역 이벤트 `tsin_flavor.10`에서 협상 개항을 골라도 1 오른다.
 
 사용자 확인 필요:
 - 강화 협상 화면의 기타 항목에 "조약항 개항"이 보이고, 지점 선택 목록이 뜨는지.

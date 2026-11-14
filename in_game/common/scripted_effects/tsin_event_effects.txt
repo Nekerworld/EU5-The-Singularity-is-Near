@@ -17,3 +17,21 @@ tsin_reset_flavor_budget_effect = {
 		remove_variable = tsin_flavor_events_this_year
 	}
 }
+
+# Counts ports opened under foreign pressure (treaty port peace treaty, tsin_flavor.10). Opens tsin_modernization.
+tsin_add_opening_pressure_effect = {
+	if = {
+		limit = { has_variable = tsin_treaty_ports_opened }
+		change_variable = { name = tsin_treaty_ports_opened add = 1 }
+	}
+	else = {
+		set_variable = { name = tsin_treaty_ports_opened value = 1 }
+	}
+}
+
+tsin_flavor_end_serfdom_effect = {
+	if = {
+		limit = { has_estate_privilege = estate_privilege:noble_serfdom_rights }
+		revoke_estate_privilege = estate_privilege:noble_serfdom_rights
+	}
+}

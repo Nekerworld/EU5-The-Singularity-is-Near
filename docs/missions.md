@@ -26,7 +26,7 @@
 파일: `in_game/common/missions/tsin_modernization_missions.txt`, 보상 `main_menu/common/static_modifiers/tsin_mission_modifiers.txt`, 삽화 `gfx/interface/illustrations/missions/tsin_modernization.dds`(바닐라 `generic_progress_and_literacy`에서 색만 바꾼 임시 그림).
 
 국가 태그 대신 "개항 압력"과 "비산업국"이라는 상태로 열린다. 제7시대 이후 다음 중 하나이면 보이고, 반복하지 않는다.
-- 조약항 강화 조약으로 항구를 연 적이 있음(`var:tsin_treaty_ports_opened`).
+- 조약항 강화 조약 또는 `tsin_flavor.10` 협상 개항으로 항구를 연 적이 있음(`var:tsin_treaty_ports_opened`).
 - 1850년 이후에도 공장 지점이 하나도 없음.
 
 | 과제 | 선행 | 조건 | 보상(기간 보정치) |

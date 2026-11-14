@@ -16,6 +16,7 @@ yearly_country_pulse = {
 		tsin_invention_yearly_pulse
 		tsin_military_yearly_pulse
 		tsin_art_yearly_pulse
+		tsin_flavor_yearly_pulse
 		tsin_society_yearly_pulse
 		tsin_hunger_yearly_pulse
 		tsin_society_flavor_pulse
@@ -201,6 +202,20 @@ tsin_art_yearly_pulse = {
 		10 = tsin_art.10
 		10 = tsin_art.20
 		10 = tsin_art.30
+
+		chance_to_happen = 15
+	}
+}
+
+tsin_flavor_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_flavor.10
+		10 = tsin_flavor.20
+		10 = tsin_flavor.30
 
 		chance_to_happen = 15
 	}

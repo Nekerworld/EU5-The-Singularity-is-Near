@@ -73,13 +73,7 @@ tsin_open_treaty_port = {
 				years = 30
 				mode = add_and_extend
 			}
-			if = {
-				limit = { has_variable = tsin_treaty_ports_opened }
-				change_variable = { name = tsin_treaty_ports_opened add = 1 }
-			}
-			else = {
-				set_variable = { name = tsin_treaty_ports_opened value = 1 }
-			}
+			tsin_add_opening_pressure_effect = yes
 		}
 		scope:winner = {
 			add_country_modifier = {

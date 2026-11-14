@@ -17,7 +17,7 @@
 | `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
 | `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
-| `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 이후 | 지역 플레이버 (태그 조건 금지) |
+| `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 | 지역 플레이버 (`tsin_flavor_yearly_pulse`, 확률 15%, 태그 조건 금지) |
 
 - 이벤트 ID는 `<네임스페이스>.<번호>`. 번호는 군 안에서 10 단위로 묶는다(예: 공장 10~19, 원료 20~29).
 - 현지화 키는 `<id>.title`, `<id>.desc`, `<id>.a`, `<id>.b` …. 툴팁은 `<id>.a.tt`.
@@ -113,6 +113,9 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_art.10` | 낭만주의 (나라당 한 번) | 제7시대 | 민족 시인 후원(문화 영향력 +10%, 민족주의 +5) / 고전 취향(귀족 만족) |
 | `tsin_art.20` | 사실주의 (나라당 한 번) | 1850년 이후, 도시 보유 | 빈민가 소설 허용(문화 영향력 +5%, 최대 문해율 +2, 노동 운동 +5) / 금서(성직자 만족, 자유주의 +5) |
 | `tsin_art.30` | 사진술 (나라당 한 번) | 1840년 이후 | 사진 측량(금 -2, 내각 효율 +3%, 월 위신 +0.05) / 사진관에 맡김(시민 만족) |
+| `tsin_flavor.10` | 항구의 포함 (나라당 한 번) | 1840년 이후, 공장 없음, 기술 수 상위 8국 밖, 읍 이상 항구 보유 | 협상 개항(개항 압력 +1, 상인 힘 +5%, 최대 관세 -5%, 시민 만족) / 거부(위신 +5, 귀족 만족, 민족주의 +5) |
+| `tsin_flavor.20` | 농노 해방 (나라당 한 번) | 1845년 이후, 귀족 농노 특권 또는 농노제 쪽 사회 가치 < -20 | 토지와 함께 해방(특권 철회, 자유 쪽 +20, 귀족 불만, 평민 만족, 도시 이주 +10%, 원자재 -5%) / 토지 없이 해방(특권 철회, 자유 쪽 +10, 평민 불만, 시민 만족, 도시 이주 +25%, 원자재 -10%) / 유지(농노 쪽 +5, 귀족 만족, 평민 불만, 자유주의 +5) |
+| `tsin_flavor.30` | 근대화 칙령 (나라당 한 번) | 개항 압력 있음(`var:tsin_treaty_ports_opened`) | 국가 개편(안정도 -, 성직자 불만, 연구 +5%, 내각 효율 +5%, 자유주의 +5) / 자강(귀족 만족, 공장 건설 효율 +10%, 규율 +2%) / 거부(위신 +5, 성직자 만족, 민족주의 +5) |
 | `tsin_expedition.1` | 나일강의 수원 | 나일강 탐험이 세계 최초로 부간다 도착 | 군주 이름(위신 +15) / 지리학회(위신 +10, `tsin_expedition_geographical_society` 20년) |
 | `tsin_expedition.10` | 북서항로 발견 | 북서항로 탐험 종료, 35% | 위신 +15, `tsin_expedition_geographic_fame` 20년 |
 | `tsin_expedition.11` | 얼음에 막혀 돌아오다 | 북서항로 탐험 종료, 65% 또는 이미 발견됨 | 위신 +5 |
