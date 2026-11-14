@@ -1,0 +1,103 @@
+﻿############################
+# age_7_industrialization - agricultural revolution (0.7, docs/agriculture.md)
+# Free tree from tsin_steam_age_advance. Age VII is the last age, so the "early age VIII" end of the chain
+# (nitrogen fixation, ammonia synthesis) sits behind a long prerequisite chain instead of a year gate;
+# move it when an age VIII exists (docs/age8_handoff.md).
+# Distinct from the administrative choice tsin_scientific_agriculture (no shared names or modifiers).
+############################
+
+# 1840s, Liebig
+tsin_agricultural_chemistry_advance = {
+	age = age_7_industrialization
+	icon = alchemy_advance
+
+	global_monthly_food_modifier = monthly_food_productivity_weak_bonus
+
+	requires = tsin_steam_age_advance
+	ai_weight = { add = 20 }
+}
+
+# 1850s, McCormick
+tsin_mechanical_reaper_advance = {
+	age = age_7_industrialization
+	icon = agriculture_advance
+
+	unlock_building = tsin_farm_machinery_works
+
+	requires = tsin_agricultural_chemistry_advance
+	requires = tsin_machine_works_advance
+	ai_weight = { add = 25 }
+}
+
+tsin_canning_advance = {
+	age = age_7_industrialization
+	icon = food_advance_renaissance
+
+	global_food_decay = -0.002
+
+	requires = tsin_agricultural_chemistry_advance
+	ai_weight = { add = 10 }
+}
+
+# 1870s
+tsin_steam_threshing_advance = {
+	age = age_7_industrialization
+	icon = dan_danish_agriculture
+
+	unlock_building = tsin_mechanized_farm
+	unlock_production_method = tsin_farm_machinery_works_steel
+
+	requires = tsin_mechanical_reaper_advance
+	requires = tsin_improved_fertilizer_advance
+	ai_weight = { add = 25 }
+}
+
+# 1880s; also the condition of the refrigerated ship event tsin_invention.30
+tsin_refrigerated_transport_advance = {
+	age = age_7_industrialization
+	icon = zan_food_imports
+
+	global_food_capacity_modifier = 0.15
+	global_food_decay = -0.001
+
+	requires = tsin_canning_advance
+	requires = tsin_railway_network_advance
+	ai_weight = { add = 10 }
+}
+
+# 1890s
+tsin_intensive_farming_advance = {
+	age = age_7_industrialization
+	icon = fertile_lands
+
+	unlock_production_method = tsin_farm_machinery_works_steam_traction
+	global_monthly_food_modifier = monthly_food_productivity_weak_bonus
+
+	requires = tsin_steam_threshing_advance
+	requires = tsin_refrigerated_transport_advance
+	ai_weight = { add = 20 }
+}
+
+# End of the chain (historically 1898-1913)
+tsin_nitrogen_fixation_advance = {
+	age = age_7_industrialization
+	icon = ukrainian_farmlands
+
+	unlock_building = tsin_nitrogen_fixation_plant
+
+	requires = tsin_intensive_farming_advance
+	requires = tsin_electrochemistry_advance
+	ai_weight = { add = 20 }
+}
+
+tsin_ammonia_synthesis_advance = {
+	age = age_7_industrialization
+	icon = fla_prospering_agriculture
+
+	unlock_production_method = tsin_nitrogen_fixation_ammonia
+	global_tsin_fertilizer_output_modifier = 0.1
+
+	requires = tsin_nitrogen_fixation_advance
+	requires = tsin_open_hearth_advance
+	ai_weight = { add = 15 }
+}

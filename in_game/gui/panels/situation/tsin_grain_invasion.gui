@@ -1,0 +1,17 @@
+situation_panel = {
+
+	##################################### SUBHEADER #####################################
+
+	blockoverride "situation_subheader_content" {}
+
+	##################################### MAIN CONTENT #####################################
+
+	blockoverride "situation_panel_outcome_hint" {
+		action_tooltip = {
+			title = "OPEN_HINT"
+			on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_tsin_grain_invasion')]"
+		}
+	}
+
+	blockoverride "situation_panel_main_content" {}
+}

@@ -1,0 +1,144 @@
+﻿# The Grain Invasion (0.7, docs/agriculture.md). Railways and steamships bring cheap New World grain to the
+# old farming countries from the 1870s. Each affected country ends its crisis with a farm policy (tsin_agriculture.81):
+# tariffs, cheap bread or farm modernization. Twice as likely to come up while the Long Depression runs.
+
+tsin_grain_invasion = {
+	monthly_spawn_chance = monthly_spawn_chance_very_low
+	hint_tag = hint_tsin_grain_invasion
+
+	can_start = {
+		current_year >= 1873
+		NOT = { has_global_variable = tsin_grain_invasion_happened }
+		any_country = {
+			count >= 3
+			has_advance = tsin_steam_merchant_marine_advance
+		}
+	}
+
+	visible = {
+		OR = {
+			has_advance = tsin_railway_network_advance
+			has_country_modifier = tsin_grain_invasion_crisis
+		}
+	}
+
+	outcome = {
+		name = "tsin_grain_invasion_adjusted"
+		trigger = {
+			situation:tsin_grain_invasion = { years_since_situation_start > 5 }
+			NOT = {
+				any_country = {
+					has_country_modifier = tsin_grain_invasion_crisis
+				}
+			}
+		}
+	}
+	outcome = {
+		name = "tsin_grain_invasion_runs_its_course"
+		trigger = {
+			situation:tsin_grain_invasion = { years_since_situation_start > 15 }
+		}
+	}
+
+	# Hit: grain-growing countries with railways that do not make their own industrial living yet.
+	on_start = {
+		set_global_variable = { name = tsin_grain_invasion_happened value = 1 }
+		every_country = {
+			limit = {
+				has_advance = tsin_railway_network_advance
+				NOT = {
+					AND = {
+						has_variable = tsin_factory_share
+						var:tsin_factory_share >= 0.2
+					}
+				}
+			}
+			add_country_modifier = { modifier = tsin_grain_invasion_crisis months = -1 }
+			trigger_event_non_silently = tsin_agriculture.80
+		}
+	}
+
+	on_monthly = {
+		every_country = {
+			limit = { has_country_modifier = tsin_grain_invasion_crisis }
+			if = {
+				limit = { is_situation_active = situation:tsin_long_depression }
+				random_list = {
+					1000 = { }
+					8 = { trigger_event_non_silently = tsin_agriculture.81 }
+				}
+			}
+			else = {
+				random_list = {
+					1000 = { }
+					4 = { trigger_event_non_silently = tsin_agriculture.81 }
+				}
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { has_country_modifier = tsin_grain_invasion_crisis }
+			remove_country_modifier = tsin_grain_invasion_crisis
+			trigger_event_non_silently = tsin_agriculture.90
+		}
+	}
+
+	tooltip = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_grain_invasion_crisis } }
+			custom_tooltip = tsin_grain_invasion_crisis_tt
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					OR = {
+						has_country_modifier = tsin_grain_tariffs
+						has_country_modifier = tsin_cheap_bread
+						has_country_modifier = tsin_farm_modernization
+					}
+				}
+			}
+			custom_tooltip = tsin_grain_invasion_policy_tt
+		}
+	}
+
+	map_color = {
+		if = {
+			limit = { owner ?= { has_country_modifier = tsin_grain_invasion_crisis } }
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = { owner ?= { has_country_modifier = tsin_grain_tariffs } }
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					OR = {
+						has_country_modifier = tsin_cheap_bread
+						has_country_modifier = tsin_farm_modernization
+					}
+				}
+			}
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_grain_invasion_crisis"
+		color = define:NMapColors|MAP_COLOR_HIGH
+	}
+	legend_key = {
+		desc = "STATIC_MODIFIER_NAME_tsin_grain_tariffs"
+		color = define:NMapColors|MAP_COLOR_MID
+	}
+	legend_key = {
+		desc = "tsin_grain_invasion_open_market_legend"
+		color = define:NMapColors|MAP_COLOR_LOW
+	}
+}

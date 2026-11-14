@@ -55,3 +55,12 @@ tsin_electricity = {
 	default_market_price = 3
 	transport_cost = 5
 }
+
+# Farm machinery (0.7 agricultural revolution). Made only by tsin_farm_machinery_works,
+# consumed only by tsin_mechanized_farm maintenance. No pop demand.
+tsin_farm_machinery = {
+	category = produced
+	color = goods_tsin_farm_machinery
+	default_market_price = 5
+	transport_cost = 1
+}

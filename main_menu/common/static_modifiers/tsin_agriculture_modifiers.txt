@@ -1,0 +1,137 @@
+﻿# Agricultural revolution (in_game/events/tsin_agriculture.txt) and the Grain Invasion situation.
+
+tsin_agriculture_guano_imports = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+	global_wheat_output_modifier = 0.05
+}
+
+tsin_agriculture_home_saltpeter = {
+	game_data = {
+		category = country
+	}
+	global_saltpeter_output_modifier = 0.15
+}
+
+tsin_agriculture_reaper_license = {
+	game_data = {
+		category = country
+	}
+	global_tsin_farm_machinery_output_modifier = 0.15
+}
+
+tsin_agriculture_estate_reapers = {
+	game_data = {
+		category = country
+	}
+	global_wheat_output_modifier = 0.1
+	global_monthly_food_modifier = 0.025
+}
+
+tsin_agriculture_landowner_society = {
+	game_data = {
+		category = country
+	}
+	global_raw_material_output = 0.03
+}
+
+tsin_agriculture_cooperatives = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+	peasants_estate_target_satisfaction = 0.02
+}
+
+tsin_agriculture_improved_herds = {
+	game_data = {
+		category = country
+	}
+	global_livestock_output_modifier = 0.15
+}
+
+tsin_agriculture_improved_grain = {
+	game_data = {
+		category = country
+	}
+	global_wheat_output_modifier = 0.1
+	global_monthly_food_modifier = 0.025
+}
+
+tsin_agriculture_reefer_cars = {
+	game_data = {
+		category = country
+	}
+	global_food_capacity_modifier = 0.1
+	global_livestock_output_modifier = 0.05
+}
+
+tsin_agriculture_rural_exodus = {
+	game_data = {
+		category = country
+	}
+	global_pop_promotion_speed_modifier = 0.1
+	global_migration_speed_modifier = 0.15
+}
+
+tsin_agriculture_village_ties = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.025
+	global_migration_speed_modifier = -0.1
+}
+
+tsin_agriculture_nitrogen_fields = {
+	game_data = {
+		category = country
+	}
+	global_tsin_fertilizer_output_modifier = 0.15
+	global_monthly_food_modifier = 0.05
+}
+
+tsin_agriculture_nitrogen_arsenals = {
+	game_data = {
+		category = country
+	}
+	global_tsin_explosives_output_modifier = 0.2
+}
+
+# Grain Invasion: bread is cheap, farms go bankrupt.
+tsin_grain_invasion_crisis = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+	global_wheat_output_modifier = -0.1
+	peasants_estate_target_satisfaction = -0.05
+	nobles_estate_target_satisfaction = -0.03
+	global_migration_speed_modifier = 0.1
+}
+
+tsin_grain_tariffs = {
+	game_data = {
+		category = country
+	}
+	global_wheat_output_modifier = 0.05
+	burghers_estate_target_satisfaction = -0.02
+}
+
+tsin_cheap_bread = {
+	game_data = {
+		category = country
+	}
+	global_monthly_food_modifier = 0.05
+	global_pop_promotion_speed_modifier = 0.1
+	peasants_estate_target_satisfaction = -0.02
+}
+
+tsin_farm_modernization = {
+	game_data = {
+		category = country
+	}
+	global_raw_material_output = 0.05
+	global_tsin_farm_machinery_output_modifier = 0.1
+}

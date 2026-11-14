@@ -1,0 +1,422 @@
+﻿namespace = tsin_agriculture
+
+# Agricultural revolution (0.7, docs/agriculture.md).
+# .10-.70: flavor, once per country after the matching advance; fired from tsin_agriculture_yearly_pulse, spend the flavor budget.
+# .80-.90: the Grain Invasion situation (situations/tsin_grain_invasion.txt); not flavor, no budget.
+
+# The guano boom
+tsin_agriculture.10 = {
+	type = country_event
+	title = tsin_agriculture.10.title
+	desc = tsin_agriculture.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_agricultural_chemistry_advance
+		NOT = { has_variable = tsin_agriculture_guano_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_guano_done
+	}
+
+	# Buy guano by the shipload
+	option = {
+		name = tsin_agriculture.10.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_agriculture_guano_imports years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Look for saltpeter at home
+	option = {
+		name = tsin_agriculture.10.b
+		add_country_modifier = { modifier = tsin_agriculture_home_saltpeter years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# A reaper demonstration
+tsin_agriculture.20 = {
+	type = country_event
+	title = tsin_agriculture.20.title
+	desc = tsin_agriculture.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_mechanical_reaper_advance
+		NOT = { has_variable = tsin_agriculture_reaper_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_reaper_done
+	}
+
+	# License a domestic maker
+	option = {
+		name = tsin_agriculture.20.a
+		add_country_modifier = { modifier = tsin_agriculture_reaper_license years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Buy reapers for the great estates
+	option = {
+		name = tsin_agriculture.20.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_agriculture_estate_reapers years = modifier_duration_years_normal mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+}
+
+# An agricultural society
+tsin_agriculture.30 = {
+	type = country_event
+	title = tsin_agriculture.30.title
+	desc = tsin_agriculture.30.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_agricultural_chemistry_advance
+		current_year >= 1845
+		NOT = { has_variable = tsin_agriculture_society_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_society_done
+	}
+
+	# Grant a royal charter to the landowners' society
+	option = {
+		name = tsin_agriculture.30.a
+		add_country_modifier = { modifier = tsin_agriculture_landowner_society years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Support village cooperatives
+	option = {
+		name = tsin_agriculture.30.b
+		change_gold_effect = { scale = -1 }
+		add_country_modifier = { modifier = tsin_agriculture_cooperatives years = modifier_duration_years_long mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < scaled_gold_for_effect
+			}
+		}
+	}
+}
+
+# New breeds and seed varieties
+tsin_agriculture.40 = {
+	type = country_event
+	title = tsin_agriculture.40.title
+	desc = tsin_agriculture.40.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_canning_advance
+		current_year >= 1860
+		NOT = { has_variable = tsin_agriculture_breeding_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_breeding_done
+	}
+
+	# Improve the herds
+	option = {
+		name = tsin_agriculture.40.a
+		add_country_modifier = { modifier = tsin_agriculture_improved_herds years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Improve the grain
+	option = {
+		name = tsin_agriculture.40.b
+		add_country_modifier = { modifier = tsin_agriculture_improved_grain years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The first refrigerated railcar (distinct from the refrigerated ship, tsin_invention.30)
+tsin_agriculture.50 = {
+	type = country_event
+	title = tsin_agriculture.50.title
+	desc = tsin_agriculture.50.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_refrigerated_transport_advance
+		has_advance = tsin_railway_network_advance
+		NOT = { has_variable = tsin_agriculture_reefer_car_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_reefer_car_done
+	}
+
+	# Feed the cities from the far countryside
+	option = {
+		name = tsin_agriculture.50.a
+		add_country_modifier = { modifier = tsin_agriculture_reefer_cars years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Protect the local butchers
+	option = {
+		name = tsin_agriculture.50.b
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The rural exodus
+tsin_agriculture.60 = {
+	type = country_event
+	title = tsin_agriculture.60.title
+	desc = tsin_agriculture.60.desc
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_steam_threshing_advance
+		has_variable = tsin_factory_share
+		var:tsin_factory_share >= 0.05
+		NOT = { has_variable = tsin_agriculture_exodus_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_exodus_done
+	}
+
+	# Let them go to the factories
+	option = {
+		name = tsin_agriculture.60.a
+		add_country_modifier = { modifier = tsin_agriculture_rural_exodus years = modifier_duration_years_normal mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Tie them to the land
+	option = {
+		name = tsin_agriculture.60.b
+		add_country_modifier = { modifier = tsin_agriculture_village_ties years = modifier_duration_years_normal mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# Bread from the air
+tsin_agriculture.70 = {
+	type = country_event
+	title = tsin_agriculture.70.title
+	desc = tsin_agriculture.70.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_nitrogen_fixation_advance
+		NOT = { has_variable = tsin_agriculture_nitrogen_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_agriculture_nitrogen_done
+	}
+
+	# Fertilizer for the fields
+	option = {
+		name = tsin_agriculture.70.a
+		add_country_modifier = { modifier = tsin_agriculture_nitrogen_fields years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Nitrates for the arsenals
+	option = {
+		name = tsin_agriculture.70.b
+		add_country_modifier = { modifier = tsin_agriculture_nitrogen_arsenals years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				at_war = yes
+			}
+		}
+	}
+}
+
+# Grain Invasion: cheap grain arrives
+tsin_agriculture.80 = {
+	type = country_event
+	title = tsin_agriculture.80.title
+	desc = tsin_agriculture.80.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = tsin_agriculture.80.a
+	}
+}
+
+# Grain Invasion: the farm question (ends the crisis for this country)
+tsin_agriculture.81 = {
+	type = country_event
+	title = tsin_agriculture.81.title
+	desc = tsin_agriculture.81.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_country_modifier = tsin_grain_invasion_crisis
+	}
+
+	# Protective grain tariffs
+	option = {
+		name = tsin_agriculture.81.a
+		remove_country_modifier = tsin_grain_invasion_crisis
+		add_country_modifier = { modifier = tsin_grain_tariffs years = modifier_duration_years_long mode = add_and_extend }
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_left
+		}
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				is_situation_active = situation:tsin_long_depression
+			}
+		}
+	}
+
+	# Cheap bread for the cities
+	option = {
+		name = tsin_agriculture.81.b
+		remove_country_modifier = tsin_grain_invasion_crisis
+		add_country_modifier = { modifier = tsin_cheap_bread years = modifier_duration_years_long mode = add_and_extend }
+		change_societal_value = {
+			type = mercantilism_vs_free_trade
+			value = societal_value_minor_move_to_right
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				has_variable = tsin_factory_share
+				var:tsin_factory_share >= 0.1
+			}
+		}
+	}
+
+	# Modernize the farms
+	option = {
+		name = tsin_agriculture.81.c
+		trigger = {
+			has_advance = tsin_steam_threshing_advance
+		}
+		remove_country_modifier = tsin_grain_invasion_crisis
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_farm_modernization years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+}
+
+# Grain Invasion ends
+tsin_agriculture.90 = {
+	type = country_event
+	title = tsin_agriculture.90.title
+	desc = tsin_agriculture.90.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_agriculture.90.a
+	}
+}

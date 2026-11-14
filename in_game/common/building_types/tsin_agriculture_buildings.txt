@@ -1,0 +1,178 @@
+﻿# Age VII agricultural revolution (0.7). One good per building, tech-tier production methods only.
+# Prices: iron 3, steel 5, lumber 1.5, tools 3, coal 2, stone 1, tsin_engines 6, tsin_electricity 3,
+# tsin_fertilizer 2.5, tsin_farm_machinery 5. Mill outputs = input cost * 1.35 (mills_profit_margin).
+
+# New slot: the only maker of tsin_farm_machinery. Tiers: iron (base) -> steel -> steam traction.
+tsin_farm_machinery_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 8.88 -> 2.4 farm machinery (12.0)
+		tsin_farm_machinery_works_iron = {
+			icon_type = goods
+			icon = iron
+			iron = 1.8
+			lumber = 1.2
+			tools = 0.56
+			produced = tsin_farm_machinery
+			output = 2.4
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 11.11 -> 3.0 farm machinery (15.0); unlocked by tsin_steam_threshing_advance
+		tsin_farm_machinery_works_steel = {
+			icon_type = goods
+			icon = steel
+			steel = 1.4
+			lumber = 0.9
+			tools = 0.92
+			produced = tsin_farm_machinery
+			output = 3
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 13.32 -> 3.6 farm machinery (18.0); unlocked by tsin_intensive_farming_advance
+		tsin_farm_machinery_works_steam_traction = {
+			icon_type = goods
+			icon = tsin_engines
+			steel = 1.5
+			tsin_engines = 0.6
+			tools = 0.74
+			produced = tsin_farm_machinery
+			output = 3.6
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+
+	raw_modifier = {
+		local_burghers_desired_pop = 0.05
+	}
+}
+
+# Upgrades tsin_fertilized_fields in place. Levels come from advances (tsin_mechanized_farm_max_level).
+# Per level: raw output +0.2 and food +0.05; at level 3 about four times the fertilized fields (+0.15).
+tsin_mechanized_farm = {
+	audio_tier = 2
+	audio_category = industry
+	is_foreign = no
+	pop_type = laborers
+	max_levels = tsin_mechanized_farm_max_level
+
+	employment_size = tsin_mechanized_farm_employment
+
+	category = rgo_enhancement_category
+
+	rural_settlement = yes
+
+	obsolete = tsin_fertilized_fields
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wheat
+			raw_material = goods:maize
+			raw_material = goods:rice
+			raw_material = goods:millet
+			raw_material = goods:legumes
+			raw_material = goods:potato
+		}
+	}
+
+	unique_production_methods = {
+		# 0.655 per level
+		tsin_mechanized_farm_maintenance = {
+			icon_type = goods
+			icon = tsin_farm_machinery
+			tsin_fertilizer = 0.15
+			tsin_farm_machinery = 0.05
+			tools = 0.01
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		local_raw_material_output = 0.2
+		local_monthly_food_modifier = monthly_food_productivity_mild_bonus
+	}
+
+	build_time = rural_build_time
+
+	construction_demand = farm_constructions
+}
+
+# Upgrades tsin_fertilizer_plant in place; fertilizer only. Tiers: cyanamide (base) -> ammonia synthesis.
+tsin_nitrogen_fixation_plant = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = tsin_mechanized_mill_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	obsolete = tsin_fertilizer_plant
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# calcium cyanamide (Frank-Caro); inputs 16.67 -> 9 fertilizer (22.5)
+		tsin_nitrogen_fixation_cyanamide = {
+			icon_type = goods
+			icon = tsin_electricity
+			coal = 2.5
+			tsin_electricity = 3.0
+			stone = 2.67
+			produced = tsin_fertilizer
+			output = 9
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# ammonia synthesis; inputs 18.5 -> 10 fertilizer (25.0); unlocked by tsin_ammonia_synthesis_advance
+		tsin_nitrogen_fixation_ammonia = {
+			icon_type = goods
+			icon = tsin_fertilizer
+			coal = 4.0
+			tsin_electricity = 2.0
+			tools = 0.5
+			tsin_engines = 0.5
+			produced = tsin_fertilizer
+			output = 10
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
