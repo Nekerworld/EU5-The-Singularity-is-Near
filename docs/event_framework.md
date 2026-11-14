@@ -68,6 +68,17 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | 안정·만족도를 깎는 선택 | 3 | 안정도가 낮으면 `factor = 0` |
 | 위험한 도박 | 1 | — |
 
+## 현재 이벤트
+
+| ID | 내용 | 조건 | 선택지(경제 / 정치 / 진행) |
+|---|---|---|---|
+| `tsin_economy.10` | 공장 사고 | 공장 단계 건물 1곳 이상 | 보상금(금 -2, 평민 만족) / 안전 규정(지점 생산 효율 -5%, 불안 감소) / 무시(지점 불안, 평민 불만) |
+| `tsin_economy.20` | 원료 부족 | 공장 지점 2곳 이상 | 수입(금 -3) / 감산(생산 효율 -5%, 2년) / 대체 원료(효율 -2%, 공장 건설 효율 +5%, 시민 불만) |
+| `tsin_economy.30` | 숙련공 부족 | 공장 지점 3곳 이상, 기술 학교 없음 | 기술 학교(금 -4, 노동자 문해율 상한·효율) / 외국인 기술자(금 -2, 효율 +5% 감쇠, 시민 불만) / 도제(효율 -3%, 3년) |
+| `tsin_economy.40` | 공장 확장 제안 | 공장 단계 건물 1곳 이상 | 국가 투자(금 -4, 지점 공장 건설·생산 효율) / 민간 자본(지점 공장 건설 효율, 시민 만족) / 보류 |
+
+경제 이벤트는 `tsin_economy_yearly_pulse`(매년, `chance_to_happen = 25`)에서 고른다. 공장 판정은 검증된 바닐라 트리거 `has_building_with_at_least_one_level`로 만든 `tsin_location_has_factory_trigger`를 쓴다(`scripted_triggers/tsin_economy_triggers.txt`). AI의 금고 판정은 `gold < tsin_gold_cost_N`(`script_values/tsin_event_values.txt`)이다.
+
 ## 선택지 원칙
 
 - 기술을 무상으로 주지 않는다(`add_advance` 같은 효과 금지).

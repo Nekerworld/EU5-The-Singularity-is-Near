@@ -242,6 +242,24 @@ def unique_pm_names() -> set[str]:
     return _unique_pm_cache
 
 
+def check_tsin_names() -> None:
+    """Every tsin_ token used in script must be defined somewhere in the mod."""
+    known: set[str] = set()
+    texts: dict[Path, str] = {}
+    for p in mod_files((".txt",)):
+        clean = pdx.strip_comments(pdx.read_text(p))
+        texts[p] = clean
+        known.update(re.findall(r"(?m)^\s*(tsin_[\w.]+)\s*=\s*\{", clean))
+        known.update(re.findall(r"(?m)^@?(tsin_\w+)\s*=", clean))
+        known.update(re.findall(r"\b(?:set_variable|set_global_variable|save_scope_as|save_temporary_scope_as)\s*=\s*(tsin_\w+)", clean))
+        known.update(re.findall(r"\bname\s*=\s*(tsin_\w+)", clean))
+    for p, clean in texts.items():
+        unquoted = re.sub(r'"[^"\n]*"', '""', clean)
+        for tok in set(re.findall(r"\b(tsin_\w+(?:\.\d+)?)", unquoted)):
+            if tok not in known:
+                err(f"names: {rel(p)} uses '{tok}' which no mod file defines")
+
+
 def check_refs() -> None:
     for p in mod_files((".txt",)):
         if p.name.startswith("zzz_tsin_age7_"):
@@ -348,6 +366,7 @@ LOC_DBS = {
     "in_game/common/goods": ["{k}"],
     "in_game/common/building_types": ["{k}", "{k}_desc"],
     "in_game/common/industry_types": ["{k}", "{k}_desc"],
+    "main_menu/common/static_modifiers": ["STATIC_MODIFIER_NAME_{k}"],
     "in_game/common/situations": ["{k}", "{k}_desc"],
     "in_game/common/disasters": ["{k}", "{k}_desc"],
     "in_game/common/laws": ["{k}", "{k}_desc"],
@@ -395,6 +414,27 @@ def check_loc() -> None:
             for k in re.findall(r"\b(?:title|desc|name)\s*=\s*([A-Za-z0-9_.]+)", clean):
                 if "." in k and k.startswith("tsin_"):
                     needed.append((k, rel(p)))
+    # map modes: name, description, legend and tooltip keys
+    mm = MOD / "in_game/gfx/map/map_modes"
+    if mm.exists():
+        for p in mm.rglob("*.txt"):
+            clean = pdx.strip_comments(pdx.read_text(p))
+            for b in pdx.top_level_blocks(clean):
+                if b.key.startswith("@"):
+                    continue
+                needed.append((f"mapmode_{b.key}_name", rel(p)))
+                needed.append((f"MAPMODE_{b.key.upper()}", rel(p)))
+                for k in re.findall(r'\bdesc\s*=\s*"?([A-Z0-9_]+)"?', b.text):
+                    needed.append((k, rel(p)))
+                tt = re.search(r"\btooltip_key\s*=\s*\{", b.text)
+                if tt:
+                    inner = b.text[tt.end():]
+                    depth, i = 1, 0
+                    while depth and i < len(inner):
+                        depth += {"{": 1, "}": -1}.get(inner[i], 0)
+                        i += 1
+                    for k in re.findall(r"\bvalue\s*=\s*([A-Z][A-Z0-9_]+)\b", inner[:i]):
+                        needed.append((k, rel(p)))
     for key, where in needed:
         for lang, keys in langs.items():
             if key not in keys:
@@ -445,7 +485,7 @@ def main() -> int:
     ap.add_argument("--fix-bom", action="store_true")
     ap.add_argument("--prefix-scan", action="store_true")
     ap.add_argument("--compat", action="store_true")
-    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,gfx,loc")
+    ap.add_argument("--skip", default="", help="comma list: bom,braces,keys,refs,names,gfx,loc")
     a = ap.parse_args()
     skip = set(filter(None, a.skip.split(",")))
     if a.prefix_scan:
@@ -461,6 +501,8 @@ def main() -> int:
             check_keys()
         if "refs" not in skip:
             check_refs()
+        if "names" not in skip:
+            check_tsin_names()
         if "gfx" not in skip:
             check_gfx()
         if "loc" not in skip:

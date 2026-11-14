@@ -1,0 +1,244 @@
+﻿namespace = tsin_economy
+
+# Fired from tsin_economy_yearly_pulse (on_action/tsin_on_actions.txt). All are flavor events
+# and spend the yearly tsin_ flavor budget (docs/event_framework.md).
+
+# Factory accident
+tsin_economy.10 = {
+	type = country_event
+	title = tsin_economy.10.title
+	desc = tsin_economy.10.desc
+	outcome = negative
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		random_owned_location = {
+			limit = { tsin_location_has_factory_trigger = yes }
+			save_scope_as = tsin_factory_location
+		}
+	}
+
+	# Compensate the families
+	option = {
+		name = tsin_economy.10.a
+		change_gold_effect = { scale = -2 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Impose safety rules on the works
+	option = {
+		name = tsin_economy.10.b
+		scope:tsin_factory_location = {
+			add_location_modifier = { modifier = tsin_factory_safety_rules years = modifier_duration_years_normal mode = add_and_extend }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Keep the lines running
+	option = {
+		name = tsin_economy.10.c
+		scope:tsin_factory_location = {
+			add_location_modifier = { modifier = tsin_factory_accident_unrest years = modifier_duration_years_short mode = add_and_extend }
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				stability < 0
+			}
+		}
+	}
+}
+
+# Raw material shortage
+tsin_economy.20 = {
+	type = country_event
+	title = tsin_economy.20.title
+	desc = tsin_economy.20.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factories_trigger = { COUNT = 2 }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+	}
+
+	# Buy abroad at any price
+	option = {
+		name = tsin_economy.20.a
+		change_gold_effect = { scale = -3 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Cut production until supply recovers
+	option = {
+		name = tsin_economy.20.b
+		add_country_modifier = { modifier = tsin_raw_material_shortage years = 2 mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Try substitute materials
+	option = {
+		name = tsin_economy.20.c
+		add_country_modifier = { modifier = tsin_substitute_materials years = modifier_duration_years_short mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Shortage of skilled workers
+tsin_economy.30 = {
+	type = country_event
+	title = tsin_economy.30.title
+	desc = tsin_economy.30.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factories_trigger = { COUNT = 3 }
+		NOT = { has_country_modifier = tsin_technical_schools }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+	}
+
+	# Found technical schools
+	option = {
+		name = tsin_economy.30.a
+		change_gold_effect = { scale = -4 }
+		add_country_modifier = { modifier = tsin_technical_schools years = modifier_duration_years_extended mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Hire foreign engineers
+	option = {
+		name = tsin_economy.30.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_foreign_engineers years = modifier_duration_years_short mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_penalty }
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Make do with apprentices
+	option = {
+		name = tsin_economy.30.c
+		add_country_modifier = { modifier = tsin_skill_shortage years = modifier_duration_years_very_short mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Factory expansion proposal
+tsin_economy.40 = {
+	type = country_event
+	title = tsin_economy.40.title
+	desc = tsin_economy.40.desc
+	outcome = positive
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		tsin_has_factory_trigger = yes
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		random_owned_location = {
+			limit = { tsin_location_has_factory_trigger = yes }
+			save_scope_as = tsin_factory_location
+		}
+	}
+
+	# State investment
+	option = {
+		name = tsin_economy.40.a
+		change_gold_effect = { scale = -4 }
+		scope:tsin_factory_location = {
+			add_location_modifier = { modifier = tsin_factory_expansion years = modifier_duration_years_normal mode = add_and_extend }
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# Leave it to private capital
+	option = {
+		name = tsin_economy.40.b
+		scope:tsin_factory_location = {
+			add_location_modifier = { modifier = tsin_private_factory_expansion years = modifier_duration_years_short mode = add_and_extend }
+		}
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Not now
+	option = {
+		name = tsin_economy.40.c
+		ai_chance = {
+			factor = 3
+		}
+	}
+}

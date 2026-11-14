@@ -1,0 +1,74 @@
+﻿# The Singularity is Near - modifiers applied by tsin_economy events.
+
+# tsin_economy.10 factory accident
+tsin_factory_safety_rules = {
+	game_data = {
+		category = location
+	}
+	local_production_efficiency = -0.05
+	local_unrest = -0.1
+}
+
+tsin_factory_accident_unrest = {
+	game_data = {
+		category = location
+		decaying = yes
+	}
+	local_unrest = 0.3
+}
+
+# tsin_economy.20 raw material shortage
+tsin_raw_material_shortage = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.05
+}
+
+tsin_substitute_materials = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.02
+	global_mills_build_buildings_efficiency = 0.05
+}
+
+# tsin_economy.30 skilled labour shortage
+tsin_technical_schools = {
+	game_data = {
+		category = country
+	}
+	global_laborers_max_literacy = 10
+	global_production_efficiency = 0.02
+}
+
+tsin_foreign_engineers = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_production_efficiency = 0.05
+}
+
+tsin_skill_shortage = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = -0.03
+}
+
+# tsin_economy.40 factory expansion
+tsin_factory_expansion = {
+	game_data = {
+		category = location
+	}
+	local_mills_build_buildings_efficiency = 0.25
+	local_production_efficiency = 0.05
+}
+
+tsin_private_factory_expansion = {
+	game_data = {
+		category = location
+	}
+	local_mills_build_buildings_efficiency = 0.15
+}

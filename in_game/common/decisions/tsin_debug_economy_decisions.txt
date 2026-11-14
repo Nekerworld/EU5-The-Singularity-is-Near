@@ -1,0 +1,175 @@
+﻿# The Singularity is Near - developer decisions for M2 economy tests (docs/tests/m2_test_guide.md).
+# debug_only keeps these invisible outside debug mode. Advances are not granted; research them normally.
+
+tsin_debug_build_factories_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_build_factories_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			capital = {
+				construct_building = {
+					building_type = building_type:tsin_machine_works
+					instant = yes
+				}
+				construct_building = {
+					building_type = building_type:textile_mill
+					instant = yes
+				}
+			}
+		}
+	}
+}
+
+tsin_debug_upgrade_textile_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_upgrade_textile_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			capital = {
+				construct_building = {
+					building_type = building_type:tsin_mechanized_textile_mill
+					instant = yes
+				}
+			}
+		}
+	}
+}
+
+tsin_debug_engines_shortage_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_engines_shortage_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			capital.market = {
+				add_goods_supply = {
+					goods = goods:tsin_engines
+					amount = market_goods_extreme_loss
+				}
+			}
+		}
+	}
+}
+
+tsin_debug_engines_glut_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_engines_glut_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			capital.market = {
+				add_goods_supply = {
+					goods = goods:tsin_engines
+					amount = market_goods_extreme_gain
+				}
+			}
+		}
+	}
+}
+
+# Two events per decision so the yearly flavor budget (3) does not block the second one.
+tsin_debug_economy_events_a_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_economy_events_a_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			tsin_reset_flavor_budget_effect = yes
+			trigger_event_non_silently = tsin_economy.10
+			trigger_event_non_silently = tsin_economy.20
+		}
+	}
+}
+
+tsin_debug_economy_events_b_decision = {
+	decision_category = other_decisions
+
+	potential = {
+		debug_only = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_debug_economy_events_b_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			tsin_reset_flavor_budget_effect = yes
+			trigger_event_non_silently = tsin_economy.30
+			trigger_event_non_silently = tsin_economy.40
+		}
+	}
+}

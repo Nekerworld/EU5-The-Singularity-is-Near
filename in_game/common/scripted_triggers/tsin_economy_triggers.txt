@@ -1,0 +1,41 @@
+﻿# The Singularity is Near - economy triggers.
+
+# Scope: location. Has at least one factory-tier (is_mill = yes) building level.
+# Keep in sync with tsin_location_mill_levels in script_values/tsin_map_values.txt.
+tsin_location_has_factory_trigger = {
+	OR = {
+		has_building_with_at_least_one_level = brewery_mill
+		has_building_with_at_least_one_level = printing_mill
+		has_building_with_at_least_one_level = cannons_factory
+		has_building_with_at_least_one_level = textile_mill
+		has_building_with_at_least_one_level = dyes_mill
+		has_building_with_at_least_one_level = fine_cloth_mill
+		has_building_with_at_least_one_level = firearms_factory
+		has_building_with_at_least_one_level = furniture_mill
+		has_building_with_at_least_one_level = glass_mill
+		has_building_with_at_least_one_level = tannery_mill
+		has_building_with_at_least_one_level = distiller_mill
+		has_building_with_at_least_one_level = naval_supplies_mill
+		has_building_with_at_least_one_level = paper_mill
+		has_building_with_at_least_one_level = pottery_mill
+		has_building_with_at_least_one_level = putrefaction_mill
+		has_building_with_at_least_one_level = iron_mill
+		has_building_with_at_least_one_level = weapon_factory
+		has_building_with_at_least_one_level = steel_mill
+		has_building_with_at_least_one_level = tsin_machine_works
+		has_building_with_at_least_one_level = tsin_mechanized_textile_mill
+	}
+}
+
+# Scope: country. Owns at least one location with a factory.
+tsin_has_factory_trigger = {
+	any_owned_location = { tsin_location_has_factory_trigger = yes }
+}
+
+# Scope: country. Owns at least $COUNT$ locations with a factory.
+tsin_has_factories_trigger = {
+	any_owned_location = {
+		count >= $COUNT$
+		tsin_location_has_factory_trigger = yes
+	}
+}

@@ -10,7 +10,10 @@ on_new_age_global = {
 }
 
 yearly_country_pulse = {
-	on_actions = { tsin_yearly_country_pulse }
+	on_actions = {
+		tsin_yearly_country_pulse
+		tsin_economy_yearly_pulse
+	}
 }
 
 on_institution_embraced = {
@@ -53,6 +56,22 @@ tsin_yearly_country_pulse = {
 		tsin_system.10
 		tsin_system.11
 		tsin_system.12
+	}
+}
+
+# root = country. Factory flavor events; the budget trigger caps them per year.
+tsin_economy_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		tsin_flavor_budget_available_trigger = yes
+	}
+	random_events = {
+		10 = tsin_economy.10
+		10 = tsin_economy.20
+		10 = tsin_economy.30
+		10 = tsin_economy.40
+
+		chance_to_happen = 25
 	}
 }
 

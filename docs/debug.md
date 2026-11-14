@@ -10,6 +10,15 @@
 | `tsin_debug_reset_notices_decision` | 자국의 `tsin_notified_*` 변수를 지워 제도 등장 알림을 다시 받게 함 |
 | `tsin_debug_institution_progress_decision` | 수도에 제7시대 제도 3종의 진척도를 25씩 추가 (이미 등장한 제도만 의미 있음) |
 
+M2 경제 시험용 결단(`tsin_debug_economy_decisions.txt`, 역시 `debug_only`). 기술은 주지 않는다.
+
+| 결단 | 효과 |
+|---|---|
+| `tsin_debug_build_factories_decision` | 수도에 `tsin_machine_works`, `textile_mill` 즉시 건설 |
+| `tsin_debug_upgrade_textile_decision` | 수도에 `tsin_mechanized_textile_mill` 즉시 건설(개축 경로 확인) |
+| `tsin_debug_engines_shortage_decision` / `_glut_decision` | 수도 시장 기관 공급 `market_goods_extreme_loss` / `_gain` |
+| `tsin_debug_economy_events_a_decision` / `_b_decision` | 예산 초기화 후 `tsin_economy.10`·`.20` / `.30`·`.40` 실행 |
+
 ## 콘솔 명령 (엔진 내장)
 
 시대 변경과 제도 등장은 스크립트 효과로 할 수 없다. 대신 게임 실행 파일에 들어 있는 콘솔 명령을 쓴다. 아래 명령 이름과 인자는 `tools/exe_strings.py`로 `eu5.exe`의 도움말 문자열에서 확인했다. 실제 동작은 **사용자 확인 필요**.

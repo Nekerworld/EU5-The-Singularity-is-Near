@@ -3,7 +3,7 @@
 
 # Sum of factory-tier (is_mill = yes) building levels in the location.
 # Vanilla list from tools/list_buildings.py is_mill yes; mod mill tiers are appended as they are added.
-tsin_location_mill_levels = {
+tsin_location_vanilla_mill_levels = {
 	value = 0
 	add = "location_building_level(building_type:brewery_mill)"
 	add = "location_building_level(building_type:printing_mill)"
@@ -25,5 +25,33 @@ tsin_location_mill_levels = {
 	add = "location_building_level(building_type:steel_mill)"
 }
 
-# 0..1 scale used by tsin_industrialization: saturates at this many factory levels.
-tsin_map_industrial_saturation = 10
+tsin_location_mill_levels = {
+	value = tsin_location_vanilla_mill_levels
+	add = "location_building_level(building_type:tsin_machine_works)"
+	add = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+}
+
+# Factory jobs in the location, in pop-size units (employment_size 1 = 1000 people).
+tsin_location_industrial_jobs = {
+	value = tsin_location_vanilla_mill_levels
+	add = "location_building_level(building_type:tsin_machine_works)"
+	multiply = mills_employment
+	add = {
+		value = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+		multiply = tsin_mechanized_mill_employment
+	}
+}
+
+# Factory jobs as a share of the location population, 0..1.
+tsin_location_industrial_share = {
+	value = 0
+	if = {
+		limit = { population > 0 }
+		add = tsin_location_industrial_jobs
+		divide = population
+		max = 1
+	}
+}
+
+# 0..1 scale used by tsin_industrialization: saturates at this factory-job share.
+tsin_map_industrial_share_saturation = 0.25

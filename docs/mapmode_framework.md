@@ -36,14 +36,17 @@
 
 | 값 | 의미 |
 |---|---|
-| `tsin_location_mill_levels` | 지점의 공장 단계(`is_mill = yes`) 건물 레벨 합. 바닐라 18종, 모드 공장 단계는 추가될 때 덧붙인다 |
-| `tsin_map_industrial_saturation` | 산업화 지도 모드가 최대 색이 되는 공장 레벨 수 |
+| `tsin_location_vanilla_mill_levels` | 바닐라 공장 단계(`is_mill = yes`) 18종의 레벨 합 |
+| `tsin_location_mill_levels` | 위 값 + 모드 공장 단계(`tsin_machine_works`, `tsin_mechanized_textile_mill`). 모드 공장은 추가될 때 덧붙인다 |
+| `tsin_location_industrial_jobs` | 공장 일자리 수(인구 규모 단위). 일반 공장 레벨 × `mills_employment` + 기계화 공장 레벨 × `tsin_mechanized_mill_employment` |
+| `tsin_location_industrial_share` | 공장 일자리 ÷ `population`, 0~1 |
+| `tsin_map_industrial_share_saturation` | 산업화 지도 모드가 최대 색이 되는 공장 일자리 비중(0.25) |
 
-`location_building_level(building_type:X)` 함수형 값은 바닐라 `attribute_columns/05_location.txt`에서 쓰는 형식이다. 스크립트 값의 `add`에서 동작하는지는 **사용자 확인 필요**(M2 시험 절차서).
+`location_building_level(building_type:X)` 함수형 값은 바닐라 `attribute_columns/05_location.txt`에서 쓰는 형식이다. 스크립트 값의 `add`에서 동작하는지는 **사용자 확인 필요**(M2 시험 절차서). `employment_size`의 1은 1000명이고 `population`도 같은 단위라고 가정했다(**사용자 확인 필요**: 공장 1레벨 지점의 툴팁 비중이 실제 고용/인구와 맞는지).
 
 ## 현재 지도 모드
 
 | 키 | 범주 | 단계 | 상태 |
 |---|---|---|---|
 | `tsin_industrial_institutions` | demography | M1 | 관문 H 시험용 겸 제7시대 제도 확산 |
-| `tsin_industrialization` | economy | M2 | 공장 레벨 그라데이션 |
+| `tsin_industrialization` | economy | M2 | 공장 일자리 비중 그라데이션, 툴팁 `TSIN_INDUSTRIALIZATION_MAPMODE_TT` |
