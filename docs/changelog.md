@@ -59,6 +59,8 @@
 - `year >= 1870` → `current_year >= 1870`, 소수 7자리 값을 `multiply`/`divide`로, 내각 행동 AI 가중치의 `has_active_disaster`를 `scope:actor` 안으로 옮겼다.
 - 빠진 현지화: 내각 행동 진행 표시 12개, `tsin_potential_oil`.
 - `validate.py`: 읽는 순서 검사(`requires`/`obsolete`/`copy_from`), 이벤트 검사(`outcome`, 접두어, 삽화 태그), 백과사전 검사(현지화, 아이콘, `family`, 모든 `[x|e]` 링크)를 더했다.
+- 백과사전: 가이드 "The Singularity is Near"와 허브 4개(산업 경제, 산업 사회, 대중 정치와 금융, 산업 시대의 세계) 아래 76개 항목. 시대, 제도, 발전, 군사, 재화, 공장, 철도, 법률, 기업, 상황, 재난, 임무, 원정, 지도 모드, 힌트, 게임 규칙까지 모드가 더한 요소를 모두 다룬다. 모드 객체 설명에 관련 항목 링크를 달았다(`docs/encyclopedia.md`).
+- 고무, 석유, 농기계 설명 추가. `tsin_m6` 현지화에 남아 있던 여러 줄 문자열 조각 삭제.
 - 플레이셋 호환 패치: 플레이셋별 출력, on_action 파일 덮어쓰기, 대체 건물 조건, AAMO 종료 연도 상한, 계층 AI 특권 한도, GUI 데이터 함수 수정(`docs/compat.md`).
 
 ### 알려진 제한
