@@ -1,0 +1,25 @@
+﻿# Industrial company limit and count (country scope), used by tsin_company_decisions.txt.
+
+tsin_company_count = {
+	value = 0
+	if = { limit = { has_country_modifier = tsin_company_steel } add = 1 }
+	if = { limit = { has_country_modifier = tsin_company_machinery } add = 1 }
+	if = { limit = { has_country_modifier = tsin_company_textile } add = 1 }
+	if = { limit = { has_country_modifier = tsin_company_chemical } add = 1 }
+	if = { limit = { has_country_modifier = tsin_company_railway } add = 1 }
+}
+
+# 1 base, +1 stock exchange, +1 mixed or private investment policy (max 3 of 5).
+tsin_company_limit = {
+	value = 1
+	if = { limit = { has_advance = tsin_stock_exchange_advance } add = 1 }
+	if = {
+		limit = {
+			OR = {
+				has_policy = policy:tsin_mixed_investment_policy
+				has_policy = policy:tsin_private_enterprise_policy
+			}
+		}
+		add = 1
+	}
+}

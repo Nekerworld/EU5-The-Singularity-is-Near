@@ -34,3 +34,22 @@
 | `tsin_promote_railway_construction` 철도 건설 촉진 | `tsin_railway_network_advance` | 국가, 1개만 | 철도 건설비 -25%, 도로 건설 시간 -15% |
 
 사용자 확인 필요: 내각 화면에 두 행동이 해금 후에만 보이는지, 주 선택 화면과 지도 표식이 정상인지.
+
+## 산업 회사 결정 (M3, 선택)
+
+파일: `in_game/common/decisions/tsin_company_decisions.txt`(`tools/gen_company_decisions.py`로 생성), `main_menu/common/static_modifiers/tsin_company_modifiers.txt`, `in_game/common/script_values/tsin_company_values.txt`.
+
+| 회사 | 필요 기술 | 효과(영구) |
+|---|---|---|
+| 제철 | `tsin_bessemer_process_advance` | 강철 +10%, 철 +5% |
+| 기계 | `tsin_machine_works_advance` | 기관 +10%, 도구 +5% |
+| 방직 | `tsin_mechanized_textile_mill_advance` | 직물 +10% |
+| 화학 | `tsin_improved_fertilizer_advance` | 비료·폭약 +15% |
+| 철도 | `tsin_railway_network_advance` | 철도 건설비 -10%, 도로 건설 시간 -10% |
+
+- 설립 비용: `change_gold_effect = { scale = -4 }`(국가 규모에 비례).
+- 유지비: 회사마다 `building_upkeep_efficiency = -0.01`. 고정 금액(`monthly_gold_expense`)은 작은 나라에 너무 무거워 쓰지 않았다.
+- 보유 한도 `tsin_company_limit`: 기본 1, 증권 거래소 기술 +1, 혼합 투자 또는 민간 기업 주도 정책 +1 (최대 3).
+- `tsin_dissolve_companies_decision`으로 모두 해산할 수 있다. AI는 해산하지 않는다.
+
+사용자 확인 필요: 결정 설명의 `[ROOT.ScriptValue(...)]`가 숫자로 표시되는지, `has_policy = policy:...`가 이 모드 정책에도 작동하는지.

@@ -1,0 +1,46 @@
+﻿# Permanent industrial company modifiers from tsin_company_decisions.txt.
+# Upkeep is a building upkeep penalty so it scales with the size of the economy.
+
+tsin_company_steel = {
+	game_data = {
+		category = country
+	}
+	global_steel_output_modifier = 0.1
+	global_iron_output_modifier = 0.05
+	building_upkeep_efficiency = -0.01
+}
+
+tsin_company_machinery = {
+	game_data = {
+		category = country
+	}
+	global_tsin_engines_output_modifier = 0.1
+	global_tools_output_modifier = 0.05
+	building_upkeep_efficiency = -0.01
+}
+
+tsin_company_textile = {
+	game_data = {
+		category = country
+	}
+	global_cloth_output_modifier = 0.1
+	building_upkeep_efficiency = -0.01
+}
+
+tsin_company_chemical = {
+	game_data = {
+		category = country
+	}
+	global_tsin_fertilizer_output_modifier = 0.15
+	global_tsin_explosives_output_modifier = 0.15
+	building_upkeep_efficiency = -0.01
+}
+
+tsin_company_railway = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.1
+	global_road_building_time = -0.1
+	building_upkeep_efficiency = -0.01
+}
