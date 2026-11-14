@@ -29,12 +29,16 @@ tsin_location_mill_levels = {
 	value = tsin_location_vanilla_mill_levels
 	add = "location_building_level(building_type:tsin_machine_works)"
 	add = "location_building_level(building_type:tsin_mechanized_textile_mill)"
+	add = "location_building_level(building_type:tsin_fertilizer_plant)"
+	add = "location_building_level(building_type:tsin_explosives_plant)"
 }
 
 # Factory jobs in the location, in pop-size units (employment_size 1 = 1000 people).
 tsin_location_industrial_jobs = {
 	value = tsin_location_vanilla_mill_levels
 	add = "location_building_level(building_type:tsin_machine_works)"
+	add = "location_building_level(building_type:tsin_fertilizer_plant)"
+	add = "location_building_level(building_type:tsin_explosives_plant)"
 	multiply = mills_employment
 	add = {
 		value = "location_building_level(building_type:tsin_mechanized_textile_mill)"

@@ -93,6 +93,7 @@ EXTRA = [
     ("icons/buildings/steel_mill.dds", "icons/buildings/tsin_machine_works.dds", 30),
     ("icons/buildings/textile_mill.dds", "icons/buildings/tsin_mechanized_textile_mill.dds", 200),
     ("icons/map_modes/building_based.dds", "icons/map_modes/tsin_industrialization.dds", 30),
+    ("icons/map_modes/net_building_profit.dds", "icons/map_modes/tsin_industrial_investment.dds", 200),
     ("icons/industry_types/crafts.dds", "icons/industry_types/tsin_machinery.dds", 30),
     ("icons/buildings/dyes_mill.dds", "icons/buildings/tsin_fertilizer_plant.dds", 90),
     ("icons/buildings/cannons_factory.dds", "icons/buildings/tsin_explosives_plant.dds", 330),

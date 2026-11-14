@@ -221,3 +221,13 @@
  tsin_economy.80.b: "Plant rubber under state supervision."
  tsin_economy.80.c: "Leave the forests alone."
  tsin_economy.80.convert_tt: "The raw material of [THIS.GetLocation.GetName] becomes [ShowGoodsName('tsin_rubber')]."
+
+ mapmode_tsin_industrial_investment_name: "Industrial Investment"
+ MAPMODE_TSIN_INDUSTRIAL_INVESTMENT: "#T $mapmode_tsin_industrial_investment_name$#!\n$mapmode_common_start$ who financed the industry of each [location|e]: places with foreign-owned [buildings|e], factories in countries following the state industry policy, and other domestic factories. Ownership by estates cannot be read by script and is not shown."
+ LEGEND_KEY_TSIN_FOREIGN_FACTORIES: "Industry with foreign capital"
+ LEGEND_KEY_TSIN_FOREIGN_BUILDINGS: "Foreign-owned buildings"
+ LEGEND_KEY_TSIN_STATE_INDUSTRY: "State-led industry"
+ LEGEND_KEY_TSIN_DOMESTIC_INDUSTRY: "Domestic private or mixed industry"
+ TSIN_INVESTMENT_FOREIGN_MAPMODE_TT: "[ROOT.GetLocation.GetName] has [buildings|e] owned by foreign countries."
+ TSIN_INVESTMENT_STATE_MAPMODE_TT: "The factories of [ROOT.GetLocation.GetName] work under the state industry policy."
+ TSIN_INVESTMENT_DOMESTIC_MAPMODE_TT: "The factories of [ROOT.GetLocation.GetName] are run by domestic capital."

@@ -37,7 +37,7 @@
 | 값 | 의미 |
 |---|---|
 | `tsin_location_vanilla_mill_levels` | 바닐라 공장 단계(`is_mill = yes`) 18종의 레벨 합 |
-| `tsin_location_mill_levels` | 위 값 + 모드 공장 단계(`tsin_machine_works`, `tsin_mechanized_textile_mill`). 모드 공장은 추가될 때 덧붙인다 |
+| `tsin_location_mill_levels` | 위 값 + 모드 공장 단계(`tsin_machine_works`, `tsin_mechanized_textile_mill`, `tsin_fertilizer_plant`, `tsin_explosives_plant`). 모드 공장은 추가될 때 덧붙인다 |
 | `tsin_location_industrial_jobs` | 공장 일자리 수(인구 규모 단위). 일반 공장 레벨 × `mills_employment` + 기계화 공장 레벨 × `tsin_mechanized_mill_employment` |
 | `tsin_location_industrial_share` | 공장 일자리 ÷ `population`, 0~1 |
 | `tsin_map_industrial_share_saturation` | 산업화 지도 모드가 최대 색이 되는 공장 일자리 비중(0.25) |
@@ -50,3 +50,15 @@
 |---|---|---|---|
 | `tsin_industrial_institutions` | demography | M1 | 관문 H 시험용 겸 제7시대 제도 확산 |
 | `tsin_industrialization` | economy | M2 | 공장 일자리 비중 그라데이션, 툴팁 `TSIN_INDUSTRIALIZATION_MAPMODE_TT` |
+| `tsin_industrial_investment` | economy | M3 | 외국 소유 건물(`num_foreign_buildings`)과 소유국의 투자 정책으로 5단계 |
+
+## 산업 투자 지도 모드의 범위
+
+계획은 "국가·계층별 투자 집중도"였지만, 바닐라 스크립트에서 읽을 수 있는 소유 정보는 나라 단위뿐이다.
+
+- 읽을 수 있음: 지점 트리거 `num_foreign_buildings`, `any_foreign_buildings_in_location`, 건물 트리거 `is_building_owned_by = <나라>`.
+- 찾지 못함: 건물을 어느 계층(귀족, 시민, 성직자, 왕실)이 소유하는지 읽는 트리거나 값. 그래서 계층별 투자는 표시하지 않는다.
+
+색: 외국 소유 건물이 있는 공업 지점(최대) → 외국 소유 건물만 있는 지점(높음) → 소유국이 `tsin_state_industry_policy`인 공업 지점(중간) → 그 밖의 공업 지점(낮음) → 공장 없음(최소).
+
+사용자 확인 필요: `num_foreign_buildings`를 지도 모드 `map_color`의 `limit`에서 써도 되는지, `has_policy = policy:tsin_state_industry_policy`가 모드 정책에 동작하는지.

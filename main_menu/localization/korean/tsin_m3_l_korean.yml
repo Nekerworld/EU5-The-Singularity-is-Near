@@ -221,3 +221,13 @@
  tsin_economy.80.b: "국가 감독 아래 고무를 심는다."
  tsin_economy.80.c: "숲은 그대로 둔다."
  tsin_economy.80.convert_tt: "[THIS.GetLocation.GetName]의 원자재가 [ShowGoodsName('tsin_rubber')]로 바뀝니다."
+
+ mapmode_tsin_industrial_investment_name: "산업 투자"
+ MAPMODE_TSIN_INDUSTRIAL_INVESTMENT: "#T $mapmode_tsin_industrial_investment_name$#!\n각 [location|e]의 공업을 누가 일으켰는지 보여줍니다. 외국 소유 [buildings|e]가 있는 곳, 국가 주도 공업 정책을 쓰는 나라의 공장, 그 밖의 국내 공장을 구분합니다. 계층별 소유는 스크립트로 읽을 수 없어 표시하지 않습니다."
+ LEGEND_KEY_TSIN_FOREIGN_FACTORIES: "외국 자본이 들어온 공업 지점"
+ LEGEND_KEY_TSIN_FOREIGN_BUILDINGS: "외국 소유 건물"
+ LEGEND_KEY_TSIN_STATE_INDUSTRY: "국가 주도 공업"
+ LEGEND_KEY_TSIN_DOMESTIC_INDUSTRY: "국내 민간·혼합 공업"
+ TSIN_INVESTMENT_FOREIGN_MAPMODE_TT: "[ROOT.GetLocation.GetName]에는 외국이 소유한 [buildings|e]가 있습니다."
+ TSIN_INVESTMENT_STATE_MAPMODE_TT: "[ROOT.GetLocation.GetName]의 공장은 국가 주도 공업 정책 아래 있습니다."
+ TSIN_INVESTMENT_DOMESTIC_MAPMODE_TT: "[ROOT.GetLocation.GetName]의 공장은 국내 자본이 운영합니다."
