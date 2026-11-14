@@ -1,0 +1,9 @@
+﻿# Ownership checks and one-time statistics bootstrap; no company is founded here.
+tsin_stock_ui_seed = { scope = country is_shown = { always = yes } is_valid = { is_ai = no } effect = { tsin_dashboard_age7_migrate_effect = yes } }
+tsin_stock_ui_no_companies = { scope = country is_shown = { always = yes } is_valid = { tsin_company_count = 0 } }
+tsin_stock_ui_steel = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_steel } }
+tsin_stock_ui_machinery = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_machinery } }
+tsin_stock_ui_textile = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_textile } }
+tsin_stock_ui_chemical = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_chemical } }
+tsin_stock_ui_railway = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_railway } }
+tsin_stock_ui_farm_machinery = { scope = country is_shown = { always = yes } is_valid = { has_country_modifier = tsin_company_farm_machinery } }

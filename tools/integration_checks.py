@@ -128,6 +128,17 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
                     errors.append(f'integration: generated operational file is outdated: {rel}')
         except (ValueError, KeyError, TypeError) as exc:
             errors.append(f'integration: invalid operational registry: {exc}')
+    if (root / 'tools/gen_stock_market_ui.py').exists():
+        from gen_stock_market_ui import build as build_stock_ui
+        try:
+            generated = build_stock_ui(game)
+            for rel, expected in generated.items():
+                target = root / rel
+                if not target.exists() or pdx.read_text(target) != expected:
+                    errors.append(f'integration: stock economy entry or generated file is outdated: {rel}')
+            counts['stock_company_cards'] = 6
+        except ValueError as exc:
+            errors.append(f'integration: stock economy integration: {exc}')
     return errors, counts
 
 

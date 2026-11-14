@@ -462,6 +462,8 @@ def main() -> int:
         if glorp_source is not None:
             from gen_glorp_stats_compat import generate as generate_glorp_stats
             generate_glorp_stats(glorp_source, compat_root)
+            from gen_stock_market_ui import generate_compat as generate_stock_ui
+            generate_stock_ui(glorp_source, compat_root)
         write_metadata(compat_root, folder, mod_id, label)
 
     out_report = pdx.MOD_ROOT / "tools" / "out" / f"playset_compat_report_{slug}.md"
