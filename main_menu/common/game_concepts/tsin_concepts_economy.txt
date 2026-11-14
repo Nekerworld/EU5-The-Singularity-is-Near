@@ -1,0 +1,49 @@
+﻿# Industrial economy entries (docs/encyclopedia.md). The hub tsin_industrial_economy_concept and the four
+# older economy entries are defined in tsin_concepts.txt, which is read before this file.
+# Loc: tsin_concepts_economy_l_*.yml.
+
+tsin_new_goods_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "trade_goods/icon_goods_tsin_engines"
+}
+
+tsin_factories_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "buildings/tsin_machine_works"
+}
+
+tsin_building_upgrades_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "buildings/tsin_mechanized_textile_mill"
+}
+
+tsin_chemical_industry_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "buildings/tsin_fertilizer_plant"
+}
+
+tsin_extraction_tiers_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "buildings/tsin_blasting_works"
+}
+
+tsin_railways_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "buildings/tsin_railway_station"
+	shown_in_loading_screen = yes
+}
+
+tsin_infrastructure_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "map_modes/tsin_infrastructure"
+}
+
+tsin_oil_prospecting_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "trade_goods/icon_goods_tsin_oil"
+}
+
+tsin_customs_union_concept = {
+	family = tsin_industrial_economy_concept
+	texture = "international_organizations/tsin_customs_union"
+}
