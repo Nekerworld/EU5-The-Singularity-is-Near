@@ -1,0 +1,48 @@
+﻿# Industrial society entries (docs/encyclopedia.md). The hub tsin_industrial_society_concept and the entries
+# tsin_movements_concept, tsin_education_ladder_concept and tsin_labor_conditions_concept are defined in tsin_concepts.txt.
+# Loc: tsin_concepts_society_l_*.yml.
+
+tsin_labor_grievance_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/tsin_labor_unrest"
+}
+
+tsin_housing_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/tsin_housing"
+}
+
+tsin_urbanization_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/tsin_urbanization"
+}
+
+tsin_schools_and_universities_concept = {
+	family = tsin_industrial_society_concept
+	texture = "buildings/tsin_research_university"
+}
+
+tsin_public_health_concept = {
+	family = tsin_industrial_society_concept
+	texture = "map_modes/disease"
+}
+
+tsin_estate_privileges_concept = {
+	family = tsin_industrial_society_concept
+	texture = "privileges/tsin_union_recognition"
+}
+
+tsin_society_advances_concept = {
+	family = tsin_industrial_society_concept
+	texture = "institutions/tsin_mass_society"
+}
+
+tsin_working_class_events_concept = {
+	family = tsin_industrial_society_concept
+	texture = "events/event"
+}
+
+tsin_social_modifiers_concept = {
+	family = tsin_industrial_society_concept
+	texture = "modifiers/country"
+}
