@@ -242,3 +242,219 @@ tsin_economy.40 = {
 		}
 	}
 }
+
+# Financial panic
+tsin_economy.50 = {
+	type = country_event
+	title = tsin_economy.50.title
+	desc = tsin_economy.50.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_stock_exchange_advance
+		NOT = { has_country_modifier = tsin_financial_panic }
+		NOT = { has_country_modifier = tsin_bank_rescue }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+	}
+
+	# Rescue the banks
+	option = {
+		name = tsin_economy.50.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_bank_rescue years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Suspend gold convertibility
+	option = {
+		name = tsin_economy.50.b
+		add_inflation = inflation_mild_penalty
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Let the weak houses fail
+	option = {
+		name = tsin_economy.50.c
+		add_country_modifier = { modifier = tsin_financial_panic years = modifier_duration_years_short mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				stability < 0
+			}
+		}
+	}
+}
+
+# Railway mania
+tsin_economy.60 = {
+	type = country_event
+	title = tsin_economy.60.title
+	desc = tsin_economy.60.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_advance = tsin_railway_network_advance
+		NOT = { has_variable = tsin_railway_mania_done }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		set_variable = tsin_railway_mania_done
+	}
+
+	# Let the share prices soar
+	option = {
+		name = tsin_economy.60.a
+		add_country_modifier = { modifier = tsin_railway_mania years = 5 }
+		set_variable = tsin_railway_bubble
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_weak_bonus }
+		custom_tooltip = tsin_economy.60.a.tt
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Require charters and capital reserves
+	option = {
+		name = tsin_economy.60.b
+		add_country_modifier = { modifier = tsin_railway_chartered years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# The railway bubble bursts (follows tsin_economy.60 option a once the mania is over)
+tsin_economy.61 = {
+	type = country_event
+	title = tsin_economy.61.title
+	desc = tsin_economy.61.desc
+	outcome = negative
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_variable = tsin_railway_bubble
+		NOT = { has_country_modifier = tsin_railway_mania }
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		remove_variable = tsin_railway_bubble
+	}
+
+	# Take over the bankrupt lines
+	option = {
+		name = tsin_economy.61.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_railway_chartered years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Let the investors bear the loss
+	option = {
+		name = tsin_economy.61.b
+		add_country_modifier = { modifier = tsin_railway_crash years = modifier_duration_years_short mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Industrial espionage
+tsin_economy.70 = {
+	type = country_event
+	title = tsin_economy.70.title
+	desc = tsin_economy.70.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_flavor_budget_available_trigger = yes
+		has_embraced_institution = institution:tsin_industrial_capitalism
+		NOT = { has_advance = tsin_machine_tools_advance }
+		NOT = { has_country_modifier = tsin_stolen_designs }
+		any_country = {
+			has_advance = tsin_machine_tools_advance
+		}
+	}
+
+	immediate = {
+		tsin_spend_flavor_budget_effect = yes
+		random_country = {
+			limit = { has_advance = tsin_machine_tools_advance }
+			save_scope_as = tsin_espionage_target
+		}
+	}
+
+	# Pay agents to copy the drawings
+	option = {
+		name = tsin_economy.70.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_stolen_designs years = modifier_duration_years_normal mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Hire their emigrant engineers
+	option = {
+		name = tsin_economy.70.b
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_foreign_engineers years = modifier_duration_years_normal mode = add_and_extend }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# We will build our own
+	option = {
+		name = tsin_economy.70.c
+		ai_chance = {
+			factor = 10
+		}
+	}
+}

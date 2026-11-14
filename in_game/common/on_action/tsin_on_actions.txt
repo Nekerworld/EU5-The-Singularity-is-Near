@@ -73,6 +73,10 @@ tsin_economy_yearly_pulse = {
 		10 = tsin_economy.40
 		5 = tsin_corn_laws.1
 		5 = tsin_corn_laws.3
+		10 = tsin_economy.50
+		10 = tsin_economy.60
+		40 = tsin_economy.61
+		10 = tsin_economy.70
 
 		chance_to_happen = 25
 	}

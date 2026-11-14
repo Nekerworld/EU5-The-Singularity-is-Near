@@ -72,3 +72,58 @@ tsin_private_factory_expansion = {
 	}
 	local_mills_build_buildings_efficiency = 0.15
 }
+
+# tsin_economy.50 option c
+tsin_financial_panic = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_mills_build_buildings_efficiency = -0.1
+	bank_interest = 0.005
+}
+
+# tsin_economy.60 option a; tsin_economy.61 follows when it expires
+tsin_railway_mania = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.25
+	global_road_building_time = -0.2
+}
+
+# tsin_economy.60 option b
+tsin_railway_chartered = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.1
+}
+
+# tsin_economy.61 option b
+tsin_railway_crash = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	build_railroad_cost_modifier = 0.2
+	global_mills_build_buildings_efficiency = -0.05
+}
+
+# tsin_economy.70 option a
+tsin_stolen_designs = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.05
+}
+
+# tsin_economy.70 option b
+tsin_foreign_engineers = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	research_speed_modifier = 0.05
+	global_mills_build_buildings_efficiency = 0.05
+}
