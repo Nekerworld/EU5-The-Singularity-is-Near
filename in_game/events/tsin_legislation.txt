@@ -1,0 +1,210 @@
+﻿namespace = tsin_legislation
+
+# Bill outcomes and debates (docs/legislation.md). Fired by tsin_bill_reading_effect; no flavor budget.
+# Proposal events .100 .. .170 are generated into tsin_legislation_bills.txt (tools/gen_bill_events.py).
+
+# The bill passes its third reading
+tsin_legislation.2 = {
+	type = country_event
+	title = tsin_legislation.2.title
+	desc = tsin_legislation.2.desc
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+		tsin_pass_bill_effect = yes
+	}
+
+	option = {
+		name = tsin_legislation.2.a
+	}
+}
+
+# The bill is abandoned
+tsin_legislation.3 = {
+	type = country_event
+	title = tsin_legislation.3.title
+	desc = tsin_legislation.3.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+		tsin_abandon_bill_effect = yes
+	}
+
+	option = {
+		name = tsin_legislation.3.a
+	}
+}
+
+# The committee wants concessions
+tsin_legislation.10 = {
+	type = country_event
+	title = tsin_legislation.10.title
+	desc = tsin_legislation.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+	}
+
+	# Accept the amendments
+	option = {
+		name = tsin_legislation.10.a
+		tsin_change_bill_bonus_effect = { VALUE = 0.15 }
+		add_political_influence = political_influence_mild_penalty
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Not a comma will be changed
+	option = {
+		name = tsin_legislation.10.b
+		tsin_change_bill_bonus_effect = { VALUE = -0.05 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Whip the votes through
+tsin_legislation.20 = {
+	type = country_event
+	title = tsin_legislation.20.title
+	desc = tsin_legislation.20.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+	}
+
+	# Every member votes with the government or loses his seat
+	option = {
+		name = tsin_legislation.20.a
+		tsin_change_bill_bonus_effect = { VALUE = 0.2 }
+		add_stability = stability_mild_penalty
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				stability < 10
+			}
+		}
+	}
+
+	# Let the members vote their conscience
+	option = {
+		name = tsin_legislation.20.b
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# Take the bill to the country
+tsin_legislation.30 = {
+	type = country_event
+	title = tsin_legislation.30.title
+	desc = tsin_legislation.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+	}
+
+	# Pamphlets, meetings and friendly newspapers
+	option = {
+		name = tsin_legislation.30.a
+		change_gold_effect = { scale = -2 }
+		tsin_change_bill_bonus_effect = { VALUE = 0.1 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Parliament is no place for the street
+	option = {
+		name = tsin_legislation.30.b
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The opposition demands that the bill be withdrawn
+tsin_legislation.40 = {
+	type = country_event
+	title = tsin_legislation.40.title
+	desc = tsin_legislation.40.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		tsin_has_bill_trigger = yes
+	}
+
+	immediate = {
+		var:tsin_bill_policy = { save_scope_as = tsin_bill }
+	}
+
+	# Withdraw the bill
+	option = {
+		name = tsin_legislation.40.a
+		tsin_abandon_bill_effect = yes
+		add_stability = stability_weak_bonus
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# The bill stays on the order paper
+	option = {
+		name = tsin_legislation.40.b
+		tsin_change_bill_bonus_effect = { VALUE = -0.1 }
+		ai_chance = {
+			factor = 7
+		}
+	}
+}

@@ -1,0 +1,193 @@
+﻿# Probabilistic legislation (docs/legislation.md). Scope: country with a bill (var:tsin_bill_policy).
+# Chance that one reading succeeds, 0.05 .. 0.85. Each term has a desc so the tooltip shows the breakdown.
+
+tsin_bill_success_chance = {
+	value = 0
+	add = {
+		desc = tsin_bill_factor_base
+		value = 0.35
+	}
+	# Estates that prefer the bill support it in proportion to their power; estates that prefer another
+	# policy of the same law oppose it.
+	if = {
+		limit = { tsin_bill_preferred_by_trigger = { ESTATE = nobles_estate } }
+		add = {
+			desc = tsin_bill_factor_support_nobles_estate
+			value = "estate_power(estate_type:nobles_estate)"
+			multiply = 0.4
+		}
+	}
+	else_if = {
+		limit = { tsin_bill_opposed_by_trigger = { ESTATE = nobles_estate } }
+		add = {
+			desc = tsin_bill_factor_oppose_nobles_estate
+			value = "estate_power(estate_type:nobles_estate)"
+			multiply = -0.3
+		}
+	}
+	if = {
+		limit = { tsin_bill_preferred_by_trigger = { ESTATE = clergy_estate } }
+		add = {
+			desc = tsin_bill_factor_support_clergy_estate
+			value = "estate_power(estate_type:clergy_estate)"
+			multiply = 0.4
+		}
+	}
+	else_if = {
+		limit = { tsin_bill_opposed_by_trigger = { ESTATE = clergy_estate } }
+		add = {
+			desc = tsin_bill_factor_oppose_clergy_estate
+			value = "estate_power(estate_type:clergy_estate)"
+			multiply = -0.3
+		}
+	}
+	if = {
+		limit = { tsin_bill_preferred_by_trigger = { ESTATE = burghers_estate } }
+		add = {
+			desc = tsin_bill_factor_support_burghers_estate
+			value = "estate_power(estate_type:burghers_estate)"
+			multiply = 0.4
+		}
+	}
+	else_if = {
+		limit = { tsin_bill_opposed_by_trigger = { ESTATE = burghers_estate } }
+		add = {
+			desc = tsin_bill_factor_oppose_burghers_estate
+			value = "estate_power(estate_type:burghers_estate)"
+			multiply = -0.3
+		}
+	}
+	if = {
+		limit = { tsin_bill_preferred_by_trigger = { ESTATE = peasants_estate } }
+		add = {
+			desc = tsin_bill_factor_support_peasants_estate
+			value = "estate_power(estate_type:peasants_estate)"
+			multiply = 0.4
+		}
+	}
+	else_if = {
+		limit = { tsin_bill_opposed_by_trigger = { ESTATE = peasants_estate } }
+		add = {
+			desc = tsin_bill_factor_oppose_peasants_estate
+			value = "estate_power(estate_type:peasants_estate)"
+			multiply = -0.3
+		}
+	}
+	if = {
+		limit = { tsin_bill_preferred_by_trigger = { ESTATE = crown_estate } }
+		add = {
+			desc = tsin_bill_factor_support_crown_estate
+			value = "estate_power(estate_type:crown_estate)"
+			multiply = 0.4
+		}
+	}
+	else_if = {
+		limit = { tsin_bill_opposed_by_trigger = { ESTATE = crown_estate } }
+		add = {
+			desc = tsin_bill_factor_oppose_crown_estate
+			value = "estate_power(estate_type:crown_estate)"
+			multiply = -0.3
+		}
+	}
+	if = {
+		limit = {
+			var:tsin_bill_policy = {
+				tsin_bill_reform_policy_trigger = yes
+				tsin_bill_labor_policy_trigger = yes
+			}
+		}
+		add = {
+			desc = tsin_bill_factor_labor
+			value = tsin_bill_labor_pressure
+		}
+	}
+	if = {
+		limit = {
+			var:tsin_bill_policy = {
+				tsin_bill_reform_policy_trigger = yes
+				tsin_bill_abolition_policy_trigger = yes
+			}
+		}
+		add = {
+			desc = tsin_bill_factor_abolition
+			value = tsin_bill_abolition_pressure
+		}
+	}
+	if = {
+		limit = {
+			var:tsin_bill_policy = {
+				tsin_bill_reform_policy_trigger = yes
+				tsin_bill_labor_policy_trigger = no
+				tsin_bill_abolition_policy_trigger = no
+			}
+		}
+		add = {
+			desc = tsin_bill_factor_liberalism
+			value = tsin_bill_liberal_pressure
+		}
+	}
+	if = {
+		limit = { government_type = government_type:republic }
+		add = {
+			desc = tsin_bill_factor_republic
+			value = 0.05
+		}
+	}
+	add = {
+		desc = tsin_bill_factor_legislative_efficiency
+		value = modifier:legislative_efficiency
+		multiply = 0.5
+	}
+	if = {
+		limit = { has_variable = tsin_bill_bonus }
+		add = {
+			desc = tsin_bill_factor_debate
+			value = var:tsin_bill_bonus
+		}
+	}
+	min = 0.05
+	max = 0.85
+}
+
+# Labour and welfare reform: (grievance + unionism) / 400, at most 0.2.
+tsin_bill_labor_pressure = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_labor_grievance }
+		add = var:tsin_labor_grievance
+	}
+	if = {
+		limit = { has_variable = tsin_labor_unionism }
+		add = var:tsin_labor_unionism
+	}
+	divide = 400
+	max = 0.2
+}
+
+# Abolition: abolitionism / 400, at most 0.2.
+tsin_bill_abolition_pressure = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_abolitionism }
+		add = var:tsin_abolitionism
+	}
+	divide = 400
+	max = 0.2
+}
+
+# Other reforms: liberalism / 500, at most 0.15.
+tsin_bill_liberal_pressure = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_liberalism }
+		add = var:tsin_liberalism
+	}
+	divide = 500
+	max = 0.15
+}
+
+# Bill chance as a whole percent, for localization.
+tsin_bill_success_percent = {
+	value = tsin_bill_success_chance
+	multiply = 100
+}

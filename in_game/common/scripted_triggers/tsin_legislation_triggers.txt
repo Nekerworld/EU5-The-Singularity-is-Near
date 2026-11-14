@@ -1,0 +1,141 @@
+﻿# Probabilistic legislation (docs/legislation.md). Vanilla parliament votes stay as they are; enacting a
+# policy of a bill law goes through a bill that parliament reads three times.
+
+# Scope: country. The bill system applies: game rule on, mass society embraced, a parliament exists.
+tsin_bill_system_active_trigger = {
+	has_game_rule = tsin_bill_system_on
+	has_embraced_institution = institution:tsin_mass_society
+	has_parliament = yes
+}
+
+# Scope: country. Put in the allow of every bill-law policy. Direct enactment is only possible while the
+# bill system is inactive or while tsin_enact_policy_effect runs.
+tsin_policy_enactable_trigger = {
+	custom_tooltip = {
+		text = tsin_policy_needs_bill_tt
+		OR = {
+			NOT = { tsin_bill_system_active_trigger = yes }
+			has_variable = tsin_enacting_policy
+		}
+	}
+}
+
+# Scope: country. A bill is before parliament.
+tsin_has_bill_trigger = {
+	has_variable = tsin_bill_policy
+}
+
+# Scope: country. A new bill can be tabled.
+tsin_can_table_bill_trigger = {
+	tsin_bill_system_active_trigger = yes
+	NOT = { has_variable = tsin_bill_policy }
+	NOT = { has_variable = tsin_bill_cooldown }
+}
+
+# Scope: policy. The policy belongs to a law that is decided by bills.
+tsin_bill_law_policy_trigger = {
+	law = {
+		OR = {
+			this = law:tsin_labor_law
+			this = law:tsin_welfare_law
+			this = law:tsin_taxation_law
+			this = law:tsin_monetary_standard_law
+			this = law:tsin_assembly_law
+			this = law:tsin_land_reform_law
+			this = law:tsin_church_state_law
+			this = law:tsin_industrial_investment_law
+			this = law:tsin_trust_law
+			this = law:tsin_frontier_land_law
+			this = law:tsin_slave_trade_law
+			this = law:press_law
+			this = law:education_masses_law
+			this = law:immigration_law
+			this = law:slavery_laws
+		}
+	}
+}
+
+# Scope: policy. Labour and welfare bills: labour grievance and unionism push them.
+tsin_bill_labor_policy_trigger = {
+	law = {
+		OR = {
+			this = law:tsin_labor_law
+			this = law:tsin_welfare_law
+			this = law:tsin_assembly_law
+		}
+	}
+}
+
+# Scope: policy. Reform policies that the popular movements campaign for. The opposite policies get no
+# movement bonus.
+tsin_bill_reform_policy_trigger = {
+	OR = {
+		this = policy:tsin_factory_acts_policy
+		this = policy:tsin_labor_protection_policy
+		this = policy:tsin_poor_law_policy
+		this = policy:tsin_social_insurance_policy
+		this = policy:tsin_income_tax_policy
+		this = policy:tsin_progressive_taxation_policy
+		this = policy:tsin_licensed_associations_policy
+		this = policy:tsin_free_association_policy
+		this = policy:tsin_redemption_payments_policy
+		this = policy:tsin_full_emancipation_policy
+		this = policy:tsin_separation_of_church_and_state_policy
+		this = policy:tsin_antitrust_policy
+		this = policy:tsin_homestead_policy
+		this = policy:tsin_slave_trade_suppressed_policy
+		this = policy:free_press
+		this = policy:secular_education
+		this = policy:open_borders_law
+		this = policy:slavery_outlawed
+	}
+}
+
+# Scope: country. A popular movement is strong enough that reform bills are worth tabling (AI).
+tsin_bill_reform_pressure_trigger = {
+	OR = {
+		AND = {
+			has_variable = tsin_liberalism
+			var:tsin_liberalism >= 40
+		}
+		AND = {
+			has_variable = tsin_labor_unionism
+			var:tsin_labor_unionism >= 40
+		}
+		AND = {
+			has_variable = tsin_abolitionism
+			var:tsin_abolitionism >= 40
+		}
+		AND = {
+			has_variable = tsin_labor_grievance
+			var:tsin_labor_grievance >= 50
+		}
+	}
+}
+
+# Scope: policy. Abolition bills: the abolitionist movement pushes them.
+tsin_bill_abolition_policy_trigger = {
+	OR = {
+		this = policy:tsin_slave_trade_suppressed_policy
+		this = policy:slavery_outlawed
+	}
+}
+
+# Scope: country. ESTATE prefers the bill policy.
+tsin_bill_preferred_by_trigger = {
+	var:tsin_bill_policy = {
+		any_estate_type_preferring = { this = estate_type:$ESTATE$ }
+	}
+}
+
+# Scope: country. ESTATE prefers another policy of the same law, and so opposes the bill.
+tsin_bill_opposed_by_trigger = {
+	var:tsin_bill_policy = {
+		NOT = { any_estate_type_preferring = { this = estate_type:$ESTATE$ } }
+		law = {
+			any_policy_in_law = {
+				any_estate_type_preferring = { this = estate_type:$ESTATE$ }
+			}
+		}
+	}
+}

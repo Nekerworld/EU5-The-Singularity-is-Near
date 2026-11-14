@@ -9,6 +9,9 @@ tsin_slave_trade_law = {
 	}
 
 	tsin_slave_trade_tolerated_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
 		}
@@ -20,6 +23,9 @@ tsin_slave_trade_law = {
 	}
 
 	tsin_slave_trade_suppressed_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			ban_exports_of_slaves_goods = yes
 			ban_imports_of_slaves_goods = yes

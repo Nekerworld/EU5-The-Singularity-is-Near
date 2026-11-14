@@ -1,0 +1,107 @@
+﻿# Probabilistic legislation (docs/legislation.md). Bill state lives in country variables:
+#   tsin_bill_policy     policy before parliament
+#   tsin_bill_successes  readings won (3 = passed)
+#   tsin_bill_stalls     readings lost (3 = abandoned)
+#   tsin_bill_bonus      debate bonus to the success chance
+#   tsin_bill_check_timer  timed, next reading in 3 months
+#   tsin_bill_cooldown   timed, 2 years after an abandoned bill
+
+# Scope: country. The only way to enact a bill-law policy while the bill system is active.
+tsin_enact_policy_effect = {
+	set_variable = tsin_enacting_policy
+	add_policy = $POLICY$
+	remove_variable = tsin_enacting_policy
+}
+
+# Scope: country. Tables POLICY with a starting debate bonus BONUS (0 for an ordinary bill). Without the bill
+# system, or if the policy is already in force, it is enacted at once. A bill already before parliament is
+# replaced.
+tsin_table_bill_effect = {
+	if = {
+		limit = { tsin_bill_system_active_trigger = yes }
+		set_variable = { name = tsin_bill_policy value = $POLICY$ }
+		set_variable = { name = tsin_bill_successes value = 0 }
+		set_variable = { name = tsin_bill_stalls value = 0 }
+		set_variable = { name = tsin_bill_bonus value = $BONUS$ }
+		set_variable = { name = tsin_bill_check_timer months = 3 }
+		remove_variable = tsin_bill_cooldown
+	}
+	else = {
+		tsin_enact_policy_effect = { POLICY = $POLICY$ }
+	}
+}
+
+# Scope: country. Adds to the debate bonus of the current bill, kept within -0.3 .. 0.3.
+tsin_change_bill_bonus_effect = {
+	if = {
+		limit = { has_variable = tsin_bill_policy }
+		change_variable = { name = tsin_bill_bonus add = $VALUE$ }
+		clamp_variable = { name = tsin_bill_bonus min = -0.3 max = 0.3 }
+	}
+}
+
+# Scope: country. Clears the bill state.
+tsin_clear_bill_effect = {
+	remove_variable = tsin_bill_policy
+	remove_variable = tsin_bill_successes
+	remove_variable = tsin_bill_stalls
+	remove_variable = tsin_bill_bonus
+	remove_variable = tsin_bill_check_timer
+}
+
+# Scope: country. One reading: roll tsin_bill_success_chance, then pass, abandon or maybe debate.
+tsin_bill_reading_effect = {
+	set_variable = { name = tsin_bill_check_timer months = 3 }
+	set_variable = { name = tsin_bill_roll value = 0 }
+	random = {
+		chance = {
+			value = tsin_bill_success_chance
+			multiply = 100
+		}
+		set_variable = { name = tsin_bill_roll value = 1 }
+	}
+	if = {
+		limit = { var:tsin_bill_roll = 1 }
+		change_variable = { name = tsin_bill_successes add = 1 }
+	}
+	else = {
+		change_variable = { name = tsin_bill_stalls add = 1 }
+	}
+	remove_variable = tsin_bill_roll
+	if = {
+		limit = { var:tsin_bill_successes >= 3 }
+		trigger_event_non_silently = tsin_legislation.2
+	}
+	else_if = {
+		limit = { var:tsin_bill_stalls >= 3 }
+		trigger_event_non_silently = tsin_legislation.3
+	}
+	else = {
+		random = {
+			chance = 25
+			random_list = {
+				10 = { trigger_event_non_silently = tsin_legislation.10 }
+				10 = { trigger_event_non_silently = tsin_legislation.20 }
+				10 = { trigger_event_non_silently = tsin_legislation.30 }
+				5 = { trigger_event_non_silently = tsin_legislation.40 }
+			}
+		}
+	}
+}
+
+# Scope: country. The bill passed: enact it and clear the state.
+tsin_pass_bill_effect = {
+	tsin_enact_policy_effect = { POLICY = var:tsin_bill_policy }
+	tsin_clear_bill_effect = yes
+	if = {
+		limit = { NOT = { has_variable = tsin_bills_passed } }
+		set_variable = { name = tsin_bills_passed value = 0 }
+	}
+	change_variable = { name = tsin_bills_passed add = 1 }
+}
+
+# Scope: country. The bill was abandoned: clear the state and wait two years.
+tsin_abandon_bill_effect = {
+	tsin_clear_bill_effect = yes
+	set_variable = { name = tsin_bill_cooldown years = 2 }
+}

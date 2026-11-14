@@ -7,6 +7,9 @@ tsin_labor_law = {
 	law_category = socioeconomic
 
 	tsin_unregulated_labor_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			global_production_efficiency = small_production_efficiency_bonus
 			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
@@ -19,6 +22,9 @@ tsin_labor_law = {
 	}
 
 	tsin_factory_acts_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			global_laborers_max_literacy = 5
 			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
@@ -33,6 +39,7 @@ tsin_labor_law = {
 
 	tsin_labor_protection_policy = {
 		allow = {
+			tsin_policy_enactable_trigger = yes
 			has_advance = tsin_social_insurance_advance
 		}
 		country_modifier = {
@@ -54,6 +61,9 @@ tsin_welfare_law = {
 	law_category = socioeconomic
 
 	tsin_charity_relief_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
 		}
@@ -64,6 +74,9 @@ tsin_welfare_law = {
 	}
 
 	tsin_poor_law_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			tax_income_efficiency = tiny_tax_income_efficiency_penalty
 			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
@@ -76,6 +89,9 @@ tsin_welfare_law = {
 	}
 
 	tsin_social_insurance_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			tax_income_efficiency = small_tax_income_efficiency_penalty
 			peasants_estate_target_satisfaction = medium_permanent_target_satisfaction
@@ -95,6 +111,9 @@ tsin_taxation_law = {
 	law_category = socioeconomic
 
 	tsin_indirect_taxation_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
 			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
@@ -107,6 +126,9 @@ tsin_taxation_law = {
 	}
 
 	tsin_income_tax_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			tax_income_efficiency = small_tax_income_efficiency_bonus
 			burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
@@ -119,6 +141,7 @@ tsin_taxation_law = {
 
 	tsin_progressive_taxation_policy = {
 		allow = {
+			tsin_policy_enactable_trigger = yes
 			has_advance = tsin_mass_communication_advance
 		}
 		country_modifier = {
@@ -140,6 +163,9 @@ tsin_assembly_law = {
 	law_category = socioeconomic
 
 	tsin_assembly_banned_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			global_crown_estate_power = 0.1
 			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
@@ -153,6 +179,9 @@ tsin_assembly_law = {
 	}
 
 	tsin_licensed_associations_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
 		}
@@ -164,6 +193,7 @@ tsin_assembly_law = {
 
 	tsin_free_association_policy = {
 		allow = {
+			tsin_policy_enactable_trigger = yes
 			has_advance = tsin_labor_movement_advance
 		}
 		country_modifier = {
@@ -185,6 +215,9 @@ tsin_land_reform_law = {
 	law_category = socioeconomic
 
 	tsin_serfdom_retained_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			nobles_estate_target_satisfaction = small_permanent_target_satisfaction
 			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
@@ -197,6 +230,9 @@ tsin_land_reform_law = {
 	}
 
 	tsin_redemption_payments_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			nobles_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
 			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
@@ -211,6 +247,9 @@ tsin_land_reform_law = {
 	}
 
 	tsin_full_emancipation_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			global_nobles_estate_power = -0.1
 			nobles_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
@@ -230,6 +269,9 @@ tsin_church_state_law = {
 	law_category = socioeconomic
 
 	tsin_established_church_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
 			monthly_towards_spiritualist = societal_value_minor_monthly_move
@@ -241,6 +283,9 @@ tsin_church_state_law = {
 	}
 
 	tsin_concordat_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			clergy_estate_target_satisfaction = tiny_permanent_target_satisfaction
 			global_max_literacy = 5
@@ -252,6 +297,9 @@ tsin_church_state_law = {
 	}
 
 	tsin_separation_of_church_and_state_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
 		country_modifier = {
 			global_clergy_estate_power = -0.1
 			clergy_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty

@@ -1,0 +1,59 @@
+﻿# Probabilistic legislation (docs/legislation.md): table a bill, or withdraw the bill before parliament.
+
+tsin_propose_bill_decision = {
+	decision_category = government_decisions
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+
+	potential = {
+		tsin_bill_system_active_trigger = yes
+		NOT = { has_variable = tsin_bill_policy }
+	}
+
+	allow = {
+		NOT = { has_variable = tsin_bill_cooldown }
+	}
+
+	ai_will_do = {
+		value = 5
+		if = {
+			limit = { tsin_bill_reform_pressure_trigger = yes }
+			add = 15
+		}
+	}
+
+	option = {
+		name = tsin_propose_bill_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			trigger_event_non_silently = tsin_legislation.100
+		}
+	}
+}
+
+tsin_withdraw_bill_decision = {
+	decision_category = government_decisions
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+
+	potential = {
+		tsin_has_bill_trigger = yes
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_withdraw_bill_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			custom_tooltip = tsin_withdraw_bill_decision.tt
+			hidden_effect = {
+				tsin_abandon_bill_effect = yes
+			}
+		}
+	}
+}

@@ -39,7 +39,7 @@ tsin_abolition.1 = {
 		trigger = {
 			NOT = { has_policy = policy:tsin_slave_trade_suppressed_policy }
 		}
-		add_policy = policy:tsin_slave_trade_suppressed_policy
+		tsin_table_bill_effect = { POLICY = policy:tsin_slave_trade_suppressed_policy BONUS = 0.15 }
 		ruler = { add_character_modifier = { modifier = protecting_against_slave_trade months = -1 mode = add_and_extend } }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
 		ai_chance = {
