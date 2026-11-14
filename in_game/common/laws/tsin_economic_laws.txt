@@ -1,0 +1,49 @@
+﻿# Age VII investment law: approximates who funds new industry (state vs estates).
+# Unlocked by tsin_industrial_capitalism_advance (unlock_law), like vanilla press_law.
+# Estate construction is steered with vanilla estate building cost modifiers and burgher build rights.
+
+tsin_industrial_investment_law = {
+	law_category = socioeconomic
+
+	tsin_state_industry_policy = {
+		country_modifier = {
+			global_mills_build_buildings_efficiency = 0.1
+			small_estate_building_cost_modifier = 0.1
+			expensive_estate_building_cost_modifier = 0.25
+			monthly_towards_absolutism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 2
+	}
+
+	tsin_mixed_investment_policy = {
+		country_modifier = {
+			global_mills_build_buildings_efficiency = 0.05
+			burghers_estate_allowed_to_build_roads = yes
+		}
+		estate_preferences = {
+			crown_estate
+			burghers_estate
+		}
+		years = 2
+	}
+
+	tsin_private_enterprise_policy = {
+		allow = {
+			has_employment_system = employment_system:capitalism
+		}
+		country_modifier = {
+			small_estate_building_cost_modifier = -0.15
+			expensive_estate_building_cost_modifier = -0.15
+			burghers_estate_allowed_to_build_roads = yes
+			burghers_estate_allowed_to_build_rgo = yes
+			monthly_towards_capital_economy = societal_value_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+}

@@ -1,0 +1,10 @@
+﻿l_english:
+ tsin_industrial_investment_law: "Industrial Investment"
+ tsin_industrial_investment_law_desc: "This determines who builds and funds new factories and railways."
+ tsin_industrial_investment_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"
+ tsin_state_industry_policy: "State-Led Industrialization"
+ tsin_state_industry_policy_desc: "The state founds factories itself and allocates capital. Government projects go faster, but buildings raised by the estates cost more."
+ tsin_mixed_investment_policy: "Mixed Investment"
+ tsin_mixed_investment_policy_desc: "The state and private capital invest in industry together. Burghers may also build roads."
+ tsin_private_enterprise_policy: "Private Enterprise"
+ tsin_private_enterprise_policy_desc: "Industrial investment is left to private capital. Estate construction costs less, and burghers may build roads and raw material buildings. Requires the capitalist [employment_system|e]."
