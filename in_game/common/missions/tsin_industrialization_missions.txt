@@ -1,0 +1,105 @@
+﻿# Age VII generic mission pack (M3): from farm to factory, urbanisation, railway boom.
+# Structure follows vanilla generic_*_mission_pack.txt. No country tags; rewards are timed modifiers.
+
+tsin_industrialization = {
+	icon = tsin_industrialization
+	repeatable = no
+	player_playstyle = administrative
+	visible = {
+		game_has_missions_enabled = yes
+		current_age_or_later = { age = age_7_industrialization }
+		num_of_non_rural > 0
+		has_enabled_mission_trigger = { type = tsin_industrialization }
+	}
+
+	enabled = {
+		exists = capital
+	}
+
+	chance = 3600
+
+	on_completion = {
+		disable_mission_effect = { type = tsin_industrialization }
+	}
+
+	tsin_mission_first_factories = {
+		icon = industrialization_advance
+		requires = { }
+		enabled = {
+			tsin_has_factories_trigger = { COUNT = 3 }
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_factory_boom years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_machine_works = {
+		icon = swiss_clockwork
+		requires = { tsin_mission_first_factories }
+		enabled = {
+			any_owned_location = {
+				has_building_with_at_least_one_level = tsin_machine_works
+			}
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_machinery years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_urban_growth = {
+		icon = urbanization
+		requires = { tsin_mission_first_factories }
+		enabled = {
+			num_of_non_rural >= 4
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_urban_growth years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_rail_link = {
+		icon = railroad_advance
+		requires = { tsin_mission_first_factories }
+		enabled = {
+			any_owned_location = {
+				is_capital = no
+				has_road_of_type_to = {
+					target = root.capital
+					type = road_type:railroad
+				}
+			}
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_rail_link years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_railway_boom = {
+		icon = modern_road_advance
+		requires = { tsin_mission_rail_link }
+		enabled = {
+			total_effective_building_levels:tsin_railway_station >= 3
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_railway_boom years = modifier_duration_years_normal mode = add_and_extend }
+		}
+	}
+
+	tsin_mission_industrial_nation = {
+		final = yes
+		icon = industrial_expansion_advance
+		requires = { tsin_mission_machine_works tsin_mission_urban_growth tsin_mission_railway_boom }
+		enabled = {
+			tsin_has_factories_trigger = { COUNT = 8 }
+		}
+		duration = 0
+		on_completion = {
+			add_country_modifier = { modifier = tsin_mission_industrial_nation years = modifier_duration_years_extended mode = add_and_extend }
+		}
+	}
+}

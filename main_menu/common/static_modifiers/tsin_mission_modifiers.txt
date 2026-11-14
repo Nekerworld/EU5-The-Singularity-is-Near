@@ -1,0 +1,44 @@
+﻿# Rewards of the tsin_industrialization mission pack.
+
+tsin_mission_factory_boom = {
+	game_data = {
+		category = country
+	}
+	global_mills_build_buildings_efficiency = 0.1
+}
+
+tsin_mission_machinery = {
+	game_data = {
+		category = country
+	}
+	global_tsin_engines_output_modifier = 0.1
+}
+
+tsin_mission_urban_growth = {
+	game_data = {
+		category = country
+	}
+	non_rural_migration_attraction = 0.25
+}
+
+tsin_mission_rail_link = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.15
+}
+
+tsin_mission_railway_boom = {
+	game_data = {
+		category = country
+	}
+	build_railroad_cost_modifier = -0.1
+	global_mills_build_buildings_efficiency = 0.05
+}
+
+tsin_mission_industrial_nation = {
+	game_data = {
+		category = country
+	}
+	global_production_efficiency = 0.03
+}
