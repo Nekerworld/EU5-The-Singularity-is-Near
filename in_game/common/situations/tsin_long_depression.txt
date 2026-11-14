@@ -7,7 +7,13 @@ tsin_long_depression = {
 	hint_tag = hint_tsin_long_depression
 
 	can_start = {
-		current_year >= 1865
+		OR = {
+			current_year >= 1865
+			AND = {
+				current_year >= 1850
+				has_global_variable = tsin_market_crash_recent
+			}
+		}
 		NOT = { has_global_variable = tsin_long_depression_happened }
 		any_country = {
 			count >= 6
@@ -42,6 +48,10 @@ tsin_long_depression = {
 		every_country = {
 			limit = { has_embraced_institution = institution:tsin_industrial_capitalism }
 			add_country_modifier = { modifier = tsin_depression_panic months = -1 }
+			if = {
+				limit = { has_policy = policy:tsin_gold_standard_policy }
+				add_country_modifier = { modifier = tsin_gold_standard_deflation years = 5 }
+			}
 			trigger_event_non_silently = tsin_depression.1
 		}
 	}

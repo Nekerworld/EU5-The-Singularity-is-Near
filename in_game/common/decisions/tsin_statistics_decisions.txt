@@ -1,0 +1,31 @@
+﻿# Economy statistics (docs/economic_statistics.md). Players only.
+
+tsin_economy_snapshot_decision = {
+	decision_category = economy_decisions
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_tsin_engines.dds"
+
+	potential = {
+		is_ai = no
+		has_variable = tsin_gdp
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = tsin_economy_snapshot_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			if = {
+				limit = { has_game_rule = tsin_economy_log_on }
+				tsin_economy_snapshot_effect = yes
+			}
+			trigger_event_non_silently = tsin_system.30
+		}
+	}
+}

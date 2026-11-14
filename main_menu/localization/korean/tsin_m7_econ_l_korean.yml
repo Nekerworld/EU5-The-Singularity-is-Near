@@ -1,0 +1,15 @@
+﻿l_korean:
+
+ # Estimated GDP and economy log (docs/economic_statistics.md)
+ tsin_economy_log_line: "TSIN_ECON;name=[ROOT.GetCountry.GetName];year=[ROOT.ScriptValue('tsin_obs_year')|0];gdp=[ROOT.ScriptValue('tsin_gdp')|0];gdp_pc=[ROOT.ScriptValue('tsin_gdp_per_capita')|3];growth=[ROOT.ScriptValue('tsin_gdp_growth')|2];pop=[ROOT.ScriptValue('tsin_econ_population')|0];index=[ROOT.ScriptValue('tsin_stock_index_report')|1];grievance=[ROOT.ScriptValue('tsin_econ_labor_grievance')|1];sec=[ROOT.ScriptValue('tsin_country_secondary_education')|1];high=[ROOT.ScriptValue('tsin_country_higher_education')|1];fac=[ROOT.ScriptValue('tsin_econ_factory_share')|3];lit=[ROOT.ScriptValue('tsin_country_literacy')|1]"
+ rule_tsin_economy_log: "경제 통계 기록"
+ setting_tsin_economy_log_off: "끔"
+ setting_tsin_economy_log_off_desc: "경제 통계 줄을 남기지 않습니다."
+ setting_tsin_economy_log_on: "켬"
+ setting_tsin_economy_log_on_desc: "매년 플레이어, 열강, 주식시장이 있는 나라의 추정 GDP와 경제 지표를 게임 로그에 남깁니다. tools/econ_report.py로 표와 그래프를 만들 수 있습니다."
+ tsin_economy_snapshot_decision.title: "경제 통계 보고"
+ tsin_economy_snapshot_decision.desc: "통계 담당관이 추정 국내총생산과 1인당 생산, 성장률을 보고합니다. 게임 규칙 "경제 통계 기록"이 켜져 있으면 기록 대상 나라 전체의 통계를 지금 게임 로그에 남깁니다."
+ tsin_economy_snapshot_decision.a: "보고서를 받는다."
+ tsin_system.30.title: "경제 통계 보고서"
+ tsin_system.30.desc: "통계 담당관의 연간 추정치입니다.\n\n$BULLET$추정 국내총생산: [ROOT.ScriptValue('tsin_gdp')|0]\n$BULLET$1인당 생산: [ROOT.ScriptValue('tsin_gdp_per_capita')|2]\n$BULLET$지난해 대비 성장률: [ROOT.ScriptValue('tsin_gdp_growth')|1]%\n$BULLET$공장 노동자 비중: [ROOT.ScriptValue('tsin_econ_factory_share')|%1]\n$BULLET$주가 종합지수: [ROOT.ScriptValue('tsin_stock_index_report')|0]\n\n추정치는 도시와 마을의 세원, 교역과 세금 수입, 인구의 자급 생산을 더하고 교육 수준으로 생산성을 보정한 값입니다. 엔진이 계산하는 값이 아니므로 나라끼리 견주는 데 쓰십시오."
+ tsin_system.30.a: "알겠다."

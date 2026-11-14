@@ -1,0 +1,11 @@
+﻿l_english:
+
+ # Monetary standard (in_game/common/laws/tsin_monetary_laws.txt)
+ tsin_monetary_standard_law: "Monetary Standard"
+ tsin_monetary_standard_law_desc: "This determines whether our money is backed by gold and silver or by gold alone."
+ tsin_bimetallism_policy: "Bimetallism"
+ tsin_bimetallism_policy_desc: "Gold and silver coins are both legal tender. Prices creep up, but indebted farmers can breathe."
+ tsin_gold_standard_policy: "Gold Standard"
+ tsin_gold_standard_policy_desc: "Our money is backed by gold alone. Prices and stocks steady, interest falls and gold output rises, but falling prices squeeze indebted farmers. A Long Depression cuts deeper."
+ STATIC_MODIFIER_NAME_tsin_gold_standard_deflation: "Gold Standard Deflation"
+ tsin_monetary_standard_law_CATEGORY: "SOCIOECONOMIC_LAW_CATEGORY"

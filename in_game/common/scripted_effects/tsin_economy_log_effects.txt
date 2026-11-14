@@ -1,0 +1,42 @@
+﻿# Economy statistics log (docs/economic_statistics.md). With the game rule tsin_economy_log on, players, great
+# powers and countries with a stock market write one TSIN_ECON line a year to the game log.
+
+# Scope: country. Called at the end of the annual aggregate pass.
+tsin_log_economy_effect = {
+	if = {
+		limit = {
+			has_game_rule = tsin_economy_log_on
+			tsin_economy_log_target_trigger = yes
+		}
+		debug_log = tsin_economy_log_line
+	}
+}
+
+# Scope: country. tsin_economy_snapshot_decision: every logged country writes a line now. The line reads ROOT,
+# so each country writes it from its own hidden event (tsin_system.31).
+tsin_economy_snapshot_effect = {
+	every_country = {
+		limit = {
+			has_variable = tsin_gdp
+			tsin_economy_log_target_trigger = yes
+		}
+		trigger_event_silently = tsin_system.31
+	}
+}
+
+# Any scope, once a year (tsin_tempo_yearly_pulse): highest per-capita GDP in the world, the scale of the
+# tsin_gdp_per_capita map mode.
+tsin_update_world_gdp_effect = {
+	if = {
+		limit = { NOT = { has_global_variable = tsin_world_gdp_timer } }
+		set_global_variable = { name = tsin_world_gdp_timer value = yes days = 360 }
+		set_global_variable = { name = tsin_world_gdp_pc_max value = 0 }
+		every_country = {
+			limit = {
+				has_variable = tsin_gdp_per_capita
+				var:tsin_gdp_per_capita > global_var:tsin_world_gdp_pc_max
+			}
+			set_global_variable = { name = tsin_world_gdp_pc_max value = var:tsin_gdp_per_capita }
+		}
+	}
+}

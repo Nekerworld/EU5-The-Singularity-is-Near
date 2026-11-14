@@ -45,3 +45,13 @@ tsin_protectionist_recovery = {
 	}
 	max_tariff = 0.1
 }
+
+# tsin_long_depression on_start: gold standard countries cannot inflate their way out
+tsin_gold_standard_deflation = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_production_efficiency = -0.02
+	peasants_estate_target_satisfaction = -0.05
+}

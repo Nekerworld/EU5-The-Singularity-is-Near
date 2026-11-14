@@ -1,0 +1,100 @@
+﻿# Estimated GDP (docs/economic_statistics.md). The engine has no GDP, so it is estimated once a year from the
+# annual aggregate pass (tsin_aggregate_effects.txt). Country scope; var:tsin_agg_tax_base must be set.
+
+# Ducats of yearly output per unit of urban tax base.
+tsin_gdp_tax_base_factor = 10
+# Ducats of yearly output per ducat of yearly trade and tax income.
+tsin_gdp_income_factor = 4
+# Ducats of yearly subsistence output per 1 total_population (farms and crafts the tax base misses).
+tsin_gdp_subsistence_per_pop = 0.4
+
+# Productivity: secondary education +0.5% and higher education +1% per point (both 0..100).
+tsin_gdp_productivity = {
+	value = 1
+	add = {
+		value = tsin_country_secondary_education
+		divide = 200
+	}
+	add = {
+		value = tsin_country_higher_education
+		divide = 100
+	}
+}
+
+tsin_gdp_estimate = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_agg_tax_base }
+		add = {
+			value = var:tsin_agg_tax_base
+			multiply = tsin_gdp_tax_base_factor
+		}
+	}
+	add = {
+		value = monthly_income_trade_and_tax
+		multiply = 12
+		multiply = tsin_gdp_income_factor
+		min = 0
+	}
+	add = {
+		value = total_population
+		multiply = tsin_gdp_subsistence_per_pop
+	}
+	multiply = tsin_gdp_productivity
+}
+
+# Readers for reports, logs and map modes: 0 before the first annual pass.
+tsin_gdp = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_gdp }
+		value = var:tsin_gdp
+	}
+}
+
+tsin_gdp_per_capita = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_gdp_per_capita }
+		value = var:tsin_gdp_per_capita
+	}
+}
+
+# Percent change over the last year.
+tsin_gdp_growth = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_gdp_growth }
+		value = var:tsin_gdp_growth
+	}
+}
+
+# location scope: per-capita GDP of the owner (map mode).
+tsin_location_gdp_per_capita = {
+	value = 0
+	if = {
+		limit = { owner ?= { has_variable = tsin_gdp_per_capita } }
+		add = owner.var:tsin_gdp_per_capita
+	}
+}
+
+# TSIN_ECON log line (tsin_economy_log_effects.txt)
+tsin_econ_population = {
+	value = total_population
+}
+
+tsin_econ_labor_grievance = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_labor_grievance }
+		value = var:tsin_labor_grievance
+	}
+}
+
+tsin_econ_factory_share = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_factory_share }
+		value = var:tsin_factory_share
+	}
+}
