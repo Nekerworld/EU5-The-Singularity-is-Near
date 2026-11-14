@@ -1,0 +1,50 @@
+﻿# The dual monarchy compromise (0.7, docs/great_powers.md): a multinational monarchy shares power with its
+# largest minority. No country tags.
+
+tsin_dual_monarchy_decision = {
+	decision_category = government_decisions
+	image = "gfx/interface/illustrations/government/throne_rooms/throne_room_north_german.dds"
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		government_type = government_type:monarchy
+		NOT = { has_variable = tsin_dual_monarchy }
+		tsin_minority_culture_share >= 0.3
+	}
+
+	allow = {
+		at_war = no
+		has_variable = tsin_nationalism
+		var:tsin_nationalism >= 30
+		stability >= 0
+	}
+
+	ai_will_do = {
+		value = 20
+	}
+
+	option = {
+		name = tsin_dual_monarchy_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			set_variable = tsin_dual_monarchy
+			ordered_owned_location = {
+				limit = {
+					dominant_culture ?= {
+						NOT = { root = { has_primary_or_accepted_culture = prev } }
+					}
+				}
+				order_by = population
+				max = 1
+				dominant_culture = { save_scope_as = tsin_partner_culture }
+			}
+			if = {
+				limit = { exists = scope:tsin_partner_culture }
+				add_accepted_culture = scope:tsin_partner_culture
+			}
+			add_country_modifier = { modifier = tsin_dual_monarchy months = -1 }
+			change_variable = { name = tsin_nationalism subtract = 25 }
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+		}
+	}
+}

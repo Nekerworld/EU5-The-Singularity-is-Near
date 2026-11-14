@@ -1,0 +1,207 @@
+﻿namespace = tsin_culture
+
+# Science and culture of the late 19th century (0.7, docs/culture_science.md): the origin of species (.10),
+# the culture struggle (.20), the submarine cable (.30), the modern Olympics (.40).
+# Fired from tsin_culture_yearly_pulse; no flavor budget. Conditions are dates, religion and advances, never tags.
+
+# On the origin of species
+tsin_culture.10 = {
+	type = country_event
+	title = tsin_culture.10.title
+	desc = tsin_culture.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		current_year >= 1859
+		NOT = { has_variable = tsin_darwin_done }
+		has_embraced_institution = institution:tsin_mass_society
+	}
+
+	immediate = {
+		set_variable = tsin_darwin_done
+	}
+
+	# Science must follow the evidence
+	option = {
+		name = tsin_culture.10.a
+		add_country_modifier = { modifier = tsin_darwin_debate years = 10 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_move_to_right
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# The church condemns the book
+	option = {
+		name = tsin_culture.10.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_minor_move_to_left
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The culture struggle: the church council proclaims papal infallibility
+tsin_culture.20 = {
+	type = country_event
+	title = tsin_culture.20.title
+	desc = tsin_culture.20.desc
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		current_year >= 1870
+		religion = religion:catholic
+		has_advance = tsin_universal_education_advance
+		NOT = { has_variable = tsin_kulturkampf_done }
+		NOT = { has_policy = policy:tsin_separation_of_church_and_state_policy }
+	}
+
+	immediate = {
+		set_variable = tsin_kulturkampf_done
+	}
+
+	# Break the power of the church: separate church and state
+	option = {
+		name = tsin_culture.20.a
+		tsin_table_bill_effect = { POLICY = policy:tsin_separation_of_church_and_state_policy BONUS = 0.15 }
+		add_stability = stability_weak_penalty
+		change_variable = { name = tsin_liberalism add = 5 }
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	# Seek a concordat with the church
+	option = {
+		name = tsin_culture.20.b
+		trigger = {
+			NOT = { has_policy = policy:tsin_concordat_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_concordat_policy BONUS = 0.15 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Stay out of the quarrel
+	option = {
+		name = tsin_culture.20.c
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The submarine telegraph cable
+tsin_culture.30 = {
+	type = country_event
+	title = tsin_culture.30.title
+	desc = tsin_culture.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		current_year >= 1858
+		NOT = { has_variable = tsin_submarine_cable_done }
+		OR = {
+			has_advance = tsin_telegraph_telephone_advance
+			has_advance = tsin_telegraph_diplomacy
+		}
+		any_owned_location = { is_port = yes }
+	}
+
+	immediate = {
+		set_variable = tsin_submarine_cable_done
+	}
+
+	# The state pays for the cable
+	option = {
+		name = tsin_culture.30.a
+		change_gold_effect = { scale = -2 }
+		add_country_modifier = { modifier = tsin_submarine_cable years = 30 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Leave it to the cable companies
+	option = {
+		name = tsin_culture.30.b
+		add_country_modifier = { modifier = tsin_private_cable years = 30 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The modern Olympic Games: a great capital offers to host
+tsin_culture.40 = {
+	type = country_event
+	title = tsin_culture.40.title
+	desc = tsin_culture.40.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		current_year >= 1896
+		NOT = { has_global_variable = tsin_olympics_cooldown }
+		at_war = no
+		capital ?= {
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+	}
+
+	immediate = {
+		set_global_variable = { name = tsin_olympics_cooldown value = yes years = 4 }
+	}
+
+	# Host the games
+	option = {
+		name = tsin_culture.40.a
+		change_gold_effect = { scale = -2 }
+		add_prestige = prestige_extreme_bonus
+		add_country_modifier = { modifier = tsin_olympic_games years = 4 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_2
+			}
+		}
+	}
+
+	# Let another country host
+	option = {
+		name = tsin_culture.40.b
+		remove_global_variable = tsin_olympics_cooldown
+		ai_chance = {
+			factor = 3
+		}
+	}
+}

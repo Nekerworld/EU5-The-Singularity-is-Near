@@ -1,0 +1,42 @@
+﻿# Gold rushes and homestead frontiers (docs/frontier.md).
+
+tsin_homestead_frontier = {
+	game_data = {
+		category = location
+	}
+	local_migration_attraction = 0.25
+}
+
+tsin_gold_rush_boom = {
+	game_data = {
+		category = location
+	}
+	local_migration_attraction = 0.5
+	local_population_capacity_modifier = 0.1
+	local_market_access = 0.05
+}
+
+tsin_gold_rush_licensed = {
+	game_data = {
+		category = location
+	}
+	local_migration_attraction = 0.2
+}
+
+tsin_boomtown = {
+	game_data = {
+		category = location
+	}
+	local_population_capacity_modifier = 0.1
+	local_migration_attraction = 0.15
+	local_max_control = 0.05
+}
+
+tsin_gold_inflation = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+	burghers_estate_target_satisfaction = -0.05
+	peasants_estate_target_satisfaction = -0.05
+}

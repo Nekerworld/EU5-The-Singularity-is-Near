@@ -1,0 +1,34 @@
+﻿# Frontier land (0.7, docs/frontier.md): who gets the empty land of the country. Unlocked by tsin_railway_network_advance.
+
+tsin_frontier_land_law = {
+	law_category = socioeconomic
+
+	tsin_crown_land_sales_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			nobles_estate
+			crown_estate
+		}
+		years = 0
+	}
+
+	tsin_homestead_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		}
+		estate_preferences = {
+			peasants_estate
+			burghers_estate
+		}
+		years = 2
+	}
+}

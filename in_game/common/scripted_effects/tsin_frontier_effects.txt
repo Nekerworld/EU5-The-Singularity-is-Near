@@ -1,0 +1,12 @@
+﻿# Gold rushes and homestead frontiers (docs/frontier.md).
+
+# root = country with tsin_homestead_policy. Its thinly settled locations attract settlers for the next year.
+tsin_homestead_frontier_effect = {
+	every_owned_location = {
+		limit = {
+			is_core_of = root
+			location_population_percentage < tsin_homestead_frontier_threshold
+		}
+		add_location_modifier = { modifier = tsin_homestead_frontier years = 1 mode = add_and_extend }
+	}
+}

@@ -1,0 +1,18 @@
+﻿# The concert of the powers (docs/great_powers.md).
+
+tsin_congress_concert_opinion = {
+	value = 25
+	yearly_decay = 2
+}
+
+tsin_congress_dictated_opinion = {
+	value = -25
+	yearly_decay = 2
+	min = -100
+}
+
+tsin_naval_rivalry_opinion = {
+	value = -15
+	yearly_decay = 1
+	min = -100
+}

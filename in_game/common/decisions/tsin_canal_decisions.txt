@@ -1,0 +1,97 @@
+﻿# Industrial canal construction (0.7, docs/culture_science.md). The vanilla build_suez_canal / build_panama_canal
+# decisions stay as they are; with dynamite and steam excavators these cheaper versions appear beside them.
+
+tsin_build_suez_canal_industrial = {
+	decision_category = infrastructure_decisions
+	hide_repeatable_tag = yes
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_discovered = location:suez
+		location:suez = { is_canal_open = no }
+		has_advance = tsin_dynamite_advance
+		has_advance = tsin_steam_construction_advance
+	}
+
+	allow = {
+		gold >= tsin_industrial_canal_cost
+		owns_or_non_sovereign_subject_owns = location:tinnis
+		owns_or_non_sovereign_subject_owns = location:suez
+		has_advance = suez_canal_advance
+		location:suez = {
+			NOT = { has_canal_construction = yes }
+		}
+	}
+
+	ai_will_do = {
+		value = -1
+		if = {
+			limit = {
+				gold >= tsin_industrial_canal_ai_gold
+				last_months_balance > 0
+			}
+			add = 100
+		}
+	}
+
+	option = {
+		name = tsin_build_suez_canal_industrial.a
+		ai_chance = { value = 100 }
+		effect = {
+			location:suez = {
+				start_canal_construction = { }
+			}
+			add_gold = {
+				value = tsin_industrial_canal_cost
+				multiply = -1
+			}
+		}
+	}
+}
+
+tsin_build_panama_canal_industrial = {
+	decision_category = infrastructure_decisions
+	hide_repeatable_tag = yes
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_discovered = location:panama
+		location:panama = { is_canal_open = no }
+		has_advance = tsin_dynamite_advance
+		has_advance = tsin_steam_construction_advance
+	}
+
+	allow = {
+		gold >= tsin_industrial_canal_cost
+		owns_or_non_sovereign_subject_owns = location:panama
+		has_advance = panama_canal_advance
+		location:panama = {
+			NOT = { has_canal_construction = yes }
+		}
+	}
+
+	ai_will_do = {
+		value = -1
+		if = {
+			limit = {
+				gold >= tsin_industrial_canal_ai_gold
+				last_months_balance > 0
+			}
+			add = 100
+		}
+	}
+
+	option = {
+		name = tsin_build_panama_canal_industrial.a
+		ai_chance = { value = 100 }
+		effect = {
+			location:panama = {
+				start_canal_construction = { }
+			}
+			add_gold = {
+				value = tsin_industrial_canal_cost
+				multiply = -1
+			}
+		}
+	}
+}

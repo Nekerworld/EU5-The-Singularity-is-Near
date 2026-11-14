@@ -1,0 +1,4 @@
+﻿# Gold rushes and homestead frontiers (docs/frontier.md).
+
+# Population over capacity below which a core location counts as homestead frontier.
+tsin_homestead_frontier_threshold = 0.3

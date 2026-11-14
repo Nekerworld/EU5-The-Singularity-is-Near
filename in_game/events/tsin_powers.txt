@@ -1,0 +1,149 @@
+﻿namespace = tsin_powers
+
+# The concert of the powers (0.7, docs/great_powers.md): congress after a great war (.10), the Geneva
+# Convention (.20), the naval arms race (.30). Great powers only; fired from tsin_powers_yearly_pulse, no flavor budget.
+
+# A congress of the powers
+tsin_powers.10 = {
+	type = country_event
+	title = tsin_powers.10.title
+	desc = tsin_powers.10.desc
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		war_exhaustion >= 2
+		NOT = { has_global_variable = tsin_congress_cooldown }
+	}
+
+	immediate = {
+		set_global_variable = { name = tsin_congress_cooldown value = yes years = 15 }
+	}
+
+	# A balance of power: settle the questions together
+	option = {
+		name = tsin_powers.10.a
+		add_war_exhaustion = war_exhaustion_mild_bonus
+		add_prestige = prestige_mild_bonus
+		every_country = {
+			limit = {
+				is_great_power = yes
+				NOT = { this = root }
+			}
+			add_opinion = { target = root modifier = tsin_congress_concert_opinion }
+			root = { add_opinion = { target = prev modifier = tsin_congress_concert_opinion } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Dictate the terms
+	option = {
+		name = tsin_powers.10.b
+		add_prestige = prestige_severe_bonus
+		every_country = {
+			limit = {
+				is_great_power = yes
+				NOT = { this = root }
+			}
+			add_opinion = { target = root modifier = tsin_congress_dictated_opinion }
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+# The Geneva Convention
+tsin_powers.20 = {
+	type = country_event
+	title = tsin_powers.20.title
+	desc = tsin_powers.20.desc
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		current_year >= 1860
+		NOT = { has_variable = tsin_geneva_decided }
+	}
+
+	immediate = {
+		set_variable = tsin_geneva_decided
+	}
+
+	# Sign the convention
+	option = {
+		name = tsin_powers.20.a
+		set_variable = tsin_geneva_signatory
+		add_country_modifier = { modifier = tsin_geneva_convention months = -1 }
+		change_variable = { name = tsin_liberalism add = 3 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# War has no rules
+	option = {
+		name = tsin_powers.20.b
+		add_prestige = prestige_weak_penalty
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# The naval arms race
+tsin_powers.30 = {
+	type = country_event
+	title = tsin_powers.30.title
+	desc = tsin_powers.30.desc
+	illustration_tags = {
+		10 = exterior
+		10 = armed
+	}
+
+	trigger = {
+		current_year >= 1880
+		any_owned_location = { is_port = yes }
+		NOT = { has_variable = tsin_naval_race_cooldown }
+	}
+
+	immediate = {
+		set_variable = { name = tsin_naval_race_cooldown value = yes years = 10 }
+	}
+
+	# Lay down new battleships
+	option = {
+		name = tsin_powers.30.a
+		change_gold_effect = { scale = -3 }
+		add_country_modifier = { modifier = tsin_naval_race years = 10 }
+		every_country = {
+			limit = {
+				is_great_power = yes
+				NOT = { this = root }
+			}
+			add_opinion = { target = root modifier = tsin_naval_rivalry_opinion }
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_3
+			}
+		}
+	}
+
+	# Our strength lies on land
+	option = {
+		name = tsin_powers.30.b
+		add_prestige = prestige_weak_penalty
+		ai_chance = {
+			factor = 5
+		}
+	}
+}

@@ -1,0 +1,31 @@
+﻿# Science and culture (docs/culture_science.md).
+
+tsin_darwin_debate = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.03
+}
+
+tsin_submarine_cable = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.05
+	diplomatic_range_modifier = 0.15
+}
+
+tsin_private_cable = {
+	game_data = {
+		category = country
+	}
+	global_merchant_power = 0.03
+}
+
+tsin_olympic_games = {
+	game_data = {
+		category = country
+	}
+	monthly_prestige = 0.1
+	diplomatic_reputation = 1
+}

@@ -1,0 +1,5 @@
+﻿# Science and culture (docs/culture_science.md).
+
+# Industrial canal cost: 60% of the vanilla 200000 with dynamite and steam excavators.
+tsin_industrial_canal_cost = 120000
+tsin_industrial_canal_ai_gold = 125000

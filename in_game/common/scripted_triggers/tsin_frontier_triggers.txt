@@ -1,0 +1,8 @@
+﻿# Gold rushes (docs/frontier.md).
+
+# Scope: location. Gold country that is still thinly settled: where a rush can start.
+tsin_gold_rush_field_trigger = {
+	raw_material = goods:goods_gold
+	location_population_percentage < 0.5
+	NOT = { has_variable = tsin_gold_rush }
+}
