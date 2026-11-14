@@ -3,7 +3,7 @@
 
 namespace = culture_japan
 
-REPLACE:culture_japan.10 = { #Rise of Urban Culture
+culture_japan.10 = { #Rise of Urban Culture
 	type = country_event
 	title = culture_japan.10.title
 	desc = culture_japan.10.desc
@@ -46,7 +46,7 @@ REPLACE:culture_japan.10 = { #Rise of Urban Culture
 	}
 }
 
-REPLACE:culture_japan.16 = { #Wakō
+culture_japan.16 = { #Wakō
 	type = country_event
 	title = culture_japan.16.title
 	desc = culture_japan.16.desc
@@ -149,7 +149,7 @@ REPLACE:culture_japan.16 = { #Wakō
 	}
 }
 
-REPLACE:culture_japan.17 = { #The Wakō Pirates and the Bahan Trade
+culture_japan.17 = { #The Wakō Pirates and the Bahan Trade
 	type = country_event
 	title = culture_japan.17.title
 	desc = culture_japan.17.desc
@@ -216,7 +216,7 @@ REPLACE:culture_japan.17 = { #The Wakō Pirates and the Bahan Trade
 	}
 }
 
-REPLACE:culture_japan.18 = { #Reactions to the Wakō
+culture_japan.18 = { #Reactions to the Wakō
 	type = country_event
 	title = culture_japan.18.title
 	desc = culture_japan.18.desc
@@ -272,7 +272,7 @@ REPLACE:culture_japan.18 = { #Reactions to the Wakō
 	}
 }
 
-REPLACE:culture_japan.19 = { #Pirate Stronghold in [target_location.GetNameWithNoTooltip]
+culture_japan.19 = { #Pirate Stronghold in [target_location.GetNameWithNoTooltip]
 	type = country_event
 	title = culture_japan.19.title
 	desc = culture_japan.19.desc

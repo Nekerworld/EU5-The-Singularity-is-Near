@@ -11,7 +11,7 @@ tsin_cholera.1 = {
 	outcome = negative
 	illustration_tags = {
 		10 = exterior
-		10 = sad
+		10 = regular
 	}
 
 	# Quarantine the ports
@@ -42,7 +42,7 @@ tsin_cholera.2 = {
 	outcome = negative
 	illustration_tags = {
 		10 = exterior
-		10 = sad
+		10 = regular
 	}
 
 	trigger = {

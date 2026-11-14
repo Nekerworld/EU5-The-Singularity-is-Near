@@ -14,7 +14,7 @@ scripted_trigger is_revolutionary_issue = {
 	}
 }
 
-REPLACE:parliaments.5 = {
+parliaments.5 = {
 	type = country_event
 	title = parliaments.5.title
 	desc = parliaments.5.desc
@@ -74,7 +74,7 @@ REPLACE:parliaments.5 = {
 	}
 }
 
-REPLACE:parliaments.9 = {
+parliaments.9 = {
 	type = country_event
 	title = parliaments.9.title
 	desc = parliaments.9.desc
@@ -127,7 +127,7 @@ REPLACE:parliaments.9 = {
 	}
 }
 
-REPLACE:parliaments.23 = {
+parliaments.23 = {
 	type = country_event
 	title = parliaments.23.title
 	desc = parliaments.23.desc

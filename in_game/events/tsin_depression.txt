@@ -97,6 +97,7 @@ tsin_depression.3 = {
 	type = country_event
 	title = tsin_depression.3.title
 	desc = tsin_depression.3.desc
+	outcome = neutral
 	illustration_tags = {
 		10 = interior
 		10 = regular

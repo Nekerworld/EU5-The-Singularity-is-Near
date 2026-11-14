@@ -4,8 +4,10 @@ Vanilla content written as `current_age = age_6_revolutions` switches off when
 age 7 starts, and `NOT/NOR = { current_age = age_6_revolutions }` (meaning "an
 early age") switches back on. Every top-level object containing such a check
 is copied from the installed game, rewritten, and emitted as TRY_REPLACE
-(REPLACE for events) under in_game/... or main_menu/... with a zzz_tsin_age7_
-file prefix.
+under in_game/... or main_menu/... with a zzz_tsin_age7_ file prefix.
+Events take no prefix: the event manager reads `REPLACE:ns.1` as a new event id
+in a namespace "REPLACE:ns". An event is overridden by defining the same id in a
+file loaded later (error.log then reports "Duplicated event ID", as for other mods).
 
 Rewrites (code only, comments untouched):
   in_game : current_age = age_6_revolutions -> current_age_or_later = { age = age_6_revolutions }
@@ -318,8 +320,8 @@ def main() -> int:
             n_locks = 0
             if blk.key in BILL_LAWS:
                 new_text, n_locks = add_bill_locks(new_text)
-            op = "REPLACE" if is_event else "TRY_REPLACE"
-            new_text = f"{op}:{new_text}"
+            if not is_event:
+                new_text = f"TRY_REPLACE:{new_text}"
             injects = [] if is_event else dlc_injects.get((Path(r).parent.as_posix(), blk.key), [])
             for dlc_rel, inject_text in injects:
                 new_text += f"\n\n# re-applied from {dlc_rel}\n{inject_text}"

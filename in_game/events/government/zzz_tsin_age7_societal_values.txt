@@ -3,7 +3,7 @@
 
 namespace = societal_values
 
-REPLACE:societal_values.306 = {
+societal_values.306 = {
 	type = country_event
 	title = societal_values.306.title
 	desc = societal_values.306.desc
@@ -28,7 +28,7 @@ REPLACE:societal_values.306 = {
 	}
 }
 
-REPLACE:societal_values.410 = {
+societal_values.410 = {
 	type = country_event
 	title = societal_values.410.title
 	desc = societal_values.410.desc
@@ -57,7 +57,7 @@ REPLACE:societal_values.410 = {
 	}
 }
 
-REPLACE:societal_values.809 = {
+societal_values.809 = {
 	type = country_event
 	title = societal_values.809.title
 	desc = societal_values.809.desc
@@ -103,7 +103,7 @@ REPLACE:societal_values.809 = {
 	}
 }
 
-REPLACE:societal_values.2021 = { # International Trade Fair
+societal_values.2021 = { # International Trade Fair
 	type = country_event
 
 	title = societal_values.2021.t
@@ -179,7 +179,7 @@ REPLACE:societal_values.2021 = { # International Trade Fair
 	}
 }
 
-REPLACE:societal_values.2100 = {
+societal_values.2100 = {
 	type = country_event
 	title = societal_values.2100.title
 	desc = societal_values.2100.desc
@@ -217,7 +217,7 @@ REPLACE:societal_values.2100 = {
 	}
 }
 
-REPLACE:societal_values.2101 = {
+societal_values.2101 = {
 	type = country_event
 	title = societal_values.2101.title
 	desc = societal_values.2101.desc
@@ -257,7 +257,7 @@ REPLACE:societal_values.2101 = {
 	}
 }
 
-REPLACE:societal_values.2102 = {
+societal_values.2102 = {
 	type = country_event
 	title = societal_values.2102.title
 	desc = societal_values.2102.desc
@@ -318,7 +318,7 @@ REPLACE:societal_values.2102 = {
 	}
 }
 
-REPLACE:societal_values.2103 = {
+societal_values.2103 = {
 	type = country_event
 	title = societal_values.2103.title
 	desc = societal_values.2103.desc
@@ -353,7 +353,7 @@ REPLACE:societal_values.2103 = {
 	}
 }
 
-REPLACE:societal_values.2104 = {
+societal_values.2104 = {
 	type = country_event
 	title = societal_values.2104.title
 	desc = societal_values.2104.desc
@@ -389,7 +389,7 @@ REPLACE:societal_values.2104 = {
 	}
 }
 
-REPLACE:societal_values.2105 = {
+societal_values.2105 = {
 	type = country_event
 	title = societal_values.2105.title
 	desc = societal_values.2105.desc
@@ -445,7 +445,7 @@ REPLACE:societal_values.2105 = {
 	}
 }
 
-REPLACE:societal_values.2106 = {
+societal_values.2106 = {
 	type = country_event
 	title = societal_values.2106.title
 	desc = societal_values.2106.desc
@@ -498,7 +498,7 @@ REPLACE:societal_values.2106 = {
 	}
 }
 
-REPLACE:societal_values.2107 = {
+societal_values.2107 = {
 	type = country_event
 	title = societal_values.2107.title
 	desc = societal_values.2107.desc
@@ -546,7 +546,7 @@ REPLACE:societal_values.2107 = {
 	}
 }
 
-REPLACE:societal_values.2108 = {
+societal_values.2108 = {
 	type = country_event
 	title = societal_values.2108.title
 	desc = societal_values.2108.desc
@@ -619,7 +619,7 @@ REPLACE:societal_values.2108 = {
 	}
 }
 
-REPLACE:societal_values.2109 = {
+societal_values.2109 = {
 	type = country_event
 	title = societal_values.2109.title
 	desc = societal_values.2109.desc
@@ -667,7 +667,7 @@ REPLACE:societal_values.2109 = {
 	}
 }
 
-REPLACE:societal_values.2110 = {
+societal_values.2110 = {
 	type = country_event
 	title = societal_values.2110.title
 	desc = societal_values.2110.desc
@@ -753,7 +753,7 @@ REPLACE:societal_values.2110 = {
 	}
 }
 
-REPLACE:societal_values.2111 = {
+societal_values.2111 = {
 	type = country_event
 	title = societal_values.2111.title
 	desc = societal_values.2111.desc
@@ -793,7 +793,7 @@ REPLACE:societal_values.2111 = {
 	}
 }
 
-REPLACE:societal_values.2112 = {
+societal_values.2112 = {
 	type = country_event
 	title = societal_values.2112.title
 	desc = societal_values.2112.desc
@@ -825,7 +825,7 @@ REPLACE:societal_values.2112 = {
 	}
 }
 
-REPLACE:societal_values.2113 = {
+societal_values.2113 = {
 	type = country_event
 	title = societal_values.2113.title
 	desc = societal_values.2113.desc
@@ -876,7 +876,7 @@ REPLACE:societal_values.2113 = {
 	}
 }
 
-REPLACE:societal_values.2114 = {
+societal_values.2114 = {
 	type = country_event
 	title = societal_values.2114.title
 	desc = societal_values.2114.desc
@@ -913,7 +913,7 @@ REPLACE:societal_values.2114 = {
 	}
 }
 
-REPLACE:societal_values.2200 = {
+societal_values.2200 = {
 	type = country_event
 	title = societal_values.2200.title
 	desc = societal_values.2200.desc
@@ -963,7 +963,7 @@ REPLACE:societal_values.2200 = {
 	}
 }
 
-REPLACE:societal_values.2201 = {
+societal_values.2201 = {
 	type = country_event
 	title = societal_values.2201.title
 	desc = societal_values.2201.desc
@@ -1013,7 +1013,7 @@ REPLACE:societal_values.2201 = {
 	}
 }
 
-REPLACE:societal_values.2202 = {
+societal_values.2202 = {
 	type = country_event
 	title = societal_values.2202.title
 	desc = societal_values.2202.desc
@@ -1061,7 +1061,7 @@ REPLACE:societal_values.2202 = {
 	}
 }
 
-REPLACE:societal_values.2203 = {
+societal_values.2203 = {
 	type = country_event
 	title = societal_values.2203.title
 	desc = societal_values.2203.desc
@@ -1101,7 +1101,7 @@ REPLACE:societal_values.2203 = {
 	}
 }
 
-REPLACE:societal_values.2204 = {
+societal_values.2204 = {
 	type = country_event
 	title = societal_values.2204.title
 	desc = societal_values.2204.desc
@@ -1134,7 +1134,7 @@ REPLACE:societal_values.2204 = {
 	}
 }
 
-REPLACE:societal_values.2205 = {
+societal_values.2205 = {
 	type = country_event
 	title = societal_values.2205.title
 	desc = societal_values.2205.desc
@@ -1169,7 +1169,7 @@ REPLACE:societal_values.2205 = {
 	}
 }
 
-REPLACE:societal_values.2206 = {
+societal_values.2206 = {
 	type = country_event
 	title = societal_values.2206.title
 	desc = societal_values.2206.desc
@@ -1201,7 +1201,7 @@ REPLACE:societal_values.2206 = {
 	}
 }
 
-REPLACE:societal_values.2207 = {
+societal_values.2207 = {
 	type = country_event
 	title = societal_values.2207.title
 	desc = societal_values.2207.desc
@@ -1243,7 +1243,7 @@ REPLACE:societal_values.2207 = {
 	}
 }
 
-REPLACE:societal_values.2208 = {
+societal_values.2208 = {
 	type = country_event
 	title = societal_values.2208.title
 	desc = societal_values.2208.desc
@@ -1292,7 +1292,7 @@ REPLACE:societal_values.2208 = {
 	}
 }
 
-REPLACE:societal_values.2209 = {
+societal_values.2209 = {
 	type = country_event
 	title = societal_values.2209.title
 	desc = societal_values.2209.desc
@@ -1327,7 +1327,7 @@ REPLACE:societal_values.2209 = {
 	}
 }
 
-REPLACE:societal_values.2210 = {
+societal_values.2210 = {
 	type = country_event
 	title = societal_values.2210.title
 	desc = societal_values.2210.desc
@@ -1377,7 +1377,7 @@ REPLACE:societal_values.2210 = {
 	}
 }
 
-REPLACE:societal_values.2211 = {
+societal_values.2211 = {
 	type = country_event
 	title = societal_values.2211.title
 	desc = societal_values.2211.desc
@@ -1421,7 +1421,7 @@ REPLACE:societal_values.2211 = {
 	}
 }
 
-REPLACE:societal_values.2212 = {
+societal_values.2212 = {
 	type = country_event
 	title = societal_values.2212.title
 	desc = societal_values.2212.desc
@@ -1480,7 +1480,7 @@ REPLACE:societal_values.2212 = {
 	}
 }
 
-REPLACE:societal_values.2213 = {
+societal_values.2213 = {
 	type = country_event
 	title = societal_values.2213.title
 	desc = societal_values.2213.desc
@@ -1544,7 +1544,7 @@ REPLACE:societal_values.2213 = {
 	}
 }
 
-REPLACE:societal_values.2214 = {
+societal_values.2214 = {
 	type = country_event
 	title = societal_values.2214.title
 	desc = societal_values.2214.desc

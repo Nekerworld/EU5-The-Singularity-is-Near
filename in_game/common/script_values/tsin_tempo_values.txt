@@ -8,7 +8,8 @@ tsin_pop_target_multiplier = {
 		add = {
 			value = current_year
 			subtract = 1837
-			multiply = 0.0095238	# 0.6 / 63
+			multiply = 0.6
+			divide = 63
 			min = 0
 		}
 	}

@@ -3,7 +3,7 @@
 
 namespace = colonial_nation
 
-REPLACE:colonial_nation.4 = {
+colonial_nation.4 = {
 	type = country_event
 	title = colonial_nation.4.title
 	desc = colonial_nation.4.desc

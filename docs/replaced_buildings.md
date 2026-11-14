@@ -42,7 +42,7 @@
 
 업그레이드 id를 OR로 더한다. 옛 건물을 짓는 효과는 그대로 두고, 그 앞의 "건물 없음" 조건이 업그레이드도 세게 해서 업그레이드된 지점에 옛 건물을 다시 짓지 않게 막는다.
 
-- 처리: `tools/gen_age7_patches.py`의 `BUILDING_TARGETS`가 원본을 복사해 고친 뒤 `TRY_REPLACE`(이벤트는 `REPLACE`)로 낸다(`zzz_tsin_age7_*.txt`). 게임 패치 뒤에는 생성기만 다시 돌리면 된다.
+- 처리: `tools/gen_age7_patches.py`의 `BUILDING_TARGETS`가 원본을 복사해 고친 뒤 `TRY_REPLACE`(이벤트는 접두어 없이 같은 id로 재정의)로 낸다(`zzz_tsin_age7_*.txt`). 게임 패치 뒤에는 생성기만 다시 돌리면 된다.
 - 기록: `docs/overrides.md` 2절.
 - 엘리트 교육법에는 D009 DLC가 `INJECT`로 넣은 정책이 있다. 생성기가 그 블록을 교체 뒤에 다시 넣는다.
 - 바꾸는 꼴:
@@ -70,7 +70,7 @@
 
 | 객체 | 파일 | 옛 id |
 |---|---|---|
-| `REPLACE:parliaments.5` | `events/government/zzz_tsin_age7_parliaments.txt` | `university` |
+| `parliaments.5` | `events/government/zzz_tsin_age7_parliaments.txt` | `university` |
 | `tsin_industrial_capitalism_plausible_location` | `scripted_triggers/tsin_institution_triggers.txt` | `textile_mill`, `iron_mill` |
 | `tsin_electrification_plausible_location` | 같은 파일 | `university` |
 

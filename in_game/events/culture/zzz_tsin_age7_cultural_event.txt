@@ -3,7 +3,7 @@
 
 namespace = cultural_event
 
-REPLACE:cultural_event.2 = {
+cultural_event.2 = {
 	type = country_event
 	title = cultural_event.2.title
 	desc = cultural_event.2.desc

@@ -8,10 +8,10 @@ tsin_migration.1 = {
 	type = country_event
 	title = tsin_migration.1.title
 	desc = tsin_migration.1.desc
-	outcome = mixed
+	outcome = neutral
 	illustration_tags = {
 		10 = exterior
-		10 = sad
+		10 = regular
 	}
 
 	# Let them go, and let them send money home
@@ -38,7 +38,7 @@ tsin_migration.2 = {
 	type = country_event
 	title = tsin_migration.2.title
 	desc = tsin_migration.2.desc
-	outcome = mixed
+	outcome = neutral
 	illustration_tags = {
 		10 = exterior
 		10 = happy

@@ -3,7 +3,7 @@
 
 namespace = random_event
 
-REPLACE:random_event.26 = {
+random_event.26 = {
 	type = country_event
 
 	title = random_event.26.title
@@ -54,7 +54,7 @@ REPLACE:random_event.26 = {
 	}
 }
 
-REPLACE:random_event.108 = {
+random_event.108 = {
 	type = country_event
 
 	title = random_event.108.title

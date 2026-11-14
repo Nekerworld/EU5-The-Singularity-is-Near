@@ -23,7 +23,7 @@ EU5는 Jomini의 `INJECT:`, `REPLACE:`, `TRY_INJECT:`, `TRY_REPLACE:`, `INJECT_O
 
 - 바닐라 DLC: `INJECT:historical_characters_accessories`, `INJECT_OR_CREATE:headwear`.
 - 창작마당 모드 3,354건: building_types, script_values, advances, goods, casus_belli(`TRY_REPLACE:cb_timurs_conquests`), disasters(`TRY_REPLACE:revolution_disaster`), parliament_issues, scripted_triggers(`REPLACE:`), age(`TRY_INJECT:age_1_traditions`), institution, laws, situations, 이벤트(`REPLACE:black_death.1003`, 파일 상단에 `namespace` 재선언).
-- 결론: 파일 전체 덮어쓰기는 필요 없다. 바닐라 객체는 `TRY_REPLACE:`(없으면 조용히 건너뜀)로, 이벤트는 `REPLACE:`로 교체한다. 실제 게임 로드 확인은 관문 I 시험에서 한다. (사용자 확인 필요)
+- 결론: 파일 전체 덮어쓰기는 필요 없다. 바닐라 객체는 `TRY_REPLACE:`(없으면 조용히 건너뜀)로 교체한다. 이벤트는 `REPLACE:`를 쓰지 않고 같은 id를 다시 정의한다(2026-11-14 error.log 확인, `docs/overrides.md` 1절). 실제 게임 로드 확인은 관문 I 시험에서 한다. (사용자 확인 필요)
 
 ## 2. 분류
 
@@ -66,7 +66,7 @@ EU5는 Jomini의 `INJECT:`, `REPLACE:`, `TRY_INJECT:`, `TRY_REPLACE:`, `INJECT_O
 | 건설 가격 | `prices/01_buildings.txt:96,119` | `in_game/common/prices/tsin_buildings.txt` | `p_building_age_7_industrialization`, `p_expensive_building_age_7_industrialization` |
 | 가격 수정자 정의 | `main_menu/common/modifier_type_definitions/00_modifier_types.txt:5412,5460` | `main_menu/common/modifier_type_definitions/tsin_modifier_types.txt` | `*_cost_modifier` 2개 |
 | 가격 수정자 아이콘 | `main_menu/common/modifier_icons/00_modifier_icons.txt:2694,2713` | `main_menu/common/modifier_icons/tsin_modifier_icons.txt` | 2개 |
-| 육군 템플릿 | `unit_types/00_age_templates_land.txt:404~` | `in_game/common/unit_types/tsin_age_templates.txt` | `a_age_7_industrialization_*` 6종 |
+| 육군 템플릿 | `unit_types/00_age_templates_land.txt:404~` | `in_game/common/unit_types/tsin_00_age_templates.txt` | `a_age_7_industrialization_*` 6종 |
 | 해군 템플릿 | `unit_types/00_age_templates_navy.txt:345~410` | 같은 파일 | `n_age_7_industrialization_*` 4종 |
 | 징집병 | `levies/00_revolutions_levies.txt` | `in_game/common/levies/tsin_industrial_levies.txt` | 징집병은 전투력 최고값으로 고르므로 제7시대 징집병이 제6시대(`a_conscripts`, `a_gendarmerie`)보다 강해야 한다. `unlock_levy`로 해금 |
 | 시대 트리거 | `game_triggers.txt:62~108` | `tsin_age_triggers.txt` | 1-1 참조 |

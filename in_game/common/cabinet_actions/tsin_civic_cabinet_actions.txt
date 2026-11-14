@@ -15,7 +15,7 @@ tsin_public_health_campaign = {
 		add = {
 			value = 10
 			if = {
-				limit = { has_active_disaster = disaster_type:tsin_cholera }
+				limit = { scope:actor = { has_active_disaster = disaster_type:tsin_cholera } }
 				add = 100
 			}
 		}

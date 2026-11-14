@@ -4,7 +4,7 @@
 | 방식 | 사용처 | 이유 |
 |---|---|---|
 | `TRY_REPLACE:key = { 전체 }` | common 데이터(전쟁명분, 재난, 상황, 법, 의회 안건·의제, 특권, 예술, 원정, 임무, 스크립트 트리거·값, 언어) | 객체 하나만 바꾼다. 원본이 사라져도 오류가 나지 않는다 |
-| `REPLACE:event.id = { 전체 }` | 이벤트 | 창작마당 선례(`REPLACE:black_death.1003`). 파일 상단에 `namespace` 재선언 |
+| `event.id = { 전체 }` (같은 id 재정의) | 이벤트 | 파일 상단에 `namespace` 재선언. 2026-11-14 error.log에서 이벤트 관리자가 `REPLACE:ns.1`을 접두어로 처리하지 않고 `REPLACE:ns` 네임스페이스의 새 이벤트로 읽은 것을 확인해(이름공간 미정의·중복 id 오류 125건) 접두어를 뺐다. 같은 id를 나중 파일에서 다시 정의하면 "Duplicated event ID" 오류가 남고, 다른 모드(Historical Tweaks, REAI)처럼 나중 정의가 쓰인다고 본다(사용자 확인 필요) |
 | `TRY_INJECT:key = { 필드 }` | 필드 추가만 필요한 경우 | 미사용(블록 필드 병합 규칙이 확인되지 않아 전체 교체를 쓴다) |
 | 같은 이름 파일로 전체 덮어쓰기 | **사용하지 않음** | 객체 단위 방식으로 모두 해결 가능 |
 | defines 키 단위 파일 | `loading_screen/common/defines/zzz_tsin_defines.txt` | defines는 키 단위로 병합된다. `zzz_` 접두어로 다른 defines 파일보다 뒤에 정렬되어 나중에 적용된다 (docs/load_order.md) |
