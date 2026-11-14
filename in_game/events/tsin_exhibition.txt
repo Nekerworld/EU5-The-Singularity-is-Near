@@ -9,7 +9,7 @@ tsin_exhibition.1 = {
 	desc = tsin_exhibition.1.desc
 	illustration_tags = {
 		10 = exterior
-		10 = regular
+		10 = happy
 	}
 
 	# A hall of machines
@@ -49,7 +49,7 @@ tsin_exhibition.10 = {
 	desc = tsin_exhibition.10.desc
 	illustration_tags = {
 		10 = exterior
-		10 = regular
+		10 = happy
 	}
 
 	option = {

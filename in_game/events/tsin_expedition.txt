@@ -1,0 +1,100 @@
+﻿namespace = tsin_expedition
+
+# Age VII expedition events (M6), fired from in_game/common/expedition_types/tsin_expeditions.txt.
+# Not budgeted: they only follow an expedition the country chose to launch.
+
+# The source of the Nile
+tsin_expedition.1 = {
+	type = country_event
+	title = tsin_expedition.1.title
+	desc = tsin_expedition.1.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	# Name the lake after the monarch
+	option = {
+		name = tsin_expedition.1.a
+		add_prestige = prestige_severe_bonus
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Report to the geographical society
+	option = {
+		name = tsin_expedition.1.b
+		add_prestige = prestige_mild_bonus
+		add_country_modifier = { modifier = tsin_expedition_geographical_society years = modifier_duration_years_long mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+# The Northwest Passage is found
+tsin_expedition.10 = {
+	type = country_event
+	title = tsin_expedition.10.title
+	desc = tsin_expedition.10.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = tsin_expedition.10.a
+		add_prestige = prestige_severe_bonus
+		add_country_modifier = { modifier = tsin_expedition_geographic_fame years = modifier_duration_years_long mode = add_and_extend }
+	}
+}
+
+# Turned back by the ice
+tsin_expedition.11 = {
+	type = country_event
+	title = tsin_expedition.11.title
+	desc = tsin_expedition.11.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_expedition.11.a
+		add_prestige = prestige_weak_bonus
+	}
+}
+
+# The pole is reached
+tsin_expedition.20 = {
+	type = country_event
+	title = tsin_expedition.20.title
+	desc = tsin_expedition.20.desc
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = tsin_expedition.20.a
+		add_prestige = prestige_severe_bonus
+		add_country_modifier = { modifier = tsin_expedition_geographic_fame years = modifier_duration_years_long mode = add_and_extend }
+	}
+}
+
+# The pack ice wins
+tsin_expedition.21 = {
+	type = country_event
+	title = tsin_expedition.21.title
+	desc = tsin_expedition.21.desc
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = tsin_expedition.21.a
+		add_prestige = prestige_weak_bonus
+	}
+}

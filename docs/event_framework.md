@@ -13,6 +13,7 @@
 | `tsin_exhibition` | `in_game/events/tsin_exhibition.txt` | M5 | 만국박람회 상황 (예산 제외) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 플레이버 (`tsin_military_yearly_pulse`, 확률 20%) |
 | `tsin_art` | `in_game/events/tsin_art.txt` | M6 | 예술 플레이버 (`tsin_art_yearly_pulse`, 확률 15%) |
+| `tsin_expedition` | `in_game/events/tsin_expedition.txt` | M6 | 탐험 결과 (탐험이 호출, 예산 제외) |
 | `tsin_hunger` | `in_game/events/tsin_hunger.txt` | M4 | 대기근 재난 (예산 제외) |
 | `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 교육, 보건 (`tsin_society_flavor_pulse`, 매년 25%, 예산 사용) |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
@@ -112,6 +113,11 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_art.10` | 낭만주의 (나라당 한 번) | 제7시대 | 민족 시인 후원(문화 영향력 +10%, 민족주의 +5) / 고전 취향(귀족 만족) |
 | `tsin_art.20` | 사실주의 (나라당 한 번) | 1850년 이후, 도시 보유 | 빈민가 소설 허용(문화 영향력 +5%, 최대 문해율 +2, 노동 운동 +5) / 금서(성직자 만족, 자유주의 +5) |
 | `tsin_art.30` | 사진술 (나라당 한 번) | 1840년 이후 | 사진 측량(금 -2, 내각 효율 +3%, 월 위신 +0.05) / 사진관에 맡김(시민 만족) |
+| `tsin_expedition.1` | 나일강의 수원 | 나일강 탐험이 세계 최초로 부간다 도착 | 군주 이름(위신 +15) / 지리학회(위신 +10, `tsin_expedition_geographical_society` 20년) |
+| `tsin_expedition.10` | 북서항로 발견 | 북서항로 탐험 종료, 35% | 위신 +15, `tsin_expedition_geographic_fame` 20년 |
+| `tsin_expedition.11` | 얼음에 막혀 돌아오다 | 북서항로 탐험 종료, 65% 또는 이미 발견됨 | 위신 +5 |
+| `tsin_expedition.20` | 극점 도달 | 극지 탐험 종료, 30% | 위신 +15, `tsin_expedition_geographic_fame` 20년 |
+| `tsin_expedition.21` | 유빙의 승리 | 극지 탐험 종료, 70% 또는 이미 도달함 | 위신 +5 |
 | `tsin_hunger.1` | 들판의 병충해 (나라당 한 번) | 매년 2%, 평민 인구 60% 초과 | 3년 `tsin_crop_blight` |
 | `tsin_hunger.2` | 기근 (재난 시작) | - | 곡물 수입(금 -4) / 수출 지속(평민 불만, 민족주의 +15) / 공공 사업(금 -2, 안정도 -) |
 | `tsin_hunger.3` | 이민선 | 재난 중 | 떠나게 둠(대이민 감쇠) / 식민지 뱃삯(금 -2, 더 긴 대이민) |

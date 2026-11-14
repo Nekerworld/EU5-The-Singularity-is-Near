@@ -1,0 +1,15 @@
+﻿tsin_expedition_geographic_fame = {
+	game_data = {
+		category = country
+	}
+	diplomatic_reputation = 1
+	monthly_prestige = 0.05
+}
+
+tsin_expedition_geographical_society = {
+	game_data = {
+		category = country
+	}
+	research_speed_modifier = 0.03
+	cultural_influence_modifier = 0.05
+}

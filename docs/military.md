@@ -55,3 +55,28 @@
 예술 이벤트 `tsin_art.10~30`(낭만주의, 사실주의, 사진술)은 `docs/event_framework.md`에 있다.
 
 사용자 확인 필요: 새 작품 종류가 실제로 만들어지는지(예술가가 작품 종류를 고르는 방식이 `allow`만 보는지), 작품 이름이 `_name` 키로 나오는지, 그림이 작품 창에 보이는지.
+
+# 제7시대 탐험 (M6)
+
+`in_game/common/expedition_types/tsin_expeditions.txt`. 세 탐험 모두 제7시대 이후, 전쟁 중이 아닐 때, 탐험가가 있을 때만 시작할 수 있다. 경로는 정적 경유지만 쓰고 귀환 구간(`returns_home`)은 없다.
+
+| 탐험 | 경로 | 비용 | 조건 | 결과 |
+|---|---|---|---|---|
+| `tsin_source_of_the_nile_expedition` 나일강 수원 | 가장 가까운 항구 → 바가모요 → 우지지 → 부간다 → 곤도코로 (육·해) | 금 ×2 | 아무도 수원을 찾지 않음, 한 나라 한 번 | 부간다 첫 도착 시 `tsin_expedition.1`, 완주 시 위신 +10과 `tsin_expedition_geographic_fame` |
+| `tsin_northwest_passage_expedition` 북서항로 | 비농촌 항구 → 고트호브 → 이칼루이트 (바다) | 금 ×3 | 비농촌 항구 보유, 아무도 항로를 찾지 않음 | 35% 발견(`.10`), 65% 귀환(`.11`), 반복 가능 |
+| `tsin_polar_expedition` 북극점 | 비농촌 항구 → 함메르페스트 → 바렌츠해 (바다) | 금 ×3 | 1870년 이후, 철갑함 기술, 아무도 극점에 이르지 않음 | 30% 도달(`.20`), 70% 귀환(`.21`), 반복 가능 |
+
+북극 안쪽(`arctic_archipelago`, `utqiagvik`)은 지도에서 지나갈 수 없는 곳이다. 그래서 북서항로와 북극점 탐험은 얼음 가장자리까지 항해한 뒤 `on_end`에서 확률로 결과를 정한다. 세계 최초 여부는 전역 변수(`tsin_nile_source_found`, `tsin_northwest_passage_found`, `tsin_pole_reached`)로 판정한다. 실패하면(`on_fail`) 위신 -5.
+
+보정치(`main_menu/common/static_modifiers/tsin_expedition_modifiers.txt`):
+
+| 보정치 | 효과 |
+|---|---|
+| `tsin_expedition_geographic_fame` 지리학적 명성 | 외교 평판 +1, 월 위신 +0.05 |
+| `tsin_expedition_geographical_society` 왕립 지리학회 | 연구 속도 +3%, 문화 영향력 +5% |
+
+사용자 확인 필요:
+- 탐험 창에 세 탐험이 보이고 시작되는지, 비용이 빠지는지.
+- 나일강 탐험대가 바가모요에서 내륙 경로(`travel_mode = both`)로 곤도코로까지 가는지.
+- 북서항로·북극점 탐험이 마지막 경유지에서 끝나며 결과 이벤트가 뜨는지.
+- AI가 탐험을 실제로 보내는지(`utility` 5/3/2).

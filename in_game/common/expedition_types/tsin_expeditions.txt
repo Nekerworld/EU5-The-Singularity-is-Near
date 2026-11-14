@@ -1,0 +1,221 @@
+﻿# Age VII expeditions (M6). Static waypoints only; every route ends at its last waypoint (no return leg),
+# so on_arrive_to_waypoint never has to keep the expedition alive.
+# The Arctic interior (arctic_archipelago, utqiagvik) is impassable on the map, so the Northwest Passage and
+# the polar push sail to the edge of the ice and resolve the attempt in on_end with an event.
+
+tsin_source_of_the_nile_expedition = {
+	unique = yes
+	repeatable = no
+	travel_speed = 0.6
+	origin = closest_port
+	travel_mode = both
+	show_end_message = no
+	category = exploration
+
+	waypoints = {
+		bagamoyo
+		ujiji
+		buganda
+		gondokoro
+	}
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+
+	can_start = {
+		at_war = no
+		NOT = { has_global_variable = tsin_nile_source_found }
+		gold >= tsin_gold_cost_2
+	}
+
+	leader = {
+		is_explorer = yes
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		change_gold_effect = { scale = -2 }
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = {
+			discover_location = root
+		}
+	}
+
+	on_arrive_to_waypoint = {
+		if = {
+			limit = {
+				scope:location = location:buganda
+				NOT = { has_global_variable = tsin_nile_source_found }
+			}
+			set_global_variable = { name = tsin_nile_source_found value = 1 }
+			trigger_event_non_silently = tsin_expedition.1
+		}
+	}
+
+	on_end = {
+		add_prestige = prestige_mild_bonus
+		add_country_modifier = { modifier = tsin_expedition_geographic_fame years = modifier_duration_years_long mode = add_and_extend }
+	}
+
+	on_fail = {
+		add_prestige = prestige_weak_penalty
+	}
+
+	utility = {
+		value = 5
+	}
+
+	leader_utility = {
+		value = 1
+	}
+}
+
+tsin_northwest_passage_expedition = {
+	unique = yes
+	repeatable = yes
+	travel_speed = 0.7
+	origin = closest_non_rural_port
+	travel_mode = sea
+	show_end_message = no
+	category = exploration
+
+	waypoints = {
+		godthab
+		iqaluit
+	}
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_global_variable = tsin_northwest_passage_found }
+	}
+
+	can_start = {
+		at_war = no
+		has_non_rural_port = yes
+		gold >= tsin_gold_cost_3
+	}
+
+	leader = {
+		is_explorer = yes
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		change_gold_effect = { scale = -3 }
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = {
+			discover_location = root
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { has_global_variable = tsin_northwest_passage_found }
+			trigger_event_non_silently = tsin_expedition.11
+		}
+		else = {
+			random_list = {
+				35 = {
+					set_global_variable = { name = tsin_northwest_passage_found value = 1 }
+					trigger_event_non_silently = tsin_expedition.10
+				}
+				65 = {
+					trigger_event_non_silently = tsin_expedition.11
+				}
+			}
+		}
+	}
+
+	on_fail = {
+		add_prestige = prestige_weak_penalty
+	}
+
+	utility = {
+		value = 3
+	}
+
+	leader_utility = {
+		value = 1
+	}
+}
+
+tsin_polar_expedition = {
+	unique = yes
+	repeatable = yes
+	travel_speed = 0.7
+	origin = closest_non_rural_port
+	travel_mode = sea
+	show_end_message = no
+	category = exploration
+
+	waypoints = {
+		hammerfest
+		barents_sea10
+	}
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_global_variable = tsin_pole_reached }
+	}
+
+	can_start = {
+		at_war = no
+		has_non_rural_port = yes
+		current_date > 1870.1.1
+		has_advance = tsin_ironclad_advance
+		gold >= tsin_gold_cost_3
+	}
+
+	leader = {
+		is_explorer = yes
+		is_expedition_leader = no
+		has_exploration = no
+	}
+
+	on_start = {
+		change_gold_effect = { scale = -3 }
+	}
+
+	on_arrive_to_new_location = {
+		scope:location = {
+			discover_location = root
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { has_global_variable = tsin_pole_reached }
+			trigger_event_non_silently = tsin_expedition.21
+		}
+		else = {
+			random_list = {
+				30 = {
+					set_global_variable = { name = tsin_pole_reached value = 1 }
+					trigger_event_non_silently = tsin_expedition.20
+				}
+				70 = {
+					trigger_event_non_silently = tsin_expedition.21
+				}
+			}
+		}
+	}
+
+	on_fail = {
+		add_prestige = prestige_weak_penalty
+	}
+
+	utility = {
+		value = 2
+	}
+
+	leader_utility = {
+		value = 1
+	}
+}
