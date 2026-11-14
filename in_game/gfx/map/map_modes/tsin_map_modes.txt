@@ -146,5 +146,5 @@ tsin_industrial_institutions = {
 	}
 
 	refresh_colors_on_selection_change = yes
-	color_refresh_counters = { Day }
+	color_refresh_counters = { Month LocationOwnerChanged }
 }

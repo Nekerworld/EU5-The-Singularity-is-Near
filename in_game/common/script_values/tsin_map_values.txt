@@ -1,0 +1,29 @@
+﻿# The Singularity is Near - location-scope values for map modes. root = location.
+# Keep these cheap: no world iteration, only reads on the location itself.
+
+# Sum of factory-tier (is_mill = yes) building levels in the location.
+# Vanilla list from tools/list_buildings.py is_mill yes; mod mill tiers are appended as they are added.
+tsin_location_mill_levels = {
+	value = 0
+	add = "location_building_level(building_type:brewery_mill)"
+	add = "location_building_level(building_type:printing_mill)"
+	add = "location_building_level(building_type:cannons_factory)"
+	add = "location_building_level(building_type:textile_mill)"
+	add = "location_building_level(building_type:dyes_mill)"
+	add = "location_building_level(building_type:fine_cloth_mill)"
+	add = "location_building_level(building_type:firearms_factory)"
+	add = "location_building_level(building_type:furniture_mill)"
+	add = "location_building_level(building_type:glass_mill)"
+	add = "location_building_level(building_type:tannery_mill)"
+	add = "location_building_level(building_type:distiller_mill)"
+	add = "location_building_level(building_type:naval_supplies_mill)"
+	add = "location_building_level(building_type:paper_mill)"
+	add = "location_building_level(building_type:pottery_mill)"
+	add = "location_building_level(building_type:putrefaction_mill)"
+	add = "location_building_level(building_type:iron_mill)"
+	add = "location_building_level(building_type:weapon_factory)"
+	add = "location_building_level(building_type:steel_mill)"
+}
+
+# 0..1 scale used by tsin_industrialization: saturates at this many factory levels.
+tsin_map_industrial_saturation = 10

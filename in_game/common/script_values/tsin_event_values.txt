@@ -1,0 +1,4 @@
+﻿# The Singularity is Near - event framework values.
+
+# Upper bound of tsin_ flavor events a country can receive per year (all groups together).
+tsin_flavor_events_per_year = 3

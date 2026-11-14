@@ -45,6 +45,9 @@ tsin_yearly_country_pulse = {
 	trigger = {
 		current_age_or_later = { age = age_7_industrialization }
 	}
+	effect = {
+		tsin_reset_flavor_budget_effect = yes
+	}
 	events = {
 		tsin_system.1
 		tsin_system.10

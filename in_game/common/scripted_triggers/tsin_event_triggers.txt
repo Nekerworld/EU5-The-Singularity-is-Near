@@ -1,0 +1,9 @@
+﻿# The Singularity is Near - event framework triggers. Scope: country.
+
+# Every tsin_ flavor event lists this in its trigger.
+tsin_flavor_budget_available_trigger = {
+	OR = {
+		NOT = { has_variable = tsin_flavor_events_this_year }
+		var:tsin_flavor_events_this_year < tsin_flavor_events_per_year
+	}
+}

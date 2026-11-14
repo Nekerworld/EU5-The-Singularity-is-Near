@@ -1,0 +1,75 @@
+# 이벤트 공통 틀
+
+## 네임스페이스
+
+| 네임스페이스 | 파일 | 단계 | 내용 |
+|---|---|---|---|
+| `tsin_system` | `in_game/events/tsin_system.txt` | M1 | 숨김 초기화·이전, 시대 시작 안내, 제도 등장 알림 |
+| `tsin_institution` | `in_game/events/tsin_institution.txt` | M3~M5 | 첫 수용국, 수용 시 반발·지지 |
+| `tsin_economy` | `in_game/events/tsin_economy.txt` | M2~M3 | 공장, 원료, 금융 |
+| `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5 | 발명 플레이버 |
+| `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 보건 |
+| `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
+| `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 이후 | 지역 플레이버 (태그 조건 금지) |
+
+- 이벤트 ID는 `<네임스페이스>.<번호>`. 번호는 군 안에서 10 단위로 묶는다(예: 공장 10~19, 원료 20~29).
+- 현지화 키는 `<id>.title`, `<id>.desc`, `<id>.a`, `<id>.b` …. 툴팁은 `<id>.a.tt`.
+- 숨김 이벤트는 `title = empty_text`, `desc = empty_text`, `hidden = yes`.
+
+## 빈도 예산
+
+국가당 1년에 받는 `tsin_` 플레이버 이벤트 수를 `tsin_flavor_events_per_year`(현재 3)로 제한한다.
+
+| 요소 | 위치 |
+|---|---|
+| 상한 값 | `in_game/common/script_values/tsin_event_values.txt` |
+| 조건 `tsin_flavor_budget_available_trigger = yes` | `in_game/common/scripted_triggers/tsin_event_triggers.txt` |
+| 소비 `tsin_spend_flavor_budget_effect = yes` | `in_game/common/scripted_effects/tsin_event_effects.txt` |
+| 매년 초기화 | `tsin_yearly_country_pulse`의 `effect` (`tsin_on_actions.txt`) |
+
+플레이버 이벤트는 반드시 다음 두 줄을 가진다.
+
+```
+trigger = { ... tsin_flavor_budget_available_trigger = yes }
+immediate = { tsin_spend_flavor_budget_effect = yes ... }
+```
+
+시스템 알림(`tsin_system`)과 상황·재난이 직접 부르는 이벤트는 예산에서 뺀다.
+
+## 발생 방식
+
+- 날짜가 아니라 상태(제도 수용, 건물 규모, 문해율, 법)로 조건을 건다. 국가 태그를 필수 조건으로 쓰지 않는다.
+- 각 군은 자기 on_action을 만들어 바닐라 맥동(`yearly_country_pulse`, `biyearly_country_pulse` 등)에 `on_actions = { ... }`로 붙인다. 묶음 안에서는 `random_events = { 10 = id ... chance_to_happen = N }`를 쓴다(바닐라 `country_four_yearly.txt`와 같은 형식).
+- 맥동 on_action의 `trigger`에 `current_age_or_later = { age = age_7_industrialization }`을 둬서 이전 시대 국가에서는 평가 비용이 들지 않게 한다.
+
+## 삽화 (`illustration_tags`)
+
+바닐라 이벤트가 쓰는 태그는 장소(`interior`, `exterior`, `regular`)와 분위기(`happy`, `angry`, `armed`)다. 새 그림을 만들지 않고 다음처럼 조합한다.
+
+| 이벤트 성격 | 태그 |
+|---|---|
+| 공장·작업장·사무실 | `10 = interior` `10 = regular` |
+| 도시·철도·항구 | `10 = exterior` `10 = regular` |
+| 사고, 파업, 폭동 | `10 = exterior` `10 = angry` |
+| 박람회, 개통식, 축하 | `10 = exterior` `10 = happy` |
+| 군사 | `10 = exterior` `10 = armed` |
+| 의회·내각 | `10 = interior` `10 = angry` 또는 `10 = happy` |
+
+제도 관련 이벤트는 `image = "gfx/interface/illustrations/institutions/<제도>.dds"`를 쓴다.
+
+## AI 가중치 기본값
+
+바닐라 형식 `ai_chance = { factor = N modifier = { factor = M <조건> } }`를 쓴다.
+
+| 선택지 성격 | 기본 `factor` | 보정 |
+|---|---|---|
+| 안전한 기본 선택 | 10 | — |
+| 돈을 쓰는 투자 | 5 | 금고가 부족하면 `factor = 0` |
+| 안정·만족도를 깎는 선택 | 3 | 안정도가 낮으면 `factor = 0` |
+| 위험한 도박 | 1 | — |
+
+## 선택지 원칙
+
+- 기술을 무상으로 주지 않는다(`add_advance` 같은 효과 금지).
+- 선택지마다 경제, 정치(계층 만족도, 안정도), 진행(제도 진척, 건물) 사이의 교환이 있어야 한다.
+- 효과 크기는 바닐라 스크립트 값(`institution_progress_*`, `*_mild_bonus` 등)을 우선 쓴다.

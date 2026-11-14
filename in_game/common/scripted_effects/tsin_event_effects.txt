@@ -1,0 +1,19 @@
+﻿# The Singularity is Near - event framework effects. Scope: country.
+
+# Every tsin_ flavor event calls this in its immediate block.
+tsin_spend_flavor_budget_effect = {
+	if = {
+		limit = { has_variable = tsin_flavor_events_this_year }
+		change_variable = { name = tsin_flavor_events_this_year add = 1 }
+	}
+	else = {
+		set_variable = { name = tsin_flavor_events_this_year value = 1 }
+	}
+}
+
+tsin_reset_flavor_budget_effect = {
+	if = {
+		limit = { has_variable = tsin_flavor_events_this_year }
+		remove_variable = tsin_flavor_events_this_year
+	}
+}
