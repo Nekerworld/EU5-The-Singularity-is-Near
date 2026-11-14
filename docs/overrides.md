@@ -18,8 +18,13 @@
 ## 2. 자동 생성 덮어쓰기
 - 생성기: `tools/gen_age7_patches.py`
 - 기준 원본: 설치된 EU5 1.4.x (2026-11-14)
-- 범위: 92개 객체, 33개 파일(`zzz_tsin_age7_*.txt`). 목록은 `tools/out/age7_patch_report.md`에 있다.
-- 바꾸는 내용: 제6시대 검사를 "제6시대 이후"로 넓히는 것뿐이다. 그 밖의 내용은 원본 그대로 복사한다.
+- 범위: 117개 객체, 42개 파일(`zzz_tsin_age7_*.txt`). 목록은 `tools/out/age7_patch_report.md`에 있다.
+- 바꾸는 내용(그 밖의 내용은 원본 그대로 복사한다):
+  - 제6시대 검사를 "제6시대 이후"로 넓힌다.
+  - 대체 건물 참조: 옛 건물 id를 묻는 조건이 7시대 업그레이드 id도 받도록 한다. 생성하는 모든 객체에 적용하고, 그 밖에 `BUILDING_TARGETS`의 21개 객체(학교·항구 조건, 엘리트 교육법, 문해율 임무, 수도회, 비잔틴 마을 권리, `building.1/.2`, 산업화 이벤트)를 추가로 생성한다. 목록과 이유는 `docs/replaced_buildings.md`.
+  - 확률 입법: 바닐라 `press_law`, `education_masses_law`, `immigration_law`, `slavery_laws`(`BILL_LAWS`)의 정책마다 `allow`에 `tsin_policy_enactable_trigger = yes`를 넣는다(`docs/legislation.md`).
+  - 대학 수 `total_effective_building_levels:university`는 `tsin_total_university_levels`(두 대학의 합, `tsin_replaced_building_values.txt`)로 바꾼다.
+- DLC 주입 재적용: DLC 폴더(`game/dlc/*`)의 `INJECT:`가 대상 객체에 있으면, 우리 `TRY_REPLACE` 바로 뒤에 같은 블록을 다시 넣는다. 현재 3건(`education_elites_law`, `distribution_of_power_law`, `royal_court_customs_law`, 모두 D009). DLC 파일이 모드보다 먼저 읽힌다는 전제다. DLC 정책이 두 번 보이거나 사라지지 않는지 확인이 필요하다(**사용자 확인 필요**).
 - **게임 패치 후 할 일:** `python tools/gen_age7_patches.py`를 다시 실행하고 `git diff`로 변경을 확인한다. 바닐라 객체 내용이 바뀌었는데 다시 생성하지 않으면, 옛 버전으로 되돌리는 셈이 된다.
 
 ## 3. 손으로 쓴 덮어쓰기
@@ -33,6 +38,7 @@
 
 ## 4. 다른 모드와의 충돌
 - 창작마당 3631410954 "EU5 National Ideas"는 `00_defines.txt` 전체를 덮어쓴다. `END_DATE`는 바닐라와 같은 값이다. 우리 파일은 이름 정렬상 뒤에 적용되므로 영향이 없을 것으로 본다(사용자 확인 필요, `docs/load_order.md`).
+- 창작마당 3792511867 "Modern Times"도 `END_DATE`를 2050.12.31로 바꾼다(`01_mt_defines.txt`). 우리 `zzz_` 파일이 뒤에 읽혀 2337.12.31이 적용될 것으로 본다(사용자 확인 필요, 0.7 재스캔은 `docs/compat.md`).
 - 같은 객체를 `TRY_REPLACE`하는 다른 모드가 있으면 나중에 로드된 쪽이 이긴다.
   - 확인된 예: 3827499481(`revolution_disaster`, `revolutionary_chaos`), 3604169106(전쟁명분 일부)
   - 호환 스캔: `python tools/validate.py --compat` (설치된 창작마당 전체), `python tools/compat_scan.py` (실제 플레이셋, 결과와 방침은 `docs/compat.md`)

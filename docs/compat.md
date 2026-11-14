@@ -46,6 +46,13 @@ python tools/compat_scan.py --mods 3620382806    # 창작마당 id 또는 모드
 | Italia Overhaul (3692195005) | `coa_def_absolutism_age_5_trigger`, `coa_def_revolutions_age_6_trigger` | 우리 정의가 적용됨 | 문장(紋章) 표시 조건만 |
 | 역사적 영토 확장 AI (3827499481) | `revolution_disaster`, `revolutionary_chaos` | 우리 정의가 적용됨 | 그 모드의 혁명 재난 수정이 사라짐(이전부터 `docs/overrides.md`에 기록) |
 
+### 0.7 재스캔 (2026-11-14)
+
+- 사용자 플레이셋: 91개 중 43개와 겹친다. 늘어난 수는 로컬 호환 패치 모드(`The Singularity Is Near - Playset Compat`, 겹침 56건, 의도한 것)와 그 모드가 다시 정의하는 객체가 두 번 잡힌 것이다. 위 표 밖의 새 객체 충돌은 없다.
+- Ad Astra: 겹침 5건. 0.7에서 `monthly_country_pulse` 목록 병합 1건이 늘었다. 객체 충돌은 없다.
+- Modern Times (3792511867, 참고만 하고 함께 켜지 않는 모드): `yearly_country_pulse` 목록 병합과 define `NGame.END_DATE`(상대 2050.12.31, 우리 2337.12.31) 2건. 우리 `zzz_tsin_defines.txt`가 파일 이름순으로 뒤에 읽혀 우리 값이 적용될 것으로 본다(사용자 확인 필요). 0.7에서 가져온 콘텐츠는 모두 `tsin_` 이름으로 다시 썼으므로 함께 켜도 객체가 겹치지 않는다. 두 모드의 콘텐츠가 함께 돌아가며 비슷한 이벤트·건물이 겹치는 것은 권장하지 않는다.
+- 0.7에서 손으로 쓴 덮어쓰기는 늘지 않았다(`docs/overrides.md` 3절 그대로). 자동 생성 패치는 117개 객체, 42개 파일이다.
+
 ## 대응 방침
 
 1. **지금 할 수 있는 것:** 위 모드를 함께 쓰면 이 표의 객체에서 상대 모드의 변경이 사라진다는 점을 창작마당 설명(`docs/release.md`)에 적는다. 게임이 깨지지는 않는다.

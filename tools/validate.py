@@ -11,8 +11,10 @@ Checks:
   braces   balanced braces per file
   keys     each `key = value` key inside mod objects is known: a modifier type, or a key that
            vanilla uses somewhere in the same database folder, or defined by the mod
-  refs     institution:/goods:/... references and requires/unlock_*/copy_from/unit/*_demand
-           point at objects that exist (vanilla or mod)
+  refs     institution:/goods:/religion:/government_reform:/policy:/... references and
+           requires/has_advance/unlock_*/copy_from/unit/*_demand point at objects that exist (vanilla or mod)
+  buildings  employment_size/build_time/max_levels/price are numbers or script values, and
+           unique production method inputs are goods
   gfx      advance icons, event images, institution and map mode art exist (vanilla, DLC or mod)
   loc      tsin_ objects and event title/desc/option keys have english and korean entries
 Exit code 1 if any error.
@@ -173,7 +175,7 @@ def mod_defined_names() -> set[str]:
 
 
 # Effects documented in eu5.exe help strings (tools/exe_strings.py) that no vanilla script uses.
-ENGINE_KEYS = {"debug_log", "change_global_variable"}
+ENGINE_KEYS = {"debug_log", "change_global_variable", "age_preference"}
 
 
 def check_keys() -> None:
@@ -210,6 +212,18 @@ REF_PREFIX = {
     "parliament_issue": "in_game/common/parliament_issues",
     "unit_type": "in_game/common/unit_types",
     "societal_value": "in_game/common/societal_values",
+    "government_type": "in_game/common/government_types",
+    "government_reform": "in_game/common/government_reforms",
+    "religion": "in_game/common/religions",
+    "religion_group": "in_game/common/religion_groups",
+    "culture": "in_game/common/cultures",
+    "culture_group": "in_game/common/culture_groups",
+    "estate_privilege": "in_game/common/estate_privileges",
+    "parliament_type": "in_game/common/parliament_types",
+    "international_organization": "in_game/common/international_organizations",
+    "casus_belli": "in_game/common/casus_belli",
+    "road_type": "in_game/common/road_types",
+    "country_rank": "in_game/common/country_ranks",
 }
 REF_FIELD = {
     "requires": "in_game/common/advances",
@@ -229,6 +243,7 @@ REF_FIELD = {
     "repair_demand": "in_game/common/goods_demand",
     "produced": "in_game/common/goods",
     "age": "in_game/common/age",
+    "has_advance": "in_game/common/advances",
 }
 
 
@@ -268,6 +283,21 @@ def check_tsin_names() -> None:
             err(f"names: {rel(p)} uses '{tok}' which no mod file defines")
 
 
+_policy_cache: set[str] = set()
+
+
+def policy_names() -> set[str]:
+    """Policies are the block children of each law."""
+    if not _policy_cache:
+        for root in (GAME, MOD):
+            base = root / "in_game/common/laws"
+            for p in base.rglob("*.txt") if base.exists() else []:
+                for law in pdx.top_level_blocks(pdx.read_text(p)):
+                    body = law.text[law.text.find("{") + 1:law.text.rfind("}")]
+                    _policy_cache.update(b.key for b in pdx.top_level_blocks(body))
+    return _policy_cache
+
+
 def check_refs() -> None:
     for p in mod_files((".txt",)):
         if p.name.startswith("zzz_tsin_age7_"):
@@ -277,6 +307,9 @@ def check_refs() -> None:
             kind, name = m.groups()
             if name not in db_keys(REF_PREFIX[kind]):
                 err(f"refs: {rel(p)} {kind}:{name} not found")
+        for name in re.findall(r"policy:([A-Za-z0-9_]+)", clean):
+            if name not in policy_names():
+                err(f"refs: {rel(p)} policy:{name} not found")
         for m in re.finditer(r"\b(" + "|".join(REF_FIELD) + r')\s*=\s*"?([A-Za-z0-9_]+)"?', clean):
             field, name = m.groups()
             d = REF_FIELD[field]
@@ -292,6 +325,119 @@ def check_refs() -> None:
                 continue
             if name not in db_keys(d):
                 err(f"refs: {rel(p)} {field} = {name} not found in {d}")
+
+
+BUILDING_VALUE_FIELDS = ("employment_size", "build_time", "max_levels", "price")
+PM_META_KEYS = {"icon_type", "icon", "category", "produced", "output", "potential", "allow", "no_upkeep",
+                "is_slave_pm", "debug_max_profit"}
+
+
+def script_value_names() -> set[str]:
+    return db_keys("in_game/common/script_values") | db_keys("main_menu/common/script_values")
+
+
+def check_buildings() -> None:
+    """Mod buildings: level/size fields name a number or a script value; production method inputs are goods."""
+    values = script_value_names()
+    goods = db_keys("in_game/common/goods")
+    for p in mod_files((".txt",)):
+        r = rel(p)
+        if "building_types" not in r or p.name.startswith("zzz_"):
+            continue
+        clean = pdx.strip_comments(pdx.read_text(p))
+        for blk in pdx.top_level_blocks(clean):
+            inner = blk.text[blk.text.index("{") + 1:-1]
+            flat = flatten_blocks(inner)
+            for field in BUILDING_VALUE_FIELDS:
+                for v in re.findall(rf"(?m)^\s*{field}\s*=\s*([A-Za-z0-9_.\-]+)", flat):
+                    if not re.fullmatch(r"-?[\d.]+", v) and v not in values:
+                        err(f"buildings: {r} [{blk.key}] {field} = {v} is not a script value")
+            um = re.search(r"\bunique_production_methods\s*=\s*\{", inner)
+            if not um:
+                continue
+            depth, i = 1, um.end()
+            while depth and i < len(inner):
+                depth += {"{": 1, "}": -1}.get(inner[i], 0)
+                i += 1
+            for pm in pdx.top_level_blocks(inner[um.end():i - 1]):
+                body = flatten_blocks(pm.text[pm.text.index("{") + 1:-1])
+                for k in re.findall(r"(?m)^\s*([a-z][a-z0-9_]*)\s*=\s*[^{\s]", body):
+                    if k not in PM_META_KEYS and k not in goods:
+                        err(f"buildings: {r} [{blk.key}.{pm.key}] '{k}' is not a goods")
+
+
+_modifier_names: set[str] = set()
+
+
+def engine_modifier_names() -> set[str]:
+    """Modifier types the engine names in vanilla localisation, plus modifier_type_definitions."""
+    if not _modifier_names:
+        base = GAME / "main_menu/localization/english"
+        for p in base.rglob("*.yml"):
+            _modifier_names.update(re.findall(r"MODIFIER_TYPE_NAME_([a-z0-9_]+)", p.read_text(encoding="utf-8-sig", errors="replace")))
+        _modifier_names.update(modifier_types())
+    return _modifier_names
+
+
+MODIFIER_BLOCK = re.compile(r"\b(modifier|raw_modifier|country_modifier|location_modifier|capital_country_modifier|"
+                            r"modifier_while_progressing|owner_modifier|province_modifier)\s*=\s*\{")
+MODIFIER_DIRS = ("common/advances", "common/age", "common/building_types", "common/government_reforms",
+                 "common/estate_privileges", "common/laws", "common/static_modifiers", "common/international_organizations")
+
+
+ADVANCE_FIELDS = {"age", "icon", "requires", "government", "country_type", "allow", "potential", "for", "depth",
+                  "ai_weight", "allow_children", "in_tree_of", "research_cost"}
+
+
+def mod_goods() -> set[str]:
+    return {k for k in db_keys("in_game/common/goods")}
+
+
+def is_modifier_name(k: str, names: set[str]) -> bool:
+    if k in names:
+        return True
+    # goods-generated modifiers exist for mod goods too (global_tsin_electricity_output_modifier)
+    m = re.match(r"(?:global|local)_(\w+?)_(?:output_modifier|pop_demand)$", k) or re.match(r"can_extract_(\w+)$", k)
+    return bool(m and m.group(1) in mod_goods())
+
+
+def flatten_blocks(text: str) -> str:
+    """Collapse nested { } blocks to a placeholder so only depth-1 keys remain."""
+    prev = None
+    while prev != text:
+        prev = text
+        text = re.sub(r"\{[^{}]*\}", "BLOCK", text)
+    return text
+
+
+def check_modifiers() -> None:
+    """Keys inside modifier blocks must be modifier types the engine knows (catches typos in new content)."""
+    names = engine_modifier_names()
+    for p in mod_files((".txt",)):
+        r = rel(p)
+        if p.name.startswith("zzz_") or not any(d in r for d in MODIFIER_DIRS):
+            continue
+        clean = pdx.strip_comments(pdx.read_text(p))
+        blocks: list[str] = []
+        if "static_modifiers" in r:
+            blocks = [b.text[b.text.index("{") + 1:-1] for b in pdx.top_level_blocks(clean)]
+        if "common/advances" in r:
+            for b in pdx.top_level_blocks(clean):
+                inner = flatten_blocks(b.text[b.text.index("{") + 1:-1])
+                for k in re.findall(r"(?m)^\s*([a-z][a-z0-9_]*)\s*=\s*[^{\s]", inner):
+                    if k not in ADVANCE_FIELDS and not k.startswith("unlock_") and not is_modifier_name(k, names):
+                        err(f"modifiers: {r} [{b.key}] unknown advance modifier '{k}'")
+        for m in MODIFIER_BLOCK.finditer(clean):
+            depth, i = 1, m.end()
+            while depth and i < len(clean):
+                depth += {"{": 1, "}": -1}.get(clean[i], 0)
+                i += 1
+            blocks.append(clean[m.end():i - 1])
+        for inner in blocks:
+            flat = flatten_blocks(inner)
+            for k in re.findall(r"(?m)^\s*([a-z][a-z0-9_]*)\s*=\s*[^{\s]", flat):
+                if not is_modifier_name(k, names) and k not in ("game_data", "category", "decaying", "potential_trigger"):
+                    err(f"modifiers: {r} unknown modifier type '{k}'")
 
 
 # ---------------------------------------------------------------- gfx
@@ -509,6 +655,10 @@ def main() -> int:
             check_keys()
         if "refs" not in skip:
             check_refs()
+        if "modifiers" not in skip:
+            check_modifiers()
+        if "buildings" not in skip:
+            check_buildings()
         if "names" not in skip:
             check_tsin_names()
         if "gfx" not in skip:

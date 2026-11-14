@@ -1,4 +1,4 @@
-"""Release audit for The Singularity is Near (M6): AI weights, localization parity, costly scopes.
+"""Release audit for The Singularity is Near: AI weights, localization parity, building economics, costly scopes.
 
   python tools/audit.py          print the report; exit code 1 if any error
 
@@ -7,6 +7,9 @@ Checks:
          visible tsin event with two or more options has ai_chance
   loc    each tsin_*_l_english.yml has a korean twin with the same keys and the same
          $refs$/[links]; korean values identical to english are reported as untranslated
+  buildings  production methods marked debug_max_profit = mills_profit_margin earn output value /
+         input cost within PROFIT_RANGE at default prices; buildings outside LEGACY_MULTI_GOOD produce one
+         good, and every production method but the base one is unlocked by an advance
   perf   world-wide scans (any_/every_/random_country, any_/every_location) inside yearly or
          monthly country pulses and scriptable hints, which run per country or per frame
 """
@@ -163,9 +166,73 @@ def check_perf() -> None:
                 warnings.append(f"perf: hint {b.key} (evaluated per frame) iterates with {m.group(1)}")
 
 
+PROFIT_RANGE = (1.25, 1.5)
+# Built before the one-good, tech-tier rule (0.7): alternative-input slots, documented in docs/economy_chain.md.
+LEGACY_ALTERNATIVE_PMS = {"tsin_machine_works", "tsin_mechanized_textile_mill", "tsin_fertilizer_plant",
+                          "tsin_explosives_plant"}
+PROFIT_EXCEPTIONS = {"tsin_explosives_black_powder"}  # deliberately lower margin than nitroglycerin
+
+
+def goods_prices() -> dict[str, float]:
+    prices: dict[str, float] = {}
+    for root in (pdx.game_root(), MOD):
+        base = root / "in_game/common/goods"
+        for p in sorted(base.glob("*.txt")) if base.exists() else []:
+            for b in pdx.top_level_blocks(pdx.read_text(p)):
+                m = re.search(r"\bdefault_market_price\s*=\s*([\d.]+)", pdx.strip_comments(b.text))
+                if m:
+                    prices[b.key.split(":", 1)[-1]] = float(m.group(1))
+    return prices
+
+
+def inner_blocks(block_text: str) -> list:
+    body = block_text[block_text.find("{") + 1:block_text.rfind("}")]
+    return pdx.top_level_blocks(body)
+
+
+def check_buildings() -> None:
+    prices = goods_prices()
+    unlocked: set[str] = set()
+    for p in own_files("in_game/common/advances"):
+        unlocked.update(re.findall(r"\bunlock_production_method\s*=\s*(\w+)", pdx.strip_comments(pdx.read_text(p))))
+    for p in own_files("in_game/common/building_types"):
+        for b in pdx.top_level_blocks(pdx.read_text(p)):
+            if ":" in b.key:
+                continue
+            producing = []
+            for group in child_blocks(b.text, "unique_production_methods"):
+                for pm in inner_blocks(group):
+                    clean = pdx.strip_comments(pm.text)
+                    produced = re.search(r"\bproduced\s*=\s*(\w+)", clean)
+                    output = re.search(r"\boutput\s*=\s*([\d.]+)", clean)
+                    if not produced or not output:
+                        continue
+                    producing.append((pm.key, produced.group(1)))
+                    if "mills_profit_margin" not in clean or pm.key in PROFIT_EXCEPTIONS:
+                        continue
+                    cost = sum(float(q) * prices[g] for g, q in re.findall(r"(?m)^\s*(\w+)\s*=\s*([\d.]+)\s*$", clean)
+                               if g in prices)
+                    if produced.group(1) not in prices or cost <= 0:
+                        continue
+                    ratio = float(output.group(1)) * prices[produced.group(1)] / cost
+                    if not PROFIT_RANGE[0] <= ratio <= PROFIT_RANGE[1]:
+                        warnings.append(f"buildings: {rel(p)}: {b.key}/{pm.key} earns {ratio:.2f}x its input cost "
+                                        f"(expected {PROFIT_RANGE[0]}-{PROFIT_RANGE[1]})")
+            if not producing or b.key in LEGACY_ALTERNATIVE_PMS:
+                continue
+            goods = sorted({g for _, g in producing})
+            if len(goods) > 1:
+                warnings.append(f"buildings: {rel(p)}: {b.key} produces {len(goods)} goods ({', '.join(goods)})")
+            base = [pm for pm, _ in producing if pm not in unlocked]
+            if len(base) > 1:
+                warnings.append(f"buildings: {rel(p)}: {b.key} has {len(base)} production methods no advance unlocks "
+                                f"({', '.join(base)}); tiers should be tech steps")
+
+
 def main() -> int:
     check_ai()
     check_loc()
+    check_buildings()
     check_perf()
     for w in warnings:
         print("WARN ", w)

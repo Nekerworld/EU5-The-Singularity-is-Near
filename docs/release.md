@@ -12,7 +12,7 @@
 
 - 1.0.0 전까지는 MINOR가 개발 단계(M1~M6)를 따른다. 0.6.0은 M6 완성판 후보다. 사용자 시험(`docs/tests/`)을 통과하면 1.0.0으로 올린다.
 - 1.0.0 전에는 MINOR 변경도 세이브를 깰 수 있다. 창작마당 설명에 그렇게 적는다.
-- 세이브 이전용 전역 변수 `tsin_version`(`tsin_system.1`, `tsin_on_new_age_global`)은 모드 버전과 별개인 정수다. 세이브 이전 로직이 필요한 변경을 할 때만 올린다. 현재 1이다.
+- 세이브 이전용 전역 변수 `tsin_version`(`tsin_system.1`, `tsin_on_new_age_global`)은 모드 버전과 별개인 정수다. 세이브 이전 로직이 필요한 변경을 할 때만 올린다. 현재 3이다(2: 0.7 세계 인구 기준값, 3: 0.7 방어적 근대화 단계). 이전은 `tsin_system.3`이 한 번 한다.
 - `supported_game_version`은 시험한 게임 버전의 `MAJOR.MINOR.*`로 둔다. 현재 `1.4.*`다.
 - 버전을 올릴 때마다 `docs/changelog.md` 맨 위에 같은 버전의 항목을 쓴다.
 
@@ -39,8 +39,8 @@ EU5가 업데이트되면 순서대로 확인한다.
 1. 게임을 이 모드만 켜고 메인 메뉴까지 실행한 뒤 `python tools/scan_logs.py`로 오류를 본다.
 2. `python tools/gen_age7_patches.py`로 제7시대 연장 패치를 다시 만든다. `git diff`로 바닐라 변경이 반영됐는지 본다(`docs/overrides.md` 2절).
 3. `docs/overrides.md` 3절의 손으로 쓴 덮어쓰기 원본 위치(`game_triggers.txt`, `00_defines.txt`, `special_construction_demands.txt`)를 새 바닐라와 비교한다.
-4. `python tools/validate.py`를 실행한다. 사라진 보정치 종류, 바닐라 참조(`goods:`, `building_type:` 등), 그림 경로를 잡아낸다.
-5. `python tools/audit.py`를 실행한다.
+4. `python tools/validate.py`를 실행한다. 사라진 보정치 종류, 바닐라 참조(`goods:`, `building_type:`, `religion:`, `government_reform:`, `policy:`, `has_advance` 등), 그림 경로를 잡아낸다.
+5. `python tools/audit.py`를 실행한다. 바닐라 재화 가격이 바뀌면 건물 이윤율 검사(산출 가치 ÷ 투입 비용 1.25~1.5)가 경고를 낸다.
 6. 새 바닐라 시대 하드코딩이 생겼는지 `docs/age_hardcoding.md`의 검색을 다시 돌린다.
 7. `NGame.END_DATE`가 그대로 바뀌는지 본다. 새 게임에서 1837년 이후에도 진행되는지 확인한다.
 8. `python tools/compat_scan.py`로 플레이셋 충돌을 다시 본다.

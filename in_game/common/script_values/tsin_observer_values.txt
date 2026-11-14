@@ -205,10 +205,176 @@ tsin_obs_hunger_countries = {
 	}
 }
 
+tsin_obs_pop_ratio = {
+	value = 0
+	if = {
+		limit = { has_global_variable = tsin_world_pop_ratio }
+		add = global_var:tsin_world_pop_ratio
+	}
+}
+
+tsin_obs_pop_brake = {
+	value = 0
+	if = {
+		limit = { has_global_variable = tsin_population_brake }
+		add = global_var:tsin_population_brake
+	}
+}
+
+tsin_obs_accel_3 = {
+	value = 0
+	every_country = {
+		limit = {
+			has_variable = tsin_acceleration_tier
+			var:tsin_acceleration_tier >= 3
+		}
+		add = 1
+	}
+}
+
 tsin_obs_flavor_events = {
 	value = 0
 	if = {
 		limit = { has_global_variable = tsin_obs_flavor_events }
 		add = global_var:tsin_obs_flavor_events
+	}
+}
+
+# 0.7 historical checkpoints (docs/historical_review.md): great-power averages.
+tsin_obs_gp_literacy = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = average_country_literacy
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_secondary_education = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = tsin_country_secondary_education
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_higher_education = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = tsin_country_higher_education
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_factory_share = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			has_variable = tsin_factory_share
+		}
+		add = var:tsin_factory_share
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_labor_grievance = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			has_variable = tsin_labor_grievance
+		}
+		add = var:tsin_labor_grievance
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_socialist_cells = {
+	value = 0
+	every_country = {
+		limit = { has_variable = tsin_socialist_cells }
+		add = var:tsin_socialist_cells
+	}
+}
+
+# 0.7 Modern Times indicators (docs/balance_targets.md section 10).
+# country scope: monthly food balance per pop of the capital's market.
+tsin_obs_capital_food_per_pop = {
+	value = 0
+	if = {
+		limit = { capital ?= { market ?= { market_population > 0 } } }
+		value = capital.market.market_monthly_food_balance
+		divide = capital.market.market_population
+	}
+}
+
+tsin_obs_gp_food = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = tsin_obs_capital_food_per_pop
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+# Bills passed so far, whole world.
+tsin_obs_bills = {
+	value = 0
+	every_country = {
+		limit = { has_variable = tsin_bills_passed }
+		add = var:tsin_bills_passed
+	}
+}
+
+tsin_obs_gp_stock_index = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = tsin_stock_index_report
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_gdp_per_capita = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = tsin_gdp_per_capita
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_world_gdp_pc_max = {
+	value = 0
+	if = {
+		limit = { has_global_variable = tsin_world_gdp_pc_max }
+		add = global_var:tsin_world_gdp_pc_max
 	}
 }
