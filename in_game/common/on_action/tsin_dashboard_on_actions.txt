@@ -1,0 +1,12 @@
+﻿# GENERATED lightweight migration for existing saves; no forced recomputation.
+monthly_country_pulse = { on_actions = { tsin_dashboard_migration_pulse } }
+tsin_dashboard_migration_pulse = {
+    trigger = {
+        has_variable = tsin_gdp
+        OR = {
+            NOT = { has_variable = tsin_dashboard_data_version }
+            var:tsin_dashboard_data_version < 1
+        }
+    }
+    effect = { tsin_dashboard_migrate_effect = yes }
+}

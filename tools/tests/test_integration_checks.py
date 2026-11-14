@@ -31,6 +31,12 @@ class IntegrationTests(unittest.TestCase):
             self.assertEqual(len(errors), 2)
             self.assertTrue(any('callback' in x for x in errors))
             self.assertTrue(any('brackets' in x for x in errors))
+            # A later file extending the same pulse must not hide the earlier missing callback.
+            put(root, 'in_game/common/on_action/zz_later.txt', 'yearly_country_pulse = { on_actions = { tsin_known } } tsin_known = { }')
+            errors, counts = check(root, game)
+            self.assertTrue(any('tsin_missing' in x for x in errors))
+            self.assertEqual(counts['on_action_callbacks'], 2)
+
 
 if __name__ == '__main__':
     unittest.main()

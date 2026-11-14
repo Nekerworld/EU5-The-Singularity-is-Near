@@ -1,0 +1,100 @@
+﻿# GENERATED read-only predicates; no gameplay effects.
+tsin_ui_check_disaster_cholera = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_active_disaster = disaster_type:tsin_cholera }
+}
+tsin_ui_check_disaster_great_hunger = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_active_disaster = disaster_type:tsin_great_hunger }
+}
+tsin_ui_check_disaster_millenarian_rebellion = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_active_disaster = disaster_type:tsin_millenarian_rebellion }
+}
+tsin_ui_check_disaster_secession_crisis = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_active_disaster = disaster_type:tsin_secession_crisis }
+}
+tsin_ui_check_situation_defensive_modernization = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_defensive_modernization }
+}
+tsin_ui_check_situation_grain_invasion = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_grain_invasion }
+}
+tsin_ui_check_situation_great_migration = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_great_migration }
+}
+tsin_ui_check_situation_long_depression = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_long_depression }
+}
+tsin_ui_check_situation_national_unification = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_national_unification }
+}
+tsin_ui_check_situation_scramble_for_colonies = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_scramble_for_colonies }
+}
+tsin_ui_check_situation_springtime_of_nations = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_springtime_of_nations }
+}
+tsin_ui_check_situation_world_exhibition = {
+scope = country
+is_shown = { always = yes }
+is_valid = { is_situation_active = situation:tsin_world_exhibition }
+}
+tsin_ui_check_bill = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_bill_policy }
+}
+tsin_ui_check_institution_tsin_industrial_capitalism = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_embraced_institution = institution:tsin_industrial_capitalism }
+}
+tsin_ui_check_institution_tsin_mass_society = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_embraced_institution = institution:tsin_mass_society }
+}
+tsin_ui_check_institution_tsin_electrification = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_embraced_institution = institution:tsin_electrification }
+}
+tsin_ui_check_no_crises = {
+scope = country
+is_shown = { always = yes }
+is_valid = { NOT = { OR = {
+has_active_disaster = disaster_type:tsin_cholera
+has_active_disaster = disaster_type:tsin_great_hunger
+has_active_disaster = disaster_type:tsin_millenarian_rebellion
+has_active_disaster = disaster_type:tsin_secession_crisis
+is_situation_active = situation:tsin_defensive_modernization
+is_situation_active = situation:tsin_grain_invasion
+is_situation_active = situation:tsin_great_migration
+is_situation_active = situation:tsin_long_depression
+is_situation_active = situation:tsin_national_unification
+is_situation_active = situation:tsin_scramble_for_colonies
+is_situation_active = situation:tsin_springtime_of_nations
+is_situation_active = situation:tsin_world_exhibition
+has_variable = tsin_bill_policy
+} } }
+}

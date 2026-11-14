@@ -1,0 +1,24 @@
+﻿# Industrialization data provider. Extend era modules rather than the shared UI.
+tsin_dashboard_age7_cache_effect = {
+    set_variable = { name = tsin_industrialization_statistics_version value = 1 }
+    set_variable = { name = tsin_statistics_company_count value = tsin_company_count }
+    set_variable = { name = tsin_statistics_company_limit value = tsin_company_limit }
+    set_variable = { name = tsin_statistics_company_value value = tsin_company_total_value }
+}
+
+# One-time bootstrap for existing saves: cheap current caches, no fabricated aggregate date.
+tsin_dashboard_age7_migrate_effect = {
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = tsin_industrialization_statistics_version }
+                var:tsin_industrialization_statistics_version < 1
+            }
+        }
+        tsin_dashboard_age7_cache_effect = yes
+        if = {
+            limit = { NOT = { has_variable = tsin_statistics_population } }
+            set_variable = { name = tsin_statistics_population value = total_population }
+        }
+    }
+}

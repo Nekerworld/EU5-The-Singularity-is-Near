@@ -53,14 +53,18 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
                     errors.append(f'integration: {b.key}: {category[1]} group {index[1]} is not displayed by {ui}')
     counts['map_modes'] = maps
     # Detect missing on_action callbacks, including callbacks buried in lists.
-    definitions = {}
+    definitions = set()
+    action_bodies = []
     for p in sorted((root / 'in_game/common/on_action').glob('*.txt')):
-        definitions.update({b.key: b.text for b in pdx.top_level_blocks(pdx.read_text(p))})
+        for block in pdx.top_level_blocks(pdx.read_text(p)):
+            definitions.add(block.key)
+            action_bodies.append(block.text)
     called = set()
-    for body in definitions.values():
+    # Hooks merge across files: do not discard earlier on_actions lists.
+    for body in action_bodies:
         for group in re.finditer(r'\bon_actions\s*=\s*\{([^{}]*)\}', pdx.strip_comments(body)):
             called.update(re.findall(r'\btsin_\w+\b', group[1]))
-    for name in sorted(called - definitions.keys()):
+    for name in sorted(called - definitions):
         errors.append(f'integration: missing on_action callback {name}')
     counts['on_action_callbacks'] = len(called)
     # A localized literal label must not accidentally become a data-system call.
@@ -75,6 +79,21 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
                 errors.append(f'integration: {p.name}: literal TSIN label uses dynamic localization brackets')
         count += 1
     counts['localization_files'] = count
+    registry = root / 'ui/dashboard_registry.json'
+    if registry.exists():
+        try:
+            import json
+            from gen_dashboard import build, validate_registry, check_provider_links
+            data = json.loads(pdx.read_text(registry))
+            metrics, statuses, shortcuts = validate_registry(data)
+            counts.update(dashboard_metrics=len(metrics), dashboard_statuses=len(statuses), dashboard_shortcuts=len(shortcuts))
+            for rel, expected in build(data).items():
+                p = root / rel
+                if not p.exists() or pdx.read_text(p) != expected:
+                    errors.append(f'integration: generated dashboard file is outdated: {rel}')
+            errors.extend('integration: dashboard ' + message for message in check_provider_links(data, root))
+        except (ValueError, KeyError, TypeError) as exc:
+            errors.append(f'integration: invalid dashboard registry: {exc}')
     return errors, counts
 
 

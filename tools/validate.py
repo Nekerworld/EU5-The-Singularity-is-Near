@@ -193,6 +193,12 @@ def check_keys() -> None:
         if d.endswith("named_colors"):
             continue
         known = vocab(d) | mods | gv | mine
+        if d.endswith("/scripted_guis"):
+            # Native schema documents predicates not used by vanilla's effect-only example.
+            schema = GAME / "in_game/common/scripted_guis/scripted_guis.info"
+            if schema.exists():
+                known |= set(KEY_LINE.findall(pdx.strip_comments(pdx.read_text(schema))))
+
         clean = pdx.strip_comments(pdx.read_text(p))
         for blk in pdx.top_level_blocks(clean):
             inner = blk.text[blk.text.index("{") + 1:-1]

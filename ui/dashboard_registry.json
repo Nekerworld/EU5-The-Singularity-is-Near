@@ -1,0 +1,983 @@
+﻿{
+  "schema_version": 1,
+  "tabs": [
+    {
+      "id": "overview",
+      "title": {
+        "english": "National statistics",
+        "korean": "국가 통계"
+      }
+    },
+    {
+      "id": "economy",
+      "title": {
+        "english": "Economy",
+        "korean": "경제·산업"
+      }
+    },
+    {
+      "id": "society",
+      "title": {
+        "english": "Population & society",
+        "korean": "인구·사회"
+      }
+    },
+    {
+      "id": "finance",
+      "title": {
+        "english": "Companies & finance",
+        "korean": "기업·금융"
+      }
+    },
+    {
+      "id": "crises",
+      "title": {
+        "english": "Crises & policies",
+        "korean": "위기·정책"
+      }
+    },
+    {
+      "id": "research",
+      "title": {
+        "english": "Science & technology",
+        "korean": "과학기술"
+      }
+    }
+  ],
+  "compact_metrics": [
+    "gdp",
+    "gdp_per_capita",
+    "secondary",
+    "higher",
+    "growth",
+    "industry",
+    "labor",
+    "stock"
+  ],
+  "modules": [
+    {
+      "id": "industrialization",
+      "annual_effect": "tsin_dashboard_age7_cache_effect",
+      "update_trigger": "has_variable = tsin_gdp",
+      "metrics": [
+        {
+          "id": "gdp",
+          "variable": "tsin_gdp",
+          "title": {
+            "english": "Estimated GDP",
+            "korean": "추정 GDP"
+          },
+          "tabs": [
+            "overview",
+            "economy"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "Estimated annual output; not treasury income.",
+            "korean": "연간 산출 추정치입니다. 국고 수입과 다릅니다."
+          }
+        },
+        {
+          "id": "gdp_per_capita",
+          "variable": "tsin_gdp_per_capita",
+          "title": {
+            "english": "GDP per population unit",
+            "korean": "인구당 GDP"
+          },
+          "tabs": [
+            "overview",
+            "economy"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "Uses the existing TSIN population-unit formula.",
+            "korean": "기존 모드의 인구 단위 공식을 그대로 사용합니다."
+          }
+        },
+        {
+          "id": "growth",
+          "variable": "tsin_gdp_growth",
+          "title": {
+            "english": "GDP growth",
+            "korean": "GDP 성장률"
+          },
+          "tabs": [
+            "overview",
+            "economy"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "population",
+          "variable": "tsin_statistics_population",
+          "title": {
+            "english": "Population (thousands)",
+            "korean": "인구 (천 명)"
+          },
+          "tabs": [
+            "overview",
+            "society"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "secondary",
+          "variable": "tsin_secondary_education",
+          "title": {
+            "english": "Secondary education",
+            "korean": "중등교육률"
+          },
+          "tabs": [
+            "overview",
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "higher",
+          "variable": "tsin_higher_education",
+          "title": {
+            "english": "Higher education",
+            "korean": "고등교육률"
+          },
+          "tabs": [
+            "overview",
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "secondary_target",
+          "variable": "tsin_secondary_education_target",
+          "title": {
+            "english": "Secondary target",
+            "korean": "중등교육 목표"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "higher_target",
+          "variable": "tsin_higher_education_target",
+          "title": {
+            "english": "Higher target",
+            "korean": "고등교육 목표"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "schools",
+          "variable": "tsin_agg_school_levels",
+          "title": {
+            "english": "Weighted school levels",
+            "korean": "학교 환산 레벨"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "universities",
+          "variable": "tsin_agg_university_levels",
+          "title": {
+            "english": "Weighted university levels",
+            "korean": "대학 환산 레벨"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "industry",
+          "variable": "tsin_factory_share",
+          "title": {
+            "english": "Factory job share",
+            "korean": "공장 일자리 비중"
+          },
+          "tabs": [
+            "overview",
+            "economy"
+          ],
+          "unit": "fraction",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "factory_jobs",
+          "variable": "tsin_agg_factory_jobs",
+          "title": {
+            "english": "Factory jobs (thousands)",
+            "korean": "공장 일자리 (천 명)"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "tax_base",
+          "variable": "tsin_agg_tax_base",
+          "title": {
+            "english": "Urban tax base",
+            "korean": "도시 세원"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "labor",
+          "variable": "tsin_labor_grievance",
+          "title": {
+            "english": "Labor grievance (0–100)",
+            "korean": "노동 불만 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "labor_conditions",
+          "variable": "tsin_labor_conditions",
+          "title": {
+            "english": "Labor conditions",
+            "korean": "노동 조건"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "liberalism",
+          "variable": "tsin_liberalism",
+          "title": {
+            "english": "Liberalism (0–100)",
+            "korean": "자유주의 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "nationalism",
+          "variable": "tsin_nationalism",
+          "title": {
+            "english": "Nationalism (0–100)",
+            "korean": "민족주의 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "labor_unionism",
+          "variable": "tsin_labor_unionism",
+          "title": {
+            "english": "Labor unionism (0–100)",
+            "korean": "노동조합 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "socialism",
+          "variable": "tsin_socialism",
+          "title": {
+            "english": "Socialism (0–100)",
+            "korean": "사회주의 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "abolitionism",
+          "variable": "tsin_abolitionism",
+          "title": {
+            "english": "Abolitionism (0–100)",
+            "korean": "노예제 폐지 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "womens_suffrage",
+          "variable": "tsin_womens_suffrage",
+          "title": {
+            "english": "Women’s suffrage (0–100)",
+            "korean": "여성 참정권 운동 (0~100)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock",
+          "variable": "tsin_stock_index",
+          "title": {
+            "english": "Stock index",
+            "korean": "주가지수"
+          },
+          "tabs": [
+            "overview",
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "companies",
+          "variable": "tsin_statistics_company_count",
+          "title": {
+            "english": "Companies",
+            "korean": "기업 수"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "company_limit",
+          "variable": "tsin_statistics_company_limit",
+          "title": {
+            "english": "Company limit",
+            "korean": "기업 상한"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "company_value",
+          "variable": "tsin_statistics_company_value",
+          "title": {
+            "english": "Total company value",
+            "korean": "기업 가치 합계"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "cholera_progress",
+          "variable": "tsin_cholera_progress",
+          "title": {
+            "english": "Cholera recovery progress",
+            "korean": "콜레라 종식 진행도"
+          },
+          "tabs": [
+            "crises"
+          ],
+          "unit": "number",
+          "frequency": "monthly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "cholera_outbreaks",
+          "variable": "tsin_cholera_outbreaks",
+          "title": {
+            "english": "Cholera city outbreaks",
+            "korean": "콜레라 도시 발병 횟수"
+          },
+          "tabs": [
+            "crises"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "bill_successes",
+          "variable": "tsin_bill_successes",
+          "title": {
+            "english": "Successful readings",
+            "korean": "법안 심의 성공 횟수"
+          },
+          "tabs": [
+            "crises"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "bill_stalls",
+          "variable": "tsin_bill_stalls",
+          "title": {
+            "english": "Stalled readings",
+            "korean": "법안 심의 실패 횟수"
+          },
+          "tabs": [
+            "crises"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_steel",
+          "variable": "tsin_stock_steel",
+          "title": {
+            "english": "Steel share price",
+            "korean": "제철 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_machinery",
+          "variable": "tsin_stock_machinery",
+          "title": {
+            "english": "Machinery share price",
+            "korean": "기계 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_textile",
+          "variable": "tsin_stock_textile",
+          "title": {
+            "english": "Textiles share price",
+            "korean": "직물 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_chemical",
+          "variable": "tsin_stock_chemical",
+          "title": {
+            "english": "Chemicals share price",
+            "korean": "화학 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_railway",
+          "variable": "tsin_stock_railway",
+          "title": {
+            "english": "Railways share price",
+            "korean": "철도 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        },
+        {
+          "id": "stock_farm_machinery",
+          "variable": "tsin_stock_farm_machinery",
+          "title": {
+            "english": "Farm machinery share price",
+            "korean": "농기계 기업 주가"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "number",
+          "frequency": "quarterly",
+          "description": {
+            "english": "",
+            "korean": ""
+          }
+        }
+      ],
+      "statuses": [
+        {
+          "id": "disaster_cholera",
+          "tab": "crises",
+          "title": {
+            "english": "Cholera pandemic",
+            "korean": "콜레라 대유행"
+          },
+          "condition": "has_active_disaster = disaster_type:tsin_cholera",
+          "description": {
+            "english": "A national disaster is active. Follow its existing events and end requirements.",
+            "korean": "국가 재앙이 진행 중입니다. 기존 이벤트와 종료 요건에 따라 대응하십시오."
+          }
+        },
+        {
+          "id": "disaster_great_hunger",
+          "tab": "crises",
+          "title": {
+            "english": "Great Hunger",
+            "korean": "대기근"
+          },
+          "condition": "has_active_disaster = disaster_type:tsin_great_hunger",
+          "description": {
+            "english": "A national disaster is active. Follow its existing events and end requirements.",
+            "korean": "국가 재앙이 진행 중입니다. 기존 이벤트와 종료 요건에 따라 대응하십시오."
+          }
+        },
+        {
+          "id": "disaster_millenarian_rebellion",
+          "tab": "crises",
+          "title": {
+            "english": "Millenarian rebellion",
+            "korean": "천년왕국 반란"
+          },
+          "condition": "has_active_disaster = disaster_type:tsin_millenarian_rebellion",
+          "description": {
+            "english": "A national disaster is active. Follow its existing events and end requirements.",
+            "korean": "국가 재앙이 진행 중입니다. 기존 이벤트와 종료 요건에 따라 대응하십시오."
+          }
+        },
+        {
+          "id": "disaster_secession_crisis",
+          "tab": "crises",
+          "title": {
+            "english": "Secession crisis",
+            "korean": "분리 위기"
+          },
+          "condition": "has_active_disaster = disaster_type:tsin_secession_crisis",
+          "description": {
+            "english": "A national disaster is active. Follow its existing events and end requirements.",
+            "korean": "국가 재앙이 진행 중입니다. 기존 이벤트와 종료 요건에 따라 대응하십시오."
+          }
+        },
+        {
+          "id": "situation_defensive_modernization",
+          "tab": "crises",
+          "title": {
+            "english": "Defensive modernization · world situation",
+            "korean": "방어적 근대화 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_defensive_modernization",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_grain_invasion",
+          "tab": "crises",
+          "title": {
+            "english": "Grain invasion · world situation",
+            "korean": "곡물 침공 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_grain_invasion",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_great_migration",
+          "tab": "crises",
+          "title": {
+            "english": "Great migration · world situation",
+            "korean": "대이주 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_great_migration",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_long_depression",
+          "tab": "crises",
+          "title": {
+            "english": "Long Depression · world situation",
+            "korean": "장기 불황 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_long_depression",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_national_unification",
+          "tab": "crises",
+          "title": {
+            "english": "National unification · world situation",
+            "korean": "국민통일 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_national_unification",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_scramble_for_colonies",
+          "tab": "crises",
+          "title": {
+            "english": "Scramble for colonies · world situation",
+            "korean": "식민지 쟁탈 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_scramble_for_colonies",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_springtime_of_nations",
+          "tab": "crises",
+          "title": {
+            "english": "Springtime of Nations · world situation",
+            "korean": "민족들의 봄 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_springtime_of_nations",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "situation_world_exhibition",
+          "tab": "crises",
+          "title": {
+            "english": "World exhibition · world situation",
+            "korean": "만국박람회 · 세계 상황"
+          },
+          "condition": "is_situation_active = situation:tsin_world_exhibition",
+          "description": {
+            "english": "This world situation is active; participation depends on each country’s conditions.",
+            "korean": "세계 상황이 진행 중입니다. 자국 참여 여부는 각 상황의 조건에 따라 달라집니다."
+          }
+        },
+        {
+          "id": "bill",
+          "tab": "crises",
+          "title": {
+            "english": "Bill before parliament",
+            "korean": "심의 중인 법안"
+          },
+          "condition": "has_variable = tsin_bill_policy",
+          "description": {
+            "english": "Readings occur through the existing bill system. Policies are changed in the normal government interface.",
+            "korean": "기존 법안 시스템으로 심의합니다. 정책 변경은 기본 정부 화면에서 진행합니다."
+          }
+        },
+        {
+          "id": "institution_tsin_industrial_capitalism",
+          "tab": "research",
+          "title": {
+            "english": "Industrial capitalism",
+            "korean": "산업자본주의"
+          },
+          "condition": "has_embraced_institution = institution:tsin_industrial_capitalism",
+          "description": {
+            "english": "Embracing this institution opens its corresponding technology root; technologies still require research.",
+            "korean": "이 시대관을 수용하면 해당 줄기의 뿌리 기술을 연구할 수 있습니다. 기술 연구는 별도로 필요합니다."
+          }
+        },
+        {
+          "id": "institution_tsin_mass_society",
+          "tab": "research",
+          "title": {
+            "english": "Mass society",
+            "korean": "대중사회"
+          },
+          "condition": "has_embraced_institution = institution:tsin_mass_society",
+          "description": {
+            "english": "Embracing this institution opens its corresponding technology root; technologies still require research.",
+            "korean": "이 시대관을 수용하면 해당 줄기의 뿌리 기술을 연구할 수 있습니다. 기술 연구는 별도로 필요합니다."
+          }
+        },
+        {
+          "id": "institution_tsin_electrification",
+          "tab": "research",
+          "title": {
+            "english": "Electrification",
+            "korean": "전기화"
+          },
+          "condition": "has_embraced_institution = institution:tsin_electrification",
+          "description": {
+            "english": "Embracing this institution opens its corresponding technology root; technologies still require research.",
+            "korean": "이 시대관을 수용하면 해당 줄기의 뿌리 기술을 연구할 수 있습니다. 기술 연구는 별도로 필요합니다."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "economy_view",
+          "tab": "economy",
+          "title": {
+            "english": "Open economy",
+            "korean": "경제 화면"
+          },
+          "view": "economy"
+        },
+        {
+          "id": "government_view",
+          "tab": "crises",
+          "title": {
+            "english": "Open government",
+            "korean": "정부 화면"
+          },
+          "view": "government"
+        },
+        {
+          "id": "research_view",
+          "tab": "research",
+          "title": {
+            "english": "Open technologies",
+            "korean": "기술 화면"
+          },
+          "view": "advances"
+        },
+        {
+          "id": "tsin_industrialization",
+          "tab": "economy",
+          "title": {
+            "english": "Industry map",
+            "korean": "산업화 지도"
+          },
+          "map_mode": "tsin_industrialization"
+        },
+        {
+          "id": "tsin_electrification",
+          "tab": "economy",
+          "title": {
+            "english": "Electricity map",
+            "korean": "전기화 지도"
+          },
+          "map_mode": "tsin_electrification"
+        },
+        {
+          "id": "tsin_agriculture",
+          "tab": "economy",
+          "title": {
+            "english": "Agriculture map",
+            "korean": "농업 지도"
+          },
+          "map_mode": "tsin_agriculture"
+        },
+        {
+          "id": "tsin_education",
+          "tab": "society",
+          "title": {
+            "english": "Education map",
+            "korean": "교육 지도"
+          },
+          "map_mode": "tsin_education"
+        },
+        {
+          "id": "tsin_labor_conditions",
+          "tab": "society",
+          "title": {
+            "english": "Labor map",
+            "korean": "노동 조건 지도"
+          },
+          "map_mode": "tsin_labor_conditions"
+        },
+        {
+          "id": "tsin_corporations",
+          "tab": "finance",
+          "title": {
+            "english": "Company map",
+            "korean": "기업 지도"
+          },
+          "map_mode": "tsin_corporations"
+        },
+        {
+          "id": "tsin_industrial_institutions",
+          "tab": "research",
+          "title": {
+            "english": "Institutions map",
+            "korean": "시대관 지도"
+          },
+          "map_mode": "tsin_industrial_institutions"
+        }
+      ],
+      "migration_effect": "tsin_dashboard_age7_migrate_effect"
+    }
+  ],
+  "histories": [
+    {
+      "id": "gdp",
+      "tab": "overview",
+      "backend_effect": "tsin_record_gdp_history_effect",
+      "samples": 10,
+      "value_prefix": "tsin_gdp_hist_",
+      "year_prefix": "tsin_gdp_hist_year_",
+      "peak_variable": "tsin_gdp_history_peak"
+    }
+  ]
+}

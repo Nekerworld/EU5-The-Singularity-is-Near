@@ -1,0 +1,432 @@
+﻿tsin_ui_format_gdp = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_T
+	}
+	text = {
+		trigger = { var:tsin_gdp >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_B
+	}
+	text = {
+		trigger = { var:tsin_gdp >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_M
+	}
+	text = {
+		trigger = { var:tsin_gdp >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_BASE
+	}
+}
+tsin_ui_format_gdp_per_capita = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_per_capita } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_per_capita >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_PER_CAPITA_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_per_capita >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_PER_CAPITA_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_per_capita >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_PER_CAPITA_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_per_capita >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_PER_CAPITA_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_PER_CAPITA_BASE
+	}
+}
+tsin_ui_format_population = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_statistics_population } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_statistics_population >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_POPULATION_T
+	}
+	text = {
+		trigger = { var:tsin_statistics_population >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_POPULATION_B
+	}
+	text = {
+		trigger = { var:tsin_statistics_population >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_POPULATION_M
+	}
+	text = {
+		trigger = { var:tsin_statistics_population >= 1000 }
+		localization_key = TSIN_UI_NUMBER_POPULATION_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_POPULATION_BASE
+	}
+}
+tsin_ui_format_factory_jobs = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_agg_factory_jobs } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_agg_factory_jobs >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_T
+	}
+	text = {
+		trigger = { var:tsin_agg_factory_jobs >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_B
+	}
+	text = {
+		trigger = { var:tsin_agg_factory_jobs >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_M
+	}
+	text = {
+		trigger = { var:tsin_agg_factory_jobs >= 1000 }
+		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_BASE
+	}
+}
+tsin_ui_format_tax_base = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_agg_tax_base } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_agg_tax_base >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_TAX_BASE_T
+	}
+	text = {
+		trigger = { var:tsin_agg_tax_base >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_TAX_BASE_B
+	}
+	text = {
+		trigger = { var:tsin_agg_tax_base >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_TAX_BASE_M
+	}
+	text = {
+		trigger = { var:tsin_agg_tax_base >= 1000 }
+		localization_key = TSIN_UI_NUMBER_TAX_BASE_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_TAX_BASE_BASE
+	}
+}
+tsin_ui_format_company_value = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_statistics_company_value } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_statistics_company_value >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_COMPANY_VALUE_T
+	}
+	text = {
+		trigger = { var:tsin_statistics_company_value >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_COMPANY_VALUE_B
+	}
+	text = {
+		trigger = { var:tsin_statistics_company_value >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_COMPANY_VALUE_M
+	}
+	text = {
+		trigger = { var:tsin_statistics_company_value >= 1000 }
+		localization_key = TSIN_UI_NUMBER_COMPANY_VALUE_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_COMPANY_VALUE_BASE
+	}
+}
+tsin_ui_format_gdp_sample_9 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_9 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_9 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_9_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_9 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_9_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_9 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_9_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_9 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_9_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_9_BASE
+	}
+}
+tsin_ui_format_gdp_sample_8 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_8 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_8 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_8_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_8 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_8_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_8 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_8_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_8 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_8_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_8_BASE
+	}
+}
+tsin_ui_format_gdp_sample_7 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_7 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_7 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_7_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_7 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_7_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_7 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_7_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_7 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_7_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_7_BASE
+	}
+}
+tsin_ui_format_gdp_sample_6 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_6 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_6 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_6_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_6 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_6_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_6 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_6_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_6 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_6_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_6_BASE
+	}
+}
+tsin_ui_format_gdp_sample_5 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_5 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_5 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_5_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_5 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_5_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_5 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_5_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_5 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_5_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_5_BASE
+	}
+}
+tsin_ui_format_gdp_sample_4 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_4 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_4 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_4_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_4 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_4_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_4 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_4_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_4 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_4_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_4_BASE
+	}
+}
+tsin_ui_format_gdp_sample_3 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_3 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_3 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_3_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_3 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_3_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_3 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_3_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_3 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_3_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_3_BASE
+	}
+}
+tsin_ui_format_gdp_sample_2 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_2 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_2 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_2_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_2 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_2_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_2 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_2_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_2 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_2_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_2_BASE
+	}
+}
+tsin_ui_format_gdp_sample_1 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_1 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_1 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_1_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_1 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_1_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_1 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_1_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_1 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_1_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_1_BASE
+	}
+}
+tsin_ui_format_gdp_sample_0 = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_gdp_hist_0 } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_0 >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_0_T
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_0 >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_0_B
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_0 >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_0_M
+	}
+	text = {
+		trigger = { var:tsin_gdp_hist_0 >= 1000 }
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_0_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_GDP_SAMPLE_0_BASE
+	}
+}

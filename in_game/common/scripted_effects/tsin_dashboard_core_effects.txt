@@ -1,0 +1,14 @@
+﻿# GENERATED dashboard metadata. Calculation providers belong to era modules.
+tsin_dashboard_migrate_effect = {
+if = { limit = { NOT = { has_variable = tsin_dashboard_data_version } } set_variable = { name = tsin_dashboard_data_version value = 0 } }
+if = { limit = { var:tsin_dashboard_data_version < 1 }
+tsin_dashboard_age7_migrate_effect = yes
+set_variable = { name = tsin_dashboard_data_version value = 1 }
+}
+}
+tsin_dashboard_update_effect = {
+tsin_dashboard_migrate_effect = yes
+set_variable = { name = tsin_statistics_year value = current_year }
+set_variable = { name = tsin_statistics_population value = total_population }
+if = { limit = { has_variable = tsin_gdp } tsin_dashboard_age7_cache_effect = yes }
+}

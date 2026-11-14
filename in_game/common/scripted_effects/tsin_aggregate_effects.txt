@@ -104,6 +104,7 @@ tsin_annual_country_aggregate_effect = {
 
 	tsin_update_education_effect = yes
 	tsin_update_gdp_effect = yes
+	tsin_dashboard_update_effect = yes
 }
 
 # location scope, factory locations only, local_var:tsin_agg_l_conditions set.
