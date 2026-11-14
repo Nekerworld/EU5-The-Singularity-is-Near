@@ -35,4 +35,4 @@
 - 창작마당 3631410954 "EU5 National Ideas"는 `00_defines.txt` 전체를 덮어쓴다. `END_DATE`는 바닐라와 같은 값이다. 우리 파일은 이름 정렬상 뒤에 적용되므로 영향이 없을 것으로 본다(사용자 확인 필요, `docs/load_order.md`).
 - 같은 객체를 `TRY_REPLACE`하는 다른 모드가 있으면 나중에 로드된 쪽이 이긴다.
   - 확인된 예: 3827499481(`revolution_disaster`, `revolutionary_chaos`), 3604169106(전쟁명분 일부)
-  - 호환 스캔: `python tools/validate.py --compat`
+  - 호환 스캔: `python tools/validate.py --compat` (설치된 창작마당 전체), `python tools/compat_scan.py` (실제 플레이셋, 결과와 방침은 `docs/compat.md`)
