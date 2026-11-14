@@ -109,6 +109,25 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
                     errors.append(f'integration: generated era scaffold is outdated: {rel}')
         except (ValueError, KeyError, TypeError) as exc:
             errors.append(f'integration: invalid era registry: {exc}')
+    operational_registry = root / 'ui/operational_alerts.json'
+    if operational_registry.exists():
+        try:
+            import json
+            from gen_operational_alerts import build as build_ops, validate as validate_ops
+            data = json.loads(pdx.read_text(operational_registry))
+            rules = validate_ops(data)
+            counts['operational_warning_types'] = len(rules)
+            native_alerts = {b.key for p in (game / 'in_game/common/alert_descriptions').glob('*.txt') for b in pdx.top_level_blocks(pdx.read_text(p))}
+            for rule in rules:
+                for alert in re.findall(r'is_alert_triggered\s*=\s*(\w+)', rule['condition']):
+                    if alert not in native_alerts:
+                        errors.append(f'integration: unknown native operational alert {alert}')
+            for rel, expected in build_ops(data).items():
+                p = root / rel
+                if not p.exists() or pdx.read_text(p) != expected:
+                    errors.append(f'integration: generated operational file is outdated: {rel}')
+        except (ValueError, KeyError, TypeError) as exc:
+            errors.append(f'integration: invalid operational registry: {exc}')
     return errors, counts
 
 

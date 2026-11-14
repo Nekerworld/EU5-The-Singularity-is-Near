@@ -179,7 +179,10 @@ def mod_defined_names() -> set[str]:
 
 
 # Effects documented in eu5.exe help strings (tools/exe_strings.py) that no vanilla script uses.
-ENGINE_KEYS = {"debug_log", "change_global_variable", "age_preference"}
+# Additional names below are present with trigger help in the installed eu5.exe.
+ENGINE_KEYS = {"debug_log", "change_global_variable", "age_preference", "is_alert_triggered",
+               "building_profit", "building_employed_amount", "building_employment_size_amount",
+               "is_subsidized", "max_manpower", "clear_list"}
 
 
 def check_keys() -> None:
@@ -282,6 +285,7 @@ def check_tsin_names() -> None:
         known.update(re.findall(r"(?m)^@?(tsin_\w+)\s*=", clean))
         known.update(re.findall(r"\b(?:set_variable|set_global_variable|save_scope_as|save_temporary_scope_as)\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bname\s*=\s*(tsin_\w+)", clean))
+        known.update(re.findall(r"\badd_to_list\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bVAR\s*=\s*(tsin_\w+)", clean))  # tsin_movement_tick_effect sets $VAR$
         for block in re.findall(r"\balias\s*=\s*\{([^}]*)\}", clean):
             known.update(re.findall(r"\b(tsin_\w+)", block))

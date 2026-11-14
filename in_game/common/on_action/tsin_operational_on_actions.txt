@@ -1,0 +1,5 @@
+﻿monthly_country_pulse = { on_actions = { tsin_ops_quarterly_pulse } }
+tsin_ops_quarterly_pulse = {
+    trigger = { is_ai = no NOT = { has_variable = tsin_ops_scan_timer } }
+    effect = { tsin_ops_scan_effect = yes }
+}

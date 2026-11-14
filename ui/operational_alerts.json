@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "scan_months": 3,
+  "high_price_ratio": 1.5,
+  "power_supply_floor": 0.9,
+  "market_access_floor": 0.75,
+  "employment_floor": 0.5,
+  "crowding_ratio": 0.9,
+  "rules": [
+    {
+      "id": "prices",
+      "title": {
+        "english": "Expensive strategic goods",
+        "korean": "핵심 상품 가격 상승"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_expensive_count > 0",
+      "detail": {
+        "english": "[GetPlayer.MakeScope.GetVariable('tsin_ops_expensive_count').GetValue|0] market/good pairs exceed 150% of the configured benchmark with positive market demand. A shared-market price warning is not proof of a domestic input shortage.",
+        "korean": "수요가 있는 시장·상품 조합 [GetPlayer.MakeScope.GetVariable('tsin_ops_expensive_count').GetValue|0]개가 설정 기준가의 150% 이상입니다. 공유 시장의 가격 경고이며 자국 공장의 투입 부족과는 별도입니다."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "inputs",
+      "title": {
+        "english": "Buildings lack inputs",
+        "korean": "건물 투입재 부족"
+      },
+      "condition": "OR = { is_alert_triggered = has_important_buildings_missing_input is_alert_triggered = has_buildings_missing_input }",
+      "detail": {
+        "english": "The native game reports missing building inputs. Inspect the production filters and goods supply.",
+        "korean": "기본 게임이 건물 투입재 부족을 판정했습니다. 생산 화면에서 원료와 시장 공급을 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralView('production')"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "power",
+      "title": {
+        "english": "Electricity supply imbalance",
+        "korean": "전력 공급·수요 불균형"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_power_markets > 0",
+      "detail": {
+        "english": "[GetPlayer.MakeScope.GetVariable('tsin_ops_power_markets').GetValue|0] relevant markets supply less than 90% of electricity demand. Check trade and inventory as well as generation.",
+        "korean": "자국 영토가 속한 시장 [GetPlayer.MakeScope.GetVariable('tsin_ops_power_markets').GetValue|0]곳의 전력 공급이 수요의 90% 미만입니다. 발전량과 함께 교역·재고도 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "loss",
+      "title": {
+        "english": "Unprofitable buildings",
+        "korean": "적자 건물 점검"
+      },
+      "condition": "OR = { is_alert_triggered = has_unprofitable_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_loss_streak >= 2 } }",
+      "detail": {
+        "english": "Native unprofitable-building alert or repeated negative-profit samples. Newly constructed and intentionally subsidized facilities may need time.",
+        "korean": "기본 적자 건물 경고 또는 두 차례 연속 상세 점검의 적자 판정입니다. 신설·정책 지원 시설의 초기 적자는 정상일 수 있습니다."
+      },
+      "actions": [
+        "ShowProductionViewWithFilter('building_only_not_profitable', '(bool)yes')",
+        "RemoveUIFocusMarket"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "employment",
+      "title": {
+        "english": "Unfilled jobs",
+        "korean": "건물 고용 부족"
+      },
+      "condition": "OR = { is_alert_triggered = lack_pop_promotion_to_fill_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_low_employment > 0 } }",
+      "detail": {
+        "english": "Native hiring warning or local buildings below 50% of effective worker capacity. Compare available workers, wages and profitability.",
+        "korean": "기본 고용 경고 또는 상세 점검에서 고용 인원이 정원의 50% 미만인 자국 영토 내 건물이 있습니다. 노동력·임금·수익성을 함께 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralView('production')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "access",
+      "title": {
+        "english": "Industrial market access is low",
+        "korean": "산업 지점 시장 접근성 저하"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_poor_access > 0",
+      "detail": {
+        "english": "[GetPlayer.MakeScope.GetVariable('tsin_ops_poor_access').GetValue|0] industrial locations have market access below 75%. Inspect roads, railways, control and trade disruptions.",
+        "korean": "산업 지점 [GetPlayer.MakeScope.GetVariable('tsin_ops_poor_access').GetValue|0]곳의 시장 접근성이 75% 미만입니다. 도로·철도·통제력·교역 단절을 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralView('production')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "army_food",
+      "title": {
+        "english": "Army food is low",
+        "korean": "군대 식량 부족"
+      },
+      "condition": "OR = { is_alert_triggered = has_army_with_very_low_food is_alert_triggered = has_army_with_low_food }",
+      "detail": {
+        "english": "The native army food warning is active. Inspect army food, supply limits and replenishment; this is not a newly simulated ammunition system.",
+        "korean": "기본 게임의 군대 식량 경고가 활성화됐습니다. 군대별 식량·보급 한계·충원을 확인하십시오. 별도의 탄약 보급 체계를 가정하지 않습니다."
+      },
+      "actions": [
+        "OpenLateralViewWithParams('unit_overview', 'subtab = army')"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "reserve",
+      "title": {
+        "english": "Low reinforcement reserves",
+        "korean": "병력 충원 여력 부족"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_reserve_low > 0",
+      "detail": {
+        "english": "Available manpower is below 10% of maximum while an army exists. This signals limited reserves, not proof that a particular army cannot reinforce.",
+        "korean": "군대가 있는 상태에서 가용 인력이 최대치의 10% 미만입니다. 예비 인력 경고이며 특정 부대의 충원 중단을 단정하지 않습니다."
+      },
+      "actions": [
+        "OpenLateralViewWithParams('unit_overview', 'subtab = army')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "maintenance",
+      "title": {
+        "english": "Military maintenance is reduced",
+        "korean": "군사 유지 수준 저하"
+      },
+      "condition": "OR = { is_alert_triggered = has_low_army_maintenance is_alert_triggered = has_low_navy_maintenance }",
+      "detail": {
+        "english": "Native army/navy maintenance warning. Reduced maintenance may be intentional in peacetime.",
+        "korean": "기본 게임의 육군·해군 유지 수준 경고입니다. 평시에는 의도적인 절감일 수 있습니다."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "naval_loss",
+      "title": {
+        "english": "Fleets suffer attrition",
+        "korean": "함대 소모 발생"
+      },
+      "condition": "is_alert_triggered = has_navy_attrition",
+      "detail": {
+        "english": "The native naval attrition warning is active. Inspect fleet location, range and repair access.",
+        "korean": "기본 게임이 함대 소모를 감지했습니다. 위치·작전 범위·수리 접근성을 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralViewWithParams('unit_overview', 'subtab = navy')"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "food",
+      "title": {
+        "english": "Food shortage or starving provinces",
+        "korean": "식량 부족·굶주리는 주"
+      },
+      "condition": "OR = { is_alert_triggered = has_starving_provinces is_alert_triggered = has_low_food_stockpile_market }",
+      "detail": {
+        "english": "Native starvation/low-food-stockpile warning. Inspect the affected markets and provincial food balance. No famine disaster entry is duplicated here.",
+        "korean": "기본 게임의 기아 주·식량 비축 부족 경고입니다. 해당 시장과 주의 식량 수지를 확인하십시오. 대기근 재앙 항목 자체를 중복 표시하지 않습니다."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "crowding",
+      "title": {
+        "english": "Locations near population capacity",
+        "korean": "도시·지점 과밀 위험"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_overcrowded > 0",
+      "detail": {
+        "english": "[GetPlayer.MakeScope.GetVariable('tsin_ops_overcrowded').GetValue|0] owned locations exceed 90% of population capacity. This is an early warning, not a claim that all have exceeded capacity.",
+        "korean": "자국 지점 [GetPlayer.MakeScope.GetVariable('tsin_ops_overcrowded').GetValue|0]곳의 인구가 수용력의 90%를 넘었습니다. 한도 초과 전의 사전 경고입니다."
+      },
+      "actions": [
+        "GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')",
+        "GetVariableSystem.Set('tsin_ui_dashboard_tab', 'society')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "education",
+      "title": {
+        "english": "Education coverage is under downward pressure",
+        "korean": "교육 보급률 하락 압력"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_education_pressure > 0",
+      "detail": {
+        "english": "A cached secondary/higher target is more than one point below current coverage while its literacy/lower-education cap is not binding. Review capacity and policy.",
+        "korean": "문해율·하위 교육 상한에 막히지 않았는데 중등·고등교육 목표치가 현재보다 1%p 넘게 낮습니다. 정원과 정책을 확인하십시오."
+      },
+      "actions": [
+        "GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')",
+        "GetVariableSystem.Set('tsin_ui_dashboard_tab', 'society')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "subsidy",
+      "title": {
+        "english": "Subsidized losses recur",
+        "korean": "보조금 지원 적자 건물 지속"
+      },
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_subsidy_streak >= 2",
+      "detail": {
+        "english": "[GetPlayer.MakeScope.GetVariable('tsin_ops_subsidized_loss_count').GetValue|0] subsidized buildings with negative profit were found in the latest sample and losses appeared in two successive checks. This is not the exact national subsidy bill; inspect the economy screen for actual expenditure.",
+        "korean": "최근 점검에 보조금 지원 중인 적자 건물 [GetPlayer.MakeScope.GetVariable('tsin_ops_subsidized_loss_count').GetValue|0]개가 있으며 두 차례 연속 확인됐습니다. 실제 보조금 지출액과 동일한 값은 아닙니다. 정확한 지출은 경제 화면에서 확인하십시오."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "budget",
+      "title": {
+        "english": "Persistent deficit or borrowing pressure",
+        "korean": "지속 적자·차입 부담"
+      },
+      "condition": "has_variable = tsin_ops_ready OR = { var:tsin_ops_deficit_streak >= 2 AND = { var:tsin_ops_loans >= 3 var:tsin_ops_balance < 0 } }",
+      "detail": {
+        "english": "Latest monthly balance: [GetPlayer.MakeScope.GetVariable('tsin_ops_balance').GetValue|0]; loans: [GetPlayer.MakeScope.GetVariable('tsin_ops_loans').GetValue|0]. Warning after two negative samples or at least three loans with a deficit.",
+        "korean": "최근 월 수지 [GetPlayer.MakeScope.GetVariable('tsin_ops_balance').GetValue|0] · 대출 [GetPlayer.MakeScope.GetVariable('tsin_ops_loans').GetValue|0]건. 두 차례 연속 적자 표본 또는 대출 3건 이상인 적자 상태를 점검합니다."
+      },
+      "actions": [
+        "OpenLateralView('economy')"
+      ],
+      "severity": "attention"
+    },
+    {
+      "id": "stocks",
+      "title": {
+        "english": "Stock index fell sharply",
+        "korean": "주가지수 급락"
+      },
+      "condition": "has_variable = tsin_stock_index tsin_stock_index_history_count >= 4 tsin_stock_index_history_mean > 0 var:tsin_stock_index < { value = tsin_stock_index_history_mean multiply = 0.6 }",
+      "detail": {
+        "english": "Current index is below 60% of the existing recent-history mean, matching the mod’s crash comparison. Inspect the finance tab.",
+        "korean": "현재 지수가 기존 최근 기록 평균의 60% 미만입니다. 모드의 급락 비교 기준을 사용합니다. 기업·금융 탭을 확인하십시오."
+      },
+      "actions": [
+        "GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')",
+        "GetVariableSystem.Set('tsin_ui_dashboard_tab', 'finance')"
+      ],
+      "severity": "attention"
+    }
+  ],
+  "goods": [
+    {
+      "id": "coal",
+      "base_price": 2,
+      "name": {
+        "english": "Coal",
+        "korean": "석탄"
+      }
+    },
+    {
+      "id": "iron",
+      "base_price": 3,
+      "name": {
+        "english": "Iron",
+        "korean": "철"
+      }
+    },
+    {
+      "id": "steel",
+      "base_price": 5,
+      "name": {
+        "english": "Steel",
+        "korean": "강철"
+      }
+    },
+    {
+      "id": "copper",
+      "base_price": 3,
+      "name": {
+        "english": "Copper",
+        "korean": "구리"
+      }
+    },
+    {
+      "id": "tools",
+      "base_price": 3,
+      "name": {
+        "english": "Tools",
+        "korean": "도구"
+      }
+    },
+    {
+      "id": "tsin_engines",
+      "base_price": 6,
+      "name": {
+        "english": "Engines",
+        "korean": "기관"
+      }
+    },
+    {
+      "id": "tsin_fertilizer",
+      "base_price": 2.5,
+      "name": {
+        "english": "Fertilizer",
+        "korean": "비료"
+      }
+    },
+    {
+      "id": "tsin_explosives",
+      "base_price": 5,
+      "name": {
+        "english": "Explosives",
+        "korean": "폭약"
+      }
+    },
+    {
+      "id": "tsin_oil",
+      "base_price": 4,
+      "name": {
+        "english": "Oil",
+        "korean": "석유"
+      }
+    },
+    {
+      "id": "tsin_rubber",
+      "base_price": 4,
+      "name": {
+        "english": "Rubber",
+        "korean": "고무"
+      }
+    }
+  ]
+}
