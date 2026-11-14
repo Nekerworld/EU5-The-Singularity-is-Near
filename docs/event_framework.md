@@ -1,4 +1,4 @@
-# 이벤트 공통 틀
+﻿# 이벤트 공통 틀
 
 ## 네임스페이스
 
@@ -8,6 +8,7 @@
 | `tsin_institution` | `in_game/events/tsin_institution.txt` | M3~M5 | 첫 수용국, 수용 시 반발·지지 |
 | `tsin_economy` | `in_game/events/tsin_economy.txt` | M2~M3 | 공장, 원료, 금융 |
 | `tsin_invention` | `in_game/events/tsin_invention.txt` | M3·M5 | 발명 플레이버 |
+| `tsin_abolition` | `in_game/events/tsin_abolition.txt` | M4 | 노예무역 금지, 해방 (예산 제외) |
 | `tsin_society` | `in_game/events/tsin_society.txt` | M4 | 참정권, 노동, 보건 |
 | `tsin_military` | `in_game/events/tsin_military.txt` | M6 | 군사 기술, 여론 |
 | `tsin_flavor` | `in_game/events/tsin_flavor.txt` | M6 이후 | 지역 플레이버 (태그 조건 금지) |
@@ -87,6 +88,10 @@ immediate = { tsin_spend_flavor_budget_effect = yes ... }
 | `tsin_invention.10` | 베서머 전로 (나라당 한 번) | `tsin_bessemer_process_advance` 연구 | 사용권 판매(강철 +10%, 시민 만족) / 국영 제강소(금 -3, 강철 +10%, 철도 비용 -10%) |
 | `tsin_invention.20` | 다이너마이트 (나라당 한 번) | `tsin_dynamite_advance` 연구 | 새 광산(석탄 +10%, 철 +5%) / 철도 터널(금 -2, 도로 건설 시간 -15%, 철도 비용 -10%) / 사용 제한(안정도 +) |
 | `tsin_invention.30` | 냉동선 (나라당 한 번) | 1875년 이후, `tsin_machine_tools_advance` 연구, 해안 도시 보유 | 냉동육(금 -2, 가축 +15%) / 냉장 어선단(금 -2, 생선 +15%) / 해운 회사에 맡김 |
+| `tsin_abolition.1` | 폐지론자 청원 (나라당 한 번) | 노예제 존재, 폐지 운동 ≥ 40 | 수용(운동 +10, 성직자 만족, 귀족 불만) / 해군 단속(노예무역 금지 정책 시행, 통치자 `protecting_against_slave_trade`, 시민 불만) / 탄압(운동 -20, `tsin_abolitionists_suppressed`, 안정도 -) |
+| `tsin_abolition.2` | 해방 | 제7시대, `slavery_outlawed`, 노예 인구 남음 | 즉시 해방(귀족·시민 불만, `tsin_emancipation_shock` 감쇠) / 보상 해방(금 -4) / 도제 기간(6년 뒤 `.3`) |
+| `tsin_abolition.3` | 도제 기간의 끝 | `.2` 도제 선택 후 수정자 만료 | 모든 노예 해방 |
+| `tsin_abolition.4` | 해안의 노예 요새 (10년마다) | 노예무역 금지 또는 노예제 폐지, `slave_center` 보유 | 처리(바닐라 `slave_trade.5` 호출) / 묵인(안정도 -) |
 
 곡물법 의회 의제(`in_game/common/parliament_agendas/tsin_parliament_agendas.txt`): 시민 계층의 `pa_tsin_repeal_corn_laws`와 귀족 계층의 `pa_tsin_protect_grain`. 둘 중 하나의 영구 보정치(`tsin_corn_laws_repealed` / `tsin_corn_laws_protection`)만 남고, `mercantilism_vs_free_trade` 축을 조금 움직인다. 사회 가치 값이 자기 쪽이면 의제 확률이 10에서 20으로 오른다. 사용자 확인 필요: 의회 화면에 두 의제가 제7시대 이후에만 나오는지.
 

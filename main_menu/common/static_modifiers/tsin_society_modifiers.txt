@@ -1,0 +1,26 @@
+﻿# Age VII mass society (M4).
+
+# tsin_abolition.1 option c: slows abolitionism growth (tsin_abolitionism_yearly_growth)
+tsin_abolitionists_suppressed = {
+	game_data = {
+		category = country
+	}
+	global_clergy_estate_power = -0.05
+}
+
+# tsin_abolition.2 option a
+tsin_emancipation_shock = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_production_efficiency = -0.05
+}
+
+# tsin_abolition.2 option c; tsin_abolition.3 frees the slaves when it expires
+tsin_apprenticeship_system = {
+	game_data = {
+		category = country
+	}
+	peasants_estate_target_satisfaction = -0.025
+}

@@ -59,3 +59,31 @@ pa_tsin_protect_grain = {
 		}
 	}
 }
+
+# M4 abolition: the clergy push the vanilla slavery_outlawed policy once abolitionism is strong.
+pa_tsin_abolish_slavery = {
+	estate = clergy_estate
+
+	potential = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_policy = policy:slavery_outlawed }
+		has_variable = tsin_abolitionism
+		var:tsin_abolitionism >= 50
+	}
+
+	on_accept = {
+		add_policy = policy:slavery_outlawed
+		change_societal_value = {
+			type = spiritualist_vs_humanist
+			value = societal_value_minor_move_to_right
+		}
+	}
+
+	chance = {
+		value = 5
+		if = {
+			limit = { var:tsin_abolitionism >= 75 }
+			add = 15
+		}
+	}
+}

@@ -31,3 +31,29 @@
 | `tsin_church_state_law` 교회와 국가 | `tsin_universal_education_advance` | 국교 / 정교 협약(문해율 +5) / 정교 분리(성직자 권력 -, 성직자 크게 불만, 문해율 +5, 인도주의 쪽) |
 
 사용자 확인 필요: 법률을 처음 열었을 때 어느 정책이 기본으로 잡히는지(바닐라처럼 첫 정책인지), 정책 `allow`의 `has_advance`가 동작하는지.
+
+## 노예제 폐지
+
+노예제 자체는 바닐라 `slavery_laws`(`slavery_allowed` / `slavery_outlawed`, 제6시대 `slave_trade_act_advance`가 연다)를 그대로 쓴다. 모드는 그 앞 단계와 뒤처리를 더한다.
+
+| 요소 | 위치 | 내용 |
+|---|---|---|
+| `tsin_slave_trade_law` 노예무역 | `in_game/common/laws/tsin_abolition_laws.txt` | `tsin_steam_age_advance`가 연다. 노예제가 폐지되면 사라진다. 용인 / 금지(노예 상품 수출입 금지, 인도주의 쪽) |
+| 폐지 운동 `tsin_abolitionism` | 국가 변수, `scripted_effects/tsin_movement_effects.txt` | 노예제가 있는 나라에서 매년 `tsin_abolitionism_yearly_growth`만큼 늘고 0~100으로 묶인다 |
+| 의제 `pa_tsin_abolish_slavery` | `parliament_agendas/tsin_parliament_agendas.txt` (성직자) | 운동 ≥ 50일 때 상정, 통과하면 `slavery_outlawed` 시행 |
+| 이벤트 `tsin_abolition.1~.4` | `in_game/events/tsin_abolition.txt` | 청원, 해방 방식, 도제 기간, 노예 요새 |
+| 해방 효과 `tsin_emancipate_all_slaves_effect` | `scripted_effects/tsin_movement_effects.txt` | 자기 나라 노예 인구를 모두 농민으로 바꾼다 |
+
+연간 증가량(`script_values/tsin_movement_values.txt`): 기본 1, 대중사회 시대관 수용 +2, 대중 통신 기술 +2, `free_press` +2, 노예무역 금지 정책 +1, 인도주의 값 > 25 +1, 노예 인구 10% 초과 -2, 폐지론자 탄압 수정자 -4.
+
+해방은 노예 인구를 지우지 않고 농민으로 바꾼다. 노예 상품(`slaves_goods`) 교역은 노예무역 금지 정책과 바닐라 규칙에 맡긴다.
+
+### 운동 틀
+
+바닐라 `common/movements`는 `religion` 또는 `culture`를 반드시 지정해야 해서 이념 운동을 표현할 수 없다. 그래서 운동은 국가 변수(0~100)로 만들고, `tsin_yearly_country_pulse`가 매년 `tsin_update_movements_effect`를 불러 갱신한다. 다른 운동은 같은 파일에 증가량 값과 갱신 블록을 더한다.
+
+사용자 확인 필요:
+- 국가 범위에서 `every_pop = { limit = { owner = root ... } change_pop_type = ... }`가 모든 노예 인구에 적용되는지.
+- `add_policy`로 바닐라 `slavery_outlawed`와 모드 정책을 시행할 수 있는지.
+- `change_variable`의 `add`에 스크립트 값을 넣을 수 있는지, `clamp_variable`이 동작하는지.
+- 노예무역 금지 정책의 수출입 금지 보정치가 실제로 노예 교역을 막는지.

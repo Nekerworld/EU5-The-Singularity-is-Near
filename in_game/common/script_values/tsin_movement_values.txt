@@ -1,0 +1,39 @@
+﻿# Age VII social movements (M4), modelled as country variables 0..100 updated yearly by
+# tsin_update_movements_effect. Vanilla movements (common/movements) can only spread a religion or culture,
+# so ideologies are not built on that system (docs/mass_society.md).
+# root = country for every value here.
+
+tsin_movement_max = 100
+
+# Abolitionism: only grows while the country still has slavery (vanilla has_slavery trigger).
+tsin_abolitionism_yearly_growth = {
+	value = 1
+	if = {
+		limit = { has_embraced_institution = institution:tsin_mass_society }
+		add = 2
+	}
+	if = {
+		limit = { has_advance = tsin_mass_communication_advance }
+		add = 2
+	}
+	if = {
+		limit = { has_policy = policy:free_press }
+		add = 2
+	}
+	if = {
+		limit = { has_policy = policy:tsin_slave_trade_suppressed_policy }
+		add = 1
+	}
+	if = {
+		limit = { societal_value:spiritualist_vs_humanist > 25 }
+		add = 1
+	}
+	if = {
+		limit = { "pop_type_percentage_in_country(pop_type:slaves)" > 0.1 }
+		subtract = 2
+	}
+	if = {
+		limit = { has_country_modifier = tsin_abolitionists_suppressed }
+		subtract = 4
+	}
+}

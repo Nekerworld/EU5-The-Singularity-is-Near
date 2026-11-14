@@ -1,0 +1,25 @@
+﻿# Yearly update of the age VII movement variables (script_values/tsin_movement_values.txt). root = country.
+# Called from tsin_yearly_country_pulse.
+
+tsin_update_movements_effect = {
+	if = {
+		limit = { has_slavery = yes }
+		if = {
+			limit = { NOT = { has_variable = tsin_abolitionism } }
+			set_variable = { name = tsin_abolitionism value = 0 }
+		}
+		change_variable = { name = tsin_abolitionism add = tsin_abolitionism_yearly_growth }
+		clamp_variable = { name = tsin_abolitionism min = 0 max = tsin_movement_max }
+	}
+}
+
+# Frees every slave pop of root (pattern of the vanilla slaves rebel demand).
+tsin_emancipate_all_slaves_effect = {
+	every_pop = {
+		limit = {
+			owner = root
+			pop_type = pop_type:slaves
+		}
+		change_pop_type = pop_type:peasants
+	}
+}

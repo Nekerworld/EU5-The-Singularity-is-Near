@@ -14,6 +14,7 @@ yearly_country_pulse = {
 		tsin_yearly_country_pulse
 		tsin_economy_yearly_pulse
 		tsin_invention_yearly_pulse
+		tsin_society_yearly_pulse
 	}
 }
 
@@ -51,6 +52,7 @@ tsin_yearly_country_pulse = {
 	}
 	effect = {
 		tsin_reset_flavor_budget_effect = yes
+		tsin_update_movements_effect = yes
 	}
 	events = {
 		tsin_system.1
@@ -95,6 +97,19 @@ tsin_invention_yearly_pulse = {
 		10 = tsin_invention.30
 
 		chance_to_happen = 20
+	}
+}
+
+# root = country. Society system events (abolition); each guards itself, none spends the flavor budget.
+tsin_society_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	events = {
+		tsin_abolition.1
+		tsin_abolition.2
+		tsin_abolition.3
+		tsin_abolition.4
 	}
 }
 

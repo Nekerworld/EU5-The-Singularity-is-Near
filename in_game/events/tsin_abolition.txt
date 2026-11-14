@@ -1,0 +1,182 @@
+﻿namespace = tsin_abolition
+
+# Abolition of slavery (M4). Fired from tsin_society_yearly_pulse; not flavor events (no budget).
+# Pressure: country variable tsin_abolitionism (tsin_update_movements_effect).
+# Law path: tsin_slave_trade_law -> vanilla slavery_laws (slavery_outlawed), also via pa_tsin_abolish_slavery.
+
+# The abolitionist petition
+tsin_abolition.1 = {
+	type = country_event
+	title = tsin_abolition.1.title
+	desc = tsin_abolition.1.desc
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_slaves_goods.dds"
+
+	trigger = {
+		has_slavery = yes
+		has_variable = tsin_abolitionism
+		var:tsin_abolitionism >= 40
+		NOT = { has_variable = tsin_abolition_petition_done }
+	}
+
+	immediate = {
+		set_variable = tsin_abolition_petition_done
+	}
+
+	# Receive the petitioners
+	option = {
+		name = tsin_abolition.1.a
+		change_variable = { name = tsin_abolitionism add = 10 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_weak_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Order the navy to stop the slave ships
+	option = {
+		name = tsin_abolition.1.b
+		trigger = {
+			NOT = { has_policy = policy:tsin_slave_trade_suppressed_policy }
+		}
+		add_policy = policy:tsin_slave_trade_suppressed_policy
+		ruler = { add_character_modifier = { modifier = protecting_against_slave_trade months = -1 mode = add_and_extend } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Silence the agitators
+	option = {
+		name = tsin_abolition.1.c
+		change_variable = { name = tsin_abolitionism subtract = 20 }
+		add_country_modifier = { modifier = tsin_abolitionists_suppressed years = modifier_duration_years_normal mode = add_and_extend }
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				stability < 0
+			}
+		}
+	}
+}
+
+# Emancipation: slavery is outlawed but slaves remain
+tsin_abolition.2 = {
+	type = country_event
+	title = tsin_abolition.2.title
+	desc = tsin_abolition.2.desc
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_slaves_goods.dds"
+
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		has_policy = policy:slavery_outlawed
+		num_pop_type_in_country:slaves > 0
+		NOT = { has_variable = tsin_gradual_emancipation }
+	}
+
+	# Free them at once
+	option = {
+		name = tsin_abolition.2.a
+		custom_tooltip = tsin_abolition.emancipate_tt
+		hidden_effect = { tsin_emancipate_all_slaves_effect = yes }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_penalty }
+		add_country_modifier = { modifier = tsin_emancipation_shock years = modifier_duration_years_short mode = add_and_extend }
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	# Compensate the owners
+	option = {
+		name = tsin_abolition.2.b
+		change_gold_effect = { scale = -4 }
+		custom_tooltip = tsin_abolition.emancipate_tt
+		hidden_effect = { tsin_emancipate_all_slaves_effect = yes }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				gold < tsin_gold_cost_4
+			}
+		}
+	}
+
+	# An apprenticeship period first
+	option = {
+		name = tsin_abolition.2.c
+		set_variable = tsin_gradual_emancipation
+		add_country_modifier = { modifier = tsin_apprenticeship_system years = 6 }
+		custom_tooltip = tsin_abolition.2.c.tt
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# The apprenticeship ends
+tsin_abolition.3 = {
+	type = country_event
+	title = tsin_abolition.3.title
+	desc = tsin_abolition.3.desc
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_slaves_goods.dds"
+
+	trigger = {
+		has_variable = tsin_gradual_emancipation
+		NOT = { has_country_modifier = tsin_apprenticeship_system }
+	}
+
+	immediate = {
+		remove_variable = tsin_gradual_emancipation
+	}
+
+	option = {
+		name = tsin_abolition.3.a
+		custom_tooltip = tsin_abolition.emancipate_tt
+		hidden_effect = { tsin_emancipate_all_slaves_effect = yes }
+	}
+}
+
+# Slave forts on our coast (links to vanilla slave_trade.5)
+tsin_abolition.4 = {
+	type = country_event
+	title = tsin_abolition.4.title
+	desc = tsin_abolition.4.desc
+	image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_slaves_goods.dds"
+
+	trigger = {
+		OR = {
+			has_policy = policy:tsin_slave_trade_suppressed_policy
+			has_policy = policy:slavery_outlawed
+		}
+		any_owned_location = {
+			has_building_with_at_least_one_level = slave_center
+		}
+		NOT = { has_variable = tsin_slave_forts_handled }
+	}
+
+	immediate = {
+		set_variable = { name = tsin_slave_forts_handled value = yes years = 10 }
+	}
+
+	# Deal with the forts
+	option = {
+		name = tsin_abolition.4.a
+		trigger_event_non_silently = slave_trade.5
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Look the other way
+	option = {
+		name = tsin_abolition.4.b
+		add_stability = stability_weak_penalty
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
