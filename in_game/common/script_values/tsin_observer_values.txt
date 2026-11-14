@@ -1,0 +1,214 @@
+﻿# Observer-run metrics, written yearly to the log by tsin_observer_log_line when the tsin_observer_log rule is on.
+# World-wide aggregates; the scope they are evaluated in does not matter. Targets: docs/balance_targets.md.
+
+tsin_obs_year = {
+	value = current_year
+}
+
+tsin_obs_countries = {
+	value = 0
+	every_country = {
+		add = 1
+	}
+}
+
+tsin_obs_great_powers = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = 1
+	}
+}
+
+tsin_obs_ic_known = {
+	value = 0
+	every_country = {
+		limit = { knows_about_institution = institution:tsin_industrial_capitalism }
+		add = 1
+	}
+}
+
+tsin_obs_ic_embraced = {
+	value = 0
+	every_country = {
+		limit = { has_embraced_institution = institution:tsin_industrial_capitalism }
+		add = 1
+	}
+}
+
+tsin_obs_ic_embraced_gp = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			has_embraced_institution = institution:tsin_industrial_capitalism
+		}
+		add = 1
+	}
+}
+
+tsin_obs_ms_known = {
+	value = 0
+	every_country = {
+		limit = { knows_about_institution = institution:tsin_mass_society }
+		add = 1
+	}
+}
+
+tsin_obs_ms_embraced = {
+	value = 0
+	every_country = {
+		limit = { has_embraced_institution = institution:tsin_mass_society }
+		add = 1
+	}
+}
+
+tsin_obs_el_known = {
+	value = 0
+	every_country = {
+		limit = { knows_about_institution = institution:tsin_electrification }
+		add = 1
+	}
+}
+
+tsin_obs_el_embraced = {
+	value = 0
+	every_country = {
+		limit = { has_embraced_institution = institution:tsin_electrification }
+		add = 1
+	}
+}
+
+tsin_obs_el_embraced_gp = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			has_embraced_institution = institution:tsin_electrification
+		}
+		add = 1
+	}
+}
+
+tsin_obs_non_european_adopters = {
+	value = 0
+	every_country = {
+		limit = {
+			capital ?= { NOT = { continent = continent:europe } }
+			OR = {
+				has_embraced_institution = institution:tsin_industrial_capitalism
+				has_embraced_institution = institution:tsin_mass_society
+				has_embraced_institution = institution:tsin_electrification
+			}
+		}
+		add = 1
+	}
+}
+
+tsin_obs_world_population = {
+	value = 0
+	every_country = {
+		add = total_population
+	}
+}
+
+tsin_obs_gp_income = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = monthly_income_trade_and_tax
+	}
+}
+
+tsin_obs_gp_army = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = army_size
+	}
+}
+
+tsin_obs_gp_avg_advances = {
+	value = 0
+	every_country = {
+		limit = { is_great_power = yes }
+		add = num_of_advances_researched
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+# Mean over great-power capital markets of market price / default price.
+tsin_obs_gp_steel_price_ratio = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			capital ?= { market ?= { always = yes } }
+		}
+		add = {
+			value = "capital.market.market_price(goods:steel)"
+			divide = "capital.market.default_price(goods:steel)"
+		}
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_gp_engines_price_ratio = {
+	value = 0
+	every_country = {
+		limit = {
+			is_great_power = yes
+			capital ?= { market ?= { always = yes } }
+		}
+		add = {
+			value = "capital.market.market_price(goods:tsin_engines)"
+			divide = "capital.market.default_price(goods:tsin_engines)"
+		}
+	}
+	if = {
+		limit = { tsin_obs_great_powers > 0 }
+		divide = tsin_obs_great_powers
+	}
+}
+
+tsin_obs_situations_active = {
+	value = 0
+	if = {
+		limit = { is_situation_active = situation:tsin_springtime_of_nations }
+		add = 1
+	}
+	if = {
+		limit = { is_situation_active = situation:tsin_long_depression }
+		add = 10
+	}
+	if = {
+		limit = { is_situation_active = situation:tsin_scramble_for_colonies }
+		add = 100
+	}
+	if = {
+		limit = { is_situation_active = situation:tsin_world_exhibition }
+		add = 1000
+	}
+}
+
+tsin_obs_hunger_countries = {
+	value = 0
+	every_country = {
+		limit = { has_variable = tsin_great_hunger_happened }
+		add = 1
+	}
+}
+
+tsin_obs_flavor_events = {
+	value = 0
+	if = {
+		limit = { has_global_variable = tsin_obs_flavor_events }
+		add = global_var:tsin_obs_flavor_events
+	}
+}

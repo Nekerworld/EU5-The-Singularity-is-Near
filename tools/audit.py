@@ -123,7 +123,8 @@ def check_loc() -> None:
                 warnings.append(f"loc: {k}: data functions or $refs$ differ between english and korean")
             words = re.sub(_TOKEN_RE, "", e)
             reference_only = re.fullmatch(r"[A-Z0-9_]+|\[[A-Za-z0-9_]+\|e\]", e)
-            if e == o and not reference_only and re.search(r"[A-Za-z]{3,}", words):
+            machine_read = k.endswith("_log_line")  # parsed by tools/observer_report.py, same in every language
+            if e == o and not reference_only and not machine_read and re.search(r"[A-Za-z]{3,}", words):
                 warnings.append(f"loc: {k}: korean text is identical to english (untranslated?)")
 
 

@@ -9,6 +9,16 @@ tsin_spend_flavor_budget_effect = {
 	else = {
 		set_variable = { name = tsin_flavor_events_this_year value = 1 }
 	}
+	if = {
+		limit = { tsin_observer_logging_trigger = yes }
+		if = {
+			limit = { has_global_variable = tsin_obs_flavor_events }
+			change_global_variable = { name = tsin_obs_flavor_events add = 1 }
+		}
+		else = {
+			set_global_variable = { name = tsin_obs_flavor_events value = 1 }
+		}
+	}
 }
 
 tsin_reset_flavor_budget_effect = {

@@ -11,6 +11,7 @@ on_new_age_global = {
 
 yearly_country_pulse = {
 	on_actions = {
+		tsin_observer_yearly_pulse
 		tsin_yearly_country_pulse
 		tsin_economy_yearly_pulse
 		tsin_invention_yearly_pulse
@@ -64,6 +65,22 @@ tsin_yearly_country_pulse = {
 		tsin_system.10
 		tsin_system.11
 		tsin_system.12
+	}
+}
+
+# root = country. Observer-run metrics: the first country to pulse each ~year writes one log line (docs/tests/observer_run.md).
+tsin_observer_yearly_pulse = {
+	trigger = {
+		tsin_observer_logging_trigger = yes
+		NOT = { has_global_variable = tsin_obs_logged_recently }
+	}
+	effect = {
+		set_global_variable = { name = tsin_obs_logged_recently value = yes days = 360 }
+		debug_log = tsin_observer_log_line
+		if = {
+			limit = { has_global_variable = tsin_obs_flavor_events }
+			remove_global_variable = tsin_obs_flavor_events
+		}
 	}
 }
 

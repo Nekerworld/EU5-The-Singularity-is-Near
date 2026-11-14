@@ -172,9 +172,13 @@ def mod_defined_names() -> set[str]:
     return names
 
 
+# Effects documented in eu5.exe help strings (tools/exe_strings.py) that no vanilla script uses.
+ENGINE_KEYS = {"debug_log", "change_global_variable"}
+
+
 def check_keys() -> None:
     mods = modifier_types()
-    gv = global_vocab()
+    gv = global_vocab() | ENGINE_KEYS
     mine = mod_defined_names()
     for p in mod_files((".txt",)):
         if p.name.startswith("zzz_tsin_age7_"):
@@ -257,7 +261,7 @@ def check_tsin_names() -> None:
     loc = loc_keys("english")
     for p, clean in texts.items():
         unquoted = re.sub(r'"[^"\n]*"', '""', clean)
-        loc_refs = set(re.findall(r"\b(?:custom_tooltip|text|desc|title)\s*=\s*(tsin_\w+)", unquoted))
+        loc_refs = set(re.findall(r"\b(?:custom_tooltip|text|desc|title|debug_log)\s*=\s*(tsin_\w+)", unquoted))
         for tok in set(re.findall(r"\b(tsin_\w+(?:\.\d+)?)", unquoted)):
             if tok in known or (tok in loc_refs and tok in loc):
                 continue

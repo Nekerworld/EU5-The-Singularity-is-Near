@@ -8,3 +8,11 @@ tsin_flavor_budget_available_trigger = {
 		var:tsin_flavor_events_this_year < tsin_flavor_events_per_year
 	}
 }
+
+# Observer metrics (tsin_observer_yearly_pulse). The debug_mode branch lets saves started without the rule be measured.
+tsin_observer_logging_trigger = {
+	OR = {
+		has_game_rule = tsin_observer_log_on
+		debug_only = yes
+	}
+}

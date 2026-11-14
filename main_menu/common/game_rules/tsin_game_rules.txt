@@ -27,3 +27,14 @@ tsin_electrification_timing = {
 		flag = flavour_rule
 	}
 }
+
+# Read by tsin_observer_yearly_pulse (in_game/common/on_action/tsin_on_actions.txt). Measurement only.
+tsin_observer_log = {
+	default = tsin_observer_log_off
+	tsin_observer_log_off = {
+		flag = general_rule
+	}
+	tsin_observer_log_on = {
+		flag = general_rule
+	}
+}

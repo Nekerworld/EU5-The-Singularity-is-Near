@@ -1,7 +1,7 @@
 # 밸런스 목표
 
 "잘 동작한다"를 판정할 수치 기준이다.
-- 측정은 AI 관찰 실행(`docs/test_guides/observer_run.md`)으로 한다.
+- 측정은 AI 관찰 실행(`docs/tests/observer_run.md`, 보고서 `tools/observer_report.py`)으로 한다.
 - 결과는 `docs/results/`에 날짜별로 기록한다. 모든 값은 아직 측정 전이다(사용자 확인 필요).
 
 ## 1. 바닐라 시대 추세 (값 결정의 근거)

@@ -19,6 +19,10 @@ M2 경제 시험용 결단(`tsin_debug_economy_decisions.txt`, 역시 `debug_onl
 | `tsin_debug_engines_shortage_decision` / `_glut_decision` | 수도 시장 기관 공급 `market_goods_extreme_loss` / `_gain` |
 | `tsin_debug_economy_events_a_decision` / `_b_decision` | 예산 초기화 후 `tsin_economy.10`·`.20` / `.30`·`.40` 실행 |
 
+## 관찰 측정 기록기
+
+게임 규칙 "관찰 측정 기록"(`tsin_observer_log`, 기본 끔)을 켜거나 `-debug_mode`로 실행하면 1년에 한 번 `TSIN_OBS;...` 줄을 로그에 쓴다. `python tools/observer_report.py`가 그 줄을 모아 `docs/balance_targets.md`와 비교한다. 절차는 `docs/tests/observer_run.md`.
+
 ## 콘솔 명령 (엔진 내장)
 
 시대 변경과 제도 등장은 스크립트 효과로 할 수 없다. 대신 게임 실행 파일에 들어 있는 콘솔 명령을 쓴다. 아래 명령 이름과 인자는 `tools/exe_strings.py`로 `eu5.exe`의 도움말 문자열에서 확인했다. 실제 동작은 **사용자 확인 필요**.
