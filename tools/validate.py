@@ -276,6 +276,8 @@ def check_tsin_names() -> None:
         known.update(re.findall(r"\b(?:set_variable|set_global_variable|save_scope_as|save_temporary_scope_as)\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bname\s*=\s*(tsin_\w+)", clean))
         known.update(re.findall(r"\bVAR\s*=\s*(tsin_\w+)", clean))  # tsin_movement_tick_effect sets $VAR$
+        for block in re.findall(r"\balias\s*=\s*\{([^}]*)\}", clean):
+            known.update(re.findall(r"\b(tsin_\w+)", block))
     loc = loc_keys("english")
     for p, clean in texts.items():
         unquoted = re.sub(r'"[^"\n]*"', '""', clean)
@@ -505,6 +507,7 @@ def check_gfx() -> None:
 # ---------------------------------------------------------------- localisation
 
 LOC_LINE = re.compile(r'^\s+([A-Za-z0-9_.\-]+):\d*\s*"', re.M)
+LOC_ENTRY = re.compile(r'^\s+[A-Za-z0-9_.\-]+:\d*\s*".*"\s*(#.*)?$')
 
 
 def loc_keys(lang: str) -> set[str]:
@@ -520,7 +523,7 @@ def loc_keys(lang: str) -> set[str]:
 LOC_DBS = {
     "in_game/common/institution": ["{k}", "{k}_desc"],
     "in_game/common/advances": ["{k}", "{k}_desc"],
-    "in_game/common/goods": ["{k}"],
+    "in_game/common/goods": ["{k}", "{k}_desc"],
     "in_game/common/building_types": ["{k}", "{k}_desc"],
     "in_game/common/industry_types": ["{k}", "{k}_desc"],
     "main_menu/common/static_modifiers": ["STATIC_MODIFIER_NAME_{k}"],
@@ -545,9 +548,13 @@ def check_loc() -> None:
     # file format
     for p in (MOD / "main_menu/localization").rglob("*.yml") if (MOD / "main_menu/localization").exists() else []:
         lang = p.parent.name
-        first = p.read_text(encoding="utf-8-sig", errors="replace").split("\n", 1)[0].strip()
-        if first != f"l_{lang}:":
+        lines = p.read_text(encoding="utf-8-sig", errors="replace").splitlines()
+        if not lines or lines[0].strip() != f"l_{lang}:":
             err(f"loc: {rel(p)} first line should be 'l_{lang}:'")
+        for n, line in enumerate(lines[1:], 2):
+            s = line.strip()
+            if s and not s.startswith("#") and not LOC_ENTRY.match(line):
+                err(f"loc: {rel(p)}:{n} is not a 'key: \"text\"' line (values cannot span lines)")
         if not p.name.endswith(f"_l_{lang}.yml"):
             err(f"loc: {rel(p)} name should end with _l_{lang}.yml")
     needed: list[tuple[str, str]] = []
