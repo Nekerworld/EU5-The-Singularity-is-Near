@@ -1,0 +1,202 @@
+﻿# Age VII chemical industry: fertilizer and explosives, and the rural buildings that consume them.
+# Mill inputs are priced so that output value is about input cost * (1 + mills_profit_margin), as in vanilla mills.
+# Prices: saltpeter 2, alum 3, coal 2, fish 1, livestock 1.5, lumber 1.5, tsin_fertilizer 2.5, tsin_explosives 5.
+# The rural enhancement buildings follow vanilla windmill/local_smelters: a maintenance-only method plus a modifier.
+# Whether the modifier weakens when fertilizer or explosives are short is unverified (docs/economy_chain.md).
+
+tsin_fertilizer_plant = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 13.5 -> 7.3 fertilizer (18.25)
+		tsin_fertilizer_mineral = {
+			icon_type = goods
+			icon = saltpeter
+			saltpeter = 3.0
+			alum = 1.5
+			coal = 1.5
+			produced = tsin_fertilizer
+			output = 7.3
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 13.5 -> 7.3 fertilizer (18.25)
+		tsin_fertilizer_organic = {
+			icon_type = goods
+			icon = fish
+			fish = 4.5
+			livestock = 3.0
+			coal = 2.25
+			produced = tsin_fertilizer
+			output = 7.3
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+tsin_explosives_plant = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	unique_production_methods = {
+		# inputs 12.25 -> 3.0 explosives (15.0), lower margin than nitroglycerin
+		tsin_explosives_black_powder = {
+			icon_type = goods
+			icon = saltpeter
+			saltpeter = 3.0
+			coal = 2.0
+			lumber = 1.5
+			produced = tsin_explosives
+			output = 3.0
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 12.5 -> 3.37 explosives (16.85)
+		tsin_explosives_nitroglycerin = {
+			icon_type = goods
+			icon = alum
+			saltpeter = 2.5
+			livestock = 2.0
+			alum = 1.5
+			produced = tsin_explosives
+			output = 3.37
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+tsin_fertilized_fields = {
+	audio_tier = 1
+	audio_category = industry
+	is_foreign = no
+	pop_type = laborers
+	max_levels = 1
+
+	employment_size = rural_peasant_enhance_employment
+
+	category = rgo_enhancement_category
+
+	rural_settlement = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wheat
+			raw_material = goods:maize
+			raw_material = goods:rice
+			raw_material = goods:millet
+			raw_material = goods:legumes
+			raw_material = goods:potato
+		}
+	}
+
+	unique_production_methods = {
+		tsin_fertilized_fields_maintenance = {
+			icon_type = goods
+			icon = tsin_fertilizer
+			tsin_fertilizer = 0.1
+			tools = 0.02
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		local_raw_material_output = 0.15
+		local_monthly_food_modifier = monthly_food_productivity_weak_bonus
+	}
+
+	build_time = rural_build_time
+
+	construction_demand = farm_constructions
+}
+
+tsin_blasting_works = {
+	audio_tier = 1
+	audio_category = industry
+	is_foreign = no
+	pop_type = laborers
+	max_levels = 1
+
+	employment_size = rural_peasant_enhance_employment
+
+	category = rgo_enhancement_category
+
+	rural_settlement = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:coal
+			raw_material = goods:iron
+			raw_material = goods:copper
+			raw_material = goods:tin
+			raw_material = goods:lead
+			raw_material = goods:stone
+			raw_material = goods:marble
+			raw_material = goods:alum
+			raw_material = goods:saltpeter
+			raw_material = goods:silver
+			raw_material = goods:goods_gold
+			raw_material = goods:gems
+			raw_material = goods:mercury
+			raw_material = goods:salt
+		}
+	}
+
+	unique_production_methods = {
+		tsin_blasting_works_maintenance = {
+			icon_type = goods
+			icon = tsin_explosives
+			tsin_explosives = 0.05
+			tools = 0.02
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		local_raw_material_output = 0.15
+	}
+
+	build_time = rural_build_time
+
+	construction_demand = farm_constructions
+}

@@ -45,8 +45,36 @@
 | 기계화 방직 공장: 목화 + 증기 | 16.5 | 22.26 | 0.15 |
 | 기계화 방직 공장: 목화 + 수력 | 13.95 | 18.81 | 0.15 |
 
+## 화학 공업: 비료와 폭약 (M3)
+
+```
+초석·백반·석탄 / 생선·가축·석탄 ─→ 비료 공장 ─→ 비료 ─→ 시비 농지(곡물 RGO 강화) ─→ 원자재 산출 +15%, 식량
+초석·석탄·목재 / 초석·가축·백반 ─→ 폭약 공장 ─→ 폭약 ─→ 발파 채굴장(광물 RGO 강화) ─→ 원자재 산출 +15%
+```
+
+| 단계 | 객체 | 파일 |
+|---|---|---|
+| 상품 | `tsin_fertilizer` (가격 2.5), `tsin_explosives` (가격 5), 둘 다 인구 수요 없음 | `in_game/common/goods/tsin_goods.txt` |
+| 상품별 보정치 | `python tools/goods_modifiers.py` 인자 없이 실행하면 모드 상품 전체를 다시 생성 | `tsin_goods_modifier_types.txt`, `tsin_goods_modifier_icons.txt` |
+| 생산 | `tsin_fertilizer_plant`, `tsin_explosives_plant` (공장, 슬롯 1개에 방식 2개) | `in_game/common/building_types/tsin_chemical_buildings.txt` |
+| 소비 | `tsin_fertilized_fields`, `tsin_blasting_works` (바닐라 `windmill`·`local_smelters`와 같은 `rgo_enhancement_category`, 최대 1레벨) | 같은 파일 |
+| 해금 | `tsin_improved_fertilizer_advance` → `tsin_dynamite_advance` | `in_game/common/advances/tsin_3_industrial_capitalism.txt` |
+
+바닐라 RGO는 투입재가 없으므로, 농업·광업과의 연결은 바닐라 풍차·현지 제련소 방식을 따랐다. 유지 방식이 비료·폭약을 소비하고, 건물 보정치가 원자재 산출을 올린다.
+
+| 건물·방식 | 투입 비용 | 산출 가치 |
+|---|---|---|
+| 비료 공장: 광물 비료 | 13.5 | 18.25 |
+| 비료 공장: 유기 비료 | 13.5 | 18.25 |
+| 폭약 공장: 흑색화약 | 12.25 | 15.0 (일부러 낮은 이윤) |
+| 폭약 공장: 니트로글리세린 | 12.5 | 16.85 |
+| 시비 농지 유지 | 0.31 (비료 0.1, 도구 0.02) | 산출 없음, 보정치 |
+| 발파 채굴장 유지 | 0.31 (폭약 0.05, 도구 0.02) | 산출 없음, 보정치 |
+
 ## 사용자 확인 필요
 
+- 비료·폭약이 부족할 때 시비 농지·발파 채굴장의 보정치가 약해지는지. 약해지지 않는다면 비료·폭약은 유지비일 뿐이고, 수요 연결은 시장 가격으로만 작동한다.
+- 발파 채굴장이 금·은 광산에도 지어지는지, 화폐 주조에 이상이 없는지
 - 기관 공급이 부족할 때 기관 가격이 오르고, 기계화 방직 공장의 증기 동력 방식 수익이 떨어지는지
 - 기계 공장이 강철 가격 상승에 반응해 주철 틀로 돌아가는지(AI·자동 선택이 있는 경우)
 - 함선 건조 시 기관 수요가 시장에 잡히는지

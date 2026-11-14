@@ -94,7 +94,21 @@ EXTRA = [
     ("icons/buildings/textile_mill.dds", "icons/buildings/tsin_mechanized_textile_mill.dds", 200),
     ("icons/map_modes/building_based.dds", "icons/map_modes/tsin_industrialization.dds", 30),
     ("icons/industry_types/crafts.dds", "icons/industry_types/tsin_machinery.dds", 30),
+    ("icons/buildings/dyes_mill.dds", "icons/buildings/tsin_fertilizer_plant.dds", 90),
+    ("icons/buildings/cannons_factory.dds", "icons/buildings/tsin_explosives_plant.dds", 330),
+    ("icons/buildings/windmill.dds", "icons/buildings/tsin_fertilized_fields.dds", 90),
+    ("icons/buildings/local_smelters.dds", "icons/buildings/tsin_blasting_works.dds", 330),
 ]
+
+for _good, _src, _deg in (("tsin_fertilizer", "saltpeter", 90), ("tsin_explosives", "saltpeter", 330)):
+    EXTRA += [
+        (f"icons/trade_goods/icon_goods_{_src}.dds", f"icons/trade_goods/icon_goods_{_good}.dds", _deg),
+        (f"icons/trade_goods/illustrations/icon_goods_{_src}.dds", f"icons/trade_goods/illustrations/icon_goods_{_good}.dds", _deg),
+        (f"icons/modifier_types/{_src}_positive.dds", f"icons/modifier_types/{_good}_positive.dds", _deg),
+        (f"icons/modifier_types/{_src}_negative.dds", f"icons/modifier_types/{_good}_negative.dds", _deg),
+        ("icons/modifier_types/global_steel_pop_demand.dds", f"icons/modifier_types/global_{_good}_pop_demand.dds", _deg),
+        (f"icons/modifier_types/{_src}_impacts_inflation.dds", f"icons/modifier_types/{_good}_impacts_inflation.dds", _deg),
+    ]
 
 
 def main() -> int:

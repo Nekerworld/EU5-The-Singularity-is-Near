@@ -1,3 +1,5 @@
 ﻿colors = {
 	goods_tsin_engines = hsv { 0.07 0.45 0.40 }
+	goods_tsin_fertilizer = hsv { 0.22 0.45 0.45 }
+	goods_tsin_explosives = hsv { 0.98 0.60 0.55 }
 }
