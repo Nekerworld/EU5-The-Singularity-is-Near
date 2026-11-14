@@ -51,6 +51,16 @@
 ### 밸런스
 - 기계 공장 석유 윤활 방식 산출 0.33 → 0.27(이윤율 1.65 → 1.35, 다른 공장과 같게).
 
+### 로드 오류 수정 (2026-11-14 크래시 로그)
+- 유닛 상속 17건: 템플릿 파일을 `tsin_00_age_templates.txt`로 바꿔 `tsin_age7_units.txt`보다 먼저 읽히게 했다.
+- 기술 `requires` 6건: 파일 번호를 두 자리(`tsin_00`~`tsin_10`)로 맞추고, 공방 자동화 기술 4개를 `tsin_03a_automation_unlocks.txt`로 옮겼다. 건물 `obsolete` 2건: 농업 건물 파일을 `tsin_mechanized_agriculture_buildings.txt`로 바꿨다.
+- 이벤트: `REPLACE:` 접두어가 새 이벤트 id로 읽혀 제7시대 연장 이벤트 52개가 원본을 대체하지 못했다. 같은 id 재정의로 바꿨다(`gen_age7_patches.py`, `gen_playset_compat.py`).
+- 이벤트 125개에 `outcome = neutral`을 넣고, 없는 값 `outcome = mixed` 16곳과 없는 삽화 태그 `sad` 3곳을 고쳤다.
+- `year >= 1870` → `current_year >= 1870`, 소수 7자리 값을 `multiply`/`divide`로, 내각 행동 AI 가중치의 `has_active_disaster`를 `scope:actor` 안으로 옮겼다.
+- 빠진 현지화: 내각 행동 진행 표시 12개, `tsin_potential_oil`.
+- `validate.py`: 읽는 순서 검사(`requires`/`obsolete`/`copy_from`), 이벤트 검사(`outcome`, 접두어, 삽화 태그), 백과사전 검사(현지화, 아이콘, `family`, 모든 `[x|e]` 링크)를 더했다.
+- 플레이셋 호환 패치: 플레이셋별 출력, on_action 파일 덮어쓰기, 대체 건물 조건, AAMO 종료 연도 상한, 계층 AI 특권 한도, GUI 데이터 함수 수정(`docs/compat.md`).
+
 ### 알려진 제한
 - 게임에서 확인하지 않았다. 문서마다 "사용자 확인 필요" 항목이 있다(지도 모드 조건, 임무 개수 조건, 발상지 보정치, 금본위제 법 조건, 관찰 값의 `capital.market` 사슬 등).
 - 전기화 제도와 지도 모드 아이콘은 아직 임시 그림이다.
