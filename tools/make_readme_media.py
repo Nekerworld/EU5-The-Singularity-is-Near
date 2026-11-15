@@ -90,11 +90,11 @@ def end_year():
     return int(re.search(r'END_DATE\s*=\s*"?(\d{4})',text)[1])
 
 
-def era7_count(folder):
+def era_count(module, folder):
     from era_layout import entries
     prefix=folder.rstrip('/')+'/'
     return sum(len([b for b in pdx.top_level_blocks(pdx.read_text(source)) if not b.local_kind and ':' not in b.key and b.key.startswith(('tsin_', 'age_7', 'a_tsin_', 'n_tsin_', 'pa_tsin_', 'hint_tsin_'))])
-        for rel,(source,_,_) in entries(MOD).items() if source.is_relative_to(MOD/'era_7') and rel.startswith(prefix) and rel.endswith('.txt'))
+        for rel,(source,_,_) in entries(MOD).items() if source.is_relative_to(MOD/module) and rel.startswith(prefix) and rel.endswith('.txt'))
 
 
 def inventory():
@@ -108,11 +108,12 @@ def inventory():
             '힌트':len(mod_keys('in_game/common/scriptable_hints')),
             '백과사전':len(mod_keys('main_menu/common/game_concepts')),
             '게임 규칙':len(mod_keys('main_menu/common/game_rules')),'초기 기업 유형':len(json.loads(pdx.read_text(MOD/'data/early_companies.json'))['companies']),'기업 경제체제':5},
-        'era_7': {label:era7_count(folder) for label,folder in [
+        'era_7': {label:era_count('era_7',folder) for label,folder in [
             ('발전','in_game/common/advances'),('건물','in_game/common/building_types'),
             ('유닛','in_game/common/unit_types'),('법','in_game/common/laws'),
             ('상황','in_game/common/situations'),('재난','in_game/common/disasters'),
             ('재화','in_game/common/goods'),('제도','in_game/common/institution')]} | {'기업':len(COMPANIES)},
+        'era_8': {label:era_count('era_8',folder) for label,folder in [('발전','in_game/common/advances'),('시설','in_game/common/building_types'),('함선','in_game/common/unit_types')]},
         'all_events':mod_event_count(),
         'eras':[{k:r[k] for k in ['number','id','start_year','implementation']} for r in era_rows()],
         'end_year':end_year(),
@@ -432,7 +433,7 @@ def factory_margins() -> None:
                     if cost <= 0 or produced.group(1) not in prices:
                         continue
                     ratio = float(output.group(1)) * prices[produced.group(1)] / cost
-                    rows.append((f"{loc.get(b.key, b.key)} · {loc.get(pm.key, pm.key)}", ratio))
+                    rows.append((f"{loc.get(b.key, b.key)} · {loc.get(pm.key, pm.key)}" + (" [VIII]" if b.key == "tsin_nitrogen_fixation_plant" else ""), ratio))
     rows.sort(key=lambda r: r[1])
     fig, ax = plt.subplots(figsize=(11, 0.26 * len(rows) + 1.6))
     ax.axvspan(1.25, 1.5, color=ACCENT, alpha=0.10)
@@ -441,11 +442,11 @@ def factory_margins() -> None:
     ax.barh([r[0] for r in rows], [r[1] for r in rows], color=[GOLD if r[1] < 1.25 else BLUE for r in rows])
     ax.set_xlim(1.0, 1.6)
     ax.set_xlabel("산출 가치 ÷ 투입 비용 (기본 시장 가격)")
-    ax.set_title("제7시대 생산 방식 · 기본 가격에서의 산출 / 투입재 비율", loc="left", fontsize=13,
+    ax.set_title("산업 생산 방식 · 7~8시대의 기본 가격 산출 / 투입재 비율", loc="left", fontsize=13,
                  weight="bold")
     ax.tick_params(axis="y", labelsize=8.5)
     ax.grid(axis="y", visible=False)
-    fig.text(.10,.005,"투입재와 산출물의 기준 가격만 비교합니다. 임금·건물 유지비·실제 시장 가격을 포함한 순이익이 아닙니다.",fontsize=9,color=GREY)
+    fig.text(.10,.005,"[VIII]는 8시대 해금입니다. 기준 가격만 비교하며 임금·유지비·실제 시장 가격을 포함한 순이익이 아닙니다.",fontsize=9,color=GREY)
     save(fig, "factory_margins.png")
 
 
@@ -453,17 +454,63 @@ def factory_margins() -> None:
 
 def content_counts(advance_total):
     data=inventory();assert data['era_7']['발전']==advance_total
-    fig,axes=plt.subplots(1,2,figsize=(13,6.2))
-    for ax,(scope,title,color) in zip(axes,[('global','전역 · 공통 체계',BLUE),('era_7','제7시대 · 콘텐츠',ACCENT)]):
+    fig,axes=plt.subplots(1,3,figsize=(16,6.2))
+    for ax,(scope,title,color) in zip(axes,[('global','전역 · 공통 체계',BLUE),('era_7','제7시대 · 콘텐츠',ACCENT),('era_8','제8시대 · 부분 구현',GOLD)]):
         rows=sorted(data[scope].items(),key=lambda r:r[1]);labels,counts=zip(*rows)
         ax.barh(labels,counts,color=color,height=.64)
         for y,n in enumerate(counts):ax.text(n+max(counts)*.018,y,str(n),va='center',fontsize=10)
-        ax.set_xlim(0,max(counts)*1.16);ax.set_xlabel('정의 수');ax.set_title(title,loc='left',fontsize=16,weight='bold');ax.grid(axis='y',visible=False)
+        ax.set_xlim(0,max(counts)*1.16);ax.set_xlabel('정의 수');ax.set_title(title,loc='left',fontsize=14,weight='bold');ax.grid(axis='y',visible=False)
     fig.subplots_adjust(wspace=.42,bottom=.16)
-    fig.text(.10,.005,'서로 다른 종류의 정의를 셉니다. 양쪽 가로축 눈금은 독립적이며, 이벤트와 호환 패치의 수는 포함하지 않습니다.',fontsize=10,color=GREY)
+    fig.text(.10,.005,'서로 다른 종류의 정의를 셉니다. 각 가로축 눈금은 독립적이며, 이벤트와 호환 패치의 수는 포함하지 않습니다.',fontsize=10,color=GREY)
     save(fig,'content_counts.png')
     (OUT/'content_inventory.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(data,ensure_ascii=False))
+
+
+
+def finance_overview():
+    from gen_finance_ledger import EXTRA_TABS
+    assert [n for n,_ in EXTRA_TABS] == ['MONEY','BANK','FUNDS']
+    cards=[('현황','국고·부채·만기 요약\n물가·기업·위험 지속치'),
+           ('증시','8개 관측값의 지수 그래프\n기업·본사·가치 추정'),
+           ('신용','바닐라 대출·국채\n상환·파산 조작 유지'),
+           ('통화','표시 환산·준비 현금·금리\n평가절하·화폐개혁'),
+           ('은행','예금·인출·기업 신용\n유동성·부실·해외 채권'),
+           ('기금','적립·부과 연금\n실제 출연·보험 지급')]
+    fig,ax=plt.subplots(figsize=(12.5,6.5));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
+    ax.text(.02,.95,'F2 경제  →  금융',fontsize=24,color=BLUE,weight='bold')
+    ax.text(.02,.85,'경제 상위: 수지 · 금융 · 시장 · 관세 · 교역',fontsize=13,color=GREY)
+    for i,(title,body) in enumerate(cards):
+        x=.02+(i%3)*.33;y=.47-(i//3)*.32
+        ax.add_patch(FancyBboxPatch((x,y),.30,.26,boxstyle='round,pad=.01',facecolor='white',edgecolor=GRID))
+        ax.text(x+.015,y+.185,title,fontsize=18,weight='bold',color=ACCENT)
+        ax.text(x+.015,y+.12,body,fontsize=12,va='top',linespacing=1.6)
+    fig.text(.10,.01,'기능 구성도입니다. 실제 게임 화면 배치가 아닙니다. 금융 장부는 실제 자금 이동과 평가 지수를 구분합니다.',fontsize=10,color=GREY)
+    save(fig,'finance_overview.png')
+
+
+def age8_handoff():
+    from gen_age8_transport_military import build
+    blocks=pdx.top_level_blocks(build()['in_game/common/advances/zz_tsin_08_transport_military.txt'])
+    assert len(blocks)==6
+    cards=[('산업 농업','집약 농업 · 전기화학 · 평로 제강',
+            '질소 고정 → 암모니아 합성\n→ 20세기 집약 농업'),
+           ('주력함','전노급 전함 · 해군 포술 · 내연기관',
+            '노급 전함 → 중유 연료 주력함\n석탄형 / 석유 유지 수요'),
+           ('자동차 물류','내연기관 · 철도 동원',
+            '자동차 운송 → 자동차 보급대\n물류 거점 / 육군 이동 지원'),
+           ('초기 항공','내연기관 · 실용 전기공학 · 참모부',
+            '동력 비행 → 항공 관측 교리\n수도 항공 시설 / 지상군 지원')]
+    fig,ax=plt.subplots(figsize=(12.5,7));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
+    ax.text(.02,.95,'제8시대 · 7시대 기반을 이어받는 연구',fontsize=21,color=INK,weight='bold')
+    for i,(title,parents,body) in enumerate(cards):
+        x=.02+(i%2)*.50;y=.49-(i//2)*.36
+        ax.add_patch(FancyBboxPatch((x,y),.46,.30,boxstyle='round,pad=.01',facecolor='white',edgecolor=GRID))
+        ax.text(x+.018,y+.235,title,fontsize=17,weight='bold',color=ACCENT)
+        ax.text(x+.018,y+.175,'기반: '+parents,fontsize=10.5,color=GREY)
+        ax.text(x+.018,y+.12,body,fontsize=12.5,va='top',linespacing=1.7)
+    fig.text(.10,.02,'발전 9종 · 시설 2종 · 함선 2종. 교차 선행을 요약한 그림이며 전용 시대관·정치·공중전 엔진은 미구현입니다.',fontsize=10,color=GREY)
+    save(fig,'age8_handoff.png')
 
 
 def main():
@@ -474,7 +521,7 @@ def main():
     if args.output:OUT=args.output.resolve()
     setup_font();OUT.mkdir(parents=True,exist_ok=True)
     banner();global_overview();population_governor();acceleration();ages_timeline()
-    total=advances();bills();factory_margins();age7_timeline();content_counts(total)
+    total=advances();bills();factory_margins();age7_timeline();content_counts(total);finance_overview();age8_handoff()
     return 0
 
 
