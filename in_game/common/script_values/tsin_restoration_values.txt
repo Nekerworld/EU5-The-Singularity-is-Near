@@ -22,3 +22,4 @@ tsin_restore_venezuela_outgoing = { value = 0 if = { limit = { owns = location:c
 tsin_restore_ecuador_outgoing = { value = 0 if = { limit = { owns = location:quito } add = 1 } }
 tsin_restore_uruguay_outgoing = { value = 0 if = { limit = { owns = location:guenoa } add = 1 } }
 tsin_restore_paraguay_outgoing = { value = 0 if = { limit = { owns = location:nemby } add = 1 } }
+tsin_restoration_next_year = { value = current_year add = 50 }

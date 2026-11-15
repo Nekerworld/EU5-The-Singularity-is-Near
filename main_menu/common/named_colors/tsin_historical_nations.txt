@@ -1,0 +1,13 @@
+﻿colors = {
+map_tsin_brazil = rgb { 36 118 48 }
+map_tsin_argentina = rgb { 111 184 216 }
+map_tsin_chile = rgb { 182 37 48 }
+map_tsin_peru = rgb { 164 58 65 }
+map_tsin_bolivia = rgb { 143 152 57 }
+map_tsin_gran_colombia = rgb { 218 177 54 }
+map_tsin_colombia = rgb { 206 164 23 }
+map_tsin_venezuela = rgb { 190 150 71 }
+map_tsin_ecuador = rgb { 177 155 38 }
+map_tsin_uruguay = rgb { 91 157 220 }
+map_tsin_paraguay = rgb { 146 77 121 }
+}

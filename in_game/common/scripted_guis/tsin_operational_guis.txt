@@ -3,6 +3,8 @@ tsin_ops_check_inputs = { scope = country is_shown = { always = yes } is_valid =
 tsin_ops_check_army_food = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_army_with_very_low_food is_alert_triggered = has_army_with_low_food } } }
 tsin_ops_check_naval_loss = { scope = country is_shown = { always = yes } is_valid = { is_alert_triggered = has_navy_attrition } }
 tsin_ops_check_food = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_starving_provinces is_alert_triggered = has_low_food_stockpile_market } } }
+tsin_ops_check_bank_withdrawals = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_withdrawal_due var:tsin_withdrawal_due > 0 } }
+tsin_ops_check_bank_capital = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ledger_version tsin_bank_net_worth < 0 } }
 tsin_ops_check_prices = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_expensive_count > 0 } }
 tsin_ops_check_power = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_power_markets > 0 } }
 tsin_ops_check_loss = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_unprofitable_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_loss_streak >= 2 } } } }
@@ -15,5 +17,9 @@ tsin_ops_check_education = { scope = country is_shown = { always = yes } is_vali
 tsin_ops_check_subsidy = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_subsidy_streak >= 2 } }
 tsin_ops_check_budget = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready OR = { var:tsin_ops_deficit_streak >= 2 AND = { var:tsin_ops_loans >= 3 var:tsin_ops_balance < 0 } } } }
 tsin_ops_check_stocks = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_stock_index tsin_stock_index_history_count >= 4 tsin_stock_index_history_mean > 0 var:tsin_stock_index < { value = tsin_stock_index_history_mean multiply = 0.6 } } }
+tsin_ops_check_company_interest = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_arrears var:tsin_arrears >= 3 } }
+tsin_ops_check_bond_interest = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_bond_arrears var:tsin_bond_arrears >= 3 } }
+tsin_ops_check_foreign_credit = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_foreign_partner has_variable = tsin_foreign_delinquency var:tsin_foreign_delinquency >= 4 } }
+tsin_ops_check_pension_funding = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_pension_shortfall var:tsin_pension_shortfall > 0 } }
 tsin_ops_initialize = { scope = country is_shown = { always = yes } is_valid = { is_ai = no } effect = { if = { limit = { NOT = { has_variable = tsin_ops_ready } } tsin_ops_scan_effect = yes } } }
 tsin_ops_refresh = { scope = country is_shown = { always = yes } is_valid = { is_ai = no NOT = { has_variable = tsin_ops_manual_timer } } effect = { tsin_ops_scan_effect = yes } }

@@ -47,6 +47,8 @@ def build(root, data):
         for lang in loc:
             name=row['name'][lang]
             note=' Era scaffold only; dedicated technologies, institutions and events are not implemented.' if lang=='english' else ' 현재 시대 뼈대만 등록되어 있으며 전용 기술·시대관·이벤트는 구현되지 않았습니다.'
+            if row.get('implementation')=='partial':
+                note=' Three late agricultural advances are implemented with stable legacy IDs. Other dedicated institutions and content remain under development.' if lang=='english' else ' 기존 ID를 보존한 농업 후반 기술 3종을 이관했습니다. 나머지 전용 시대관·콘텐츠는 개발 예정입니다.'
             values={row['id']:name,row['id']+'_desc':row['concept'][lang]+note,
                     'age_format_'+row['id']:(f'Age of ${row["id"]}$' if lang=='english' else f'${row["id"]}$의 시대')}
             for key,value in values.items():loc[lang].append(f' {key}: {json.dumps(value,ensure_ascii=False)}')

@@ -1,0 +1,6 @@
+﻿tsin_history2_labor = { game_data = { category = country } country_cabinet_efficiency = 0.02 }
+tsin_history2_military = { game_data = { category = country } discipline = 0.02 }
+tsin_history2_civic = { game_data = { category = country } global_disease_resistance = 0.02 }
+tsin_history2_diplomacy = { game_data = { category = country } diplomatic_reputation = 1 }
+tsin_history2_finance = { game_data = { category = country } country_cabinet_efficiency = 0.02 }
+tsin_history2_study = { game_data = { category = country } research_speed_modifier = 0.03 }

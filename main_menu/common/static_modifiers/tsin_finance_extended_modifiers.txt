@@ -1,4 +1,5 @@
-﻿tsin_bank_credit_contraction = {
+﻿tsin_convertibility_suspension = { game_data = { category = country } monthly_inflation = 0.01 bank_interest = 0.01 }
+tsin_bank_credit_contraction = {
 game_data = { category = country }
 global_construction_speed = -0.10
 global_production_efficiency = -0.05

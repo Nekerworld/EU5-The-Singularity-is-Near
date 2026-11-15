@@ -24,6 +24,9 @@ class LedgerFixture:
         if isinstance(value,list):
             n=D(0)
             for key,_,v in value:
+                if key=='save_temporary_value_as':
+                    self.state['scope:'+get(v,'name')]=self.num(get(v,'value'))
+                    continue
                 if key=='if':
                     if self.valid(get(v,'limit')):n=self.num([('value','=',str(n))]+[r for r in v if r[0]!='limit'])
                     continue
@@ -37,6 +40,8 @@ class LedgerFixture:
                 elif key=='max':n=min(n,x)
                 else:raise AssertionError(key)
             return n
+        value=value.removeprefix('root.')
+        if value=='estate_gold':return self.state['estate']
         if value in self.values:return self.num(self.values[value])
         try:return D(value)
         except Exception:return self.state.get(value.removeprefix('var:').removeprefix('root.'),D(0))
@@ -50,7 +55,7 @@ class LedgerFixture:
             if k=='is_ai':return False
             if k=='country_has_estate':return True
             if k=='has_policy':return False
-            if k=='any_estate':return self.state['estate'] >= self.num('tsin_deposit_request')
+            if k=='any_estate':return self.valid(v)
             a,b=self.num(k),self.num(v)
             return {'=':a==b,'<':a<b,'>':a>b,'>=':a>=b,'<=':a<=b}[op]
         return all(term(*r) for r in rows)

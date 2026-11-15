@@ -11,7 +11,7 @@ from test_lucky_nations import SafetyFixture
 class RestorationFixture(SafetyFixture):
     def __init__(self,row):
         super().__init__();self.row=row;self.year=row['fallback']
-        self.locations={c:dict(owner=self.foreign,controller=self.foreign,is_ownable=True,is_capital=False,is_historical_capital=False,dominant_culture={'has_culture_group':'culture_group:'+row['groups'][0]}) for c in row['cores']}
+        self.locations={c:dict(owner=self.foreign,controller=self.foreign,is_ownable=True,population=1,is_capital=False,is_historical_capital=False,dominant_culture={'has_culture_group':'culture_group:'+row['groups'][0]}) for c in row['cores']}
         for loc in self.locations.values():loc['dominant_religion.group']='religion_group:muslim'
         self.foreign['culture']={'has_culture_group':'culture_group:'+('german_group' if row['id']=='russia' else row['groups'][0])}
         self.foreign['num_locations']=len(row['cores'])+1
@@ -33,6 +33,9 @@ class HistoricalRestorationTests(unittest.TestCase):
                 for field in ['owner','controller']:
                     for realm in [f.human,f.subject]:
                         original=loc[field];loc[field]=realm;self.assertFalse(f.allowed(),(row['id'],core,field));loc[field]=original
+            next(iter(f.locations.values()))['is_historical_capital']=True;self.assertTrue(f.allowed(),'Historical core capitals may be restored after annexation')
+            f.globals={'tsin_restore_'+row['id']+'_count':2};self.assertFalse(f.allowed())
+            f.globals={'tsin_restore_'+row['id']+'_next':f.year+1};self.assertFalse(f.allowed());f.globals={}
             f.foreign['num_locations']=len(row['cores']);self.assertFalse(f.allowed())
             f.foreign['num_locations']=len(row['cores'])+1
             next(iter(f.locations.values()))['is_capital']=True;self.assertFalse(f.allowed())

@@ -11,7 +11,7 @@ on_action = "[GetVariableSystem.Toggle('tsin_ops_open')]"
 }
 text_single = { size = { 92 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_BUTTON" }
 }
-icon = { visible = "[GreaterThan_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), '(int32)0')]" size = { 10 10 } parentanchor = right texture = "gfx/interface/icons/disasters/end_requirements_green.dds" using = color_red_texture alwaystransparent = yes }
+icon = { visible = "[GreaterThan_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital'))), '(int32)1', '(int32)0')), '(int32)0')]" size = { 10 10 } parentanchor = right texture = "gfx/interface/icons/disasters/end_requirements_green.dds" using = color_red_texture alwaystransparent = yes }
 }
 }
 window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 16 -230 } size = { 480 440 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
@@ -38,6 +38,8 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_hide_inputs')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_army_food')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_naval_loss')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_food')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_bank_withdrawals')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_bank_capital')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_prices')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_power')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_loss')]"
@@ -50,12 +52,16 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_hide_education')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_subsidy')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_budget')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_hide_stocks')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_company_interest')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_bond_interest')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_foreign_credit')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_hide_pension_funding')]"
 }
 text_single = { size = { 217 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_RESTORE" }
 }
 }
 scrollarea = { size = { 450 266 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12
-text_single = { visible = "[EqualTo_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_prices').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_prices'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_power').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_power'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_employment').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_employment'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_access').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_access'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_reserve').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_reserve'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_maintenance').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_maintenance'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_crowding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_crowding'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_education').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_education'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_subsidy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_subsidy'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_budget').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_budget'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_stocks').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_stocks'))), '(int32)1', '(int32)0')), '(int32)0')]" maximumsize = { 430 -1 } multiline = yes text = "TSIN_OPS_EMPTY" }
+text_single = { visible = "[EqualTo_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_prices').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_prices'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_power').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_power'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_employment').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_employment'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_access').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_access'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_reserve').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_reserve'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_maintenance').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_maintenance'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_crowding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_crowding'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_education').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_education'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_subsidy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_subsidy'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_budget').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_budget'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_stocks').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_stocks'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_company_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_company_interest'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bond_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bond_interest'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_foreign_credit').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_foreign_credit'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_pension_funding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_pension_funding'))), '(int32)1', '(int32)0')), '(int32)0')]" maximumsize = { 430 -1 } multiline = yes text = "TSIN_OPS_EMPTY" }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs')))]" spacing = 3 alwaystransparent = no
 action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
 on_action = "[GetVariableSystem.Set('tsin_ops_hide_inputs', 'yes')]"
@@ -119,6 +125,40 @@ size = { 150 28 }
 action_tooltip = {
 title = "TSIN_OPS_VIEW"
 on_action = "[OpenLateralView('economy')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_withdrawals', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_CRITICAL" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_BANK_WITHDRAWALS" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_BANK_WITHDRAWALS" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_capital', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_CRITICAL" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_BANK_CAPITAL" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_BANK_CAPITAL" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
@@ -477,6 +517,74 @@ action_tooltip = {
 title = "TSIN_OPS_VIEW"
 on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
 on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'finance')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_company_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_company_interest')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_company_interest', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_ATTENTION" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_COMPANY_INTEREST" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_COMPANY_INTEREST" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bond_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bond_interest')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bond_interest', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_ATTENTION" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_BOND_INTEREST" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_BOND_INTEREST" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_foreign_credit').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_foreign_credit')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_foreign_credit', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_ATTENTION" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_FOREIGN_CREDIT" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_FOREIGN_CREDIT" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
+on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
+}
+text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }
+}
+}
+vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_pension_funding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_pension_funding')))]" spacing = 3 alwaystransparent = no
+action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_pension_funding', 'yes')]"
+}
+text_single = { fontsize = 11 text = "TSIN_OPS_ATTENTION" }
+text_single = { fontsize = 15 text = "TSIN_OPS_RULE_PENSION_FUNDING" }
+text_single = { maximumsize = { 430 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_PENSION_FUNDING" }
+button_regular = {
+size = { 150 28 }
+action_tooltip = {
+title = "TSIN_OPS_VIEW"
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_funds')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 142 26 } parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "TSIN_OPS_VIEW" }

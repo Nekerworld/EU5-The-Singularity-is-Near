@@ -1,27 +1,29 @@
 ﻿tsin_restore_russia_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1700 current_year < 1837
+OR = { NOT = { has_global_variable = tsin_restore_russia_count } global_var:tsin_restore_russia_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_russia_next } current_year >= global_var:tsin_restore_russia_next }
 NOT = { country_exists = c:RUS } NOT = { tsin_history_russia_player_blocked = yes }
 NOT = { any_country = { tsin_lucky_russia_candidate_trigger = yes } }
 location:moscow = { dominant_culture ?= { OR = { has_culture_group = culture_group:russian_group } } }
 
 location:moscow = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_russia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:novgorod = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_russia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:tver = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_russia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:vladimir = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_russia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -29,22 +31,24 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_britain_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1801 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_britain_count } global_var:tsin_restore_britain_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_britain_next } current_year >= global_var:tsin_restore_britain_next }
 NOT = { country_exists = c:GBR } NOT = { tsin_nation_britain_blocked = yes }
 NOT = { any_country = { tsin_nation_britain_candidate = yes } }
 location:london = { dominant_culture ?= { OR = { has_culture_group = culture_group:british_group has_culture_group = culture_group:scottish_group } } }
 
 location:london = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_britain_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:edinburgh = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_britain_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:dublin = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_britain_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -52,22 +56,24 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_germany_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1871 current_year < 1915
+OR = { NOT = { has_global_variable = tsin_restore_germany_count } global_var:tsin_restore_germany_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_germany_next } current_year >= global_var:tsin_restore_germany_next }
 NOT = { country_exists = c:GER } NOT = { tsin_nation_germany_blocked = yes }
 NOT = { any_country = { tsin_nation_germany_candidate = yes } }
 location:berlin = { dominant_culture ?= { OR = { has_culture_group = culture_group:german_group } } }
 
 location:berlin = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_germany_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:frankfurt = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_germany_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:munich = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_germany_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -75,27 +81,29 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_italy_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1871 current_year < 1915
+OR = { NOT = { has_global_variable = tsin_restore_italy_count } global_var:tsin_restore_italy_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_italy_next } current_year >= global_var:tsin_restore_italy_next }
 NOT = { country_exists = c:ITA } NOT = { tsin_nation_italy_blocked = yes }
 NOT = { any_country = { tsin_nation_italy_candidate = yes } }
 location:turin = { dominant_culture ?= { OR = { has_culture_group = culture_group:italian_group } } }
 
 location:turin = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_italy_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:milano = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_italy_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:florence = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_italy_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:naples = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_italy_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -103,17 +111,19 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_usa_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1815 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_usa_count } global_var:tsin_restore_usa_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_usa_next } current_year >= global_var:tsin_restore_usa_next }
 NOT = { country_exists = c:USA } NOT = { tsin_nation_usa_blocked = yes }
 NOT = { any_country = { tsin_nation_usa_candidate = yes } }
 location:shackamaxon = { owner = { culture = { OR = { has_culture_group = culture_group:british_group } } } }
 
 location:shackamaxon = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_usa_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:manhattan = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_usa_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -121,12 +131,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_mexico_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1840 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_mexico_count } global_var:tsin_restore_mexico_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_mexico_next } current_year >= global_var:tsin_restore_mexico_next }
 NOT = { country_exists = c:MEX } NOT = { tsin_nation_mexico_blocked = yes }
 NOT = { any_country = { tsin_nation_mexico_candidate = yes } }
 location:tenochtitlan = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:tenochtitlan = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_mexico_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -134,22 +146,24 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_mughals_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1600 current_year < 1751
+OR = { NOT = { has_global_variable = tsin_restore_mughals_count } global_var:tsin_restore_mughals_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_mughals_next } current_year >= global_var:tsin_restore_mughals_next }
 NOT = { country_exists = c:MUG } NOT = { tsin_nation_mughals_blocked = yes }
 NOT = { any_country = { tsin_nation_mughals_candidate = yes } }
 location:delhi = { dominant_culture ?= { OR = { has_culture_group = culture_group:iranian_group has_culture_group = culture_group:turkic_group has_culture_group = culture_group:mongolian_group } } dominant_religion.group = religion_group:muslim }
 
 location:delhi = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_mughals_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:agra = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_mughals_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:lahore = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_mughals_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -157,12 +171,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_japan_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1868 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_japan_count } global_var:tsin_restore_japan_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_japan_next } current_year >= global_var:tsin_restore_japan_next }
 NOT = { country_exists = c:JAP } NOT = { tsin_nation_japan_blocked = yes }
 NOT = { any_country = { tsin_nation_japan_candidate = yes } }
 location:kyoto = { dominant_culture ?= { OR = { has_culture_group = culture_group:japanese_group } } }
 
 location:kyoto = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_japan_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -170,12 +186,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_belgium_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1860 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_belgium_count } global_var:tsin_restore_belgium_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_belgium_next } current_year >= global_var:tsin_restore_belgium_next }
 NOT = { country_exists = c:BEL } NOT = { tsin_nation_belgium_blocked = yes }
 NOT = { any_country = { tsin_nation_belgium_candidate = yes } }
 location:brussels = { dominant_culture ?= { OR = { has_culture_group = culture_group:netherlandish_group has_culture_group = culture_group:french_group } } }
 
 location:brussels = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_belgium_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -183,12 +201,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_greece_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1860 current_year < 1901
+OR = { NOT = { has_global_variable = tsin_restore_greece_count } global_var:tsin_restore_greece_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_greece_next } current_year >= global_var:tsin_restore_greece_next }
 NOT = { country_exists = c:GRE } NOT = { tsin_nation_greece_blocked = yes }
 NOT = { any_country = { tsin_nation_greece_candidate = yes } }
 location:athens = { dominant_culture ?= { OR = { has_culture_group = culture_group:greek_group } } }
 
 location:athens = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_greece_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -196,12 +216,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_romania_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1881 current_year < 1915
+OR = { NOT = { has_global_variable = tsin_restore_romania_count } global_var:tsin_restore_romania_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_romania_next } current_year >= global_var:tsin_restore_romania_next }
 NOT = { country_exists = c:RMN } NOT = { tsin_nation_romania_blocked = yes }
 NOT = { any_country = { tsin_nation_romania_candidate = yes } }
 location:bucharest = { dominant_culture ?= { OR = { has_culture_group = culture_group:romanian_group } } }
 
 location:bucharest = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_romania_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -209,12 +231,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_serbia_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1878 current_year < 1915
+OR = { NOT = { has_global_variable = tsin_restore_serbia_count } global_var:tsin_restore_serbia_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_serbia_next } current_year >= global_var:tsin_restore_serbia_next }
 NOT = { country_exists = c:SER } NOT = { tsin_nation_serbia_blocked = yes }
 NOT = { any_country = { tsin_nation_serbia_candidate = yes } }
 location:belgrad = { dominant_culture ?= { OR = { has_culture_group = culture_group:south_slavic_group } } }
 
 location:belgrad = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_serbia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -222,12 +246,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_bulgaria_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1908 current_year < 1915
+OR = { NOT = { has_global_variable = tsin_restore_bulgaria_count } global_var:tsin_restore_bulgaria_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_bulgaria_next } current_year >= global_var:tsin_restore_bulgaria_next }
 NOT = { country_exists = c:BUL } NOT = { tsin_nation_bulgaria_blocked = yes }
 NOT = { any_country = { tsin_nation_bulgaria_candidate = yes } }
 location:sredets = { dominant_culture ?= { OR = { has_culture_group = culture_group:south_slavic_group } } }
 
 location:sredets = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_bulgaria_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -235,12 +261,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_brazil_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1842 current_year < 1901
-NOT = { country_exists = c:TBR } NOT = { tsin_nation_brazil_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_brazil_count } global_var:tsin_restore_brazil_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_brazil_next } current_year >= global_var:tsin_restore_brazil_next }
+NOT = { country_exists = c:XBR } NOT = { tsin_nation_brazil_blocked = yes }
 NOT = { any_country = { tsin_nation_brazil_candidate = yes } }
 location:goana_para = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:goana_para = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_brazil_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -248,12 +276,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_argentina_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1840 current_year < 1901
-NOT = { country_exists = c:TAR } NOT = { tsin_nation_argentina_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_argentina_count } global_var:tsin_restore_argentina_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_argentina_next } current_year >= global_var:tsin_restore_argentina_next }
+NOT = { country_exists = c:XAR } NOT = { tsin_nation_argentina_blocked = yes }
 NOT = { any_country = { tsin_nation_argentina_candidate = yes } }
 location:chana = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:chana = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_argentina_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -261,12 +291,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_chile_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1840 current_year < 1901
-NOT = { country_exists = c:TCH } NOT = { tsin_nation_chile_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_chile_count } global_var:tsin_restore_chile_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_chile_next } current_year >= global_var:tsin_restore_chile_next }
+NOT = { country_exists = c:XCZ } NOT = { tsin_nation_chile_blocked = yes }
 NOT = { any_country = { tsin_nation_chile_candidate = yes } }
 location:meli_pillan = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:meli_pillan = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_chile_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -274,12 +306,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_peru_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1841 current_year < 1901
-NOT = { country_exists = c:TPE } NOT = { tsin_nation_peru_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_peru_count } global_var:tsin_restore_peru_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_peru_next } current_year >= global_var:tsin_restore_peru_next }
+NOT = { country_exists = c:XPE } NOT = { tsin_nation_peru_blocked = yes }
 NOT = { any_country = { tsin_nation_peru_candidate = yes } }
 location:rimaq = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:rimaq = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_peru_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -287,12 +321,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_bolivia_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1845 current_year < 1901
-NOT = { country_exists = c:TBO } NOT = { tsin_nation_bolivia_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_bolivia_count } global_var:tsin_restore_bolivia_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_bolivia_next } current_year >= global_var:tsin_restore_bolivia_next }
+NOT = { country_exists = c:XBO } NOT = { tsin_nation_bolivia_blocked = yes }
 NOT = { any_country = { tsin_nation_bolivia_candidate = yes } }
 location:ccantumarcani = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:ccantumarcani = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_bolivia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -300,22 +336,24 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_gran_colombia_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1825 current_year < 1831
-NOT = { country_exists = c:TGC } NOT = { tsin_nation_gran_colombia_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_gran_colombia_count } global_var:tsin_restore_gran_colombia_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_gran_colombia_next } current_year >= global_var:tsin_restore_gran_colombia_next }
+NOT = { country_exists = c:XGC } NOT = { tsin_nation_gran_colombia_blocked = yes }
 NOT = { any_country = { tsin_nation_gran_colombia_candidate = yes } }
 location:bosa_colombia = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:bosa_colombia = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_gran_colombia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:caracas = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_gran_colombia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
 location:quito = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_gran_colombia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -323,12 +361,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_colombia_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1851 current_year < 1901
-NOT = { country_exists = c:TCO } NOT = { tsin_nation_colombia_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_colombia_count } global_var:tsin_restore_colombia_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_colombia_next } current_year >= global_var:tsin_restore_colombia_next }
+NOT = { country_exists = c:XCO } NOT = { tsin_nation_colombia_blocked = yes }
 NOT = { any_country = { tsin_nation_colombia_candidate = yes } }
 location:bosa_colombia = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:bosa_colombia = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_colombia_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -336,12 +376,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_venezuela_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1850 current_year < 1901
-NOT = { country_exists = c:TVZ } NOT = { tsin_nation_venezuela_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_venezuela_count } global_var:tsin_restore_venezuela_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_venezuela_next } current_year >= global_var:tsin_restore_venezuela_next }
+NOT = { country_exists = c:XVZ } NOT = { tsin_nation_venezuela_blocked = yes }
 NOT = { any_country = { tsin_nation_venezuela_candidate = yes } }
 location:caracas = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:caracas = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_venezuela_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -349,12 +391,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_ecuador_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1850 current_year < 1901
-NOT = { country_exists = c:TEC } NOT = { tsin_nation_ecuador_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_ecuador_count } global_var:tsin_restore_ecuador_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_ecuador_next } current_year >= global_var:tsin_restore_ecuador_next }
+NOT = { country_exists = c:XEC } NOT = { tsin_nation_ecuador_blocked = yes }
 NOT = { any_country = { tsin_nation_ecuador_candidate = yes } }
 location:quito = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:quito = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_ecuador_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -362,12 +406,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_uruguay_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1848 current_year < 1901
-NOT = { country_exists = c:TUY } NOT = { tsin_nation_uruguay_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_uruguay_count } global_var:tsin_restore_uruguay_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_uruguay_next } current_year >= global_var:tsin_restore_uruguay_next }
+NOT = { country_exists = c:XUY } NOT = { tsin_nation_uruguay_blocked = yes }
 NOT = { any_country = { tsin_nation_uruguay_candidate = yes } }
 location:guenoa = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:guenoa = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_uruguay_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }
@@ -375,12 +421,14 @@ NOT = { tsin_lucky_human_war_trigger = yes } }
 tsin_restore_paraguay_trigger = {
 has_game_rule = tsin_lucky_nations_force
 current_year >= 1840 current_year < 1901
-NOT = { country_exists = c:TPY } NOT = { tsin_nation_paraguay_blocked = yes }
+OR = { NOT = { has_global_variable = tsin_restore_paraguay_count } global_var:tsin_restore_paraguay_count < 2 }
+OR = { NOT = { has_global_variable = tsin_restore_paraguay_next } current_year >= global_var:tsin_restore_paraguay_next }
+NOT = { country_exists = c:XPY } NOT = { tsin_nation_paraguay_blocked = yes }
 NOT = { any_country = { tsin_nation_paraguay_candidate = yes } }
 location:nemby = { owner = { culture = { OR = { has_culture_group = culture_group:iberian_group } } } }
 
 location:nemby = {
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_restore_paraguay_outgoing
 NOT = { tsin_lucky_human_war_trigger = yes } }
 }

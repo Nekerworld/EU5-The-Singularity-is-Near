@@ -20,3 +20,10 @@ tsin_foreign_interest_due = { value = var:tsin_foreign_principal multiply = 0.01
 tsin_foreign_interest_payment = { value = tsin_foreign_interest_due max = scope:tsin_foreign_partner.var:tsin_firm_cash min = 0 }
 tsin_foreign_principal_payment = { value = var:tsin_foreign_principal max = scope:tsin_foreign_partner.var:tsin_firm_cash min = 0 }
 tsin_foreign_local_payment = { value = var:tsin_tx multiply = scope:tsin_foreign_partner.var:tsin_fx }
+
+tsin_dividend_public = { value = tsin_ledger_lot multiply = var:tsin_public_shares divide = var:tsin_issued_shares min = 0 max = tsin_ledger_lot }
+tsin_dividend_private = { value = tsin_ledger_lot subtract = tsin_dividend_public min = 0 }
+tsin_bond_interest_due = { value = var:tsin_bond_principal divide = 300 }
+tsin_bond_interest_payment = { value = tsin_bond_interest_due max = var:tsin_firm_cash min = 0 }
+tsin_bond_repayment = { value = var:tsin_bond_principal max = var:tsin_firm_cash min = 0 }
+tsin_pension_contribution = { value = tsin_ledger_lot multiply = 0.05 }

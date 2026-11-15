@@ -12,7 +12,7 @@ class OperationalTests(unittest.TestCase):
 
     def test_only_operational_warning_types(self):
         rules=validate(self.data)
-        self.assertEqual(len(rules),16)
+        self.assertEqual(len(rules),22)
         self.assertFalse(any(re.search(r'has_active_disaster|is_situation_active',r['condition']) for r in rules))
         bad=copy.deepcopy(self.data)
         bad['rules'][0]['condition']='has_active_disaster = disaster_type:tsin_cholera'

@@ -1,0 +1,35 @@
+﻿# Age VIII agricultural transition. IDs and effects retained for existing saves.
+
+
+
+tsin_nitrogen_fixation_advance = {
+	age = age_8_world_wars
+	icon = ukrainian_farmlands
+
+	unlock_building = tsin_nitrogen_fixation_plant
+
+	requires = tsin_intensive_farming_advance
+	requires = tsin_electrochemistry_advance
+	ai_weight = { add = 20 }
+}
+
+tsin_ammonia_synthesis_advance = {
+	age = age_8_world_wars
+	icon = fla_prospering_agriculture
+
+	unlock_production_method = tsin_nitrogen_fixation_ammonia
+	global_tsin_fertilizer_output_modifier = 0.1
+
+	requires = tsin_nitrogen_fixation_advance
+	requires = tsin_open_hearth_advance
+	ai_weight = { add = 15 }
+}
+
+tsin_twentieth_century_farming_advance = {
+age = age_8_world_wars
+icon = fertile_lands
+requires = tsin_ammonia_synthesis_advance
+requires = tsin_intensive_farming_advance
+global_monthly_food_modifier = monthly_food_productivity_weak_bonus
+ai_weight = { add = 20 }
+}

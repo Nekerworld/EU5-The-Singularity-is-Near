@@ -66,6 +66,10 @@ tsin_refrigerated_transport_advance = {
 }
 
 # 1890s
+
+
+# End of the chain (historically 1898-1913)
+
 tsin_intensive_farming_advance = {
 	age = age_7_industrialization
 	icon = fertile_lands
@@ -76,28 +80,4 @@ tsin_intensive_farming_advance = {
 	requires = tsin_steam_threshing_advance
 	requires = tsin_refrigerated_transport_advance
 	ai_weight = { add = 20 }
-}
-
-# End of the chain (historically 1898-1913)
-tsin_nitrogen_fixation_advance = {
-	age = age_7_industrialization
-	icon = ukrainian_farmlands
-
-	unlock_building = tsin_nitrogen_fixation_plant
-
-	requires = tsin_intensive_farming_advance
-	requires = tsin_electrochemistry_advance
-	ai_weight = { add = 20 }
-}
-
-tsin_ammonia_synthesis_advance = {
-	age = age_7_industrialization
-	icon = fla_prospering_agriculture
-
-	unlock_production_method = tsin_nitrogen_fixation_ammonia
-	global_tsin_fertilizer_output_modifier = 0.1
-
-	requires = tsin_nitrogen_fixation_advance
-	requires = tsin_open_hearth_advance
-	ai_weight = { add = 15 }
 }

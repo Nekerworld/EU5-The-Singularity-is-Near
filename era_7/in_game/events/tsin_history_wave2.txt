@@ -1,0 +1,982 @@
+﻿namespace = tsin_history2
+tsin_history2.1 = { type = country_event
+title = tsin_history2.1.title desc = tsin_history2.1.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_strike_stage } has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 25 any_owned_location = { any_buildings_in_location = { OR = { building_type = building_type:tsin_fertilizer_plant building_type = building_type:tsin_explosives_plant } building_employed_amount > 0 is_opened = yes } } }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year } if = { limit = { NOT = { has_variable = tsin_labor_grievance } } set_variable = { name = tsin_labor_grievance value = 0 } } }
+option = { name = tsin_history2.1.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 1 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.1.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 1 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.2 = { type = country_event
+title = tsin_history2.2.title desc = tsin_history2.2.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 1 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.2.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 2 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.2.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 2 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.3 = { type = country_event
+title = tsin_history2.3.title desc = tsin_history2.3.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 2 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.3.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_labor years = 3 mode = replace }
+
+change_variable = { name = tsin_labor_grievance subtract = 5 } if = { limit = { var:tsin_labor_grievance < 0 } set_variable = { name = tsin_labor_grievance value = 0 } }
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.3.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 3 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.4 = { type = country_event
+title = tsin_history2.4.title desc = tsin_history2.4.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 3 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.4.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 4 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.4.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 4 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.5 = { type = country_event
+title = tsin_history2.5.title desc = tsin_history2.5.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 4 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.5.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 5 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.5.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 5 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.6 = { type = country_event
+title = tsin_history2.6.title desc = tsin_history2.6.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 5 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.6.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 6 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.6.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 6 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.7 = { type = country_event
+title = tsin_history2.7.title desc = tsin_history2.7.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1880 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage = 6 current_year > var:tsin_hist2_strike_year }
+immediate = { set_variable = { name = tsin_hist2_strike_year value = current_year }  }
+option = { name = tsin_history2.7.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_labor years = 3 mode = replace }
+
+change_variable = { name = tsin_labor_grievance subtract = 5 } if = { limit = { var:tsin_labor_grievance < 0 } set_variable = { name = tsin_labor_grievance value = 0 } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.7.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_strike_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.11 = { type = country_event
+title = tsin_history2.11.title desc = tsin_history2.11.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_military_stage } army_size > 0 has_advance = tsin_general_staff_advance monthly_balance < 0 has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 20 }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year } if = { limit = { NOT = { has_variable = tsin_labor_grievance } } set_variable = { name = tsin_labor_grievance value = 0 } } }
+option = { name = tsin_history2.11.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 1 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.11.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 1 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.12 = { type = country_event
+title = tsin_history2.12.title desc = tsin_history2.12.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage = 1 current_year > var:tsin_hist2_military_year }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year }  }
+option = { name = tsin_history2.12.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_military years = 3 mode = replace }
+
+change_variable = { name = tsin_labor_grievance subtract = 5 } if = { limit = { var:tsin_labor_grievance < 0 } set_variable = { name = tsin_labor_grievance value = 0 } }
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.12.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 2 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.13 = { type = country_event
+title = tsin_history2.13.title desc = tsin_history2.13.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage = 2 current_year > var:tsin_hist2_military_year }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year }  }
+option = { name = tsin_history2.13.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 3 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.13.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 3 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.14 = { type = country_event
+title = tsin_history2.14.title desc = tsin_history2.14.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage = 3 current_year > var:tsin_hist2_military_year }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year }  }
+option = { name = tsin_history2.14.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_military years = 3 mode = replace }
+
+change_variable = { name = tsin_labor_grievance subtract = 5 } if = { limit = { var:tsin_labor_grievance < 0 } set_variable = { name = tsin_labor_grievance value = 0 } }
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.14.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 4 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.15 = { type = country_event
+title = tsin_history2.15.title desc = tsin_history2.15.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage = 4 current_year > var:tsin_hist2_military_year }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year }  }
+option = { name = tsin_history2.15.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 5 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.15.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 5 } }
+
+change_variable = { name = tsin_labor_grievance add = 3 } if = { limit = { var:tsin_labor_grievance > 100 } set_variable = { name = tsin_labor_grievance value = 100 } }
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.16 = { type = country_event
+title = tsin_history2.16.title desc = tsin_history2.16.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1882 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage = 5 current_year > var:tsin_hist2_military_year }
+immediate = { set_variable = { name = tsin_hist2_military_year value = current_year }  }
+option = { name = tsin_history2.16.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_military years = 3 mode = replace }
+
+change_variable = { name = tsin_labor_grievance subtract = 5 } if = { limit = { var:tsin_labor_grievance < 0 } set_variable = { name = tsin_labor_grievance value = 0 } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.16.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_military_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.21 = { type = country_event
+title = tsin_history2.21.title desc = tsin_history2.21.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_stink_stage } exists = capital OR = { has_variable = tsin_civic_great_stink_done has_variable = tsin_society_great_stink_done } }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year } capital = { root = { set_variable = { name = tsin_hist2_stink_location value = prev } } } }
+option = { name = tsin_history2.21.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 1 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.21.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 1 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.22 = { type = country_event
+title = tsin_history2.22.title desc = tsin_history2.22.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 1 current_year > var:tsin_hist2_stink_year }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.22.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 2 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.22.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 2 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.23 = { type = country_event
+title = tsin_history2.23.title desc = tsin_history2.23.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 2 current_year > var:tsin_hist2_stink_year }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.23.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 3 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.23.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 3 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.24 = { type = country_event
+title = tsin_history2.24.title desc = tsin_history2.24.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 3 current_year > var:tsin_hist2_stink_year }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.24.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 4 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.24.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 4 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.25 = { type = country_event
+title = tsin_history2.25.title desc = tsin_history2.25.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 4 current_year > var:tsin_hist2_stink_year }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.25.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 5 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.25.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 5 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.26 = { type = country_event
+title = tsin_history2.26.title desc = tsin_history2.26.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 5 current_year > var:tsin_hist2_stink_year }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.26.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 6 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.26.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 6 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.27 = { type = country_event
+title = tsin_history2.27.title desc = tsin_history2.27.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1858 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage = 6 current_year > var:tsin_hist2_stink_year var:tsin_hist2_stink_location ?= { owner = root has_building_with_at_least_one_level = tsin_waterworks } }
+immediate = { set_variable = { name = tsin_hist2_stink_year value = current_year }  }
+option = { name = tsin_history2.27.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_civic years = 3 mode = replace }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.27.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_stink_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.31 = { type = country_event
+title = tsin_history2.31.title desc = tsin_history2.31.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_pig_stage } at_war = no any_neighbor_country = { is_ai = yes at_war = no num_locations > 0 } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year } random_neighbor_country = { limit = { is_ai = yes at_war = no num_locations > 0 } root = { set_variable = { name = tsin_hist2_pig_partner value = prev } } } }
+option = { name = tsin_history2.31.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 1 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.31.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 1 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.32 = { type = country_event
+title = tsin_history2.32.title desc = tsin_history2.32.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage = 1 current_year > var:tsin_hist2_pig_year var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year }  }
+option = { name = tsin_history2.32.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 2 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.32.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 2 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.33 = { type = country_event
+title = tsin_history2.33.title desc = tsin_history2.33.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage = 2 current_year > var:tsin_hist2_pig_year var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year }  }
+option = { name = tsin_history2.33.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 3 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.33.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 3 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.34 = { type = country_event
+title = tsin_history2.34.title desc = tsin_history2.34.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage = 3 current_year > var:tsin_hist2_pig_year var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year }  }
+option = { name = tsin_history2.34.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 4 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.34.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 4 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.35 = { type = country_event
+title = tsin_history2.35.title desc = tsin_history2.35.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage = 4 current_year > var:tsin_hist2_pig_year var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year }  }
+option = { name = tsin_history2.35.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 5 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.35.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.36 = { type = country_event
+title = tsin_history2.36.title desc = tsin_history2.36.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1859 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage = 5 current_year > var:tsin_hist2_pig_year var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_pig_year value = current_year }  }
+option = { name = tsin_history2.36.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_diplomacy years = 3 mode = replace }
+
+if = { limit = { var:tsin_hist2_pig_partner ?= { num_locations > 0 } } set_variable = { name = tsin_hist2_compensation value = tsin_gold_cost_1 } if = { limit = { gold >= var:tsin_hist2_compensation } add_gold = { value = var:tsin_hist2_compensation multiply = -1 } var:tsin_hist2_pig_partner = { add_gold = root.var:tsin_hist2_compensation } } remove_variable = tsin_hist2_compensation }
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.36.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_pig_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.41 = { type = country_event
+title = tsin_history2.41.title desc = tsin_history2.41.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_boom_stage } tsin_company_count > 3 OR = { AND = { has_variable = tsin_entry_risk_quarters var:tsin_entry_risk_quarters >= 1 } AND = { has_variable = tsin_stress_quarters var:tsin_stress_quarters >= 1 } } }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.41.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 1 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.41.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 1 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.42 = { type = country_event
+title = tsin_history2.42.title desc = tsin_history2.42.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 1 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.42.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 2 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.42.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 2 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.43 = { type = country_event
+title = tsin_history2.43.title desc = tsin_history2.43.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 2 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.43.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 3 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.43.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 3 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.44 = { type = country_event
+title = tsin_history2.44.title desc = tsin_history2.44.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 3 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.44.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 4 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.44.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 4 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.45 = { type = country_event
+title = tsin_history2.45.title desc = tsin_history2.45.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 4 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.45.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 5 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.45.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 5 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.46 = { type = country_event
+title = tsin_history2.46.title desc = tsin_history2.46.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 5 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.46.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 6 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.46.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 6 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.47 = { type = country_event
+title = tsin_history2.47.title desc = tsin_history2.47.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1870 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage = 6 current_year > var:tsin_hist2_boom_year }
+immediate = { set_variable = { name = tsin_hist2_boom_year value = current_year }  }
+option = { name = tsin_history2.47.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_finance years = 3 mode = replace }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.47.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_boom_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.51 = { type = country_event
+title = tsin_history2.51.title desc = tsin_history2.51.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } NOT = { has_variable = tsin_hist2_mission_stage } at_war = no has_advance = tsin_steam_age_advance any_country = { is_ai = yes at_war = no num_locations > 0 NOT = { this = root } has_advance = tsin_industrial_capitalism_advance any_owned_location = { has_building_with_at_least_one_level = tsin_machine_works } NOT = { has_variable = tsin_hist2_visit_origin } } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.51.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 1 } }
+
+tsin_hist2_mission_invite_effect = yes
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.51.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.52 = { type = country_event
+title = tsin_history2.52.title desc = tsin_history2.52.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 1 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } has_variable = tsin_hist2_mission_accepted }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.52.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 2 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.52.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.53 = { type = country_event
+title = tsin_history2.53.title desc = tsin_history2.53.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 2 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.53.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 3 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.53.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 3 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.54 = { type = country_event
+title = tsin_history2.54.title desc = tsin_history2.54.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 3 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.54.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 4 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.54.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 4 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.55 = { type = country_event
+title = tsin_history2.55.title desc = tsin_history2.55.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 4 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.55.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 5 } }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.55.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 5 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.56 = { type = country_event
+title = tsin_history2.56.title desc = tsin_history2.56.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 5 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.56.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 6 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.56.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 6 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.57 = { type = country_event
+title = tsin_history2.57.title desc = tsin_history2.57.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 6 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.57.a
+trigger = { gold >= tsin_gold_cost_1 }
+if = { limit = { gold >= tsin_gold_cost_1 }
+change_gold_effect = { scale = -1 }
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 7 } }
+
+}
+else = { hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } } }
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.57.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.58 = { type = country_event
+title = tsin_history2.58.title desc = tsin_history2.58.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { is_ai = no current_age = age_7_industrialization current_year >= 1860 current_year < 1900
+NOT = { has_game_rule = tsin_historical_events_off } has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage = 7 current_year > var:tsin_hist2_mission_year var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } }
+immediate = { set_variable = { name = tsin_hist2_mission_year value = current_year }  }
+option = { name = tsin_history2.58.a
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+add_country_modifier = { modifier = tsin_history2_study years = 3 mode = replace }
+
+ai_chance = { factor = 4 }
+}
+option = { name = tsin_history2.58.b
+
+
+hidden_effect = { set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+
+ai_chance = { factor = 1 }
+}
+}
+tsin_history2.99 = { type = country_event title = tsin_history2.99.title desc = tsin_history2.99.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+trigger = { has_variable = tsin_hist2_visit_origin var:tsin_hist2_visit_origin ?= { num_locations > 0 } }
+option = { name = tsin_history2.99.a
+var:tsin_hist2_visit_origin = { set_variable = tsin_hist2_mission_accepted }
+remove_variable = tsin_hist2_visit_origin ai_chance = { factor = 4 } }
+option = { name = tsin_history2.99.b
+var:tsin_hist2_visit_origin = { set_variable = { name = tsin_hist2_mission_stage value = 99 } trigger_event_non_silently = tsin_history2.100 }
+remove_variable = tsin_hist2_visit_origin ai_chance = { factor = 1 } }
+}
+tsin_history2.100 = { type = country_event title = tsin_history2.100.title desc = tsin_history2.100.desc outcome = neutral
+illustration_tags = { 10 = interior 10 = regular }
+immediate = { remove_variable = tsin_hist2_mission_partner }
+option = { name = tsin_history2.100.a }
+}

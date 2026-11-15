@@ -1,0 +1,24 @@
+﻿tsin_hist2_mission_invite_effect = {
+save_scope_as = tsin_hist2_visitor
+ordered_country = {
+limit = { is_ai = yes at_war = no num_locations > 0 NOT = { this = root }
+has_advance = tsin_industrial_capitalism_advance
+any_owned_location = { has_building_with_at_least_one_level = tsin_machine_works }
+NOT = { has_variable = tsin_hist2_visit_origin } }
+order_by = num_locations max = 1
+save_scope_as = tsin_hist2_host
+set_variable = { name = tsin_hist2_visit_origin value = scope:tsin_hist2_visitor }
+scope:tsin_hist2_visitor = { set_variable = { name = tsin_hist2_mission_partner value = scope:tsin_hist2_host } }
+trigger_event_non_silently = tsin_history2.99
+}
+}
+tsin_hist2_boundary_cleanup_effect = {
+if = { limit = { has_variable = tsin_hist2_strike_stage var:tsin_hist2_strike_stage < 99 } set_variable = { name = tsin_hist2_strike_stage value = 99 } }
+if = { limit = { has_variable = tsin_hist2_military_stage var:tsin_hist2_military_stage < 99 } set_variable = { name = tsin_hist2_military_stage value = 99 } }
+if = { limit = { has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage < 99 } set_variable = { name = tsin_hist2_stink_stage value = 99 } }
+if = { limit = { has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage < 99 } set_variable = { name = tsin_hist2_pig_stage value = 99 } }
+if = { limit = { has_variable = tsin_hist2_boom_stage var:tsin_hist2_boom_stage < 99 } set_variable = { name = tsin_hist2_boom_stage value = 99 } }
+if = { limit = { has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage < 99 } set_variable = { name = tsin_hist2_mission_stage value = 99 } }
+remove_variable = tsin_hist2_mission_partner remove_variable = tsin_hist2_mission_accepted
+remove_variable = tsin_hist2_visit_origin remove_variable = tsin_hist2_pig_partner remove_variable = tsin_hist2_stink_location
+}

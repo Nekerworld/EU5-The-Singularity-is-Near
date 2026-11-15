@@ -1,0 +1,11 @@
+﻿XBR = { pattern = "pattern_solid.dds" color1 = "green" color2 = "green" color3 = "green" colored_emblem = { texture = "ce_lozenge.dds" color1 = "yellow" instance = { position = { 0.50 0.50 } scale = { 0.75 0.75 } } } }
+XAR = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "blue" color2 = "white" color3 = "blue" }
+XCZ = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "blue" color2 = "white" color3 = "red" }
+XPE = { pattern = "pattern_tricolor_vertical_01.dds" color1 = "red" color2 = "white" color3 = "red" }
+XBO = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "red" color2 = "yellow" color3 = "green" }
+XGC = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "yellow" color2 = "blue" color3 = "red" }
+XCO = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "yellow" color2 = "blue" color3 = "red" }
+XVZ = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "yellow" color2 = "blue" color3 = "red" }
+XEC = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "yellow" color2 = "blue" color3 = "red" }
+XUY = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "white" color2 = "blue" color3 = "white" }
+XPY = { pattern = "pattern_tricolor_horizontal_01.dds" color1 = "red" color2 = "white" color3 = "blue" }

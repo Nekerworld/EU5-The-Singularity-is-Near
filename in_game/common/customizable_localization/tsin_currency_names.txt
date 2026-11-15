@@ -7,6 +7,6 @@ text = { trigger = { OR = { tag = JAP } } localization_key = TSIN_LEDGER_CURRENC
 text = { trigger = { OR = { tag = CHI tag = TQG tag = MCH } } localization_key = TSIN_LEDGER_CURRENCY_TAEL }
 text = { trigger = { OR = { tag = MUG } } localization_key = TSIN_LEDGER_CURRENCY_INR }
 text = { trigger = { OR = { tag = USA } } localization_key = TSIN_LEDGER_CURRENCY_USD }
-text = { trigger = { OR = { tag = MEX tag = TAR tag = TCH tag = TCO tag = TPE tag = TBO tag = TUY } } localization_key = TSIN_LEDGER_CURRENCY_PESO }
-text = { trigger = { OR = { tag = TBR } } localization_key = TSIN_LEDGER_CURRENCY_BRL }
+text = { trigger = { OR = { tag = MEX tag = XAR tag = XCZ tag = XCO tag = XPE tag = XBO tag = XUY } } localization_key = TSIN_LEDGER_CURRENCY_PESO }
+text = { trigger = { OR = { tag = XBR } } localization_key = TSIN_LEDGER_CURRENCY_BRL }
 text = { fallback = yes localization_key = TSIN_LEDGER_CURRENCY_LOCAL } }

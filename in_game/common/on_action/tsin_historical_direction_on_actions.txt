@@ -1,6 +1,6 @@
 ﻿yearly_country_pulse = { on_actions = { tsin_direction_yearly } }
 tsin_direction_yearly = {
-trigger = { current_year >= 1500 current_year <= 1945 OR = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY tag = RUS tag = FRA tag = TUR tag = IRA tag = SIA } has_variable = tsin_direction_reviewed } }
+trigger = { current_year >= 1500 current_year <= 1945 OR = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = CHI tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = XBR tag = XAR tag = XCZ tag = XPE tag = XBO tag = XGC tag = XCO tag = XVZ tag = XEC tag = XUY tag = XPY tag = RUS tag = FRA tag = TUR tag = IRA tag = SIA } has_variable = tsin_direction_reviewed } }
 effect = {
 if = { limit = { tsin_history_ai_realm = yes NOT = { has_game_rule = tsin_lucky_nations_off }
 NOT = { has_variable = hex_key } NOT = { tsin_lucky_human_war_trigger = yes } }

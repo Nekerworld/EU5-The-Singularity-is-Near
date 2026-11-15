@@ -27,6 +27,8 @@ def build():
         follow=f'NOT = {{ has_variable = {prefix}_year }}' if stage==0 else f'current_year > var:{prefix}_year'
         finish=row.get('single') or stage==3
         next_stage=99 if finish else stage+1
+        reward='add_country_modifier = { modifier = tsin_history_verified_practice years = 3 mode = replace }' if finish else ''
+        payment=f'if = {{ limit = {{ gold >= tsin_gold_cost_2 }} change_gold_effect = {{ scale = -2 }} {reward} }} else = {{ set_variable = {{ name = {prefix}_stage value = 99 }} }}' if row['paid'] else reward
         events += [f'''{name} = {{
     type = country_event
     title = {name}.title
@@ -49,8 +51,7 @@ def build():
     option = {{
         name = {name}.a
         {'trigger = { gold >= tsin_gold_cost_2 }' if row['paid'] else ''}
-        {'change_gold_effect = { scale = -2 }' if row['paid'] else ''}
-        {'add_country_modifier = { modifier = tsin_history_verified_practice years = 3 mode = replace }' if finish else ''}
+        {payment}
         ai_chance = {{ factor = 4 }}
     }}
     option = {{
@@ -96,11 +97,11 @@ tsin_history_wave1_dense = {{
 '''
     common={
         'tsin_historical_events':('TSIN additional historical events','TSIN 추가 역사 사건'),
-        'tsin_historical_events_desc':('First historical wave: four local chains and eight short events. Uses a separate bounded yearly draw, not the original flavour budget.','첫 역사 사건 제작분: 지역 사건열 네 종류와 짧은 사건 여덟 종류입니다. 기존 풍미 예산과 분리된 제한적 연간 추첨을 사용합니다.'),
+        'tsin_historical_events_desc':('Additional historical waves with bounded yearly draws. Player countries receive up to three additional events, or six under Dense. Original TSIN flavour remains separate.','추가 역사 사건 제작분을 제한적으로 추첨합니다. 인간 국가는 연 최대 3개, 고밀도에서는 최대 6개 추가 사건을 받으며 기존 풍미 예산은 별도로 유지됩니다.'),
         'tsin_historical_events_normal':('Standard additional wave','기본 추가 사건'),
-        'tsin_historical_events_normal_desc':('At most one eligible event per year from this wave. Existing TSIN events remain separate.','이 제작분에서 조건을 만족하는 사건을 연 최대 한 번 추첨합니다. 기존 TSIN 사건은 별도로 유지됩니다.'),
+        'tsin_historical_events_normal_desc':('At most three additional player events per year across both waves; one for AI countries. Existing TSIN flavour remains separate.','제작분 전체에서 인간 국가는 연 최대 3번, AI는 최대 1번 추첨합니다. 기존 TSIN 풍미 사건은 별도로 유지됩니다.'),
         'tsin_historical_events_dense':('Dense additional wave','고밀도 추가 사건'),
-        'tsin_historical_events_dense_desc':('At most two draws per year. A chain cannot advance twice in the same year.','연 최대 두 번 추첨하며 같은 사건열은 한 해에 두 단계 진행하지 않습니다.'),
+        'tsin_historical_events_dense_desc':('At most six additional player draws per year, two for AI countries. A chain cannot advance twice in one year.','인간 국가는 연 최대 6번, AI는 최대 2번 추첨하며 같은 사건열은 한 해에 두 단계 진행하지 않습니다.'),
         'tsin_historical_events_off':('Disabled','끔'),
         'tsin_historical_events_off_desc':('Do not draw first-wave historical events. Past choices are retained.','첫 제작분의 역사 사건을 추첨하지 않습니다. 과거 선택은 유지됩니다.'),
         'STATIC_MODIFIER_NAME_tsin_history_verified_practice':('Verified public practices','검증된 공공 실무'),

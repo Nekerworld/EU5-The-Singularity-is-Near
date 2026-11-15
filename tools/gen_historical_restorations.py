@@ -24,13 +24,15 @@ def build():
         triggers += [f'''{p}_trigger = {{
 has_game_rule = tsin_lucky_nations_force
 current_year >= {r['fallback']} current_year < {r['end']}
+OR = {{ NOT = {{ has_global_variable = {p}_count }} global_var:{p}_count < 2 }}
+OR = {{ NOT = {{ has_global_variable = {p}_next }} current_year >= global_var:{p}_next }}
 NOT = {{ country_exists = c:{r['tag']} }} NOT = {{ {blocked} = yes }}
 NOT = {{ any_country = {{ {candidate} = yes }} }}
 location:{centre} = {{ {local_culture} }}
 ''']
         for core in r['cores']:
             triggers += [f'''location:{core} = {{
-is_ownable = yes is_capital = no is_historical_capital = no controller = owner
+is_ownable = yes population > 0 is_capital = no controller = owner
 owner ?= {{ tsin_history_ai_realm = yes at_war = no num_locations > {p}_outgoing
 NOT = {{ tsin_lucky_human_war_trigger = yes }} }}
 }}''']
@@ -40,11 +42,15 @@ NOT = {{ tsin_lucky_human_war_trigger = yes }} }}
         effects += [f'''{p}_effect = {{
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = {{ limit = {{ {p}_trigger = yes }}
+if = {{ limit = {{ NOT = {{ has_global_variable = {p}_count }} }} set_global_variable = {{ name = {p}_count value = 0 }} }}
+change_global_variable = {{ name = {p}_count add = 1 }}
+set_global_variable = {{ name = {p}_next value = tsin_restoration_next_year }}
 location:{centre} = {{
 save_scope_as = {p}_centre
 owner = {{ save_scope_as = {p}_sponsor }}
 create_country_from_location = {{
 save_scope_as = {p}_country
+set_capital = scope:{p}_centre
 change_culture = {'scope:'+p+'_sponsor.culture' if r.get('colonial') else 'scope:'+p+'_centre.dominant_culture'}
 change_religion = {'scope:'+p+'_sponsor.religion' if r.get('colonial') else 'scope:'+p+'_centre.dominant_religion'}
 change_government_type = government_type:{'republic' if r.get('colonial') else 'monarchy'}
@@ -89,7 +95,7 @@ else = { set_global_variable = { name = tsin_restoration_year value = current_ye
 '''
     en.update(STATIC_MODIFIER_NAME_tsin_restored_nation_support='Restored national administration',STATIC_MODIFIER_DESC_tsin_restored_nation_support='Five years of temporary support after a protected restoration. Removed against human realms; never permanent luck.')
     ko.update(STATIC_MODIFIER_NAME_tsin_restored_nation_support='복원 국가의 행정 정비',STATIC_MODIFIER_DESC_tsin_restored_nation_support='보호 조건을 통과해 복원된 국가의 5년 임시 지원입니다. 인간 세력권과 싸우면 제거되며 영구 특혜가 아닙니다.')
-    result={'in_game/common/scripted_triggers/tsin_restoration_triggers.txt':'\n'.join(triggers),'in_game/common/scripted_effects/tsin_restoration_effects.txt':'\n'.join(effects),'in_game/common/script_values/tsin_restoration_values.txt':'\n'.join(values),'in_game/common/on_action/tsin_restoration_on_actions.txt':actions,'main_menu/common/static_modifiers/tsin_restoration_modifiers.txt':'tsin_restored_nation_support = { game_data = { category = country } land_morale_modifier = 0.20 discipline = 0.10 global_manpower_modifier = 0.30 }\n'}
+    result={'in_game/common/scripted_triggers/tsin_restoration_triggers.txt':'\n'.join(triggers),'in_game/common/scripted_effects/tsin_restoration_effects.txt':'\n'.join(effects),'in_game/common/script_values/tsin_restoration_values.txt':'\n'.join(values)+'\ntsin_restoration_next_year = { value = current_year add = 50 }','in_game/common/on_action/tsin_restoration_on_actions.txt':actions,'main_menu/common/static_modifiers/tsin_restoration_modifiers.txt':'tsin_restored_nation_support = { game_data = { category = country } land_morale_modifier = 0.20 discipline = 0.10 global_manpower_modifier = 0.30 }\n'}
     for lang,entries in [('english',en),('korean',ko)]:result[f'main_menu/localization/{lang}/tsin_restoration_l_{lang}.yml']='l_'+lang+':\n'+'\n'.join(' '+k+': '+json.dumps(v,ensure_ascii=False) for k,v in entries.items())
     return {k:'\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()}
 

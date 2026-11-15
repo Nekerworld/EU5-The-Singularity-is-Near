@@ -31,7 +31,7 @@ def build():
     def block(key,body):return f'{key} = {{\n{body}\n}}\n'
     def policy():return f'has_policy = policy:{FREE}'
     # Eligibility and quantities are bounded, read-only checks.
-    triggers=[];values=[block('tsin_gold_cost_1','value = scaled_gold_for_effect')];effects=[];guis=[];decisions=[];mods=[]
+    triggers=[];values=[block('tsin_gold_cost_unit','value = 1\nadd = { value = capital_wealth multiply = 0.20 }\nadd = { value = country_economical_base multiply = 0.05 }\nmin = 1\nmax = 5000'),block('tsin_gold_cost_1','value = tsin_gold_cost_unit')];effects=[];guis=[];decisions=[];mods=[]
     law=['tsin_company_regime_law = { law_category = socioeconomic potential = { always = yes }']
     regimes=[('traditionalism',1337,2,'Traditionalism','전통주의'),('mercantilism',1450,3,'Mercantilism','중상주의'),
         ('interventionism',1600,5,'Interventionism','간섭주의'),('laissez_faire',1750,0,'Laissez-faire','자유방임주의'),

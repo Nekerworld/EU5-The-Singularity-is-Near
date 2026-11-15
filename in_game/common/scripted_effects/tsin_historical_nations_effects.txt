@@ -29,7 +29,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:london owns = location:edinburgh owns = location:dublin }
+if = { limit = { is_subject = no at_war = no owns = location:london owns = location:edinburgh owns = location:dublin  }
 if = { limit = { NOT = { tag = GBR } } form_country = formable_country:tsin_nation_britain_f }
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -70,7 +70,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:berlin owns = location:frankfurt owns = location:munich }
+if = { limit = { is_subject = no at_war = no owns = location:berlin owns = location:frankfurt owns = location:munich  }
 form_country = formable_country:tsin_nation_germany_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -113,7 +113,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:turin owns = location:milano owns = location:florence owns = location:naples }
+if = { limit = { is_subject = no at_war = no owns = location:turin owns = location:milano owns = location:florence owns = location:naples  }
 form_country = formable_country:tsin_nation_italy_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -163,7 +163,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:vienna owns = location:buda owns = location:pest }
+if = { limit = { is_subject = no at_war = no owns = location:vienna owns = location:buda owns = location:pest  }
 
 set_variable = tsin_austria_hungary_formed
 change_country_name = tsin_austria_hungary_name
@@ -210,7 +210,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:shackamaxon owns = location:manhattan }
+if = { limit = { is_subject = no at_war = no owns = location:shackamaxon owns = location:manhattan  }
 form_country = formable_country:tsin_nation_usa_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -245,7 +245,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:tenochtitlan }
+if = { limit = { is_subject = no at_war = no owns = location:tenochtitlan  }
 form_country = formable_country:tsin_nation_mexico_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -286,7 +286,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:delhi owns = location:agra owns = location:lahore }
+if = { limit = { is_subject = no at_war = no owns = location:delhi owns = location:agra owns = location:lahore  }
 form_country = formable_country:tsin_nation_mughals_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -301,7 +301,7 @@ tsin_nation_qing_form = {
 if = { limit = { tsin_nation_qing_force = yes }
 location:dadu = { if = { limit = { NOT = { owner ?= scope:tsin_nation_qing_candidate } } change_location_owner = scope:tsin_nation_qing_candidate change_location_controller = scope:tsin_nation_qing_candidate } }
 form_country = formable_country:tsin_nation_qing_f
-change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
+set_variable = tsin_qing_formed change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
 debug_log = tsin_nation_qing_log
@@ -323,9 +323,9 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:dadu }
+if = { limit = { is_subject = no at_war = no owns = location:dadu NOT = { country_exists = c:CHI } OR = { NOT = { exists = international_organization:middle_kingdom } is_leader_of_international_organization = international_organization:middle_kingdom } NOT = { any_subject_or_below = { tsin_history_human_realm = yes } } }
 form_country = formable_country:tsin_nation_qing_f
-change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
+set_variable = tsin_qing_formed change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
 else_if = { limit = { tsin_nation_qing_force = yes } trigger_event_non_silently = tsin_nations.8 }
@@ -359,7 +359,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:kyoto }
+if = { limit = { is_subject = no at_war = no owns = location:kyoto  }
 form_country = formable_country:tsin_nation_japan_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -394,7 +394,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:brussels }
+if = { limit = { is_subject = no at_war = no owns = location:brussels  }
 form_country = formable_country:tsin_nation_belgium_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -429,7 +429,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:athens }
+if = { limit = { is_subject = no at_war = no owns = location:athens  }
 form_country = formable_country:tsin_nation_greece_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -466,7 +466,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:bucharest }
+if = { limit = { is_subject = no at_war = no owns = location:bucharest  }
 form_country = formable_country:tsin_nation_romania_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -501,7 +501,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:belgrad }
+if = { limit = { is_subject = no at_war = no owns = location:belgrad  }
 form_country = formable_country:tsin_nation_serbia_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -536,7 +536,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:sredets }
+if = { limit = { is_subject = no at_war = no owns = location:sredets  }
 form_country = formable_country:tsin_nation_bulgaria_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -571,7 +571,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:goana_para }
+if = { limit = { is_subject = no at_war = no owns = location:goana_para  }
 form_country = formable_country:tsin_nation_brazil_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -606,7 +606,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:chana }
+if = { limit = { is_subject = no at_war = no owns = location:chana  }
 form_country = formable_country:tsin_nation_argentina_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -641,7 +641,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:meli_pillan }
+if = { limit = { is_subject = no at_war = no owns = location:meli_pillan  }
 form_country = formable_country:tsin_nation_chile_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -676,7 +676,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:rimaq }
+if = { limit = { is_subject = no at_war = no owns = location:rimaq  }
 form_country = formable_country:tsin_nation_peru_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -711,7 +711,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:ccantumarcani }
+if = { limit = { is_subject = no at_war = no owns = location:ccantumarcani  }
 form_country = formable_country:tsin_nation_bolivia_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -750,7 +750,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia owns = location:caracas owns = location:quito }
+if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia owns = location:caracas owns = location:quito  }
 form_country = formable_country:tsin_nation_gran_colombia_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -785,7 +785,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia }
+if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia  }
 form_country = formable_country:tsin_nation_colombia_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -820,7 +820,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:caracas }
+if = { limit = { is_subject = no at_war = no owns = location:caracas  }
 form_country = formable_country:tsin_nation_venezuela_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -855,7 +855,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:quito }
+if = { limit = { is_subject = no at_war = no owns = location:quito  }
 form_country = formable_country:tsin_nation_ecuador_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -890,7 +890,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:guenoa }
+if = { limit = { is_subject = no at_war = no owns = location:guenoa  }
 form_country = formable_country:tsin_nation_uruguay_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }
@@ -925,7 +925,7 @@ set_variable = { name = tsin_nation_support_years value = 0 } }
 change_variable = { name = tsin_nation_support_years add = 1 }
 if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
 else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
-if = { limit = { is_subject = no at_war = no owns = location:nemby }
+if = { limit = { is_subject = no at_war = no owns = location:nemby  }
 form_country = formable_country:tsin_nation_paraguay_f
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }

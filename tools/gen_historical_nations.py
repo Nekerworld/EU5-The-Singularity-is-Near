@@ -2,7 +2,21 @@
 import argparse
 import json
 import re
+from functools import lru_cache
 import pdx
+
+
+
+@lru_cache(maxsize=1)
+def native_tags():
+    tags=set()
+    for folder in ['in_game/setup/countries','main_menu/setup']:
+        for path in (pdx.game_root()/folder).rglob('*.txt'):
+            text=pdx.read_text(path)
+            tags.update(re.findall(r'(?m)^\s*([A-Z]{3})\s*=\s*\{',text))
+    for path in (pdx.game_root()/'in_game/common/formable_countries').glob('*.txt'):
+        tags.update(re.findall(r'(?m)^\s*tag\s*=\s*([A-Z]{3})\b',pdx.read_text(path)))
+    return frozenset(tags)
 
 
 def registry():
@@ -12,6 +26,7 @@ def registry():
     if len(set(ids))!=len(ids) or len(set(tags))!=len(tags):raise ValueError('duplicate historical role/tag')
     geography=pdx.read_text(pdx.game_root()/'in_game/map_data/definitions.txt')
     for r in data['nations']:
+        if r.get('custom') and r['tag'] in native_tags():raise ValueError('custom tag collides with native country '+r['tag'])
         if not (r['start'] <= r['fallback'] < r['end']):raise ValueError('invalid timeline '+r['id'])
         if not r['cores'] or len(r['cores'])!=len(set(r['cores'])):raise ValueError('invalid core set')
         for location in r['cores']:
@@ -34,6 +49,7 @@ def build():
         capitals=' '.join('capital.region = region:'+x for x in row['regions'])
         own_one=' '.join('owns = location:'+x for x in cores)
         own_one += ' ' + ' '.join('tag = '+x for x in row.get('preferred',[]))
+        ownership_gate='OR = { '+own_one+' }' if row.get('require_core',True) else ''
         independence='OR = { is_subject = no is_subject_type = colonial_nation }' if row.get('colonial') else 'is_subject = no is_junior_partner = no'
         culture='OR = { '+' '.join('culture = { has_culture_group = culture_group:'+g+' }' for g in row['groups'])+' }'
         complete=' '.join('owns = location:'+x for x in cores)
@@ -41,6 +57,8 @@ def build():
         excluded=' '.join('tag = '+other['tag'] for other in rows if other['tag']!=tag)
         if id=='austria_hungary':excluded=excluded.replace('tag = HAB','')
         native_extra=row.get('extra','')
+        if id=='qing':
+            exists='c:CHI ?= { OR = { has_variable = tsin_qing_formed has_variable = hex_proclaimed_qing culture = { has_culture_group = culture_group:jurchen_group } } }'
         if id=='britain':
             native_extra += ' trigger_if = { limit = { country_exists = c:GBR } tag = GBR }'
             exists='c:GBR ?= { '+' '.join('owns = location:'+x for x in cores)+' }'
@@ -56,7 +74,7 @@ tsin_history_ai_realm = yes {independence}
 num_locations >= {row['minimum_locations']}
 {culture}
 OR = {{ {capitals} }}
-OR = {{ {own_one} }}
+{ownership_gate}
 NOT = {{ OR = {{ {excluded} }} }}
 {native_extra}
 }}
@@ -64,10 +82,11 @@ NOT = {{ OR = {{ {excluded} }} }}
 {prefix}_campaign = yes {prefix}_candidate = yes
 has_game_rule = tsin_lucky_nations_force current_year >= {row['fallback']}
 at_war = no NOT = {{ tsin_lucky_human_war_trigger = yes }}
+{row.get("form_gate", "")}
 ''']
         for core in cores:
             triggers += [f'''location:{core} = {{ OR = {{ owner ?= {candidate}
-AND = {{ controller = owner is_capital = no is_historical_capital = no
+AND = {{ controller = owner is_capital = no
 owner ?= {{ tsin_history_ai_realm = yes at_war = no num_locations > {prefix}_outgoing }} }} }} }}''',
             ]
         triggers+=['}']
@@ -85,7 +104,7 @@ if = { limit = { exists = scope:tsin_ah_culture } add_accepted_culture = scope:t
 }
 '''
         if id=='britain':form='if = { limit = { NOT = { tag = GBR } } '+form+' }'
-        if id=='qing':form+='\nchange_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG'
+        if id=='qing':form+='\nset_variable = tsin_qing_formed change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG'
         independence_effect='if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }' if row.get('colonial') else ''
         moves='\n'.join(f'location:{x} = {{ if = {{ limit = {{ NOT = {{ owner ?= {candidate} }} }} change_location_owner = {candidate} change_location_controller = {candidate} }} }}' for x in cores)
         effects += [f'''{prefix}_form = {{
@@ -117,7 +136,7 @@ set_variable = {{ name = tsin_nation_support_years value = 0 }} }}
 change_variable = {{ name = tsin_nation_support_years add = 1 }}
 if = {{ limit = {{ var:tsin_nation_support_years >= 15 }} add_country_modifier = {{ modifier = tsin_nation_support_strong years = 2 mode = replace }} }}
 else = {{ add_country_modifier = {{ modifier = tsin_nation_support years = 2 mode = replace }} }}
-if = {{ limit = {{ is_subject = no at_war = no {complete} }}
+if = {{ limit = {{ is_subject = no at_war = no {complete} {row.get("form_gate", "")} }}
 {form}
 remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
 }}
@@ -128,13 +147,18 @@ else_if = {{ limit = {{ {prefix}_force = yes }} trigger_event_non_silently = tsi
 }}
 }}''']
         if id!='austria_hungary':
+            native_form_effect=''
+            if id=='qing':native_form_effect='change_government_type = government_type:monarchy rtr_recreate_middle_kingdom = yes'
+            elif id in ['germany','mughals']:native_form_effect='if = { limit = { country_rank_level < 4 } set_country_rank_effect = { rank = country_rank:rank_empire } }'
+            elif row.get('colonial') and id!='brazil':native_form_effect='change_government_type = government_type:republic'
+            elif id=='brazil':native_form_effect='change_government_type = government_type:monarchy'
             formables += [f'''{prefix}_f = {{ level = {row.get('level',3)} required_locations_fraction = 0 rule = historical
 potential = {{ always = no }} # Only the guarded progression coordinator may form this variant.
-allow = {{ {prefix}_candidate = yes {complete} }}
+allow = {{ tsin_history_ai_realm = yes is_subject = no {complete} }}
 name = {row.get('name_key',tag)} adjective = {row.get('adj_key',tag+'_ADJ')}
 tag = {tag} flag = {row.get('flag',tag)} color = {row.get('color','map_'+tag)}
 regions = {{ {' '.join(row['regions'])} }}
-form_effect = {{ }}
+form_effect = {{ {native_form_effect} }}
 }}''']
         events += [f'''tsin_nations.{number} = {{ type = country_event
 title = tsin_nations.{number}.title desc = tsin_nations.{number}.desc outcome = neutral
@@ -184,6 +208,18 @@ effect = { tsin_nations_year_effect = yes }
         'in_game/events/tsin_historical_nations.txt':'\n'.join(events),
         'main_menu/common/static_modifiers/tsin_historical_nations_modifiers.txt':modifiers,
     }
+    colors=['colors = {'];flags=[]
+    for row in rows:
+        if not row.get('custom'):continue
+        colors.append(row['color']+' = rgb { '+' '.join(map(str,row['map_rgb']))+' }')
+        style,c1,c2,c3=row['flag_style']
+        pattern='pattern_solid.dds' if style=='solid' else 'pattern_tricolor_'+style+'_01.dds'
+        flag=f'{row["tag"]} = {{ pattern = "{pattern}" color1 = "{c1}" color2 = "{c2}" color3 = "{c3}"'
+        if row['id']=='brazil':flag+=' colored_emblem = { texture = "ce_lozenge.dds" color1 = "yellow" instance = { position = { 0.50 0.50 } scale = { 0.75 0.75 } } }'
+        flags.append(flag+' }')
+    colors.append('}')
+    result['main_menu/common/named_colors/tsin_historical_nations.txt']='\n'.join(colors)
+    result['main_menu/common/coat_of_arms/coat_of_arms/tsin_historical_nations.txt']='\n'.join(flags)
     for lang,entries in [('english',en),('korean',ko)]:result[f'main_menu/localization/{lang}/tsin_historical_nations_l_{lang}.yml']='l_'+lang+':\n'+'\n'.join(' '+k+': '+json.dumps(v,ensure_ascii=False) for k,v in entries.items())
     return {k:'\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()}
 

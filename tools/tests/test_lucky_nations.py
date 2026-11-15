@@ -37,6 +37,7 @@ class SafetyFixture:
         if key=='prev':return prev
         if key=='this':return obj
         if key=='current_year':return self.year
+        if key.startswith('global_var:'):return getattr(self,'globals',{}).get(key[11:],0)
         if key=='scope:tsin_lucky_candidate':return self.candidate
         if key=='tsin_lucky_russia_outgoing_count':return sum(loc['owner'] is obj for loc in self.locations.values())
         if key.startswith('location:'):
@@ -59,6 +60,7 @@ class SafetyFixture:
                 answer=self.evaluate(self.definitions[key],obj,prev)
                 return answer==(value=='yes')
             if key=='any_country':return any(self.evaluate(value,country,obj) for country in self.countries)
+            if key=='has_global_variable':return value in getattr(self,'globals',{})
             if key=='has_variable':return value in obj
             if key=='has_game_rule':return value in self.rules
             if key=='country_exists':return False # Russia is absent in these fixtures.

@@ -1,11 +1,15 @@
 ﻿tsin_restore_russia_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_russia_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_russia_count } } set_global_variable = { name = tsin_restore_russia_count value = 0 } }
+change_global_variable = { name = tsin_restore_russia_count add = 1 }
+set_global_variable = { name = tsin_restore_russia_next value = tsin_restoration_next_year }
 location:moscow = {
 save_scope_as = tsin_restore_russia_centre
 owner = { save_scope_as = tsin_restore_russia_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_russia_country
+set_capital = scope:tsin_restore_russia_centre
 change_culture = scope:tsin_restore_russia_centre.dominant_culture
 change_religion = scope:tsin_restore_russia_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -49,11 +53,15 @@ debug_log = tsin_restore_russia_log
 tsin_restore_britain_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_britain_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_britain_count } } set_global_variable = { name = tsin_restore_britain_count value = 0 } }
+change_global_variable = { name = tsin_restore_britain_count add = 1 }
+set_global_variable = { name = tsin_restore_britain_next value = tsin_restoration_next_year }
 location:london = {
 save_scope_as = tsin_restore_britain_centre
 owner = { save_scope_as = tsin_restore_britain_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_britain_country
+set_capital = scope:tsin_restore_britain_centre
 change_culture = scope:tsin_restore_britain_centre.dominant_culture
 change_religion = scope:tsin_restore_britain_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -91,11 +99,15 @@ debug_log = tsin_restore_britain_log
 tsin_restore_germany_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_germany_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_germany_count } } set_global_variable = { name = tsin_restore_germany_count value = 0 } }
+change_global_variable = { name = tsin_restore_germany_count add = 1 }
+set_global_variable = { name = tsin_restore_germany_next value = tsin_restoration_next_year }
 location:berlin = {
 save_scope_as = tsin_restore_germany_centre
 owner = { save_scope_as = tsin_restore_germany_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_germany_country
+set_capital = scope:tsin_restore_germany_centre
 change_culture = scope:tsin_restore_germany_centre.dominant_culture
 change_religion = scope:tsin_restore_germany_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -133,11 +145,15 @@ debug_log = tsin_restore_germany_log
 tsin_restore_italy_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_italy_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_italy_count } } set_global_variable = { name = tsin_restore_italy_count value = 0 } }
+change_global_variable = { name = tsin_restore_italy_count add = 1 }
+set_global_variable = { name = tsin_restore_italy_next value = tsin_restoration_next_year }
 location:turin = {
 save_scope_as = tsin_restore_italy_centre
 owner = { save_scope_as = tsin_restore_italy_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_italy_country
+set_capital = scope:tsin_restore_italy_centre
 change_culture = scope:tsin_restore_italy_centre.dominant_culture
 change_religion = scope:tsin_restore_italy_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -181,11 +197,15 @@ debug_log = tsin_restore_italy_log
 tsin_restore_usa_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_usa_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_usa_count } } set_global_variable = { name = tsin_restore_usa_count value = 0 } }
+change_global_variable = { name = tsin_restore_usa_count add = 1 }
+set_global_variable = { name = tsin_restore_usa_next value = tsin_restoration_next_year }
 location:shackamaxon = {
 save_scope_as = tsin_restore_usa_centre
 owner = { save_scope_as = tsin_restore_usa_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_usa_country
+set_capital = scope:tsin_restore_usa_centre
 change_culture = scope:tsin_restore_usa_sponsor.culture
 change_religion = scope:tsin_restore_usa_sponsor.religion
 change_government_type = government_type:republic
@@ -217,11 +237,15 @@ debug_log = tsin_restore_usa_log
 tsin_restore_mexico_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_mexico_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_mexico_count } } set_global_variable = { name = tsin_restore_mexico_count value = 0 } }
+change_global_variable = { name = tsin_restore_mexico_count add = 1 }
+set_global_variable = { name = tsin_restore_mexico_next value = tsin_restoration_next_year }
 location:tenochtitlan = {
 save_scope_as = tsin_restore_mexico_centre
 owner = { save_scope_as = tsin_restore_mexico_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_mexico_country
+set_capital = scope:tsin_restore_mexico_centre
 change_culture = scope:tsin_restore_mexico_sponsor.culture
 change_religion = scope:tsin_restore_mexico_sponsor.religion
 change_government_type = government_type:republic
@@ -247,11 +271,15 @@ debug_log = tsin_restore_mexico_log
 tsin_restore_mughals_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_mughals_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_mughals_count } } set_global_variable = { name = tsin_restore_mughals_count value = 0 } }
+change_global_variable = { name = tsin_restore_mughals_count add = 1 }
+set_global_variable = { name = tsin_restore_mughals_next value = tsin_restoration_next_year }
 location:delhi = {
 save_scope_as = tsin_restore_mughals_centre
 owner = { save_scope_as = tsin_restore_mughals_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_mughals_country
+set_capital = scope:tsin_restore_mughals_centre
 change_culture = scope:tsin_restore_mughals_centre.dominant_culture
 change_religion = scope:tsin_restore_mughals_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -289,11 +317,15 @@ debug_log = tsin_restore_mughals_log
 tsin_restore_japan_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_japan_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_japan_count } } set_global_variable = { name = tsin_restore_japan_count value = 0 } }
+change_global_variable = { name = tsin_restore_japan_count add = 1 }
+set_global_variable = { name = tsin_restore_japan_next value = tsin_restoration_next_year }
 location:kyoto = {
 save_scope_as = tsin_restore_japan_centre
 owner = { save_scope_as = tsin_restore_japan_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_japan_country
+set_capital = scope:tsin_restore_japan_centre
 change_culture = scope:tsin_restore_japan_centre.dominant_culture
 change_religion = scope:tsin_restore_japan_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -319,11 +351,15 @@ debug_log = tsin_restore_japan_log
 tsin_restore_belgium_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_belgium_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_belgium_count } } set_global_variable = { name = tsin_restore_belgium_count value = 0 } }
+change_global_variable = { name = tsin_restore_belgium_count add = 1 }
+set_global_variable = { name = tsin_restore_belgium_next value = tsin_restoration_next_year }
 location:brussels = {
 save_scope_as = tsin_restore_belgium_centre
 owner = { save_scope_as = tsin_restore_belgium_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_belgium_country
+set_capital = scope:tsin_restore_belgium_centre
 change_culture = scope:tsin_restore_belgium_centre.dominant_culture
 change_religion = scope:tsin_restore_belgium_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -349,11 +385,15 @@ debug_log = tsin_restore_belgium_log
 tsin_restore_greece_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_greece_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_greece_count } } set_global_variable = { name = tsin_restore_greece_count value = 0 } }
+change_global_variable = { name = tsin_restore_greece_count add = 1 }
+set_global_variable = { name = tsin_restore_greece_next value = tsin_restoration_next_year }
 location:athens = {
 save_scope_as = tsin_restore_greece_centre
 owner = { save_scope_as = tsin_restore_greece_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_greece_country
+set_capital = scope:tsin_restore_greece_centre
 change_culture = scope:tsin_restore_greece_centre.dominant_culture
 change_religion = scope:tsin_restore_greece_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -379,11 +419,15 @@ debug_log = tsin_restore_greece_log
 tsin_restore_romania_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_romania_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_romania_count } } set_global_variable = { name = tsin_restore_romania_count value = 0 } }
+change_global_variable = { name = tsin_restore_romania_count add = 1 }
+set_global_variable = { name = tsin_restore_romania_next value = tsin_restoration_next_year }
 location:bucharest = {
 save_scope_as = tsin_restore_romania_centre
 owner = { save_scope_as = tsin_restore_romania_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_romania_country
+set_capital = scope:tsin_restore_romania_centre
 change_culture = scope:tsin_restore_romania_centre.dominant_culture
 change_religion = scope:tsin_restore_romania_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -409,11 +453,15 @@ debug_log = tsin_restore_romania_log
 tsin_restore_serbia_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_serbia_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_serbia_count } } set_global_variable = { name = tsin_restore_serbia_count value = 0 } }
+change_global_variable = { name = tsin_restore_serbia_count add = 1 }
+set_global_variable = { name = tsin_restore_serbia_next value = tsin_restoration_next_year }
 location:belgrad = {
 save_scope_as = tsin_restore_serbia_centre
 owner = { save_scope_as = tsin_restore_serbia_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_serbia_country
+set_capital = scope:tsin_restore_serbia_centre
 change_culture = scope:tsin_restore_serbia_centre.dominant_culture
 change_religion = scope:tsin_restore_serbia_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -439,11 +487,15 @@ debug_log = tsin_restore_serbia_log
 tsin_restore_bulgaria_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_bulgaria_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_bulgaria_count } } set_global_variable = { name = tsin_restore_bulgaria_count value = 0 } }
+change_global_variable = { name = tsin_restore_bulgaria_count add = 1 }
+set_global_variable = { name = tsin_restore_bulgaria_next value = tsin_restoration_next_year }
 location:sredets = {
 save_scope_as = tsin_restore_bulgaria_centre
 owner = { save_scope_as = tsin_restore_bulgaria_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_bulgaria_country
+set_capital = scope:tsin_restore_bulgaria_centre
 change_culture = scope:tsin_restore_bulgaria_centre.dominant_culture
 change_religion = scope:tsin_restore_bulgaria_centre.dominant_religion
 change_government_type = government_type:monarchy
@@ -469,11 +521,15 @@ debug_log = tsin_restore_bulgaria_log
 tsin_restore_brazil_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_brazil_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_brazil_count } } set_global_variable = { name = tsin_restore_brazil_count value = 0 } }
+change_global_variable = { name = tsin_restore_brazil_count add = 1 }
+set_global_variable = { name = tsin_restore_brazil_next value = tsin_restoration_next_year }
 location:goana_para = {
 save_scope_as = tsin_restore_brazil_centre
 owner = { save_scope_as = tsin_restore_brazil_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_brazil_country
+set_capital = scope:tsin_restore_brazil_centre
 change_culture = scope:tsin_restore_brazil_sponsor.culture
 change_religion = scope:tsin_restore_brazil_sponsor.religion
 change_government_type = government_type:republic
@@ -499,11 +555,15 @@ debug_log = tsin_restore_brazil_log
 tsin_restore_argentina_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_argentina_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_argentina_count } } set_global_variable = { name = tsin_restore_argentina_count value = 0 } }
+change_global_variable = { name = tsin_restore_argentina_count add = 1 }
+set_global_variable = { name = tsin_restore_argentina_next value = tsin_restoration_next_year }
 location:chana = {
 save_scope_as = tsin_restore_argentina_centre
 owner = { save_scope_as = tsin_restore_argentina_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_argentina_country
+set_capital = scope:tsin_restore_argentina_centre
 change_culture = scope:tsin_restore_argentina_sponsor.culture
 change_religion = scope:tsin_restore_argentina_sponsor.religion
 change_government_type = government_type:republic
@@ -529,11 +589,15 @@ debug_log = tsin_restore_argentina_log
 tsin_restore_chile_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_chile_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_chile_count } } set_global_variable = { name = tsin_restore_chile_count value = 0 } }
+change_global_variable = { name = tsin_restore_chile_count add = 1 }
+set_global_variable = { name = tsin_restore_chile_next value = tsin_restoration_next_year }
 location:meli_pillan = {
 save_scope_as = tsin_restore_chile_centre
 owner = { save_scope_as = tsin_restore_chile_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_chile_country
+set_capital = scope:tsin_restore_chile_centre
 change_culture = scope:tsin_restore_chile_sponsor.culture
 change_religion = scope:tsin_restore_chile_sponsor.religion
 change_government_type = government_type:republic
@@ -559,11 +623,15 @@ debug_log = tsin_restore_chile_log
 tsin_restore_peru_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_peru_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_peru_count } } set_global_variable = { name = tsin_restore_peru_count value = 0 } }
+change_global_variable = { name = tsin_restore_peru_count add = 1 }
+set_global_variable = { name = tsin_restore_peru_next value = tsin_restoration_next_year }
 location:rimaq = {
 save_scope_as = tsin_restore_peru_centre
 owner = { save_scope_as = tsin_restore_peru_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_peru_country
+set_capital = scope:tsin_restore_peru_centre
 change_culture = scope:tsin_restore_peru_sponsor.culture
 change_religion = scope:tsin_restore_peru_sponsor.religion
 change_government_type = government_type:republic
@@ -589,11 +657,15 @@ debug_log = tsin_restore_peru_log
 tsin_restore_bolivia_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_bolivia_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_bolivia_count } } set_global_variable = { name = tsin_restore_bolivia_count value = 0 } }
+change_global_variable = { name = tsin_restore_bolivia_count add = 1 }
+set_global_variable = { name = tsin_restore_bolivia_next value = tsin_restoration_next_year }
 location:ccantumarcani = {
 save_scope_as = tsin_restore_bolivia_centre
 owner = { save_scope_as = tsin_restore_bolivia_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_bolivia_country
+set_capital = scope:tsin_restore_bolivia_centre
 change_culture = scope:tsin_restore_bolivia_sponsor.culture
 change_religion = scope:tsin_restore_bolivia_sponsor.religion
 change_government_type = government_type:republic
@@ -619,11 +691,15 @@ debug_log = tsin_restore_bolivia_log
 tsin_restore_gran_colombia_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_gran_colombia_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_gran_colombia_count } } set_global_variable = { name = tsin_restore_gran_colombia_count value = 0 } }
+change_global_variable = { name = tsin_restore_gran_colombia_count add = 1 }
+set_global_variable = { name = tsin_restore_gran_colombia_next value = tsin_restoration_next_year }
 location:bosa_colombia = {
 save_scope_as = tsin_restore_gran_colombia_centre
 owner = { save_scope_as = tsin_restore_gran_colombia_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_gran_colombia_country
+set_capital = scope:tsin_restore_gran_colombia_centre
 change_culture = scope:tsin_restore_gran_colombia_sponsor.culture
 change_religion = scope:tsin_restore_gran_colombia_sponsor.religion
 change_government_type = government_type:republic
@@ -661,11 +737,15 @@ debug_log = tsin_restore_gran_colombia_log
 tsin_restore_colombia_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_colombia_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_colombia_count } } set_global_variable = { name = tsin_restore_colombia_count value = 0 } }
+change_global_variable = { name = tsin_restore_colombia_count add = 1 }
+set_global_variable = { name = tsin_restore_colombia_next value = tsin_restoration_next_year }
 location:bosa_colombia = {
 save_scope_as = tsin_restore_colombia_centre
 owner = { save_scope_as = tsin_restore_colombia_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_colombia_country
+set_capital = scope:tsin_restore_colombia_centre
 change_culture = scope:tsin_restore_colombia_sponsor.culture
 change_religion = scope:tsin_restore_colombia_sponsor.religion
 change_government_type = government_type:republic
@@ -691,11 +771,15 @@ debug_log = tsin_restore_colombia_log
 tsin_restore_venezuela_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_venezuela_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_venezuela_count } } set_global_variable = { name = tsin_restore_venezuela_count value = 0 } }
+change_global_variable = { name = tsin_restore_venezuela_count add = 1 }
+set_global_variable = { name = tsin_restore_venezuela_next value = tsin_restoration_next_year }
 location:caracas = {
 save_scope_as = tsin_restore_venezuela_centre
 owner = { save_scope_as = tsin_restore_venezuela_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_venezuela_country
+set_capital = scope:tsin_restore_venezuela_centre
 change_culture = scope:tsin_restore_venezuela_sponsor.culture
 change_religion = scope:tsin_restore_venezuela_sponsor.religion
 change_government_type = government_type:republic
@@ -721,11 +805,15 @@ debug_log = tsin_restore_venezuela_log
 tsin_restore_ecuador_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_ecuador_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_ecuador_count } } set_global_variable = { name = tsin_restore_ecuador_count value = 0 } }
+change_global_variable = { name = tsin_restore_ecuador_count add = 1 }
+set_global_variable = { name = tsin_restore_ecuador_next value = tsin_restoration_next_year }
 location:quito = {
 save_scope_as = tsin_restore_ecuador_centre
 owner = { save_scope_as = tsin_restore_ecuador_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_ecuador_country
+set_capital = scope:tsin_restore_ecuador_centre
 change_culture = scope:tsin_restore_ecuador_sponsor.culture
 change_religion = scope:tsin_restore_ecuador_sponsor.religion
 change_government_type = government_type:republic
@@ -751,11 +839,15 @@ debug_log = tsin_restore_ecuador_log
 tsin_restore_uruguay_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_uruguay_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_uruguay_count } } set_global_variable = { name = tsin_restore_uruguay_count value = 0 } }
+change_global_variable = { name = tsin_restore_uruguay_count add = 1 }
+set_global_variable = { name = tsin_restore_uruguay_next value = tsin_restoration_next_year }
 location:guenoa = {
 save_scope_as = tsin_restore_uruguay_centre
 owner = { save_scope_as = tsin_restore_uruguay_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_uruguay_country
+set_capital = scope:tsin_restore_uruguay_centre
 change_culture = scope:tsin_restore_uruguay_sponsor.culture
 change_religion = scope:tsin_restore_uruguay_sponsor.religion
 change_government_type = government_type:republic
@@ -781,11 +873,15 @@ debug_log = tsin_restore_uruguay_log
 tsin_restore_paraguay_effect = {
 # Full guard must pass before creating a country, moving a city, or transferring gold.
 if = { limit = { tsin_restore_paraguay_trigger = yes }
+if = { limit = { NOT = { has_global_variable = tsin_restore_paraguay_count } } set_global_variable = { name = tsin_restore_paraguay_count value = 0 } }
+change_global_variable = { name = tsin_restore_paraguay_count add = 1 }
+set_global_variable = { name = tsin_restore_paraguay_next value = tsin_restoration_next_year }
 location:nemby = {
 save_scope_as = tsin_restore_paraguay_centre
 owner = { save_scope_as = tsin_restore_paraguay_sponsor }
 create_country_from_location = {
 save_scope_as = tsin_restore_paraguay_country
+set_capital = scope:tsin_restore_paraguay_centre
 change_culture = scope:tsin_restore_paraguay_sponsor.culture
 change_religion = scope:tsin_restore_paraguay_sponsor.religion
 change_government_type = government_type:republic

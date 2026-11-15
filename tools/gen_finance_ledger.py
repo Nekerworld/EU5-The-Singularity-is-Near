@@ -7,6 +7,7 @@ import argparse
 import json
 import pdx
 import finance_extended as extended
+import corporate_finance as corporate
 
 EXTRA_TABS = [('MONEY', 'tsin_money'), ('BANK', 'tsin_bank'), ('FUNDS', 'tsin_funds')]
 
@@ -42,6 +43,7 @@ def build():
         label = loc(id.upper(), en, ko)
         actions.append((id, label, valid, effect, tab))
     extended.register(fields, action, loc)
+    corporate.register(fields, action, loc)
     init = 'tsin_ledger_init_effect = yes\n'
     no_lf = 'NOT = { has_policy = policy:tsin_laissez_faire_policy }'
     cost = 'gold >= tsin_ledger_lot'
@@ -61,7 +63,7 @@ def build():
     action('contract', 'Place paid company contract', '기업에 유상 계약 발주', f'{cost} tsin_company_count > 0 {no_lf}', f'{debit} change_variable = {{ name = tsin_firm_cash add = tsin_ledger_lot }}', 'BANK')
     action('lend', 'Issue funded company loan', '기업 대출 실행', f'var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 {no_lf}', 'tsin_ledger_lend_effect = yes', 'BANK')
     action('repay', 'Repay company principal', '기업 원금 상환', 'var:tsin_firm_cash > 0 var:tsin_firm_debt > 0', 'tsin_ledger_repay_effect = yes', 'BANK')
-    action('dividend', 'Distribute cash dividend', '현금 배당 지급', f'var:tsin_firm_cash >= tsin_ledger_lot var:tsin_firm_debt <= 0 country_has_estate = estate_type:burghers_estate {no_lf}', 'change_variable = { name = tsin_firm_cash subtract = tsin_ledger_lot } add_gold_to_estate = { estate_type = estate_type:burghers_estate value = tsin_ledger_lot }', 'BANK')
+    action('dividend', 'Distribute cash dividend', '현금 배당 지급', f'var:tsin_firm_cash >= tsin_ledger_lot var:tsin_firm_debt <= 0 var:tsin_bond_principal <= 0 var:tsin_foreign_liability_local <= 0 country_has_estate = estate_type:burghers_estate {no_lf}', 'tsin_corporate_dividend_effect = yes', 'BANK')
     # Claims are paid automatically once per observed, persistent cash-stress episode.
     action('pension_on', 'Enable monthly benefits', '매월 급여 지급 시작', 'country_has_estate = estate_type:peasants_estate NOT = { has_variable = tsin_pension_active } var:tsin_pension > 0', 'set_variable = tsin_pension_active', 'FUNDS')
     action('pension_off', 'Suspend future benefits', '향후 급여 지급 중단', 'has_variable = tsin_pension_active', 'remove_variable = tsin_pension_active', 'FUNDS')
@@ -70,9 +72,9 @@ def build():
         ('FUND_NOTE', 'Pension benefits pay the peasant estate from existing funds, with no age-cohort estimate. Insurance pays at most 25% of its reserve after six consecutive missed-interest months, once per episode. Both stop at available cash.', '연금은 적립금에서 농민 계층에 지급하며 실제 고령 인구를 추정하지 않습니다. 보험은 이자 미지급 6개월 지속 시 준비기금의 최대 25%를 해당 연체기에 한 번만 지급합니다. 가용 기금 이상으로 지급하지 않습니다.'),
     ]: loc(key, en, ko)
     variables = ['tsin_reserve', 'tsin_bank_cash', 'tsin_firm_cash', 'tsin_firm_debt', 'tsin_arrears', 'tsin_insurance', 'tsin_pension', 'tsin_pension_paid', 'tsin_interest_paid']
-    variables += extended.VARIABLES
+    variables += extended.VARIABLES + corporate.VARIABLES
     effects = ['# GENERATED funded accounts; missing legacy variables initialize without endowments.', 'tsin_ledger_init_effect = {']
-    for var, default in [(v, 0) for v in variables] + [('tsin_fx', 1), ('tsin_rate', 4)]:
+    for var, default in [(v, 0) for v in variables] + [('tsin_fx', 1), ('tsin_rate', 4), ('tsin_issued_shares', 100)]:
         effects.append(f'if = {{ limit = {{ NOT = {{ has_variable = {var} }} }} set_variable = {{ name = {var} value = {default} }} }}')
     effects += ['set_variable = { name = tsin_ledger_version value = 2 }', '}', '''
 tsin_ledger_lend_effect = {
@@ -92,6 +94,7 @@ tsin_ledger_repay_effect = {
 tsin_ledger_month_effect = {
     tsin_ledger_init_effect = yes
     tsin_bank_optional_month_effect = yes
+    tsin_corporate_finance_month_effect = yes
     set_variable = { name = tsin_interest_paid value = tsin_ledger_interest_payment }
     change_variable = { name = tsin_firm_cash subtract = var:tsin_interest_paid }
     change_variable = { name = tsin_bank_cash add = var:tsin_interest_paid }
@@ -100,9 +103,9 @@ tsin_ledger_month_effect = {
     }
     else = {
         set_variable = { name = tsin_arrears value = 0 }
-        remove_variable = tsin_insurance_claimed
+        if = { limit = { var:tsin_bond_arrears = 0 } remove_variable = tsin_insurance_claimed }
     }
-    if = { limit = { var:tsin_arrears >= 6 NOT = { has_variable = tsin_insurance_claimed } var:tsin_insurance > 0 }
+    if = { limit = { OR = { var:tsin_arrears >= 6 var:tsin_bond_arrears >= 6 } NOT = { has_variable = tsin_insurance_claimed } var:tsin_insurance > 0 }
         set_variable = { name = tsin_tx value = tsin_ledger_claim }
         change_variable = { name = tsin_insurance subtract = var:tsin_tx }
         change_variable = { name = tsin_firm_cash add = var:tsin_tx }
@@ -127,6 +130,7 @@ tsin_ledger_month_effect = {
 }
 ''']
     effects.append(extended.EFFECTS)
+    effects.append(corporate.EFFECTS)
     values = '''tsin_ledger_lot = { value = tsin_gold_cost_1 min = 1 }
 tsin_local_treasury = { value = gold multiply = var:tsin_fx }
 tsin_ledger_repayment = { value = var:tsin_firm_cash max = var:tsin_firm_debt min = 0 }
@@ -135,10 +139,10 @@ tsin_ledger_interest_payment = { value = tsin_ledger_interest_due max = var:tsin
 tsin_ledger_benefit = { value = tsin_ledger_lot multiply = 0.05 max = var:tsin_pension min = 0 }
 tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledger_lot min = 0 }
 '''
-    values += extended.VALUES
+    values += extended.VALUES + corporate.VALUES
     guis = []
     ui = ['types TSINLedger {']
-    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS']}
+    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
     for name, subtab in EXTRA_TABS:
         ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}']
         for key, _, _, var in fields:
@@ -174,7 +178,7 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
     loc('UNIT', 'Accounting currency: [GetPlayer.Custom(\'tsin_currency_name\')]', '표시 화폐: [GetPlayer.Custom(\'tsin_currency_name\')]')
     loc('CURRENCY_LOCAL', 'National accounting unit', '국가 환산 단위')
     currency = ['tsin_currency_name = { type = country']
-    for tags, code, en, ko in [(['ENG','SCO','GBR'],'GBP','Pound sterling','파운드 스털링'),(['FRA'],'FRF','Franc','프랑'),(['PRU','GER'],'DEM','Mark / thaler accounting unit','마르크·탈러 환산 단위'),(['RUS','MOS'],'RUB','Ruble','루블'),(['JAP'],'JPY','Yen / ryo accounting unit','엔·료 환산 단위'),(['CHI','TQG','MCH'],'TAEL','Silver tael','은량'),(['MUG'],'INR','Rupee','루피'),(['USA'],'USD','Dollar','달러'),(['MEX','TAR','TCH','TCO','TPE','TBO','TUY'],'PESO','Peso','페소'),(['TBR'],'BRL','Real','헤알')]:
+    for tags, code, en, ko in [(['ENG','SCO','GBR'],'GBP','Pound sterling','파운드 스털링'),(['FRA'],'FRF','Franc','프랑'),(['PRU','GER'],'DEM','Mark / thaler accounting unit','마르크·탈러 환산 단위'),(['RUS','MOS'],'RUB','Ruble','루블'),(['JAP'],'JPY','Yen / ryo accounting unit','엔·료 환산 단위'),(['CHI','TQG','MCH'],'TAEL','Silver tael','은량'),(['MUG'],'INR','Rupee','루피'),(['USA'],'USD','Dollar','달러'),(['MEX','XAR','XCZ','XCO','XPE','XBO','XUY'],'PESO','Peso','페소'),(['XBR'],'BRL','Real','헤알')]:
         loc('CURRENCY_'+code,en,ko)
         currency.append('text = { trigger = { OR = { '+' '.join('tag = '+t for t in tags)+' } } localization_key = TSIN_LEDGER_CURRENCY_'+code+' }')
     currency.append('text = { fallback = yes localization_key = TSIN_LEDGER_CURRENCY_LOCAL } }')
@@ -182,7 +186,11 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
     result['in_game/gui/tsin_finance_ledger.gui'] = result['in_game/gui/tsin_finance_ledger.gui'].replace('text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }','text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }\ntext_single = { text = "TSIN_LEDGER_UNIT" }')
     loc('CONTRACTION_NAME','Bank credit contraction','은행 신용 위축')
     loc('CONTRACTION_DESC','Unpaid depositor withdrawals persisted for four quarterly reviews. Restore liquidity and settle claims to recover.','예금 인출 미지급이 4회 분기 점검 동안 지속되었습니다. 유동성을 확보하고 인출 채권을 결제하면 회복됩니다.')
+    loc('SUSPENSION_NAME','Suspended gold convertibility','금 태환 정지')
+    loc('SUSPENSION_DESC','Temporarily suspended convertibility brings inflationary pressure and a native borrowing premium.','일시적인 태환 정지로 물가 압력과 기본 차입 금리 가산이 발생합니다.')
     for lang in labels:
+        labels[lang]['STATIC_MODIFIER_NAME_tsin_convertibility_suspension'] = labels[lang].pop('TSIN_LEDGER_SUSPENSION_NAME')
+        labels[lang]['STATIC_MODIFIER_DESC_tsin_convertibility_suspension'] = labels[lang].pop('TSIN_LEDGER_SUSPENSION_DESC')
         labels[lang]['STATIC_MODIFIER_NAME_tsin_bank_credit_contraction'] = labels[lang].pop('TSIN_LEDGER_CONTRACTION_NAME')
         labels[lang]['STATIC_MODIFIER_DESC_tsin_bank_credit_contraction'] = labels[lang].pop('TSIN_LEDGER_CONTRACTION_DESC')
     for lang, entries in labels.items():

@@ -1,6 +1,6 @@
 ﻿l_english:
  age_8_world_wars: "World Wars"
- age_8_world_wars_desc: "Mass mobilization, industrial warfare and competing political orders. Era scaffold only; dedicated technologies, institutions and events are not implemented."
+ age_8_world_wars_desc: "Mass mobilization, industrial warfare and competing political orders. Three late agricultural advances are implemented with stable legacy IDs. Other dedicated institutions and content remain under development."
  age_format_age_8_world_wars: "Age of $age_8_world_wars$"
  age_9_atomic: "Atomic Power"
  age_9_atomic_desc: "Nuclear deterrence, international institutions and mass consumption. Era scaffold only; dedicated technologies, institutions and events are not implemented."

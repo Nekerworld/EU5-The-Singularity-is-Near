@@ -179,7 +179,7 @@ scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_punjab_area }
 } } }
 }
-if = { limit = { tag = TQG current_year >= 1644 current_year < 1901 }
+if = { limit = { tag = CHI current_year >= 1644 current_year < 1901 }
 area:beiping_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
@@ -228,42 +228,42 @@ scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_bulgaria_area }
 } } }
 }
-if = { limit = { tag = TBR current_year >= 1822 current_year < 1901 }
+if = { limit = { tag = XBR current_year >= 1822 current_year < 1901 }
 area:pindorama_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pindorama_area }
 } } }
 }
-if = { limit = { tag = TAR current_year >= 1816 current_year < 1901 }
+if = { limit = { tag = XAR current_year >= 1816 current_year < 1901 }
 area:pampa_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pampa_area }
 } } }
 }
-if = { limit = { tag = TCH current_year >= 1818 current_year < 1901 }
+if = { limit = { tag = XCZ current_year >= 1818 current_year < 1901 }
 area:ngulumapu_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_ngulumapu_area }
 } } }
 }
-if = { limit = { tag = TPE current_year >= 1821 current_year < 1901 }
+if = { limit = { tag = XPE current_year >= 1821 current_year < 1901 }
 area:chala_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chala_area }
 } } }
 }
-if = { limit = { tag = TBO current_year >= 1825 current_year < 1901 }
+if = { limit = { tag = XBO current_year >= 1825 current_year < 1901 }
 area:qullaw_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_qullaw_area }
 } } }
 }
-if = { limit = { tag = TGC current_year >= 1819 current_year < 1831 }
+if = { limit = { tag = XGC current_year >= 1819 current_year < 1831 }
 area:caracas_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
@@ -280,35 +280,35 @@ scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_quitu_area }
 } } }
 }
-if = { limit = { tag = TCO current_year >= 1831 current_year < 1901 }
+if = { limit = { tag = XCO current_year >= 1831 current_year < 1901 }
 area:chunsa_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chunsa_area }
 } } }
 }
-if = { limit = { tag = TVZ current_year >= 1830 current_year < 1901 }
+if = { limit = { tag = XVZ current_year >= 1830 current_year < 1901 }
 area:caracas_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_caracas_area }
 } } }
 }
-if = { limit = { tag = TEC current_year >= 1830 current_year < 1901 }
+if = { limit = { tag = XEC current_year >= 1830 current_year < 1901 }
 area:quitu_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_quitu_area }
 } } }
 }
-if = { limit = { tag = TUY current_year >= 1828 current_year < 1901 }
+if = { limit = { tag = XUY current_year >= 1828 current_year < 1901 }
 area:pampa_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {
 if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pampa_area }
 } } }
 }
-if = { limit = { tag = TPY current_year >= 1811 current_year < 1901 }
+if = { limit = { tag = XPY current_year >= 1811 current_year < 1901 }
 area:paraguay_area = {
 if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
 scope:tsin_direction_actor = {

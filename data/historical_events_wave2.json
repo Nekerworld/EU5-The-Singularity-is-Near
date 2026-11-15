@@ -1,0 +1,888 @@
+{
+  "schema_version": 1,
+  "chains": [
+    {
+      "id": "strike",
+      "base": 1,
+      "year": 1880,
+      "gate": "has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 25 any_owned_location = { any_buildings_in_location = { OR = { building_type = building_type:tsin_fertilizer_plant building_type = building_type:tsin_explosives_plant } building_employed_amount > 0 is_opened = yes } }",
+      "reward": "labor",
+      "source": "F08",
+      "stages": [
+        {
+          "title": [
+            "The factory fine book",
+            "공장의 벌금 장부"
+          ],
+          "desc": [
+            "Workers at a chemical workplace accuse the proprietor of arbitrary fines and unsafe handling. Their representatives have brought a book of deductions to the authorities.",
+            "화학 작업장의 노동자들이 임의 벌금과 위험한 작업을 고발했습니다. 대표들은 급료에서 공제한 내역이 담긴 장부를 관청에 제출했습니다."
+          ],
+          "a": [
+            "Audit the wage and safety books.",
+            "임금과 안전 장부를 감사하라."
+          ],
+          "b": [
+            "Let the proprietor answer first.",
+            "먼저 사업주의 답변을 받아라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The printed accusation",
+            "신문에 실린 고발"
+          ],
+          "desc": [
+            "A newspaper has printed the accusations. The editor asks whether the authorities will release their findings or leave the public with competing rumors.",
+            "신문에 고발 내용이 실렸습니다. 편집자는 당국이 조사 결과를 공개할지, 엇갈리는 소문만 남길지 답변을 요구합니다."
+          ],
+          "a": [
+            "Publish the verified findings.",
+            "확인된 조사 결과를 공개하라."
+          ],
+          "b": [
+            "Keep the inquiry behind closed doors.",
+            "조사는 비공개로 유지하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Workers at the gate",
+            "공장 문 앞의 노동자들"
+          ],
+          "desc": [
+            "Workers have gathered at the factory gate and elected representatives. A local agreement could end the stoppage before it spreads.",
+            "노동자들이 공장 앞에 모여 대표를 선출했습니다. 현지 합의로 조업 중단이 확대되기 전에 사태를 끝낼 수 있습니다."
+          ],
+          "a": [
+            "Pay for a binding local settlement.",
+            "구속력 있는 현지 합의에 비용을 지불하라."
+          ],
+          "b": [
+            "Hear a fuller list of demands.",
+            "구체적인 요구 목록을 받아라."
+          ],
+          "paid_a": true,
+          "end_b": false,
+          "end_a": true
+        },
+        {
+          "title": [
+            "Three demands, three costs",
+            "세 가지 요구와 각자의 비용"
+          ],
+          "desc": [
+            "The delegates distinguish fines, dismissals and protective equipment. Each demand has a different cost and a different group of supporters.",
+            "대표들은 벌금, 해고, 보호 장비를 구분해 요구했습니다. 각 요구의 비용과 지지 세력이 서로 다릅니다."
+          ],
+          "a": [
+            "Prioritize safety equipment.",
+            "안전 장비를 우선 지원하라."
+          ],
+          "b": [
+            "Negotiate the fine schedule first.",
+            "먼저 벌금 규정을 협상하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The proprietor replies",
+            "사업주의 답변"
+          ],
+          "desc": [
+            "The proprietor requests time to implement the agreement. Inspectors must decide whether this is a practical schedule or an attempt to postpone the work.",
+            "사업주가 합의 이행을 위한 시간을 요청했습니다. 점검관은 현실적인 일정인지 작업을 미루려는 것인지 판단해야 합니다."
+          ],
+          "a": [
+            "Finance a short independent inspection.",
+            "단기 독립 점검에 예산을 배정하라."
+          ],
+          "b": [
+            "Accept a written implementation calendar.",
+            "서면 이행 일정을 받아라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A promise inspected",
+            "약속의 이행 점검"
+          ],
+          "desc": [
+            "The representatives have returned to inspect the promised changes. Some equipment has arrived, but the remaining work needs a final decision.",
+            "대표들이 약속한 개선을 점검하러 돌아왔습니다. 일부 장비는 도착했지만 남은 작업을 어떻게 마칠지 결정해야 합니다."
+          ],
+          "a": [
+            "Fund the final corrective work.",
+            "마지막 시정 작업에 비용을 지불하라."
+          ],
+          "b": [
+            "Close the case without more public money.",
+            "추가 공금 없이 사건을 종결하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A precedent for negotiation",
+            "협상의 선례"
+          ],
+          "desc": [
+            "The settlement is complete. Officials propose retaining the procedures so that the next dispute can reach a negotiating table sooner.",
+            "합의 이행이 마무리되었습니다. 관리들은 다음 분쟁이 더 빨리 협상에 이르도록 이번 절차를 남기자고 제안합니다."
+          ],
+          "a": [
+            "Record the negotiated procedures.",
+            "합의한 절차를 기록하라."
+          ],
+          "b": [
+            "Let each workplace decide next time.",
+            "다음에는 각 사업장의 판단에 맡겨라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    },
+    {
+      "id": "military",
+      "base": 11,
+      "year": 1882,
+      "gate": "army_size > 0 has_advance = tsin_general_staff_advance monthly_balance < 0 has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 20",
+      "reward": "military",
+      "source": "K08",
+      "stages": [
+        {
+          "title": [
+            "New uniforms, old accounts",
+            "새 제복과 오래된 급료 장부"
+          ],
+          "desc": [
+            "Newly organized units receive attention while older formations complain that their needs have been overlooked. The strained budget has made every allocation contentious.",
+            "새로 편성한 부대에 관심이 쏠리는 동안 기존 병력은 자신들의 필요가 무시당한다고 항의합니다. 빠듯한 예산 탓에 배분 하나하나가 논쟁거리입니다."
+          ],
+          "a": [
+            "Inspect the allocation accounts.",
+            "배분 장부를 점검하라."
+          ],
+          "b": [
+            "Ask the existing units for a report.",
+            "기존 부대의 보고를 받아라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The disputed ration",
+            "문제가 된 군량 배분"
+          ],
+          "desc": [
+            "Officers disagree over a disputed distribution of rations. Some blame the budget; others demand an inquiry into the officials who signed the accounts.",
+            "장교들이 군량 배분을 놓고 다투고 있습니다. 일부는 예산을 탓하고 다른 이들은 장부를 결재한 관리에 대한 조사를 요구합니다."
+          ],
+          "a": [
+            "Pay for a targeted reconciliation.",
+            "한정된 조정 비용을 지급하라."
+          ],
+          "b": [
+            "Continue the audit before paying.",
+            "지급 전에 감사를 계속하라."
+          ],
+          "paid_a": true,
+          "end_b": false,
+          "end_a": true
+        },
+        {
+          "title": [
+            "The missing signature",
+            "빠진 결재 서명"
+          ],
+          "desc": [
+            "A crucial order lacks the responsible signature. The question of money has become a question of accountability in military administration.",
+            "핵심 명령서에 책임자의 결재가 빠져 있습니다. 돈의 문제가 군정의 책임 소재에 관한 문제로 번졌습니다."
+          ],
+          "a": [
+            "Appoint an independent auditor.",
+            "독립 감사관을 임명하라."
+          ],
+          "b": [
+            "Demand an explanation from the command.",
+            "지휘부의 해명을 요구하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A gathering of old units",
+            "기존 병력의 집회"
+          ],
+          "desc": [
+            "Representatives of older units have gathered to demand a hearing. A funded timetable may still settle their petition before confrontation hardens.",
+            "기존 부대의 대표들이 청문을 요구하며 모였습니다. 예산을 갖춘 일정이 제시된다면 대립이 굳어지기 전에 해결할 수 있습니다."
+          ],
+          "a": [
+            "Settle the petition with a funded schedule.",
+            "예산을 갖춘 일정으로 청원을 해결하라."
+          ],
+          "b": [
+            "Hold another hearing.",
+            "추가 청문을 열어라."
+          ],
+          "paid_a": true,
+          "end_b": false,
+          "end_a": true
+        },
+        {
+          "title": [
+            "The capital hears the complaint",
+            "수도에 전해진 항의"
+          ],
+          "desc": [
+            "The complaint has reached the capital. Civilian officials and the military council disagree over who should negotiate a settlement.",
+            "항의가 수도에 전해졌습니다. 문관들과 군사 회의는 누가 해결을 위한 협상을 맡아야 하는지 다투고 있습니다."
+          ],
+          "a": [
+            "Fund civilian mediation.",
+            "민간 중재에 예산을 배정하라."
+          ],
+          "b": [
+            "Keep responsibility with the military council.",
+            "군사 회의에 책임을 남겨라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Revising military administration",
+            "군정 재편"
+          ],
+          "desc": [
+            "The inquiry recommends a clear distribution process and a record of responsibility. Adopting it would make the next reform easier to administer.",
+            "조사단이 명확한 배분 절차와 책임 기록을 권고했습니다. 이를 채택하면 다음 개혁의 집행이 수월해질 것입니다."
+          ],
+          "a": [
+            "Adopt the audited procedures.",
+            "감사한 절차를 채택하라."
+          ],
+          "b": [
+            "End the inquiry without reform.",
+            "개혁 없이 조사를 끝내라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    },
+    {
+      "id": "stink",
+      "base": 21,
+      "year": 1858,
+      "gate": "exists = capital OR = { has_variable = tsin_civic_great_stink_done has_variable = tsin_society_great_stink_done }",
+      "reward": "civic",
+      "source": "F06",
+      "stages": [
+        {
+          "title": [
+            "After the foul summer",
+            "악취의 여름이 지난 뒤"
+          ],
+          "desc": [
+            "The foul summer has passed, but municipal officials still owe an account of what was promised. Engineers ask to survey the drainage routes before work continues.",
+            "악취의 여름은 지났지만 도시 당국은 약속한 조치의 이행을 설명해야 합니다. 기술자들은 작업을 계속하기 전에 배수 경로를 조사하고자 합니다."
+          ],
+          "a": [
+            "Order a drainage survey.",
+            "배수 조사를 지시하라."
+          ],
+          "b": [
+            "Request the municipal accounts.",
+            "도시의 장부를 요구하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A curtain is not a sewer",
+            "커튼은 하수도가 아니다"
+          ],
+          "desc": [
+            "Curtains treated with lime have provided temporary relief. Engineers insist that a durable water system requires more than a tolerable smell.",
+            "석회로 처리한 커튼이 일시적인 위안을 주었습니다. 기술자들은 물 관리 체계에 단순한 방취 이상의 대책이 필요하다고 주장합니다."
+          ],
+          "a": [
+            "Fund an engineering inspection.",
+            "기술 점검에 예산을 배정하라."
+          ],
+          "b": [
+            "Review the temporary measures.",
+            "임시 조치를 재검토하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The sanitation appropriation",
+            "위생 사업의 예산"
+          ],
+          "desc": [
+            "The proposed works require land, labor and upkeep. The treasury wants a limited appropriation with accounts that can be inspected.",
+            "계획한 사업에는 용지, 노동, 유지비가 필요합니다. 재무 당국은 점검 가능한 장부를 갖춘 한정된 예산을 요구합니다."
+          ],
+          "a": [
+            "Approve a limited review budget.",
+            "제한된 검토 예산을 승인하라."
+          ],
+          "b": [
+            "Reduce the scheme and continue.",
+            "계획을 축소하고 계속하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The route beneath the streets",
+            "거리 아래의 경로"
+          ],
+          "desc": [
+            "Engineers compare underground routes with compensation claims above ground. A transparent survey could reduce later disputes.",
+            "기술자들이 지하 경로와 지상의 보상 청구를 비교하고 있습니다. 공개적인 조사는 나중의 분쟁을 줄일 수 있습니다."
+          ],
+          "a": [
+            "Fund transparent route assessment.",
+            "공개적인 경로 평가를 지원하라."
+          ],
+          "b": [
+            "Keep the route within public streets.",
+            "공공 도로 안의 경로를 유지하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Delays and inspection books",
+            "공사 지연과 점검 장부"
+          ],
+          "desc": [
+            "The inspection books mix completed work with delayed contracts. The council must decide whether to pay for another review or wait for the works to catch up.",
+            "점검 장부에 완료된 작업과 지연된 계약이 뒤섞여 있습니다. 의회는 추가 검토 비용을 낼지, 공사의 진척을 기다릴지 결정해야 합니다."
+          ],
+          "a": [
+            "Pay for a final independent inspection.",
+            "마지막 독립 점검 비용을 지불하라."
+          ],
+          "b": [
+            "Wait for the existing construction program.",
+            "기존 건설 계획의 진척을 기다려라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Separating clean and dirty water",
+            "깨끗한 물과 오수의 분리"
+          ],
+          "desc": [
+            "Officials prepare instructions for separating clean water from sewage. Engineers will certify the system once the surveyed city waterworks are in service.",
+            "관리들이 상수와 오수를 분리하는 지침을 준비합니다. 기술자들은 대상 도시의 상하수도가 운영되면 체계를 인증할 예정입니다."
+          ],
+          "a": [
+            "Publish the operating instructions.",
+            "운영 지침을 공개하라."
+          ],
+          "b": [
+            "Leave instructions to local officers.",
+            "현지 담당자에게 지침을 맡겨라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Waterworks in service",
+            "운영 중인 상하수도"
+          ],
+          "desc": [
+            "The surveyed city waterworks are in service and the review can finally close. The remaining question is whether the operating procedures should become a common standard.",
+            "대상 도시의 상하수도가 운영에 들어가 검토를 마칠 수 있게 되었습니다. 남은 문제는 운영 절차를 공통 기준으로 삼을지 여부입니다."
+          ],
+          "a": [
+            "Certify the operating procedures.",
+            "운영 절차를 인증하라."
+          ],
+          "b": [
+            "Finish without a national certificate.",
+            "국가 인증 없이 절차를 마쳐라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    },
+    {
+      "id": "pig",
+      "base": 31,
+      "year": 1859,
+      "gate": "at_war = no any_neighbor_country = { is_ai = yes at_war = no num_locations > 0 }",
+      "reward": "diplomacy",
+      "source": "L02",
+      "stages": [
+        {
+          "title": [
+            "Livestock across a boundary",
+            "경계 너머의 가축"
+          ],
+          "desc": [
+            "A quarrel over livestock has reached officials on both sides of the frontier. The damage is small, but each side gives a different account of the boundary.",
+            "가축을 둘러싼 다툼이 국경 양측의 관리에게 전해졌습니다. 피해는 작지만 양측의 경계 설명은 서로 다릅니다."
+          ],
+          "a": [
+            "Hear the damage claim.",
+            "피해 청구를 받아라."
+          ],
+          "b": [
+            "Let local officials compare accounts.",
+            "현지 관리들이 장부를 대조하게 하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A demand for compensation",
+            "배상 요구"
+          ],
+          "desc": [
+            "The neighboring government asks for compensation. Our local officers want the damage recorded before any agreement is signed.",
+            "인접국 정부가 배상을 요구합니다. 현지 관리들은 합의에 서명하기 전에 피해 내역을 기록해야 한다고 주장합니다."
+          ],
+          "a": [
+            "Seek a documented settlement.",
+            "문서에 근거한 해결을 추진하라."
+          ],
+          "b": [
+            "Ask for proof of the loss.",
+            "피해의 증거를 요구하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Two accounts of jurisdiction",
+            "엇갈리는 관할권 설명"
+          ],
+          "desc": [
+            "Both governments cite different rules of jurisdiction. A joint review of the facts might settle the claim without settling every question of sovereignty.",
+            "양국 정부가 서로 다른 관할권 규정을 제시합니다. 공동 사실 검토라면 모든 주권 문제를 결정하지 않고도 피해 청구를 해결할 수 있습니다."
+          ],
+          "a": [
+            "Pay for a joint factual review.",
+            "공동 사실 검토의 비용을 지불하라."
+          ],
+          "b": [
+            "Exchange written accounts.",
+            "서면 설명을 교환하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Orders to remain calm",
+            "침착함을 유지하라는 명령"
+          ],
+          "desc": [
+            "The dispatches have become sharper. Officials on the ground ask for clear instructions before the dispute grows beyond their control.",
+            "오가는 공문의 어조가 날카로워졌습니다. 현지 관리들은 분쟁이 통제 범위를 벗어나기 전에 명확한 지시를 요구합니다."
+          ],
+          "a": [
+            "Maintain a civilian channel.",
+            "민간 교섭 창구를 유지하라."
+          ],
+          "b": [
+            "Continue through official dispatches.",
+            "공문을 통해 협의를 계속하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A neutral account of the facts",
+            "중립적인 사실 정리"
+          ],
+          "desc": [
+            "The mediators distinguish the material loss from the disputed boundary. They propose a small payment while ordinary diplomacy handles the larger question.",
+            "중재자들이 물질적 피해와 경계 분쟁을 구분했습니다. 작은 배상금을 지급하고 더 큰 문제는 일반 외교에 남기자고 제안합니다."
+          ],
+          "a": [
+            "Prepare a cash settlement.",
+            "현금 배상안을 준비하라."
+          ],
+          "b": [
+            "Close the mediation without agreement.",
+            "합의 없이 중재를 끝내라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        },
+        {
+          "title": [
+            "The small settlement",
+            "작은 합의"
+          ],
+          "desc": [
+            "The neighboring government is ready to receive the agreed compensation. Paying would close this material claim while leaving the border where it stands.",
+            "인접국 정부가 합의한 배상을 받을 준비를 마쳤습니다. 배상금을 지불하면 현 국경을 유지한 채 물질적 피해 청구를 끝낼 수 있습니다."
+          ],
+          "a": [
+            "Pay the recorded neighbor.",
+            "기록된 인접국에 배상금을 지불하라."
+          ],
+          "b": [
+            "Decline the cash settlement.",
+            "현금 배상을 거절하라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    },
+    {
+      "id": "boom",
+      "base": 41,
+      "year": 1870,
+      "gate": "tsin_company_count > 3 OR = { AND = { has_variable = tsin_entry_risk_quarters var:tsin_entry_risk_quarters >= 1 } AND = { has_variable = tsin_stress_quarters var:tsin_stress_quarters >= 1 } }",
+      "reward": "finance",
+      "source": "F03",
+      "stages": [
+        {
+          "title": [
+            "A crowded subscription list",
+            "빽빽한 주식 청약 명부"
+          ],
+          "desc": [
+            "New companies and weakening business conditions have drawn attention to the subscription lists. Investors ask what stands behind the promoters promises.",
+            "신규 회사의 증가와 영업 여건의 약화로 청약 명부에 관심이 쏠렸습니다. 투자자들이 사업 추진자의 약속 뒤에 무엇이 있는지 묻고 있습니다."
+          ],
+          "a": [
+            "Commission a disclosure review.",
+            "공시 점검을 의뢰하라."
+          ],
+          "b": [
+            "Request the issuers own reports.",
+            "발행사 자체 보고를 받아라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Orders and actual business",
+            "수주와 실제 사업"
+          ],
+          "desc": [
+            "The issuers report a large volume of orders. Reviewers want to distinguish completed business from contracts that may never be fulfilled.",
+            "발행사들이 많은 수주를 보고했습니다. 검토자들은 완료된 사업과 이행되지 않을 수도 있는 계약을 구분하고자 합니다."
+          ],
+          "a": [
+            "Fund independent comparison.",
+            "독립적인 대조에 예산을 배정하라."
+          ],
+          "b": [
+            "Publish the available reports.",
+            "확보한 보고서를 공개하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Doubts about the accounts",
+            "회계에 대한 의혹"
+          ],
+          "desc": [
+            "Questions about the accounts have spread beyond the original subscribers. A careful inquiry may prevent rumor from replacing reliable information.",
+            "회계에 대한 의문이 최초 청약자 밖으로 퍼졌습니다. 신중한 조사는 신뢰할 만한 정보가 소문에 밀려나는 것을 막을 수 있습니다."
+          ],
+          "a": [
+            "Review the cash and debt records.",
+            "현금과 채무 장부를 검토하라."
+          ],
+          "b": [
+            "Keep the inquiry with the firms.",
+            "기업 자체 조사로 남겨라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Creditors at the table",
+            "협의에 나선 채권자들"
+          ],
+          "desc": [
+            "Bankers and bondholders have agreed to meet. Their contracts differ, and so do their claims on the companies remaining cash.",
+            "은행가와 회사채 보유자가 협의에 나서기로 했습니다. 계약 조건이 다르고 기업의 남은 현금에 대한 청구도 다릅니다."
+          ],
+          "a": [
+            "Finance an orderly consultation.",
+            "질서 있는 협의에 예산을 배정하라."
+          ],
+          "b": [
+            "Let the contracts run their course.",
+            "기존 계약의 처리를 따르라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The risk report",
+            "위험 보고서"
+          ],
+          "desc": [
+            "The report compares repeated signs of excessive entry and oversupply. Publishing its evidence could help investors distinguish temporary weakness from persistent distress.",
+            "보고서는 반복된 과잉 진입과 과잉공급의 징후를 비교합니다. 근거를 공개하면 투자자들이 일시적인 약세와 지속적인 부실을 구분하는 데 도움이 될 수 있습니다."
+          ],
+          "a": [
+            "Publish the recorded evidence.",
+            "기록된 근거를 공개하라."
+          ],
+          "b": [
+            "Restrict publication to the reviewers.",
+            "검토 담당자에게만 보고하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Different industries, different losses",
+            "업종마다 다른 손실"
+          ],
+          "desc": [
+            "Agriculture and industry describe different losses. Officials must decide whether a common report is enough or a more detailed assessment is worth its cost.",
+            "농업과 산업이 서로 다른 손실을 보고합니다. 관리들은 공통 보고서로 충분한지, 더 자세한 평가가 비용을 들일 만한지 판단해야 합니다."
+          ],
+          "a": [
+            "Fund sector-specific assessment.",
+            "업종별 평가에 예산을 배정하라."
+          ],
+          "b": [
+            "Leave adjustment to existing policies.",
+            "조정은 기존 정책에 맡겨라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "A recovery report",
+            "회복 보고"
+          ],
+          "desc": [
+            "The special commission is ready to close. Its disclosure procedures may prove useful in the next cycle, even if recovery remains uneven.",
+            "특별 위원회가 종료를 준비합니다. 회복이 고르지 않더라도 이번 공시 절차는 다음 경기 국면에 유용할 수 있습니다."
+          ],
+          "a": [
+            "Retain the disclosure procedures.",
+            "공시 절차를 유지하라."
+          ],
+          "b": [
+            "End the special commission.",
+            "특별 위원회를 종료하라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    },
+    {
+      "id": "mission",
+      "base": 51,
+      "year": 1860,
+      "gate": "at_war = no has_advance = tsin_steam_age_advance any_country = { is_ai = yes at_war = no num_locations > 0 NOT = { this = root } has_advance = tsin_industrial_capitalism_advance any_owned_location = { has_building_with_at_least_one_level = tsin_machine_works } NOT = { has_variable = tsin_hist2_visit_origin } }",
+      "reward": "study",
+      "source": "J06",
+      "stages": [
+        {
+          "title": [
+            "A delegation with a purpose",
+            "목적을 정하는 시찰단"
+          ],
+          "desc": [
+            "Officials propose sending a delegation to study an industrial state. The mission needs a budget and a government willing to receive its members.",
+            "관리들이 산업 국가를 시찰할 사절단의 파견을 제안했습니다. 예산과 함께 일행을 받아들일 정부가 필요합니다."
+          ],
+          "a": [
+            "Fund the request and delegation.",
+            "방문 요청과 시찰단 비용을 지불하라."
+          ],
+          "b": [
+            "Postpone the mission.",
+            "시찰단을 연기하라."
+          ],
+          "paid_a": true,
+          "end_b": true
+        },
+        {
+          "title": [
+            "A visit is accepted",
+            "수락된 방문"
+          ],
+          "desc": [
+            "The host government has accepted a limited visit. Delegates now need an itinerary that can be completed within their means.",
+            "방문국 정부가 제한된 시찰을 수락했습니다. 사절단은 예산 안에서 마칠 수 있는 일정을 정해야 합니다."
+          ],
+          "a": [
+            "Set a limited inspection itinerary.",
+            "한정된 시찰 일정을 정하라."
+          ],
+          "b": [
+            "Withdraw the delegation.",
+            "시찰단을 철회하라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        },
+        {
+          "title": [
+            "The industrial report",
+            "산업 시찰 보고"
+          ],
+          "desc": [
+            "The delegates compare the hosts industrial institutions with conditions at home. Translating and checking their notes will determine how much the cabinet can use.",
+            "사절들이 방문국의 산업 제도와 국내 사정을 비교합니다. 기록을 번역하고 대조하는 정도에 따라 내각이 활용할 수 있는 내용도 달라질 것입니다."
+          ],
+          "a": [
+            "Finance translation of the report.",
+            "보고서 번역 비용을 지불하라."
+          ],
+          "b": [
+            "Summarize the available notes.",
+            "확보한 기록을 요약하라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Schooling and skilled work",
+            "교육과 숙련 노동"
+          ],
+          "desc": [
+            "The discussion turns to education and skilled work. The delegates disagree over which practices could be adapted without rebuilding the entire domestic system.",
+            "논의가 교육과 숙련 노동으로 옮겨갔습니다. 사절들은 국내 체계를 전부 새로 만들지 않고도 어떤 실무를 도입할 수 있을지 의견을 달리합니다."
+          ],
+          "a": [
+            "Fund an educational memorandum.",
+            "교육 보고서 작성에 예산을 배정하라."
+          ],
+          "b": [
+            "Keep the comparison advisory.",
+            "참고용 비교로 남겨라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The military memorandum",
+            "군제 관련 각서"
+          ],
+          "desc": [
+            "The military memorandum describes how responsibilities are divided. The cabinet must decide which observations deserve a place in its report.",
+            "군사 각서는 임무와 책임의 배분을 설명합니다. 내각은 어떤 관찰 내용을 보고서에 남길지 결정해야 합니다."
+          ],
+          "a": [
+            "Record the relevant organization.",
+            "참고할 조직을 기록하라."
+          ],
+          "b": [
+            "Leave military practice unchanged.",
+            "군사 실무는 유지하라."
+          ],
+          "paid_a": false,
+          "end_b": false
+        },
+        {
+          "title": [
+            "The cost of staying abroad",
+            "해외 체류 비용"
+          ],
+          "desc": [
+            "The last visits would extend the delegations stay. More information may be useful, but lodging, translation and transport continue to cost money.",
+            "마지막 방문 일정을 진행하면 체류가 길어집니다. 정보가 더 유용할 수 있지만 숙박·통역·교통에는 계속 비용이 듭니다."
+          ],
+          "a": [
+            "Pay for the final visits.",
+            "마지막 방문 일정의 비용을 지불하라."
+          ],
+          "b": [
+            "Finish the itinerary early.",
+            "일정을 앞당겨 끝내라."
+          ],
+          "paid_a": true,
+          "end_b": false
+        },
+        {
+          "title": [
+            "Reports on the cabinet table",
+            "내각에 올라온 보고서"
+          ],
+          "desc": [
+            "The reports are on the cabinet table. Officials ask for an implementation review before attempting to transplant foreign practices.",
+            "보고서가 내각에 올라왔습니다. 관리들은 외국의 실무를 도입하기 전에 실행 가능성을 검토하자고 요청합니다."
+          ],
+          "a": [
+            "Commission an implementation review.",
+            "실행 가능성 검토를 의뢰하라."
+          ],
+          "b": [
+            "Keep the reports in the archive.",
+            "보고서를 보관소에 남겨라."
+          ],
+          "paid_a": true,
+          "end_b": true
+        },
+        {
+          "title": [
+            "Putting lessons to use",
+            "견학 성과의 활용"
+          ],
+          "desc": [
+            "The mission has returned with a body of checked reports. Applying its lessons now depends on the willingness of domestic officials to use them.",
+            "시찰단이 대조를 마친 보고서를 가지고 귀환했습니다. 이제 그 성과를 활용할지는 국내 관리들의 의지에 달렸습니다."
+          ],
+          "a": [
+            "Apply the reviewed methods.",
+            "검토한 실무를 적용하라."
+          ],
+          "b": [
+            "Close the mission without adoption.",
+            "채택 없이 시찰을 마쳐라."
+          ],
+          "paid_a": false,
+          "end_b": true
+        }
+      ]
+    }
+  ]
+}

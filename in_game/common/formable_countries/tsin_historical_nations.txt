@@ -1,192 +1,192 @@
 ﻿tsin_nation_britain_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_britain_candidate = yes owns = location:london owns = location:edinburgh owns = location:dublin }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:london owns = location:edinburgh owns = location:dublin }
 name = GBR adjective = GBR_ADJ
 tag = GBR flag = GBR color = map_GBR
 regions = { great_britain_region ireland_region }
-form_effect = { }
+form_effect = {  }
 }
-tsin_nation_germany_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_germany_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_germany_candidate = yes owns = location:berlin owns = location:frankfurt owns = location:munich }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:berlin owns = location:frankfurt owns = location:munich }
 name = GER adjective = GER_ADJ
 tag = GER flag = GER color = map_GER
 regions = { north_german_region south_german_region }
-form_effect = { }
+form_effect = { if = { limit = { country_rank_level < 4 } set_country_rank_effect = { rank = country_rank:rank_empire } } }
 }
-tsin_nation_italy_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_italy_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_italy_candidate = yes owns = location:turin owns = location:milano owns = location:florence owns = location:naples }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:turin owns = location:milano owns = location:florence owns = location:naples }
 name = ITA adjective = ITA_ADJ
 tag = ITA flag = ITA color = map_ITA
 regions = { italy_region }
-form_effect = { }
+form_effect = {  }
 }
-tsin_nation_usa_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_usa_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_usa_candidate = yes owns = location:shackamaxon owns = location:manhattan }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:shackamaxon owns = location:manhattan }
 name = USA adjective = USA_ADJ
 tag = USA flag = USA color = map_USA
 regions = { east_coast_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_mexico_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_mexico_candidate = yes owns = location:tenochtitlan }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:tenochtitlan }
 name = MEX adjective = MEX_ADJ
 tag = MEX flag = MEX color = map_MEX
 regions = { mesoamerica_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
-tsin_nation_mughals_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_mughals_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_mughals_candidate = yes owns = location:delhi owns = location:agra owns = location:lahore }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:delhi owns = location:agra owns = location:lahore }
 name = MUG adjective = MUG_ADJ
 tag = MUG flag = MUG color = map_MUG
 regions = { hindustan_region }
-form_effect = { }
+form_effect = { if = { limit = { country_rank_level < 4 } set_country_rank_effect = { rank = country_rank:rank_empire } } }
 }
-tsin_nation_qing_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_qing_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_qing_candidate = yes owns = location:dadu }
-name = TQG adjective = TQG_ADJ
-tag = TQG flag = CHI color = map_QNG
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:dadu }
+name = QNG adjective = QNG_ADJ
+tag = CHI flag = CHI color = map_QNG
 regions = { north_china_region south_china_region east_china_region west_china_region manchuria_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:monarchy rtr_recreate_middle_kingdom = yes }
 }
-tsin_nation_japan_f = { level = 3 required_locations_fraction = 0 rule = historical
+tsin_nation_japan_f = { level = 4 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_japan_candidate = yes owns = location:kyoto }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:kyoto }
 name = JAP adjective = JAP_ADJ
 tag = JAP flag = JAP color = map_JAP
 regions = { japan_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_belgium_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_belgium_candidate = yes owns = location:brussels }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:brussels }
 name = BEL adjective = BEL_ADJ
 tag = BEL flag = BEL color = map_BEL
 regions = { north_german_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_greece_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_greece_candidate = yes owns = location:athens }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:athens }
 name = GRE adjective = GRE_ADJ
 tag = GRE flag = GRE color = map_GRE
 regions = { balkan_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_romania_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_romania_candidate = yes owns = location:bucharest }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:bucharest }
 name = RMN adjective = RMN_ADJ
 tag = RMN flag = RMN color = map_RMN
 regions = { carpathia_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_serbia_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_serbia_candidate = yes owns = location:belgrad }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:belgrad }
 name = SER adjective = SER_ADJ
 tag = SER flag = SER color = map_SER
 regions = { balkan_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_bulgaria_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_bulgaria_candidate = yes owns = location:sredets }
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:sredets }
 name = BUL adjective = BUL_ADJ
 tag = BUL flag = BUL color = map_BUL
 regions = { balkan_region }
-form_effect = { }
+form_effect = {  }
 }
 tsin_nation_brazil_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_brazil_candidate = yes owns = location:goana_para }
-name = TBR adjective = TBR_ADJ
-tag = TBR flag = POR color = map_POR
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:goana_para }
+name = XBR adjective = XBR_ADJ
+tag = XBR flag = XBR color = map_tsin_brazil
 regions = { brazil_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:monarchy }
 }
 tsin_nation_argentina_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_argentina_candidate = yes owns = location:chana }
-name = TAR adjective = TAR_ADJ
-tag = TAR flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:chana }
+name = XAR adjective = XAR_ADJ
+tag = XAR flag = XAR color = map_tsin_argentina
 regions = { la_plata_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_chile_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_chile_candidate = yes owns = location:meli_pillan }
-name = TCH adjective = TCH_ADJ
-tag = TCH flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:meli_pillan }
+name = XCZ adjective = XCZ_ADJ
+tag = XCZ flag = XCZ color = map_tsin_chile
 regions = { andes_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_peru_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_peru_candidate = yes owns = location:rimaq }
-name = TPE adjective = TPE_ADJ
-tag = TPE flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:rimaq }
+name = XPE adjective = XPE_ADJ
+tag = XPE flag = XPE color = map_tsin_peru
 regions = { andes_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_bolivia_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_bolivia_candidate = yes owns = location:ccantumarcani }
-name = TBO adjective = TBO_ADJ
-tag = TBO flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:ccantumarcani }
+name = XBO adjective = XBO_ADJ
+tag = XBO flag = XBO color = map_tsin_bolivia
 regions = { andes_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_gran_colombia_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_gran_colombia_candidate = yes owns = location:bosa_colombia owns = location:caracas owns = location:quito }
-name = TGC adjective = TGC_ADJ
-tag = TGC flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:bosa_colombia owns = location:caracas owns = location:quito }
+name = XGC adjective = XGC_ADJ
+tag = XGC flag = XGC color = map_tsin_gran_colombia
 regions = { colombia_region andes_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_colombia_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_colombia_candidate = yes owns = location:bosa_colombia }
-name = TCO adjective = TCO_ADJ
-tag = TCO flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:bosa_colombia }
+name = XCO adjective = XCO_ADJ
+tag = XCO flag = XCO color = map_tsin_colombia
 regions = { colombia_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_venezuela_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_venezuela_candidate = yes owns = location:caracas }
-name = TVZ adjective = TVZ_ADJ
-tag = TVZ flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:caracas }
+name = XVZ adjective = XVZ_ADJ
+tag = XVZ flag = XVZ color = map_tsin_venezuela
 regions = { colombia_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_ecuador_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_ecuador_candidate = yes owns = location:quito }
-name = TEC adjective = TEC_ADJ
-tag = TEC flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:quito }
+name = XEC adjective = XEC_ADJ
+tag = XEC flag = XEC color = map_tsin_ecuador
 regions = { andes_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_uruguay_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_uruguay_candidate = yes owns = location:guenoa }
-name = TUY adjective = TUY_ADJ
-tag = TUY flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:guenoa }
+name = XUY adjective = XUY_ADJ
+tag = XUY flag = XUY color = map_tsin_uruguay
 regions = { la_plata_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }
 tsin_nation_paraguay_f = { level = 3 required_locations_fraction = 0 rule = historical
 potential = { always = no } # Only the guarded progression coordinator may form this variant.
-allow = { tsin_nation_paraguay_candidate = yes owns = location:nemby }
-name = TPY adjective = TPY_ADJ
-tag = TPY flag = MEX color = map_MEX
+allow = { tsin_history_ai_realm = yes is_subject = no owns = location:nemby }
+name = XPY adjective = XPY_ADJ
+tag = XPY flag = XPY color = map_tsin_paraguay
 regions = { chaco_region }
-form_effect = { }
+form_effect = { change_government_type = government_type:republic }
 }

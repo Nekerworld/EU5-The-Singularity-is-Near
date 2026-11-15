@@ -18,7 +18,7 @@ def register(fields, action, loc):
         ('LOSSES','Cumulative credit write-offs','누적 신용 상각','tsin_bank_losses'),
     ]:
         fields.append((key,en,ko,var));loc(key,en,ko)
-    action('suspend_gold','Suspend convertibility','태환 일시 정지','has_policy = policy:tsin_gold_standard_policy NOT = { has_variable = tsin_convertibility_suspended }','set_variable = { name = tsin_convertibility_suspended years = 5 } add_prestige = -10','MONEY')
+    action('suspend_gold','Suspend convertibility','태환 일시 정지','has_policy = policy:tsin_gold_standard_policy NOT = { has_variable = tsin_convertibility_suspended }','set_variable = { name = tsin_convertibility_suspended years = 5 } add_country_modifier = { modifier = tsin_convertibility_suspension years = 5 mode = replace } add_prestige = -10','MONEY')
     action('open_bank','Open deposit bank','예금은행 영업 개시','var:tsin_bank_cash >= tsin_ledger_lot NOT = { has_variable = tsin_bank_open }','set_variable = tsin_bank_open','BANK')
     action('stop_deposits','Close new deposits','신규 예금 중단','has_variable = tsin_bank_open','remove_variable = tsin_bank_open set_variable = tsin_bank_winding_down','BANK')
     action('liquidity','Provide reserve liquidity','준비 현금으로 유동성 대출','var:tsin_reserve >= tsin_ledger_lot var:tsin_withdrawal_due > 0','change_variable = { name = tsin_reserve subtract = tsin_ledger_lot } change_variable = { name = tsin_bank_cash add = tsin_ledger_lot } change_variable = { name = tsin_liquidity_debt add = tsin_ledger_lot }','BANK')
@@ -68,6 +68,7 @@ set_variable = { name = tsin_foreign_principal value = tsin_ledger_lot }
 set_variable = { name = tsin_foreign_local_principal value = { value = tsin_ledger_lot multiply = scope:tsin_foreign_partner.var:tsin_fx } }
 change_variable = { name = tsin_bank_cash subtract = var:tsin_foreign_principal }
 set_variable = { name = tsin_foreign_age value = 0 }
+set_variable = { name = tsin_foreign_delinquency value = 0 }
 set_variable = { name = tsin_foreign_cooldown years = 3 }
 }
 change_variable = { name = tsin_firm_cash add = scope:tsin_foreign_lender.var:tsin_foreign_principal }
@@ -163,7 +164,8 @@ tsin_bank_quarter_effect = yes
 }
 '''
 
-MODIFIERS = '''tsin_bank_credit_contraction = {
+MODIFIERS = '''tsin_convertibility_suspension = { game_data = { category = country } monthly_inflation = 0.01 bank_interest = 0.01 }
+tsin_bank_credit_contraction = {
 game_data = { category = country }
 global_construction_speed = -0.10
 global_production_efficiency = -0.05

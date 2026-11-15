@@ -1,20 +1,13 @@
-<p align="center">
-  <img src="readme_media/banner.png" alt="The Singularity is Near — 공통 운영 체계와 시대별 확장" width="100%">
-</p>
+![The Singularity is Near — 공통 운영 체계와 시대별 확장](readme_media/banner.png)
 
-<p align="center">
-  <img alt="version" src="https://img.shields.io/badge/version-0.7.0%20(개발%20중)-2f6b4f">
-  <img alt="game" src="https://img.shields.io/badge/Europa%20Universalis%20V-1.4.x-b8892b">
-  <img alt="languages" src="https://img.shields.io/badge/언어-English%20%7C%20한국어-2f5a8a">
-  <img alt="status" src="https://img.shields.io/badge/상태-인게임%20검증%20중-a23b2a">
-</p>
+![version](https://img.shields.io/badge/version-0.7.0%20(개발%20중)-2f6b4f)![game](https://img.shields.io/badge/Europa%20Universalis%20V-1.4.x-b8892b)![languages](https://img.shields.io/badge/언어-English%20%7C%20한국어-2f5a8a)![status](https://img.shields.io/badge/상태-인게임%20검증%20중-a23b2a)
 
 > **유로파 유니버설리스 5가 1836년에 끝날 필요는 없습니다.**
 >
 > The Singularity is Near(특이점이 온다)는 공용 관리 UI·국가 통계·성장 조절 체계와 바닐라 여섯 시대 뒤의 **제7시대 「산업」(1837~1900)의 콘텐츠**와 **제8~12시대의 뼈대**를 더하고, 게임 종료일을 **2337년**까지 늘리는 확장 모드입니다. 현재 실제 콘텐츠 개발 범위는 제7시대이며, 이후 시대는 이름·시작 연도·기본 규칙·현지화만 등록되어 있습니다.
 
 > [!WARNING]
-> 0.7.0은 **인게임 검증 중인 개발 빌드**입니다. 일부 기능은 플레이에서 확인했지만, 새 관리 UI와 제8\~12시대 전환은 추가 검증이 필요합니다. 제8\~12시대의 전용 기술·시대관·이벤트·새 밸런스는 아직 구현하지 않았습니다.
+> 0.7.0은 **인게임 검증 중인 개발 빌드**입니다. 일부 기능은 플레이에서 확인했지만, 새 관리 UI와 제812시대 전환은 추가 검증이 필요합니다. 제812시대의 전용 기술·시대관·이벤트·새 밸런스는 아직 구현하지 않았습니다.
 
 ---
 
@@ -38,16 +31,15 @@
 5. [앞으로의 계획](#5-앞으로의-계획)
 6. [English summary](#english-summary)
 
-
 ---
 
 ## 1. 전역 변경사항
 
 **전역은 여러 시대가 공유하는 코드와 운영 체계를 뜻합니다.** 모든 기능이 1337년부터 작동한다는 뜻은 아닙니다. 예를 들어 성장 조절과 주요 연간 집계는 7시대 이후 작동하며, 산업화 시설·정책은 해당 기술과 시대관을 요구합니다.
 
-<p align="center"><img src="readme_media/global_overview.png" alt="전역 변경사항: 공통 운영 화면, 국가 통계, 지도와 안내, 성장 조절, 시대 연결" width="100%"></p>
+![전역 변경사항: 공통 운영 화면, 국가 통계, 지도와 안내, 성장 조절, 시대 연결](readme_media/global_overview.png)
 
-<p align="center"><img src="readme_media/content_counts.png" alt="공용 체계와 제7시대 콘텐츠의 정의 수를 구분한 도표" width="100%"></p>
+![공용 체계와 제7시대 콘텐츠의 정의 수를 구분한 도표](readme_media/content_counts.png)
 
 ### 공통 운영 화면
 
@@ -69,7 +61,6 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 경제 화면 상단의 **금융 → 증시**에서 최근 8개 관측값(통상 분기별)의 지수 선 그래프와 범용·국가 고유·산업 기업 카드를 확인합니다. 주가, 본사 이동, 관련 건물 레벨, 기업 가치 추정치를 표시하고 기존 기업 결단으로 연결합니다. 수지 탭으로 돌아갈 수 있으며 Glorp용 로컬 호환 파일에도 같은 진입 경로를 연결했습니다. 주식 탭 진입 시 기존 기업을 이행하고 표시용 통계를 갱신합니다. 공용 기업 회계는 분기마다 갱신합니다. 상세 내용과 재생성 절차는 `docs/stock_market_ui.md` 참고.
 
-
 ### 역사 진행·러시아 지원·추가 사건
 
 기타 결단의 **역사 진행·국경 점검**은 영토를 바꾸지 않는 진단 보고서를 제공합니다. 러시아 럭키네이션은 기본적으로 형성을 지원하며, 영토 보완은 별도 규칙입니다. 필수 도시를 인간 세력권이 소유·점령하면 전체 보완을 막습니다. HEX 역할 보유국은 1700년 이전 기존 모드에 맡깁니다. 청·무굴의 새 지원과 실제 월경지 매각은 아직 구현하지 않았습니다. [역사 진행 안내](docs/historical_progression.md)를 참고하세요.
@@ -90,14 +81,13 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반 추정치입니다. 국가 통계국 개혁은 경제 통계 보고서에 교육·노동 불만·주가·기업 가치까지 더합니다. 자세한 계산은 [`docs/economic_statistics.md`](docs/economic_statistics.md), 교육은 [`docs/education.md`](docs/education.md)를 참고하세요.
 
-
 ### 성장과 인구 조절
 
 게임의 하루는 엔진에 고정되어 있어 건드리지 않습니다. 대신 **같은 시간에 더 큰 변화**가 일어나게 하고, 그만큼 상한을 둡니다.
 
 #### 산업 가속
 
-<p align="center"><img src="readme_media/acceleration.png" alt="시간 압축과 산업 가속" width="90%"></p>
+![시간 압축과 산업 가속](readme_media/acceleration.png)
 
 제7시대 자체가 연구 +10%, 건설 +10%, 승급 +20%, 이주 +25%, 제도 확산 +20%를 줍니다. 여기에 나라마다 매년 **산업 가속 점수**를 매겨 단계 보정치를 더합니다.
 
@@ -111,7 +101,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 #### 세계 인구 조절기
 
-<p align="center"><img src="readme_media/population_governor.png" alt="세계 인구 조절기" width="90%"></p>
+![세계 인구 조절기](readme_media/population_governor.png)
 
 1837년 세계 인구를 기준(=1)으로 잡고, 연도별 목표 배율(1900년 ×1.6, 1950년 ×2.4, 2000년 ×5.5, 2100년 이후 ×7)과 비교해 매년 제동 단계를 정합니다. 목표를 넘으면 단계별로 인구 증가·식량 소비·수용력 보정치를 적용합니다. 1·2단계는 연간 인구 증가율 1% 초과 국가에, 3단계는 모든 국가에 적용하며, 1837년의 7배 이상이면 무조건 가장 센 제동이 걸립니다.
 
@@ -150,7 +140,6 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 | 경제 통계 기록 | 끔 / 켬 (매년 게임 로그에 `TSIN_ECON` 통계 줄, `tools/econ_report.py`로 분석) |
 | 관찰 측정 기록 | 끔 / 켬 (관찰 실행 분석용) |
 
-
 ### 바닐라 연속성과 세이브
 
 바닐라에는 `current_age = age_6_revolutions` 같은 조건이 곳곳에 박혀 있어, 그대로 두면 1837년에 혁명, 제국주의 전쟁명분, 의회 안건 등이 멈춥니다. 이 모드는 그런 바닐라 객체를 생성기(`tools/gen_age7_patches.py`)로 복사해 제7시대 조건을 더한 뒤 객체 단위로 교체합니다(약 117개 객체, 42개 파일). 게임 패치가 나오면 생성기만 다시 돌리면 됩니다.
@@ -163,7 +152,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 ## 2. 시대별 변경사항
 
-<p align="center"><img src="readme_media/ages_timeline.png" alt="7시대 산업 콘텐츠와 8~12시대 뼈대의 시작 연도와 구현 상태" width="100%"></p>
+![7시대 산업 콘텐츠와 8~12시대 뼈대의 시작 연도와 구현 상태](readme_media/ages_timeline.png)
 
 | 시대 | 기간 | 컨셉 | 구현 상태 |
 |---|---|---|---|
@@ -180,7 +169,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 시대 등록 원본은 [`data/eras.json`](data/eras.json), 생성기는 [`tools/gen_era_skeleton.py`](tools/gen_era_skeleton.py)입니다. 정확한 ID와 검증 절차는 [`docs/future_era_skeleton.md`](docs/future_era_skeleton.md)에 있습니다.
 
-<a id="era-7"></a>
+
 
 ### 2.1. 제7시대 산업 (1837–1900)
 
@@ -195,7 +184,6 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 | 군사 | 유닛 19종과 군사 발전 29개 |
 
 공용 연결 파일의 사건까지 포함한 **모드 전체 이벤트는 207개**입니다. 시대 원본 파일 수와 이벤트 수는 다른 단위입니다. 아래 표와 도표는 현재 정의를 기준으로 설명하며, 밸런스 목표와 실험 결과를 구분합니다.
-
 
 #### 빠른 시작
 
@@ -250,7 +238,7 @@ flowchart LR
 
 #### 발전 트리
 
-<p align="center"><img src="readme_media/advances.png" alt="제7시대 발전 분포" width="85%"></p>
+![제7시대 발전 분포](readme_media/advances.png)
 
 - 현재 **161개**입니다. 무료 특화 트리는 10개 분기·2~4단계로 나누고 선행 연구를 연결했습니다.
 - 역사적으로 늦은 기술(속사포, 전노급 전함, 질소 고정)은 연도 조건 대신 **긴 선행 사슬과 교차 선행**(강철·전기)으로 늦춥니다.
@@ -295,8 +283,7 @@ flowchart LR
 
 ##### 새 건물 26종
 
-<details>
-<summary><b>건물 목록 펼치기</b> — 15종은 바닐라·모드 건물을 제자리에서 개축(obsolete)합니다</summary>
+**건물 목록 펼치기** — 15종은 바닐라·모드 건물을 제자리에서 개축(obsolete)합니다
 
 | 분야 | 건물 | 개축 대상 |
 |---|---|---|
@@ -326,11 +313,11 @@ flowchart LR
 
 옛 건물을 묻는 바닐라·모드 조건(이벤트, 임무, 제도 발생 등)은 개축한 건물도 함께 셉니다(`docs/replaced_buildings.md`).
 
-</details>
+
 
 ##### 생산 방식의 산출·투입 비율
 
-<p align="center"><img src="readme_media/factory_margins.png" alt="생산 방식의 기본 가격 산출·투입 비율" width="80%"></p>
+![생산 방식의 기본 가격 산출·투입 비율](readme_media/factory_margins.png)
 
 모든 공장 생산 방식은 기본 시장 가격에서 **산출 가치 ÷ 투입 비용**이 바닐라 공장과 같은 1.25~1.5 범위에 들도록 맞췄습니다. 흑색화약은 니트로글리세린보다 낮게 잡았습니다. 이 비율은 투입재와 산출물의 기준 가격 비교이며, 임금·건물 유지비·실제 시장 가격을 반영한 순이익이 아닙니다. `tools/audit.py`가 이 범위를 검사합니다.
 
@@ -400,7 +387,7 @@ stateDiagram-v2
     withdrawn --> [*]
 ```
 
-<p align="center"><img src="readme_media/bill_pass_chance.png" alt="법안 통과 확률" width="80%"></p>
+![법안 통과 확률](readme_media/bill_pass_chance.png)
 
 심의 한 번의 성공 확률은 기본 35%에서 시작해, 법안을 지지하는 계층의 권력(+), 반대 계층의 권력(−), 관련 운동의 세기, 공화정, 입법 효율, 논쟁 결과로 오르내립니다(5~85%로 묶임). 툴팁에 항목별 내역이 나옵니다. 게임 규칙 **확률 입법**으로 끌 수 있습니다.
 
@@ -427,7 +414,7 @@ stateDiagram-v2
 
 #### 세계와 사건
 
-<p align="center"><img src="readme_media/age7_timeline.png" alt="제7시대 상황과 재난 연표" width="100%"></p>
+![제7시대 상황과 재난 연표](readme_media/age7_timeline.png)
 
 ##### 상황 8종
 
@@ -463,45 +450,43 @@ stateDiagram-v2
 
 #### 군사
 
-<details>
-<summary><b>제7시대 유닛 19종 펼치기</b></summary>
+**제7시대 유닛 19종 펼치기**
 
 | 육군 (12) | 해군 (7) |
 |---|---|
 | 예비군, 기마 경찰대, 전열 소총병, 소총 산병, 후장포대, 기마 소총병, 창기병, 철도 보급대, 기관총 분견대, 볼트액션 보병, 엽병, 속사 포대 | 철갑함, 모니터함, 어뢰정, 증기 수송선, 방호 순양함, 구축함, 전노급 전함 |
 
-</details>
+
 
 - 군사 발전 29개가 유닛과 군사 보정치를 엽니다. 군사 특화가 아닌 나라도 제7시대 유닛을 모두 연구할 수 있습니다.
 - 제7시대 함선과 공장 건설에는 기관과 강철이 들어갑니다.
 - 바닐라 제6시대의 전쟁 점수 유지(제국주의·민족주의 전쟁명분 등)는 제7시대에도 그대로입니다.
 
 
-<a id="era-8"></a>
 
 ### 2.2. 제8시대 대전 (1900–1945)
 
 **시대 뼈대만 구현.** 컨셉: 대중 동원·산업 전쟁·정치 질서의 재편. 시작 연도·이름·기본 시대 정의·한/영 설명과 임시 이미지가 등록되어 있습니다. 전용 시대관·기술·이벤트·새 밸런스는 아직 없습니다.
 
-<a id="era-9"></a>
+
 
 ### 2.3. 제9시대 원자력 (1945–1990)
 
 **시대 뼈대만 구현.** 컨셉: 핵 억지·국제 질서·대량소비사회. 시작 연도·이름·기본 시대 정의·한/영 설명과 임시 이미지가 등록되어 있습니다. 전용 시대관·기술·이벤트·새 밸런스는 아직 없습니다.
 
-<a id="era-10"></a>
+
 
 ### 2.4. 제10시대 정보화 (1990–2035)
 
 **시대 뼈대만 구현.** 컨셉: 디지털 네트워크·세계 공급망·지식경제. 시작 연도·이름·기본 시대 정의·한/영 설명과 임시 이미지가 등록되어 있습니다. 전용 시대관·기술·이벤트·새 밸런스는 아직 없습니다.
 
-<a id="era-11"></a>
+
 
 ### 2.5. 제11시대 인공지능 (2035–2120)
 
 **시대 뼈대만 구현.** 컨셉: 지능형 자동화와 노동·통치·사회 체계의 변화. 시작 연도·이름·기본 시대 정의·한/영 설명과 임시 이미지가 등록되어 있습니다. 전용 시대관·기술·이벤트·새 밸런스는 아직 없습니다.
 
-<a id="era-12"></a>
+
 
 ### 2.6. 제12시대 우주 개척 (2120–2337)
 
@@ -520,11 +505,9 @@ stateDiagram-v2
 
 배포용 사본은 `python tools/build_release.py`로 만듭니다. 원본 `era_7`을 동기화한 뒤 게임용 폴더만 내보냅니다. 세이브 호환 주의사항은 위의 전역 변경사항에 있습니다.
 
-
 ## 4. 개발자용 안내
 
-제7시대 콘텐츠 원본 354개는 [`era_7/`](era_7/README.md)에 모았습니다. 전역 UI·통계·공통 프레임워크·시대 연결 패치·제8~12시대 뼈대는 기존 경로를 유지합니다. 게임은 기존 `in_game`/`main_menu` 경로를 읽으므로, 원본을 수정하거나 저장소를 처음 받은 뒤에는 **`python tools/sync_eras.py`를 실행한 다음 게임을 시작**하세요. 생성기는 원본과 실행용 파일을 함께 갱신하며 배포 도구도 자동 동기화합니다. 구조와 새 파일 등록 방법은 `era_7/README.md` 참고.
-
+제7시대 콘텐츠 원본 354개는 [`era_7/`](era_7/README.md)에 모았습니다. 전역 UI·통계·공통 프레임워크·시대 연결 패치·제8~12시대 뼈대는 기존 경로를 유지합니다. 게임은 기존 `in_game`/`main_menu` 경로를 읽으므로, 원본을 수정하거나 저장소를 처음 받은 뒤에는 `python tools/sync_eras.py`**를 실행한 다음 게임을 시작**하세요. 생성기는 원본과 실행용 파일을 함께 갱신하며 배포 도구도 자동 동기화합니다. 구조와 새 파일 등록 방법은 `era_7/README.md` 참고.
 
 ```
 in_game/         전역 게임 스크립트와 시대별 콘텐츠의 실행용 파일
@@ -550,7 +533,6 @@ readme_media/    이 README의 그림 (tools/make_readme_media.py로 생성)
 
 README 도표는 `python tools/make_readme_media.py`로 다시 만듭니다(`matplotlib`, `Pillow` 필요). `--output <폴더>`는 검토용 이미지를 별도로 만듭니다. 생성기는 `era_7` 원본과 전역 파일을 함께 읽으며, `readme_media/content_inventory.json`에 개수·시대 시작 연도·종료 연도를 남깁니다. 이미지와 본문의 수치를 함께 확인하세요.
 
-
 ## 5. 앞으로의 계획
 
 상세한 미구현 기능·개발 순서·완료 기준은 [미구현 개발계획](docs/future_development_plan.md)에 정리했습니다.
@@ -575,7 +557,6 @@ README 도표는 `python tools/make_readme_media.py`로 다시 만듭니다(`mat
 
 **Development layout:** edit Age VII sources under `era_7/`, then run `python tools/sync_eras.py` before launching. Shared content stays in its existing paths. Generators and release staging deploy to the original EU5 paths. Do not remove the mod from a save that has used its content. Runtime layout, performance and long-term balance still require in-game checks.
 
-
 ---
 
-<sub>README 이미지는 게임 스크린샷이 아닌 설명용 도표입니다. 개수·시대 등록·보정치는 모드 정의에서 읽고, 입법 확률 등 단순화한 예시는 가정을 함께 표시했습니다.</sub>
+README 이미지는 게임 스크린샷이 아닌 설명용 도표입니다. 개수·시대 등록·보정치는 모드 정의에서 읽고, 입법 확률 등 단순화한 예시는 가정을 함께 표시했습니다.

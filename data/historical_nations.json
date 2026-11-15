@@ -56,7 +56,8 @@
       "regions": [
         "north_german_region",
         "south_german_region"
-      ]
+      ],
+      "level": 4
     },
     {
       "id": "italy",
@@ -84,7 +85,8 @@
       "minimum_locations": 10,
       "regions": [
         "italy_region"
-      ]
+      ],
+      "level": 4
     },
     {
       "id": "austria_hungary",
@@ -137,7 +139,8 @@
       "regions": [
         "east_coast_region"
       ],
-      "colonial": true
+      "colonial": true,
+      "level": 4
     },
     {
       "id": "mexico",
@@ -190,11 +193,12 @@
       "regions": [
         "hindustan_region"
       ],
-      "extra": "religion.group = religion_group:muslim"
+      "extra": "religion.group = religion_group:muslim",
+      "level": 4
     },
     {
       "id": "qing",
-      "tag": "TQG",
+      "tag": "CHI",
       "name": {
         "english": "Qing",
         "korean": "청"
@@ -219,9 +223,14 @@
         "west_china_region",
         "manchuria_region"
       ],
-      "custom": true,
+      "custom": false,
       "flag": "CHI",
-      "color": "map_QNG"
+      "color": "map_QNG",
+      "name_key": "QNG",
+      "adj_key": "QNG_ADJ",
+      "level": 4,
+      "form_gate": "NOT = { country_exists = c:CHI } OR = { NOT = { exists = international_organization:middle_kingdom } is_leader_of_international_organization = international_organization:middle_kingdom } NOT = { any_subject_or_below = { tsin_history_human_realm = yes } }",
+      "require_core": false
     },
     {
       "id": "japan",
@@ -243,7 +252,8 @@
       "minimum_locations": 15,
       "regions": [
         "japan_region"
-      ]
+      ],
+      "level": 4
     },
     {
       "id": "belgium",
@@ -361,7 +371,7 @@
     },
     {
       "id": "brazil",
-      "tag": "TBR",
+      "tag": "XBR",
       "name": {
         "english": "Brazil",
         "korean": "브라질"
@@ -382,12 +392,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "POR",
-      "color": "map_POR"
+      "flag": "XBR",
+      "color": "map_tsin_brazil",
+      "map_rgb": [
+        36,
+        118,
+        48
+      ],
+      "flag_style": [
+        "solid",
+        "green",
+        "green",
+        "green"
+      ]
     },
     {
       "id": "argentina",
-      "tag": "TAR",
+      "tag": "XAR",
       "name": {
         "english": "Argentina",
         "korean": "아르헨티나"
@@ -408,12 +429,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XAR",
+      "color": "map_tsin_argentina",
+      "map_rgb": [
+        111,
+        184,
+        216
+      ],
+      "flag_style": [
+        "horizontal",
+        "blue",
+        "white",
+        "blue"
+      ]
     },
     {
       "id": "chile",
-      "tag": "TCH",
+      "tag": "XCZ",
       "name": {
         "english": "Chile",
         "korean": "칠레"
@@ -434,12 +466,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XCZ",
+      "color": "map_tsin_chile",
+      "map_rgb": [
+        182,
+        37,
+        48
+      ],
+      "flag_style": [
+        "horizontal",
+        "blue",
+        "white",
+        "red"
+      ]
     },
     {
       "id": "peru",
-      "tag": "TPE",
+      "tag": "XPE",
       "name": {
         "english": "Peru",
         "korean": "페루"
@@ -460,12 +503,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XPE",
+      "color": "map_tsin_peru",
+      "map_rgb": [
+        164,
+        58,
+        65
+      ],
+      "flag_style": [
+        "vertical",
+        "red",
+        "white",
+        "red"
+      ]
     },
     {
       "id": "bolivia",
-      "tag": "TBO",
+      "tag": "XBO",
       "name": {
         "english": "Bolivia",
         "korean": "볼리비아"
@@ -486,12 +540,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XBO",
+      "color": "map_tsin_bolivia",
+      "map_rgb": [
+        143,
+        152,
+        57
+      ],
+      "flag_style": [
+        "horizontal",
+        "red",
+        "yellow",
+        "green"
+      ]
     },
     {
       "id": "gran_colombia",
-      "tag": "TGC",
+      "tag": "XGC",
       "name": {
         "english": "Gran Colombia",
         "korean": "그란콜롬비아"
@@ -515,12 +580,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XGC",
+      "color": "map_tsin_gran_colombia",
+      "map_rgb": [
+        218,
+        177,
+        54
+      ],
+      "flag_style": [
+        "horizontal",
+        "yellow",
+        "blue",
+        "red"
+      ]
     },
     {
       "id": "colombia",
-      "tag": "TCO",
+      "tag": "XCO",
       "name": {
         "english": "Colombia",
         "korean": "콜롬비아"
@@ -541,12 +617,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XCO",
+      "color": "map_tsin_colombia",
+      "map_rgb": [
+        206,
+        164,
+        23
+      ],
+      "flag_style": [
+        "horizontal",
+        "yellow",
+        "blue",
+        "red"
+      ]
     },
     {
       "id": "venezuela",
-      "tag": "TVZ",
+      "tag": "XVZ",
       "name": {
         "english": "Venezuela",
         "korean": "베네수엘라"
@@ -567,12 +654,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XVZ",
+      "color": "map_tsin_venezuela",
+      "map_rgb": [
+        190,
+        150,
+        71
+      ],
+      "flag_style": [
+        "horizontal",
+        "yellow",
+        "blue",
+        "red"
+      ]
     },
     {
       "id": "ecuador",
-      "tag": "TEC",
+      "tag": "XEC",
       "name": {
         "english": "Ecuador",
         "korean": "에콰도르"
@@ -593,12 +691,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XEC",
+      "color": "map_tsin_ecuador",
+      "map_rgb": [
+        177,
+        155,
+        38
+      ],
+      "flag_style": [
+        "horizontal",
+        "yellow",
+        "blue",
+        "red"
+      ]
     },
     {
       "id": "uruguay",
-      "tag": "TUY",
+      "tag": "XUY",
       "name": {
         "english": "Uruguay",
         "korean": "우루과이"
@@ -619,12 +728,23 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XUY",
+      "color": "map_tsin_uruguay",
+      "map_rgb": [
+        91,
+        157,
+        220
+      ],
+      "flag_style": [
+        "horizontal",
+        "white",
+        "blue",
+        "white"
+      ]
     },
     {
       "id": "paraguay",
-      "tag": "TPY",
+      "tag": "XPY",
       "name": {
         "english": "Paraguay",
         "korean": "파라과이"
@@ -645,8 +765,19 @@
       ],
       "colonial": true,
       "custom": true,
-      "flag": "MEX",
-      "color": "map_MEX"
+      "flag": "XPY",
+      "color": "map_tsin_paraguay",
+      "map_rgb": [
+        146,
+        77,
+        121
+      ],
+      "flag_style": [
+        "horizontal",
+        "red",
+        "white",
+        "blue"
+      ]
     }
   ]
 }

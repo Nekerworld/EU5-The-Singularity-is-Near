@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source": "in_game/common/advances/tsin_08_agricultural_revolution.txt",
+  "destination": "in_game/common/advances/zz_tsin_08_agricultural_transition.txt",
+  "retained_ids": {
+    "tsin_nitrogen_fixation_advance": "99082027a331893c026458ea87c34b14fd20e61bb01cc49f4797bae162ebd944",
+    "tsin_ammonia_synthesis_advance": "295ecd3d2e3df2aa7125b19a903474eebd102229d9c52a937390f1bcf4e915a2"
+  },
+  "kept_era7": {
+    "tsin_intensive_farming_advance": "8c154905e8f753f9de8ed5973b83499eed24decf3bd1d1eaf2c9a13462617c9b"
+  },
+  "new_ids": [
+    "tsin_twentieth_century_farming_advance"
+  ]
+}

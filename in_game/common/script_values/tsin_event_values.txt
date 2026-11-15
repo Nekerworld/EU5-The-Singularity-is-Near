@@ -21,14 +21,14 @@ tsin_flavor_events_per_year = {
 # Gold paid by change_gold_effect = { scale = -N }, for AI affordability checks (gold < tsin_gold_cost_N).
 # scaled_gold_for_effect is linear in scope:scale and defaults to scale 1.
 tsin_gold_cost_2 = {
-	value = scaled_gold_for_effect
+	value = tsin_gold_cost_unit
 	multiply = 2
 }
 tsin_gold_cost_3 = {
-	value = scaled_gold_for_effect
+	value = tsin_gold_cost_unit
 	multiply = 3
 }
 tsin_gold_cost_4 = {
-	value = scaled_gold_for_effect
+	value = tsin_gold_cost_unit
 	multiply = 4
 }

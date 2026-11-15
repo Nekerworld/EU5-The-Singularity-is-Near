@@ -1,0 +1,194 @@
+﻿yearly_country_pulse = { on_actions = { tsin_history2_draw_0 tsin_history2_draw_1 tsin_history2_draw_2 tsin_history2_draw_3 tsin_hist2_partners_review tsin_hist2_cleanup } }
+tsin_history2_draw_0 = { trigger = { is_ai = no current_year >= 1837 current_year < 1900 current_age = age_7_industrialization
+NOT = { has_game_rule = tsin_historical_events_off }  }
+random_events = { chance_to_happen = 100
+10 = tsin_history2.1
+10 = tsin_history2.2
+10 = tsin_history2.3
+10 = tsin_history2.4
+10 = tsin_history2.5
+10 = tsin_history2.6
+10 = tsin_history2.7
+10 = tsin_history2.11
+10 = tsin_history2.12
+10 = tsin_history2.13
+10 = tsin_history2.14
+10 = tsin_history2.15
+10 = tsin_history2.16
+10 = tsin_history2.21
+10 = tsin_history2.22
+10 = tsin_history2.23
+10 = tsin_history2.24
+10 = tsin_history2.25
+10 = tsin_history2.26
+10 = tsin_history2.27
+10 = tsin_history2.31
+10 = tsin_history2.32
+10 = tsin_history2.33
+10 = tsin_history2.34
+10 = tsin_history2.35
+10 = tsin_history2.36
+10 = tsin_history2.41
+10 = tsin_history2.42
+10 = tsin_history2.43
+10 = tsin_history2.44
+10 = tsin_history2.45
+10 = tsin_history2.46
+10 = tsin_history2.47
+10 = tsin_history2.51
+10 = tsin_history2.52
+10 = tsin_history2.53
+10 = tsin_history2.54
+10 = tsin_history2.55
+10 = tsin_history2.56
+10 = tsin_history2.57
+10 = tsin_history2.58
+} }
+tsin_history2_draw_1 = { trigger = { is_ai = no current_year >= 1837 current_year < 1900 current_age = age_7_industrialization
+NOT = { has_game_rule = tsin_historical_events_off }  }
+random_events = { chance_to_happen = 100
+10 = tsin_history2.1
+10 = tsin_history2.2
+10 = tsin_history2.3
+10 = tsin_history2.4
+10 = tsin_history2.5
+10 = tsin_history2.6
+10 = tsin_history2.7
+10 = tsin_history2.11
+10 = tsin_history2.12
+10 = tsin_history2.13
+10 = tsin_history2.14
+10 = tsin_history2.15
+10 = tsin_history2.16
+10 = tsin_history2.21
+10 = tsin_history2.22
+10 = tsin_history2.23
+10 = tsin_history2.24
+10 = tsin_history2.25
+10 = tsin_history2.26
+10 = tsin_history2.27
+10 = tsin_history2.31
+10 = tsin_history2.32
+10 = tsin_history2.33
+10 = tsin_history2.34
+10 = tsin_history2.35
+10 = tsin_history2.36
+10 = tsin_history2.41
+10 = tsin_history2.42
+10 = tsin_history2.43
+10 = tsin_history2.44
+10 = tsin_history2.45
+10 = tsin_history2.46
+10 = tsin_history2.47
+10 = tsin_history2.51
+10 = tsin_history2.52
+10 = tsin_history2.53
+10 = tsin_history2.54
+10 = tsin_history2.55
+10 = tsin_history2.56
+10 = tsin_history2.57
+10 = tsin_history2.58
+} }
+tsin_history2_draw_2 = { trigger = { is_ai = no current_year >= 1837 current_year < 1900 current_age = age_7_industrialization
+NOT = { has_game_rule = tsin_historical_events_off } has_game_rule = tsin_historical_events_dense }
+random_events = { chance_to_happen = 100
+10 = tsin_history2.1
+10 = tsin_history2.2
+10 = tsin_history2.3
+10 = tsin_history2.4
+10 = tsin_history2.5
+10 = tsin_history2.6
+10 = tsin_history2.7
+10 = tsin_history2.11
+10 = tsin_history2.12
+10 = tsin_history2.13
+10 = tsin_history2.14
+10 = tsin_history2.15
+10 = tsin_history2.16
+10 = tsin_history2.21
+10 = tsin_history2.22
+10 = tsin_history2.23
+10 = tsin_history2.24
+10 = tsin_history2.25
+10 = tsin_history2.26
+10 = tsin_history2.27
+10 = tsin_history2.31
+10 = tsin_history2.32
+10 = tsin_history2.33
+10 = tsin_history2.34
+10 = tsin_history2.35
+10 = tsin_history2.36
+10 = tsin_history2.41
+10 = tsin_history2.42
+10 = tsin_history2.43
+10 = tsin_history2.44
+10 = tsin_history2.45
+10 = tsin_history2.46
+10 = tsin_history2.47
+10 = tsin_history2.51
+10 = tsin_history2.52
+10 = tsin_history2.53
+10 = tsin_history2.54
+10 = tsin_history2.55
+10 = tsin_history2.56
+10 = tsin_history2.57
+10 = tsin_history2.58
+} }
+tsin_history2_draw_3 = { trigger = { is_ai = no current_year >= 1837 current_year < 1900 current_age = age_7_industrialization
+NOT = { has_game_rule = tsin_historical_events_off } has_game_rule = tsin_historical_events_dense }
+random_events = { chance_to_happen = 100
+10 = tsin_history2.1
+10 = tsin_history2.2
+10 = tsin_history2.3
+10 = tsin_history2.4
+10 = tsin_history2.5
+10 = tsin_history2.6
+10 = tsin_history2.7
+10 = tsin_history2.11
+10 = tsin_history2.12
+10 = tsin_history2.13
+10 = tsin_history2.14
+10 = tsin_history2.15
+10 = tsin_history2.16
+10 = tsin_history2.21
+10 = tsin_history2.22
+10 = tsin_history2.23
+10 = tsin_history2.24
+10 = tsin_history2.25
+10 = tsin_history2.26
+10 = tsin_history2.27
+10 = tsin_history2.31
+10 = tsin_history2.32
+10 = tsin_history2.33
+10 = tsin_history2.34
+10 = tsin_history2.35
+10 = tsin_history2.36
+10 = tsin_history2.41
+10 = tsin_history2.42
+10 = tsin_history2.43
+10 = tsin_history2.44
+10 = tsin_history2.45
+10 = tsin_history2.46
+10 = tsin_history2.47
+10 = tsin_history2.51
+10 = tsin_history2.52
+10 = tsin_history2.53
+10 = tsin_history2.54
+10 = tsin_history2.55
+10 = tsin_history2.56
+10 = tsin_history2.57
+10 = tsin_history2.58
+} }
+tsin_hist2_partners_review = { trigger = { is_ai = no current_year >= 1837 current_year < 1900 }
+effect = {
+if = { limit = { has_variable = tsin_hist2_stink_stage var:tsin_hist2_stink_stage >= 1 var:tsin_hist2_stink_stage < 99
+NOT = { var:tsin_hist2_stink_location ?= { owner = root } } }
+set_variable = { name = tsin_hist2_stink_stage value = 99 } remove_variable = tsin_hist2_stink_location }
+if = { limit = { has_variable = tsin_hist2_mission_stage var:tsin_hist2_mission_stage >= 1 var:tsin_hist2_mission_stage < 99
+NOT = { var:tsin_hist2_mission_partner ?= { num_locations > 0 at_war = no } } }
+set_variable = { name = tsin_hist2_mission_stage value = 99 } trigger_event_non_silently = tsin_history2.100 }
+if = { limit = { has_variable = tsin_hist2_pig_stage var:tsin_hist2_pig_stage >= 1 var:tsin_hist2_pig_stage < 99
+NOT = { var:tsin_hist2_pig_partner ?= { num_locations > 0 at_war = no } } }
+set_variable = { name = tsin_hist2_pig_stage value = 99 } remove_variable = tsin_hist2_pig_partner }
+} }
+tsin_hist2_cleanup = { trigger = { is_ai = no current_year >= 1900 } effect = { tsin_hist2_boundary_cleanup_effect = yes } }
