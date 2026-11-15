@@ -1,0 +1,21 @@
+﻿tsin_modern_road_services_advance = {
+ age = age_9_atomic icon = modern_road_advance
+ requires = tsin_asphalt_services_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_modern_road_services ai_weight = { add = 10 }
+}
+tsin_high_speed_services_advance = {
+ age = age_9_atomic icon = railroad_advance
+ requires = tsin_heavy_freight_services_advance
+requires = tsin_distribution_grid_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_high_speed_services ai_weight = { add = 10 }
+}
+tsin_mature_metro_services_advance = {
+ age = age_9_atomic icon = railroad_advance
+ requires = tsin_high_speed_services_advance
+requires = tsin_distribution_grid_advance
+requires = tsin_electric_motor_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_mature_metro_services ai_weight = { add = 10 }
+}

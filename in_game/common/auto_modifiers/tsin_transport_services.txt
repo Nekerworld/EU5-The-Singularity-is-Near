@@ -1,0 +1,50 @@
+﻿tsin_macadam_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_macadam_services OR = { is_capital = yes has_road_to = owner.capital } }
+ scales_with = tsin_macadam_services_staff_scale local_market_access = 0.01
+}
+tsin_tarmac_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_tarmac_services OR = { is_capital = yes has_road_to = owner.capital } }
+ scales_with = tsin_tarmac_services_staff_scale local_market_access = 0.02
+}
+tsin_asphalt_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_asphalt_services OR = { is_capital = yes has_road_to = owner.capital } }
+ scales_with = tsin_asphalt_services_staff_scale local_market_access = 0.03
+}
+tsin_modern_road_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_modern_road_services OR = { is_capital = yes has_road_to = owner.capital } }
+ scales_with = tsin_modern_road_services_staff_scale local_market_access = 0.04
+}
+tsin_double_track_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_double_track_services has_building_with_at_least_one_level = tsin_railway_station OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } } }
+ scales_with = tsin_double_track_services_staff_scale local_market_access = 0.02
+}
+tsin_heavy_freight_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_heavy_freight_services has_building_with_at_least_one_level = tsin_railway_station OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } } }
+ scales_with = tsin_heavy_freight_services_staff_scale local_market_access = 0.04
+}
+tsin_high_speed_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_high_speed_services has_building_with_at_least_one_level = tsin_railway_station OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } } }
+ scales_with = tsin_high_speed_services_staff_scale local_population_capacity_modifier = 0.03
+}
+tsin_modern_rail_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_modern_rail_services has_building_with_at_least_one_level = tsin_railway_station OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } } }
+ scales_with = tsin_modern_rail_services_staff_scale local_population_capacity_modifier = 0.05
+}
+tsin_highway_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_highway_services OR = { is_capital = yes has_road_to = owner.capital } }
+ scales_with = tsin_highway_services_staff_scale local_market_access = 0.02
+}
+tsin_mature_metro_services_operation = {
+ category = location type = location
+ potential_trigger = { controller ?= owner has_building_with_at_least_one_level = tsin_mature_metro_services always = yes }
+ scales_with = tsin_mature_metro_services_staff_scale local_population_capacity_modifier = 0.07
+}

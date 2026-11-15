@@ -27,6 +27,10 @@ tools/out/
 /in_game/common/advances/tsin_10_government_religion.txt
 /in_game/common/advances/zz_tsin_08_agricultural_transition.txt
 /in_game/common/advances/zz_tsin_08_transport_military.txt
+/in_game/common/advances/zz_tsin_transport_services_07.txt
+/in_game/common/advances/zz_tsin_transport_services_08.txt
+/in_game/common/advances/zz_tsin_transport_services_09.txt
+/in_game/common/advances/zz_tsin_transport_services_10.txt
 /in_game/common/age/tsin_age_7.txt
 /in_game/common/artist_work/tsin_artist_work.txt
 /in_game/common/biases/tsin_opinion_io.txt
@@ -49,6 +53,10 @@ tools/out/
 /in_game/common/building_types/tsin_railway_buildings.txt
 /in_game/common/building_types/tsin_strategic_storage.txt
 /in_game/common/building_types/tsin_urban_transit.txt
+/in_game/common/building_types/zz_tsin_transport_services_07.txt
+/in_game/common/building_types/zz_tsin_transport_services_08.txt
+/in_game/common/building_types/zz_tsin_transport_services_09.txt
+/in_game/common/building_types/zz_tsin_transport_services_10.txt
 /in_game/common/cabinet_actions/tsin_civic_cabinet_actions.txt
 /in_game/common/cabinet_actions/tsin_industry_cabinet_actions.txt
 /in_game/common/casus_belli/tsin_unification_cb.txt
@@ -204,6 +212,7 @@ tools/out/
 /main_menu/common/static_modifiers/tsin_unification_modifiers.txt
 /main_menu/common/static_modifiers/tsin_working_class_modifiers.txt
 /main_menu/gfx/interface/icons/age/age_7_industrialization.dds
+/main_menu/gfx/interface/icons/buildings/tsin_asphalt_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_automated_fine_cloth_mill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_automated_furniture_mill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_automated_glass_mill.dds
@@ -214,6 +223,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_capital_airfield.dds
 /main_menu/gfx/interface/icons/buildings/tsin_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_distribution_substation.dds
+/main_menu/gfx/interface/icons/buildings/tsin_double_track_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_lighting.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_metro.dds
@@ -222,10 +232,17 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_farm_machinery_works.dds
 /main_menu/gfx/interface/icons/buildings/tsin_fertilized_fields.dds
 /main_menu/gfx/interface/icons/buildings/tsin_fertilizer_plant.dds
+/main_menu/gfx/interface/icons/buildings/tsin_heavy_freight_services.dds
+/main_menu/gfx/interface/icons/buildings/tsin_high_speed_services.dds
+/main_menu/gfx/interface/icons/buildings/tsin_highway_services.dds
+/main_menu/gfx/interface/icons/buildings/tsin_macadam_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_machine_works.dds
+/main_menu/gfx/interface/icons/buildings/tsin_mature_metro_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_mechanized_farm.dds
 /main_menu/gfx/interface/icons/buildings/tsin_mechanized_textile_mill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_model_dwellings.dds
+/main_menu/gfx/interface/icons/buildings/tsin_modern_rail_services.dds
+/main_menu/gfx/interface/icons/buildings/tsin_modern_road_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_motor_transport_depot.dds
 /main_menu/gfx/interface/icons/buildings/tsin_nitrogen_fixation_plant.dds
 /main_menu/gfx/interface/icons/buildings/tsin_oil_storage.dds
@@ -238,6 +255,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_steam_port.dds
 /main_menu/gfx/interface/icons/buildings/tsin_steam_sawmill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_strategic_storage.dds
+/main_menu/gfx/interface/icons/buildings/tsin_tarmac_services.dds
 /main_menu/gfx/interface/icons/buildings/tsin_telegraph_office.dds
 /main_menu/gfx/interface/icons/buildings/tsin_telephone_office.dds
 /main_menu/gfx/interface/icons/buildings/tsin_tenement.dds

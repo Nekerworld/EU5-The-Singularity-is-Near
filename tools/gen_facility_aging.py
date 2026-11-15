@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 import pdx
 GROUPS={
  'industry':('산업','Industry',['tsin_machine_tools_advance','tsin_electric_motor_advance','tsin_motor_transport_advance'],None),
- 'transport':('교통','Transport',['tsin_steel_rolling_stock_advance','tsin_telegraph_telephone_advance','tsin_motor_transport_advance'],['tsin_railway_station','tsin_steam_metro','tsin_electric_metro','tsin_motor_transport_depot']),
+ 'transport':('교통','Transport',['tsin_steel_rolling_stock_advance','tsin_telegraph_telephone_advance','tsin_motor_transport_advance'],['tsin_macadam_services','tsin_tarmac_services','tsin_asphalt_services','tsin_modern_road_services','tsin_double_track_services','tsin_heavy_freight_services','tsin_high_speed_services','tsin_modern_rail_services','tsin_highway_services','tsin_mature_metro_services','tsin_railway_station','tsin_steam_metro','tsin_electric_metro','tsin_motor_transport_depot']),
  'public':('공공설비','Public services',['tsin_urban_planning_advance','tsin_modern_sewerage_advance','tsin_distribution_grid_advance'],['tsin_telegraph_office','tsin_telephone_office','tsin_public_school','tsin_research_university','tsin_cold_storage','tsin_electric_cold_storage','tsin_electric_lighting','tsin_distribution_substation','tsin_water_treatment_works','tsin_environment_inspectorate','hospital'])}
 
 def selector():return '''select_trigger = {

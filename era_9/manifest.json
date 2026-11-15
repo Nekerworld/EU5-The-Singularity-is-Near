@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "files": {
+    "in_game/common/advances/zz_tsin_transport_services_09.txt": "new-era-content",
+    "in_game/common/building_types/zz_tsin_transport_services_09.txt": "new-era-content",
+    "main_menu/gfx/interface/icons/buildings/tsin_high_speed_services.dds": "new-era-content",
+    "main_menu/gfx/interface/icons/buildings/tsin_mature_metro_services.dds": "new-era-content",
+    "main_menu/gfx/interface/icons/buildings/tsin_modern_road_services.dds": "new-era-content"
+  }
+}

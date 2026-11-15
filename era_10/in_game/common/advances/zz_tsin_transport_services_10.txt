@@ -1,0 +1,7 @@
+﻿tsin_modern_rail_services_advance = {
+ age = age_10_information icon = railroad_advance
+ requires = tsin_high_speed_services_advance
+requires = tsin_distribution_grid_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_modern_rail_services ai_weight = { add = 10 }
+}

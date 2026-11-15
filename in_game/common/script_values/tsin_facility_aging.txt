@@ -13,6 +13,16 @@ tsin_facility_industry_wear_scale = { value = province.var:tsin_facility_industr
 tsin_facility_industry_gap_scale = { value = province.tsin_facility_industry_gap divide = 3 min = 0 max = 1 }
 
 tsin_facility_transport_location_size = { value = 0
+ add = "location_building_level(building_type:tsin_macadam_services)"
+ add = "location_building_level(building_type:tsin_tarmac_services)"
+ add = "location_building_level(building_type:tsin_asphalt_services)"
+ add = "location_building_level(building_type:tsin_modern_road_services)"
+ add = "location_building_level(building_type:tsin_double_track_services)"
+ add = "location_building_level(building_type:tsin_heavy_freight_services)"
+ add = "location_building_level(building_type:tsin_high_speed_services)"
+ add = "location_building_level(building_type:tsin_modern_rail_services)"
+ add = "location_building_level(building_type:tsin_highway_services)"
+ add = "location_building_level(building_type:tsin_mature_metro_services)"
  add = "location_building_level(building_type:tsin_railway_station)"
  add = "location_building_level(building_type:tsin_steam_metro)"
  add = "location_building_level(building_type:tsin_electric_metro)"

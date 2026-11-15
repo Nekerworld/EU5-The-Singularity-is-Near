@@ -1922,6 +1922,20 @@
       ]
     },
     {
+      "id": "newspapers",
+      "shortcuts": [
+        {
+          "id": "read_newspaper",
+          "tab": "society",
+          "title": {
+            "korean": "신문·최근 기사 열람",
+            "english": "Read newspaper archive"
+          },
+          "generic_action": "tsin_read_newspaper"
+        }
+      ]
+    },
+    {
       "id": "facility_aging",
       "shortcuts": [
         {
@@ -2316,16 +2330,16 @@
       ]
     },
     {
-      "id": "newspapers",
+      "id": "transport_services",
       "shortcuts": [
         {
-          "id": "read_newspaper",
-          "tab": "society",
+          "id": "transport_buildings",
+          "tab": "economy",
           "title": {
-            "korean": "신문·최근 기사 열람",
-            "english": "Read newspaper archive"
+            "korean": "도로·철도 거점 건설",
+            "english": "Build road and railway service hubs"
           },
-          "generic_action": "tsin_read_newspaper"
+          "view": "buildings"
         }
       ]
     }

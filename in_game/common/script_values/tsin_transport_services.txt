@@ -1,0 +1,70 @@
+﻿tsin_macadam_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_macadam_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_tarmac_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_tarmac_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_asphalt_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_asphalt_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_modern_road_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_modern_road_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_double_track_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_double_track_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_heavy_freight_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_heavy_freight_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_high_speed_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_high_speed_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_modern_rail_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_modern_rail_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_highway_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_highway_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 }
+ }
+ min = 0 max = 1
+}
+tsin_mature_metro_services_staff_scale = {
+ value = 0
+ every_buildings_in_location = { limit = { building_type = building_type:tsin_mature_metro_services is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+  add = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 multiply = building_level }
+ }
+ min = 0 max = 3
+}

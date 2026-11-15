@@ -1,0 +1,12 @@
+﻿tsin_macadam_services_advance = {
+ age = age_7_industrialization icon = modern_road_advance
+ requires = modern_road_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_macadam_services ai_weight = { add = 10 }
+}
+tsin_double_track_services_advance = {
+ age = age_7_industrialization icon = railroad_advance
+ requires = tsin_steel_rolling_stock_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_double_track_services ai_weight = { add = 10 }
+}

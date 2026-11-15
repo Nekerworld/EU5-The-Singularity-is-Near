@@ -1,0 +1,60 @@
+﻿tsin_tarmac_services = {
+ audio_tier = 3 is_foreign = no forbidden_for_estates = yes
+ pop_type = laborers employment_size = 0.06 max_levels = 1
+ category = infrastructure_category city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes town = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_tarmac_services_advance }
+ location_potential = { population >= 30 OR = { is_capital = yes has_road_to = owner.capital }  NOT = { has_building_with_at_least_one_level = tsin_asphalt_services } NOT = { has_building_with_at_least_one_level = tsin_modern_road_services } }
+ obsolete = tsin_macadam_services
+ ai_construct_weight = { value = 0 if = { limit = { owner ?= { gold >= 1500 } population >= 30 } add = 10 } }
+ unique_production_methods = {
+  tsin_tarmac_services_maintenance = {
+   icon_type = goods icon = tools stone = 0.05 tsin_oil = 0.02 tools = 0.03 category = building_maintenance
+  }
+ }
+}
+tsin_asphalt_services = {
+ audio_tier = 3 is_foreign = no forbidden_for_estates = yes
+ pop_type = laborers employment_size = 0.08 max_levels = 1
+ category = infrastructure_category city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes town = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_asphalt_services_advance }
+ location_potential = { population >= 30 OR = { is_capital = yes has_road_to = owner.capital }  NOT = { has_building_with_at_least_one_level = tsin_modern_road_services } }
+ obsolete = tsin_tarmac_services
+ ai_construct_weight = { value = 0 if = { limit = { owner ?= { gold >= 1500 } population >= 30 } add = 10 } }
+ unique_production_methods = {
+  tsin_asphalt_services_maintenance = {
+   icon_type = goods icon = tools stone = 0.08 tsin_oil = 0.03 tools = 0.04 category = building_maintenance
+  }
+ }
+}
+tsin_heavy_freight_services = {
+ audio_tier = 3 is_foreign = no forbidden_for_estates = yes
+ pop_type = laborers employment_size = 0.15 max_levels = 1
+ category = infrastructure_category city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes town = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_heavy_freight_services_advance }
+ location_potential = { tsin_location_industrial_jobs > 0 has_building_with_at_least_one_level = tsin_railway_station OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } }   }
+ obsolete = tsin_double_track_services
+ ai_construct_weight = { value = 0 if = { limit = { owner ?= { gold >= 1500 } tsin_location_industrial_jobs > 0 } add = 10 } }
+ unique_production_methods = {
+  tsin_heavy_freight_services_maintenance = {
+   icon_type = goods icon = tools tsin_oil = 0.08 tsin_electricity = 0.15 steel = 0.08 tools = 0.05 tsin_engines = 0.05 category = building_maintenance
+  }
+ }
+}
+tsin_highway_services = {
+ audio_tier = 3 is_foreign = no forbidden_for_estates = yes
+ pop_type = laborers employment_size = 0.20 max_levels = 1
+ category = infrastructure_category city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_factory_construction
+ country_potential = { has_advance = tsin_highway_services_advance }
+ location_potential = { population >= 400 OR = { is_capital = yes has_road_to = owner.capital } OR = { has_building_with_at_least_one_level = tsin_asphalt_services has_building_with_at_least_one_level = tsin_modern_road_services }  }
+
+ ai_construct_weight = { value = 0 if = { limit = { owner ?= { gold >= 3000 } population >= 400 } add = 5 } }
+ unique_production_methods = {
+  tsin_highway_services_maintenance = {
+   icon_type = goods icon = tools tsin_oil = 0.10 steel = 0.05 tools = 0.10 category = building_maintenance
+  }
+ }
+}

@@ -10,6 +10,16 @@
       "id": "era_8",
       "folder": "era_8",
       "era": 8
+    },
+    {
+      "id": "era_9",
+      "folder": "era_9",
+      "era": 9
+    },
+    {
+      "id": "era_10",
+      "folder": "era_10",
+      "era": 10
     }
   ]
 }

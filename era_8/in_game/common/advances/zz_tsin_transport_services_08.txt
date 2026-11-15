@@ -1,0 +1,26 @@
+﻿tsin_tarmac_services_advance = {
+ age = age_8_world_wars icon = modern_road_advance
+ requires = tsin_motor_transport_advance
+requires = tsin_macadam_services_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_tarmac_services ai_weight = { add = 10 }
+}
+tsin_asphalt_services_advance = {
+ age = age_8_world_wars icon = modern_road_advance
+ requires = tsin_tarmac_services_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_asphalt_services ai_weight = { add = 10 }
+}
+tsin_heavy_freight_services_advance = {
+ age = age_8_world_wars icon = railroad_advance
+ requires = tsin_double_track_services_advance
+requires = tsin_motor_transport_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_heavy_freight_services ai_weight = { add = 10 }
+}
+tsin_highway_services_advance = {
+ age = age_8_world_wars icon = modern_road_advance
+ requires = tsin_asphalt_services_advance
+ allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+ unlock_building = tsin_highway_services ai_weight = { add = 10 }
+}

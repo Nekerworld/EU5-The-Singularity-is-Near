@@ -369,6 +369,7 @@
  TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT: "Modernize transport"
  TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC: "Repair public services"
  TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC: "Modernize public services"
+ TSIN_UI_LINK_TRANSPORT_BUILDINGS: "Build road and railway service hubs"
  TSIN_UI_LINK_TSIN_EDUCATION: "Education map"
  TSIN_UI_LINK_TSIN_LABOR_CONDITIONS: "Labor map"
  TSIN_UI_LINK_TSIN_METRO_CREATE: "Designate metropolitan core"
