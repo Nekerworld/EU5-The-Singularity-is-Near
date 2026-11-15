@@ -1,0 +1,8 @@
+﻿l_english:
+ tsin_telegraph_office: "Telegraph office"
+ tsin_telegraph_office_maintenance: "Telegraph office operation"
+ tsin_telegraph_office_desc: "Telegraph office raises the local equipment exposure index according to effective staffing. This is not a national wiring or subscriber count. Closed, input-starved or enemy-controlled sites do not count. Telegraph and telephone hubs coexist as complementary services."
+ tsin_telephone_office: "Telephone exchange"
+ tsin_telephone_office_maintenance: "Telephone exchange operation"
+ tsin_telephone_office_desc: "Telephone exchange raises the local equipment exposure index according to effective staffing. This is not a national wiring or subscriber count. Closed, input-starved or enemy-controlled sites do not count. Telegraph and telephone hubs coexist as complementary services."
+ AUTO_MODIFIER_NAME_tsin_communications_research: "Telegraph and telephone information exchange"

@@ -1,0 +1,23 @@
+﻿tsin_telegraph_staff_scale = {
+ value = 0
+ if = { limit = { controller ?= owner }
+  every_buildings_in_location = {
+   limit = { building_type = building_type:tsin_telegraph_office is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+   add = { value = building_employed_amount divide = building_employment_size_amount }
+  }
+ }
+ min = 0 max = 1
+}
+tsin_telephone_staff_scale = {
+ value = 0
+ if = { limit = { controller ?= owner }
+  every_buildings_in_location = {
+   limit = { building_type = building_type:tsin_telephone_office is_opened = yes is_lacking_goods = no building_employment_size_amount > 0 }
+   add = { value = building_employed_amount divide = building_employment_size_amount }
+  }
+ }
+ min = 0 max = 1
+}
+tsin_communications_research_scale = {
+ value = var:tsin_telegraph_coverage add = var:tsin_telephone_coverage divide = 200 min = 0 max = 1
+}

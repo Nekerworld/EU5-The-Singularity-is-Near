@@ -1,0 +1,8 @@
+﻿l_korean:
+ tsin_telegraph_office: "전신국"
+ tsin_telegraph_office_maintenance: "전신국 운영"
+ tsin_telegraph_office_desc: "전신국은 해당 지점의 설비 노출 지수를 실제 고용/정원 비율로 높입니다. 전국 배선·가입자·즉시 정보 전송을 뜻하지 않으며 휴업·투입 부족·적국 점령 시 집계하지 않습니다. 전신과 전화는 서로 보완하는 별도 시설입니다."
+ tsin_telephone_office: "전화 교환국"
+ tsin_telephone_office_maintenance: "전화 교환국 운영"
+ tsin_telephone_office_desc: "전화 교환국은 해당 지점의 설비 노출 지수를 실제 고용/정원 비율로 높입니다. 전국 배선·가입자·즉시 정보 전송을 뜻하지 않으며 휴업·투입 부족·적국 점령 시 집계하지 않습니다. 전신과 전화는 서로 보완하는 별도 시설입니다."
+ AUTO_MODIFIER_NAME_tsin_communications_research: "전신·전화 정보 교류"

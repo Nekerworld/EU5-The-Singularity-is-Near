@@ -1,0 +1,28 @@
+﻿tsin_telegraph_office = {
+ audio_tier = 2 is_foreign = no forbidden_for_estates = yes
+ pop_type = burghers employment_size = 0.02 max_levels = 1 category = infrastructure_category
+ town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_telegraph_telephone_advance }
+ ai_construct_weight = { value = 0 if = { limit = { population >= 100 owner ?= { gold >= 500 } } add = 20 } }
+ unique_production_methods = {
+  tsin_telegraph_office_maintenance = {
+   icon_type = goods icon = copper
+   copper = 0.03 paper = 0.03 tools = 0.01 category = building_maintenance
+  }
+ }
+}
+tsin_telephone_office = {
+ audio_tier = 2 is_foreign = no forbidden_for_estates = yes
+ pop_type = burghers employment_size = 0.05 max_levels = 1 category = infrastructure_category
+ town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_telegraph_telephone_advance has_advance = tsin_electric_motor_advance }
+ ai_construct_weight = { value = 0 if = { limit = { population >= 100 owner ?= { gold >= 500 } } add = 20 } }
+ unique_production_methods = {
+  tsin_telephone_office_maintenance = {
+   icon_type = goods icon = copper
+   copper = 0.05 tools = 0.02 tsin_electricity = 0.05 category = building_maintenance
+  }
+ }
+}

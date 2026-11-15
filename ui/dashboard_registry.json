@@ -1695,6 +1695,205 @@
       ]
     },
     {
+      "id": "newspapers",
+      "shortcuts": [
+        {
+          "id": "read_newspaper",
+          "tab": "society",
+          "title": {
+            "korean": "신문·최근 기사 열람",
+            "english": "Read newspaper archive"
+          },
+          "generic_action": "tsin_read_newspaper"
+        }
+      ]
+    },
+    {
+      "id": "environment",
+      "shortcuts": [
+        {
+          "id": "water_pollution_map",
+          "tab": "society",
+          "title": {
+            "korean": "수질 오염 지도",
+            "english": "Water pollution map"
+          },
+          "map_mode": "tsin_water_pollution"
+        },
+        {
+          "id": "environment_laws",
+          "tab": "society",
+          "title": {
+            "korean": "환경법·법률 화면",
+            "english": "Environmental laws"
+          },
+          "view": "laws"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "pollution_sample_population",
+          "variable": "tsin_pollution_surveyed_people",
+          "title": {
+            "korean": "공해 조사 지역 인구",
+            "english": "Pollution survey population"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "compact",
+          "frequency": "annual",
+          "description": {
+            "korean": "도시와 산업 시대 광산·이전에 조사한 지역의 인구입니다. 농촌 전체를 대표하지 않습니다. 표본이 없으면 노출 지수를 자료 없음으로 표시합니다.",
+            "english": "Population in urban areas, industrial-era mines and previously surveyed locations. Not all rural areas. Exposure indices are unavailable if there is no sample."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pollution",
+      "metrics": [
+        {
+          "id": "pollution_exposure",
+          "variable": "tsin_pollution_exposure",
+          "title": {
+            "korean": "조사 지역 인구 가중 대기 노출",
+            "english": "Surveyed location air exposure"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
+            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
+          }
+        },
+        {
+          "id": "pollution_high_share",
+          "variable": "tsin_pollution_high_share",
+          "title": {
+            "korean": "조사 지역 고위험 인구 비율(%)",
+            "english": "Surveyed location high exposure (%)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
+            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
+          }
+        },
+        {
+          "id": "pollution_year",
+          "variable": "tsin_pollution_year",
+          "title": {
+            "korean": "공해 조사 연도",
+            "english": "Pollution survey year"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
+            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
+          }
+        },
+        {
+          "id": "pollution_water_exposure",
+          "variable": "tsin_pollution_water_exposure",
+          "title": {
+            "korean": "조사 지역 인구 가중 수질 노출",
+            "english": "Surveyed water exposure"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "같은 연간 조사 지역 인구를 분모로 한 수질 지수입니다. 굴뚝 매연과 별도로 처리합니다.",
+            "english": "Water index using the same surveyed-location population denominator, separate from chimney emissions."
+          }
+        },
+        {
+          "id": "pollution_water_high_share",
+          "variable": "tsin_pollution_water_high_share",
+          "title": {
+            "korean": "조사 지역 수질 고위험 인구(%)",
+            "english": "Surveyed high water exposure (%)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "같은 연간 조사 지역 인구를 분모로 한 수질 지수입니다. 굴뚝 매연과 별도로 처리합니다.",
+            "english": "Water index using the same surveyed-location population denominator, separate from chimney emissions."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "pollution_map",
+          "tab": "society",
+          "title": {
+            "korean": "산업 공해 지도",
+            "english": "Industrial pollution map"
+          },
+          "map_mode": "tsin_pollution"
+        },
+        {
+          "id": "pollution_filter",
+          "tab": "society",
+          "title": {
+            "korean": "지역 여과 설비 지원",
+            "english": "Fund local emission filters"
+          },
+          "generic_action": "tsin_pollution_filter"
+        }
+      ]
+    },
+    {
+      "id": "world_companies",
+      "metrics": [
+        {
+          "id": "world_company_cash",
+          "variable": "tsin_wcs_total_cash",
+          "title": {
+            "korean": "세계 조사 기업 부문 현금 합계",
+            "english": "Surveyed world corporate cash"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "세계 기업 조사 버튼으로 수집한 국가 기업 운영 현금의 합계입니다. 현금 장부가 없는 국가는 포함하지 않으며 기업 유형별로 임의 배분하지 않습니다.",
+            "english": "Country corporate cash summed by the world company survey. Excludes countries without cash ledgers; not arbitrarily allocated across company types."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "world_companies",
+          "tab": "finance",
+          "title": {
+            "korean": "세계 기업 통계 창",
+            "english": "World company statistics"
+          },
+          "open_variable": "tsin_ui_world_companies_open"
+        }
+      ]
+    },
+    {
       "id": "facility_aging",
       "shortcuts": [
         {
@@ -2089,201 +2288,44 @@
       ]
     },
     {
-      "id": "newspapers",
-      "shortcuts": [
-        {
-          "id": "read_newspaper",
-          "tab": "society",
-          "title": {
-            "korean": "신문·최근 기사 열람",
-            "english": "Read newspaper archive"
-          },
-          "generic_action": "tsin_read_newspaper"
-        }
-      ]
-    },
-    {
-      "id": "environment",
-      "shortcuts": [
-        {
-          "id": "water_pollution_map",
-          "tab": "society",
-          "title": {
-            "korean": "수질 오염 지도",
-            "english": "Water pollution map"
-          },
-          "map_mode": "tsin_water_pollution"
-        },
-        {
-          "id": "environment_laws",
-          "tab": "society",
-          "title": {
-            "korean": "환경법·법률 화면",
-            "english": "Environmental laws"
-          },
-          "view": "laws"
-        }
-      ],
+      "id": "communications",
+      "annual_effect": "tsin_communications_finish_country_effect",
       "metrics": [
         {
-          "id": "pollution_sample_population",
-          "variable": "tsin_pollution_surveyed_people",
+          "id": "communications_telegraph",
+          "variable": "tsin_telegraph_coverage",
           "title": {
-            "korean": "공해 조사 지역 인구",
-            "english": "Pollution survey population"
+            "korean": "전신 설비 노출",
+            "english": "Telegraph equipment exposure"
           },
           "tabs": [
+            "research",
             "society"
           ],
-          "unit": "compact",
+          "unit": "percent_points",
           "frequency": "annual",
           "description": {
-            "korean": "도시와 산업 시대 광산·이전에 조사한 지역의 인구입니다. 농촌 전체를 대표하지 않습니다. 표본이 없으면 노출 지수를 자료 없음으로 표시합니다.",
-            "english": "Population in urban areas, industrial-era mines and previously surveyed locations. Not all rural areas. Exposure indices are unavailable if there is no sample."
-          }
-        }
-      ]
-    },
-    {
-      "id": "pollution",
-      "metrics": [
-        {
-          "id": "pollution_exposure",
-          "variable": "tsin_pollution_exposure",
-          "title": {
-            "korean": "조사 지역 인구 가중 대기 노출",
-            "english": "Surveyed location air exposure"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
-            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
+            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
+            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
           }
         },
         {
-          "id": "pollution_high_share",
-          "variable": "tsin_pollution_high_share",
+          "id": "communications_telephone",
+          "variable": "tsin_telephone_coverage",
           "title": {
-            "korean": "조사 지역 고위험 인구 비율(%)",
-            "english": "Surveyed location high exposure (%)"
+            "korean": "전화 설비 노출",
+            "english": "Telephone equipment exposure"
           },
           "tabs": [
+            "research",
             "society"
           ],
-          "unit": "number",
+          "unit": "percent_points",
           "frequency": "annual",
           "description": {
-            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
-            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
+            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
+            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
           }
-        },
-        {
-          "id": "pollution_year",
-          "variable": "tsin_pollution_year",
-          "title": {
-            "korean": "공해 조사 연도",
-            "english": "Pollution survey year"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "연간 조사 지역의 인구 가중 추정치입니다. 도시와 산업 시대의 광산을 포함하며 농촌 전체의 통계는 아닙니다. 발전 연료·도시간 교통 배출은 제외합니다.",
-            "english": "Annual population-weighted estimate for surveyed locations: urban areas and industrial-era mines, not every rural location. Excludes generation fuel and intercity transport emissions."
-          }
-        },
-        {
-          "id": "pollution_water_exposure",
-          "variable": "tsin_pollution_water_exposure",
-          "title": {
-            "korean": "조사 지역 인구 가중 수질 노출",
-            "english": "Surveyed water exposure"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "같은 연간 조사 지역 인구를 분모로 한 수질 지수입니다. 굴뚝 매연과 별도로 처리합니다.",
-            "english": "Water index using the same surveyed-location population denominator, separate from chimney emissions."
-          }
-        },
-        {
-          "id": "pollution_water_high_share",
-          "variable": "tsin_pollution_water_high_share",
-          "title": {
-            "korean": "조사 지역 수질 고위험 인구(%)",
-            "english": "Surveyed high water exposure (%)"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "같은 연간 조사 지역 인구를 분모로 한 수질 지수입니다. 굴뚝 매연과 별도로 처리합니다.",
-            "english": "Water index using the same surveyed-location population denominator, separate from chimney emissions."
-          }
-        }
-      ],
-      "shortcuts": [
-        {
-          "id": "pollution_map",
-          "tab": "society",
-          "title": {
-            "korean": "산업 공해 지도",
-            "english": "Industrial pollution map"
-          },
-          "map_mode": "tsin_pollution"
-        },
-        {
-          "id": "pollution_filter",
-          "tab": "society",
-          "title": {
-            "korean": "지역 여과 설비 지원",
-            "english": "Fund local emission filters"
-          },
-          "generic_action": "tsin_pollution_filter"
-        }
-      ]
-    },
-    {
-      "id": "world_companies",
-      "metrics": [
-        {
-          "id": "world_company_cash",
-          "variable": "tsin_wcs_total_cash",
-          "title": {
-            "korean": "세계 조사 기업 부문 현금 합계",
-            "english": "Surveyed world corporate cash"
-          },
-          "tabs": [
-            "finance"
-          ],
-          "unit": "compact",
-          "frequency": "manual",
-          "description": {
-            "korean": "세계 기업 조사 버튼으로 수집한 국가 기업 운영 현금의 합계입니다. 현금 장부가 없는 국가는 포함하지 않으며 기업 유형별로 임의 배분하지 않습니다.",
-            "english": "Country corporate cash summed by the world company survey. Excludes countries without cash ledgers; not arbitrarily allocated across company types."
-          }
-        }
-      ],
-      "shortcuts": [
-        {
-          "id": "world_companies",
-          "tab": "finance",
-          "title": {
-            "korean": "세계 기업 통계 창",
-            "english": "World company statistics"
-          },
-          "open_variable": "tsin_ui_world_companies_open"
         }
       ]
     }

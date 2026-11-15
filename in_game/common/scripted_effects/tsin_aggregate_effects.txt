@@ -3,6 +3,8 @@
 # The guarded urban body alone feeds labor, GDP, education and acceleration totals.
 
 tsin_annual_country_aggregate_effect = {
+ set_variable = { name = tsin_telegraph_weighted_pop value = 0 }
+ set_variable = { name = tsin_telephone_weighted_pop value = 0 }
 	set_variable = { name = tsin_pollution_weighted value = 0 }
  set_variable = { name = tsin_pollution_surveyed_pop value = 0 }
  set_variable = { name = tsin_pollution_water_weighted value = 0 }
@@ -43,6 +45,7 @@ tsin_annual_country_aggregate_effect = {
 
 
 		if = { limit = { var:tsin_pollution_raw_air > 0 tsin_location_industrial_jobs > 0 } tsin_facility_register_location_effect = yes }
+		tsin_communications_location_effect = yes
 		set_local_variable = { name = tsin_agg_l_pop value = population }
 		set_local_variable = { name = tsin_agg_l_jobs value = tsin_location_industrial_jobs }
 		set_local_variable = { name = tsin_agg_l_laborers value = num_pop_type:laborers }

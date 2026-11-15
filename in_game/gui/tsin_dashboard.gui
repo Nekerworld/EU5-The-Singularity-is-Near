@@ -494,6 +494,10 @@ tsin_ui_card_pollution_year = {}
 tsin_ui_card_pollution_water_exposure = {}
 tsin_ui_card_pollution_water_high_share = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_communications_telegraph = {}
+tsin_ui_card_communications_telephone = {}
+}
 widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
     size = { 220 30 }
@@ -772,6 +776,8 @@ tsin_ui_card_standard_parts = {}
 }
 hbox = { spacing = 12
 tsin_ui_card_standard_electric = {}
+tsin_ui_card_communications_telegraph = {}
+tsin_ui_card_communications_telephone = {}
 }
 vbox = { spacing = 3
 

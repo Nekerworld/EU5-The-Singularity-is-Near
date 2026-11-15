@@ -1,0 +1,4 @@
+﻿tsin_communications_research = {
+ potential_trigger = { has_variable = tsin_communications_year }
+ scales_with = tsin_communications_research_scale research_speed_modifier = 0.05
+}

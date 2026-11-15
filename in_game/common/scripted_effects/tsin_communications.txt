@@ -1,0 +1,13 @@
+﻿tsin_communications_location_effect = {
+set_local_variable = { name = tsin_telegraph_weighted_here value = { value = tsin_telegraph_staff_scale multiply = population } }
+ owner = { change_variable = { name = tsin_telegraph_weighted_pop add = local_var:tsin_telegraph_weighted_here } }
+set_local_variable = { name = tsin_telephone_weighted_here value = { value = tsin_telephone_staff_scale multiply = population } }
+ owner = { change_variable = { name = tsin_telephone_weighted_pop add = local_var:tsin_telephone_weighted_here } }
+}
+tsin_communications_finish_country_effect = {
+ if = { limit = { has_advance = tsin_telegraph_telephone_advance total_population > 0 }
+  set_variable = { name = tsin_telegraph_coverage value = { value = var:tsin_telegraph_weighted_pop divide = total_population multiply = 100 min = 0 max = 100 } }
+  set_variable = { name = tsin_telephone_coverage value = { value = var:tsin_telephone_weighted_pop divide = total_population multiply = 100 min = 0 max = 100 } }
+  set_variable = { name = tsin_communications_year value = current_year }
+ } else = { remove_variable = tsin_telegraph_coverage remove_variable = tsin_telephone_coverage remove_variable = tsin_communications_year }
+}

@@ -11,4 +11,5 @@ tsin_dashboard_migrate_effect = yes
 set_variable = { name = tsin_statistics_year value = current_year }
 set_variable = { name = tsin_statistics_population value = total_population }
 if = { limit = { has_variable = tsin_gdp } tsin_dashboard_age7_cache_effect = yes }
+if = { limit = { always = yes } tsin_communications_finish_country_effect = yes }
 }

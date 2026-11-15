@@ -51,6 +51,7 @@ tsin_distribution_grid_advance = {
 
 # Use
 tsin_electric_motor_advance = {
+	unlock_building = tsin_telephone_office
 	unlock_production_method = tsin_water_treatment_electric
 	unlock_building = tsin_electric_metro
 	unlock_building = tsin_electric_cold_storage
@@ -81,6 +82,7 @@ tsin_electric_lighting_advance = {
 }
 
 tsin_telegraph_telephone_advance = {
+	unlock_building = tsin_telegraph_office
 	age = age_7_industrialization
 	icon = swedish_royal_post_office
 
