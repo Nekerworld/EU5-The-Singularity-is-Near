@@ -1,0 +1,5 @@
+﻿tsin_history_verified_practice = {
+    game_data = { category = country }
+    research_speed_modifier = 0.01
+    country_cabinet_efficiency = 0.02
+}

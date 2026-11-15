@@ -223,7 +223,7 @@ tsin_lucky_russia.1 = {
         'tsin_lucky_russia.1.title':'러시아의 통합',
         'tsin_lucky_russia.1.desc':'역사 진행 규칙에 따라 지연된 통합을 처리합니다. 이전 직전에 인간의 소유·점령, 전쟁, 수도, 이전 이후 소유국의 존속을 다시 확인합니다.',
         'tsin_lucky_russia.1.a':'새로운 러시아 국가로.',
-        'tsin_lucky_russia_formed_log':'TSIN_LUCKY_RUSSIA [러시아 형성] [ROOT.GetCountry.GetName]',
+        'tsin_lucky_russia_formed_log':'TSIN_LUCKY_RUSSIA (러시아 형성) [ROOT.GetCountry.GetName]',
     }
     for labels in (en, ko):
         for modifier in ['tsin_lucky_russia_support', 'tsin_lucky_russia_support_strong']:

@@ -197,6 +197,18 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
             if not (root / rel).exists() or pdx.read_text(root / rel) != expected:
                 errors.append('integration: outdated historical finance bridge '+rel)
 
+    # New history modules must be checked by the standard validator and release gate too.
+    from importlib import import_module
+    for generator in ['gen_historical_progression', 'gen_lucky_nations', 'gen_historical_events_wave1']:
+        if (root / ('tools/' + generator + '.py')).exists():
+            try:
+                for rel, expected in import_module(generator).build().items():
+                    target = root / rel
+                    if not target.exists() or pdx.read_text(target) != expected:
+                        errors.append('integration: outdated historical module ' + rel)
+            except (ValueError, KeyError, TypeError) as exc:
+                errors.append('integration: invalid historical module ' + generator + ': ' + str(exc))
+
     return errors, counts
 
 

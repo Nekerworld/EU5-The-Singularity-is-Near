@@ -33,3 +33,4 @@ class HistoricalProgressionTests(unittest.TestCase):
             self.assertNotIn('\\\\n',text)
             self.assertIn('\\n',text)
             self.assertIn('tsin_history_review.1.desc:',text)
+            self.assertNotIn('[역사점검]',text)

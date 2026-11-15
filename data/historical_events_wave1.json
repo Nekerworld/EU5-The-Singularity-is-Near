@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "chains": [
+    {
+      "id": "postage",
+      "start_year": 1840,
+      "gate": "",
+      "source": "https://postalmuseum.si.edu/exhibition/international-philately-europe-northern-europe/great-britain",
+      "stages": [
+        {
+          "title_en": "Payment before delivery",
+          "title_ko": "편지를 보내기 전에",
+          "desc_en": "A uniform prepaid postage scheme promises simpler accounts and letters affordable beyond wealthy households. Britain introduced adhesive postage stamps in 1840; our officials now propose a local scheme.",
+          "desc_ko": "관리들이 선불 우표와 통일 요금을 제안했습니다. 영국의 1840년 우편 개혁처럼 장부를 단순하게 하고 부유층 이외에도 편지를 보낼 길을 넓히자는 구상입니다.",
+          "a_en": "Fund a limited postal trial.",
+          "a_ko": "제한된 우편 시범사업에 예산을 배정하라.",
+          "b_en": "Keep the existing arrangements.",
+          "b_ko": "기존 방식을 유지하라.",
+          "paid": true,
+          "event_id": 1
+        },
+        {
+          "title_en": "A sack of prepaid letters",
+          "title_ko": "선불 편지가 가득한 자루",
+          "desc_en": "The trial has brought more letters, but clerks disagree over recording prepaid mail. A common ledger would cost time and training.",
+          "desc_ko": "시범사업으로 편지는 늘었지만 선불 우편의 기록 방식은 제각각입니다. 공통 장부를 도입하려면 서기 교육과 시간이 필요합니다.",
+          "a_en": "Train the postal clerks.",
+          "a_ko": "우편 서기를 교육하라.",
+          "b_en": "End the trial here.",
+          "b_ko": "시범사업은 여기까지다.",
+          "paid": true,
+          "event_id": 2
+        },
+        {
+          "title_en": "The imitation stamp",
+          "title_ko": "가짜 우표 한 장",
+          "desc_en": "An imitation stamp has reached the sorting office. The question is whether to standardize marks and publish guidance or quietly leave verification to each clerk.",
+          "desc_ko": "우편 분류소에 모조 우표가 들어왔습니다. 소인을 표준화하고 안내를 배포할지, 각 서기의 판단에 맡길지 논쟁이 일었습니다.",
+          "a_en": "Publish common verification rules.",
+          "a_ko": "공통 확인 규칙을 공표하라.",
+          "b_en": "Leave verification to the offices.",
+          "b_ko": "각 우체국의 판단에 맡겨라.",
+          "paid": false,
+          "event_id": 3
+        },
+        {
+          "title_en": "The postal trial is assessed",
+          "title_ko": "우편 시범사업의 결산",
+          "desc_en": "The offices have submitted their experience. A lasting service needs reliable accounting, not merely a ceremonial first stamp.",
+          "desc_ko": "우편 관서들이 경험을 보고했습니다. 오래갈 제도에는 첫 우표를 기념하는 행사보다 신뢰할 수 있는 회계가 필요합니다.",
+          "a_en": "Adopt the tested administrative standard.",
+          "a_ko": "검증된 행정 표준을 채택하라.",
+          "b_en": "Retain a small local service.",
+          "b_ko": "작은 지역 사업으로 남겨라.",
+          "paid": false,
+          "event_id": 4
+        }
+      ]
+    },
+    {
+      "id": "dyes",
+      "start_year": 1856,
+      "gate": "has_advance = tsin_synthetic_dyes_advance",
+      "source": "https://collection.sciencemuseumgroup.org.uk/people/ap17271",
+      "stages": [
+        {
+          "title_en": "Purple from the laboratory",
+          "title_ko": "실험실에서 나온 보라색",
+          "desc_en": "Perkin obtained a purple synthetic dye in 1856. Our manufacturers, already familiar with synthetic dyes, seek support to turn laboratory samples into consistent commercial batches.",
+          "desc_ko": "퍼킨은 1856년 보랏빛 합성 염료를 얻었습니다. 이미 합성 염료를 아는 국내 제조업자들은 실험 시료를 균일한 상품으로 만들 지원을 요청했습니다.",
+          "a_en": "Pay for a supervised trial.",
+          "a_ko": "감독하에 시험 생산 비용을 지원하라.",
+          "b_en": "Let the firms proceed without state support.",
+          "b_ko": "국가 지원 없이 기업이 진행하게 하라.",
+          "paid": true,
+          "event_id": 5
+        },
+        {
+          "title_en": "The fading sample",
+          "title_ko": "색이 바랜 견본",
+          "desc_en": "One batch fades more quickly than another. The process works, but purchasers want repeatable specifications.",
+          "desc_ko": "같은 제품인데도 어떤 묶음은 색이 빨리 바랩니다. 생산 자체는 가능하지만 구매자들은 일정한 규격을 원합니다.",
+          "a_en": "Commission independent tests.",
+          "a_ko": "독립적인 시험을 의뢰하라.",
+          "b_en": "Close the public trial.",
+          "b_ko": "공공 시범사업을 마쳐라.",
+          "paid": true,
+          "event_id": 6
+        },
+        {
+          "title_en": "The dyers petition",
+          "title_ko": "염색업자들의 청원",
+          "desc_en": "Established dyers fear losing their customers. Manufacturers ask for exclusive privileges, while merchants prefer specifications any supplier can meet.",
+          "desc_ko": "기존 염색업자들은 거래처를 잃을까 걱정합니다. 제조업자들은 독점 특혜를, 상인들은 누구나 충족할 수 있는 규격을 요구합니다.",
+          "a_en": "Publish open specifications.",
+          "a_ko": "공개 규격을 발표하라.",
+          "b_en": "Leave individual contracts to merchants.",
+          "b_ko": "개별 계약은 상인에게 맡겨라.",
+          "paid": false,
+          "event_id": 7
+        },
+        {
+          "title_en": "A reliable commercial colour",
+          "title_ko": "상품으로 자리 잡은 색",
+          "desc_en": "The trial is complete. Consistency, safety and honest labelling have proved more useful than promises of miraculous colour.",
+          "desc_ko": "시범사업이 끝났습니다. 기적 같은 색이라는 광고보다 균일한 품질과 안전, 정직한 표시가 중요하다는 결론입니다.",
+          "a_en": "Keep the verification programme.",
+          "a_ko": "검증 체계를 유지하라.",
+          "b_en": "End the programme after publishing its findings.",
+          "b_ko": "결과를 공개하고 사업을 종료하라.",
+          "paid": false,
+          "event_id": 8
+        }
+      ]
+    },
+    {
+      "id": "workwear",
+      "start_year": 1873,
+      "gate": "has_embraced_institution = institution:tsin_industrial_capitalism",
+      "source": "https://www.levistrauss.com/levis-history/",
+      "stages": [
+        {
+          "title_en": "Rivets at the pocket",
+          "title_ko": "주머니에 박은 리벳",
+          "desc_en": "The 1873 patent for riveted work trousers provides a practical example for our clothing workshops. Buyers want pockets that survive demanding work.",
+          "desc_ko": "1873년 리벳 작업복 특허는 국내 의류 작업장에도 실용적인 사례가 되었습니다. 구매자들은 고된 작업에도 견디는 주머니를 원합니다.",
+          "a_en": "Test a public procurement batch.",
+          "a_ko": "공공 조달용 견본을 시험하라.",
+          "b_en": "Leave orders entirely to private buyers.",
+          "b_ko": "주문은 민간 구매자에게 맡겨라.",
+          "paid": true,
+          "event_id": 9
+        },
+        {
+          "title_en": "A tender for work clothes",
+          "title_ko": "작업복 납품 입찰",
+          "desc_en": "Suppliers offer different fabrics and fastenings. The cheapest bid is not necessarily the most durable.",
+          "desc_ko": "납품업자들이 서로 다른 천과 고정 방식을 제시했습니다. 가장 싼 입찰이 가장 튼튼한 제품은 아닙니다.",
+          "a_en": "Require practical durability tests.",
+          "a_ko": "실제 내구성 시험을 요구하라.",
+          "b_en": "End the procurement trial.",
+          "b_ko": "조달 시범사업을 마쳐라.",
+          "paid": false,
+          "event_id": 10
+        },
+        {
+          "title_en": "The workshop contract",
+          "title_ko": "작업장의 납품 계약",
+          "desc_en": "The selected workshops request predictable inspection and payment schedules. Officials can standardize the terms without prescribing every private sale.",
+          "desc_ko": "선정된 작업장들이 예측 가능한 검수와 지급 일정을 요구합니다. 모든 민간 거래에 개입하지 않고도 공공 계약 조건을 표준화할 수 있습니다.",
+          "a_en": "Standardize public contract terms.",
+          "a_ko": "공공 계약 조건을 표준화하라.",
+          "b_en": "Negotiate each order separately.",
+          "b_ko": "주문마다 따로 협상하라.",
+          "paid": false,
+          "event_id": 11
+        },
+        {
+          "title_en": "The repaired pocket",
+          "title_ko": "수선한 주머니",
+          "desc_en": "Users have returned their reports and damaged samples. The mundane details of seams and repairs have improved the next tender.",
+          "desc_ko": "사용자들이 보고서와 손상된 견본을 돌려보냈습니다. 바느질과 수선 같은 사소한 정보가 다음 입찰의 기준을 개선했습니다.",
+          "a_en": "Use the findings in future procurement.",
+          "a_ko": "향후 조달에 결과를 활용하라.",
+          "b_en": "Archive the report without a general standard.",
+          "b_ko": "일반 표준 없이 보고서만 보관하라.",
+          "paid": false,
+          "event_id": 12
+        }
+      ]
+    },
+    {
+      "id": "cinema",
+      "start_year": 1895,
+      "gate": "has_embraced_institution = institution:tsin_electrification",
+      "source": "https://www.institut-lumiere.org/le-cinematographe-lumiere",
+      "stages": [
+        {
+          "title_en": "Pictures that move",
+          "title_ko": "움직이는 사진",
+          "desc_en": "Commercial Lumière screenings began in 1895. An exhibitor proposes a local programme, provided a suitable urban hall can be hired.",
+          "desc_ko": "1895년 뤼미에르의 상업 상영이 시작되었습니다. 흥행업자가 도시의 적합한 회관을 빌려 상영회를 열겠다고 제안했습니다.",
+          "a_en": "Sponsor a small public demonstration.",
+          "a_ko": "작은 공개 시연회를 후원하라.",
+          "b_en": "Allow a private demonstration only.",
+          "b_ko": "민간 시연만 허용하라.",
+          "paid": true,
+          "event_id": 13
+        },
+        {
+          "title_en": "A hall full of spectators",
+          "title_ko": "관객으로 가득 찬 회관",
+          "desc_en": "The novelty has attracted a crowd. Officials must settle access and basic operating rules before the next programme.",
+          "desc_ko": "새로운 구경거리에 관객이 몰렸습니다. 다음 상영 전에는 출입과 기본 운영 규칙을 정해야 합니다.",
+          "a_en": "Agree on capacity and exits.",
+          "a_ko": "정원과 출입구 규칙을 협의하라.",
+          "b_en": "End the public sponsorship.",
+          "b_ko": "공공 후원을 끝내라.",
+          "paid": false,
+          "event_id": 14
+        },
+        {
+          "title_en": "The programme submitted for review",
+          "title_ko": "검토를 위해 제출된 상영 목록",
+          "desc_en": "The exhibitor asks which subjects may be shown. A narrow public-safety review and broad political censorship would have different consequences.",
+          "desc_ko": "흥행업자가 어떤 소재를 상영할 수 있는지 물었습니다. 안전만 살피는 검토와 광범위한 정치 검열은 다른 결과를 낳을 것입니다.",
+          "a_en": "Limit review to clear operating rules.",
+          "a_ko": "명확한 운영 규칙으로 검토 범위를 한정하라.",
+          "b_en": "Leave approval to individual officials.",
+          "b_ko": "개별 관리에게 승인을 맡겨라.",
+          "paid": false,
+          "event_id": 15
+        },
+        {
+          "title_en": "A place among urban entertainments",
+          "title_ko": "도시 오락의 한 자리를 차지하다",
+          "desc_en": "The trial has ended. Moving pictures have found an audience, although no one can promise the fortunes of this new trade.",
+          "desc_ko": "시범사업이 끝났습니다. 활동사진은 관객을 찾았지만 이 새로운 업종의 미래 수익을 보장할 수는 없습니다.",
+          "a_en": "Publish the trial results and common rules.",
+          "a_ko": "시범 결과와 공통 규칙을 공개하라.",
+          "b_en": "Close the public programme.",
+          "b_ko": "공공 사업을 종료하라.",
+          "paid": false,
+          "event_id": 16
+        }
+      ]
+    }
+  ],
+  "singles": [
+    {
+      "id": "bell",
+      "year": 1858,
+      "gate": "",
+      "source": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/building-clock-tower/constructing-the-most-accurate-clock-in-the-world/",
+      "title_en": "A crack in the great bell",
+      "title_ko": "큰 종에 생긴 균열",
+      "desc_en": "London's great bell was recast in 1858 and later cracked. Our urban clock keepers bring a more local problem: a damaged bell and a disputed maintenance contract.",
+      "desc_ko": "런던의 큰 종은 1858년 다시 주조된 뒤에도 균열을 겪었습니다. 국내 도시의 시계 관리인들도 손상된 종과 보수 계약 분쟁을 보고했습니다.",
+      "end_year": 1900,
+      "event_id": 17
+    },
+    {
+      "id": "giant",
+      "year": 1869,
+      "gate": "",
+      "source": "https://brucemuseum.org/discover/the-cardiff-giant/",
+      "title_en": "The alleged petrified giant",
+      "title_ko": "돌이 되었다는 거인",
+      "desc_en": "The Cardiff Giant hoax of 1869 showed the market for spectacular discoveries. An exhibitor now asks our authorities to endorse an alleged ancient giant before independent examination.",
+      "desc_ko": "1869년 카디프 거인 사기는 놀라운 발견에 대한 대중의 수요를 보여 주었습니다. 한 흥행업자가 독립 감정 전에 고대 거인이라는 전시물을 당국이 인정해 달라고 요청했습니다.",
+      "end_year": 1900,
+      "event_id": 18
+    },
+    {
+      "id": "pigeon",
+      "year": 1870,
+      "gate": "at_war = yes",
+      "source": "https://postalmuseum.si.edu/object/npm_0.260305.10.36.3",
+      "title_en": "Letters carried by pigeons",
+      "title_ko": "비둘기가 나르는 편지",
+      "desc_en": "During the 1870–1871 Siege of Paris, pigeon post carried reduced photographic messages. Our wartime couriers propose a small experiment rather than a replacement for all communications.",
+      "desc_ko": "1870~1871년 파리 포위에서는 비둘기 우편으로 축소 촬영한 소식을 전달했습니다. 전시 연락 담당자들은 모든 통신을 대체하려는 대신 작은 시험을 제안했습니다.",
+      "end_year": 1900,
+      "event_id": 19
+    },
+    {
+      "id": "motor",
+      "year": 1896,
+      "gate": "has_advance = tsin_internal_combustion_advance",
+      "source": "https://nationalmotormuseum.org.uk/help-centre/motoring-firsts/who-was-the-first-person-to-be-charged-for-a-speeding-office/",
+      "title_en": "The motor carriage and the speed limit",
+      "title_ko": "자동차와 속도 제한",
+      "desc_en": "A British speeding conviction in 1896 illustrates the difficulty of applying old road rules to motor traffic. Our officials seek a clearer procedure for local complaints.",
+      "desc_ko": "1896년 영국의 과속 기소는 낡은 도로 규칙을 자동차에 적용할 때의 문제를 보여 줍니다. 국내 관리들은 주민들의 신고를 처리할 명확한 절차를 요구합니다.",
+      "end_year": 1900,
+      "event_id": 20
+    },
+    {
+      "id": "anaesthesia",
+      "year": 1846,
+      "gate": "has_advance = tsin_military_medicine_advance",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10431558/",
+      "title_en": "A demonstration without pain",
+      "title_ko": "고통 없는 수술 시연",
+      "desc_en": "The public ether demonstration of 1846 changed surgical discussion. Physicians already studying modern medicine ask for a supervised demonstration and transparent reporting here.",
+      "desc_ko": "1846년의 공개 에테르 마취 시연은 수술을 둘러싼 논의를 바꾸었습니다. 근대 의학을 공부하던 국내 의사들이 감독하의 시연과 투명한 보고를 요청했습니다.",
+      "end_year": 1900,
+      "event_id": 21
+    },
+    {
+      "id": "aurora",
+      "year": 1859,
+      "end_year": 1862,
+      "gate": "has_advance = tsin_telegraph_telephone_advance",
+      "source": "https://www.nesdis.noaa.gov/about/k-12-education/space-weather/what-was-the-carrington-event",
+      "title_en": "The sky and the telegraph",
+      "title_ko": "하늘과 전신선",
+      "desc_en": "Reports of the great 1859 aurora and disturbed telegraph equipment have reached the operators. They propose recording the anomaly and inspecting equipment; they do not yet claim a complete explanation.",
+      "desc_ko": "1859년의 큰 오로라와 전신 장비 이상에 관한 보고가 도착했습니다. 운영자들은 완전한 설명을 내세우기보다 이상 현상을 기록하고 장비를 점검하자고 제안했습니다.",
+      "event_id": 22
+    },
+    {
+      "id": "phonograph",
+      "year": 1877,
+      "gate": "has_advance = tsin_telegraph_telephone_advance",
+      "source": "https://www.si.edu/spotlight/phones",
+      "title_en": "A voice from a machine",
+      "title_ko": "기계에서 나오는 목소리",
+      "desc_en": "The phonograph was demonstrated in the late 1870s. An exhibitor familiar with electrical communications proposes showing recorded sound to scholars and townspeople.",
+      "desc_ko": "1870년대 후반에는 축음기 시연이 이루어졌습니다. 전기 통신에 익숙한 흥행업자가 학자와 시민에게 녹음된 소리를 들려주는 시연을 제안했습니다.",
+      "end_year": 1900,
+      "event_id": 23
+    },
+    {
+      "id": "rabies",
+      "year": 1885,
+      "gate": "has_advance = tsin_military_medicine_advance",
+      "source": "https://www.pasteur.fr/en/about-us/our-dna/history",
+      "title_en": "A report from the rabies laboratory",
+      "title_ko": "광견병 연구실에서 온 보고",
+      "desc_en": "News of the 1885 rabies treatment has reached our medical community. Physicians request translated reports and independent review rather than declaring every experimental treatment proven.",
+      "desc_ko": "1885년 광견병 치료에 관한 소식이 국내 의학계에 도착했습니다. 의사들은 모든 실험 치료를 검증됐다고 선언하기보다 보고서 번역과 독립 검토를 요청했습니다.",
+      "end_year": 1900,
+      "event_id": 24
+    }
+  ]
+}

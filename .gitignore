@@ -73,6 +73,7 @@ tools/out/
 /in_game/common/levies/tsin_industrial_levies.txt
 /in_game/common/missions/tsin_industrialization_missions.txt
 /in_game/common/missions/tsin_modernization_missions.txt
+/in_game/common/on_action/tsin_history_wave1_on_actions.txt
 /in_game/common/parliament_agendas/tsin_parliament_agendas.txt
 /in_game/common/parliament_issues/tsin_parliament_issues.txt
 /in_game/common/peace_treaties/tsin_treaty_port.txt
@@ -121,6 +122,7 @@ tools/out/
 /in_game/events/tsin_expedition.txt
 /in_game/events/tsin_flavor.txt
 /in_game/events/tsin_frontier.txt
+/in_game/events/tsin_history_wave1.txt
 /in_game/events/tsin_hunger.txt
 /in_game/events/tsin_invention.txt
 /in_game/events/tsin_legislation_bills.txt
@@ -147,6 +149,7 @@ tools/out/
 /in_game/gui/panels/situation/tsin_scramble_for_colonies.gui
 /in_game/gui/panels/situation/tsin_springtime_of_nations.gui
 /in_game/gui/panels/situation/tsin_world_exhibition.gui
+/main_menu/common/game_rules/tsin_history_wave1_rules.txt
 /main_menu/common/named_colors/tsin_colors.txt
 /main_menu/common/script_values/tsin_build_prices.txt
 /main_menu/common/script_values/tsin_building_values.txt
@@ -164,6 +167,7 @@ tools/out/
 /main_menu/common/static_modifiers/tsin_expedition_modifiers.txt
 /main_menu/common/static_modifiers/tsin_flavor_modifiers.txt
 /main_menu/common/static_modifiers/tsin_frontier_modifiers.txt
+/main_menu/common/static_modifiers/tsin_history_wave1_modifiers.txt
 /main_menu/common/static_modifiers/tsin_hunger_modifiers.txt
 /main_menu/common/static_modifiers/tsin_infra_event_modifiers.txt
 /main_menu/common/static_modifiers/tsin_institution_modifiers.txt
@@ -303,6 +307,7 @@ tools/out/
 /main_menu/gfx/interface/illustrations/work_of_art_and_holy_sites/tsin_romantic_painting.dds
 /main_menu/localization/english/tsin_chemistry_l_english.yml
 /main_menu/localization/english/tsin_disaster_panels_l_english.yml
+/main_menu/localization/english/tsin_history_wave1_l_english.yml
 /main_menu/localization/english/tsin_m3_l_english.yml
 /main_menu/localization/english/tsin_m4_l_english.yml
 /main_menu/localization/english/tsin_m5_l_english.yml
@@ -333,6 +338,7 @@ tools/out/
 /main_menu/localization/english/tsin_m7_wc_l_english.yml
 /main_menu/localization/korean/tsin_chemistry_l_korean.yml
 /main_menu/localization/korean/tsin_disaster_panels_l_korean.yml
+/main_menu/localization/korean/tsin_history_wave1_l_korean.yml
 /main_menu/localization/korean/tsin_m3_l_korean.yml
 /main_menu/localization/korean/tsin_m4_l_korean.yml
 /main_menu/localization/korean/tsin_m5_l_korean.yml

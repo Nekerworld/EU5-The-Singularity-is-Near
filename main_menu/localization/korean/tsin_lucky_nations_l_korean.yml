@@ -10,7 +10,7 @@
  tsin_lucky_russia.1.title: "러시아의 통합"
  tsin_lucky_russia.1.desc: "역사 진행 규칙에 따라 지연된 통합을 처리합니다. 이전 직전에 인간의 소유·점령, 전쟁, 수도, 이전 이후 소유국의 존속을 다시 확인합니다."
  tsin_lucky_russia.1.a: "새로운 러시아 국가로."
- tsin_lucky_russia_formed_log: "TSIN_LUCKY_RUSSIA [러시아 형성] [ROOT.GetCountry.GetName]"
+ tsin_lucky_russia_formed_log: "TSIN_LUCKY_RUSSIA (러시아 형성) [ROOT.GetCountry.GetName]"
  STATIC_MODIFIER_NAME_tsin_lucky_russia_support: "러시아 통합 지원"
  STATIC_MODIFIER_DESC_tsin_lucky_russia_support: "지연된 러시아 통합을 위한 임시 지원입니다. 형성·인간과의 전쟁·인간의 보호 도시 소유나 점령·시제품 기간 종료 시 정리합니다."
  STATIC_MODIFIER_NAME_tsin_lucky_russia_support_strong: "러시아 통합 집중 지원"

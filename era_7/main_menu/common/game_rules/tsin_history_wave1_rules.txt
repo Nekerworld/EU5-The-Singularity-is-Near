@@ -1,0 +1,6 @@
+﻿tsin_historical_events = {
+    default = tsin_historical_events_normal
+    tsin_historical_events_normal = { flag = flavour_rule }
+    tsin_historical_events_dense = { flag = flavour_rule }
+    tsin_historical_events_off = { flag = flavour_rule }
+}
