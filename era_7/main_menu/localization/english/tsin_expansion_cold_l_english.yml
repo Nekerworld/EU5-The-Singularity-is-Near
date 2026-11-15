@@ -1,0 +1,7 @@
+﻿l_english:
+ tsin_cold_storage: "Cold Storage"
+ tsin_electric_cold_storage: "Electric Cold Storage"
+ tsin_cold_storage_steam: "Mechanical Refrigeration"
+ tsin_cold_storage_electric: "Electric Refrigeration"
+ tsin_cold_storage_desc: "Improves preservation of stored market food. Does not simulate transport losses."
+ tsin_electric_cold_storage_desc: "Improves preservation of stored market food. Does not simulate transport losses."

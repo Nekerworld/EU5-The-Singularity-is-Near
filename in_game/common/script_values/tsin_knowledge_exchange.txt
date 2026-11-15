@@ -1,0 +1,23 @@
+﻿# Country scope; reuse cached education, no new aggregate or research slots.
+tsin_knowledge_exchange_bonus = {
+ value = 0
+ if = {
+  limit = { tsin_country_secondary_education >= 10 tsin_country_higher_education >= 2 }
+  add = 0.02
+ }
+ if = {
+  limit = { tsin_country_secondary_education >= 25 tsin_country_higher_education >= 6 }
+  add = 0.03
+ }
+ if = {
+  limit = { tsin_country_secondary_education >= 45 tsin_country_higher_education >= 15 }
+  add = 0.04
+ }
+ if = {
+  limit = { tsin_country_secondary_education >= 70 tsin_country_higher_education >= 30 }
+  add = 0.06
+ }
+ if = { limit = { has_policy = policy:free_press } multiply = 1.2 }
+ else_if = { limit = { has_policy = policy:state_press_only } multiply = 0.5 }
+ else_if = { limit = { has_policy = policy:censored_press } multiply = 0.75 }
+}

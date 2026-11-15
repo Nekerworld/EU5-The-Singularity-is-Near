@@ -54,6 +54,7 @@ tsin_steam_threshing_advance = {
 
 # 1880s; also the condition of the refrigerated ship event tsin_invention.30
 tsin_refrigerated_transport_advance = {
+	unlock_building = tsin_cold_storage
 	age = age_7_industrialization
 	icon = zan_food_imports
 

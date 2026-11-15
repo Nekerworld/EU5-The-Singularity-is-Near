@@ -259,7 +259,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 | 경로 | 역할 |
 |---|---|
-| `era_7/` | 7시대 편집 원본·manifest, 362개 등록 파일 |
+| `era_7/` | 7시대 편집 원본·manifest, 368개 등록 파일 |
 | `era_8/` | 8시대 편집 원본·manifest, 11개 등록 파일 |
 | `in_game/`·`main_menu/` | 전역 기능과 시대별 원본의 게임 실행용 파일 |
 | `loading_screen/` | 종료일 등의 defines |
@@ -277,7 +277,7 @@ python -B tools/audit.py
 python -B -m unittest discover -s tools/tests
 ```
 
-README 갱신 기준의 코드 검사 기록은 **회귀 125개 통과**, 전체 정적 검사 오류 0·경고 0, 별도 감사 오류 0·기존 경고 2입니다. 기본/Glorp 금융 생성물 14개와 시대 원본 373개의 실행 파일이 일치했습니다. 이는 인게임 검증 완료를 뜻하지 않습니다.
+README 갱신 기준의 코드 검사 기록은 **회귀 125개 통과**, 전체 정적 검사 오류 0·경고 0, 별도 감사 오류 0·기존 경고 2입니다. 기본/Glorp 금융 생성물 14개와 시대 원본 379개의 실행 파일이 일치했습니다. 이는 인게임 검증 완료를 뜻하지 않습니다.
 
 | 생성·분석 도구 | 역할 |
 |---|---|
@@ -314,3 +314,8 @@ README 도표는 `python tools/make_readme_media.py`로 재생성합니다. `mat
 **Age VII:** three institutions, 159 advances, seven goods, 26 building definitions, 19 units, 11 laws, eight situations and four disasters. **Age VIII:** nine advances, two facilities and two ships connect industrial agriculture, motor logistics, early aviation support and dreadnoughts. Dedicated political systems and institutions remain planned. **Ages IX–XII:** dated definitions, localization and placeholder art only.
 
 Edit era sources under `era_7/` and `era_8/`; run `python tools/sync_eras.py` before launching a source checkout. Shared features retain their existing paths. Glorp integration uses a local compatibility mod. Latest code verification recorded 119 passing regressions and zero validation errors/warnings; runtime layout, long-term balance and save continuity still require in-game checks. README images are explanatory diagrams, not gameplay screenshots.
+
+
+### 확장 개발 — 2026-11-16 진행 중
+
+교육·언론 정책에 따른 국가 연구 속도 보너스와 시장 냉장 보관소·전기 냉동 보관소를 추가했습니다. 기술별 병렬 전파나 운송 중 부패는 계산하지 않습니다. 전기 냉동은 기존 냉장 시설의 업그레이드이며 전력 유지비를 소비합니다. 연구·건설 화면의 최종 표시와 실제 보존 효과는 인게임 검증 대기입니다. 나머지 확장 개발계획은 아직 구현 완료가 아닙니다. [실행 기록](docs/expansion_execution_2026_11_16.md)

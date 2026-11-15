@@ -1,0 +1,30 @@
+﻿tsin_electric_cold_storage = {
+ audio_tier = 2
+ is_foreign = no
+ pop_type = laborers
+ employment_size = 0.02
+ max_levels = 2
+ forbidden_for_estates = yes
+ category = infrastructure_category
+ town = yes
+ city = yes
+ megalopolis = yes
+ obsolete = tsin_cold_storage
+ build_time = infrastructure_build_time
+ country_potential = {
+  has_advance = tsin_refrigerated_transport_advance
+  has_advance = tsin_electric_motor_advance
+ }
+ location_potential = { is_market_center = yes }
+ construction_demand = tsin_infrastructure_construction
+ unique_production_methods = {
+  tsin_cold_storage_electric = {
+   icon_type = goods
+   icon = tsin_electricity
+   tsin_electricity = 0.15
+   tools = 0.05
+   category = building_maintenance
+  }
+ }
+ modifier = { local_food_preservation_efficiency_modifier = 0.15 }
+}

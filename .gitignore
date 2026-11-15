@@ -34,7 +34,9 @@ tools/out/
 /in_game/common/building_types/tsin_age8_transport_buildings.txt
 /in_game/common/building_types/tsin_automation_buildings.txt
 /in_game/common/building_types/tsin_chemical_buildings.txt
+/in_game/common/building_types/tsin_cold_storage.txt
 /in_game/common/building_types/tsin_education_buildings.txt
+/in_game/common/building_types/tsin_electric_cold_storage.txt
 /in_game/common/building_types/tsin_extraction_buildings.txt
 /in_game/common/building_types/tsin_housing_buildings.txt
 /in_game/common/building_types/tsin_industrial_buildings.txt
@@ -205,6 +207,8 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_automated_printing_mill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_blasting_works.dds
 /main_menu/gfx/interface/icons/buildings/tsin_capital_airfield.dds
+/main_menu/gfx/interface/icons/buildings/tsin_cold_storage.dds
+/main_menu/gfx/interface/icons/buildings/tsin_electric_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_lighting.dds
 /main_menu/gfx/interface/icons/buildings/tsin_explosives_plant.dds
 /main_menu/gfx/interface/icons/buildings/tsin_farm_machinery_works.dds
@@ -322,6 +326,7 @@ tools/out/
 /main_menu/localization/english/tsin_age8_transport_military_l_english.yml
 /main_menu/localization/english/tsin_chemistry_l_english.yml
 /main_menu/localization/english/tsin_disaster_panels_l_english.yml
+/main_menu/localization/english/tsin_expansion_cold_l_english.yml
 /main_menu/localization/english/tsin_history_wave1_l_english.yml
 /main_menu/localization/english/tsin_history_wave2_l_english.yml
 /main_menu/localization/english/tsin_m3_l_english.yml
@@ -356,6 +361,7 @@ tools/out/
 /main_menu/localization/korean/tsin_age8_transport_military_l_korean.yml
 /main_menu/localization/korean/tsin_chemistry_l_korean.yml
 /main_menu/localization/korean/tsin_disaster_panels_l_korean.yml
+/main_menu/localization/korean/tsin_expansion_cold_l_korean.yml
 /main_menu/localization/korean/tsin_history_wave1_l_korean.yml
 /main_menu/localization/korean/tsin_history_wave2_l_korean.yml
 /main_menu/localization/korean/tsin_m3_l_korean.yml

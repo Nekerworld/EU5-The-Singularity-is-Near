@@ -1,0 +1,7 @@
+﻿l_korean:
+ tsin_cold_storage: "냉장 보관소"
+ tsin_electric_cold_storage: "전기 냉동 보관소"
+ tsin_cold_storage_steam: "기관식 냉장"
+ tsin_cold_storage_electric: "전기 냉동"
+ tsin_cold_storage_desc: "시장 보관 식량의 보존 효율을 높입니다. 운송 중 손실은 계산하지 않습니다."
+ tsin_electric_cold_storage_desc: "시장 보관 식량의 보존 효율을 높입니다. 운송 중 손실은 계산하지 않습니다."

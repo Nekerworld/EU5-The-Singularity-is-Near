@@ -1,0 +1,5 @@
+﻿tsin_knowledge_exchange = {
+ potential_trigger = { has_variable = tsin_higher_education }
+ scales_with = tsin_knowledge_exchange_bonus
+ research_speed_modifier = 1
+}
