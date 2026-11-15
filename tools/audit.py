@@ -33,7 +33,11 @@ def rel(p: Path) -> str:
 
 def own_files(folder: str) -> list[Path]:
     base = MOD / folder
-    return sorted(p for p in base.glob("*.txt") if p.name.startswith("tsin_")) if base.exists() else []
+    from era_layout import entries
+    files = set(base.glob("*.txt")) if base.exists() else set()
+    files.update(MOD / rel for rel in entries(MOD)
+                 if Path(rel).parent == Path(folder) and rel.endswith('.txt'))
+    return sorted(p for p in files if p.name.startswith(("tsin_", "zz_tsin_")))
 
 
 def child_blocks(block_text: str, key: str) -> list[str]:
