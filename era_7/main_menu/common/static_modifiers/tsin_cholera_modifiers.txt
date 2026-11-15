@@ -26,3 +26,9 @@ tsin_sewer_movement = {
 	global_population_capacity_modifier = 0.03
 	global_disease_resistance = 0.05
 }
+
+# Native cholera R0/stagnation reads this local response; no direct pop-size edits.
+tsin_cholera_emergency_care = {
+	game_data = { category = location }
+	local_disease_resistance = 0.1
+}

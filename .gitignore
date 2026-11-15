@@ -56,6 +56,7 @@ tools/out/
 /in_game/common/disasters/tsin_great_hunger.txt
 /in_game/common/disasters/tsin_millenarian_rebellion.txt
 /in_game/common/disasters/tsin_secession_crisis.txt
+/in_game/common/diseases/tsin_cholera.txt
 /in_game/common/estate_privileges/tsin_age7_privileges.txt
 /in_game/common/expedition_types/tsin_expeditions.txt
 /in_game/common/goods/tsin_goods.txt
@@ -91,6 +92,7 @@ tools/out/
 /in_game/common/script_values/tsin_frontier_values.txt
 /in_game/common/script_values/tsin_rebellion_values.txt
 /in_game/common/script_values/tsin_secession_values.txt
+/in_game/common/scripted_effects/tsin_cholera_disease_effects.txt
 /in_game/common/scripted_effects/tsin_company_effects.txt
 /in_game/common/scripted_effects/tsin_company_generated_effects.txt
 /in_game/common/scripted_effects/tsin_customs_union_effects.txt

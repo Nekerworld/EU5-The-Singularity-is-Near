@@ -1,0 +1,70 @@
+﻿# Native cholera. The existing emergency starts waves; the engine handles infections and deaths.
+# No independent random world scan/spawn timer is added.
+tsin_cholera_disease = {
+	monthly_spawn_chance = { value = 0 }
+	spawn = { }
+	monthly_resistance_reduction = 0.002
+	r0 = {
+		value = 1.15
+		if = {
+			limit = { tsin_cholera_risk_location_trigger = yes }
+			add = 0.2
+		}
+		if = {
+			limit = { has_building_with_at_least_one_level = tsin_waterworks }
+			multiply = 0.4
+		}
+		if = {
+			limit = { owner ?= { modifier:global_disease_resistance >= 0.1 } }
+			multiply = 0.75
+		}
+		if = {
+			limit = {
+				OR = {
+					disease_has_stagnated = scope:disease
+					"disease_resistance(scope:disease)" > 0.5
+				}
+			}
+			subtract = 0.4
+		}
+	}
+	calc_interval_days = 30
+	location_stagnation_chance = {
+		value = 0.12
+		if = {
+			limit = { has_building_with_at_least_one_level = tsin_waterworks }
+			add = 0.25
+		}
+		if = {
+			limit = { location_rank ?= location_rank:rural_settlement }
+			add = 0.1
+		}
+		if = {
+			limit = { "disease_resistance(scope:disease)" > 0.5 }
+			add = 0.15
+		}
+	}
+	percentage_to_meet_their_fate_on_calc = { value = 0.2 }
+	# Fraction of infected people, not a direct percentage deletion of every city pop.
+	mortality_rate = { 0.02 0.04 }
+	location_modifier = {
+		local_pop_promotion_speed_modifier = -0.1
+		local_prosperity_decay = 0.01
+		local_migration_attraction = -0.2
+	}
+	character_mortality_chance = { value = 0 }
+	location_spread_threshold = { value = 0.35 }
+	map_color = {
+		lerp = {
+			min_color = rgb { 170 225 225 }
+			max_color = rgb { 20 90 110 }
+			factor = "disease_presence(scope:disease)"
+		}
+	}
+	secondary_map_color = {
+		if = {
+			limit = { disease_affects_pops_here = scope:disease }
+			value = rgb { 80 150 190 }
+		}
+	}
+}

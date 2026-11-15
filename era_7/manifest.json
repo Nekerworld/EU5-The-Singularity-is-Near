@@ -362,6 +362,8 @@
     "main_menu/localization/korean/tsin_m7_stdtime_l_korean.yml": "era7-localization",
     "main_menu/localization/korean/tsin_m7_stock_l_korean.yml": "era7-localization",
     "main_menu/localization/korean/tsin_m7_tech_l_korean.yml": "era7-localization",
-    "main_menu/localization/korean/tsin_m7_wc_l_korean.yml": "era7-localization"
+    "main_menu/localization/korean/tsin_m7_wc_l_korean.yml": "era7-localization",
+    "in_game/common/diseases/tsin_cholera.txt": "era7-diseases",
+    "in_game/common/scripted_effects/tsin_cholera_disease_effects.txt": "era7-scripted_effects"
   }
 }

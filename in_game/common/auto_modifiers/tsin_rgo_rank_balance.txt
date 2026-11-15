@@ -1,0 +1,11 @@
+﻿# No scripted country/world pulse. The engine evaluates this local condition.
+# Existing city ID is retained for buildings and saves; 100 = 100,000 people.
+tsin_large_city_rgo_balance = {
+	category = location
+	type = location
+	potential_trigger = {
+		location_rank ?= location_rank:city
+		population >= 100
+	}
+	local_max_rgo_size_modifier = -0.10
+}

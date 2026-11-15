@@ -2,7 +2,7 @@
 
  # Cholera pandemic (in_game/common/disasters/tsin_cholera.txt)
  tsin_cholera: "콜레라 대유행"
- tsin_cholera_desc: "아시아에서 시작된 콜레라가 증기선과 철도를 타고 세계로 퍼집니다. 상하수도 없이 사람이 몰린 도시가 가장 먼저 쓰러집니다. [capital|e]에 상하수도를 놓고 공중보건 운동을 벌이면 더 빨리 끝납니다.\n\n참고: [tsin_cholera_concept|e]"
+ tsin_cholera_desc: "콜레라는 별도 질병으로 전파되며 감염과 인구 피해는 질병 체계에서 처리합니다. 과밀하고 상하수도가 부족한 도시는 발병 위험이 높습니다. 이 재앙은 국가의 긴급 방역 대응을 관리합니다. 수도의 상하수도와 공중보건 운동은 대응을 앞당기며, 대응 종료가 모든 지역의 감염 소멸을 뜻하지는 않습니다."
  STATIC_MODIFIER_NAME_tsin_cholera_quarantine: "항구 검역"
  STATIC_MODIFIER_NAME_tsin_sanitary_science: "위생학"
  STATIC_MODIFIER_NAME_tsin_sewer_movement: "하수도 운동"
@@ -18,11 +18,15 @@
  tsin_cholera.3.desc: "한 의사가 사망자의 집을 지도에 찍어 보니, 모두 한 우물 펌프 주변에 몰려 있었습니다. 병은 나쁜 공기가 아니라 더러운 물로 옮는다는 것입니다. 그는 펌프 손잡이를 떼어 내자고 합니다."
  tsin_cholera.3.a: "펌프 손잡이를 떼어 낸다."
  tsin_cholera.3.b: "나쁜 공기 탓이라는 건 다 아는 일이다."
- tsin_cholera.10.title: "대유행이 지나가다"
- tsin_cholera.10.desc: "콜레라가 마침내 물러갔습니다. 살아남은 사람들은 깨끗한 물과 하수도를 요구합니다."
+ tsin_cholera.10.title: "긴급 방역 대응을 마치다"
+ tsin_cholera.10.desc: "긴급 방역 대응을 마무리했습니다. 남아 있는 감염은 질병 화면에서 계속 확인할 수 있습니다. 깨끗한 물과 위생 시설에 대한 투자를 이어가야 합니다."
  tsin_cholera.10.a: "다시는 돌아오지 못하게 하수도를 놓는다."
  tsin_cholera.10.b: "감사드리고 일상으로 돌아간다."
 
  TSIN_CHOLERA_PANEL_PROGRESS: "종식 진행도"
  TSIN_CHOLERA_PANEL_OUTBREAKS: "도시 발병 횟수"
- TSIN_CHOLERA_PANEL_HELP: "진행도는 매달 증가합니다. 수도에 상하수도를 건설하고 질병 저항력을 높이면 더 빨리 끝납니다. 공중보건 운동은 해금 후 내각 화면에서 배정할 수 있습니다. 자세한 종료 조건은 종료 요건 탭에서 확인하십시오."
+ TSIN_CHOLERA_PANEL_HELP: "감염과 사망은 별도 콜레라 질병으로 계산됩니다. 이 화면의 진행도는 국가 방역 대응의 종료를 나타냅니다. 수도의 상하수도와 질병 저항력이 대응을 앞당깁니다. 주변 지역의 잔존 감염은 질병 화면에서 확인하십시오."
+
+ tsin_cholera_disease: "콜레라"
+ tsin_cholera_disease_desc: "콜레라는 별도 질병으로 전파되며 감염과 인구 피해는 질병 체계에서 처리합니다. 과밀하고 상하수도가 부족한 도시는 발병 위험이 높습니다. 이 재앙은 국가의 긴급 방역 대응을 관리합니다. 수도의 상하수도와 공중보건 운동은 대응을 앞당기며, 대응 종료가 모든 지역의 감염 소멸을 뜻하지는 않습니다."
+ STATIC_MODIFIER_NAME_tsin_cholera_emergency_care: "긴급 콜레라 치료"

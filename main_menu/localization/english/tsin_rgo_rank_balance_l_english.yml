@@ -1,0 +1,3 @@
+﻿l_english:
+ AUTO_MODIFIER_NAME_tsin_large_city_rgo_balance: "Large City Resource Base"
+ tsin_large_city_rgo_balance_desc: "Cities with at least 100,000 people receive a +20% rank RGO size bonus instead of +30%. Separate mining-town and other modifiers still apply."

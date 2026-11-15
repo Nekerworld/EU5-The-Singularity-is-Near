@@ -2,7 +2,7 @@
 
  # Cholera pandemic (in_game/common/disasters/tsin_cholera.txt)
  tsin_cholera: "Cholera Pandemic"
- tsin_cholera_desc: "Cholera from Asia spreads around the world by steamship and railway. Crowded cities without sewers fall first. Waterworks in the [capital|e] and a public health campaign end it sooner.\n\nSee also: [tsin_cholera_concept|e]"
+ tsin_cholera_desc: "Cholera spreads as a separate disease. Infections and deaths use the native disease system. Crowded settlements without waterworks are at greater risk. This emergency manages the national response; its completion does not remove all remaining infections."
  STATIC_MODIFIER_NAME_tsin_cholera_quarantine: "Port Quarantine"
  STATIC_MODIFIER_NAME_tsin_sanitary_science: "Sanitary Science"
  STATIC_MODIFIER_NAME_tsin_sewer_movement: "Sewer Movement"
@@ -18,11 +18,15 @@
  tsin_cholera.3.desc: "A physician has marked the homes of the dead on a map and found them clustered around a single well pump. The disease, he says, travels not through bad air but through foul water. He asks us to remove the pump handle."
  tsin_cholera.3.a: "Remove the pump handle."
  tsin_cholera.3.b: "It is the miasma, everyone knows it."
- tsin_cholera.10.title: "The Pandemic Passes"
- tsin_cholera.10.desc: "Cholera has finally retreated. The survivors demand clean water and sewers."
+ tsin_cholera.10.title: "The Emergency Response Ends"
+ tsin_cholera.10.desc: "The emergency response has concluded. Remaining infections can still be monitored in the disease view. Clean water and sanitation remain essential."
  tsin_cholera.10.a: "Build sewers so it never returns."
  tsin_cholera.10.b: "Give thanks and move on."
 
  TSIN_CHOLERA_PANEL_PROGRESS: "Recovery progress"
  TSIN_CHOLERA_PANEL_OUTBREAKS: "City outbreaks"
- TSIN_CHOLERA_PANEL_HELP: "Recovery progress increases each month. Waterworks in the capital and higher disease resistance speed recovery. Once unlocked, assign the Public Health Campaign in the cabinet screen. Check the end requirements tab for the exact conditions."
+ TSIN_CHOLERA_PANEL_HELP: "Native cholera handles infections and deaths. This progress tracks the national emergency response. Capital waterworks and disease resistance accelerate it. Monitor remaining infections in the disease view."
+
+ tsin_cholera_disease: "Cholera"
+ tsin_cholera_disease_desc: "Cholera spreads as a separate disease. Infections and deaths use the native disease system. Crowded settlements without waterworks are at greater risk. This emergency manages the national response; its completion does not remove all remaining infections."
+ STATIC_MODIFIER_NAME_tsin_cholera_emergency_care: "Emergency Cholera Care"
