@@ -1,0 +1,29 @@
+﻿tsin_oil_storage = {
+ audio_tier = 2 is_foreign = no forbidden_for_estates = yes pop_type = laborers
+ employment_size = 0 max_levels = 3 always_add_demands = yes
+ category = infrastructure_category
+ town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_oil_refining_advance }
+ location_potential = { is_market_center = yes }
+ unique_production_methods = {
+  tsin_oil_storage_maintenance = {
+   icon_type = goods icon = tools tools = 0.02 category = building_maintenance
+  }
+ }
+}
+
+tsin_strategic_storage = {
+ audio_tier = 2 is_foreign = no forbidden_for_estates = yes pop_type = laborers
+ employment_size = 0 max_levels = 3 always_add_demands = yes
+ category = infrastructure_category
+ town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_industrial_capitalism_advance }
+ location_potential = { is_market_center = yes }
+ unique_production_methods = {
+  tsin_strategic_storage_maintenance = {
+   icon_type = goods icon = tools tools = 0.02 category = building_maintenance
+  }
+ }
+}

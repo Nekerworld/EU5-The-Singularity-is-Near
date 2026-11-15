@@ -1,0 +1,5 @@
+﻿tsin_storage_capacity = { value = 0
+ if = { limit = { var:tsin_storage_kind = 1 } value = "location_building_level(building_type:tsin_oil_storage)" }
+ else_if = { limit = { OR = { var:tsin_storage_kind = 2 var:tsin_storage_kind = 3 } } value = "location_building_level(building_type:tsin_strategic_storage)" }
+ multiply = 100
+}

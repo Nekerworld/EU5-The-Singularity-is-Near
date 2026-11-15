@@ -154,6 +154,16 @@ tsin_ui_card_industry = {}
 tsin_ui_card_factory_jobs = {}
 tsin_ui_card_tax_base = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_storage_report_amount = {}
+tsin_ui_card_storage_report_capacity = {}
+tsin_ui_card_storage_report_kind = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_storage_report_state = {}
+tsin_ui_card_storage_report_year = {}
+tsin_ui_card_storage_report_month = {}
+}
 button_regular = {
     size = { 220 30 }
     action_tooltip = {
@@ -227,6 +237,83 @@ button_regular = {
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_3" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_oil')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_OIL"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_OIL" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_coal')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_COAL"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_COAL" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_steel')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_STEEL"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_STEEL" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_pause')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_PAUSE"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_PAUSE" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_resume')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_RESUME"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_RESUME" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_release')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_RELEASE"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_RELEASE" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_inspect')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_STORAGE_INSPECT"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_INSPECT" }
 }
 }
 }

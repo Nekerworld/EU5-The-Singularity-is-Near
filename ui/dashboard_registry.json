@@ -1386,6 +1386,178 @@
           "generic_action": "tsin_pollution_filter"
         }
       ]
+    },
+    {
+      "id": "strategic_storage",
+      "shortcuts": [
+        {
+          "id": "storage_oil",
+          "tab": "economy",
+          "title": {
+            "korean": "석유 비축 자동운전 설정",
+            "english": "Configure oil reserve"
+          },
+          "generic_action": "tsin_storage_oil"
+        },
+        {
+          "id": "storage_coal",
+          "tab": "economy",
+          "title": {
+            "korean": "석탄 비축 자동운전 설정",
+            "english": "Configure coal reserve"
+          },
+          "generic_action": "tsin_storage_coal"
+        },
+        {
+          "id": "storage_steel",
+          "tab": "economy",
+          "title": {
+            "korean": "강철 비축 자동운전 설정",
+            "english": "Configure steel reserve"
+          },
+          "generic_action": "tsin_storage_steel"
+        },
+        {
+          "id": "storage_pause",
+          "tab": "economy",
+          "title": {
+            "korean": "저장고 자동운전 정지",
+            "english": "Pause reserve automation"
+          },
+          "generic_action": "tsin_storage_pause"
+        },
+        {
+          "id": "storage_resume",
+          "tab": "economy",
+          "title": {
+            "korean": "저장고 자동운전 재개",
+            "english": "Resume reserve automation"
+          },
+          "generic_action": "tsin_storage_resume"
+        },
+        {
+          "id": "storage_release",
+          "tab": "economy",
+          "title": {
+            "korean": "저장고 비상 방출 예약",
+            "english": "Request emergency release"
+          },
+          "generic_action": "tsin_storage_release"
+        },
+        {
+          "id": "storage_inspect",
+          "tab": "economy",
+          "title": {
+            "korean": "선택 저장고 조사",
+            "english": "Inspect reserve site"
+          },
+          "generic_action": "tsin_storage_inspect"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "storage_report_amount",
+          "variable": "tsin_storage_report_amount",
+          "title": {
+            "korean": "선택 저장고 수량",
+            "english": "Inspected reserve quantity"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        },
+        {
+          "id": "storage_report_capacity",
+          "variable": "tsin_storage_report_capacity",
+          "title": {
+            "korean": "선택 저장고 용량",
+            "english": "Inspected reserve capacity"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        },
+        {
+          "id": "storage_report_kind",
+          "variable": "tsin_storage_report_kind",
+          "title": {
+            "korean": "선택 저장고 재화 종류",
+            "english": "Inspected reserve good"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        },
+        {
+          "id": "storage_report_state",
+          "variable": "tsin_storage_report_state",
+          "title": {
+            "korean": "선택 저장고 운영 상태",
+            "english": "Inspected reserve state"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        },
+        {
+          "id": "storage_report_year",
+          "variable": "tsin_storage_report_year",
+          "title": {
+            "korean": "저장고 조사 연도",
+            "english": "Reserve survey year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        },
+        {
+          "id": "storage_report_month",
+          "variable": "tsin_storage_report_month",
+          "title": {
+            "korean": "저장고 조사 월",
+            "english": "Reserve survey month"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
+            "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
+          }
+        }
+      ]
     }
   ],
   "histories": [

@@ -1,0 +1,121 @@
+﻿tsin_storage_oil = {
+ type = owncountry price = price:tsin_storage_control_price show_message = no
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_oil_refining_advance } }
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_building_with_at_least_one_level = tsin_oil_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = {
+ if = { limit = { owner ?= scope:actor controller ?= scope:actor has_building_with_at_least_one_level = tsin_oil_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } scope:actor = { has_advance = tsin_oil_refining_advance } }
+ if = { limit = { NOT = { has_variable = tsin_storage_registered } }
+  add_to_global_variable_list = { name = tsin_storage_sites target = this }
+  set_variable = tsin_storage_registered
+ }
+ set_variable = { name = tsin_storage_kind value = 1 }
+ set_variable = { name = tsin_storage_amount value = 0 }
+ set_variable = { name = tsin_storage_state value = 0 }
+ set_variable = tsin_storage_active
+}
+}
+set_global_variable = tsin_storage_enabled }
+}
+
+tsin_storage_coal = {
+ type = owncountry price = price:tsin_storage_control_price show_message = no
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_building_with_at_least_one_level = tsin_strategic_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = {
+ if = { limit = { owner ?= scope:actor controller ?= scope:actor has_building_with_at_least_one_level = tsin_strategic_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ if = { limit = { NOT = { has_variable = tsin_storage_registered } }
+  add_to_global_variable_list = { name = tsin_storage_sites target = this }
+  set_variable = tsin_storage_registered
+ }
+ set_variable = { name = tsin_storage_kind value = 2 }
+ set_variable = { name = tsin_storage_amount value = 0 }
+ set_variable = { name = tsin_storage_state value = 0 }
+ set_variable = tsin_storage_active
+}
+}
+set_global_variable = tsin_storage_enabled }
+}
+
+tsin_storage_steel = {
+ type = owncountry price = price:tsin_storage_control_price show_message = no
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_building_with_at_least_one_level = tsin_strategic_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = {
+ if = { limit = { owner ?= scope:actor controller ?= scope:actor has_building_with_at_least_one_level = tsin_strategic_storage OR = { NOT = { has_variable = tsin_storage_amount } var:tsin_storage_amount = 0 } NOT = { has_variable = tsin_storage_error } scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ if = { limit = { NOT = { has_variable = tsin_storage_registered } }
+  add_to_global_variable_list = { name = tsin_storage_sites target = this }
+  set_variable = tsin_storage_registered
+ }
+ set_variable = { name = tsin_storage_kind value = 3 }
+ set_variable = { name = tsin_storage_amount value = 0 }
+ set_variable = { name = tsin_storage_state value = 0 }
+ set_variable = tsin_storage_active
+}
+}
+set_global_variable = tsin_storage_enabled }
+}
+
+tsin_storage_pause = { type = owncountry price = price:tsin_storage_control_price show_message = no ai_tick = never automation_tick = never
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_storage_registered }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = { if = { limit = { owner ?= scope:actor controller ?= scope:actor } remove_variable = tsin_storage_active set_variable = { name = tsin_storage_state value = 9 } } } }
+}
+
+tsin_storage_resume = { type = owncountry price = price:tsin_storage_control_price show_message = no ai_tick = never automation_tick = never
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_storage_registered }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = { if = { limit = { owner ?= scope:actor controller ?= scope:actor } if = { limit = { NOT = { has_variable = tsin_storage_error } } set_variable = tsin_storage_active set_variable = { name = tsin_storage_state value = 0 } } } } }
+}
+
+tsin_storage_release = { type = owncountry price = price:tsin_storage_control_price show_message = no ai_tick = never automation_tick = never
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_storage_registered }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = { if = { limit = { owner ?= scope:actor controller ?= scope:actor } if = { limit = { NOT = { has_variable = tsin_storage_error } } set_variable = tsin_storage_emergency set_variable = tsin_storage_active } } } }
+}
+
+tsin_storage_inspect = { type = owncountry price = price:tsin_storage_control_price show_message = no ai_tick = never automation_tick = never
+ select_trigger = {
+ looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_storage_registered }
+ enabled = { controller ?= scope:actor }
+ }
+ effect = { scope:target_location = { if = { limit = { owner ?= scope:actor controller ?= scope:actor } owner = {
+ set_variable = { name = tsin_storage_report_amount value = scope:target_location.var:tsin_storage_amount }
+ set_variable = { name = tsin_storage_report_capacity value = scope:target_location.tsin_storage_capacity }
+ set_variable = { name = tsin_storage_report_kind value = scope:target_location.var:tsin_storage_kind }
+ set_variable = { name = tsin_storage_report_state value = scope:target_location.var:tsin_storage_state }
+ set_variable = { name = tsin_storage_report_year value = current_year }
+ set_variable = { name = tsin_storage_report_month value = current_month }
+} } } }
+}

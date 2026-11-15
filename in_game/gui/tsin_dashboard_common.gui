@@ -520,6 +520,66 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
 }
+type tsin_ui_card_storage_report_amount = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_AMOUNT"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_AMOUNT" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_amount').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_amount').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_amount').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_storage_report_capacity = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_CAPACITY"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_CAPACITY" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_capacity').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_capacity').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_capacity').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_storage_report_kind = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_KIND"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_KIND" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_kind').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_kind').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_kind').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_storage_report_state = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_STATE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_STATE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_state').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_state').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_state').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_storage_report_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_storage_report_month = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STORAGE_REPORT_MONTH"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STORAGE_REPORT_MONTH" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_month').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report_month').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_month').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }

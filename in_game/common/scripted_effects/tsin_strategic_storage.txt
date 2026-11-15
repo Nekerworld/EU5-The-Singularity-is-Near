@@ -1,0 +1,137 @@
+﻿# Native buy/sell effects charge/credit gold themselves. Never debit the purchase a second time.
+tsin_storage_review_effect = {
+ set_global_variable = { name = tsin_storage_review_month value = tsin_urban_calendar_month }
+ clear_list = tsin_storage_review_sites
+ every_in_global_list = { variable = tsin_storage_sites add_to_list = tsin_storage_review_sites }
+ every_in_list = { list = tsin_storage_review_sites
+  if = { limit = { has_owner = yes controller ?= owner has_variable = tsin_storage_active NOT = { has_variable = tsin_storage_error } owner = { exists = capital } }
+   save_scope_as = tsin_storage_site
+   owner = { save_scope_as = tsin_storage_operator }
+   tsin_storage_site_tick_effect = yes
+  }
+ }
+ clear_list = tsin_storage_review_sites
+}
+tsin_storage_site_tick_effect = {
+ if = { limit = { var:tsin_storage_kind = 1 exists = market "market.default_price(goods:tsin_oil)" > 0 }
+  set_local_variable = { name = tsin_storage_ratio value = { value = "market.market_price(goods:tsin_oil)" divide = "market.default_price(goods:tsin_oil)" } }
+  set_local_variable = { name = tsin_storage_before value = "market.stockpile_in_market(goods:tsin_oil)" }
+  if = { limit = {
+   tsin_storage_capacity > var:tsin_storage_amount
+   OR = { local_var:tsin_storage_ratio <= 0.85 AND = { var:tsin_storage_state = 1 local_var:tsin_storage_ratio < 0.95 } }
+   NOT = { has_variable = tsin_storage_emergency }
+   "market.market_price(goods:tsin_oil)" > 0 "market.stockpile_in_market(goods:tsin_oil)" > 0
+  }
+   set_local_variable = { name = tsin_storage_quantity value = { value = tsin_storage_capacity subtract = var:tsin_storage_amount max = 10 max = "market.stockpile_in_market(goods:tsin_oil)" max = { value = owner.gold multiply = 0.05 divide = "market.market_price(goods:tsin_oil)" } min = 0 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    scope:tsin_storage_operator = { buy_goods_from_market = { market = scope:tsin_storage_site.market goods = goods:tsin_oil amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = local_var:tsin_storage_before subtract = "market.stockpile_in_market(goods:tsin_oil)" min = 0 } }
+    change_variable = { name = tsin_storage_amount add = { value = local_var:tsin_storage_observed max = local_var:tsin_storage_quantity } }
+    set_variable = { name = tsin_storage_state value = 1 }
+    tsin_storage_verify_effect = yes
+   }
+  }
+  else_if = { limit = { var:tsin_storage_amount > 0
+   OR = { has_variable = tsin_storage_emergency local_var:tsin_storage_ratio >= 1.15 AND = { var:tsin_storage_state = 2 local_var:tsin_storage_ratio > 1.05 } }
+  }
+   set_local_variable = { name = tsin_storage_floor value = { value = tsin_storage_capacity multiply = 0.25 } }
+   if = { limit = { has_variable = tsin_storage_emergency } set_local_variable = { name = tsin_storage_floor value = 0 } }
+   set_local_variable = { name = tsin_storage_quantity value = { value = var:tsin_storage_amount subtract = local_var:tsin_storage_floor min = 0 max = 10 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    # Reserve the quantity before execution; a failed verification cannot sell it twice.
+    change_variable = { name = tsin_storage_amount subtract = local_var:tsin_storage_quantity }
+    scope:tsin_storage_operator = { sell_goods_to_market = { market = scope:tsin_storage_site.market goods = goods:tsin_oil amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = "market.stockpile_in_market(goods:tsin_oil)" subtract = local_var:tsin_storage_before min = 0 } }
+    set_variable = { name = tsin_storage_state value = 2 }
+    tsin_storage_verify_effect = yes
+   }
+   remove_variable = tsin_storage_emergency
+  }
+  else = { set_variable = { name = tsin_storage_state value = 0 } }
+ }
+ if = { limit = { var:tsin_storage_kind = 2 exists = market "market.default_price(goods:coal)" > 0 }
+  set_local_variable = { name = tsin_storage_ratio value = { value = "market.market_price(goods:coal)" divide = "market.default_price(goods:coal)" } }
+  set_local_variable = { name = tsin_storage_before value = "market.stockpile_in_market(goods:coal)" }
+  if = { limit = {
+   tsin_storage_capacity > var:tsin_storage_amount
+   OR = { local_var:tsin_storage_ratio <= 0.85 AND = { var:tsin_storage_state = 1 local_var:tsin_storage_ratio < 0.95 } }
+   NOT = { has_variable = tsin_storage_emergency }
+   "market.market_price(goods:coal)" > 0 "market.stockpile_in_market(goods:coal)" > 0
+  }
+   set_local_variable = { name = tsin_storage_quantity value = { value = tsin_storage_capacity subtract = var:tsin_storage_amount max = 10 max = "market.stockpile_in_market(goods:coal)" max = { value = owner.gold multiply = 0.05 divide = "market.market_price(goods:coal)" } min = 0 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    scope:tsin_storage_operator = { buy_goods_from_market = { market = scope:tsin_storage_site.market goods = goods:coal amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = local_var:tsin_storage_before subtract = "market.stockpile_in_market(goods:coal)" min = 0 } }
+    change_variable = { name = tsin_storage_amount add = { value = local_var:tsin_storage_observed max = local_var:tsin_storage_quantity } }
+    set_variable = { name = tsin_storage_state value = 1 }
+    tsin_storage_verify_effect = yes
+   }
+  }
+  else_if = { limit = { var:tsin_storage_amount > 0
+   OR = { has_variable = tsin_storage_emergency local_var:tsin_storage_ratio >= 1.15 AND = { var:tsin_storage_state = 2 local_var:tsin_storage_ratio > 1.05 } }
+  }
+   set_local_variable = { name = tsin_storage_floor value = { value = tsin_storage_capacity multiply = 0.25 } }
+   if = { limit = { has_variable = tsin_storage_emergency } set_local_variable = { name = tsin_storage_floor value = 0 } }
+   set_local_variable = { name = tsin_storage_quantity value = { value = var:tsin_storage_amount subtract = local_var:tsin_storage_floor min = 0 max = 10 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    # Reserve the quantity before execution; a failed verification cannot sell it twice.
+    change_variable = { name = tsin_storage_amount subtract = local_var:tsin_storage_quantity }
+    scope:tsin_storage_operator = { sell_goods_to_market = { market = scope:tsin_storage_site.market goods = goods:coal amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = "market.stockpile_in_market(goods:coal)" subtract = local_var:tsin_storage_before min = 0 } }
+    set_variable = { name = tsin_storage_state value = 2 }
+    tsin_storage_verify_effect = yes
+   }
+   remove_variable = tsin_storage_emergency
+  }
+  else = { set_variable = { name = tsin_storage_state value = 0 } }
+ }
+ if = { limit = { var:tsin_storage_kind = 3 exists = market "market.default_price(goods:steel)" > 0 }
+  set_local_variable = { name = tsin_storage_ratio value = { value = "market.market_price(goods:steel)" divide = "market.default_price(goods:steel)" } }
+  set_local_variable = { name = tsin_storage_before value = "market.stockpile_in_market(goods:steel)" }
+  if = { limit = {
+   tsin_storage_capacity > var:tsin_storage_amount
+   OR = { local_var:tsin_storage_ratio <= 0.85 AND = { var:tsin_storage_state = 1 local_var:tsin_storage_ratio < 0.95 } }
+   NOT = { has_variable = tsin_storage_emergency }
+   "market.market_price(goods:steel)" > 0 "market.stockpile_in_market(goods:steel)" > 0
+  }
+   set_local_variable = { name = tsin_storage_quantity value = { value = tsin_storage_capacity subtract = var:tsin_storage_amount max = 10 max = "market.stockpile_in_market(goods:steel)" max = { value = owner.gold multiply = 0.05 divide = "market.market_price(goods:steel)" } min = 0 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    scope:tsin_storage_operator = { buy_goods_from_market = { market = scope:tsin_storage_site.market goods = goods:steel amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = local_var:tsin_storage_before subtract = "market.stockpile_in_market(goods:steel)" min = 0 } }
+    change_variable = { name = tsin_storage_amount add = { value = local_var:tsin_storage_observed max = local_var:tsin_storage_quantity } }
+    set_variable = { name = tsin_storage_state value = 1 }
+    tsin_storage_verify_effect = yes
+   }
+  }
+  else_if = { limit = { var:tsin_storage_amount > 0
+   OR = { has_variable = tsin_storage_emergency local_var:tsin_storage_ratio >= 1.15 AND = { var:tsin_storage_state = 2 local_var:tsin_storage_ratio > 1.05 } }
+  }
+   set_local_variable = { name = tsin_storage_floor value = { value = tsin_storage_capacity multiply = 0.25 } }
+   if = { limit = { has_variable = tsin_storage_emergency } set_local_variable = { name = tsin_storage_floor value = 0 } }
+   set_local_variable = { name = tsin_storage_quantity value = { value = var:tsin_storage_amount subtract = local_var:tsin_storage_floor min = 0 max = 10 } }
+   if = { limit = { local_var:tsin_storage_quantity > 0 }
+    # Reserve the quantity before execution; a failed verification cannot sell it twice.
+    change_variable = { name = tsin_storage_amount subtract = local_var:tsin_storage_quantity }
+    scope:tsin_storage_operator = { sell_goods_to_market = { market = scope:tsin_storage_site.market goods = goods:steel amount = local_var:tsin_storage_quantity } }
+    set_local_variable = { name = tsin_storage_observed value = { value = "market.stockpile_in_market(goods:steel)" subtract = local_var:tsin_storage_before min = 0 } }
+    set_variable = { name = tsin_storage_state value = 2 }
+    tsin_storage_verify_effect = yes
+   }
+   remove_variable = tsin_storage_emergency
+  }
+  else = { set_variable = { name = tsin_storage_state value = 0 } }
+ }
+}
+tsin_storage_verify_effect = {
+ # These two values preserve the unresolved transaction for manual diagnosis.
+ if = { limit = { OR = {
+  local_var:tsin_storage_observed < { value = local_var:tsin_storage_quantity subtract = 0.01 }
+  local_var:tsin_storage_observed > { value = local_var:tsin_storage_quantity add = 0.01 }
+ } }
+  set_variable = tsin_storage_error
+  set_variable = { name = tsin_storage_error_requested value = local_var:tsin_storage_quantity }
+  set_variable = { name = tsin_storage_error_observed value = local_var:tsin_storage_observed }
+  remove_variable = tsin_storage_active
+  set_variable = { name = tsin_storage_state value = 99 }
+ }
+}

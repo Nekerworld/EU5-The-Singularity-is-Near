@@ -17,6 +17,7 @@ tsin_steam_age_advance = {
 }
 
 tsin_industrial_capitalism_advance = {
+	unlock_building = tsin_strategic_storage
 	age = age_7_industrialization
 	icon = industrialization_advance
 

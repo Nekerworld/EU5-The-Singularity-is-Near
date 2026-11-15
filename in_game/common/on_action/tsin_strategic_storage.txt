@@ -1,0 +1,7 @@
+﻿monthly_country_pulse = { on_actions = { tsin_storage_monthly_service } }
+tsin_storage_monthly_service = {
+ trigger = { has_global_variable = tsin_storage_enabled
+  OR = { NOT = { has_global_variable = tsin_storage_review_month } tsin_urban_calendar_month > global_var:tsin_storage_review_month }
+ }
+ effect = { tsin_storage_review_effect = yes }
+}
