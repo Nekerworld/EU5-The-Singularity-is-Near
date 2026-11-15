@@ -1,0 +1,9 @@
+﻿tsin_bank_reserve_ratio = {
+ value = 0.20
+ if = { limit = { has_policy = policy:tsin_bank_free_policy } value = 0.10 }
+ else_if = { limit = { has_policy = policy:tsin_bank_prudential_policy } value = 0.30 }
+ else_if = { limit = { has_policy = policy:tsin_bank_strict_policy } value = 0.40 }
+}
+tsin_bank_audit_cost = { value = tsin_bank_assets multiply = 0.01 min = 0.01 }
+tsin_firm_audit_cost = { value = tsin_ledger_lot multiply = 0.01 min = 0.01 }
+tsin_bank_loss_grant = { value = tsin_bank_net_worth multiply = -1 min = 0 add = tsin_ledger_lot }

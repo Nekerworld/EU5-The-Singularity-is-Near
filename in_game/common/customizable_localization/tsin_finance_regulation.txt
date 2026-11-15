@@ -1,0 +1,8 @@
+﻿tsin_bank_audit_status = { type = country
+ text = { trigger = { has_variable = tsin_bank_audit_valid } localization_key = TSIN_BANK_AUDIT_VALID }
+ text = { fallback = yes localization_key = TSIN_BANK_AUDIT_MISSING }
+}
+tsin_firm_audit_status = { type = country
+ text = { trigger = { has_variable = tsin_firm_audit_valid } localization_key = TSIN_FIRM_AUDIT_VALID }
+ text = { fallback = yes localization_key = TSIN_FIRM_AUDIT_MISSING }
+}

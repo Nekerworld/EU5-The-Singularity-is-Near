@@ -28,6 +28,12 @@ class ContractFixture:
         self.triggers=blocks(files['in_game/common/scripted_triggers/tsin_finance_contract_triggers.txt'])
         from gen_finance_ledger import build as ledger
         self.values.update(blocks(ledger()['in_game/common/script_values/tsin_finance_ledger_values.txt']))
+        from finance_regulation import build as regulation
+        for rel, text in regulation().items():
+            if '/scripted_triggers/' in rel:self.triggers.update(blocks(text))
+            elif '/script_values/' in rel:self.values.update(blocks(text))
+            elif '/scripted_effects/' in rel:self.effects.update(blocks(text))
+
 
     def country(self,**values):
         data=Entity({k:D(0) for k in ['gold','tsin_bank_cash','tsin_firm_cash','tsin_foreign_principal','tsin_foreign_local_principal','tsin_foreign_liability_local','tsin_bank_losses','tsin_foreign_contract_count','tsin_firm_debt','tsin_bond_principal','tsin_arrears','tsin_bond_arrears','tsin_interest_paid','tsin_bond_interest_paid','tsin_bond_losses']})
@@ -63,7 +69,16 @@ class ContractFixture:
     def num(self,value):
         if not isinstance(value,list):return self.scope(value)
         n=D(0)
+        branch=False
         for key,_,v in value:
+            if key in ('if','else_if'):
+                if key=='if':branch=False
+                if not branch and self.valid(get(v,'limit')):
+                    n=self.num([r for r in v if r[0]!='limit']);branch=True
+                continue
+            if key=='else':
+                if not branch:n=self.num(v)
+                continue
             x=self.num(v)
             if key=='value':n=x
             elif key=='add':n+=x
@@ -89,6 +104,9 @@ class ContractFixture:
             if k=='is_target_in_global_variable_list':return self.scope(get(v,'target')) in self.lists.get(get(v,'name'),[])
             if k=='any_in_global_list':
                 return any(self.enter(x,lambda:self.valid([r for r in v if r[0]!='variable'])) for x in self.lists.get(get(v,'variable'),[]))
+            if k=='has_policy':return v.removeprefix('policy:') in self.state.get('policies',set())
+            if k=='tsin_can_use_banking':return self.state.get('banking',True)
+            if k=='tsin_can_use_capital_markets':return self.state.get('capital_markets',True)
             if k=='has_variable':return v in self.state
             if k=='has_global_variable_map':return v in self.maps
             if k=='has_global_variable':return v in self.globals

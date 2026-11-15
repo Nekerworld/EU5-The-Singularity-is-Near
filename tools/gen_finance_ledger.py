@@ -9,6 +9,7 @@ import pdx
 import finance_extended as extended
 import corporate_finance as corporate
 import finance_capabilities as capabilities
+import finance_regulation as regulation
 
 EXTRA_TABS = [('MONEY', 'tsin_money'), ('BANK', 'tsin_bank'), ('FUNDS', 'tsin_funds')]
 
@@ -43,9 +44,10 @@ def build():
     actions = []
     def action(id, en, ko, valid, effect, tab):
         label = loc(id.upper(), en, ko)
-        actions.append((id, label, capabilities.guard(id, valid), effect, tab))
+        actions.append((id, label, regulation.guard(id, capabilities.guard(id, valid)), effect, tab))
     extended.register(fields, action, loc)
     corporate.register(fields, action, loc)
+    regulation.register(fields, action, loc)
     init = 'tsin_ledger_init_effect = yes\n'
     no_lf = 'NOT = { has_policy = policy:tsin_laissez_faire_policy }'
     cost = 'gold >= tsin_ledger_lot'
@@ -74,7 +76,7 @@ def build():
         ('FUND_NOTE', 'Pension benefits pay the peasant estate from existing funds, with no age-cohort estimate. Insurance pays at most 25% of its reserve after six consecutive missed-interest months, once per episode. Both stop at available cash.', '연금은 적립금에서 농민 계층에 지급하며 실제 고령 인구를 추정하지 않습니다. 보험은 이자 미지급 6개월 지속 시 준비기금의 최대 25%를 해당 연체기에 한 번만 지급합니다. 가용 기금 이상으로 지급하지 않습니다.'),
     ]: loc(key, en, ko)
     variables = ['tsin_reserve', 'tsin_bank_cash', 'tsin_firm_cash', 'tsin_firm_debt', 'tsin_arrears', 'tsin_insurance', 'tsin_pension', 'tsin_pension_paid', 'tsin_interest_paid']
-    variables += extended.VARIABLES + corporate.VARIABLES
+    variables += extended.VARIABLES + corporate.VARIABLES + ['tsin_bank_audit_paid', 'tsin_firm_audit_paid']
     effects = ['# GENERATED funded accounts; missing legacy variables initialize without endowments.', 'tsin_ledger_init_effect = {']
     for var, default in [(v, 0) for v in variables] + [('tsin_fx', 1), ('tsin_rate', 4), ('tsin_issued_shares', 100)]:
         effects.append(f'if = {{ limit = {{ NOT = {{ has_variable = {var} }} }} set_variable = {{ name = {var} value = {default} }} }}')
@@ -84,7 +86,7 @@ tsin_ledger_lend_effect = {
  else = { tsin_ledger_lend_effect_legacy = yes }
 }
 tsin_ledger_lend_effect_legacy = {
-    if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 }
+    if = { limit = { tsin_bank_underwriting_allowed = yes tsin_firm_disclosure_allowed = yes var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 }
         change_variable = { name = tsin_bank_cash subtract = tsin_ledger_lot }
         change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }
         change_variable = { name = tsin_firm_debt add = tsin_ledger_lot }
@@ -155,9 +157,11 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
     values += extended.VALUES + corporate.VALUES
     guis = []
     ui = ['types TSINLedger {']
-    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
+    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID', 'BANK_AUDIT_PAID', 'FIRM_AUDIT_PAID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
     for name, subtab in EXTRA_TABS:
         ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }']
+        if name == 'BANK':
+            ui += ["text_single = { text = \"[GetPlayer.Custom('tsin_bank_audit_status')]\" }", "text_single = { text = \"[GetPlayer.Custom('tsin_firm_audit_status')]\" }"]
         for key, _, _, var in fields:
             if key not in field_tabs[name]: continue
             # Script values initialize only on monthly tick or explicit action, never on render.
@@ -170,6 +174,7 @@ enabled = "[GetScriptedGui('tsin_ledger_{id}').IsValid(GuiScope.SetRoot(GetPlaye
 action_tooltip = {{ title = "{label}" on_action = "[GetScriptedGui('tsin_ledger_{id}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
 text_single = {{ parentanchor = center align = center text = "{label}" }} }}''']
         note = 'REFORM_NOTE' if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
+        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }']
         ui += [f'text_single = {{ maximumsize = {{ 520 -1 }} multiline = yes text = "TSIN_LEDGER_{note}" }}', '} } }']
     ui += ['}']
     for id, label, valid, effect, _ in actions:
@@ -208,6 +213,7 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
         labels[lang]['STATIC_MODIFIER_DESC_tsin_bank_credit_contraction'] = labels[lang].pop('TSIN_LEDGER_CONTRACTION_DESC')
     for lang, entries in labels.items():
         result[f'main_menu/localization/{lang}/tsin_finance_ledger_l_{lang}.yml'] = 'l_'+lang+':\n'+'\n'.join(' '+k+': '+json.dumps(v,ensure_ascii=False) for k,v in entries.items())+'\n'
+    result.update(regulation.build())
     return capabilities.add_outputs({k: '\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()})
 
 

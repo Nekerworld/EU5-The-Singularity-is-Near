@@ -129,7 +129,7 @@ def effects():
 }
 tsin_contract_lend_facility_effect = {
  tsin_contract_migrate_legacy_effect = yes
- if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 }
+ if = { limit = { tsin_bank_underwriting_allowed = yes tsin_firm_disclosure_allowed = yes var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 }
  save_scope_as = tsin_fc_lender save_scope_as = tsin_fc_borrower
  tsin_contract_allocate_effect = yes
 ''',row(2,'tsin_ledger_lot','var:tsin_rate','-1'),'''
@@ -140,7 +140,7 @@ tsin_contract_lend_facility_effect = {
 }
 tsin_contract_issue_bond_effect = {
  tsin_contract_migrate_legacy_effect = yes
- if = { limit = { var:tsin_bond_principal = 0 NOT = { has_variable = tsin_bond_issue_cooldown }
+ if = { limit = { tsin_firm_disclosure_allowed = yes var:tsin_bond_principal = 0 NOT = { has_variable = tsin_bond_issue_cooldown }
  any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_ledger_lot } }
  save_scope_as = tsin_fc_lender save_scope_as = tsin_fc_borrower
  tsin_contract_allocate_effect = yes

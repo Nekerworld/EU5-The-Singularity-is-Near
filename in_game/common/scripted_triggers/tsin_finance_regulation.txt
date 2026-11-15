@@ -1,0 +1,10 @@
+﻿tsin_bank_underwriting_allowed = {
+ NOT = { has_variable = tsin_bank_winding_down }
+ OR = {
+  NOT = { OR = { has_policy = policy:tsin_bank_prudential_policy has_policy = policy:tsin_bank_strict_policy } }
+  has_variable = tsin_bank_audit_valid
+ }
+}
+tsin_firm_disclosure_allowed = {
+ OR = { NOT = { has_policy = policy:tsin_disclosure_audited_policy } has_variable = tsin_firm_audit_valid }
+}

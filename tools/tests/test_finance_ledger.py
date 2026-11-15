@@ -18,6 +18,11 @@ class LedgerFixture:
         self.values=blocks(files['in_game/common/script_values/tsin_finance_ledger_values.txt'])
         self.effects=blocks(files['in_game/common/scripted_effects/tsin_finance_ledger_effects.txt'])
         self.actions=blocks(files['in_game/common/scripted_guis/tsin_finance_ledger_guis.txt'])
+        self.triggers={}
+        for rel,text in files.items():
+            if '/script_values/' in rel:self.values.update(blocks(text))
+            elif '/scripted_triggers/' in rel and 'regulation' in rel:self.triggers.update(blocks(text))
+            elif '/scripted_effects/' in rel and 'regulation' in rel:self.effects.update(blocks(text))
         self.state={'gold':D(1000),'tsin_gold_cost_1':D(100),'tsin_company_count':D(1),'estate':D(0)}
         self.countries=[self.state]
         self.run(self.effects['tsin_ledger_init_effect'])
@@ -25,12 +30,18 @@ class LedgerFixture:
     def num(self,value):
         if isinstance(value,list):
             n=D(0)
+            branch=False
             for key,_,v in value:
                 if key=='save_temporary_value_as':
                     self.state['scope:'+get(v,'name')]=self.num(get(v,'value'))
                     continue
-                if key=='if':
-                    if self.valid(get(v,'limit')):n=self.num([('value','=',str(n))]+[r for r in v if r[0]!='limit'])
+                if key in ('if','else_if'):
+                    if key=='if':branch=False
+                    if not branch and self.valid(get(v,'limit')):
+                        n=self.num([('value','=',str(n))]+[r for r in v if r[0]!='limit']);branch=True
+                    continue
+                if key=='else':
+                    if not branch:n=self.num([('value','=',str(n))]+v)
                     continue
                 x=self.num(v)
                 if key=='value':n=x
@@ -53,6 +64,7 @@ class LedgerFixture:
             if k=='NOT':return not self.valid(v)
             if k=='AND':return self.valid(v)
             if k=='OR':return any(term(*r) for r in v)
+            if k in getattr(self,'triggers',{}):return self.valid(self.triggers[k])
             if k=='has_variable':return v in self.state
             if k=='has_global_variable':return v in getattr(self,'globals',{})
             if k=='var:tsin_foreign_partner' and isinstance(v,str) and v.startswith('scope:'):return self.state.get('tsin_foreign_partner') is self.saved.get(v[6:])

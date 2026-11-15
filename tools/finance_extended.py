@@ -36,7 +36,7 @@ VALUES = '''
 tsin_bank_assets = { value = var:tsin_bank_cash add = var:tsin_firm_debt add = var:tsin_foreign_principal }
 tsin_bank_liabilities = { value = var:tsin_deposits add = var:tsin_liquidity_debt }
 tsin_bank_net_worth = { value = tsin_bank_assets subtract = tsin_bank_liabilities }
-tsin_bank_lending_cash_required = { value = tsin_ledger_lot add = { value = var:tsin_deposits multiply = 0.20 } }
+tsin_bank_lending_cash_required = { value = tsin_ledger_lot add = { value = var:tsin_deposits multiply = tsin_bank_reserve_ratio } }
 tsin_deposit_request = { value = tsin_ledger_lot multiply = 0.10 }
 tsin_withdrawal_request = { value = var:tsin_deposits multiply = 0.40 min = var:tsin_withdrawal_due max = var:tsin_deposits if = { limit = { has_variable = tsin_bank_winding_down } value = var:tsin_deposits } min = 0 }
 tsin_withdrawal_payment = { value = var:tsin_withdrawal_due max = var:tsin_bank_cash max = var:tsin_deposits min = 0 }
@@ -50,6 +50,7 @@ tsin_foreign_local_payment = { value = var:tsin_tx multiply = scope:tsin_foreign
 '''
 
 TRIGGERS = '''tsin_foreign_recipient_trigger = {
+tsin_firm_disclosure_allowed = yes
 tsin_history_ai_realm = yes is_subject = no at_war = no
 NOT = { this = root } tsin_company_count > 0 has_variable = tsin_ledger_version
 has_variable = tsin_fx var:tsin_fx > 0 var:tsin_arrears = 0
@@ -78,7 +79,7 @@ else = { tsin_foreign_open_legacy_effect = yes }
 }
 tsin_foreign_open_legacy_effect = {
 save_scope_as = tsin_foreign_lender
-if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0
+if = { limit = { tsin_bank_underwriting_allowed = yes var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0
 NOT = { has_variable = tsin_foreign_partner } NOT = { has_variable = tsin_foreign_cooldown } }
 ordered_country = {
 limit = { tsin_foreign_recipient_trigger = yes }
@@ -173,6 +174,7 @@ if = { limit = { var:tsin_deposits <= 0 } remove_variable = tsin_bank_winding_do
 }
 tsin_ai_finance_year_effect = {
 tsin_ledger_init_effect = yes
+tsin_finance_regulation_ai_effect = yes
 if = { limit = { tsin_can_fund_bank = yes OR = { NOT = { has_variable = tsin_bank_open } tsin_bank_net_worth < 0 } NOT = { has_variable = tsin_bank_winding_down } gold >= { value = tsin_ledger_lot multiply = 5 } }
 add_gold = { value = tsin_ledger_lot multiply = -1 }
 change_variable = { name = tsin_bank_cash add = tsin_ledger_lot } set_variable = tsin_bank_open
@@ -183,6 +185,7 @@ tsin_bank_optional_month_effect = {
 if = { limit = { OR = { has_variable = tsin_bank_open has_variable = tsin_bank_winding_down has_variable = tsin_foreign_partner } NOT = { has_variable = tsin_bank_quarter_timer } }
 set_variable = { name = tsin_bank_quarter_timer months = 3 }
 tsin_bank_quarter_effect = yes
+tsin_bank_distress_review_effect = yes
 }
 }
 '''

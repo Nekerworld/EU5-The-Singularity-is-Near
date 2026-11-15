@@ -28,7 +28,7 @@ tsin_legislation.100 = {
 	option = {
 		name = tsin_legislation.100.c120
 		trigger = {
-			any_possible_policy = { law = { OR = { this = law:tsin_taxation_law this = law:tsin_monetary_standard_law this = law:tsin_assembly_law } } }
+			any_possible_policy = { law = { OR = { this = law:tsin_taxation_law this = law:tsin_monetary_standard_law this = law:tsin_assembly_law this = law:tsin_bank_supervision_law this = law:tsin_corporate_disclosure_law } } }
 		}
 		trigger_event_non_silently = tsin_legislation.120
 		ai_chance = {
@@ -715,6 +715,259 @@ tsin_legislation.120 = {
 			modifier = {
 				add = 10
 				policy:tsin_free_association_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_bank_customary_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_bank_customary_policy }
+			NOT = { has_policy = policy:tsin_bank_customary_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_bank_customary_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_customary_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_bank_free_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_bank_free_policy }
+			NOT = { has_policy = policy:tsin_bank_free_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_bank_free_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_free_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_bank_prudential_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_bank_prudential_policy }
+			NOT = { has_policy = policy:tsin_bank_prudential_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_bank_prudential_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_prudential_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_bank_strict_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_bank_strict_policy }
+			NOT = { has_policy = policy:tsin_bank_strict_policy }
+			tsin_can_use_monetary_policy = yes
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_bank_strict_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_bank_strict_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_disclosure_customary_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_disclosure_customary_policy }
+			NOT = { has_policy = policy:tsin_disclosure_customary_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_disclosure_customary_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_customary_policy = { tsin_bill_reform_policy_trigger = yes }
+				tsin_bill_reform_pressure_trigger = yes
+			}
+		}
+	}
+
+	option = {
+		name = tsin_disclosure_audited_policy
+		trigger = {
+			any_possible_policy = { this = policy:tsin_disclosure_audited_policy }
+			NOT = { has_policy = policy:tsin_disclosure_audited_policy }
+		}
+		tsin_table_bill_effect = { POLICY = policy:tsin_disclosure_audited_policy BONUS = 0 }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { any_estate_type_preferring = { this = estate_type:nobles_estate } }
+				"estate_power(estate_type:nobles_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { any_estate_type_preferring = { this = estate_type:clergy_estate } }
+				"estate_power(estate_type:clergy_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { any_estate_type_preferring = { this = estate_type:burghers_estate } }
+				"estate_power(estate_type:burghers_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { any_estate_type_preferring = { this = estate_type:peasants_estate } }
+				"estate_power(estate_type:peasants_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { any_estate_type_preferring = { this = estate_type:crown_estate } }
+				"estate_power(estate_type:crown_estate)" >= 0.25
+			}
+			modifier = {
+				add = 10
+				policy:tsin_disclosure_audited_policy = { tsin_bill_reform_policy_trigger = yes }
 				tsin_bill_reform_pressure_trigger = yes
 			}
 		}

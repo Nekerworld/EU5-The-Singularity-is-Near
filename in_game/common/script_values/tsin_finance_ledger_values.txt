@@ -9,7 +9,7 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
 tsin_bank_assets = { value = var:tsin_bank_cash add = var:tsin_firm_debt add = var:tsin_foreign_principal }
 tsin_bank_liabilities = { value = var:tsin_deposits add = var:tsin_liquidity_debt }
 tsin_bank_net_worth = { value = tsin_bank_assets subtract = tsin_bank_liabilities }
-tsin_bank_lending_cash_required = { value = tsin_ledger_lot add = { value = var:tsin_deposits multiply = 0.20 } }
+tsin_bank_lending_cash_required = { value = tsin_ledger_lot add = { value = var:tsin_deposits multiply = tsin_bank_reserve_ratio } }
 tsin_deposit_request = { value = tsin_ledger_lot multiply = 0.10 }
 tsin_withdrawal_request = { value = var:tsin_deposits multiply = 0.40 min = var:tsin_withdrawal_due max = var:tsin_deposits if = { limit = { has_variable = tsin_bank_winding_down } value = var:tsin_deposits } min = 0 }
 tsin_withdrawal_payment = { value = var:tsin_withdrawal_due max = var:tsin_bank_cash max = var:tsin_deposits min = 0 }

@@ -1,0 +1,16 @@
+﻿namespace = tsin_finance_regulation
+tsin_finance_regulation.1 = {
+ type = country_event outcome = negative
+ title = tsin_finance_regulation.1.title desc = tsin_finance_regulation.1.desc
+ illustration_tags = { 10 = interior 10 = regular }
+ option = { name = tsin_finance_regulation.1.a
+  trigger = { tsin_bank_net_worth < 0 gold >= tsin_bank_loss_grant NOT = { has_variable = tsin_bank_grant_cooldown } }
+  tsin_bank_loss_grant_effect = yes
+ }
+ option = { name = tsin_finance_regulation.1.b
+  if = { limit = { tsin_bank_net_worth < 0 }
+   remove_variable = tsin_bank_open set_variable = tsin_bank_winding_down
+  }
+ }
+ option = { name = tsin_finance_regulation.1.c }
+}

@@ -66,7 +66,7 @@ tsin_contract_migrate_all_effect = {
 tsin_contract_open_foreign_effect = {
  tsin_contract_migrate_all_effect = yes
  save_scope_as = tsin_fc_lender
- if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0
+ if = { limit = { tsin_bank_underwriting_allowed = yes var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0
  NOT = { has_variable = tsin_foreign_cooldown } }
  ordered_country = {
   limit = { tsin_foreign_recipient_trigger = yes }

@@ -1,0 +1,36 @@
+﻿tsin_paid_bank_audit_effect = {
+ if = { limit = { tsin_can_use_banking = yes NOT = { has_variable = tsin_bank_audit_valid } tsin_bank_assets > 0 var:tsin_bank_cash >= tsin_bank_audit_cost }
+  set_variable = { name = tsin_bank_audit_paid value = tsin_bank_audit_cost }
+  change_variable = { name = tsin_bank_cash subtract = var:tsin_bank_audit_paid }
+  set_variable = { name = tsin_bank_audit_valid months = 12 }
+ }
+}
+tsin_paid_firm_audit_effect = {
+ if = { limit = { tsin_can_use_capital_markets = yes tsin_company_count > 0 NOT = { has_variable = tsin_firm_audit_valid } var:tsin_firm_cash >= tsin_firm_audit_cost }
+  set_variable = { name = tsin_firm_audit_paid value = tsin_firm_audit_cost }
+  change_variable = { name = tsin_firm_cash subtract = var:tsin_firm_audit_paid }
+  set_variable = { name = tsin_firm_audit_valid months = 12 }
+ }
+}
+tsin_bank_loss_grant_effect = {
+ if = { limit = { tsin_bank_net_worth < 0 gold >= tsin_bank_loss_grant NOT = { has_variable = tsin_bank_grant_cooldown } }
+  save_temporary_scope_value_as = { name = tsin_grant_amount value = tsin_bank_loss_grant }
+  add_gold = { value = scope:tsin_grant_amount multiply = -1 }
+  change_variable = { name = tsin_bank_cash add = scope:tsin_grant_amount }
+  set_variable = { name = tsin_bank_grant_cooldown years = 5 }
+ }
+}
+tsin_finance_regulation_ai_effect = {
+ if = { limit = { OR = { has_policy = policy:tsin_bank_prudential_policy has_policy = policy:tsin_bank_strict_policy } var:tsin_bank_cash >= { value = tsin_bank_lending_cash_required add = tsin_bank_audit_cost } tsin_bank_net_worth >= tsin_bank_audit_cost }
+  tsin_paid_bank_audit_effect = yes
+ }
+ if = { limit = { has_policy = policy:tsin_disclosure_audited_policy var:tsin_firm_cash >= { value = tsin_ledger_lot add = tsin_firm_audit_cost } }
+  tsin_paid_firm_audit_effect = yes
+ }
+}
+tsin_bank_distress_review_effect = {
+ if = { limit = { is_ai = no tsin_bank_net_worth < 0 var:tsin_deposits > 0 NOT = { has_variable = tsin_bank_distress_news_cooldown } }
+  set_variable = { name = tsin_bank_distress_news_cooldown years = 10 }
+  trigger_event_non_silently = tsin_finance_regulation.1
+ }
+}

@@ -33,7 +33,7 @@ tsin_pension_contribution = { value = tsin_ledger_lot multiply = 0.05 }
 
 EFFECTS='''
 tsin_private_equity_effect = {
-if = { limit = { any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_ledger_lot } NOT = { has_variable = tsin_equity_cooldown } }
+if = { limit = { tsin_firm_disclosure_allowed = yes any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_ledger_lot } NOT = { has_variable = tsin_equity_cooldown } }
 add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_ledger_lot multiply = -1 } }
 change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }
 change_variable = { name = tsin_issued_shares add = 10 }
@@ -55,7 +55,7 @@ tsin_corporate_bond_issue_effect = {
  else = { tsin_corporate_bond_issue_effect_legacy = yes }
 }
 tsin_corporate_bond_issue_effect_legacy = {
-if = { limit = { var:tsin_bond_principal = 0 NOT = { has_variable = tsin_bond_issue_cooldown }
+if = { limit = { tsin_firm_disclosure_allowed = yes var:tsin_bond_principal = 0 NOT = { has_variable = tsin_bond_issue_cooldown }
 any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_ledger_lot } }
 add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_ledger_lot multiply = -1 } }
 change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }

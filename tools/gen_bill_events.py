@@ -21,7 +21,7 @@ OUT = pdx.MOD_ROOT / "in_game" / "events" / "tsin_legislation_bills.txt"
 # event id -> (comment, laws)
 CATEGORIES = [
     (110, "Labour and welfare", ["tsin_labor_law", "tsin_welfare_law"]),
-    (120, "Taxation, money and association", ["tsin_taxation_law", "tsin_monetary_standard_law", "tsin_assembly_law"]),
+    (120, "Taxation, money and association", ["tsin_taxation_law", "tsin_monetary_standard_law", "tsin_assembly_law", "tsin_bank_supervision_law", "tsin_corporate_disclosure_law"]),
     (130, "Land and church", ["tsin_land_reform_law", "tsin_frontier_land_law", "tsin_church_state_law"]),
     (140, "Industry, companies and environment", ["tsin_industrial_investment_law", "tsin_trust_law", "tsin_environment_law"]),
     (150, "Slavery", ["tsin_slave_trade_law", "slavery_laws"]),
