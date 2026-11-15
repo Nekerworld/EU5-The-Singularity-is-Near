@@ -1,4 +1,4 @@
-"""Equity subscriptions and a single funded private bond per country aggregate."""
+"""Equity subscriptions and legacy bond migration; active tranches use the contract ledger."""
 
 VARIABLES=['tsin_bond_losses','tsin_public_shares','tsin_bond_principal','tsin_bond_interest_paid','tsin_bond_arrears','tsin_pension_shortfall']
 
