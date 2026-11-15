@@ -90,6 +90,13 @@ def end_year():
     return int(re.search(r'END_DATE\s*=\s*"?(\d{4})',text)[1])
 
 
+def era7_count(folder):
+    from era_layout import entries
+    prefix=folder.rstrip('/')+'/'
+    return sum(len([b for b in pdx.top_level_blocks(pdx.read_text(source)) if not b.local_kind and ':' not in b.key and b.key.startswith(('tsin_', 'age_7', 'a_tsin_', 'n_tsin_', 'pa_tsin_', 'hint_tsin_'))])
+        for rel,(source,_,_) in entries(MOD).items() if rel.startswith(prefix) and rel.endswith('.txt'))
+
+
 def inventory():
     dashboard=json.loads(pdx.read_text(MOD/'ui/dashboard_registry.json'))
     ops=json.loads(pdx.read_text(MOD/'ui/operational_alerts.json'))
@@ -100,8 +107,8 @@ def inventory():
             '운영 경고':len(ops['rules']), '지도 모드':map_mode_count(),
             '힌트':len(mod_keys('in_game/common/scriptable_hints')),
             '백과사전':len(mod_keys('main_menu/common/game_concepts')),
-            '게임 규칙':len(mod_keys('main_menu/common/game_rules'))},
-        'era_7': {label:len(mod_keys(folder)) for label,folder in [
+            '게임 규칙':len(mod_keys('main_menu/common/game_rules')),'초기 기업 유형':len(json.loads(pdx.read_text(MOD/'data/early_companies.json'))['companies']),'기업 경제체제':5},
+        'era_7': {label:era7_count(folder) for label,folder in [
             ('발전','in_game/common/advances'),('건물','in_game/common/building_types'),
             ('유닛','in_game/common/unit_types'),('법','in_game/common/laws'),
             ('상황','in_game/common/situations'),('재난','in_game/common/disasters'),

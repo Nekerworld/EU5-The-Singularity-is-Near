@@ -1,0 +1,18 @@
+﻿monthly_country_pulse = { on_actions = { tsin_capital_monthly_pulse } }
+tsin_capital_monthly_pulse = { trigger = { num_locations > 0 NOT = { has_variable = tsin_capital_timer } }
+effect = { set_variable = { name = tsin_capital_timer months = 3 }
+if = { limit = { NOT = { OR = { has_policy = policy:tsin_traditionalism_policy has_policy = policy:tsin_mercantilism_policy has_policy = policy:tsin_interventionism_policy has_policy = policy:tsin_laissez_faire_policy has_policy = policy:tsin_state_capitalism_policy } } } change_policy = policy:tsin_traditionalism_policy }
+tsin_init_existing_companies_effect = yes
+tsin_private_company_entry_effect = yes
+if = { limit = { tsin_company_count > 0 }
+tsin_capital_risk_effect = yes
+tsin_stock_market_events_effect = yes
+}
+if = { limit = { tsin_company_count > 0 NOT = { has_variable = tsin_stock_timer } }
+set_variable = { name = tsin_stock_timer months = 3 }
+tsin_update_stocks_effect = yes
+}
+tsin_capital_cache_effect = yes
+if = { limit = { current_age_or_later = { age = age_7_industrialization } tsin_company_count > 0 tsin_has_chairman_trigger = no } trigger_event_non_silently = tsin_corporate.10 }
+tsin_systemic_finance_check_effect = yes
+} }

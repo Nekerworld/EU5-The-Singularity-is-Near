@@ -1,0 +1,5 @@
+﻿namespace = tsin_finance
+tsin_finance.1 = { type = country_event title = tsin_finance.1.title desc = tsin_finance.1.desc outcome = negative
+illustration_tags = { 10 = interior 10 = angry }
+option = { name = tsin_finance.1.a }
+}

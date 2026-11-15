@@ -1,4 +1,4 @@
-﻿"""Registry boundary tests for extensible dashboard generation."""
+"""Registry boundary tests for extensible dashboard generation."""
 import copy
 import json
 from pathlib import Path
@@ -52,7 +52,7 @@ class DashboardTests(unittest.TestCase):
         common=generated['in_game/gui/tsin_dashboard_common.gui']
         self.assertIn('type tsin_ui_compact_strip',common)
         self.assertIn('type tsin_gdp_history_tooltip',common)
-        controller=generated['in_game/gui/tsin_dashboard.gui']
+        controller=generated['in_game/gui/tsin_dashboard_dock.gui']
         self.assertIn('tsin_dashboard_dock',controller)
         self.assertNotIn('sakuya_',controller)
         metadata=generated['in_game/common/scripted_effects/tsin_dashboard_core_effects.txt']

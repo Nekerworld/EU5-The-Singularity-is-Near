@@ -47,6 +47,23 @@ def patch_tabs(text):
     return text[:opening+1] + body + text[end:]
 
 
+def fix_maintenance_visibility(text):
+    """Merge the two same-widget native/Glorp conditions reported by gui.log."""
+    first = 'visible = "[Not(StringIsEmpty(MaintenanceSetting.GetExpenseBenefit))]"'
+    second = 'visible = "[Not(GreaterThan_CFixedPoint(MaintenanceSetting.GetExpenseBenefitAmount, \'(CFixedPoint)1\'))]"'
+    replacements = []
+    clean = pdx.strip_comments(text)
+    for match in re.finditer(r'\btext_single\s*=\s*\{', clean):
+        close = pdx.matching_brace(clean, match.end()-1)
+        body = text[match.start():close+1]
+        if body.count(first)==1 and body.count(second)==1:
+            merged = 'visible = "[And(Not(StringIsEmpty(MaintenanceSetting.GetExpenseBenefit)), Not(GreaterThan_CFixedPoint(MaintenanceSetting.GetExpenseBenefitAmount, \'(CFixedPoint)1\')))]"'
+            replacements.append((match.start(),close+1,body.replace(first,'',1).replace(second,merged,1)))
+    for start,end,body in reversed(replacements):
+        text = text[:start]+body+text[end:]
+    return text
+
+
 def patch_economy(text):
     anchor = 'blockoverride "panel_content" {'
     if text.count(anchor) != 1:
@@ -146,7 +163,7 @@ def build(game=None):
         'tsin_stock_ui_no_companies = { scope = country is_shown = { always = yes } is_valid = { tsin_company_count = 0 } }']
     values = ['# Fixed-size UI calculations: never scan locations from a graph.', 'tsin_stock_ui_peak = { value = 100']
     for i in range(HISTORY):
-        values += [f'if = {{ limit = {{ has_variable = tsin_index_h{i} }} max = var:tsin_index_h{i} }}']
+        values += [f'if = {{ limit = {{ has_variable = tsin_index_h{i} }} min = var:tsin_index_h{i} }}']
     values += ['}']
     for (c, adv, image, good, buildings), (en, ko) in zip(COMPANIES, company_names):
         title = label(c.upper(), en, ko)
@@ -172,18 +189,20 @@ def build(game=None):
             button('TSIN_STOCK_HQ', 'ShowLocation(Location.Self)', 'Location.IsValid'), '}', '}', '}', '}']
     ui += ['text_single = { maximumsize = { 540 -1 } multiline = yes fontsize = 11 text = "TSIN_STOCK_HELP" }', '}', '}', '}', '}', '}']
     result = {
-        ECONOMY: NOTE + patch_economy(patch_tabs(pdx.read_text(game / ECONOMY))),
+        ECONOMY: NOTE + patch_economy(patch_tabs(fix_maintenance_visibility(pdx.read_text(game / ECONOMY)))),
         'in_game/gui/tsin_stock_market.gui': '\n'.join(ui) + '\n',
         'in_game/common/scripted_guis/tsin_stock_market_guis.txt': '\n'.join(guis) + '\n',
         'in_game/common/script_values/tsin_stock_ui_values.txt': '\n'.join(values) + '\n',
     }
     for lang, labels in loc.items():
         result[f'main_menu/localization/{lang}/tsin_stock_ui_l_{lang}.yml'] = 'l_'+lang+':\n' + '\n'.join(f' {k}: "{v}"' for k,v in labels.items()) + '\n'
+    from capital_market_ui import extend
+    result=extend(result)
     return {rel: '\n'.join(line.rstrip() for line in text.splitlines())+'\n' for rel,text in result.items()}
 
 
 def compat_files(source):
-    return {ECONOMY: NOTE + '# LOCAL ONLY: Glorp integration, do not upload workshop code.\n' + patch_economy(pdx.read_text(source / ECONOMY)),
+    return {ECONOMY: NOTE + '# LOCAL ONLY: Glorp integration, do not upload workshop code.\n' + patch_economy(fix_maintenance_visibility(pdx.read_text(source / ECONOMY))),
             GLORP_TABS: NOTE + '# LOCAL ONLY: Glorp integration, do not upload workshop code.\n' + patch_tabs(pdx.read_text(source / GLORP_TABS))}
 
 

@@ -1,0 +1,1048 @@
+﻿tsin_capital_form_steel_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_steel } }
+    add_country_modifier = { modifier = tsin_company_steel months = -1 }
+    set_variable = { name = tsin_firms_steel value = 0 }
+    set_variable = { name = tsin_stock_steel value = 100 }
+    tsin_found_company_steel_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_steel } } set_variable = { name = tsin_firms_steel value = 1 } }
+change_variable = { name = tsin_firms_steel add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_machinery_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_machinery } }
+    add_country_modifier = { modifier = tsin_company_machinery months = -1 }
+    set_variable = { name = tsin_firms_machinery value = 0 }
+    set_variable = { name = tsin_stock_machinery value = 100 }
+    tsin_found_company_machinery_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_machinery } } set_variable = { name = tsin_firms_machinery value = 1 } }
+change_variable = { name = tsin_firms_machinery add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_textile_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_textile } }
+    add_country_modifier = { modifier = tsin_company_textile months = -1 }
+    set_variable = { name = tsin_firms_textile value = 0 }
+    set_variable = { name = tsin_stock_textile value = 100 }
+    tsin_found_company_textile_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_textile } } set_variable = { name = tsin_firms_textile value = 1 } }
+change_variable = { name = tsin_firms_textile add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_chemical_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_chemical } }
+    add_country_modifier = { modifier = tsin_company_chemical months = -1 }
+    set_variable = { name = tsin_firms_chemical value = 0 }
+    set_variable = { name = tsin_stock_chemical value = 100 }
+    tsin_found_company_chemical_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_chemical } } set_variable = { name = tsin_firms_chemical value = 1 } }
+change_variable = { name = tsin_firms_chemical add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_railway_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_railway } }
+    add_country_modifier = { modifier = tsin_company_railway months = -1 }
+    set_variable = { name = tsin_firms_railway value = 0 }
+    set_variable = { name = tsin_stock_railway value = 100 }
+    tsin_found_company_railway_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_railway } } set_variable = { name = tsin_firms_railway value = 1 } }
+change_variable = { name = tsin_firms_railway add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_farm_machinery_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_farm_machinery } }
+    add_country_modifier = { modifier = tsin_company_farm_machinery months = -1 }
+    set_variable = { name = tsin_firms_farm_machinery value = 0 }
+    set_variable = { name = tsin_stock_farm_machinery value = 100 }
+    tsin_found_company_farm_machinery_effect = yes
+}
+if = { limit = { NOT = { has_variable = tsin_firms_farm_machinery } } set_variable = { name = tsin_firms_farm_machinery value = 1 } }
+change_variable = { name = tsin_firms_farm_machinery add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_merchant_house_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_merchant_house } }
+    add_country_modifier = { modifier = tsin_company_merchant_house months = -1 }
+    set_variable = { name = tsin_firms_merchant_house value = 0 }
+    set_variable = { name = tsin_stock_merchant_house value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_merchant_house value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_merchant_house } } set_variable = { name = tsin_firms_merchant_house value = 1 } }
+change_variable = { name = tsin_firms_merchant_house add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_artisan_house_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_artisan_house } }
+    add_country_modifier = { modifier = tsin_company_artisan_house months = -1 }
+    set_variable = { name = tsin_firms_artisan_house value = 0 }
+    set_variable = { name = tsin_stock_artisan_house value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_artisan_house value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_artisan_house } } set_variable = { name = tsin_firms_artisan_house value = 1 } }
+change_variable = { name = tsin_firms_artisan_house add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_mining_syndicate_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_mining_syndicate } }
+    add_country_modifier = { modifier = tsin_company_mining_syndicate months = -1 }
+    set_variable = { name = tsin_firms_mining_syndicate value = 0 }
+    set_variable = { name = tsin_stock_mining_syndicate value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_mining_syndicate value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_mining_syndicate } } set_variable = { name = tsin_firms_mining_syndicate value = 1 } }
+change_variable = { name = tsin_firms_mining_syndicate add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_agricultural_house_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_agricultural_house } }
+    add_country_modifier = { modifier = tsin_company_agricultural_house months = -1 }
+    set_variable = { name = tsin_firms_agricultural_house value = 0 }
+    set_variable = { name = tsin_stock_agricultural_house value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_agricultural_house value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_agricultural_house } } set_variable = { name = tsin_firms_agricultural_house value = 1 } }
+change_variable = { name = tsin_firms_agricultural_house add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_shipping_house_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_shipping_house } }
+    add_country_modifier = { modifier = tsin_company_shipping_house months = -1 }
+    set_variable = { name = tsin_firms_shipping_house value = 0 }
+    set_variable = { name = tsin_stock_shipping_house value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_shipping_house value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_shipping_house } } set_variable = { name = tsin_firms_shipping_house value = 1 } }
+change_variable = { name = tsin_firms_shipping_house add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_merchant_bank_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_merchant_bank } }
+    add_country_modifier = { modifier = tsin_company_merchant_bank months = -1 }
+    set_variable = { name = tsin_firms_merchant_bank value = 0 }
+    set_variable = { name = tsin_stock_merchant_bank value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_merchant_bank value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_merchant_bank } } set_variable = { name = tsin_firms_merchant_bank value = 1 } }
+change_variable = { name = tsin_firms_merchant_bank add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_san_giorgio_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_san_giorgio } }
+    add_country_modifier = { modifier = tsin_company_san_giorgio months = -1 }
+    set_variable = { name = tsin_firms_san_giorgio value = 0 }
+    set_variable = { name = tsin_stock_san_giorgio value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_san_giorgio value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_san_giorgio } } set_variable = { name = tsin_firms_san_giorgio value = 1 } }
+change_variable = { name = tsin_firms_san_giorgio add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_eic_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_eic } }
+    add_country_modifier = { modifier = tsin_company_eic months = -1 }
+    set_variable = { name = tsin_firms_eic value = 0 }
+    set_variable = { name = tsin_stock_eic value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_eic value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_eic } } set_variable = { name = tsin_firms_eic value = 1 } }
+change_variable = { name = tsin_firms_eic add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_voc_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_voc } }
+    add_country_modifier = { modifier = tsin_company_voc months = -1 }
+    set_variable = { name = tsin_firms_voc value = 0 }
+    set_variable = { name = tsin_stock_voc value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_voc value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_voc } } set_variable = { name = tsin_firms_voc value = 1 } }
+change_variable = { name = tsin_firms_voc add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_french_indies_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_french_indies } }
+    add_country_modifier = { modifier = tsin_company_french_indies months = -1 }
+    set_variable = { name = tsin_firms_french_indies value = 0 }
+    set_variable = { name = tsin_stock_french_indies value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_french_indies value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_french_indies } } set_variable = { name = tsin_firms_french_indies value = 1 } }
+change_variable = { name = tsin_firms_french_indies add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_mitsui_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_mitsui } }
+    add_country_modifier = { modifier = tsin_company_mitsui months = -1 }
+    set_variable = { name = tsin_firms_mitsui value = 0 }
+    set_variable = { name = tsin_stock_mitsui value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_mitsui value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_mitsui } } set_variable = { name = tsin_firms_mitsui value = 1 } }
+change_variable = { name = tsin_firms_mitsui add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_songbang_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_songbang } }
+    add_country_modifier = { modifier = tsin_company_songbang months = -1 }
+    set_variable = { name = tsin_firms_songbang value = 0 }
+    set_variable = { name = tsin_stock_songbang value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_songbang value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_songbang } } set_variable = { name = tsin_firms_songbang value = 1 } }
+change_variable = { name = tsin_firms_songbang add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_south_sea_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_south_sea } }
+    add_country_modifier = { modifier = tsin_company_south_sea months = -1 }
+    set_variable = { name = tsin_firms_south_sea value = 0 }
+    set_variable = { name = tsin_stock_south_sea value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_south_sea value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_south_sea } } set_variable = { name = tsin_firms_south_sea value = 1 } }
+change_variable = { name = tsin_firms_south_sea add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_form_mississippi_effect = {
+
+if = { limit = { NOT = { has_country_modifier = tsin_company_mississippi } }
+    add_country_modifier = { modifier = tsin_company_mississippi months = -1 }
+    set_variable = { name = tsin_firms_mississippi value = 0 }
+    set_variable = { name = tsin_stock_mississippi value = 100 }
+    capital ?= { root = { set_variable = { name = tsin_hq_mississippi value = prev } } }
+}
+if = { limit = { NOT = { has_variable = tsin_firms_mississippi } } set_variable = { name = tsin_firms_mississippi value = 1 } }
+change_variable = { name = tsin_firms_mississippi add = 1 }
+set_variable = tsin_has_stock_market
+
+}
+
+tsin_capital_cache_effect = {
+if = { limit = { tsin_company_count > 0 } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }
+set_variable = { name = tsin_statistics_company_count value = tsin_company_count }
+set_variable = { name = tsin_statistics_company_limit value = tsin_company_limit }
+set_variable = { name = tsin_statistics_company_value value = tsin_company_total_value }
+set_variable = { name = tsin_stock_ui_stats_year value = current_year }
+set_variable = { name = tsin_stock_ui_levels_steel value = tsin_company_levels_steel }
+set_variable = { name = tsin_stock_ui_levels_machinery value = tsin_company_levels_machinery }
+set_variable = { name = tsin_stock_ui_levels_textile value = tsin_company_levels_textile }
+set_variable = { name = tsin_stock_ui_levels_chemical value = tsin_company_levels_chemical }
+set_variable = { name = tsin_stock_ui_levels_railway value = tsin_company_levels_railway }
+set_variable = { name = tsin_stock_ui_levels_farm_machinery value = tsin_company_levels_farm_machinery }
+set_variable = { name = tsin_stock_ui_levels_merchant_house value = tsin_company_levels_merchant_house }
+set_variable = { name = tsin_stock_ui_levels_artisan_house value = tsin_company_levels_artisan_house }
+set_variable = { name = tsin_stock_ui_levels_mining_syndicate value = tsin_company_levels_mining_syndicate }
+set_variable = { name = tsin_stock_ui_levels_agricultural_house value = tsin_company_levels_agricultural_house }
+set_variable = { name = tsin_stock_ui_levels_shipping_house value = tsin_company_levels_shipping_house }
+set_variable = { name = tsin_stock_ui_levels_merchant_bank value = tsin_company_levels_merchant_bank }
+set_variable = { name = tsin_stock_ui_levels_san_giorgio value = tsin_company_levels_san_giorgio }
+set_variable = { name = tsin_stock_ui_levels_eic value = tsin_company_levels_eic }
+set_variable = { name = tsin_stock_ui_levels_voc value = tsin_company_levels_voc }
+set_variable = { name = tsin_stock_ui_levels_french_indies value = tsin_company_levels_french_indies }
+set_variable = { name = tsin_stock_ui_levels_mitsui value = tsin_company_levels_mitsui }
+set_variable = { name = tsin_stock_ui_levels_songbang value = tsin_company_levels_songbang }
+set_variable = { name = tsin_stock_ui_levels_south_sea value = tsin_company_levels_south_sea }
+set_variable = { name = tsin_stock_ui_levels_mississippi value = tsin_company_levels_mississippi }
+}
+
+tsin_historic_finance_merchant_house_effect = {
+if = { limit = { NOT = { has_country_modifier = tsin_company_merchant_house } tsin_company_eligible_merchant_house_trigger = yes tsin_company_has_room_trigger = yes }
+tsin_capital_form_merchant_house_effect = yes
+}
+if = { limit = { tsin_company_count > 0 }
+tsin_scale_stocks_effect = { FACTOR = $FACTOR$ }
+set_variable = { name = tsin_local_crash_cooldown years = 10 }
+tsin_capital_cache_effect = yes
+}
+}
+
+tsin_historic_finance_south_sea_effect = {
+if = { limit = { NOT = { has_country_modifier = tsin_company_south_sea } tsin_company_eligible_south_sea_trigger = yes tsin_company_has_room_trigger = yes }
+tsin_capital_form_south_sea_effect = yes
+}
+if = { limit = { tsin_company_count > 0 }
+tsin_scale_stocks_effect = { FACTOR = $FACTOR$ }
+set_variable = { name = tsin_local_crash_cooldown years = 10 }
+tsin_capital_cache_effect = yes
+}
+}
+
+tsin_historic_finance_merchant_bank_effect = {
+if = { limit = { NOT = { has_country_modifier = tsin_company_merchant_bank } tsin_company_eligible_merchant_bank_trigger = yes tsin_company_has_room_trigger = yes }
+tsin_capital_form_merchant_bank_effect = yes
+}
+if = { limit = { tsin_company_count > 0 }
+tsin_scale_stocks_effect = { FACTOR = $FACTOR$ }
+
+tsin_capital_cache_effect = yes
+}
+}
+
+tsin_historic_finance_mississippi_effect = {
+if = { limit = { NOT = { has_country_modifier = tsin_company_mississippi } tsin_company_eligible_mississippi_trigger = yes tsin_company_has_room_trigger = yes }
+tsin_capital_form_mississippi_effect = yes
+}
+if = { limit = { tsin_company_count > 0 }
+tsin_scale_stocks_effect = { FACTOR = $FACTOR$ }
+set_variable = { name = tsin_local_crash_cooldown years = 10 }
+tsin_capital_cache_effect = yes
+}
+}
+
+TRY_REPLACE:tsin_init_existing_companies_effect = {
+if = { limit = { has_country_modifier = tsin_company_steel }
+if = { limit = { NOT = { has_variable = tsin_stock_steel } } set_variable = { name = tsin_stock_steel value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_steel } } set_variable = { name = tsin_firms_steel value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_steel } } capital ?= { root = { set_variable = { name = tsin_hq_steel value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_machinery }
+if = { limit = { NOT = { has_variable = tsin_stock_machinery } } set_variable = { name = tsin_stock_machinery value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_machinery } } set_variable = { name = tsin_firms_machinery value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_machinery } } capital ?= { root = { set_variable = { name = tsin_hq_machinery value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_textile }
+if = { limit = { NOT = { has_variable = tsin_stock_textile } } set_variable = { name = tsin_stock_textile value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_textile } } set_variable = { name = tsin_firms_textile value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_textile } } capital ?= { root = { set_variable = { name = tsin_hq_textile value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_chemical }
+if = { limit = { NOT = { has_variable = tsin_stock_chemical } } set_variable = { name = tsin_stock_chemical value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_chemical } } set_variable = { name = tsin_firms_chemical value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_chemical } } capital ?= { root = { set_variable = { name = tsin_hq_chemical value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_railway }
+if = { limit = { NOT = { has_variable = tsin_stock_railway } } set_variable = { name = tsin_stock_railway value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_railway } } set_variable = { name = tsin_firms_railway value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_railway } } capital ?= { root = { set_variable = { name = tsin_hq_railway value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_farm_machinery }
+if = { limit = { NOT = { has_variable = tsin_stock_farm_machinery } } set_variable = { name = tsin_stock_farm_machinery value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_farm_machinery } } set_variable = { name = tsin_firms_farm_machinery value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_farm_machinery } } capital ?= { root = { set_variable = { name = tsin_hq_farm_machinery value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_merchant_house }
+if = { limit = { NOT = { has_variable = tsin_stock_merchant_house } } set_variable = { name = tsin_stock_merchant_house value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_merchant_house } } set_variable = { name = tsin_firms_merchant_house value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_merchant_house } } capital ?= { root = { set_variable = { name = tsin_hq_merchant_house value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_artisan_house }
+if = { limit = { NOT = { has_variable = tsin_stock_artisan_house } } set_variable = { name = tsin_stock_artisan_house value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_artisan_house } } set_variable = { name = tsin_firms_artisan_house value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_artisan_house } } capital ?= { root = { set_variable = { name = tsin_hq_artisan_house value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_mining_syndicate }
+if = { limit = { NOT = { has_variable = tsin_stock_mining_syndicate } } set_variable = { name = tsin_stock_mining_syndicate value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_mining_syndicate } } set_variable = { name = tsin_firms_mining_syndicate value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_mining_syndicate } } capital ?= { root = { set_variable = { name = tsin_hq_mining_syndicate value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_agricultural_house }
+if = { limit = { NOT = { has_variable = tsin_stock_agricultural_house } } set_variable = { name = tsin_stock_agricultural_house value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_agricultural_house } } set_variable = { name = tsin_firms_agricultural_house value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_agricultural_house } } capital ?= { root = { set_variable = { name = tsin_hq_agricultural_house value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_shipping_house }
+if = { limit = { NOT = { has_variable = tsin_stock_shipping_house } } set_variable = { name = tsin_stock_shipping_house value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_shipping_house } } set_variable = { name = tsin_firms_shipping_house value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_shipping_house } } capital ?= { root = { set_variable = { name = tsin_hq_shipping_house value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_merchant_bank }
+if = { limit = { NOT = { has_variable = tsin_stock_merchant_bank } } set_variable = { name = tsin_stock_merchant_bank value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_merchant_bank } } set_variable = { name = tsin_firms_merchant_bank value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_merchant_bank } } capital ?= { root = { set_variable = { name = tsin_hq_merchant_bank value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_san_giorgio }
+if = { limit = { NOT = { has_variable = tsin_stock_san_giorgio } } set_variable = { name = tsin_stock_san_giorgio value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_san_giorgio } } set_variable = { name = tsin_firms_san_giorgio value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_san_giorgio } } capital ?= { root = { set_variable = { name = tsin_hq_san_giorgio value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_eic }
+if = { limit = { NOT = { has_variable = tsin_stock_eic } } set_variable = { name = tsin_stock_eic value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_eic } } set_variable = { name = tsin_firms_eic value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_eic } } capital ?= { root = { set_variable = { name = tsin_hq_eic value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_voc }
+if = { limit = { NOT = { has_variable = tsin_stock_voc } } set_variable = { name = tsin_stock_voc value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_voc } } set_variable = { name = tsin_firms_voc value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_voc } } capital ?= { root = { set_variable = { name = tsin_hq_voc value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_french_indies }
+if = { limit = { NOT = { has_variable = tsin_stock_french_indies } } set_variable = { name = tsin_stock_french_indies value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_french_indies } } set_variable = { name = tsin_firms_french_indies value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_french_indies } } capital ?= { root = { set_variable = { name = tsin_hq_french_indies value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_mitsui }
+if = { limit = { NOT = { has_variable = tsin_stock_mitsui } } set_variable = { name = tsin_stock_mitsui value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_mitsui } } set_variable = { name = tsin_firms_mitsui value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_mitsui } } capital ?= { root = { set_variable = { name = tsin_hq_mitsui value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_songbang }
+if = { limit = { NOT = { has_variable = tsin_stock_songbang } } set_variable = { name = tsin_stock_songbang value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_songbang } } set_variable = { name = tsin_firms_songbang value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_songbang } } capital ?= { root = { set_variable = { name = tsin_hq_songbang value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_south_sea }
+if = { limit = { NOT = { has_variable = tsin_stock_south_sea } } set_variable = { name = tsin_stock_south_sea value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_south_sea } } set_variable = { name = tsin_firms_south_sea value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_south_sea } } capital ?= { root = { set_variable = { name = tsin_hq_south_sea value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+if = { limit = { has_country_modifier = tsin_company_mississippi }
+if = { limit = { NOT = { has_variable = tsin_stock_mississippi } } set_variable = { name = tsin_stock_mississippi value = 100 } }
+if = { limit = { NOT = { has_variable = tsin_firms_mississippi } } set_variable = { name = tsin_firms_mississippi value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_hq_mississippi } } capital ?= { root = { set_variable = { name = tsin_hq_mississippi value = prev } } } }
+set_variable = tsin_has_stock_market
+}
+}
+
+TRY_REPLACE:tsin_dissolve_all_companies_effect = {
+if = { limit = { has_country_modifier = tsin_company_steel } remove_country_modifier = tsin_company_steel }
+remove_variable = tsin_firms_steel
+remove_variable = tsin_stock_steel
+remove_variable = tsin_hq_steel
+if = { limit = { has_country_modifier = tsin_company_machinery } remove_country_modifier = tsin_company_machinery }
+remove_variable = tsin_firms_machinery
+remove_variable = tsin_stock_machinery
+remove_variable = tsin_hq_machinery
+if = { limit = { has_country_modifier = tsin_company_textile } remove_country_modifier = tsin_company_textile }
+remove_variable = tsin_firms_textile
+remove_variable = tsin_stock_textile
+remove_variable = tsin_hq_textile
+if = { limit = { has_country_modifier = tsin_company_chemical } remove_country_modifier = tsin_company_chemical }
+remove_variable = tsin_firms_chemical
+remove_variable = tsin_stock_chemical
+remove_variable = tsin_hq_chemical
+if = { limit = { has_country_modifier = tsin_company_railway } remove_country_modifier = tsin_company_railway }
+remove_variable = tsin_firms_railway
+remove_variable = tsin_stock_railway
+remove_variable = tsin_hq_railway
+if = { limit = { has_country_modifier = tsin_company_farm_machinery } remove_country_modifier = tsin_company_farm_machinery }
+remove_variable = tsin_firms_farm_machinery
+remove_variable = tsin_stock_farm_machinery
+remove_variable = tsin_hq_farm_machinery
+if = { limit = { has_country_modifier = tsin_company_merchant_house } remove_country_modifier = tsin_company_merchant_house }
+remove_variable = tsin_firms_merchant_house
+remove_variable = tsin_stock_merchant_house
+remove_variable = tsin_hq_merchant_house
+if = { limit = { has_country_modifier = tsin_company_artisan_house } remove_country_modifier = tsin_company_artisan_house }
+remove_variable = tsin_firms_artisan_house
+remove_variable = tsin_stock_artisan_house
+remove_variable = tsin_hq_artisan_house
+if = { limit = { has_country_modifier = tsin_company_mining_syndicate } remove_country_modifier = tsin_company_mining_syndicate }
+remove_variable = tsin_firms_mining_syndicate
+remove_variable = tsin_stock_mining_syndicate
+remove_variable = tsin_hq_mining_syndicate
+if = { limit = { has_country_modifier = tsin_company_agricultural_house } remove_country_modifier = tsin_company_agricultural_house }
+remove_variable = tsin_firms_agricultural_house
+remove_variable = tsin_stock_agricultural_house
+remove_variable = tsin_hq_agricultural_house
+if = { limit = { has_country_modifier = tsin_company_shipping_house } remove_country_modifier = tsin_company_shipping_house }
+remove_variable = tsin_firms_shipping_house
+remove_variable = tsin_stock_shipping_house
+remove_variable = tsin_hq_shipping_house
+if = { limit = { has_country_modifier = tsin_company_merchant_bank } remove_country_modifier = tsin_company_merchant_bank }
+remove_variable = tsin_firms_merchant_bank
+remove_variable = tsin_stock_merchant_bank
+remove_variable = tsin_hq_merchant_bank
+if = { limit = { has_country_modifier = tsin_company_san_giorgio } remove_country_modifier = tsin_company_san_giorgio }
+remove_variable = tsin_firms_san_giorgio
+remove_variable = tsin_stock_san_giorgio
+remove_variable = tsin_hq_san_giorgio
+if = { limit = { has_country_modifier = tsin_company_eic } remove_country_modifier = tsin_company_eic }
+remove_variable = tsin_firms_eic
+remove_variable = tsin_stock_eic
+remove_variable = tsin_hq_eic
+if = { limit = { has_country_modifier = tsin_company_voc } remove_country_modifier = tsin_company_voc }
+remove_variable = tsin_firms_voc
+remove_variable = tsin_stock_voc
+remove_variable = tsin_hq_voc
+if = { limit = { has_country_modifier = tsin_company_french_indies } remove_country_modifier = tsin_company_french_indies }
+remove_variable = tsin_firms_french_indies
+remove_variable = tsin_stock_french_indies
+remove_variable = tsin_hq_french_indies
+if = { limit = { has_country_modifier = tsin_company_mitsui } remove_country_modifier = tsin_company_mitsui }
+remove_variable = tsin_firms_mitsui
+remove_variable = tsin_stock_mitsui
+remove_variable = tsin_hq_mitsui
+if = { limit = { has_country_modifier = tsin_company_songbang } remove_country_modifier = tsin_company_songbang }
+remove_variable = tsin_firms_songbang
+remove_variable = tsin_stock_songbang
+remove_variable = tsin_hq_songbang
+if = { limit = { has_country_modifier = tsin_company_south_sea } remove_country_modifier = tsin_company_south_sea }
+remove_variable = tsin_firms_south_sea
+remove_variable = tsin_stock_south_sea
+remove_variable = tsin_hq_south_sea
+if = { limit = { has_country_modifier = tsin_company_mississippi } remove_country_modifier = tsin_company_mississippi }
+remove_variable = tsin_firms_mississippi
+remove_variable = tsin_stock_mississippi
+remove_variable = tsin_hq_mississippi
+tsin_revoke_company_charters_effect = yes
+remove_variable = tsin_has_stock_market
+remove_variable = tsin_stock_index
+remove_variable = tsin_chairman
+if = { limit = { has_variable = tsin_charter_colonial } remove_variable = tsin_charter_colonial remove_country_modifier = tsin_charter_colonial_company }
+remove_variable = tsin_index_h0
+remove_variable = tsin_index_h1
+remove_variable = tsin_index_h2
+remove_variable = tsin_index_h3
+remove_variable = tsin_index_h4
+remove_variable = tsin_index_h5
+remove_variable = tsin_index_h6
+remove_variable = tsin_index_h7
+tsin_capital_cache_effect = yes
+
+}
+
+TRY_REPLACE:tsin_scale_stocks_effect = {
+if = { limit = { has_variable = tsin_stock_steel } change_variable = { name = tsin_stock_steel multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_steel min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_machinery } change_variable = { name = tsin_stock_machinery multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_machinery min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_textile } change_variable = { name = tsin_stock_textile multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_textile min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_chemical } change_variable = { name = tsin_stock_chemical multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_chemical min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_railway } change_variable = { name = tsin_stock_railway multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_railway min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_farm_machinery } change_variable = { name = tsin_stock_farm_machinery multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_farm_machinery min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_merchant_house } change_variable = { name = tsin_stock_merchant_house multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_merchant_house min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_artisan_house } change_variable = { name = tsin_stock_artisan_house multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_artisan_house min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_mining_syndicate } change_variable = { name = tsin_stock_mining_syndicate multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_mining_syndicate min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_agricultural_house } change_variable = { name = tsin_stock_agricultural_house multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_agricultural_house min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_shipping_house } change_variable = { name = tsin_stock_shipping_house multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_shipping_house min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_merchant_bank } change_variable = { name = tsin_stock_merchant_bank multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_merchant_bank min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_san_giorgio } change_variable = { name = tsin_stock_san_giorgio multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_san_giorgio min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_eic } change_variable = { name = tsin_stock_eic multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_eic min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_voc } change_variable = { name = tsin_stock_voc multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_voc min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_french_indies } change_variable = { name = tsin_stock_french_indies multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_french_indies min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_mitsui } change_variable = { name = tsin_stock_mitsui multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_mitsui min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_songbang } change_variable = { name = tsin_stock_songbang multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_songbang min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_south_sea } change_variable = { name = tsin_stock_south_sea multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_south_sea min = 10 max = 1000 } }
+if = { limit = { has_variable = tsin_stock_mississippi } change_variable = { name = tsin_stock_mississippi multiply = $FACTOR$ } clamp_variable = { name = tsin_stock_mississippi min = 10 max = 1000 } }
+if = { limit = { tsin_company_count > 0 } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }
+}
+
+tsin_private_company_entry_effect = {
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_steel_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:steel)" > 0 "market_price(goods:steel)" >= { value = "default_price(goods:steel)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_steel_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_machinery_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:tsin_engines)" > 0 "market_price(goods:tsin_engines)" >= { value = "default_price(goods:tsin_engines)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_machinery_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_textile_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:cloth)" > 0 "market_price(goods:cloth)" >= { value = "default_price(goods:cloth)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_textile_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_chemical_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:tsin_fertilizer)" > 0 "market_price(goods:tsin_fertilizer)" >= { value = "default_price(goods:tsin_fertilizer)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_chemical_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_railway_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:steel)" > 0 "market_price(goods:steel)" >= { value = "default_price(goods:steel)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_railway_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_farm_machinery_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:tsin_farm_machinery)" > 0 "market_price(goods:tsin_farm_machinery)" >= { value = "default_price(goods:tsin_farm_machinery)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_farm_machinery_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_merchant_house_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:pepper)" > 0 "market_price(goods:pepper)" >= { value = "default_price(goods:pepper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_merchant_house_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_artisan_house_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:cloth)" > 0 "market_price(goods:cloth)" >= { value = "default_price(goods:cloth)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_artisan_house_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_mining_syndicate_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:iron)" > 0 "market_price(goods:iron)" >= { value = "default_price(goods:iron)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_mining_syndicate_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_agricultural_house_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:wheat)" > 0 "market_price(goods:wheat)" >= { value = "default_price(goods:wheat)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_agricultural_house_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_shipping_house_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:naval_supplies)" > 0 "market_price(goods:naval_supplies)" >= { value = "default_price(goods:naval_supplies)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_shipping_house_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_merchant_bank_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:paper)" > 0 "market_price(goods:paper)" >= { value = "default_price(goods:paper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_merchant_bank_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_san_giorgio_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_san_giorgio }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:paper)" > 0 "market_price(goods:paper)" >= { value = "default_price(goods:paper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_san_giorgio_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_eic_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_eic }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:pepper)" > 0 "market_price(goods:pepper)" >= { value = "default_price(goods:pepper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_eic_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_voc_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_voc }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:pepper)" > 0 "market_price(goods:pepper)" >= { value = "default_price(goods:pepper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_voc_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_french_indies_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_french_indies }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:pepper)" > 0 "market_price(goods:pepper)" >= { value = "default_price(goods:pepper)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_french_indies_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_mitsui_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_mitsui }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:cloth)" > 0 "market_price(goods:cloth)" >= { value = "default_price(goods:cloth)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_mitsui_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_songbang_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_songbang }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:cloth)" > 0 "market_price(goods:cloth)" >= { value = "default_price(goods:cloth)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_songbang_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_south_sea_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_south_sea }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:sugar)" > 0 "market_price(goods:sugar)" >= { value = "default_price(goods:sugar)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_south_sea_effect = yes
+} }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_eligible_mississippi_trigger = yes
+NOT = { has_country_modifier = tsin_local_bubble_crash }
+NOT = { has_country_modifier = tsin_company_mississippi }
+any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_gold_cost_1 }
+capital ?= { market ?= { "goods_demand_in_market(goods:cotton)" > 0 "market_price(goods:cotton)" >= { value = "default_price(goods:cotton)" multiply = 0.9 } } } }
+random = { chance = 15
+add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_gold_cost_1 multiply = -1 } }
+tsin_capital_form_mississippi_effect = yes
+} }
+}
+
+TRY_REPLACE:tsin_update_stocks_effect = {
+if = { limit = { has_country_modifier = tsin_company_steel }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:steel)" > { value = "default_price(goods:steel)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:steel)" < { value = "default_price(goods:steel)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_steel > 1 } change_variable = { name = tsin_firms_steel subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_steel }
+}
+if = { limit = { has_country_modifier = tsin_company_machinery }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_engines)" > { value = "default_price(goods:tsin_engines)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_engines)" < { value = "default_price(goods:tsin_engines)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_machinery > 1 } change_variable = { name = tsin_firms_machinery subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_machinery }
+}
+if = { limit = { has_country_modifier = tsin_company_textile }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" > { value = "default_price(goods:cloth)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" < { value = "default_price(goods:cloth)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_textile > 1 } change_variable = { name = tsin_firms_textile subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_textile }
+}
+if = { limit = { has_country_modifier = tsin_company_chemical }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_fertilizer)" > { value = "default_price(goods:tsin_fertilizer)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_fertilizer)" < { value = "default_price(goods:tsin_fertilizer)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_chemical > 1 } change_variable = { name = tsin_firms_chemical subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_chemical }
+}
+if = { limit = { has_country_modifier = tsin_company_railway }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:steel)" > { value = "default_price(goods:steel)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:steel)" < { value = "default_price(goods:steel)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_railway > 1 } change_variable = { name = tsin_firms_railway subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_railway }
+}
+if = { limit = { has_country_modifier = tsin_company_farm_machinery }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_farm_machinery)" > { value = "default_price(goods:tsin_farm_machinery)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:tsin_farm_machinery)" < { value = "default_price(goods:tsin_farm_machinery)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_farm_machinery > 1 } change_variable = { name = tsin_firms_farm_machinery subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_farm_machinery }
+}
+if = { limit = { has_country_modifier = tsin_company_merchant_house }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" > { value = "default_price(goods:pepper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" < { value = "default_price(goods:pepper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_merchant_house > 1 } change_variable = { name = tsin_firms_merchant_house subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_merchant_house }
+}
+if = { limit = { has_country_modifier = tsin_company_artisan_house }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" > { value = "default_price(goods:cloth)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" < { value = "default_price(goods:cloth)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_artisan_house > 1 } change_variable = { name = tsin_firms_artisan_house subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_artisan_house }
+}
+if = { limit = { has_country_modifier = tsin_company_mining_syndicate }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:iron)" > { value = "default_price(goods:iron)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:iron)" < { value = "default_price(goods:iron)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_mining_syndicate > 1 } change_variable = { name = tsin_firms_mining_syndicate subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_mining_syndicate }
+}
+if = { limit = { has_country_modifier = tsin_company_agricultural_house }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:wheat)" > { value = "default_price(goods:wheat)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:wheat)" < { value = "default_price(goods:wheat)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_agricultural_house > 1 } change_variable = { name = tsin_firms_agricultural_house subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_agricultural_house }
+}
+if = { limit = { has_country_modifier = tsin_company_shipping_house }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:naval_supplies)" > { value = "default_price(goods:naval_supplies)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:naval_supplies)" < { value = "default_price(goods:naval_supplies)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_shipping_house > 1 } change_variable = { name = tsin_firms_shipping_house subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_shipping_house }
+}
+if = { limit = { has_country_modifier = tsin_company_merchant_bank }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:paper)" > { value = "default_price(goods:paper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:paper)" < { value = "default_price(goods:paper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_merchant_bank > 1 } change_variable = { name = tsin_firms_merchant_bank subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_merchant_bank }
+}
+if = { limit = { has_country_modifier = tsin_company_san_giorgio }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:paper)" > { value = "default_price(goods:paper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:paper)" < { value = "default_price(goods:paper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_san_giorgio > 1 } change_variable = { name = tsin_firms_san_giorgio subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_san_giorgio }
+}
+if = { limit = { has_country_modifier = tsin_company_eic }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" > { value = "default_price(goods:pepper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" < { value = "default_price(goods:pepper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_eic > 1 } change_variable = { name = tsin_firms_eic subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_eic }
+}
+if = { limit = { has_country_modifier = tsin_company_voc }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" > { value = "default_price(goods:pepper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" < { value = "default_price(goods:pepper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_voc > 1 } change_variable = { name = tsin_firms_voc subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_voc }
+}
+if = { limit = { has_country_modifier = tsin_company_french_indies }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" > { value = "default_price(goods:pepper)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:pepper)" < { value = "default_price(goods:pepper)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_french_indies > 1 } change_variable = { name = tsin_firms_french_indies subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_french_indies }
+}
+if = { limit = { has_country_modifier = tsin_company_mitsui }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" > { value = "default_price(goods:cloth)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" < { value = "default_price(goods:cloth)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_mitsui > 1 } change_variable = { name = tsin_firms_mitsui subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_mitsui }
+}
+if = { limit = { has_country_modifier = tsin_company_songbang }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" > { value = "default_price(goods:cloth)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cloth)" < { value = "default_price(goods:cloth)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_songbang > 1 } change_variable = { name = tsin_firms_songbang subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_songbang }
+}
+if = { limit = { has_country_modifier = tsin_company_south_sea }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:sugar)" > { value = "default_price(goods:sugar)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:sugar)" < { value = "default_price(goods:sugar)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_south_sea > 1 } change_variable = { name = tsin_firms_south_sea subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_south_sea }
+}
+if = { limit = { has_country_modifier = tsin_company_mississippi }
+set_variable = { name = tsin_stock_up value = 0.5 }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cotton)" > { value = "default_price(goods:cotton)" multiply = 1.1 } } } } change_variable = { name = tsin_stock_up add = 0.1 } }
+if = { limit = { capital ?= { market ?= { "market_price(goods:cotton)" < { value = "default_price(goods:cotton)" multiply = 0.8 } } } } change_variable = { name = tsin_stock_up subtract = 0.15 }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_firm_number_mississippi > 1 } change_variable = { name = tsin_firms_mississippi subtract = 1 } } }
+tsin_stock_random_walk_effect = { STOCK = tsin_stock_mississippi }
+}
+set_variable = { name = tsin_stock_index value = tsin_stock_index_value }
+tsin_shift_stock_history_effect = yes
+tsin_capital_cache_effect = yes
+}
+
+tsin_capital_risk_effect = {
+set_variable = { name = tsin_oversupplied_goods value = 0 }
+capital ?= { market ?= {
+if = { limit = { "goods_demand_in_market(goods:cloth)" > 0
+"goods_supply_in_market(goods:cloth)" >= { value = "goods_demand_in_market(goods:cloth)" multiply = 1.5 }
+"market_price(goods:cloth)" <= { value = "default_price(goods:cloth)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:paper)" > 0
+"goods_supply_in_market(goods:paper)" >= { value = "goods_demand_in_market(goods:paper)" multiply = 1.5 }
+"market_price(goods:paper)" <= { value = "default_price(goods:paper)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:iron)" > 0
+"goods_supply_in_market(goods:iron)" >= { value = "goods_demand_in_market(goods:iron)" multiply = 1.5 }
+"market_price(goods:iron)" <= { value = "default_price(goods:iron)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:steel)" > 0
+"goods_supply_in_market(goods:steel)" >= { value = "goods_demand_in_market(goods:steel)" multiply = 1.5 }
+"market_price(goods:steel)" <= { value = "default_price(goods:steel)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:tools)" > 0
+"goods_supply_in_market(goods:tools)" >= { value = "goods_demand_in_market(goods:tools)" multiply = 1.5 }
+"market_price(goods:tools)" <= { value = "default_price(goods:tools)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:coal)" > 0
+"goods_supply_in_market(goods:coal)" >= { value = "goods_demand_in_market(goods:coal)" multiply = 1.5 }
+"market_price(goods:coal)" <= { value = "default_price(goods:coal)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:tsin_engines)" > 0
+"goods_supply_in_market(goods:tsin_engines)" >= { value = "goods_demand_in_market(goods:tsin_engines)" multiply = 1.5 }
+"market_price(goods:tsin_engines)" <= { value = "default_price(goods:tsin_engines)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:tsin_fertilizer)" > 0
+"goods_supply_in_market(goods:tsin_fertilizer)" >= { value = "goods_demand_in_market(goods:tsin_fertilizer)" multiply = 1.5 }
+"market_price(goods:tsin_fertilizer)" <= { value = "default_price(goods:tsin_fertilizer)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:tsin_oil)" > 0
+"goods_supply_in_market(goods:tsin_oil)" >= { value = "goods_demand_in_market(goods:tsin_oil)" multiply = 1.5 }
+"market_price(goods:tsin_oil)" <= { value = "default_price(goods:tsin_oil)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+if = { limit = { "goods_demand_in_market(goods:tsin_rubber)" > 0
+"goods_supply_in_market(goods:tsin_rubber)" >= { value = "goods_demand_in_market(goods:tsin_rubber)" multiply = 1.5 }
+"market_price(goods:tsin_rubber)" <= { value = "default_price(goods:tsin_rubber)" multiply = 0.65 } }
+root = { change_variable = { name = tsin_oversupplied_goods add = 1 } } }
+} }
+if = { limit = { NOT = { has_variable = tsin_stress_quarters } } set_variable = { name = tsin_stress_quarters value = 0 } }
+if = { limit = { tsin_company_count > 0 var:tsin_oversupplied_goods >= 2 } change_variable = { name = tsin_stress_quarters add = 1 } }
+else = { set_variable = { name = tsin_stress_quarters value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_entry_risk_quarters } } set_variable = { name = tsin_entry_risk_quarters value = 0 } }
+if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_count >= 6 tsin_company_count > { value = tsin_sustainable_firms multiply = 1.5 } }
+change_variable = { name = tsin_entry_risk_quarters add = 1 } }
+else = { set_variable = { name = tsin_entry_risk_quarters value = 0 } }
+set_variable = { name = tsin_finance_recent months = 4 }
+
+}
+
+TRY_REPLACE:tsin_stock_market_events_effect = {
+
+if = { limit = { NOT = { has_variable = tsin_local_crash_cooldown }
+OR = { var:tsin_entry_risk_quarters >= 3 var:tsin_stress_quarters >= 4 } }
+tsin_local_bubble_burst_effect = yes
+}
+
+}
+
+tsin_local_bubble_burst_effect = {
+set_variable = { name = tsin_local_crash_cooldown years = 10 }
+tsin_scale_stocks_effect = { FACTOR = 0.75 }
+add_country_modifier = { modifier = tsin_local_bubble_crash years = 2 }
+set_variable = { name = tsin_entry_risk_quarters value = 0 }
+if = { limit = { tsin_firm_number_steel > 1 } change_variable = { name = tsin_firms_steel subtract = 1 } }
+if = { limit = { tsin_firm_number_machinery > 1 } change_variable = { name = tsin_firms_machinery subtract = 1 } }
+if = { limit = { tsin_firm_number_textile > 1 } change_variable = { name = tsin_firms_textile subtract = 1 } }
+if = { limit = { tsin_firm_number_chemical > 1 } change_variable = { name = tsin_firms_chemical subtract = 1 } }
+if = { limit = { tsin_firm_number_railway > 1 } change_variable = { name = tsin_firms_railway subtract = 1 } }
+if = { limit = { tsin_firm_number_farm_machinery > 1 } change_variable = { name = tsin_firms_farm_machinery subtract = 1 } }
+if = { limit = { tsin_firm_number_merchant_house > 1 } change_variable = { name = tsin_firms_merchant_house subtract = 1 } }
+if = { limit = { tsin_firm_number_artisan_house > 1 } change_variable = { name = tsin_firms_artisan_house subtract = 1 } }
+if = { limit = { tsin_firm_number_mining_syndicate > 1 } change_variable = { name = tsin_firms_mining_syndicate subtract = 1 } }
+if = { limit = { tsin_firm_number_agricultural_house > 1 } change_variable = { name = tsin_firms_agricultural_house subtract = 1 } }
+if = { limit = { tsin_firm_number_shipping_house > 1 } change_variable = { name = tsin_firms_shipping_house subtract = 1 } }
+if = { limit = { tsin_firm_number_merchant_bank > 1 } change_variable = { name = tsin_firms_merchant_bank subtract = 1 } }
+if = { limit = { tsin_firm_number_san_giorgio > 1 } change_variable = { name = tsin_firms_san_giorgio subtract = 1 } }
+if = { limit = { tsin_firm_number_eic > 1 } change_variable = { name = tsin_firms_eic subtract = 1 } }
+if = { limit = { tsin_firm_number_voc > 1 } change_variable = { name = tsin_firms_voc subtract = 1 } }
+if = { limit = { tsin_firm_number_french_indies > 1 } change_variable = { name = tsin_firms_french_indies subtract = 1 } }
+if = { limit = { tsin_firm_number_mitsui > 1 } change_variable = { name = tsin_firms_mitsui subtract = 1 } }
+if = { limit = { tsin_firm_number_songbang > 1 } change_variable = { name = tsin_firms_songbang subtract = 1 } }
+if = { limit = { tsin_firm_number_south_sea > 1 } change_variable = { name = tsin_firms_south_sea subtract = 1 } }
+if = { limit = { tsin_firm_number_mississippi > 1 } change_variable = { name = tsin_firms_mississippi subtract = 1 } }
+if = { limit = { is_ai = no } trigger_event_non_silently = tsin_finance.1 }
+
+}
+
+tsin_systemic_finance_check_effect = {
+if = { limit = { current_year >= 1900 NOT = { has_global_variable = tsin_systemic_scan_timer } }
+set_global_variable = { name = tsin_systemic_scan_timer months = 3 }
+remove_global_variable = tsin_systemic_ready
+set_global_variable = { name = tsin_stressed_countries value = 0 }
+set_global_variable = { name = tsin_finance_countries value = 0 }
+set_global_variable = { name = tsin_stressed_markets value = 0 }
+every_country = { limit = { has_variable = tsin_finance_recent has_variable = tsin_factory_share var:tsin_factory_share >= 0.1 tsin_company_count > 0 }
+change_global_variable = { name = tsin_finance_countries add = 1 }
+if = { limit = { has_variable = tsin_stress_quarters var:tsin_stress_quarters >= 4 }
+change_global_variable = { name = tsin_stressed_countries add = 1 }
+capital ?= { market ?= { if = { limit = { NOT = { has_variable = tsin_market_stress_sample_timer } }
+set_variable = { name = tsin_market_stress_sample_timer months = 2 }
+change_global_variable = { name = tsin_stressed_markets add = 1 }
+} } }
+} }
+if = { limit = { global_var:tsin_finance_countries >= 8 global_var:tsin_stressed_countries >= 5 global_var:tsin_stressed_markets >= 3
+global_var:tsin_stressed_countries >= { value = global_var:tsin_finance_countries multiply = 0.35 }
+NOT = { has_global_variable = tsin_systemic_crisis_cooldown }
+NOT = { is_situation_active = situation:tsin_long_depression }
+NOT = { has_global_variable = tsin_systemic_active } }
+set_global_variable = { name = tsin_systemic_ready months = 3 }
+}
+}
+}
+
+tsin_capital_policy_init_effect = {
+if = { limit = { NOT = { OR = { has_policy = policy:tsin_traditionalism_policy has_policy = policy:tsin_mercantilism_policy has_policy = policy:tsin_interventionism_policy has_policy = policy:tsin_laissez_faire_policy has_policy = policy:tsin_state_capitalism_policy } } } change_policy = policy:tsin_traditionalism_policy }
+}

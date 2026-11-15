@@ -1,12 +1,17 @@
-﻿"""Regression cases for missing panels and invisible map groups."""
+"""Regression cases for missing panels and invisible map groups."""
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from integration_checks import check
+from integration_checks import check, gui_structure_errors
 
 class IntegrationTests(unittest.TestCase):
+    def test_gui_parser_detects_extra_brace_and_ignores_literal_braces(self):
+        self.assertEqual(gui_structure_errors('types Test { type row = vbox { text = "{literal}" } } # }'), [])
+        self.assertTrue(gui_structure_errors('types Test { type row = vbox { } } }'))
+        self.assertTrue(gui_structure_errors('types Test { type row = vbox { }'))
+
     def test_missing_panel_and_out_of_range_group(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / 'mod'

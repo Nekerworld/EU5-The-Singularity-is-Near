@@ -1,0 +1,125 @@
+﻿tsin_found_merchant_house_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pepper.dds"
+potential = { tsin_company_eligible_merchant_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_merchant_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_merchant_house_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_merchant_house_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_artisan_house_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cloth.dds"
+potential = { tsin_company_eligible_artisan_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_artisan_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_artisan_house_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_artisan_house_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_mining_syndicate_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_iron.dds"
+potential = { tsin_company_eligible_mining_syndicate_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_mining_syndicate_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_mining_syndicate_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_mining_syndicate_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_agricultural_house_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_wheat.dds"
+potential = { tsin_company_eligible_agricultural_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_agricultural_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_agricultural_house_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_agricultural_house_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_shipping_house_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_naval_supplies.dds"
+potential = { tsin_company_eligible_shipping_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_shipping_house_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_shipping_house_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_shipping_house_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_merchant_bank_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_paper.dds"
+potential = { tsin_company_eligible_merchant_bank_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy }  }
+allow = { tsin_company_eligible_merchant_bank_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2  }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_merchant_bank_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_merchant_bank_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_san_giorgio_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_paper.dds"
+potential = { tsin_company_eligible_san_giorgio_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_san_giorgio } }
+allow = { tsin_company_eligible_san_giorgio_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_san_giorgio } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_san_giorgio_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_san_giorgio_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_eic_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pepper.dds"
+potential = { tsin_company_eligible_eic_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_eic } }
+allow = { tsin_company_eligible_eic_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_eic } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_eic_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_eic_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_voc_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pepper.dds"
+potential = { tsin_company_eligible_voc_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_voc } }
+allow = { tsin_company_eligible_voc_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_voc } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_voc_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_voc_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_french_indies_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_pepper.dds"
+potential = { tsin_company_eligible_french_indies_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_french_indies } }
+allow = { tsin_company_eligible_french_indies_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_french_indies } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_french_indies_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_french_indies_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_mitsui_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cloth.dds"
+potential = { tsin_company_eligible_mitsui_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_mitsui } }
+allow = { tsin_company_eligible_mitsui_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_mitsui } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_mitsui_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_mitsui_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_songbang_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cloth.dds"
+potential = { tsin_company_eligible_songbang_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_songbang } }
+allow = { tsin_company_eligible_songbang_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_songbang } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_songbang_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_songbang_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_south_sea_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_sugar.dds"
+potential = { tsin_company_eligible_south_sea_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_south_sea } }
+allow = { tsin_company_eligible_south_sea_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_south_sea } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_south_sea_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_south_sea_effect = yes tsin_capital_cache_effect = yes } }
+}
+
+tsin_found_mississippi_company_decision = {
+decision_category = economy_decisions
+image = "gfx/interface/icons/trade_goods/illustrations/icon_goods_cotton.dds"
+potential = { tsin_company_eligible_mississippi_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } NOT = { has_country_modifier = tsin_company_mississippi } }
+allow = { tsin_company_eligible_mississippi_trigger = yes NOT = { has_policy = policy:tsin_laissez_faire_policy } tsin_company_has_room_trigger = yes gold >= tsin_gold_cost_2 NOT = { has_country_modifier = tsin_company_mississippi } }
+ai_will_do = { value = 10 }
+option = { name = tsin_found_mississippi_company_decision.a ai_chance = { value = 100 } effect = { change_gold_effect = { scale = -2 } tsin_capital_form_mississippi_effect = yes tsin_capital_cache_effect = yes } }
+}

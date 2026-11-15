@@ -223,7 +223,7 @@ tooltip = "TSIN_UI_HELP_COMPANIES"
 text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMPANIES" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_company_count').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_company_count').GetValue|1]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_statistics_company_count').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+text_single = { fontsize = 10 text = "TSIN_UI_QUARTERLY" }
 }
 type tsin_ui_card_company_limit = vbox {
 size = { 258 75 }
@@ -231,9 +231,9 @@ spacing = 3
 datacontext = "[Player]"
 tooltip = "TSIN_UI_HELP_COMPANY_LIMIT"
 text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMPANY_LIMIT" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_company_limit').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_company_limit').GetValue|1]" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_statistics_company_limit').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+text_single = { visible = "[GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 22 text = "∞" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_company_limit').GetValue|0]" }
+text_single = { fontsize = 10 text = "TSIN_UI_QUARTERLY" }
 }
 type tsin_ui_card_company_value = vbox {
 size = { 258 75 }
@@ -242,7 +242,7 @@ datacontext = "[Player]"
 tooltip = "TSIN_UI_HELP_COMPANY_VALUE"
 text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMPANY_VALUE" }
 text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_company_value')]" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+text_single = { fontsize = 10 text = "TSIN_UI_QUARTERLY" }
 }
 type tsin_ui_card_cholera_progress = vbox {
 size = { 258 75 }
@@ -439,48 +439,116 @@ size = { 430 60 }
 margin_left = 15
 spacing = 0
 hbox = { spacing = 4
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_GDP" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tax_base.dds" }
 text_single = { fontsize = 14 text = "[Player.Custom('tsin_ui_format_gdp')]" }
-alwaystransparent = no
 tooltipwidget = { tsin_gdp_history_tooltip = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_GDP_PER_CAPITA" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_capita.dds" }
 text_single = { fontsize = 14 text = "[Player.Custom('tsin_ui_format_gdp_per_capita')]" }
+tooltipwidget = { tsin_ui_compact_tip_gdp_per_capita = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_SECONDARY" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/buildings/tsin_public_school.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').GetValue|1]%" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_secondary = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_HIGHER" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/buildings/tsin_research_university.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').GetValue|1]%" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_higher = {} }
 }
 }
 hbox = { spacing = 4
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_GROWTH" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_urbanization.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').GetValue|1]%" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_growth = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_INDUSTRY" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_industrialization.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').GetValue|1%]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_industry = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_LABOR" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_labor_unrest.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').GetValue|1]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_labor = {} }
 }
-vbox = { size = { 100 30 } datacontext = "[Player]"
-text_single = { size = { 100 14 } autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_STOCK" }
+hbox = { size = { 100 30 } spacing = 3 datacontext = "[Player]" alwaystransparent = no
+icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_corporations.dds" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet]" fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').GetValue|1]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet)]" fontsize = 14 text = "TSIN_UI_MISSING" }
+tooltipwidget = { tsin_ui_compact_tip_stock = {} }
 }
 }
 }
+type tsin_ui_compact_tip_gdp_per_capita = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_GDP_PER_CAPITA" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_gdp_per_capita')]" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_GDP_PER_CAPITA" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_secondary = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_SECONDARY" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_secondary_education').GetValue|1]%" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_secondary_education').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_SECONDARY" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_higher = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_HIGHER" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_higher_education').GetValue|1]%" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_higher_education').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_HIGHER" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_growth = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_GROWTH" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').GetValue|1]%" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_gdp_growth').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_GROWTH" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_industry = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_INDUSTRY" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_factory_share').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_factory_share').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_INDUSTRY" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_labor = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_LABOR" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_labor_grievance').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_LABOR" }
+text_single = { text = "TSIN_UI_ANNUAL" }
+} } }
+type tsin_ui_compact_tip_stock = SimpleContextualTooltipType {
+blockoverride "title_icon" {}
+blockoverride "title_text" { text = "TSIN_UI_METRIC_STOCK" }
+blockoverride "tooltip_content" { vbox = { spacing = 5
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_stock_index').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_stock_index').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { maximumsize = { 420 -1 } multiline = yes text = "TSIN_UI_HELP_STOCK" }
+text_single = { text = "TSIN_UI_QUARTERLY" }
+} } }
 }

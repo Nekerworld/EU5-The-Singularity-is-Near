@@ -1,0 +1,115 @@
+﻿# GENERATED: original historical events plus a local stock-market link.
+
+namespace = flavor_eng
+
+flavor_eng.215 = {
+    type = country_event
+
+    fire_only_once = yes
+
+    title = flavor_eng.215.title
+    desc = flavor_eng.215.desc
+    outcome = neutral
+
+    dynamic_historical_event = {
+        tag = ENG
+        from = 1710.1.1
+        to = 1740.1.1
+        monthly_chance = 5
+    }
+
+    trigger = {
+
+        any_subject = {
+            is_subject_type = trade_company
+            num_loans > 1
+        }
+
+        societal_value:capital_economy_vs_traditional_economy <= 20
+
+    }
+    illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        root = { save_scope_as = target_root_country }
+
+        character:eng_robert_walpole ?= {
+             save_scope_as = robert_walpole
+        }
+
+    }
+
+    option = {
+        name = flavor_eng.215.a
+        historical_option = yes
+
+        capital = {
+            change_prosperity = prosperity_weak_penalty
+        }
+
+        custom_tooltip = flavor_eng.215.tt1
+
+        change_societal_value = {
+            type = capital_economy_vs_traditional_economy
+            value = societal_value_move_to_right
+        }
+
+        if = {
+            limit = {
+                character:eng_robert_walpole ?= {
+                    is_alive = yes
+                    in_cabinet = yes
+                }
+            }
+            add_country_modifier = {
+                modifier = south_sea_bubble
+                years = 1
+                mode = add_and_extend
+            }
+            custom_tooltip = flavor_eng.215.tt2
+        }
+        else = {
+            add_government_power = government_power_mild_penalty
+            add_country_modifier = {
+                modifier = south_sea_bubble
+                years = 5
+                mode = add_and_extend
+            }
+        }
+
+
+ tsin_historic_finance_south_sea_effect = { FACTOR = 0.75 }
+}
+
+    option = {
+        name = flavor_eng.215.b
+
+        change_societal_value = {
+            type = capital_economy_vs_traditional_economy
+            value = societal_value_move_to_left
+        }
+
+        change_gold_effect = { scale = -6 }
+
+        random_subject = {
+            limit = {
+                is_subject_type = trade_company
+                num_loans > 1
+            }
+            add_country_modifier = {
+                modifier = restructuring
+                years = 10
+                mode = add_and_extend
+            }
+        }
+
+
+ tsin_historic_finance_south_sea_effect = { FACTOR = 0.75 }
+}
+
+    historical_info = flavor_eng.215.historical_info
+
+}

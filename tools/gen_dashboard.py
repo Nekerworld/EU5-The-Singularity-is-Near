@@ -1,4 +1,4 @@
-﻿"""Generate the era-independent TSIN dashboard from ui/dashboard_registry.json.
+"""Generate the era-independent TSIN dashboard from ui/dashboard_registry.json.
 
 --check verifies committed outputs without writing. Generated UI only reads
 country caches and cheap scripted predicates; game actions remain in native views.
@@ -161,7 +161,7 @@ def build(data):
             if suffix: custom.append(f'\t\ttrigger = {{ var:{var} >= {divisor} }}')
             custom.extend([f'\t\tlocalization_key = {key}', '\t}'])
             getter = variable(var) + '.GetValue'
-            value = f"[Divide_CFixedPoint({getter}, '(CFixedPoint){divisor}')|1]{suffix}" if suffix else f'[{getter}|0]'
+            value = f"[Divide_CFixedPoint({getter}, '(CFixedPoint){divisor}')|1]{suffix}" if suffix else f'[{getter}|{3 if id == "gdp_per_capita" else 0}]'
             localized(key,value,value)
         custom.append('}')
     # All frontends use these shared generated metric formatters.
@@ -169,6 +169,11 @@ def build(data):
         if m['unit'] == 'compact': formatter(m['id'],m['variable'])
     def value_widget(m, small=False):
         size = 14 if small else 22
+        if m['id']=='company_limit':
+            free="GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
+            return f"""text_single = {{ visible = "[{free}]" fontsize = {size} text = "∞" }}
+text_single = {{ visible = "[Not({free})]" fontsize = {size} text = "[{variable(m['variable'])}.GetValue|0]" }}"""
+
         if m['unit'] == 'compact':
             return f'text_single = {{ fontsize = {size} text = "[Player.Custom(\'tsin_ui_format_{m["id"]}\')]" }}'
         fmt = '1%' if m['unit']=='fraction' else '1'
@@ -207,11 +212,26 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
         common += ['hbox = { spacing = 4']
         for id in compact[offset:offset+4]:
             m=by_id[id]
-            common += ['vbox = { size = { 100 30 } datacontext = "[Player]"',f'text_single = {{ size = {{ 100 14 }} autoresize = no fontsize = 10 fontsize_min = 8 elide = right text = "TSIN_UI_METRIC_{id.upper()}" }}',value_widget(m,True)]
-            if id=='gdp': common += ['alwaystransparent = no','tooltipwidget = { tsin_gdp_history_tooltip = {} }']
-            common += ['}']
+            icons = {
+                'gdp':'map_modes/tax_base', 'gdp_per_capita':'map_modes/tsin_gdp_per_capita',
+                'secondary':'buildings/tsin_public_school', 'higher':'buildings/tsin_research_university',
+                'growth':'map_modes/tsin_urbanization', 'industry':'map_modes/tsin_industrialization',
+                'labor':'map_modes/tsin_labor_unrest', 'stock':'map_modes/tsin_corporations'}
+            tip='tsin_ui_compact_tip_'+id
+            common += [f'hbox = {{ size = {{ 100 30 }} spacing = 3 datacontext = "[Player]" alwaystransparent = no',
+                f'icon = {{ size = {{ 25 25 }} texture = "gfx/interface/icons/{icons[id]}.dds" }}',value_widget(m,True),
+                'tooltipwidget = { '+('tsin_gdp_history_tooltip' if id=='gdp' else tip)+' = {} }','}']
         common += ['}']
-    common += ['}','}']
+    common += ['}']
+    for id in compact:
+        if id=='gdp':continue
+        m=by_id[id]
+        common += [f'type tsin_ui_compact_tip_{id} = SimpleContextualTooltipType {{',
+            'blockoverride "title_icon" {}',f'blockoverride "title_text" {{ text = "TSIN_UI_METRIC_{id.upper()}" }}',
+            'blockoverride "tooltip_content" { vbox = { spacing = 5',value_widget(m),
+            f'text_single = {{ maximumsize = {{ 420 -1 }} multiline = yes text = "TSIN_UI_HELP_{id.upper()}" }}',
+            f'text_single = {{ text = "TSIN_UI_{m["frequency"].upper()}" }}','} } }']
+    common += ['}']
     guis=['# GENERATED read-only predicates; no gameplay effects.']
     for s in statuses:
         guis += [f'tsin_ui_check_{s["id"]} = {{','scope = country','is_shown = { always = yes }',f'is_valid = {{ {s["condition"]} }}','}']
@@ -300,6 +320,14 @@ tsin_dashboard_migration_pulse = {{
         'in_game/common/scripted_effects/tsin_dashboard_core_effects.txt':'\n'.join(effects)+'\n',
         'in_game/common/on_action/tsin_dashboard_on_actions.txt':hooks,
     }
+    windows=pdx.top_level_blocks(output['in_game/gui/tsin_dashboard.gui'])
+    assert len(windows)==2 and all(w.key=='window' for w in windows)
+    output['in_game/gui/tsin_dashboard_dock.gui']='# GENERATED registered dock.\n'+windows[0].text+'\n'
+    output['in_game/gui/tsin_dashboard.gui']='# GENERATED registered management window.\n'+windows[1].text+'\n'
+    output['in_game/gui/scripted_widgets/tsin_windows.txt']='\n'.join([
+        'gui/tsin_dashboard_dock.gui = tsin_dashboard_dock',
+        'gui/tsin_dashboard.gui = tsin_dashboard_window',
+        'gui/tsin_operational.gui = tsin_ops_window'])+'\n'
     for lang,values in loc.items():
         output[f'main_menu/localization/{lang}/tsin_dashboard_l_{lang}.yml'] = f'l_{lang}:\n'+''.join(f' {key}: {json.dumps(value,ensure_ascii=False)}\n' for key,value in values.items())
     return output

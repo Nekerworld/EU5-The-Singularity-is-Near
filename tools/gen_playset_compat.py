@@ -1,4 +1,4 @@
-﻿"""Generate a local-only compatibility mod that carries the age 7 extension over the mods of a playset.
+"""Generate a local-only compatibility mod that carries the age 7 extension over the mods of a playset.
 
 Usage:
   python tools/gen_playset_compat.py                   active playset in playsets.json
@@ -464,6 +464,10 @@ def main() -> int:
             generate_glorp_stats(glorp_source, compat_root)
             from gen_stock_market_ui import generate_compat as generate_stock_ui
             generate_stock_ui(glorp_source, compat_root)
+        from gen_historical_finance_bridge import build as build_finance_history
+        history_roots = [pdx.game_root()] + [r for r in roots if not r.name.startswith('The Singularity')]
+        for rel, text in build_finance_history(history_roots).items():
+            pdx.write_text_bom(compat_root / rel, text)
         write_metadata(compat_root, folder, mod_id, label)
 
     out_report = pdx.MOD_ROOT / "tools" / "out" / f"playset_compat_report_{slug}.md"

@@ -1,4 +1,4 @@
-﻿"""Static checks for The Singularity is Near. The game itself is the final judge; this
+"""Static checks for The Singularity is Near. The game itself is the final judge; this
 catches the cheap mistakes before a launch.
 
   python tools/validate.py              all checks
@@ -279,6 +279,8 @@ def check_tsin_names() -> None:
     known: set[str] = set()
     texts: dict[Path, str] = {}
     for p in mod_files((".txt",)):
+        if '/gui/scripted_widgets/' in rel(p):
+            continue  # File/window links are validated by the GUI integration check.
         clean = pdx.strip_comments(pdx.read_text(p))
         texts[p] = clean
         known.update(re.findall(r"(?m)^\s*(tsin_[\w.]+)\s*=\s*\{", clean))

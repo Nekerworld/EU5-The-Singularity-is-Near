@@ -1,0 +1,7 @@
+﻿tsin_company_regime_law = { law_category = socioeconomic potential = { always = yes }
+tsin_traditionalism_policy = { allow = { current_year >= 1337 } years = 5 estate_preferences = { crown_estate } }
+tsin_mercantilism_policy = { allow = { current_year >= 1450 } years = 5 estate_preferences = { crown_estate } }
+tsin_interventionism_policy = { allow = { current_year >= 1600 } years = 5 estate_preferences = { crown_estate } }
+tsin_laissez_faire_policy = { allow = { current_year >= 1750 } years = 5 estate_preferences = { burghers_estate } }
+tsin_state_capitalism_policy = { allow = { current_year >= 1800 } years = 5 estate_preferences = { crown_estate } }
+}

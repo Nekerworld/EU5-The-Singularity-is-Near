@@ -14,6 +14,7 @@ tsin_found_company_steel_effect = {
 	}
 	set_variable = { name = tsin_stock_steel value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_steel_effect = {
@@ -64,6 +65,7 @@ tsin_found_company_machinery_effect = {
 	}
 	set_variable = { name = tsin_stock_machinery value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_machinery_effect = {
@@ -114,6 +116,7 @@ tsin_found_company_textile_effect = {
 	}
 	set_variable = { name = tsin_stock_textile value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_textile_effect = {
@@ -164,6 +167,7 @@ tsin_found_company_chemical_effect = {
 	}
 	set_variable = { name = tsin_stock_chemical value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_chemical_effect = {
@@ -214,6 +218,7 @@ tsin_found_company_railway_effect = {
 	}
 	set_variable = { name = tsin_stock_railway value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_railway_effect = {
@@ -264,6 +269,7 @@ tsin_found_company_farm_machinery_effect = {
 	}
 	set_variable = { name = tsin_stock_farm_machinery value = 100 }
 	set_variable = tsin_has_stock_market
+	tsin_capital_cache_effect = yes
 }
 
 tsin_update_stock_farm_machinery_effect = {

@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 import copy,json,re,sys,unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import pdx
@@ -49,7 +49,7 @@ class OperationalTests(unittest.TestCase):
 
     def test_existing_tsin_button_is_kept(self):
         data=json.loads(pdx.read_text(pdx.MOD_ROOT/'ui/dashboard_registry.json'))
-        ui=dashboard(data)['in_game/gui/tsin_dashboard.gui']
+        ui=dashboard(data)['in_game/gui/tsin_dashboard_dock.gui']
         self.assertEqual(ui.count('tsin_ops_button = {}'),1)
         self.assertIn("GetVariableSystem.Toggle('tsin_ui_dashboard_open')",ui)
         self.assertIn("GetVariableSystem.Toggle('tsin_ui_dock_expanded')",ui)

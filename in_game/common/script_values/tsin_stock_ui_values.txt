@@ -1,11 +1,11 @@
 ﻿# Fixed-size UI calculations: never scan locations from a graph.
 tsin_stock_ui_peak = { value = 100
-if = { limit = { has_variable = tsin_index_h0 } max = var:tsin_index_h0 }
-if = { limit = { has_variable = tsin_index_h1 } max = var:tsin_index_h1 }
-if = { limit = { has_variable = tsin_index_h2 } max = var:tsin_index_h2 }
-if = { limit = { has_variable = tsin_index_h3 } max = var:tsin_index_h3 }
-if = { limit = { has_variable = tsin_index_h4 } max = var:tsin_index_h4 }
-if = { limit = { has_variable = tsin_index_h5 } max = var:tsin_index_h5 }
-if = { limit = { has_variable = tsin_index_h6 } max = var:tsin_index_h6 }
-if = { limit = { has_variable = tsin_index_h7 } max = var:tsin_index_h7 }
+if = { limit = { has_variable = tsin_index_h0 } min = var:tsin_index_h0 }
+if = { limit = { has_variable = tsin_index_h1 } min = var:tsin_index_h1 }
+if = { limit = { has_variable = tsin_index_h2 } min = var:tsin_index_h2 }
+if = { limit = { has_variable = tsin_index_h3 } min = var:tsin_index_h3 }
+if = { limit = { has_variable = tsin_index_h4 } min = var:tsin_index_h4 }
+if = { limit = { has_variable = tsin_index_h5 } min = var:tsin_index_h5 }
+if = { limit = { has_variable = tsin_index_h6 } min = var:tsin_index_h6 }
+if = { limit = { has_variable = tsin_index_h7 } min = var:tsin_index_h7 }
 }

@@ -1,0 +1,5 @@
+﻿situation_panel = {
+blockoverride "situation_subheader_content" { text_single = { maximumsize = { 530 -1 } multiline = yes text = "TSIN_SYSTEMIC_GUIDE" } }
+blockoverride "situation_panel_outcome_hint" {}
+blockoverride "situation_panel_main_content" {}
+}

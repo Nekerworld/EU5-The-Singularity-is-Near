@@ -1,8 +1,12 @@
-﻿# TSIN civilization dashboard — extensible UI contract
+# TSIN civilization dashboard — extensible UI contract
+
+## 현재 GUI 생성 등록
+
+독·관리 창·현황 창은 `in_game/gui/scripted_widgets/tsin_windows.txt`에서 각각 생성 등록합니다. 창 정의만 추가하면 표시되지 않습니다. 새 독립 창은 파일/창 이름을 고유하게 나누고 등록해야 하며 통합 검사가 이를 확인합니다.
 
 ## Frontends and entry points
 
-`in_game/gui/tsin_dashboard.gui` creates the standalone, movable bottom-left dock and the movable 900x660 management window. It does not require Cheat Menu Pro, Glorp, CMF or any other UI mod. The dock has an expandable set of six shortcuts. Opening a shortcut selects the matching tab of the same window; closing only changes local UI variables. The independent-button/window/state pattern follows the installed Cheat Menu Pro implementation, using native GUI types and no copied cheat assets or gameplay effects.
+`in_game/gui/tsin_dashboard_dock.gui` defines the standalone movable bottom-left dock, and `in_game/gui/tsin_dashboard.gui` defines the movable 900x660 management window. Both are instantiated by `in_game/gui/scripted_widgets/tsin_windows.txt`, together with the operational warning window. It does not require Cheat Menu Pro, Glorp, CMF or any other UI mod. The dock has an expandable set of six shortcuts. Opening a shortcut selects the matching tab of the same window; closing only changes local UI variables. The independent-button/window/state pattern follows the installed Cheat Menu Pro implementation, using native GUI types and no copied cheat assets or gameplay effects.
 
 Stable top-level domains are national statistics, economy, population/society, companies/finance, crises/policies and science/technology. Later eras extend modules inside these domains. The top-level limit of six is an explicit layout constraint; adding more domains requires a layout change rather than silently overflowing the screen.
 
@@ -48,3 +52,8 @@ Modules may provide `annual_effect`, `update_trigger` and `migration_effect`. Mi
 The first version provides 35 metrics, 16 state cards and 10 native-view/map links. Four TSIN disasters and eight world situations are identified as such; a world-active state does not imply country participation. Institutions show whether the embrace requirement is met. Existing legislation, company founding and costs remain in their original interfaces. The read-only dashboard does not enact policies or manufacture resources.
 
 GUI state uses `GetVariableSystem` names under tsin_ui_; it does not write gameplay state when a window is opened. Dragging uses the native movable window behavior; automatic layout/position persistence across a game restart is not promised. Actual GUI appearance and script-glue behavior require a restarted in-game test; static success is not proof of runtime layout.
+
+
+## 공용 기업·GUI 업데이트
+
+초기 조직 14종과 산업 기업 6종을 공용 회계로 연결했습니다. 자유방임·기업 한도·국지 및 세계 금융위기, 창 생성 등록과 새 주식 선 그래프의 현재 동작은 [capital_markets.md](capital_markets.md)를 기준으로 합니다. 기존 본문의 산업 기업 6종과 연간 통계 설명은 원래 7시대 구현 범위를 나타내며, 기업 회계는 현재 분기 갱신입니다.

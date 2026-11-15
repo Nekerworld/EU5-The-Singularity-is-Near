@@ -1,0 +1,88 @@
+﻿tsin_company_merchant_house = {
+game_data = { category = country }
+global_pepper_output_modifier = 0.03
+}
+
+tsin_company_artisan_house = {
+game_data = { category = country }
+global_cloth_output_modifier = 0.03
+}
+
+tsin_company_mining_syndicate = {
+game_data = { category = country }
+global_iron_output_modifier = 0.03
+}
+
+tsin_company_agricultural_house = {
+game_data = { category = country }
+global_wheat_output_modifier = 0.03
+}
+
+tsin_company_shipping_house = {
+game_data = { category = country }
+global_naval_supplies_output_modifier = 0.03
+}
+
+tsin_company_merchant_bank = {
+game_data = { category = country }
+bank_interest = -0.002
+}
+
+tsin_company_san_giorgio = {
+game_data = { category = country }
+bank_interest = -0.003
+}
+
+tsin_company_eic = {
+game_data = { category = country }
+global_pepper_output_modifier = 0.03
+}
+
+tsin_company_voc = {
+game_data = { category = country }
+global_pepper_output_modifier = 0.03
+}
+
+tsin_company_french_indies = {
+game_data = { category = country }
+global_pepper_output_modifier = 0.03
+}
+
+tsin_company_mitsui = {
+game_data = { category = country }
+global_cloth_output_modifier = 0.03
+}
+
+tsin_company_songbang = {
+game_data = { category = country }
+global_cloth_output_modifier = 0.03
+}
+
+tsin_company_south_sea = {
+game_data = { category = country }
+global_sugar_output_modifier = 0.03
+}
+
+tsin_company_mississippi = {
+game_data = { category = country }
+global_cotton_output_modifier = 0.03
+}
+
+tsin_local_bubble_crash = {
+game_data = { category = country }
+global_production_efficiency = -0.03
+bank_interest = 0.005
+}
+
+tsin_systemic_depression = {
+game_data = { category = country }
+global_production_efficiency = -0.12
+global_construction_speed = -0.15
+bank_interest = 0.015
+burghers_estate_target_satisfaction = -0.1
+}
+
+tsin_systemic_trade_slump = {
+game_data = { category = country }
+global_production_efficiency = -0.03
+}

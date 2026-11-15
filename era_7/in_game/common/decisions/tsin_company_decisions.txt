@@ -7,6 +7,7 @@ tsin_found_steel_company_decision = {
 
 	potential = {
 		has_advance = tsin_bessemer_process_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_steel }
 	}
 
@@ -36,6 +37,7 @@ tsin_found_machinery_company_decision = {
 
 	potential = {
 		has_advance = tsin_machine_works_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_machinery }
 	}
 
@@ -65,6 +67,7 @@ tsin_found_textile_company_decision = {
 
 	potential = {
 		has_advance = tsin_mechanized_textile_mill_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_textile }
 	}
 
@@ -94,6 +97,7 @@ tsin_found_chemical_company_decision = {
 
 	potential = {
 		has_advance = tsin_improved_fertilizer_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_chemical }
 	}
 
@@ -123,6 +127,7 @@ tsin_found_railway_company_decision = {
 
 	potential = {
 		has_advance = tsin_railway_network_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_railway }
 	}
 
@@ -152,6 +157,7 @@ tsin_found_farm_machinery_company_decision = {
 
 	potential = {
 		has_advance = tsin_mechanical_reaper_advance
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 		NOT = { has_country_modifier = tsin_company_farm_machinery }
 	}
 
@@ -181,6 +187,7 @@ tsin_dissolve_companies_decision = {
 
 	potential = {
 		tsin_company_count > 0
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 	}
 
 	allow = {

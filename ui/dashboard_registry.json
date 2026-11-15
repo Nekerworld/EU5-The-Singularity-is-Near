@@ -1,4 +1,4 @@
-﻿{
+{
   "schema_version": 1,
   "tabs": [
     {
@@ -453,10 +453,10 @@
             "finance"
           ],
           "unit": "number",
-          "frequency": "annual",
+          "frequency": "quarterly",
           "description": {
-            "english": "",
-            "korean": ""
+            "english": "Shared company accounting, updated quarterly. Laissez-faire has no policy firm cap; public regimes retain capacity limits.",
+            "korean": "공용 기업 회계로 분기마다 갱신됩니다. 자유방임은 정책상 기업 상한이 없고 다른 체제에는 한도가 적용됩니다."
           }
         },
         {
@@ -470,10 +470,10 @@
             "finance"
           ],
           "unit": "number",
-          "frequency": "annual",
+          "frequency": "quarterly",
           "description": {
-            "english": "",
-            "korean": ""
+            "english": "Shared company accounting, updated quarterly. Laissez-faire has no policy firm cap; public regimes retain capacity limits.",
+            "korean": "공용 기업 회계로 분기마다 갱신됩니다. 자유방임은 정책상 기업 상한이 없고 다른 체제에는 한도가 적용됩니다."
           }
         },
         {
@@ -487,10 +487,10 @@
             "finance"
           ],
           "unit": "compact",
-          "frequency": "annual",
+          "frequency": "quarterly",
           "description": {
-            "english": "",
-            "korean": ""
+            "english": "Shared company accounting, updated quarterly. Laissez-faire has no policy firm cap; public regimes retain capacity limits.",
+            "korean": "공용 기업 회계로 분기마다 갱신됩니다. 자유방임은 정책상 기업 상한이 없고 다른 체제에는 한도가 적용됩니다."
           }
         },
         {

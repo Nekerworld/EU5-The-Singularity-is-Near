@@ -1,0 +1,62 @@
+﻿# GENERATED: original historical events plus a local stock-market link.
+
+namespace = flavor_hol
+
+flavor_hol.6 = {
+    type = country_event
+    title = flavor_hol.6.title
+    desc = flavor_hol.6.desc
+    outcome = neutral
+    historical_info = flavor_hol.6.historical_info
+    fire_only_once = yes
+    dynamic_historical_event = {
+        tag = HOL
+        from = 1630.1.1
+        to = 1640.1.1
+        monthly_chance = 4
+    }
+    trigger = {
+        custom_tooltip = {
+            text = flavor_hol.6.ottoman_trade_tt
+            location:constantinople = {
+                owner = {
+                    religion.group = religion_group:muslim
+                }
+            }
+        }
+    }
+    illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        location:constantinople = {
+            owner = {
+                save_scope_as = target_country
+            }
+        }
+    }
+    option = {
+        name = flavor_hol.6.a
+        historical_option = yes
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_extreme_penalty }
+        add_gold_to_estate = {
+            estate_type = estate_type:burghers_estate
+            value = { value = root.estate_tax_base:burghers_estate multiply = -10 	}
+        }
+        add_stability = stability_extreme_penalty
+
+ tsin_historic_finance_merchant_house_effect = { FACTOR = 0.75 }
+}
+    option = {
+        name = flavor_hol.6.b
+        add_gold = {
+            value = root.estate_tax_base:burghers_estate
+            multiply = -10
+        }
+        add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_mild_bonus }
+
+ tsin_historic_finance_merchant_house_effect = { FACTOR = 0.75 }
+}
+}

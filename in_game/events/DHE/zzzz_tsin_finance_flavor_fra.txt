@@ -1,0 +1,222 @@
+﻿# GENERATED: original historical events plus a local stock-market link.
+
+namespace = flavor_fra
+
+scripted_effect remove_law_bank_modifiers = {
+    if = {
+        limit = {
+            has_country_modifier = fra_john_law_national_bank
+        }
+        remove_country_modifier = fra_john_law_national_bank
+    }
+    if = {
+        limit = {
+            has_country_modifier = fra_caution_national_bank
+        }
+        remove_country_modifier = fra_caution_national_bank
+    }
+    if = {
+        limit = {
+            has_country_modifier = fra_john_law_mississippi_company
+        }
+        remove_country_modifier = fra_john_law_mississippi_company
+    }
+    if = {
+        limit = {
+            has_country_modifier = fra_john_law_mississippi_company_limit
+        }
+        remove_country_modifier = fra_john_law_mississippi_company_limit
+    }
+    if = {
+        limit = {
+            has_country_modifier = fra_general_private_bank_benefits
+        }
+        remove_country_modifier = fra_general_private_bank_benefits
+    }
+}
+
+flavor_fra.509 = { # The Banque Generale Invests in the Colonies
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra.509.title
+    desc = flavor_fra.509.desc
+    outcome = neutral
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1714.1.1
+        to = 1736.1.1
+        monthly_chance = 20
+    }
+
+    trigger = {
+        has_ruler = yes
+        custom_tooltip = {
+            text = variable_tt_enable_general_private_bank
+            has_variable = enable_general_private_bank
+        }
+        custom_tooltip = {
+            text = variable_tt_enable_general_private_bank_collapsed
+            NOT = { has_variable = enable_general_private_bank_collapsed }
+        }
+        has_colonial_charters = yes
+        exists = character:john_law
+        character:john_law ?= {
+            is_alive = yes
+            owner = c:FRA
+        }
+    }
+
+    illustration_tags = {
+        10 = regular
+        10 = interior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+        character:john_law ?= {
+            save_scope_as = target_artist
+        }
+    }
+
+    option = { # Allow him to expand the shares of the company
+        name = flavor_fra.509.a
+        historical_option = yes
+        custom_tooltip = john_law_colonial_risk
+        change_gold_effect = { scale = 5.00 }
+        character:john_law ?= {
+            add_adm = 5
+            add_dip = 5
+        }
+        add_country_modifier = { modifier = fra_john_law_mississippi_company years = 15 mode = add }
+        ai_chance = {
+            factor = 0.7
+        }
+
+ tsin_historic_finance_merchant_bank_effect = { FACTOR = 1.0 }
+}
+
+    option = { # Limit the degree to which Law issues colonial shares
+        name = flavor_fra.509.b
+        custom_tooltip = law_monopoly_restricted
+        change_gold_effect = { scale = 0.50 }
+        add_legitimacy = legitimacy_mild_penalty
+        add_country_modifier = { modifier = fra_john_law_mississippi_company_limit years = 15 mode = add }
+        set_variable = { name = prevented_law_colonial_monopoly value = 1 }
+        ai_chance = {
+            factor = 0.3
+        }
+
+ tsin_historic_finance_merchant_bank_effect = { FACTOR = 1.0 }
+}
+}
+
+flavor_fra.511 = { # Collapse of the Banque Royal
+    hide_portraits = yes
+    type = country_event
+    fire_only_once = yes
+    title = flavor_fra.511.title
+    desc = flavor_fra.511.desc
+    outcome = neutral
+
+    dynamic_historical_event = {
+        tag = FRA
+        from = 1720.1.1
+        to = 1736.1.1
+        monthly_chance = 18
+    }
+
+    trigger = {
+        has_ruler = yes
+        custom_tooltip = {
+            text = variable_tt_enable_general_private_bank
+            has_variable = enable_general_private_bank
+        }
+        exists = character:john_law
+    }
+
+    illustration_tags = {
+        10 = angry
+        10 = exterior
+    }
+
+    immediate = {
+        event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+        ruler ?= {
+            save_scope_as = fra_ruler
+        }
+        character:john_law ?= {
+            save_scope_as = target_artist
+        }
+        set_variable = { name = enable_general_private_bank_collapsed value = 1 }
+    }
+
+    option = { # Law policies have led us to this disaster!
+        name = flavor_fra.511.a
+        trigger = {
+            AND = {
+                NOT = { has_variable = prevent_overeliance_on_general_bank }
+                NOT = { has_variable = prevented_law_colonial_monopoly }
+            }
+        }
+        historical_option = yes
+        remove_law_bank_modifiers = yes
+        change_gold_effect = { scale = -8.00 }
+        add_inflation = inflation_ultimate_penalty
+        add_stability = stability_mild_penalty
+        add_prestige = prestige_mild_penalty
+        add_country_modifier = { modifier = fra_general_private_bank_collapse_full_negatives years = 10 mode = add }
+
+ tsin_historic_finance_mississippi_effect = { FACTOR = 0.7 }
+}
+
+    option = { # Law policies have been a disaster, but our caution and mitigated some economical damage
+        name = flavor_fra.511.b
+        remove_law_bank_modifiers = yes
+        change_gold_effect = { scale = -4.00 }
+        add_inflation = inflation_severe_penalty
+        trigger = {
+            OR = {
+                has_variable = prevent_overeliance_on_general_bank
+                has_variable = prevented_law_colonial_monopoly
+            }
+        }
+        if = {
+            limit = {
+                NOT = { has_variable = prevented_law_colonial_monopoly }
+            }
+            add_country_modifier = { modifier = fra_general_private_bank_collapse_colonies_bankrupted years = 10 mode = add }
+        }
+        if = {
+            limit = {
+                NOT = { has_variable = prevent_overeliance_on_general_bank }
+            }
+            add_country_modifier = { modifier = fra_general_private_bank_collapse_overeliance_penalty years = 10 mode = add }
+        }
+        if = {
+            limit = {
+                AND = {
+                    has_variable = prevent_overeliance_on_general_bank
+                    has_variable = prevented_law_colonial_monopoly
+                }
+            }
+            add_country_modifier = { modifier = fra_general_private_bank_collapse_partial_negation years = 10 mode = add }
+        }
+
+ tsin_historic_finance_mississippi_effect = { FACTOR = 0.7 }
+}
+
+    after = {
+        remove_variable = enable_general_private_bank
+        remove_variable = prevented_law_colonial_monopoly
+        remove_variable = prevent_overeliance_on_general_bank
+        if = {
+            limit = {
+                character:john_law ?= {
+                    is_alive = no
+                }
+            }
+            remove_variable = enable_general_private_bank_collapsed
+        }
+    }
+}

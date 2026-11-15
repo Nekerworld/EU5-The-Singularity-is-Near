@@ -1,0 +1,3 @@
+﻿gui/tsin_dashboard_dock.gui = tsin_dashboard_dock
+gui/tsin_dashboard.gui = tsin_dashboard_window
+gui/tsin_operational.gui = tsin_ops_window

@@ -16,6 +16,32 @@ def group_ids(text: str) -> dict[str, set[int]]:
     return result
 
 
+def gui_structure_errors(text: str) -> list[str]:
+    """Check GUI braces outside comments/strings, including escaped quotes."""
+    clean = pdx.strip_comments(text)
+    depth = 0
+    quoted = escaped = False
+    for i, char in enumerate(clean):
+        if escaped:
+            escaped = False
+            continue
+        if quoted and char == '\\':
+            escaped = True
+            continue
+        if char == '"':
+            quoted = not quoted
+        elif not quoted:
+            if char == '{': depth += 1
+            elif char == '}':
+                depth -= 1
+                if depth < 0:
+                    return [f'extra closing brace at line {clean.count(chr(10), 0, i)+1}']
+    result = []
+    if quoted: result.append('unclosed GUI string')
+    if depth: result.append(f'{depth} unclosed GUI braces')
+    return result
+
+
 def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     from era_layout import check as check_era_layout
@@ -141,6 +167,36 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
             counts['stock_company_cards'] = 6
         except ValueError as exc:
             errors.append(f'integration: stock economy integration: {exc}')
+    # GUI syntax matters even when the scripted databases themselves are valid.
+    for path in (root / 'in_game/gui').rglob('tsin_*.gui'):
+        errors.extend(f'integration: {path.relative_to(root)}: {message}'
+                      for message in gui_structure_errors(pdx.read_text(path)))
+        for texture in re.findall(r'\btexture\s*=\s*"(gfx/[^"\[\]]+\.dds)"', pdx.read_text(path)):
+            if not any((base / area / texture).is_file()
+                       for base in [root, game] for area in ['main_menu', 'in_game', 'loading_screen']):
+                errors.append(f'integration: missing GUI texture {texture} in {path.name}')
+    # A top-level custom window must be explicitly instantiated by the engine.
+    registrations = {}
+    for p in (root / 'in_game/gui/scripted_widgets').glob('*.txt'):
+        for path, window in re.findall(r'(?m)^\s*(gui/[^\s=]+)\s*=\s*(tsin_\w+)', pdx.read_text(p)):
+            registrations[window] = path
+    for p in (root / 'in_game/gui').glob('tsin_*.gui'):
+        for b in pdx.top_level_blocks(pdx.read_text(p)):
+            if b.key != 'window': continue
+            name = re.search(r'\bname\s*=\s*"(tsin_\w+)"', b.text)
+            if name and registrations.get(name[1]) != 'gui/'+p.name:
+                errors.append('integration: unregistered standalone window '+name[1])
+    if (root / 'data/early_companies.json').exists():
+        from gen_capital_markets import build as build_capital, all_companies
+        for rel, expected in build_capital().items():
+            if not (root / rel).exists() or pdx.read_text(root / rel) != expected:
+                errors.append('integration: outdated capital-market file '+rel)
+        counts['stock_company_cards'] = len(all_companies())
+        from gen_historical_finance_bridge import build as build_history
+        for rel, expected in build_history().items():
+            if not (root / rel).exists() or pdx.read_text(root / rel) != expected:
+                errors.append('integration: outdated historical finance bridge '+rel)
+
     return errors, counts
 
 

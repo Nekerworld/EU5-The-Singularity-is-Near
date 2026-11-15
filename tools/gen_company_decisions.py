@@ -44,6 +44,7 @@ FOUND = """tsin_found_{c}_company_decision = {{
 
 	potential = {{
 		has_advance = {adv}
+		NOT = {{ has_policy = policy:tsin_laissez_faire_policy }}
 		NOT = {{ has_country_modifier = tsin_company_{c} }}
 	}}
 
@@ -74,6 +75,7 @@ DISSOLVE = """tsin_dissolve_companies_decision = {
 
 	potential = {
 		tsin_company_count > 0
+		NOT = { has_policy = policy:tsin_laissez_faire_policy }
 	}
 
 	allow = {
@@ -181,6 +183,7 @@ def effects() -> str:
               "\t}",
               f"\tset_variable = {{ name = tsin_stock_{c} value = 100 }}",
               "\tset_variable = tsin_has_stock_market",
+              "\ttsin_capital_cache_effect = yes",
               "}", ""]
         e += [f"tsin_update_stock_{c}_effect = {{",
               "\tif = {",

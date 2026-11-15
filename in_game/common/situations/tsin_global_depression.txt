@@ -1,0 +1,20 @@
+﻿tsin_global_depression = {
+monthly_spawn_chance = 100
+can_start = { current_year >= 1900 has_global_variable = tsin_systemic_ready NOT = { has_global_variable = tsin_systemic_active } NOT = { is_situation_active = situation:tsin_long_depression } }
+visible = { always = yes }
+outcome = { name = tsin_global_depression_recovery trigger = { situation:tsin_global_depression = { years_since_situation_start > 2 } global_var:tsin_stressed_countries < 3 } }
+outcome = { name = tsin_global_depression_timeout trigger = { situation:tsin_global_depression = { years_since_situation_start > 6 } } }
+on_start = {
+remove_global_variable = tsin_systemic_ready
+set_global_variable = tsin_systemic_active
+set_global_variable = { name = tsin_systemic_crisis_cooldown years = 25 }
+every_country = { limit = { num_locations > 0 }
+if = { limit = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.1 }
+add_country_modifier = { modifier = tsin_systemic_depression months = -1 }
+set_variable = { name = tsin_financial_radicalization value = 15 years = 15 }
+} else = { add_country_modifier = { modifier = tsin_systemic_trade_slump months = -1 } }
+} }
+on_ended = { remove_global_variable = tsin_systemic_active
+every_country = { remove_country_modifier = tsin_systemic_depression remove_country_modifier = tsin_systemic_trade_slump }
+}
+}

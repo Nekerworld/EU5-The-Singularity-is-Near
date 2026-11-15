@@ -67,8 +67,16 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 #### 경제 화면 주식 탭
 
-경제 화면 상단의 **주식** 탭에서 최근 8개 관측값(통상 분기별)의 지수 막대그래프와 6개 업종의 기업 카드를 확인합니다. 주가, 본사 이동, 관련 건물 레벨, 기업 가치 추정치를 표시하고 기존 기업 결단으로 연결합니다. 수지 탭으로 돌아갈 수 있으며 Glorp용 로컬 호환 파일에도 같은 진입 경로를 연결했습니다. 주식 탭 첫 진입은 기존 세이브의 기업 통계를 한 번 초기화합니다. 건물 통계는 연간 집계이고 주가는 기존 분기 갱신을 따릅니다. 상세 내용과 재생성 절차는 `docs/stock_market_ui.md` 참고.
+경제 화면 상단의 **주식** 탭에서 최근 8개 관측값(통상 분기별)의 지수 선 그래프와 범용·국가 고유·산업 기업 카드를 확인합니다. 주가, 본사 이동, 관련 건물 레벨, 기업 가치 추정치를 표시하고 기존 기업 결단으로 연결합니다. 수지 탭으로 돌아갈 수 있으며 Glorp용 로컬 호환 파일에도 같은 진입 경로를 연결했습니다. 주식 탭 진입 시 기존 기업을 이행하고 표시용 통계를 갱신합니다. 공용 기업 회계는 분기마다 갱신합니다. 상세 내용과 재생성 절차는 `docs/stock_market_ui.md` 참고.
 
+
+### 전 시대 기업과 금융위기
+
+산업 기업 6종에 더해 **산업화 이전 조직 14종**(범용 6·국가 고유 8)을 추가했습니다. 무역 상단·수공업·광업·농산물·해운·상업 은행과 동인도회사·미쓰이·송방·산 조르조·남해회사·미시시피 회사 등이 조건에 따라 열립니다. 초기 조직의 지수는 상업·신용 조직의 평가를 추상화합니다.
+
+**기업·자본시장 체제**에는 전통주의·중상주의·간섭주의·자유방임주의·국가자본주의가 있습니다. 자유방임에서는 정책상 기업 수 상한을 없애고 시민 계층의 자금으로 민간 진입·축소를 진행하며 국가의 직접 설립·해산을 막습니다. 다른 체제는 한도를 적용하되 기존 초과 기업을 강제로 삭제하지 않습니다.
+
+버블은 과잉 진입의 연속 관측이나 심한 과잉공급·저가가 확인될 때만 붕괴합니다. 산업화 이전은 국지적 충격이며, **1900년 이후 세계 대공황은 여러 독립 시장과 국가의 지속적인 실물 스트레스**를 추가로 요구합니다. 세계 위기는 25년 재발 대기시간을 두고 기존 19세기 불황과 겹쳐 시작하지 않습니다. 기존 바닐라 금융 사건 네 개는 같은 사건을 재생성하지 않고 주식시장 결과에 연결했습니다. 조건·경제 모형의 한계·역사 근거는 [`docs/capital_markets.md`](docs/capital_markets.md)를 참고하세요.
 
 ### 국가 통계와 교육
 
@@ -180,7 +188,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 | 역사 콘텐츠 | 상황 8종, 재난 4종, 임무·원정·조약항·열강·문화 이벤트 |
 | 군사 | 유닛 19종과 군사 발전 29개 |
 
-공용 연결 파일의 사건까지 포함한 **모드 전체 이벤트는 180개**입니다. 시대 원본 파일 수와 이벤트 수는 다른 단위입니다. 아래 표와 도표는 현재 정의를 기준으로 설명하며, 밸런스 목표와 실험 결과를 구분합니다.
+공용 연결 파일의 사건까지 포함한 **모드 전체 이벤트는 181개**입니다. 시대 원본 파일 수와 이벤트 수는 다른 단위입니다. 아래 표와 도표는 현재 정의를 기준으로 설명하며, 밸런스 목표와 실험 결과를 구분합니다.
 
 
 #### 빠른 시작
@@ -549,9 +557,11 @@ README 도표는 `python tools/make_readme_media.py`로 다시 만듭니다(`mat
 
 **The Singularity is Near** adds shared systems to Europa Universalis V, followed by era-specific content. The end date is **2337.12.31**. Version 0.7.0 is a development build undergoing in-game verification.
 
-**Global systems:** a six-tab TSIN dashboard, 35 registered metrics, a neighboring current-situation button with 16 operational warning types, an economy **Stocks** tab, 16 map modes, 14 hints and 76 encyclopedia entries. GDP uses K/M/B/T formatting and ten annual observations; the stock chart shows eight observations, normally quarterly. Education, GDP, industrial acceleration and population control share common infrastructure. “Global” describes code ownership, not unconditional activation in 1337. Features retain their era, institution and country requirements. Native situation/disaster ribbons remain available. Glorp integration is optional.
+**Global systems:** a six-tab TSIN dashboard, 35 registered metrics, a neighboring current-situation button with 16 operational warning types, an icon-led economy **Stocks** tab with an eight-observation line chart, 16 map modes, 14 hints and 76 encyclopedia entries. GDP uses K/M/B/T formatting and ten annual observations; the stock chart shows eight observations, normally quarterly. Education, GDP, industrial acceleration and population control share common infrastructure. “Global” describes code ownership, not unconditional activation in 1337. Features retain their era, institution and country requirements. Native situation/disaster ribbons remain available. Glorp integration is optional.
 
-**Age VII — Industry (1837–1900):** three institutions; 161 advances; 7 goods; 26 buildings; 19 units; 11 laws; six company types; eight situations and four disasters. Industrial production, automation, railways, electrification, mechanized agriculture, education, labor politics and probability-based legislation are implemented and being tested. The specialization tree uses ten branches with two to four tiers. The mod contains 180 events across era content and shared integration files.
+**Cross-era finance:** 14 early organizations plus six industrial sectors, five economic regimes, burgher-funded uncapped private entry under laissez-faire, local evidence-gated bubbles, and a 1900+ multi-market systemic crisis with a 25-year cooldown. Existing historical financial events retain their original choices and costs.
+
+**Age VII — Industry (1837–1900):** three institutions; 161 advances; 7 goods; 26 buildings; 19 units; 11 laws; six company types; eight situations and four disasters. Industrial production, automation, railways, electrification, mechanized agriculture, education, labor politics and probability-based legislation are implemented and being tested. The specialization tree uses ten branches with two to four tiers. The mod contains 181 events across era content and shared integration files.
 
 **Ages VIII–XII — scaffolds only:** World Wars (1900), Atomic Power (1945), Information (1990), Artificial Intelligence (2035) and Space Settlement (2120). Names, dates and basic definitions exist; dedicated institutions, advances, events and new balancing do not. They temporarily reuse age-VII defaults and art. The year 2200 is a project milestone, not the end date.
 

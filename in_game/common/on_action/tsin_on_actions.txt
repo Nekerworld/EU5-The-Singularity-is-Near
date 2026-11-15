@@ -39,7 +39,6 @@ monthly_country_pulse = {
 	on_actions = {
 		tsin_gdp_history_initialization_pulse
 		tsin_bill_monthly_pulse
-		tsin_stock_monthly_pulse
 	}
 }
 
@@ -294,7 +293,7 @@ tsin_bill_monthly_pulse = {
 	}
 }
 
-# root = country. Quarterly stock market step (docs/corporations.md). Only countries with companies pay for it.
+# Legacy entry point retained for compatibility; the shared capital pulse now owns the stock clock.
 tsin_stock_monthly_pulse = {
 	trigger = {
 		current_age_or_later = { age = age_7_industrialization }

@@ -2,11 +2,31 @@ from pathlib import Path
 import sys,unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import pdx
-from gen_stock_market_ui import build,patch_economy,patch_tabs,compat_files,ECONOMY,GLORP_TABS,STOCK
+from gen_stock_market_ui import build,patch_economy,patch_tabs,compat_files,fix_maintenance_visibility,ECONOMY,GLORP_TABS,STOCK
 from gen_company_decisions import COMPANIES,HISTORY
 
 
 class StockMarketUITests(unittest.TestCase):
+    def test_chart_axis_is_a_lower_bound_maximum_and_stroke_texture_exists(self):
+        files=build()
+        values=files['in_game/common/script_values/tsin_stock_ui_values.txt']
+        self.assertNotIn('max = var:tsin_index_h',values)
+        for i in range(8):self.assertIn(f'min = var:tsin_index_h{i}',values)
+        image=pdx.MOD_ROOT/'main_menu/gfx/interface/textures/tsin_solid_white.dds'
+        self.assertTrue(image.is_file())
+        self.assertEqual(image.read_bytes()[:4],b'DDS ')
+        self.assertIn('gfx/interface/textures/tsin_solid_white.dds',files['in_game/gui/tsin_stock_market.gui'])
+
+
+    def test_maintenance_visibility_merge_preserves_both_predicates(self):
+        source=pdx.workshop_root()/'3812518640'/ECONOMY
+        if not source.exists():self.skipTest('Glorp not installed')
+        original=pdx.read_text(source)
+        fixed=fix_maintenance_visibility(original)
+        self.assertTrue('And(Not(StringIsEmpty(MaintenanceSetting.GetExpenseBenefit)), Not(GreaterThan_CFixedPoint' in fixed, 'Missing merged Glorp maintenance condition')
+        self.assertEqual(fix_maintenance_visibility(fixed),fixed)
+
+
     def test_economy_body_preserved_and_balance_returns(self):
         source=pdx.read_text(pdx.game_root()/ECONOMY)
         patched=patch_economy(source)

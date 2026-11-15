@@ -1,0 +1,87 @@
+﻿tsin_company_is_private_trigger = {
+has_policy = policy:tsin_laissez_faire_policy
+}
+
+tsin_company_has_room_trigger = {
+OR = { has_policy = policy:tsin_laissez_faire_policy tsin_company_count < tsin_company_limit }
+}
+
+tsin_company_eligible_steel_trigger = {
+current_year >= 1837 has_advance = tsin_bessemer_process_advance
+}
+
+tsin_company_eligible_machinery_trigger = {
+current_year >= 1837 has_advance = tsin_machine_works_advance
+}
+
+tsin_company_eligible_textile_trigger = {
+current_year >= 1837 has_advance = tsin_mechanized_textile_mill_advance
+}
+
+tsin_company_eligible_chemical_trigger = {
+current_year >= 1837 has_advance = tsin_improved_fertilizer_advance
+}
+
+tsin_company_eligible_railway_trigger = {
+current_year >= 1837 has_advance = tsin_railway_network_advance
+}
+
+tsin_company_eligible_farm_machinery_trigger = {
+current_year >= 1837 has_advance = tsin_mechanical_reaper_advance
+}
+
+tsin_company_eligible_merchant_house_trigger = {
+current_year >= 1337
+}
+
+tsin_company_eligible_artisan_house_trigger = {
+current_year >= 1337
+}
+
+tsin_company_eligible_mining_syndicate_trigger = {
+current_year >= 1337
+}
+
+tsin_company_eligible_agricultural_house_trigger = {
+current_year >= 1337
+}
+
+tsin_company_eligible_shipping_house_trigger = {
+current_year >= 1450
+}
+
+tsin_company_eligible_merchant_bank_trigger = {
+current_year >= 1400
+}
+
+tsin_company_eligible_san_giorgio_trigger = {
+current_year >= 1408 has_or_had_tag = GEN
+}
+
+tsin_company_eligible_eic_trigger = {
+current_year >= 1600 OR = { has_or_had_tag = ENG has_or_had_tag = GBR }
+}
+
+tsin_company_eligible_voc_trigger = {
+current_year >= 1602 OR = { has_or_had_tag = NED has_or_had_tag = HOL }
+}
+
+tsin_company_eligible_french_indies_trigger = {
+current_year >= 1664 has_or_had_tag = FRA
+}
+
+tsin_company_eligible_mitsui_trigger = {
+current_year >= 1673 has_or_had_tag = JAP
+}
+
+tsin_company_eligible_songbang_trigger = {
+current_year >= 1600 has_or_had_tag = KOR
+}
+
+tsin_company_eligible_south_sea_trigger = {
+current_year >= 1711 OR = { has_or_had_tag = ENG has_or_had_tag = GBR }
+}
+
+tsin_company_eligible_mississippi_trigger = {
+current_year >= 1717 has_or_had_tag = FRA
+}

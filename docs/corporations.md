@@ -1,4 +1,6 @@
-﻿# 기업과 주식시장 (0.7)
+# 기업과 주식시장 (0.7)
+
+현재 공용 기업·법·위기 규칙은 [capital_markets.md](capital_markets.md)가 기준입니다. 아래 목록은 기존 산업 기업 6종의 상세 설명이며, 전체 유형은 초기 조직 14종을 합쳐 20종입니다.
 
 기업 결단 6종(강철·기계·직물·화학·철도·농기계)과 기업 값·효과는 `tools/gen_company_decisions.py`가 만듭니다.
 
@@ -8,7 +10,7 @@
 
 손으로 쓰는 부분은 `tsin_company_values.txt`(상한), `tsin_company_effects.txt`(무작위 보행, 지수, 주가 이벤트, 특허장 회수, 세계 지수), `tsin_charter_decisions.txt`, `in_game/events/tsin_corporate.txt`입니다.
 
-기업은 국가 보정치 `tsin_company_<종류>`입니다. 동시에 둘 수 있는 수는 `tsin_company_limit`입니다(기본 1, 증권 거래소 +1, 혼합·민간 투자 정책 +1, 산업 확장 특허장 +1, 독점 금지법 −1, 최소 1).
+기업은 국가 보정치 `tsin_company_<종류>`입니다. 기업 한도는 공용 기업·자본시장 체제에서 정합니다. 자유방임은 정책상 무제한이며, 다른 체제는 한도를 적용합니다. 같은 일반 업종에 여러 기업이 있을 수 있습니다.
 
 | 기업 | 기술 | 가격 기준 재화 | 회사 건물 |
 |---|---|---|---|
@@ -24,7 +26,7 @@
 ## 본사와 주가
 
 - 설립 때 `tsin_found_company_<c>_effect`가 회사 건물 레벨이 가장 높은 소유 위치를 본사(`var:tsin_hq_<c>`)로 정하고, 주가 `var:tsin_stock_<c>` = 100, `var:tsin_has_stock_market`을 둡니다.
-- 기업 가치 `tsin_company_value_<c>` = 주가 × 회사 건물 레벨. 합계 `tsin_company_total_value`.
+- 기업 가치 `tsin_company_value_<c>` = 주가 × 회사 건물 레벨 × 해당 업종의 기업 수. 합계 `tsin_company_total_value`.
 - 이전 세이브의 기업(주가 변수 없음)은 첫 분기 펄스에서 `tsin_init_existing_companies_effect`로 본사와 주가를 받습니다.
 
 ## 분기 갱신 (`tsin_stock_monthly_pulse`)
@@ -44,7 +46,9 @@
 
 세계 지수 `global_var:tsin_world_stock_index`는 해마다 처음 도는 나라의 연간 펄스(`tsin_update_world_stock_index_effect`)에서 주식시장이 있는 나라 지수의 평균으로 계산합니다.
 
-## 주가 이벤트 (`tsin_stock_market_events_effect`)
+## 구형 주가 이벤트와 현재 자동 판정
+
+현재 `tsin_stock_market_events_effect`는 공용 위기 규칙으로 교체됩니다. 아래 140·150 이벤트는 구형 콘텐츠를 설명하는 참고용이며, 기존 분기별 12% 무작위 폭락 경로는 자동 호출하지 않습니다. 현재 자동 위기는 국지적 `tsin_finance.1`과 1900년 이후 `tsin_global_depression` 조건을 사용합니다. 정확한 임계치와 재발 대기시간은 [capital_markets.md](capital_markets.md)를 참고하세요.
 
 - `tsin_economy.140` 투기 과열: 이력 4개 이상, 지수 > 이력 평균 × 1.5, 과열·폭락 아님, 8년 쿨다운.
   - 그대로 둔다(투기 과열 2년, 시민 만족 +) / 할인율 인상(주가 ×0.9, 안정도 +).
@@ -99,3 +103,8 @@
 - 인물을 변수에 저장한 뒤 `var:tsin_chairman = { is_alive = yes }`, `adm >=` 판정과 이벤트 현지화 `[tsin_chairman.GetName]`.
 - `create_character`가 `create_in_limbo` 없이 그 나라에 인물을 만드는지(바닐라 `banking.txt`와 같은 방식).
 - 분기 펄스의 비용(기업이 있는 나라만, 3개월마다).
+
+
+## 공용 기업·GUI 업데이트
+
+초기 조직 14종과 산업 기업 6종을 공용 회계로 연결했습니다. 자유방임·기업 한도·국지 및 세계 금융위기, 창 생성 등록과 새 주식 선 그래프의 현재 동작은 [capital_markets.md](capital_markets.md)를 기준으로 합니다. 기존 본문의 산업 기업 6종과 연간 통계 설명은 원래 7시대 구현 범위를 나타내며, 기업 회계는 현재 분기 갱신입니다.
