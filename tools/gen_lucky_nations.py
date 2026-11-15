@@ -26,7 +26,7 @@ AND = {{
     }}
 }}''' for loc in cores)
     outgoing = '\n'.join(f'if = {{ limit = {{ owns = location:{loc} }} add = 1 }}' for loc in cores)
-    moves = '\n'.join(f'location:{loc} = {{ if = {{ limit = {{ NOT = {{ owner ?= scope:tsin_lucky_candidate }} }} change_location_owner = scope:tsin_lucky_candidate }} }}' for loc in cores)
+    moves = '\n'.join(f'location:{loc} = {{ if = {{ limit = {{ NOT = {{ owner ?= scope:tsin_lucky_candidate }} }} change_location_owner = scope:tsin_lucky_candidate change_location_controller = scope:tsin_lucky_candidate }} }}' for loc in cores)
     triggers = f'''# GENERATED. Shared human protection lives in gen_historical_progression.py.
 tsin_lucky_russia_candidate_trigger = {{
     tsin_history_ai_realm = yes

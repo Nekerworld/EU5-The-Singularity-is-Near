@@ -87,7 +87,7 @@ if = { limit = { exists = scope:tsin_ah_culture } add_accepted_culture = scope:t
         if id=='britain':form='if = { limit = { NOT = { tag = GBR } } '+form+' }'
         if id=='qing':form+='\nchange_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG'
         independence_effect='if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }' if row.get('colonial') else ''
-        moves='\n'.join(f'location:{x} = {{ if = {{ limit = {{ NOT = {{ owner ?= {candidate} }} }} change_location_owner = {candidate} }} }}' for x in cores)
+        moves='\n'.join(f'location:{x} = {{ if = {{ limit = {{ NOT = {{ owner ?= {candidate} }} }} change_location_owner = {candidate} change_location_controller = {candidate} }} }}' for x in cores)
         effects += [f'''{prefix}_form = {{
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = {{ limit = {{ {prefix}_force = yes }} {independence_effect}

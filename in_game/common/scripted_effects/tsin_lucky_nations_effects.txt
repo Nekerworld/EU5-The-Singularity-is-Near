@@ -21,10 +21,10 @@ tsin_lucky_russia_form_effect = {
     # Re-check the complete transaction immediately before *any* ownership change.
     if = {
         limit = { tsin_lucky_russia_force_trigger = yes }
-location:moscow = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
-location:novgorod = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
-location:tver = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
-location:vladimir = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
+location:moscow = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate change_location_controller = scope:tsin_lucky_candidate } }
+location:novgorod = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate change_location_controller = scope:tsin_lucky_candidate } }
+location:tver = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate change_location_controller = scope:tsin_lucky_candidate } }
+location:vladimir = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate change_location_controller = scope:tsin_lucky_candidate } }
         form_country = formable_country:RUS_f
         if = {
             limit = { tag = RUS }

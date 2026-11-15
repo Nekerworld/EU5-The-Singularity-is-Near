@@ -1,0 +1,24 @@
+﻿tsin_restore_russia_outgoing = { value = 0 if = { limit = { owns = location:moscow } add = 1 } if = { limit = { owns = location:novgorod } add = 1 } if = { limit = { owns = location:tver } add = 1 } if = { limit = { owns = location:vladimir } add = 1 } }
+tsin_restore_britain_outgoing = { value = 0 if = { limit = { owns = location:london } add = 1 } if = { limit = { owns = location:edinburgh } add = 1 } if = { limit = { owns = location:dublin } add = 1 } }
+tsin_restore_germany_outgoing = { value = 0 if = { limit = { owns = location:berlin } add = 1 } if = { limit = { owns = location:frankfurt } add = 1 } if = { limit = { owns = location:munich } add = 1 } }
+tsin_restore_italy_outgoing = { value = 0 if = { limit = { owns = location:turin } add = 1 } if = { limit = { owns = location:milano } add = 1 } if = { limit = { owns = location:florence } add = 1 } if = { limit = { owns = location:naples } add = 1 } }
+tsin_restore_usa_outgoing = { value = 0 if = { limit = { owns = location:shackamaxon } add = 1 } if = { limit = { owns = location:manhattan } add = 1 } }
+tsin_restore_mexico_outgoing = { value = 0 if = { limit = { owns = location:tenochtitlan } add = 1 } }
+tsin_restore_mughals_outgoing = { value = 0 if = { limit = { owns = location:delhi } add = 1 } if = { limit = { owns = location:agra } add = 1 } if = { limit = { owns = location:lahore } add = 1 } }
+tsin_restore_japan_outgoing = { value = 0 if = { limit = { owns = location:kyoto } add = 1 } }
+tsin_restore_belgium_outgoing = { value = 0 if = { limit = { owns = location:brussels } add = 1 } }
+tsin_restore_greece_outgoing = { value = 0 if = { limit = { owns = location:athens } add = 1 } }
+tsin_restore_romania_outgoing = { value = 0 if = { limit = { owns = location:bucharest } add = 1 } }
+tsin_restore_serbia_outgoing = { value = 0 if = { limit = { owns = location:belgrad } add = 1 } }
+tsin_restore_bulgaria_outgoing = { value = 0 if = { limit = { owns = location:sredets } add = 1 } }
+tsin_restore_brazil_outgoing = { value = 0 if = { limit = { owns = location:goana_para } add = 1 } }
+tsin_restore_argentina_outgoing = { value = 0 if = { limit = { owns = location:chana } add = 1 } }
+tsin_restore_chile_outgoing = { value = 0 if = { limit = { owns = location:meli_pillan } add = 1 } }
+tsin_restore_peru_outgoing = { value = 0 if = { limit = { owns = location:rimaq } add = 1 } }
+tsin_restore_bolivia_outgoing = { value = 0 if = { limit = { owns = location:ccantumarcani } add = 1 } }
+tsin_restore_gran_colombia_outgoing = { value = 0 if = { limit = { owns = location:bosa_colombia } add = 1 } if = { limit = { owns = location:caracas } add = 1 } if = { limit = { owns = location:quito } add = 1 } }
+tsin_restore_colombia_outgoing = { value = 0 if = { limit = { owns = location:bosa_colombia } add = 1 } }
+tsin_restore_venezuela_outgoing = { value = 0 if = { limit = { owns = location:caracas } add = 1 } }
+tsin_restore_ecuador_outgoing = { value = 0 if = { limit = { owns = location:quito } add = 1 } }
+tsin_restore_uruguay_outgoing = { value = 0 if = { limit = { owns = location:guenoa } add = 1 } }
+tsin_restore_paraguay_outgoing = { value = 0 if = { limit = { owns = location:nemby } add = 1 } }

@@ -1,0 +1,841 @@
+﻿tsin_restore_russia_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_russia_trigger = yes }
+location:moscow = {
+save_scope_as = tsin_restore_russia_centre
+owner = { save_scope_as = tsin_restore_russia_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_russia_country
+change_culture = scope:tsin_restore_russia_centre.dominant_culture
+change_religion = scope:tsin_restore_russia_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:moscow = { if = { limit = { NOT = { owner ?= scope:tsin_restore_russia_country } } change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country } }
+location:novgorod = { if = { limit = { NOT = { owner ?= scope:tsin_restore_russia_country } } change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country } }
+location:tver = { if = { limit = { NOT = { owner ?= scope:tsin_restore_russia_country } } change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country } }
+location:vladimir = { if = { limit = { NOT = { owner ?= scope:tsin_restore_russia_country } } change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country } }
+location:moscow.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_russia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country
+} }
+location:novgorod.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_russia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country
+} }
+location:tver.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_russia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country
+} }
+location:vladimir.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_russia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_russia_country change_location_controller = scope:tsin_restore_russia_country
+} }
+scope:tsin_restore_russia_country = {
+form_country = formable_country:RUS_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_russia_log
+}
+}
+}
+tsin_restore_britain_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_britain_trigger = yes }
+location:london = {
+save_scope_as = tsin_restore_britain_centre
+owner = { save_scope_as = tsin_restore_britain_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_britain_country
+change_culture = scope:tsin_restore_britain_centre.dominant_culture
+change_religion = scope:tsin_restore_britain_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:london = { if = { limit = { NOT = { owner ?= scope:tsin_restore_britain_country } } change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country } }
+location:edinburgh = { if = { limit = { NOT = { owner ?= scope:tsin_restore_britain_country } } change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country } }
+location:dublin = { if = { limit = { NOT = { owner ?= scope:tsin_restore_britain_country } } change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country } }
+location:london.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_britain_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country
+} }
+location:edinburgh.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_britain_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country
+} }
+location:dublin.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_britain_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_britain_country change_location_controller = scope:tsin_restore_britain_country
+} }
+scope:tsin_restore_britain_country = {
+form_country = formable_country:tsin_nation_britain_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_britain_log
+}
+}
+}
+tsin_restore_germany_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_germany_trigger = yes }
+location:berlin = {
+save_scope_as = tsin_restore_germany_centre
+owner = { save_scope_as = tsin_restore_germany_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_germany_country
+change_culture = scope:tsin_restore_germany_centre.dominant_culture
+change_religion = scope:tsin_restore_germany_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:berlin = { if = { limit = { NOT = { owner ?= scope:tsin_restore_germany_country } } change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country } }
+location:frankfurt = { if = { limit = { NOT = { owner ?= scope:tsin_restore_germany_country } } change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country } }
+location:munich = { if = { limit = { NOT = { owner ?= scope:tsin_restore_germany_country } } change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country } }
+location:berlin.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_germany_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country
+} }
+location:frankfurt.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_germany_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country
+} }
+location:munich.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_germany_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_germany_country change_location_controller = scope:tsin_restore_germany_country
+} }
+scope:tsin_restore_germany_country = {
+form_country = formable_country:tsin_nation_germany_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_germany_log
+}
+}
+}
+tsin_restore_italy_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_italy_trigger = yes }
+location:turin = {
+save_scope_as = tsin_restore_italy_centre
+owner = { save_scope_as = tsin_restore_italy_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_italy_country
+change_culture = scope:tsin_restore_italy_centre.dominant_culture
+change_religion = scope:tsin_restore_italy_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:turin = { if = { limit = { NOT = { owner ?= scope:tsin_restore_italy_country } } change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country } }
+location:milano = { if = { limit = { NOT = { owner ?= scope:tsin_restore_italy_country } } change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country } }
+location:florence = { if = { limit = { NOT = { owner ?= scope:tsin_restore_italy_country } } change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country } }
+location:naples = { if = { limit = { NOT = { owner ?= scope:tsin_restore_italy_country } } change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country } }
+location:turin.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_italy_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country
+} }
+location:milano.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_italy_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country
+} }
+location:florence.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_italy_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country
+} }
+location:naples.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_italy_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_italy_country change_location_controller = scope:tsin_restore_italy_country
+} }
+scope:tsin_restore_italy_country = {
+form_country = formable_country:tsin_nation_italy_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_italy_log
+}
+}
+}
+tsin_restore_usa_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_usa_trigger = yes }
+location:shackamaxon = {
+save_scope_as = tsin_restore_usa_centre
+owner = { save_scope_as = tsin_restore_usa_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_usa_country
+change_culture = scope:tsin_restore_usa_sponsor.culture
+change_religion = scope:tsin_restore_usa_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:shackamaxon = { if = { limit = { NOT = { owner ?= scope:tsin_restore_usa_country } } change_location_owner = scope:tsin_restore_usa_country change_location_controller = scope:tsin_restore_usa_country } }
+location:manhattan = { if = { limit = { NOT = { owner ?= scope:tsin_restore_usa_country } } change_location_owner = scope:tsin_restore_usa_country change_location_controller = scope:tsin_restore_usa_country } }
+location:shackamaxon.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_usa_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_usa_country change_location_controller = scope:tsin_restore_usa_country
+} }
+location:manhattan.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_usa_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_usa_country change_location_controller = scope:tsin_restore_usa_country
+} }
+scope:tsin_restore_usa_country = {
+form_country = formable_country:tsin_nation_usa_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_usa_log
+}
+}
+}
+tsin_restore_mexico_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_mexico_trigger = yes }
+location:tenochtitlan = {
+save_scope_as = tsin_restore_mexico_centre
+owner = { save_scope_as = tsin_restore_mexico_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_mexico_country
+change_culture = scope:tsin_restore_mexico_sponsor.culture
+change_religion = scope:tsin_restore_mexico_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:tenochtitlan = { if = { limit = { NOT = { owner ?= scope:tsin_restore_mexico_country } } change_location_owner = scope:tsin_restore_mexico_country change_location_controller = scope:tsin_restore_mexico_country } }
+location:tenochtitlan.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_mexico_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_mexico_country change_location_controller = scope:tsin_restore_mexico_country
+} }
+scope:tsin_restore_mexico_country = {
+form_country = formable_country:tsin_nation_mexico_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_mexico_log
+}
+}
+}
+tsin_restore_mughals_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_mughals_trigger = yes }
+location:delhi = {
+save_scope_as = tsin_restore_mughals_centre
+owner = { save_scope_as = tsin_restore_mughals_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_mughals_country
+change_culture = scope:tsin_restore_mughals_centre.dominant_culture
+change_religion = scope:tsin_restore_mughals_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:delhi = { if = { limit = { NOT = { owner ?= scope:tsin_restore_mughals_country } } change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country } }
+location:agra = { if = { limit = { NOT = { owner ?= scope:tsin_restore_mughals_country } } change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country } }
+location:lahore = { if = { limit = { NOT = { owner ?= scope:tsin_restore_mughals_country } } change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country } }
+location:delhi.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_mughals_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country
+} }
+location:agra.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_mughals_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country
+} }
+location:lahore.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_mughals_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_mughals_country change_location_controller = scope:tsin_restore_mughals_country
+} }
+scope:tsin_restore_mughals_country = {
+form_country = formable_country:tsin_nation_mughals_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_mughals_log
+}
+}
+}
+tsin_restore_japan_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_japan_trigger = yes }
+location:kyoto = {
+save_scope_as = tsin_restore_japan_centre
+owner = { save_scope_as = tsin_restore_japan_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_japan_country
+change_culture = scope:tsin_restore_japan_centre.dominant_culture
+change_religion = scope:tsin_restore_japan_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:kyoto = { if = { limit = { NOT = { owner ?= scope:tsin_restore_japan_country } } change_location_owner = scope:tsin_restore_japan_country change_location_controller = scope:tsin_restore_japan_country } }
+location:kyoto.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_japan_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_japan_country change_location_controller = scope:tsin_restore_japan_country
+} }
+scope:tsin_restore_japan_country = {
+form_country = formable_country:tsin_nation_japan_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_japan_log
+}
+}
+}
+tsin_restore_belgium_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_belgium_trigger = yes }
+location:brussels = {
+save_scope_as = tsin_restore_belgium_centre
+owner = { save_scope_as = tsin_restore_belgium_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_belgium_country
+change_culture = scope:tsin_restore_belgium_centre.dominant_culture
+change_religion = scope:tsin_restore_belgium_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:brussels = { if = { limit = { NOT = { owner ?= scope:tsin_restore_belgium_country } } change_location_owner = scope:tsin_restore_belgium_country change_location_controller = scope:tsin_restore_belgium_country } }
+location:brussels.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_belgium_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_belgium_country change_location_controller = scope:tsin_restore_belgium_country
+} }
+scope:tsin_restore_belgium_country = {
+form_country = formable_country:tsin_nation_belgium_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_belgium_log
+}
+}
+}
+tsin_restore_greece_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_greece_trigger = yes }
+location:athens = {
+save_scope_as = tsin_restore_greece_centre
+owner = { save_scope_as = tsin_restore_greece_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_greece_country
+change_culture = scope:tsin_restore_greece_centre.dominant_culture
+change_religion = scope:tsin_restore_greece_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:athens = { if = { limit = { NOT = { owner ?= scope:tsin_restore_greece_country } } change_location_owner = scope:tsin_restore_greece_country change_location_controller = scope:tsin_restore_greece_country } }
+location:athens.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_greece_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_greece_country change_location_controller = scope:tsin_restore_greece_country
+} }
+scope:tsin_restore_greece_country = {
+form_country = formable_country:tsin_nation_greece_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_greece_log
+}
+}
+}
+tsin_restore_romania_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_romania_trigger = yes }
+location:bucharest = {
+save_scope_as = tsin_restore_romania_centre
+owner = { save_scope_as = tsin_restore_romania_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_romania_country
+change_culture = scope:tsin_restore_romania_centre.dominant_culture
+change_religion = scope:tsin_restore_romania_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:bucharest = { if = { limit = { NOT = { owner ?= scope:tsin_restore_romania_country } } change_location_owner = scope:tsin_restore_romania_country change_location_controller = scope:tsin_restore_romania_country } }
+location:bucharest.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_romania_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_romania_country change_location_controller = scope:tsin_restore_romania_country
+} }
+scope:tsin_restore_romania_country = {
+form_country = formable_country:tsin_nation_romania_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_romania_log
+}
+}
+}
+tsin_restore_serbia_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_serbia_trigger = yes }
+location:belgrad = {
+save_scope_as = tsin_restore_serbia_centre
+owner = { save_scope_as = tsin_restore_serbia_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_serbia_country
+change_culture = scope:tsin_restore_serbia_centre.dominant_culture
+change_religion = scope:tsin_restore_serbia_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:belgrad = { if = { limit = { NOT = { owner ?= scope:tsin_restore_serbia_country } } change_location_owner = scope:tsin_restore_serbia_country change_location_controller = scope:tsin_restore_serbia_country } }
+location:belgrad.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_serbia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_serbia_country change_location_controller = scope:tsin_restore_serbia_country
+} }
+scope:tsin_restore_serbia_country = {
+form_country = formable_country:tsin_nation_serbia_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_serbia_log
+}
+}
+}
+tsin_restore_bulgaria_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_bulgaria_trigger = yes }
+location:sredets = {
+save_scope_as = tsin_restore_bulgaria_centre
+owner = { save_scope_as = tsin_restore_bulgaria_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_bulgaria_country
+change_culture = scope:tsin_restore_bulgaria_centre.dominant_culture
+change_religion = scope:tsin_restore_bulgaria_centre.dominant_religion
+change_government_type = government_type:monarchy
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:sredets = { if = { limit = { NOT = { owner ?= scope:tsin_restore_bulgaria_country } } change_location_owner = scope:tsin_restore_bulgaria_country change_location_controller = scope:tsin_restore_bulgaria_country } }
+location:sredets.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_bulgaria_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_bulgaria_country change_location_controller = scope:tsin_restore_bulgaria_country
+} }
+scope:tsin_restore_bulgaria_country = {
+form_country = formable_country:tsin_nation_bulgaria_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_bulgaria_log
+}
+}
+}
+tsin_restore_brazil_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_brazil_trigger = yes }
+location:goana_para = {
+save_scope_as = tsin_restore_brazil_centre
+owner = { save_scope_as = tsin_restore_brazil_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_brazil_country
+change_culture = scope:tsin_restore_brazil_sponsor.culture
+change_religion = scope:tsin_restore_brazil_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:goana_para = { if = { limit = { NOT = { owner ?= scope:tsin_restore_brazil_country } } change_location_owner = scope:tsin_restore_brazil_country change_location_controller = scope:tsin_restore_brazil_country } }
+location:goana_para.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_brazil_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_brazil_country change_location_controller = scope:tsin_restore_brazil_country
+} }
+scope:tsin_restore_brazil_country = {
+form_country = formable_country:tsin_nation_brazil_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_brazil_log
+}
+}
+}
+tsin_restore_argentina_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_argentina_trigger = yes }
+location:chana = {
+save_scope_as = tsin_restore_argentina_centre
+owner = { save_scope_as = tsin_restore_argentina_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_argentina_country
+change_culture = scope:tsin_restore_argentina_sponsor.culture
+change_religion = scope:tsin_restore_argentina_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:chana = { if = { limit = { NOT = { owner ?= scope:tsin_restore_argentina_country } } change_location_owner = scope:tsin_restore_argentina_country change_location_controller = scope:tsin_restore_argentina_country } }
+location:chana.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_argentina_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_argentina_country change_location_controller = scope:tsin_restore_argentina_country
+} }
+scope:tsin_restore_argentina_country = {
+form_country = formable_country:tsin_nation_argentina_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_argentina_log
+}
+}
+}
+tsin_restore_chile_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_chile_trigger = yes }
+location:meli_pillan = {
+save_scope_as = tsin_restore_chile_centre
+owner = { save_scope_as = tsin_restore_chile_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_chile_country
+change_culture = scope:tsin_restore_chile_sponsor.culture
+change_religion = scope:tsin_restore_chile_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:meli_pillan = { if = { limit = { NOT = { owner ?= scope:tsin_restore_chile_country } } change_location_owner = scope:tsin_restore_chile_country change_location_controller = scope:tsin_restore_chile_country } }
+location:meli_pillan.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_chile_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_chile_country change_location_controller = scope:tsin_restore_chile_country
+} }
+scope:tsin_restore_chile_country = {
+form_country = formable_country:tsin_nation_chile_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_chile_log
+}
+}
+}
+tsin_restore_peru_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_peru_trigger = yes }
+location:rimaq = {
+save_scope_as = tsin_restore_peru_centre
+owner = { save_scope_as = tsin_restore_peru_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_peru_country
+change_culture = scope:tsin_restore_peru_sponsor.culture
+change_religion = scope:tsin_restore_peru_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:rimaq = { if = { limit = { NOT = { owner ?= scope:tsin_restore_peru_country } } change_location_owner = scope:tsin_restore_peru_country change_location_controller = scope:tsin_restore_peru_country } }
+location:rimaq.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_peru_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_peru_country change_location_controller = scope:tsin_restore_peru_country
+} }
+scope:tsin_restore_peru_country = {
+form_country = formable_country:tsin_nation_peru_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_peru_log
+}
+}
+}
+tsin_restore_bolivia_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_bolivia_trigger = yes }
+location:ccantumarcani = {
+save_scope_as = tsin_restore_bolivia_centre
+owner = { save_scope_as = tsin_restore_bolivia_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_bolivia_country
+change_culture = scope:tsin_restore_bolivia_sponsor.culture
+change_religion = scope:tsin_restore_bolivia_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:ccantumarcani = { if = { limit = { NOT = { owner ?= scope:tsin_restore_bolivia_country } } change_location_owner = scope:tsin_restore_bolivia_country change_location_controller = scope:tsin_restore_bolivia_country } }
+location:ccantumarcani.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_bolivia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_bolivia_country change_location_controller = scope:tsin_restore_bolivia_country
+} }
+scope:tsin_restore_bolivia_country = {
+form_country = formable_country:tsin_nation_bolivia_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_bolivia_log
+}
+}
+}
+tsin_restore_gran_colombia_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_gran_colombia_trigger = yes }
+location:bosa_colombia = {
+save_scope_as = tsin_restore_gran_colombia_centre
+owner = { save_scope_as = tsin_restore_gran_colombia_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_gran_colombia_country
+change_culture = scope:tsin_restore_gran_colombia_sponsor.culture
+change_religion = scope:tsin_restore_gran_colombia_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_restore_gran_colombia_country } } change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country } }
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_restore_gran_colombia_country } } change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country } }
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_restore_gran_colombia_country } } change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country } }
+location:bosa_colombia.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_gran_colombia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country
+} }
+location:caracas.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_gran_colombia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country
+} }
+location:quito.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_gran_colombia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_gran_colombia_country change_location_controller = scope:tsin_restore_gran_colombia_country
+} }
+scope:tsin_restore_gran_colombia_country = {
+form_country = formable_country:tsin_nation_gran_colombia_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_gran_colombia_log
+}
+}
+}
+tsin_restore_colombia_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_colombia_trigger = yes }
+location:bosa_colombia = {
+save_scope_as = tsin_restore_colombia_centre
+owner = { save_scope_as = tsin_restore_colombia_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_colombia_country
+change_culture = scope:tsin_restore_colombia_sponsor.culture
+change_religion = scope:tsin_restore_colombia_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_restore_colombia_country } } change_location_owner = scope:tsin_restore_colombia_country change_location_controller = scope:tsin_restore_colombia_country } }
+location:bosa_colombia.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_colombia_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_colombia_country change_location_controller = scope:tsin_restore_colombia_country
+} }
+scope:tsin_restore_colombia_country = {
+form_country = formable_country:tsin_nation_colombia_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_colombia_log
+}
+}
+}
+tsin_restore_venezuela_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_venezuela_trigger = yes }
+location:caracas = {
+save_scope_as = tsin_restore_venezuela_centre
+owner = { save_scope_as = tsin_restore_venezuela_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_venezuela_country
+change_culture = scope:tsin_restore_venezuela_sponsor.culture
+change_religion = scope:tsin_restore_venezuela_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_restore_venezuela_country } } change_location_owner = scope:tsin_restore_venezuela_country change_location_controller = scope:tsin_restore_venezuela_country } }
+location:caracas.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_venezuela_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_venezuela_country change_location_controller = scope:tsin_restore_venezuela_country
+} }
+scope:tsin_restore_venezuela_country = {
+form_country = formable_country:tsin_nation_venezuela_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_venezuela_log
+}
+}
+}
+tsin_restore_ecuador_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_ecuador_trigger = yes }
+location:quito = {
+save_scope_as = tsin_restore_ecuador_centre
+owner = { save_scope_as = tsin_restore_ecuador_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_ecuador_country
+change_culture = scope:tsin_restore_ecuador_sponsor.culture
+change_religion = scope:tsin_restore_ecuador_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_restore_ecuador_country } } change_location_owner = scope:tsin_restore_ecuador_country change_location_controller = scope:tsin_restore_ecuador_country } }
+location:quito.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_ecuador_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_ecuador_country change_location_controller = scope:tsin_restore_ecuador_country
+} }
+scope:tsin_restore_ecuador_country = {
+form_country = formable_country:tsin_nation_ecuador_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_ecuador_log
+}
+}
+}
+tsin_restore_uruguay_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_uruguay_trigger = yes }
+location:guenoa = {
+save_scope_as = tsin_restore_uruguay_centre
+owner = { save_scope_as = tsin_restore_uruguay_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_uruguay_country
+change_culture = scope:tsin_restore_uruguay_sponsor.culture
+change_religion = scope:tsin_restore_uruguay_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:guenoa = { if = { limit = { NOT = { owner ?= scope:tsin_restore_uruguay_country } } change_location_owner = scope:tsin_restore_uruguay_country change_location_controller = scope:tsin_restore_uruguay_country } }
+location:guenoa.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_uruguay_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_uruguay_country change_location_controller = scope:tsin_restore_uruguay_country
+} }
+scope:tsin_restore_uruguay_country = {
+form_country = formable_country:tsin_nation_uruguay_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_uruguay_log
+}
+}
+}
+tsin_restore_paraguay_effect = {
+# Full guard must pass before creating a country, moving a city, or transferring gold.
+if = { limit = { tsin_restore_paraguay_trigger = yes }
+location:nemby = {
+save_scope_as = tsin_restore_paraguay_centre
+owner = { save_scope_as = tsin_restore_paraguay_sponsor }
+create_country_from_location = {
+save_scope_as = tsin_restore_paraguay_country
+change_culture = scope:tsin_restore_paraguay_sponsor.culture
+change_religion = scope:tsin_restore_paraguay_sponsor.religion
+change_government_type = government_type:republic
+# Do not inherit an unfinanced treasury endowment from engine defaults.
+add_gold = { value = gold multiply = -1 }
+}
+}
+
+location:nemby = { if = { limit = { NOT = { owner ?= scope:tsin_restore_paraguay_country } } change_location_owner = scope:tsin_restore_paraguay_country change_location_controller = scope:tsin_restore_paraguay_country } }
+location:nemby.province_definition = { every_location_in_province_definition = {
+limit = { owner ?= scope:tsin_restore_paraguay_sponsor controller = owner is_capital = no is_historical_capital = no
+owner = { tsin_history_ai_realm = yes at_war = no num_locations > 1 } }
+change_location_owner = scope:tsin_restore_paraguay_country change_location_controller = scope:tsin_restore_paraguay_country
+} }
+scope:tsin_restore_paraguay_country = {
+form_country = formable_country:tsin_nation_paraguay_f
+add_country_modifier = { modifier = tsin_restored_nation_support years = 5 mode = replace }
+set_variable = { name = tsin_restored_year value = current_year }
+debug_log = tsin_restore_paraguay_log
+}
+}
+}
+tsin_restoration_year_effect = { set_global_variable = { name = tsin_restoration_year value = current_year }
+tsin_restore_russia_effect = yes
+tsin_restore_britain_effect = yes
+tsin_restore_germany_effect = yes
+tsin_restore_italy_effect = yes
+tsin_restore_usa_effect = yes
+tsin_restore_mexico_effect = yes
+tsin_restore_mughals_effect = yes
+tsin_restore_japan_effect = yes
+tsin_restore_belgium_effect = yes
+tsin_restore_greece_effect = yes
+tsin_restore_romania_effect = yes
+tsin_restore_serbia_effect = yes
+tsin_restore_bulgaria_effect = yes
+tsin_restore_brazil_effect = yes
+tsin_restore_argentina_effect = yes
+tsin_restore_chile_effect = yes
+tsin_restore_peru_effect = yes
+tsin_restore_bolivia_effect = yes
+tsin_restore_gran_colombia_effect = yes
+tsin_restore_colombia_effect = yes
+tsin_restore_venezuela_effect = yes
+tsin_restore_ecuador_effect = yes
+tsin_restore_uruguay_effect = yes
+tsin_restore_paraguay_effect = yes
+}
+tsin_restoration_cleanup_effect = {
+every_country = { limit = { has_country_modifier = tsin_restored_nation_support
+OR = { tsin_history_human_realm = yes tsin_lucky_human_war_trigger = yes has_game_rule = tsin_lucky_nations_off } }
+remove_country_modifier = tsin_restored_nation_support }
+}

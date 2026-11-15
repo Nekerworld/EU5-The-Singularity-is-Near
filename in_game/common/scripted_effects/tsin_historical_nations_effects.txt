@@ -1,9 +1,9 @@
 ﻿tsin_nation_britain_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_britain_force = yes }
-location:london = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
-location:edinburgh = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
-location:dublin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
+location:london = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate change_location_controller = scope:tsin_nation_britain_candidate } }
+location:edinburgh = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate change_location_controller = scope:tsin_nation_britain_candidate } }
+location:dublin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate change_location_controller = scope:tsin_nation_britain_candidate } }
 if = { limit = { NOT = { tag = GBR } } form_country = formable_country:tsin_nation_britain_f }
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -42,9 +42,9 @@ else_if = { limit = { tsin_nation_britain_force = yes } trigger_event_non_silent
 tsin_nation_germany_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_germany_force = yes }
-location:berlin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
-location:frankfurt = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
-location:munich = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
+location:berlin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate change_location_controller = scope:tsin_nation_germany_candidate } }
+location:frankfurt = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate change_location_controller = scope:tsin_nation_germany_candidate } }
+location:munich = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate change_location_controller = scope:tsin_nation_germany_candidate } }
 form_country = formable_country:tsin_nation_germany_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -83,10 +83,10 @@ else_if = { limit = { tsin_nation_germany_force = yes } trigger_event_non_silent
 tsin_nation_italy_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_italy_force = yes }
-location:turin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
-location:milano = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
-location:florence = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
-location:naples = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
+location:turin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate change_location_controller = scope:tsin_nation_italy_candidate } }
+location:milano = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate change_location_controller = scope:tsin_nation_italy_candidate } }
+location:florence = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate change_location_controller = scope:tsin_nation_italy_candidate } }
+location:naples = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate change_location_controller = scope:tsin_nation_italy_candidate } }
 form_country = formable_country:tsin_nation_italy_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -126,9 +126,9 @@ else_if = { limit = { tsin_nation_italy_force = yes } trigger_event_non_silently
 tsin_nation_austria_hungary_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_austria_hungary_force = yes }
-location:vienna = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
-location:buda = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
-location:pest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
+location:vienna = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate change_location_controller = scope:tsin_nation_austria_hungary_candidate } }
+location:buda = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate change_location_controller = scope:tsin_nation_austria_hungary_candidate } }
+location:pest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate change_location_controller = scope:tsin_nation_austria_hungary_candidate } }
 
 set_variable = tsin_austria_hungary_formed
 change_country_name = tsin_austria_hungary_name
@@ -186,8 +186,8 @@ else_if = { limit = { tsin_nation_austria_hungary_force = yes } trigger_event_no
 tsin_nation_usa_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_usa_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:shackamaxon = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate } }
-location:manhattan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate } }
+location:shackamaxon = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate change_location_controller = scope:tsin_nation_usa_candidate } }
+location:manhattan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate change_location_controller = scope:tsin_nation_usa_candidate } }
 form_country = formable_country:tsin_nation_usa_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -223,7 +223,7 @@ else_if = { limit = { tsin_nation_usa_force = yes } trigger_event_non_silently =
 tsin_nation_mexico_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_mexico_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:tenochtitlan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mexico_candidate } } change_location_owner = scope:tsin_nation_mexico_candidate } }
+location:tenochtitlan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mexico_candidate } } change_location_owner = scope:tsin_nation_mexico_candidate change_location_controller = scope:tsin_nation_mexico_candidate } }
 form_country = formable_country:tsin_nation_mexico_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -258,9 +258,9 @@ else_if = { limit = { tsin_nation_mexico_force = yes } trigger_event_non_silentl
 tsin_nation_mughals_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_mughals_force = yes }
-location:delhi = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
-location:agra = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
-location:lahore = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
+location:delhi = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate change_location_controller = scope:tsin_nation_mughals_candidate } }
+location:agra = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate change_location_controller = scope:tsin_nation_mughals_candidate } }
+location:lahore = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate change_location_controller = scope:tsin_nation_mughals_candidate } }
 form_country = formable_country:tsin_nation_mughals_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -299,7 +299,7 @@ else_if = { limit = { tsin_nation_mughals_force = yes } trigger_event_non_silent
 tsin_nation_qing_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_qing_force = yes }
-location:dadu = { if = { limit = { NOT = { owner ?= scope:tsin_nation_qing_candidate } } change_location_owner = scope:tsin_nation_qing_candidate } }
+location:dadu = { if = { limit = { NOT = { owner ?= scope:tsin_nation_qing_candidate } } change_location_owner = scope:tsin_nation_qing_candidate change_location_controller = scope:tsin_nation_qing_candidate } }
 form_country = formable_country:tsin_nation_qing_f
 change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
 remove_country_modifier = tsin_nation_support
@@ -337,7 +337,7 @@ else_if = { limit = { tsin_nation_qing_force = yes } trigger_event_non_silently 
 tsin_nation_japan_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_japan_force = yes }
-location:kyoto = { if = { limit = { NOT = { owner ?= scope:tsin_nation_japan_candidate } } change_location_owner = scope:tsin_nation_japan_candidate } }
+location:kyoto = { if = { limit = { NOT = { owner ?= scope:tsin_nation_japan_candidate } } change_location_owner = scope:tsin_nation_japan_candidate change_location_controller = scope:tsin_nation_japan_candidate } }
 form_country = formable_country:tsin_nation_japan_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -372,7 +372,7 @@ else_if = { limit = { tsin_nation_japan_force = yes } trigger_event_non_silently
 tsin_nation_belgium_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_belgium_force = yes }
-location:brussels = { if = { limit = { NOT = { owner ?= scope:tsin_nation_belgium_candidate } } change_location_owner = scope:tsin_nation_belgium_candidate } }
+location:brussels = { if = { limit = { NOT = { owner ?= scope:tsin_nation_belgium_candidate } } change_location_owner = scope:tsin_nation_belgium_candidate change_location_controller = scope:tsin_nation_belgium_candidate } }
 form_country = formable_country:tsin_nation_belgium_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -407,7 +407,7 @@ else_if = { limit = { tsin_nation_belgium_force = yes } trigger_event_non_silent
 tsin_nation_greece_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_greece_force = yes }
-location:athens = { if = { limit = { NOT = { owner ?= scope:tsin_nation_greece_candidate } } change_location_owner = scope:tsin_nation_greece_candidate } }
+location:athens = { if = { limit = { NOT = { owner ?= scope:tsin_nation_greece_candidate } } change_location_owner = scope:tsin_nation_greece_candidate change_location_controller = scope:tsin_nation_greece_candidate } }
 form_country = formable_country:tsin_nation_greece_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -442,7 +442,7 @@ else_if = { limit = { tsin_nation_greece_force = yes } trigger_event_non_silentl
 tsin_nation_romania_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_romania_force = yes }
-location:bucharest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_romania_candidate } } change_location_owner = scope:tsin_nation_romania_candidate } }
+location:bucharest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_romania_candidate } } change_location_owner = scope:tsin_nation_romania_candidate change_location_controller = scope:tsin_nation_romania_candidate } }
 form_country = formable_country:tsin_nation_romania_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -479,7 +479,7 @@ else_if = { limit = { tsin_nation_romania_force = yes } trigger_event_non_silent
 tsin_nation_serbia_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_serbia_force = yes }
-location:belgrad = { if = { limit = { NOT = { owner ?= scope:tsin_nation_serbia_candidate } } change_location_owner = scope:tsin_nation_serbia_candidate } }
+location:belgrad = { if = { limit = { NOT = { owner ?= scope:tsin_nation_serbia_candidate } } change_location_owner = scope:tsin_nation_serbia_candidate change_location_controller = scope:tsin_nation_serbia_candidate } }
 form_country = formable_country:tsin_nation_serbia_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -514,7 +514,7 @@ else_if = { limit = { tsin_nation_serbia_force = yes } trigger_event_non_silentl
 tsin_nation_bulgaria_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_bulgaria_force = yes }
-location:sredets = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bulgaria_candidate } } change_location_owner = scope:tsin_nation_bulgaria_candidate } }
+location:sredets = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bulgaria_candidate } } change_location_owner = scope:tsin_nation_bulgaria_candidate change_location_controller = scope:tsin_nation_bulgaria_candidate } }
 form_country = formable_country:tsin_nation_bulgaria_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -549,7 +549,7 @@ else_if = { limit = { tsin_nation_bulgaria_force = yes } trigger_event_non_silen
 tsin_nation_brazil_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_brazil_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:goana_para = { if = { limit = { NOT = { owner ?= scope:tsin_nation_brazil_candidate } } change_location_owner = scope:tsin_nation_brazil_candidate } }
+location:goana_para = { if = { limit = { NOT = { owner ?= scope:tsin_nation_brazil_candidate } } change_location_owner = scope:tsin_nation_brazil_candidate change_location_controller = scope:tsin_nation_brazil_candidate } }
 form_country = formable_country:tsin_nation_brazil_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -584,7 +584,7 @@ else_if = { limit = { tsin_nation_brazil_force = yes } trigger_event_non_silentl
 tsin_nation_argentina_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_argentina_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:chana = { if = { limit = { NOT = { owner ?= scope:tsin_nation_argentina_candidate } } change_location_owner = scope:tsin_nation_argentina_candidate } }
+location:chana = { if = { limit = { NOT = { owner ?= scope:tsin_nation_argentina_candidate } } change_location_owner = scope:tsin_nation_argentina_candidate change_location_controller = scope:tsin_nation_argentina_candidate } }
 form_country = formable_country:tsin_nation_argentina_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -619,7 +619,7 @@ else_if = { limit = { tsin_nation_argentina_force = yes } trigger_event_non_sile
 tsin_nation_chile_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_chile_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:meli_pillan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_chile_candidate } } change_location_owner = scope:tsin_nation_chile_candidate } }
+location:meli_pillan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_chile_candidate } } change_location_owner = scope:tsin_nation_chile_candidate change_location_controller = scope:tsin_nation_chile_candidate } }
 form_country = formable_country:tsin_nation_chile_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -654,7 +654,7 @@ else_if = { limit = { tsin_nation_chile_force = yes } trigger_event_non_silently
 tsin_nation_peru_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_peru_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:rimaq = { if = { limit = { NOT = { owner ?= scope:tsin_nation_peru_candidate } } change_location_owner = scope:tsin_nation_peru_candidate } }
+location:rimaq = { if = { limit = { NOT = { owner ?= scope:tsin_nation_peru_candidate } } change_location_owner = scope:tsin_nation_peru_candidate change_location_controller = scope:tsin_nation_peru_candidate } }
 form_country = formable_country:tsin_nation_peru_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -689,7 +689,7 @@ else_if = { limit = { tsin_nation_peru_force = yes } trigger_event_non_silently 
 tsin_nation_bolivia_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_bolivia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:ccantumarcani = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bolivia_candidate } } change_location_owner = scope:tsin_nation_bolivia_candidate } }
+location:ccantumarcani = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bolivia_candidate } } change_location_owner = scope:tsin_nation_bolivia_candidate change_location_controller = scope:tsin_nation_bolivia_candidate } }
 form_country = formable_country:tsin_nation_bolivia_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -724,9 +724,9 @@ else_if = { limit = { tsin_nation_bolivia_force = yes } trigger_event_non_silent
 tsin_nation_gran_colombia_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_gran_colombia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
-location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
-location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate change_location_controller = scope:tsin_nation_gran_colombia_candidate } }
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate change_location_controller = scope:tsin_nation_gran_colombia_candidate } }
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate change_location_controller = scope:tsin_nation_gran_colombia_candidate } }
 form_country = formable_country:tsin_nation_gran_colombia_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -763,7 +763,7 @@ else_if = { limit = { tsin_nation_gran_colombia_force = yes } trigger_event_non_
 tsin_nation_colombia_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_colombia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_colombia_candidate } } change_location_owner = scope:tsin_nation_colombia_candidate } }
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_colombia_candidate } } change_location_owner = scope:tsin_nation_colombia_candidate change_location_controller = scope:tsin_nation_colombia_candidate } }
 form_country = formable_country:tsin_nation_colombia_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -798,7 +798,7 @@ else_if = { limit = { tsin_nation_colombia_force = yes } trigger_event_non_silen
 tsin_nation_venezuela_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_venezuela_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_venezuela_candidate } } change_location_owner = scope:tsin_nation_venezuela_candidate } }
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_venezuela_candidate } } change_location_owner = scope:tsin_nation_venezuela_candidate change_location_controller = scope:tsin_nation_venezuela_candidate } }
 form_country = formable_country:tsin_nation_venezuela_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -833,7 +833,7 @@ else_if = { limit = { tsin_nation_venezuela_force = yes } trigger_event_non_sile
 tsin_nation_ecuador_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_ecuador_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_ecuador_candidate } } change_location_owner = scope:tsin_nation_ecuador_candidate } }
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_ecuador_candidate } } change_location_owner = scope:tsin_nation_ecuador_candidate change_location_controller = scope:tsin_nation_ecuador_candidate } }
 form_country = formable_country:tsin_nation_ecuador_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -868,7 +868,7 @@ else_if = { limit = { tsin_nation_ecuador_force = yes } trigger_event_non_silent
 tsin_nation_uruguay_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_uruguay_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:guenoa = { if = { limit = { NOT = { owner ?= scope:tsin_nation_uruguay_candidate } } change_location_owner = scope:tsin_nation_uruguay_candidate } }
+location:guenoa = { if = { limit = { NOT = { owner ?= scope:tsin_nation_uruguay_candidate } } change_location_owner = scope:tsin_nation_uruguay_candidate change_location_controller = scope:tsin_nation_uruguay_candidate } }
 form_country = formable_country:tsin_nation_uruguay_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
@@ -903,7 +903,7 @@ else_if = { limit = { tsin_nation_uruguay_force = yes } trigger_event_non_silent
 tsin_nation_paraguay_form = {
 # Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
 if = { limit = { tsin_nation_paraguay_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
-location:nemby = { if = { limit = { NOT = { owner ?= scope:tsin_nation_paraguay_candidate } } change_location_owner = scope:tsin_nation_paraguay_candidate } }
+location:nemby = { if = { limit = { NOT = { owner ?= scope:tsin_nation_paraguay_candidate } } change_location_owner = scope:tsin_nation_paraguay_candidate change_location_controller = scope:tsin_nation_paraguay_candidate } }
 form_country = formable_country:tsin_nation_paraguay_f
 remove_country_modifier = tsin_nation_support
 remove_country_modifier = tsin_nation_support_strong
