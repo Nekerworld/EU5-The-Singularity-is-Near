@@ -1,0 +1,1 @@
+﻿tsin_pollution_filter_price = { gold = 300 }

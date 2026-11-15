@@ -1,0 +1,11 @@
+﻿namespace = tsin_pollution
+tsin_pollution.1 = {
+ type = country_event title = tsin_pollution.1.title desc = tsin_pollution.1.desc outcome = neutral
+ illustration_tags = { 10 = interior 10 = regular }
+ option = { name = tsin_pollution.1.a trigger = { gold >= 300 }
+  add_gold = -300
+  scope:tsin_pollution_petition_site = { set_variable = { name = tsin_pollution_filters years = 10 } }
+  ai_chance = { factor = 3 }
+ }
+ option = { name = tsin_pollution.1.b ai_chance = { factor = 1 } }
+}

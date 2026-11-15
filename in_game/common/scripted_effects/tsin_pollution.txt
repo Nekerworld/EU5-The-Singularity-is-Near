@@ -1,0 +1,61 @@
+﻿# Scope: location, called only from the existing annual urban aggregate.
+tsin_pollution_location_tick_effect = {
+ save_scope_as = tsin_pollution_site
+ set_variable = { name = tsin_pollution_raw_air value = 0 }
+ set_variable = { name = tsin_pollution_raw_water value = 0 }
+ every_buildings_in_location = {
+  limit = { is_opened = yes building_employed_amount > 0 }
+  if = { limit = { OR = { building_type = building_type:iron_mill building_type = building_type:steel_mill building_type = building_type:cannons_factory building_type = building_type:firearms_factory building_type = building_type:weapon_factory building_type = building_type:tsin_automated_iron_mill building_type = building_type:tsin_machine_works building_type = building_type:tsin_farm_machinery_works } }
+   save_temporary_scope_value_as = { name = tsin_pollution_employed value = building_employed_amount }
+   scope:tsin_pollution_site = {
+    change_variable = { name = tsin_pollution_raw_air add = { value = scope:tsin_pollution_employed multiply = 6 } }
+    change_variable = { name = tsin_pollution_raw_water add = { value = scope:tsin_pollution_employed multiply = 1 } }
+   }
+  }
+  if = { limit = { OR = { building_type = building_type:dyes_mill building_type = building_type:tannery_mill building_type = building_type:putrefaction_mill building_type = building_type:tsin_fertilizer_plant building_type = building_type:tsin_explosives_plant building_type = building_type:tsin_nitrogen_fixation_plant } }
+   save_temporary_scope_value_as = { name = tsin_pollution_employed value = building_employed_amount }
+   scope:tsin_pollution_site = {
+    change_variable = { name = tsin_pollution_raw_air add = { value = scope:tsin_pollution_employed multiply = 4 } }
+    change_variable = { name = tsin_pollution_raw_water add = { value = scope:tsin_pollution_employed multiply = 6 } }
+   }
+  }
+  if = { limit = { OR = { building_type = building_type:brewery_mill building_type = building_type:printing_mill building_type = building_type:textile_mill building_type = building_type:fine_cloth_mill building_type = building_type:furniture_mill building_type = building_type:glass_mill building_type = building_type:distiller_mill building_type = building_type:naval_supplies_mill building_type = building_type:paper_mill building_type = building_type:pottery_mill building_type = building_type:tsin_mechanized_textile_mill building_type = building_type:tsin_automated_glass_mill building_type = building_type:tsin_automated_paper_mill building_type = building_type:tsin_automated_furniture_mill building_type = building_type:tsin_automated_printing_mill building_type = building_type:tsin_automated_fine_cloth_mill } }
+   save_temporary_scope_value_as = { name = tsin_pollution_employed value = building_employed_amount }
+   scope:tsin_pollution_site = {
+    change_variable = { name = tsin_pollution_raw_air add = { value = scope:tsin_pollution_employed multiply = 2 } }
+    change_variable = { name = tsin_pollution_raw_water add = { value = scope:tsin_pollution_employed multiply = 1 } }
+   }
+  }
+ }
+ if = { limit = { NOT = { has_variable = tsin_pollution_air } } set_variable = { name = tsin_pollution_air value = 0 } }
+ if = { limit = { NOT = { has_variable = tsin_pollution_water } } set_variable = { name = tsin_pollution_water value = 0 } }
+ set_variable = { name = tsin_pollution_air_previous value = var:tsin_pollution_air }
+ set_variable = { name = tsin_pollution_water_previous value = var:tsin_pollution_water }
+ set_variable = { name = tsin_pollution_air value = { value = var:tsin_pollution_air multiply = 0.4 add = { value = tsin_pollution_air_target multiply = 0.6 } min = 0 max = 100 } }
+ set_variable = { name = tsin_pollution_water value = { value = var:tsin_pollution_water multiply = 0.4 add = { value = tsin_pollution_water_target multiply = 0.6 } min = 0 max = 100 } }
+ set_variable = { name = tsin_pollution_year value = current_year }
+ if = { limit = { var:tsin_pollution_air >= 60 }
+  if = { limit = { NOT = { has_variable = tsin_pollution_bad_years } } set_variable = { name = tsin_pollution_bad_years value = 0 } }
+  change_variable = { name = tsin_pollution_bad_years add = 1 }
+ } else = { set_variable = { name = tsin_pollution_bad_years value = 0 } }
+ save_temporary_scope_value_as = { name = tsin_pollution_weighted value = { value = var:tsin_pollution_air multiply = population } }
+ save_temporary_scope_value_as = { name = tsin_pollution_population value = population }
+ owner = { change_variable = { name = tsin_pollution_weighted add = scope:tsin_pollution_weighted } }
+ if = { limit = { var:tsin_pollution_air >= 60 } owner = { change_variable = { name = tsin_pollution_high_pop add = scope:tsin_pollution_population } } }
+}
+tsin_pollution_finish_country_effect = {
+ set_variable = { name = tsin_pollution_year value = current_year }
+ set_variable = { name = tsin_pollution_exposure value = 0 }
+ set_variable = { name = tsin_pollution_high_share value = 0 }
+ if = { limit = { var:tsin_agg_urban_pop > 0 }
+  set_variable = { name = tsin_pollution_exposure value = { value = var:tsin_pollution_weighted divide = var:tsin_agg_urban_pop } }
+  set_variable = { name = tsin_pollution_high_share value = { value = var:tsin_pollution_high_pop divide = var:tsin_agg_urban_pop multiply = 100 } }
+ }
+ if = { limit = { is_ai = no NOT = { has_variable = tsin_pollution_petition_cooldown } var:tsin_pollution_high_share >= 10 }
+  random_owned_location = { limit = { var:tsin_pollution_bad_years >= 2 } save_scope_as = tsin_pollution_petition_site }
+  if = { limit = { exists = scope:tsin_pollution_petition_site }
+   set_variable = { name = tsin_pollution_petition_cooldown years = 8 }
+   trigger_event_non_silently = tsin_pollution.1
+  }
+ }
+}

@@ -257,6 +257,11 @@ tsin_ui_card_socialism = {}
 tsin_ui_card_abolitionism = {}
 tsin_ui_card_womens_suffrage = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_pollution_exposure = {}
+tsin_ui_card_pollution_high_share = {}
+tsin_ui_card_pollution_year = {}
+}
 widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
     size = { 220 30 }
@@ -321,6 +326,28 @@ button_regular = {
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_METRO_REVIEW" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_pollution')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_POLLUTION_MAP"
+        on_action = "[MapMode.SetMapMode]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_POLLUTION_MAP" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_pollution_filter')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_POLLUTION_FILTER"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_POLLUTION_FILTER" }
 }
 }
 }

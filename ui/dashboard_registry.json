@@ -1310,6 +1310,82 @@
           "generic_action": "tsin_survey_world"
         }
       ]
+    },
+    {
+      "id": "pollution",
+      "metrics": [
+        {
+          "id": "pollution_exposure",
+          "variable": "tsin_pollution_exposure",
+          "title": {
+            "korean": "조사 도시 인구 가중 대기 노출",
+            "english": "Surveyed urban air exposure"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        },
+        {
+          "id": "pollution_high_share",
+          "variable": "tsin_pollution_high_share",
+          "title": {
+            "korean": "조사 도시 고위험 인구 비율(%)",
+            "english": "Surveyed urban high exposure (%)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        },
+        {
+          "id": "pollution_year",
+          "variable": "tsin_pollution_year",
+          "title": {
+            "korean": "공해 조사 연도",
+            "english": "Pollution survey year"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "pollution_map",
+          "tab": "society",
+          "title": {
+            "korean": "산업 공해 지도",
+            "english": "Industrial pollution map"
+          },
+          "map_mode": "tsin_pollution"
+        },
+        {
+          "id": "pollution_filter",
+          "tab": "society",
+          "title": {
+            "korean": "지역 여과 설비 지원",
+            "english": "Fund local emission filters"
+          },
+          "generic_action": "tsin_pollution_filter"
+        }
+      ]
     }
   ],
   "histories": [

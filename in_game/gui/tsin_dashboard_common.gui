@@ -490,6 +490,36 @@ text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_GDP" }
 text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_report_world_gdp')]" }
 text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
 }
+type tsin_ui_card_pollution_exposure = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_EXPOSURE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_EXPOSURE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_high_share = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_HIGH_SHARE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_HIGH_SHARE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }

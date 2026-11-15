@@ -1,0 +1,12 @@
+﻿# Game indices, not real pollutant concentrations. No scans in map getters.
+tsin_pollution_air_target = {
+ value = var:tsin_pollution_raw_air
+ if = { limit = { has_variable = tsin_pollution_filters } multiply = 0.65 }
+ min = 0 max = 100
+}
+tsin_pollution_water_target = { value = var:tsin_pollution_raw_water min = 0 max = 100 }
+tsin_pollution_map_air = { value = 0 if = { limit = { has_variable = tsin_pollution_year } value = var:tsin_pollution_air } }
+tsin_pollution_map_water = { value = 0 if = { limit = { has_variable = tsin_pollution_year } value = var:tsin_pollution_water } }
+tsin_pollution_map_emissions = { value = 0 if = { limit = { has_variable = tsin_pollution_year } value = var:tsin_pollution_raw_air } }
+tsin_pollution_map_year = { value = 0 if = { limit = { has_variable = tsin_pollution_year } value = var:tsin_pollution_year } }
+tsin_pollution_map_factor = { value = tsin_pollution_map_air divide = 100 }

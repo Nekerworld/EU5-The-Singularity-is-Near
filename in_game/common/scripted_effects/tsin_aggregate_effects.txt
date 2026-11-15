@@ -3,6 +3,8 @@
 # total that labor conditions, GDP, education and acceleration need. Nothing else iterates owned locations yearly.
 
 tsin_annual_country_aggregate_effect = {
+	set_variable = { name = tsin_pollution_weighted value = 0 }
+	set_variable = { name = tsin_pollution_high_pop value = 0 }
 	set_variable = { name = tsin_agg_urban_pop value = 0 }
 	set_variable = { name = tsin_agg_factory_jobs value = 0 }
 	set_variable = { name = tsin_agg_laborers value = 0 }
@@ -20,6 +22,7 @@ tsin_annual_country_aggregate_effect = {
 				tsin_is_metropolis_or_megalopolis = yes
 			}
 		}
+		tsin_pollution_location_tick_effect = yes
 		set_local_variable = { name = tsin_agg_l_pop value = population }
 		set_local_variable = { name = tsin_agg_l_jobs value = tsin_location_industrial_jobs }
 		set_local_variable = { name = tsin_agg_l_laborers value = num_pop_type:laborers }
@@ -102,6 +105,7 @@ tsin_annual_country_aggregate_effect = {
 		}
 	}
 
+	tsin_pollution_finish_country_effect = yes
 	tsin_update_education_effect = yes
 	tsin_update_gdp_effect = yes
 	tsin_dashboard_update_effect = yes

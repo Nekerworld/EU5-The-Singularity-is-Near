@@ -1,0 +1,14 @@
+﻿tsin_pollution_filter = {
+ type = owncountry price = price:tsin_pollution_filter_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_urban_planning_advance } }
+ ai_prerequisite = { gold >= 1200 }
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_pollution_year var:tsin_pollution_air >= 20 }
+  enabled = { controller ?= scope:actor NOT = { has_variable = tsin_pollution_filters } }
+ }
+ effect = { scope:target_location = { set_variable = { name = tsin_pollution_filters years = 10 } } }
+ ai_will_do = { value = 10 }
+}

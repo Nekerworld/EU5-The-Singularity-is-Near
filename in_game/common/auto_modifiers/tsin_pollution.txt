@@ -1,0 +1,6 @@
+﻿tsin_pollution_air_exposure = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_pollution_air var:tsin_pollution_air > 0 }
+ scales_with = tsin_pollution_map_factor
+ local_migration_attraction = -0.1
+}
