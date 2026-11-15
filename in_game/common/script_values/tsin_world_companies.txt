@@ -1,4 +1,6 @@
-﻿tsin_wcs_industrial_count = { value = 0
+﻿tsin_wcs_page_display = { value = 1 if = { limit = { has_variable = tsin_wcs_page } add = var:tsin_wcs_page } }
+
+tsin_wcs_industrial_count = { value = 0
  add = tsin_firm_number_steel
  add = tsin_firm_number_machinery
  add = tsin_firm_number_textile

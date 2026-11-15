@@ -268,33 +268,6 @@ tsin_ui_format_report_world_gdp = {
 		localization_key = TSIN_UI_NUMBER_REPORT_WORLD_GDP_BASE
 	}
 }
-tsin_ui_format_world_company_cash = {
-	type = country
-	random_valid = no
-	text = {
-		trigger = { NOT = { has_variable = tsin_wcs_total_cash } }
-		localization_key = TSIN_UI_MISSING
-	}
-	text = {
-		trigger = { var:tsin_wcs_total_cash >= 1000000000000 }
-		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_T
-	}
-	text = {
-		trigger = { var:tsin_wcs_total_cash >= 1000000000 }
-		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_B
-	}
-	text = {
-		trigger = { var:tsin_wcs_total_cash >= 1000000 }
-		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_M
-	}
-	text = {
-		trigger = { var:tsin_wcs_total_cash >= 1000 }
-		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_K
-	}
-	text = {
-		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_BASE
-	}
-}
 tsin_ui_format_pollution_sample_population = {
 	type = country
 	random_valid = no
@@ -320,6 +293,33 @@ tsin_ui_format_pollution_sample_population = {
 	}
 	text = {
 		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_BASE
+	}
+}
+tsin_ui_format_world_company_cash = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_wcs_total_cash } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_wcs_total_cash >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_T
+	}
+	text = {
+		trigger = { var:tsin_wcs_total_cash >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_B
+	}
+	text = {
+		trigger = { var:tsin_wcs_total_cash >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_M
+	}
+	text = {
+		trigger = { var:tsin_wcs_total_cash >= 1000 }
+		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_BASE
 	}
 }
 tsin_ui_format_gdp_sample_9 = {

@@ -6,7 +6,7 @@
  select_trigger = {
   looking_for_a = location source = actor target_flag = target_location name = "choose_location"
   column = { data = name } column = { data = population }
-  visible = { owner ?= scope:actor is_city = yes population >= 100 }
+  visible = { owner ?= scope:actor tsin_is_city_location = yes population >= 100 }
   enabled = { controller ?= scope:actor NOT = { has_variable = tsin_metro_hub } }
  }
  effect = {

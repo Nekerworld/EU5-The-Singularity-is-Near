@@ -22,7 +22,7 @@ tsin_annual_country_aggregate_effect = {
   limit = { OR = {
 
 			OR = {
-				is_city = yes
+				tsin_is_city_location = yes
 				location_rank ?= location_rank:town
 				tsin_is_metropolis_or_megalopolis = yes
 			}
@@ -33,7 +33,7 @@ tsin_annual_country_aggregate_effect = {
   if = { limit = {
 
 			OR = {
-				is_city = yes
+				tsin_is_city_location = yes
 				location_rank ?= location_rank:town
 				tsin_is_metropolis_or_megalopolis = yes
 			}
@@ -155,7 +155,7 @@ tsin_socialist_cell_tick_effect = {
 			market ?= {
 				random_location_in_market = {
 					limit = {
-						is_city = yes
+						tsin_is_city_location = yes
 						NOT = { has_variable = tsin_socialist_cell }
 						tsin_location_industrial_jobs >= tsin_socialist_cell_min_jobs
 						tsin_location_labor_conditions < 0.5

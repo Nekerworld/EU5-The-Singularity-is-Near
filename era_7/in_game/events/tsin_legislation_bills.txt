@@ -1083,7 +1083,7 @@ tsin_legislation.130 = {
 	}
 }
 
-# Industry and trusts
+# Industry, companies and environment
 tsin_legislation.140 = {
 	type = country_event
 	outcome = neutral

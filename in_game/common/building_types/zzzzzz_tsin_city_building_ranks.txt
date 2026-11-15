@@ -20,6 +20,9 @@ TRY_INJECT:arts_academy = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ashery = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:assay_office = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:bajang_ratu = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:banal_dairy = { tsin_large_city = no tsin_megalopolis = no }
+TRY_INJECT:banal_olive_press = { tsin_large_city = no tsin_megalopolis = no }
+TRY_INJECT:banal_slaughterhouse = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:banking_office = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:barcelona_royal_shipyard = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:bardic_school = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -38,6 +41,7 @@ TRY_INJECT:black_market = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:bodrum_castle = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:bog_iron_smelter = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:bolshoi_theater = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:bonfire_ground = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:brassware_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:brassware_manufactory = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:brassware_mill = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -96,6 +100,7 @@ TRY_INJECT:city_lighting_oil = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:city_of_victory = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:city_walls = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:clan_family_shrine = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:clan_shipyards = { tsin_large_city = no }
 TRY_INJECT:clay_pit = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:clearing_house = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:clerical_archives = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -104,6 +109,7 @@ TRY_INJECT:cloth_manufactory = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:cloth_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:cloves_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:coastal_fort = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:coastal_settlements = { tsin_large_city = no }
 TRY_INJECT:cocoa_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:cocoa_plantation = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:coffee_estate = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -111,6 +117,7 @@ TRY_INJECT:coffeehouse = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:college_of_poets = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:colonial_administration = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:commerce_center = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:communal_smokehouse = { tsin_large_city = no }
 TRY_INJECT:confucian_academy = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:confucian_school = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:conscription_center = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -135,6 +142,7 @@ TRY_INJECT:distillers_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:distillers_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:dock = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:doges_palace = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:drovers_inn = { tsin_large_city = no }
 TRY_INJECT:dry_dock = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:dun_fort = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:dutch_trade_outpost = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -147,7 +155,7 @@ TRY_INJECT:eghabho_nore_mansion = { tsin_large_city = yes tsin_megalopolis = yes
 TRY_INJECT:el_escorial_palace = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:embassy = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:entrepot = { tsin_large_city = yes tsin_megalopolis = yes }
-TRY_INJECT:exotic_garden = { tsin_large_city = yes }
+TRY_INJECT:exotic_garden = { tsin_large_city = yes tsin_megalopolis = no }
 TRY_INJECT:factors_house = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:festival_grounds = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fiber_crops_farm = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -160,12 +168,14 @@ TRY_INJECT:firearms_manufactory = { tsin_large_city = yes tsin_megalopolis = yes
 TRY_INJECT:floral_works = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fondaco = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:forbidden_city = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:forest_glasshouse = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:fortezza_di_sant_andrea = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fortress = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fortress_church = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fortress_granary = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fra_louvre_museum = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:free_economic_society = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:free_village = { tsin_large_city = no }
 TRY_INJECT:friesland_admiralty = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fruit_orchard = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:fulani_cattle_rearing_pen = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -187,6 +197,7 @@ TRY_INJECT:glass_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:glass_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:glassworks = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:globe_theatre = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:gold_washers = { tsin_large_city = no }
 TRY_INJECT:gosho = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:grain_house = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:granary = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -208,6 +219,7 @@ TRY_INJECT:guns_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:gurgaddi = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:gymnasium_building = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:hammam = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:hammer_mill = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:hand_cannon_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:hanseatic_kontor = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:hanseatic_shipwright_guild = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -222,6 +234,7 @@ TRY_INJECT:house_of_parliament = { tsin_large_city = yes tsin_megalopolis = yes 
 TRY_INJECT:hre_imperial_armory_foreign = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:hre_imperial_armory_own = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:hsa_burgtor = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:hunting_lodge = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:husuni_kubwa = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ibadat_khana = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:imperial_academy_of_arts = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -247,6 +260,7 @@ TRY_INJECT:kalari = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:kastellet = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:khan_ordu = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:khmer_baray = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:kilwan_shipwrights = { tsin_large_city = no }
 TRY_INJECT:kings_manor = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:kokufu = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:korean_barracks = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -268,10 +282,13 @@ TRY_INJECT:lighthouse_modern = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:lighthouse_of_alexandria = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:llotja_seda = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:local_assembly = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:local_estates = { tsin_large_city = no }
 TRY_INJECT:local_governor = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:local_markets = { tsin_large_city = no }
 TRY_INJECT:local_newspaper = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:local_noble_delegation = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:local_schools = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:local_shrine = { tsin_large_city = no }
 TRY_INJECT:lot_egyptian_administration_center = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:lot_karamursel_tersanesi = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:lot_sufi_order_barracks = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -286,6 +303,7 @@ TRY_INJECT:magistrato_alla_sanita = { tsin_large_city = yes tsin_megalopolis = y
 TRY_INJECT:mahmud_gawan_madrasa = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:mamluk_barracks = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:maniot_toll_guards = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:manorial_dairy = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:market_warehouse = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:marketplace = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:mason = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -302,8 +320,12 @@ TRY_INJECT:mercury_patio = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:miaphysite_monastery = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:mil_vatican_library = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:minting_office = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:missionary_building = { tsin_large_city = no }
 TRY_INJECT:modern_council_hall = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:monastery = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:monastic_apiary = { tsin_large_city = no tsin_megalopolis = no }
+TRY_INJECT:monastic_dairy = { tsin_large_city = no }
+TRY_INJECT:monks_light = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:monument_bou_inania_madrasa = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:monument_chellah = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:monument_consulado_de_bilbao = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -331,9 +353,12 @@ TRY_INJECT:naval_supplies_guild = { tsin_large_city = yes tsin_megalopolis = yes
 TRY_INJECT:naval_supplies_manufactory = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:naval_supplies_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:naval_supplies_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:nobility_fortifications = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:noble_courts = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:noble_villa = { tsin_large_city = no }
 TRY_INJECT:nobled_sponsored_temple = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:nobles_mansion = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:nobles_recruitment_center = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:north_sea_shipyards = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:novodevichy_convent = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:nutmeg_estate = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -347,6 +372,7 @@ TRY_INJECT:order_stronghold = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ori_portuguese_quarters = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ornaments_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:orthodox_monastery = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:overseas_trading_post = { tsin_large_city = no }
 TRY_INJECT:ox_market = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:palm_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:palm_plantation = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -359,6 +385,8 @@ TRY_INJECT:paper_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:parish_church = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:patrician_hall = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:pavilion = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:peasants_hunting_grounds = { tsin_large_city = no }
+TRY_INJECT:peasants_training_grounds = { tsin_large_city = no }
 TRY_INJECT:peel_towers = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:pepper_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:perfume_guild = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -375,6 +403,8 @@ TRY_INJECT:pilgrims_hostel = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:pirate_haven = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:pirate_stronghold = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:pirate_tavern = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:plantation_manor = { tsin_large_city = no tsin_megalopolis = no }
+TRY_INJECT:pleasure_garden = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:polders = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:por_feitoria = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:por_trading_post = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -415,6 +445,7 @@ TRY_INJECT:riksbank = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ripening_house = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:rock_of_monaco = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:roma_village = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:rose_garden = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:rotm_granite_dike_system = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:rotterdam_admiralty = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:royal_academy_of_arts = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -424,6 +455,8 @@ TRY_INJECT:royal_court = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:royal_garden = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:royal_society = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:ruined_great_wall_of_china = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:rural_clothmaker = { tsin_large_city = no }
+TRY_INJECT:rural_glassmaker = { tsin_large_city = no }
 TRY_INJECT:sacred_council = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:safaviyya_order_hall = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:saffron_estate = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -432,6 +465,7 @@ TRY_INJECT:saltpeter_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:saltpeter_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sand_pit = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sanssouci = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:sauna = { tsin_large_city = no tsin_megalopolis = no }
 TRY_INJECT:schonbrunn_palace = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:school_of_salamanca = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:schwaz_mine = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -441,9 +475,11 @@ TRY_INJECT:seat_of_cardinal = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:segovia_artillery_academy = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:seljuk_mint = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sergeantry = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:settlement_building = { tsin_large_city = no }
 TRY_INJECT:sevilla_bullfighting_school = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:shambles = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:shipyard = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:shoen = { tsin_large_city = no }
 TRY_INJECT:sie_sienese_port = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:silk_production_guild = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:silverware_guild = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -457,6 +493,8 @@ TRY_INJECT:soap_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:soap_workshop = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sofa_barracks = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sofa_stockade = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:spa_lodge = { tsin_large_city = no tsin_megalopolis = no }
+TRY_INJECT:spiritual_retreat = { tsin_large_city = no }
 TRY_INJECT:stannary_court = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:star_anise_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:star_fort = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -470,6 +508,7 @@ TRY_INJECT:sufi_mosque = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sugar_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sugar_plantation = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:sukharev_tower = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:summer_farm = { tsin_large_city = no }
 TRY_INJECT:supreme_court = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:swi_collegium_helveticum = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tambo = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -495,6 +534,7 @@ TRY_INJECT:thema_headquarters = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:theodosian_walls = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tibetan_great_monastery = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:timurid_ordu = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:tithe_barn = { tsin_large_city = no }
 TRY_INJECT:tobacco_estate = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tobacco_plantation = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:toll_castle = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -517,6 +557,7 @@ TRY_INJECT:tsin_automated_glass_mill = { tsin_large_city = yes tsin_megalopolis 
 TRY_INJECT:tsin_automated_iron_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_automated_paper_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_automated_printing_mill = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:tsin_capital_airfield = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_cold_storage = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_electric_cold_storage = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_electric_lighting = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -526,6 +567,7 @@ TRY_INJECT:tsin_fertilizer_plant = { tsin_large_city = yes tsin_megalopolis = ye
 TRY_INJECT:tsin_machine_works = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_mechanized_textile_mill = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_model_dwellings = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:tsin_motor_transport_depot = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_nitrogen_fixation_plant = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_power_station = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:tsin_prefecture = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -553,6 +595,8 @@ TRY_INJECT:venetian_quarter = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:venkateswara_temple = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:versailles = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:viceroyalty = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:village_fruitiere = { tsin_large_city = no }
+TRY_INJECT:village_granary = { tsin_large_city = no }
 TRY_INJECT:wali_songo_shrine = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:walled_gardens = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:walls_of_benin = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -560,6 +604,7 @@ TRY_INJECT:walls_of_lucca = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:walls_of_ston = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:war_college = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:warrior_lodge = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:warrior_monks_training_grounds = { tsin_large_city = no }
 TRY_INJECT:warrior_temple = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:wat_chaiwatthanaram_temple_building = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:weapon_factory = { tsin_large_city = yes tsin_megalopolis = yes }
@@ -576,6 +621,7 @@ TRY_INJECT:winery_manufactory = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:wisselbank = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:woodhenge_of_cahokia = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:yakata = { tsin_large_city = yes tsin_megalopolis = yes }
+TRY_INJECT:yamashiro = { tsin_large_city = no }
 TRY_INJECT:zazzau_walls = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:zeeland_admiralty = { tsin_large_city = yes tsin_megalopolis = yes }
 TRY_INJECT:zhixian = { tsin_large_city = yes tsin_megalopolis = yes }

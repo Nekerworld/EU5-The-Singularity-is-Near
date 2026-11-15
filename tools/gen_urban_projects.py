@@ -16,7 +16,7 @@ def build():
         previous='NOT = { has_variable = tsin_urban_project_stage }' if n==1 else f'var:tsin_urban_project_stage = {n-1}'
         gate=f'''owner ?= scope:actor
 controller ?= scope:actor
-OR = {{ is_city = yes location_rank ?= location_rank:town }}
+tsin_is_urban_location = yes
 NOT = {{ has_variable = tsin_urban_project_pending }}
 {previous}'''
         actions.append(f'''{key} = {{
@@ -36,7 +36,7 @@ NOT = {{ has_variable = tsin_urban_project_pending }}
   name = "choose_location"
   column = {{ data = name }}
   column = {{ data = population }}
-  visible = {{ owner ?= scope:actor OR = {{ is_city = yes location_rank ?= location_rank:town }} }}
+  visible = {{ owner ?= scope:actor tsin_is_urban_location = yes }}
   enabled = {{ {gate} }}
  }}
  effect = {{

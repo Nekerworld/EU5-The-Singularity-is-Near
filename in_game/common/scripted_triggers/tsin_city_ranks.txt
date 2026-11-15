@@ -4,3 +4,9 @@
 tsin_is_metropolis_or_megalopolis = {
  OR = { location_rank ?= location_rank:megalopolis location_rank ?= location_rank:tsin_megalopolis }
 }
+tsin_is_city_location = {
+ OR = { is_city = yes tsin_is_city_or_large_city = yes tsin_is_metropolis_or_megalopolis = yes }
+}
+tsin_is_urban_location = {
+ OR = { tsin_is_city_location = yes location_rank ?= location_rank:town }
+}

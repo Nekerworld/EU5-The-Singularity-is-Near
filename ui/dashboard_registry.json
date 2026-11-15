@@ -1681,39 +1681,6 @@
       ]
     },
     {
-      "id": "world_companies",
-      "metrics": [
-        {
-          "id": "world_company_cash",
-          "variable": "tsin_wcs_total_cash",
-          "title": {
-            "korean": "세계 조사 기업 부문 현금 합계",
-            "english": "Surveyed world corporate cash"
-          },
-          "tabs": [
-            "finance"
-          ],
-          "unit": "compact",
-          "frequency": "manual",
-          "description": {
-            "korean": "세계 기업 조사 버튼으로 수집한 국가 기업 부문 현금의 합계입니다. 현금 장부가 없는 국가는 포함하지 않으며 기업 유형별로 임의 배분하지 않습니다.",
-            "english": "Country corporate cash summed by the world company survey. Excludes countries without cash ledgers; not arbitrarily allocated across company types."
-          }
-        }
-      ],
-      "shortcuts": [
-        {
-          "id": "world_companies",
-          "tab": "finance",
-          "title": {
-            "korean": "세계 기업 통계 창",
-            "english": "World company statistics"
-          },
-          "open_variable": "tsin_ui_world_companies_open"
-        }
-      ]
-    },
-    {
       "id": "legislation_sidebar",
       "shortcuts": [
         {
@@ -2284,6 +2251,39 @@
             "english": "Fund local emission filters"
           },
           "generic_action": "tsin_pollution_filter"
+        }
+      ]
+    },
+    {
+      "id": "world_companies",
+      "metrics": [
+        {
+          "id": "world_company_cash",
+          "variable": "tsin_wcs_total_cash",
+          "title": {
+            "korean": "세계 조사 기업 부문 현금 합계",
+            "english": "Surveyed world corporate cash"
+          },
+          "tabs": [
+            "finance"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "세계 기업 조사 버튼으로 수집한 국가 기업 운영 현금의 합계입니다. 현금 장부가 없는 국가는 포함하지 않으며 기업 유형별로 임의 배분하지 않습니다.",
+            "english": "Country corporate cash summed by the world company survey. Excludes countries without cash ledgers; not arbitrarily allocated across company types."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "world_companies",
+          "tab": "finance",
+          "title": {
+            "korean": "세계 기업 통계 창",
+            "english": "World company statistics"
+          },
+          "open_variable": "tsin_ui_world_companies_open"
         }
       ]
     }
