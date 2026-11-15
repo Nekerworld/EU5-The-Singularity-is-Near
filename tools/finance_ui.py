@@ -95,8 +95,8 @@ def build(game=None):
     loc('BOND_PRINCIPAL', 'Bonds · outstanding principal', '국채 · 잔여 원금')
     loc('DUE_12', 'Loans due in 1–12 months', '향후 1~12개월 만기 대출')
     loc('DUE_NOW', 'Loans at/past maturity', '만기 도래·경과 대출')
-    loc('TAX_TRADE_ANNUAL', 'Tax and trade income · annualized', '조세·교역 수입 · 연율 환산')
-    loc('DEBT_INCOME_RATIO', 'Debt / annualized tax and trade income · %', '부채 / 연율 조세·교역 수입 · %')
+    loc('TAX_TRADE_ANNUAL', 'Tax/trade income · annualized', '조세·교역 수입 · 연율 환산')
+    loc('DEBT_INCOME_RATIO', 'Debt / annualized income · %', '부채 / 연율 수입 · %')
     loc('PROFILE_NOTE', 'Debt profile: monthly snapshot in reference ducats, excluding TSIN company loans. Bonds are separated from dated loans. At/past maturity does not itself mean default: native renewal and settlement still apply. Annualized income is current monthly tax and trade income × 12, not recorded annual revenue. A missing ratio means no positive income sample.', '부채 요약은 매월 관측한 기준 두캇 값이며 TSIN 기업 대출은 제외합니다. 국채는 만기 대출과 구분합니다. 만기 경과가 곧 채무불이행을 뜻하지 않으며 기본 차환·결제 규칙을 따릅니다. 연율 수입은 현재 월 조세·교역 수입×12로 실제 연간 결산이 아닙니다. 양수 수입 표본이 없으면 비율은 미관측으로 표시합니다.')
     loc('NOTE', 'Treasury and debt are native accounts; the stock panel uses valuation indices. Streaks are stored quarterly observations, not a complete bank solvency or liquidity model. Use Credit for existing loans, bonds, repayments and bankruptcy.', '국고와 부채는 게임의 실제 장부이며 증시는 평가 지수입니다. 위험 지속치는 저장된 분기 관측값으로 은행의 지급 능력·유동성 전체를 나타내지 않습니다. 대출·채권·상환·파산은 신용에서 조작합니다.')
     for name, _ in EXTRA_TABS:
@@ -110,7 +110,7 @@ def build(game=None):
                'blockoverride "on_action_left" {',
                'on_action = "[GetScriptedGui(\'tsin_stock_ui_seed\').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"' if name == 'STOCKS' else '',
                f'on_action = "[OpenLateralViewWithParams(\'credit\', \'subtab = {subtab}\')]"', '}', '}']
-    ui += ['} }', 'type tsin_finance_overview = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 10',
+    ui += ['} }', 'type tsin_finance_overview = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 10',
            'text_single = { fontsize = 22 text = "TSIN_FINANCE_TAB" }']
     values = [('TREASURY', "GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_finance_treasury')|1L"),
               ('DEBT', 'Player.GetEconomy.GetTotalDebt|1L'), ('COST', 'CreditLateralView.GetTotalLoansTakenMonthlyCost|2'),
@@ -129,7 +129,7 @@ def build(game=None):
                f'text_single = {{ visible = "[{var}.IsSet]" text = "[{var}.GetValue|1]" }}',
                f'text_single = {{ visible = "[Not({var}.IsSet)]" text = "TSIN_FINANCE_MISSING" }}', '}']
     ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_PROFILE_NOTE" }']
-    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_NOTE" }', '}', '}']
+    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_NOTE" }', '}', '}', '}', '}']
     result = {CREDIT: '# GENERATED finance host; native credit content and controller retained.\n' + patch_credit(pdx.read_text(game / CREDIT)),
               'in_game/gui/tsin_finance.gui': '\n'.join(ui) + '\n',
               'in_game/common/script_values/tsin_finance_values.txt': 'tsin_finance_treasury = { value = gold }\n'}
