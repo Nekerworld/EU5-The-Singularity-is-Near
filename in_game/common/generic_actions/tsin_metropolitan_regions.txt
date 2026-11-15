@@ -1,0 +1,78 @@
+﻿tsin_metro_create = {
+ type = owncountry price = price:tsin_metro_create_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_urban_planning_advance } }
+ ai_prerequisite = { gold >= 1200 NOT = { has_variable = tsin_ai_metro_created } }
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+  column = { data = name } column = { data = population }
+  visible = { owner ?= scope:actor is_city = yes population >= 100 }
+  enabled = { controller ?= scope:actor NOT = { has_variable = tsin_metro_hub } }
+ }
+ effect = {
+  scope:target_location = {
+   set_variable = tsin_metro_core
+   set_variable = { name = tsin_metro_hub value = this }
+   set_variable = { name = tsin_metro_members value = 1 }
+  }
+  scope:actor = { set_variable = tsin_ai_metro_created }
+ }
+ ai_will_do = { value = 5 }
+}
+tsin_metro_expand = {
+ type = owncountry price = price:tsin_metro_expand_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_urban_planning_advance } }
+ ai_prerequisite = { gold >= 800 has_variable = tsin_ai_metro_created }
+select_trigger = {
+ looking_for_a = location source = actor target_flag = metro_hub name = "choose_location"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+}
+ select_trigger = {
+  looking_for_a = province source = actor target_flag = metro_province name = "choose_province"
+  column = { data = name }
+  visible = { any_location_in_province = { owner ?= scope:actor } }
+  enabled = { scope:metro_hub = { var:tsin_metro_members < 24 }
+   any_location_in_province = { owner ?= scope:actor
+controller ?= scope:actor
+NOT = { has_variable = tsin_metro_hub }
+has_road_to = scope:metro_hub
+any_neighbor_location = { has_variable = tsin_metro_hub var:tsin_metro_hub ?= scope:metro_hub } }
+  }
+ }
+ effect = {
+  scope:metro_province = {
+   every_location_in_province = {
+    limit = { owner ?= scope:actor
+controller ?= scope:actor
+NOT = { has_variable = tsin_metro_hub }
+has_road_to = scope:metro_hub
+any_neighbor_location = { has_variable = tsin_metro_hub var:tsin_metro_hub ?= scope:metro_hub } scope:metro_hub = { var:tsin_metro_members < 24 } }
+    if = { limit = { scope:metro_hub = { var:tsin_metro_members < 24 } }
+    set_variable = { name = tsin_metro_hub value = scope:metro_hub }
+    set_variable = { name = tsin_metro_connected value = 1 }
+    add_to_global_variable_list = { name = tsin_metro_member_sites target = this }
+    scope:metro_hub = { change_variable = { name = tsin_metro_members add = 1 } }
+    }
+   }
+  }
+  set_global_variable = tsin_metro_regions_enabled
+ }
+ ai_will_do = { value = 5 }
+}
+tsin_metro_leave = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = target_location name = "choose_location"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_hub NOT = { has_variable = tsin_metro_core } }
+ }
+ effect = { scope:target_location = { tsin_metro_detach_effect = yes } }
+}
+tsin_metro_review = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ effect = { tsin_metro_review_effect = yes }
+}

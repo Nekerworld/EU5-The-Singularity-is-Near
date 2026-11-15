@@ -1,0 +1,8 @@
+﻿monthly_country_pulse = { on_actions = { tsin_metro_quarterly_review } }
+tsin_metro_quarterly_review = {
+ trigger = { has_global_variable = tsin_metro_regions_enabled
+  OR = { current_month = 1 current_month = 4 current_month = 7 current_month = 10 }
+  OR = { NOT = { has_global_variable = tsin_metro_review_month } tsin_urban_calendar_month > global_var:tsin_metro_review_month }
+ }
+ effect = { tsin_metro_review_effect = yes }
+}

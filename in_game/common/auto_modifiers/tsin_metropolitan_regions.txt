@@ -1,0 +1,16 @@
+﻿tsin_metro_core = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_metro_core population >= 100 controller ?= owner }
+ local_trade_center_power = 0.02
+ local_max_control = 0.02
+}
+tsin_metro_linked = {
+ category = location type = location
+ scales_with = tsin_metro_link_scale
+ potential_trigger = {
+  has_variable = tsin_metro_hub has_variable = tsin_metro_connected var:tsin_metro_connected = 1
+  owner ?= var:tsin_metro_hub.owner controller ?= owner
+ }
+ local_population_capacity_modifier = 0.03
+ local_construction_speed = 0.02
+}

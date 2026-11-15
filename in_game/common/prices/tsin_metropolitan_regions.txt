@@ -1,0 +1,3 @@
+﻿tsin_metro_create_price = { gold = 300 }
+tsin_metro_expand_price = { gold = 200 }
+tsin_metro_review_price = { gold = 0 }

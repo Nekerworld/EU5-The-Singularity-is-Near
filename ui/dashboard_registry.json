@@ -991,6 +991,42 @@
             "english": "High-density development"
           },
           "generic_action": "tsin_urban_project_3"
+        },
+        {
+          "id": "tsin_metro_create",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 중심 지정",
+            "english": "Designate metropolitan core"
+          },
+          "generic_action": "tsin_metro_create"
+        },
+        {
+          "id": "tsin_metro_expand",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 지방 편입",
+            "english": "Expand metropolitan region"
+          },
+          "generic_action": "tsin_metro_expand"
+        },
+        {
+          "id": "tsin_metro_leave",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 지점 제외",
+            "english": "Remove metropolitan member"
+          },
+          "generic_action": "tsin_metro_leave"
+        },
+        {
+          "id": "tsin_metro_review",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 연결 재검사",
+            "english": "Review metropolitan links"
+          },
+          "generic_action": "tsin_metro_review"
         }
       ],
       "migration_effect": "tsin_dashboard_age7_migrate_effect"

@@ -1,0 +1,5 @@
+﻿tsin_metro_link_scale = {
+ value = 1
+ if = { limit = { var:tsin_metro_hub ?= { var:tsin_metro_members > 12 } } multiply = 0.75 }
+ if = { limit = { var:tsin_metro_hub ?= { var:tsin_metro_members > 20 } } multiply = 0.8 }
+}

@@ -1,0 +1,11 @@
+﻿l_english:
+ tsin_metro_create: "Designate metropolitan core"
+ tsin_metro_expand: "Add province to metropolitan region"
+ tsin_metro_leave: "Remove metropolitan member"
+ tsin_metro_review: "Review metropolitan connections"
+ AUTO_MODIFIER_NAME_tsin_metro_core: "Metropolitan core"
+ AUTO_MODIFIER_NAME_tsin_metro_linked: "Metropolitan connection"
+ tsin_metro_create_desc: "Core population 100,000. Up to 24 same-country connected locations. Province selection adds eligible locations only. Connections are reviewed quarterly or manually. Does not transfer population, food or labor."
+ tsin_metro_expand_desc: "Core population 100,000. Up to 24 same-country connected locations. Province selection adds eligible locations only. Connections are reviewed quarterly or manually. Does not transfer population, food or labor."
+ tsin_metro_leave_desc: "Core population 100,000. Up to 24 same-country connected locations. Province selection adds eligible locations only. Connections are reviewed quarterly or manually. Does not transfer population, food or labor."
+ tsin_metro_review_desc: "Core population 100,000. Up to 24 same-country connected locations. Province selection adds eligible locations only. Connections are reviewed quarterly or manually. Does not transfer population, food or labor."
