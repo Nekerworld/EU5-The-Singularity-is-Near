@@ -1,0 +1,86 @@
+﻿types TSINLedger {
+type tsin_money_panel = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
+text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FX" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_fx').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LOCAL" } text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_local_treasury')|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_RATE" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_rate').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_RESERVE" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_reserve').GetValue|2L]" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_reserve').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_RESERVE" on_action = "[GetScriptedGui('tsin_ledger_reserve').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_RESERVE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_release').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_RELEASE" on_action = "[GetScriptedGui('tsin_ledger_release').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_RELEASE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_rate_up').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_RATE_UP" on_action = "[GetScriptedGui('tsin_ledger_rate_up').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_RATE_UP" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_rate_down').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_RATE_DOWN" on_action = "[GetScriptedGui('tsin_ledger_rate_down').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_RATE_DOWN" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_devalue').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_DEVALUE" on_action = "[GetScriptedGui('tsin_ledger_devalue').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_DEVALUE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_redenominate').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_REDENOMINATE" on_action = "[GetScriptedGui('tsin_ledger_redenominate').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_REDENOMINATE" } }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_REFORM_NOTE" }
+}
+type tsin_bank_panel = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
+text_single = { fontsize = 22 text = "TSIN_LEDGER_BANK" }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LIQUID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bank_cash').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LOANS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_firm_debt').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FIRM" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_firm_cash').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_INTEREST" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_interest_paid').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ARREARS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_arrears').GetValue|2L]" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_bank').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_BANK" on_action = "[GetScriptedGui('tsin_ledger_bank').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_BANK" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_contract').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_CONTRACT" on_action = "[GetScriptedGui('tsin_ledger_contract').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_CONTRACT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_lend').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_LEND" on_action = "[GetScriptedGui('tsin_ledger_lend').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_LEND" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_repay').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_REPAY" on_action = "[GetScriptedGui('tsin_ledger_repay').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_REPAY" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_dividend').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_DIVIDEND" on_action = "[GetScriptedGui('tsin_ledger_dividend').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_DIVIDEND" } }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_NOTE" }
+}
+type tsin_funds_panel = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
+text_single = { fontsize = 22 text = "TSIN_LEDGER_FUNDS" }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_INSURANCE" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_insurance').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_PENSION" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_pension').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BENEFITS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_pension_paid').GetValue|2L]" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_insurance').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_INSURANCE" on_action = "[GetScriptedGui('tsin_ledger_insurance').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_INSURANCE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_pension').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_PENSION" on_action = "[GetScriptedGui('tsin_ledger_pension').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_PENSION" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_pension_on').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_PENSION_ON" on_action = "[GetScriptedGui('tsin_ledger_pension_on').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_PENSION_ON" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_pension_off').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_PENSION_OFF" on_action = "[GetScriptedGui('tsin_ledger_pension_off').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_PENSION_OFF" } }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_FUND_NOTE" }
+}
+}

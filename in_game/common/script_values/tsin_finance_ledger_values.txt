@@ -1,0 +1,7 @@
+﻿tsin_ledger_lot = { value = tsin_gold_cost_1 min = 1 }
+tsin_local_treasury = { value = gold multiply = var:tsin_fx }
+tsin_ledger_repayment = { value = var:tsin_firm_cash max = var:tsin_firm_debt min = 0 }
+tsin_ledger_interest_due = { value = var:tsin_firm_debt multiply = var:tsin_rate divide = 1200 }
+tsin_ledger_interest_payment = { value = tsin_ledger_interest_due max = var:tsin_firm_cash min = 0 }
+tsin_ledger_benefit = { value = tsin_ledger_lot multiply = 0.05 max = var:tsin_pension min = 0 }
+tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledger_lot min = 0 }

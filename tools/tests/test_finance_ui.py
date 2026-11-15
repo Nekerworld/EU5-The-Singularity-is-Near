@@ -3,7 +3,7 @@ import sys
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import pdx
-from finance_ui import build, patch_credit, patch_tabs, STOCK, OVERVIEW, NATIVE_CREDIT, CREDIT
+from finance_ui import build, patch_credit, patch_tabs, STOCK, OVERVIEW, NATIVE_CREDIT, CREDIT, EXTRA_TABS
 
 
 class FinanceUITests(unittest.TestCase):
@@ -13,6 +13,7 @@ class FinanceUITests(unittest.TestCase):
         injected = '\n\t\ttsin_finance_tabs = {}\n'
         injected += f'\t\ttsin_finance_overview = {{ visible = "[{OVERVIEW}]" }}\n'
         injected += f'\t\ttsin_stock_panel = {{ visible = "[{STOCK}]" }}\n'
+        injected += ''.join(f'\t\t{subtab}_panel = {{ visible = "[LateralView.Vars.HasValue(\'subtab\', \'{subtab}\')]" }}\n' for _, subtab in EXTRA_TABS)
         restored = patched.replace(injected, '').replace(f'\t\t\tvisible = "[{NATIVE_CREDIT}]"\n', '')
         self.assertEqual(restored, original)
         for method in ['OnDeclareBankruptcy', 'OnRepayLoan', 'OnSellBonds', 'OnRedeemBond']:

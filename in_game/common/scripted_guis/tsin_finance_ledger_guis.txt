@@ -1,0 +1,30 @@
+﻿tsin_ledger_reserve = { scope = country is_shown = { always = yes } is_valid = { gold >= tsin_ledger_lot } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { gold >= tsin_ledger_lot } add_gold = { value = tsin_ledger_lot multiply = -1 } change_variable = { name = tsin_reserve add = tsin_ledger_lot } } } }
+tsin_ledger_bank = { scope = country is_shown = { always = yes } is_valid = { gold >= tsin_ledger_lot } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { gold >= tsin_ledger_lot } add_gold = { value = tsin_ledger_lot multiply = -1 } change_variable = { name = tsin_bank_cash add = tsin_ledger_lot } } } }
+tsin_ledger_insurance = { scope = country is_shown = { always = yes } is_valid = { gold >= tsin_ledger_lot } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { gold >= tsin_ledger_lot } add_gold = { value = tsin_ledger_lot multiply = -1 } change_variable = { name = tsin_insurance add = tsin_ledger_lot } } } }
+tsin_ledger_pension = { scope = country is_shown = { always = yes } is_valid = { gold >= tsin_ledger_lot } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { gold >= tsin_ledger_lot } add_gold = { value = tsin_ledger_lot multiply = -1 } change_variable = { name = tsin_pension add = tsin_ledger_lot } } } }
+tsin_ledger_release = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_reserve var:tsin_reserve >= tsin_ledger_lot } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { has_variable = tsin_reserve var:tsin_reserve >= tsin_ledger_lot } change_variable = { name = tsin_reserve subtract = tsin_ledger_lot } add_gold = tsin_ledger_lot } } }
+tsin_ledger_rate_up = { scope = country is_shown = { always = yes } is_valid = { var:tsin_rate < 20 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { var:tsin_rate < 20 } change_variable = { name = tsin_rate add = 1 } } } }
+tsin_ledger_rate_down = { scope = country is_shown = { always = yes } is_valid = { var:tsin_rate > 0 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { var:tsin_rate > 0 } change_variable = { name = tsin_rate subtract = 1 } } } }
+tsin_ledger_devalue = { scope = country is_shown = { always = yes } is_valid = { NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx < 1000 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx < 1000 } change_variable = { name = tsin_fx multiply = 1.10 } set_variable = { name = tsin_reform_cooldown months = 12 } } } }
+tsin_ledger_redenominate = { scope = country is_shown = { always = yes } is_valid = { NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx >= 10 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx >= 10 } change_variable = { name = tsin_fx divide = 10 } set_variable = { name = tsin_reform_cooldown months = 12 } } } }
+tsin_ledger_contract = { scope = country is_shown = { always = yes } is_valid = { gold >= tsin_ledger_lot tsin_company_count > 0 NOT = { has_policy = policy:tsin_laissez_faire_policy } } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { gold >= tsin_ledger_lot tsin_company_count > 0 NOT = { has_policy = policy:tsin_laissez_faire_policy } } add_gold = { value = tsin_ledger_lot multiply = -1 } change_variable = { name = tsin_firm_cash add = tsin_ledger_lot } } } }
+tsin_ledger_lend = { scope = country is_shown = { always = yes } is_valid = { var:tsin_bank_cash >= tsin_ledger_lot tsin_company_count > 0 NOT = { has_policy = policy:tsin_laissez_faire_policy } } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { var:tsin_bank_cash >= tsin_ledger_lot tsin_company_count > 0 NOT = { has_policy = policy:tsin_laissez_faire_policy } } tsin_ledger_lend_effect = yes } } }
+tsin_ledger_repay = { scope = country is_shown = { always = yes } is_valid = { var:tsin_firm_cash > 0 var:tsin_firm_debt > 0 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { var:tsin_firm_cash > 0 var:tsin_firm_debt > 0 } tsin_ledger_repay_effect = yes } } }
+tsin_ledger_dividend = { scope = country is_shown = { always = yes } is_valid = { var:tsin_firm_cash >= tsin_ledger_lot var:tsin_firm_debt <= 0 country_has_estate = estate_type:burghers_estate NOT = { has_policy = policy:tsin_laissez_faire_policy } } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { var:tsin_firm_cash >= tsin_ledger_lot var:tsin_firm_debt <= 0 country_has_estate = estate_type:burghers_estate NOT = { has_policy = policy:tsin_laissez_faire_policy } } change_variable = { name = tsin_firm_cash subtract = tsin_ledger_lot } add_gold_to_estate = { estate_type = estate_type:burghers_estate value = tsin_ledger_lot } } } }
+tsin_ledger_pension_on = { scope = country is_shown = { always = yes } is_valid = { country_has_estate = estate_type:peasants_estate NOT = { has_variable = tsin_pension_active } var:tsin_pension > 0 } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { country_has_estate = estate_type:peasants_estate NOT = { has_variable = tsin_pension_active } var:tsin_pension > 0 } set_variable = tsin_pension_active } } }
+tsin_ledger_pension_off = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_pension_active } effect = { tsin_ledger_init_effect = yes
+ if = { limit = { has_variable = tsin_pension_active } remove_variable = tsin_pension_active } } }

@@ -1,0 +1,2 @@
+﻿monthly_country_pulse = { on_actions = { tsin_finance_ledger_monthly } }
+tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no tsin_company_count > 0 has_variable = tsin_ledger_version } } effect = { tsin_ledger_month_effect = yes } }

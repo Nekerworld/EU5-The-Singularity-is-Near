@@ -18,11 +18,35 @@ on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_stocks')]"
 }
 }
 button_secondary_tab_alt = { using = layoutpolicy_expanding
-down = "[Not(Or(LateralView.Vars.HasValue('subtab', 'tsin_stocks'), LateralView.Vars.HasValue('subtab', 'tsin_finance_overview')))]"
+down = "[Not(Or(LateralView.Vars.HasValue('subtab', 'tsin_stocks'), Or(LateralView.Vars.HasValue('subtab', 'tsin_finance_overview'), Or(LateralView.Vars.HasValue('subtab', 'tsin_money'), Or(LateralView.Vars.HasValue('subtab', 'tsin_bank'), LateralView.Vars.HasValue('subtab', 'tsin_funds'))))))]"
 blockoverride "text" { text = "TSIN_FINANCE_CREDIT" }
 blockoverride "on_action_left" {
 
 on_action = "[OpenLateralViewWithParams('credit', 'subtab = credit')]"
+}
+}
+button_secondary_tab_alt = { using = layoutpolicy_expanding
+down = "[LateralView.Vars.HasValue('subtab', 'tsin_money')]"
+blockoverride "text" { text = "TSIN_FINANCE_MONEY" }
+blockoverride "on_action_left" {
+
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_money')]"
+}
+}
+button_secondary_tab_alt = { using = layoutpolicy_expanding
+down = "[LateralView.Vars.HasValue('subtab', 'tsin_bank')]"
+blockoverride "text" { text = "TSIN_FINANCE_BANK" }
+blockoverride "on_action_left" {
+
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
+}
+}
+button_secondary_tab_alt = { using = layoutpolicy_expanding
+down = "[LateralView.Vars.HasValue('subtab', 'tsin_funds')]"
+blockoverride "text" { text = "TSIN_FINANCE_FUNDS" }
+blockoverride "on_action_left" {
+
+on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_funds')]"
 }
 }
 } }

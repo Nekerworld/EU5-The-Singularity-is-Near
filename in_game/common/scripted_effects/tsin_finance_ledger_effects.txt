@@ -1,0 +1,65 @@
+﻿# GENERATED funded accounts; missing legacy variables initialize without endowments.
+tsin_ledger_init_effect = {
+if = { limit = { NOT = { has_variable = tsin_reserve } } set_variable = { name = tsin_reserve value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_bank_cash } } set_variable = { name = tsin_bank_cash value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_firm_cash } } set_variable = { name = tsin_firm_cash value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_firm_debt } } set_variable = { name = tsin_firm_debt value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_arrears } } set_variable = { name = tsin_arrears value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_insurance } } set_variable = { name = tsin_insurance value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_pension } } set_variable = { name = tsin_pension value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_pension_paid } } set_variable = { name = tsin_pension_paid value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_interest_paid } } set_variable = { name = tsin_interest_paid value = 0 } }
+if = { limit = { NOT = { has_variable = tsin_fx } } set_variable = { name = tsin_fx value = 1 } }
+if = { limit = { NOT = { has_variable = tsin_rate } } set_variable = { name = tsin_rate value = 4 } }
+set_variable = { name = tsin_ledger_version value = 1 }
+}
+
+tsin_ledger_lend_effect = {
+    if = { limit = { var:tsin_bank_cash >= tsin_ledger_lot tsin_company_count > 0 }
+        change_variable = { name = tsin_bank_cash subtract = tsin_ledger_lot }
+        change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }
+        change_variable = { name = tsin_firm_debt add = tsin_ledger_lot }
+    }
+}
+tsin_ledger_repay_effect = {
+    set_variable = { name = tsin_tx value = tsin_ledger_repayment }
+    change_variable = { name = tsin_firm_cash subtract = var:tsin_tx }
+    change_variable = { name = tsin_bank_cash add = var:tsin_tx }
+    change_variable = { name = tsin_firm_debt subtract = var:tsin_tx }
+    remove_variable = tsin_tx
+}
+tsin_ledger_month_effect = {
+    tsin_ledger_init_effect = yes
+    set_variable = { name = tsin_interest_paid value = tsin_ledger_interest_payment }
+    change_variable = { name = tsin_firm_cash subtract = var:tsin_interest_paid }
+    change_variable = { name = tsin_bank_cash add = var:tsin_interest_paid }
+    if = { limit = { var:tsin_interest_paid < tsin_ledger_interest_due }
+        change_variable = { name = tsin_arrears add = 1 }
+    }
+    else = {
+        set_variable = { name = tsin_arrears value = 0 }
+        remove_variable = tsin_insurance_claimed
+    }
+    if = { limit = { var:tsin_arrears >= 6 NOT = { has_variable = tsin_insurance_claimed } var:tsin_insurance > 0 }
+        set_variable = { name = tsin_tx value = tsin_ledger_claim }
+        change_variable = { name = tsin_insurance subtract = var:tsin_tx }
+        change_variable = { name = tsin_firm_cash add = var:tsin_tx }
+        set_variable = tsin_insurance_claimed
+        remove_variable = tsin_tx
+    }
+    set_variable = { name = tsin_pension_paid value = 0 }
+    if = { limit = { has_variable = tsin_pension_active country_has_estate = estate_type:peasants_estate var:tsin_pension > 0 }
+        set_variable = { name = tsin_pension_paid value = tsin_ledger_benefit }
+        change_variable = { name = tsin_pension subtract = var:tsin_pension_paid }
+        add_gold_to_estate = { estate_type = estate_type:peasants_estate value = var:tsin_pension_paid }
+    }
+    if = { limit = { is_ai = yes }
+        if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_count > 0
+            any_estate = { estate_type = estate_type:burghers_estate estate_gold >= root.tsin_ledger_lot }
+            var:tsin_firm_cash < tsin_ledger_lot }
+            add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_ledger_lot multiply = -1 } }
+            change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }
+        }
+        if = { limit = { var:tsin_firm_cash > 0 var:tsin_firm_debt > 0 } tsin_ledger_repay_effect = yes }
+    }
+}

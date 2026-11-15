@@ -13,3 +13,6 @@
  TSIN_FINANCE_SUPPLY: "Severe oversupply streak · quarters / 4"
  TSIN_FINANCE_MISSING: "No sample recorded"
  TSIN_FINANCE_NOTE: "Treasury and debt are native accounts; the stock panel uses valuation indices. Streaks are stored quarterly observations, not a complete bank solvency or liquidity model. Use Credit for existing loans, bonds, repayments and bankruptcy."
+ TSIN_FINANCE_MONEY: "Currency"
+ TSIN_FINANCE_BANK: "Banks"
+ TSIN_FINANCE_FUNDS: "Funds"

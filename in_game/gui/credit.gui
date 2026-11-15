@@ -224,9 +224,12 @@ lateralview = {
 		tsin_finance_tabs = {}
 		tsin_finance_overview = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_finance_overview')]" }
 		tsin_stock_panel = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_stocks')]" }
+		tsin_money_panel = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_money')]" }
+		tsin_bank_panel = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_bank')]" }
+		tsin_funds_panel = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_funds')]" }
 
 		vbox = {
-			visible = "[Not(Or(LateralView.Vars.HasValue('subtab', 'tsin_stocks'), LateralView.Vars.HasValue('subtab', 'tsin_finance_overview')))]"
+			visible = "[Not(Or(LateralView.Vars.HasValue('subtab', 'tsin_stocks'), Or(LateralView.Vars.HasValue('subtab', 'tsin_finance_overview'), Or(LateralView.Vars.HasValue('subtab', 'tsin_money'), Or(LateralView.Vars.HasValue('subtab', 'tsin_bank'), LateralView.Vars.HasValue('subtab', 'tsin_funds'))))))]"
 			using = layoutpolicy_expanding
 			using = bg_main_inner_alt
 			using = window_main_tabs_margin_alt

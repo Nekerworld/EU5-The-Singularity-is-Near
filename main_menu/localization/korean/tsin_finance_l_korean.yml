@@ -13,3 +13,6 @@
  TSIN_FINANCE_SUPPLY: "심각한 과잉공급 연속 분기 / 4"
  TSIN_FINANCE_MISSING: "미관측"
  TSIN_FINANCE_NOTE: "국고와 부채는 게임의 실제 장부이며 증시는 평가 지수입니다. 위험 지속치는 저장된 분기 관측값으로 은행의 지급 능력·유동성 전체를 나타내지 않습니다. 대출·채권·상환·파산은 신용에서 조작합니다."
+ TSIN_FINANCE_MONEY: "통화"
+ TSIN_FINANCE_BANK: "은행"
+ TSIN_FINANCE_FUNDS: "기금"
