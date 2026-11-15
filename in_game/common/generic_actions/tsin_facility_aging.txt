@@ -1,0 +1,129 @@
+﻿tsin_facility_repair_industry = {
+ type = owncountry price = price:tsin_facility_repair_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_industry_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_industry_size > 0 var:tsin_facility_industry_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_industry_size > 0 var:tsin_facility_industry_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_industry_age value = { value = var:tsin_facility_industry_age add = { value = current_year subtract = var:tsin_facility_industry_year } } }
+set_variable = { name = tsin_facility_industry_year value = current_year }
+set_variable = { name = tsin_facility_industry_wear value = 0 } } } }
+}
+
+tsin_facility_modernize_industry = {
+ type = owncountry price = price:tsin_facility_modernize_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_industry_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_industry_size > 0 OR = { tsin_facility_industry_gap > 0 var:tsin_facility_industry_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_industry_size > 0 OR = { tsin_facility_industry_gap > 0 var:tsin_facility_industry_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_industry_age value = { value = var:tsin_facility_industry_age add = { value = current_year subtract = var:tsin_facility_industry_year } } }
+set_variable = { name = tsin_facility_industry_year value = current_year }
+set_variable = { name = tsin_facility_industry_wear value = 0 }
+set_variable = { name = tsin_facility_industry_grade value = { value = tsin_facility_industry_technology min = var:tsin_facility_industry_grade } }
+set_variable = { name = tsin_facility_industry_age value = 0 } } } }
+}
+
+tsin_facility_repair_transport = {
+ type = owncountry price = price:tsin_facility_repair_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_transport_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_transport_size > 0 var:tsin_facility_transport_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_transport_size > 0 var:tsin_facility_transport_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_transport_age value = { value = var:tsin_facility_transport_age add = { value = current_year subtract = var:tsin_facility_transport_year } } }
+set_variable = { name = tsin_facility_transport_year value = current_year }
+set_variable = { name = tsin_facility_transport_wear value = 0 } } } }
+}
+
+tsin_facility_modernize_transport = {
+ type = owncountry price = price:tsin_facility_modernize_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_transport_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_transport_size > 0 OR = { tsin_facility_transport_gap > 0 var:tsin_facility_transport_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_transport_size > 0 OR = { tsin_facility_transport_gap > 0 var:tsin_facility_transport_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_transport_age value = { value = var:tsin_facility_transport_age add = { value = current_year subtract = var:tsin_facility_transport_year } } }
+set_variable = { name = tsin_facility_transport_year value = current_year }
+set_variable = { name = tsin_facility_transport_wear value = 0 }
+set_variable = { name = tsin_facility_transport_grade value = { value = tsin_facility_transport_technology min = var:tsin_facility_transport_grade } }
+set_variable = { name = tsin_facility_transport_age value = 0 } } } }
+}
+
+tsin_facility_repair_public = {
+ type = owncountry price = price:tsin_facility_repair_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_public_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_public_size > 0 var:tsin_facility_public_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_public_size > 0 var:tsin_facility_public_wear > 0 NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_public_age value = { value = var:tsin_facility_public_age add = { value = current_year subtract = var:tsin_facility_public_year } } }
+set_variable = { name = tsin_facility_public_year value = current_year }
+set_variable = { name = tsin_facility_public_wear value = 0 } } } }
+}
+
+tsin_facility_modernize_public = {
+ type = owncountry price = price:tsin_facility_modernize_price show_message = no
+ price_modifier = { value = 1 if = { limit = { exists = scope:target_province } value = scope:target_province.tsin_facility_public_price_factor } }
+ ai_tick = never automation_tick = never
+ allow = { trigger_if = { limit = { exists = scope:target_province } scope:target_province = { owner ?= scope:actor var:tsin_facility_public_size > 0 OR = { tsin_facility_public_gap > 0 var:tsin_facility_public_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } } }
+ select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_public_size > 0 OR = { tsin_facility_public_gap > 0 var:tsin_facility_public_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_public_age value = { value = var:tsin_facility_public_age add = { value = current_year subtract = var:tsin_facility_public_year } } }
+set_variable = { name = tsin_facility_public_year value = current_year }
+set_variable = { name = tsin_facility_public_wear value = 0 }
+set_variable = { name = tsin_facility_public_grade value = { value = tsin_facility_public_technology min = var:tsin_facility_public_grade } }
+set_variable = { name = tsin_facility_public_age value = 0 } } } }
+}
+
+tsin_facility_budget_on = { type = owncountry price = price:tsin_facility_control_price show_message = no ai_tick = never automation_tick = never effect = { scope:actor = { set_variable = { name = tsin_facility_support_budget value = 1 } } } }
+
+tsin_facility_budget_off = { type = owncountry price = price:tsin_facility_control_price show_message = no ai_tick = never automation_tick = never effect = { scope:actor = { remove_variable = tsin_facility_support_budget } } }
+
+tsin_facility_inspect = { type = owncountry price = price:tsin_facility_control_price show_message = no ai_tick = never automation_tick = never
+select_trigger = {
+ looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+ column = { data = name }
+ visible = { owner ?= scope:actor has_variable = tsin_facility_registered }
+ enabled = { NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } }
+}
+ effect = { scope:actor = { set_variable = { name = tsin_facility_report_industry_age value = scope:target_province.var:tsin_facility_industry_age }
+set_variable = { name = tsin_facility_report_industry_wear value = scope:target_province.var:tsin_facility_industry_wear }
+set_variable = { name = tsin_facility_report_industry_size value = scope:target_province.var:tsin_facility_industry_size }
+set_variable = { name = tsin_facility_report_industry_year value = scope:target_province.var:tsin_facility_industry_year }
+set_variable = { name = tsin_facility_report_industry_gap value = scope:target_province.tsin_facility_industry_gap }
+set_variable = { name = tsin_facility_report_transport_age value = scope:target_province.var:tsin_facility_transport_age }
+set_variable = { name = tsin_facility_report_transport_wear value = scope:target_province.var:tsin_facility_transport_wear }
+set_variable = { name = tsin_facility_report_transport_size value = scope:target_province.var:tsin_facility_transport_size }
+set_variable = { name = tsin_facility_report_transport_year value = scope:target_province.var:tsin_facility_transport_year }
+set_variable = { name = tsin_facility_report_transport_gap value = scope:target_province.tsin_facility_transport_gap }
+set_variable = { name = tsin_facility_report_public_age value = scope:target_province.var:tsin_facility_public_age }
+set_variable = { name = tsin_facility_report_public_wear value = scope:target_province.var:tsin_facility_public_wear }
+set_variable = { name = tsin_facility_report_public_size value = scope:target_province.var:tsin_facility_public_size }
+set_variable = { name = tsin_facility_report_public_year value = scope:target_province.var:tsin_facility_public_year }
+set_variable = { name = tsin_facility_report_public_gap value = scope:target_province.tsin_facility_public_gap } } }
+}

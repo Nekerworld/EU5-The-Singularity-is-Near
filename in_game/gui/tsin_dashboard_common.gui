@@ -620,6 +620,186 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_elect
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_electric').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
 }
+type tsin_ui_card_facility_report_industry_age = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_INDUSTRY_AGE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_INDUSTRY_AGE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_age').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_age').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_age').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_industry_wear = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_INDUSTRY_WEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_INDUSTRY_WEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_wear').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_wear').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_wear').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_industry_gap = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_INDUSTRY_GAP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_INDUSTRY_GAP" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_gap').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_gap').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_gap').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_industry_size = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_INDUSTRY_SIZE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_INDUSTRY_SIZE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_size').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_size').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_size').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_industry_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_INDUSTRY_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_INDUSTRY_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_industry_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_transport_age = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_TRANSPORT_AGE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_TRANSPORT_AGE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_age').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_age').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_age').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_transport_wear = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_TRANSPORT_WEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_TRANSPORT_WEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_wear').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_wear').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_wear').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_transport_gap = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_TRANSPORT_GAP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_TRANSPORT_GAP" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_gap').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_gap').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_gap').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_transport_size = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_TRANSPORT_SIZE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_TRANSPORT_SIZE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_size').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_size').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_size').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_transport_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_TRANSPORT_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_TRANSPORT_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_transport_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_public_age = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_PUBLIC_AGE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_PUBLIC_AGE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_age').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_age').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_age').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_public_wear = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_PUBLIC_WEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_PUBLIC_WEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_wear').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_wear').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_wear').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_public_gap = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_PUBLIC_GAP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_PUBLIC_GAP" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_gap').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_gap').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_gap').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_public_size = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_PUBLIC_SIZE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_PUBLIC_SIZE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_size').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_size').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_size').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_report_public_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_REPORT_PUBLIC_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_REPORT_PUBLIC_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_report_public_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_facility_budget = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_BUDGET"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_BUDGET" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_support_budget').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_support_budget').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_support_budget').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
+type tsin_ui_card_facility_paid = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_PAID"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_PAID" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_amount').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_amount').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_paid_amount').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
+type tsin_ui_card_facility_paid_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_FACILITY_PAID_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_PAID_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }

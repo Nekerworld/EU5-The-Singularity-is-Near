@@ -1,0 +1,52 @@
+﻿tsin_facility_industry_location_size = { value = tsin_location_mill_levels
+}
+
+tsin_facility_industry_technology = { value = 0
+ if = { limit = { owner ?= { has_advance = tsin_machine_tools_advance } } value = 1 }
+ if = { limit = { owner ?= { has_advance = tsin_electric_motor_advance } } value = 2 }
+ if = { limit = { owner ?= { has_advance = tsin_motor_transport_advance } } value = 3 }
+}
+
+tsin_facility_industry_gap = { value = tsin_facility_industry_technology subtract = var:tsin_facility_industry_grade min = 0 }
+tsin_facility_industry_price_factor = { value = var:tsin_facility_industry_size divide = 25 min = 1 }
+tsin_facility_industry_wear_scale = { value = province.var:tsin_facility_industry_wear subtract = 50 divide = 50 min = 0 max = 1 }
+tsin_facility_industry_gap_scale = { value = province.tsin_facility_industry_gap divide = 3 min = 0 max = 1 }
+
+tsin_facility_transport_location_size = { value = 0
+ add = "location_building_level(building_type:tsin_railway_station)"
+ add = "location_building_level(building_type:tsin_steam_metro)"
+ add = "location_building_level(building_type:tsin_electric_metro)"
+ add = "location_building_level(building_type:tsin_motor_transport_depot)"
+}
+
+tsin_facility_transport_technology = { value = 0
+ if = { limit = { owner ?= { has_advance = tsin_steel_rolling_stock_advance } } value = 1 }
+ if = { limit = { owner ?= { has_advance = tsin_telegraph_telephone_advance } } value = 2 }
+ if = { limit = { owner ?= { has_advance = tsin_motor_transport_advance } } value = 3 }
+}
+
+tsin_facility_transport_gap = { value = tsin_facility_transport_technology subtract = var:tsin_facility_transport_grade min = 0 }
+tsin_facility_transport_price_factor = { value = var:tsin_facility_transport_size divide = 25 min = 1 }
+tsin_facility_transport_wear_scale = { value = province.var:tsin_facility_transport_wear subtract = 50 divide = 50 min = 0 max = 1 }
+tsin_facility_transport_gap_scale = { value = province.tsin_facility_transport_gap divide = 3 min = 0 max = 1 }
+
+tsin_facility_public_location_size = { value = 0
+ add = "location_building_level(building_type:tsin_public_school)"
+ add = "location_building_level(building_type:tsin_research_university)"
+ add = "location_building_level(building_type:tsin_cold_storage)"
+ add = "location_building_level(building_type:tsin_electric_cold_storage)"
+ add = "location_building_level(building_type:tsin_electric_lighting)"
+ add = "location_building_level(building_type:tsin_distribution_substation)"
+ add = "location_building_level(building_type:hospital)"
+}
+
+tsin_facility_public_technology = { value = 0
+ if = { limit = { owner ?= { has_advance = tsin_urban_planning_advance } } value = 1 }
+ if = { limit = { owner ?= { has_advance = tsin_modern_sewerage_advance } } value = 2 }
+ if = { limit = { owner ?= { has_advance = tsin_distribution_grid_advance } } value = 3 }
+}
+
+tsin_facility_public_gap = { value = tsin_facility_public_technology subtract = var:tsin_facility_public_grade min = 0 }
+tsin_facility_public_price_factor = { value = var:tsin_facility_public_size divide = 25 min = 1 }
+tsin_facility_public_wear_scale = { value = province.var:tsin_facility_public_wear subtract = 50 divide = 50 min = 0 max = 1 }
+tsin_facility_public_gap_scale = { value = province.tsin_facility_public_gap divide = 3 min = 0 max = 1 }

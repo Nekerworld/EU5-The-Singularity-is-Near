@@ -164,6 +164,36 @@ tsin_ui_card_storage_report_state = {}
 tsin_ui_card_storage_report_year = {}
 tsin_ui_card_storage_report_month = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_facility_report_industry_age = {}
+tsin_ui_card_facility_report_industry_wear = {}
+tsin_ui_card_facility_report_industry_gap = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_industry_size = {}
+tsin_ui_card_facility_report_industry_year = {}
+tsin_ui_card_facility_report_transport_age = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_transport_wear = {}
+tsin_ui_card_facility_report_transport_gap = {}
+tsin_ui_card_facility_report_transport_size = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_transport_year = {}
+tsin_ui_card_facility_report_public_age = {}
+tsin_ui_card_facility_report_public_wear = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_public_gap = {}
+tsin_ui_card_facility_report_public_size = {}
+tsin_ui_card_facility_report_public_year = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_facility_budget = {}
+tsin_ui_card_facility_paid = {}
+tsin_ui_card_facility_paid_year = {}
+}
 button_regular = {
     size = { 220 30 }
     action_tooltip = {
@@ -325,6 +355,105 @@ button_regular = {
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_DISTRIBUTION_MAP" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_budget_on')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_BUDGET_ON"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_BUDGET_ON" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_budget_off')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_BUDGET_OFF"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_BUDGET_OFF" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_inspect')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_INSPECT"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_INSPECT" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_industry')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_REPAIR_INDUSTRY"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_INDUSTRY" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_industry')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_MODERNIZE_INDUSTRY"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_INDUSTRY" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_transport')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_REPAIR_TRANSPORT"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_TRANSPORT" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_transport')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_public')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_public')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC" }
 }
 }
 }

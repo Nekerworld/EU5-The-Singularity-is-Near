@@ -1,0 +1,35 @@
+﻿tsin_facility_industry_wear = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_industry_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_industry_wear_scale
+ local_mills_build_buildings_efficiency = -0.02
+}
+
+tsin_facility_industry_gap = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_industry_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_industry_gap_scale
+ local_mills_build_buildings_efficiency = -0.02
+}
+
+tsin_facility_transport_wear = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_transport_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_transport_wear_scale
+ local_market_access = -0.02
+}
+
+tsin_facility_transport_gap = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_transport_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_transport_gap_scale
+ local_market_access = -0.02
+}
+
+tsin_facility_public_wear = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_public_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_public_wear_scale
+ local_population_capacity_modifier = -0.03
+}
+
+tsin_facility_public_gap = { category = location type = location
+ potential_trigger = { controller ?= owner tsin_facility_public_location_size > 0 province = { has_variable = tsin_facility_registered } }
+ scales_with = tsin_facility_public_gap_scale
+ local_population_capacity_modifier = -0.03
+}

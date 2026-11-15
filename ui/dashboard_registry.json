@@ -1755,6 +1755,400 @@
           "map_mode": "tsin_power_access"
         }
       ]
+    },
+    {
+      "id": "facility_aging",
+      "shortcuts": [
+        {
+          "id": "facility_budget_on",
+          "tab": "economy",
+          "title": {
+            "korean": "지방 설비 정비 지원 예산 켜기",
+            "english": "Enable district maintenance support"
+          },
+          "generic_action": "tsin_facility_budget_on"
+        },
+        {
+          "id": "facility_budget_off",
+          "tab": "economy",
+          "title": {
+            "korean": "지방 설비 정비 지원 예산 끄기",
+            "english": "Disable district maintenance support"
+          },
+          "generic_action": "tsin_facility_budget_off"
+        },
+        {
+          "id": "facility_inspect",
+          "tab": "economy",
+          "title": {
+            "korean": "지방 설비 상태 조사",
+            "english": "Inspect district facilities"
+          },
+          "generic_action": "tsin_facility_inspect"
+        },
+        {
+          "id": "facility_repair_industry",
+          "tab": "economy",
+          "title": {
+            "korean": "산업 설비 보수",
+            "english": "Repair industry"
+          },
+          "generic_action": "tsin_facility_repair_industry"
+        },
+        {
+          "id": "facility_modernize_industry",
+          "tab": "economy",
+          "title": {
+            "korean": "산업 설비 현대화",
+            "english": "Modernize industry"
+          },
+          "generic_action": "tsin_facility_modernize_industry"
+        },
+        {
+          "id": "facility_repair_transport",
+          "tab": "economy",
+          "title": {
+            "korean": "교통 설비 보수",
+            "english": "Repair transport"
+          },
+          "generic_action": "tsin_facility_repair_transport"
+        },
+        {
+          "id": "facility_modernize_transport",
+          "tab": "economy",
+          "title": {
+            "korean": "교통 설비 현대화",
+            "english": "Modernize transport"
+          },
+          "generic_action": "tsin_facility_modernize_transport"
+        },
+        {
+          "id": "facility_repair_public",
+          "tab": "economy",
+          "title": {
+            "korean": "공공설비 설비 보수",
+            "english": "Repair public services"
+          },
+          "generic_action": "tsin_facility_repair_public"
+        },
+        {
+          "id": "facility_modernize_public",
+          "tab": "economy",
+          "title": {
+            "korean": "공공설비 설비 현대화",
+            "english": "Modernize public services"
+          },
+          "generic_action": "tsin_facility_modernize_public"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "facility_report_industry_age",
+          "variable": "tsin_facility_report_industry_age",
+          "title": {
+            "korean": "산업 — 추정 시설 연령",
+            "english": "Industry — Estimated age"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_industry_wear",
+          "variable": "tsin_facility_report_industry_wear",
+          "title": {
+            "korean": "산업 — 마모 지수",
+            "english": "Industry — Wear index"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_industry_gap",
+          "variable": "tsin_facility_report_industry_gap",
+          "title": {
+            "korean": "산업 — 기술 격차",
+            "english": "Industry — Technology gap"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_industry_size",
+          "variable": "tsin_facility_report_industry_size",
+          "title": {
+            "korean": "산업 — 시설 규모",
+            "english": "Industry — Facility scale"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_industry_year",
+          "variable": "tsin_facility_report_industry_year",
+          "title": {
+            "korean": "산업 — 상태 기준 연도",
+            "english": "Industry — Condition reference year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_transport_age",
+          "variable": "tsin_facility_report_transport_age",
+          "title": {
+            "korean": "교통 — 추정 시설 연령",
+            "english": "Transport — Estimated age"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_transport_wear",
+          "variable": "tsin_facility_report_transport_wear",
+          "title": {
+            "korean": "교통 — 마모 지수",
+            "english": "Transport — Wear index"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_transport_gap",
+          "variable": "tsin_facility_report_transport_gap",
+          "title": {
+            "korean": "교통 — 기술 격차",
+            "english": "Transport — Technology gap"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_transport_size",
+          "variable": "tsin_facility_report_transport_size",
+          "title": {
+            "korean": "교통 — 시설 규모",
+            "english": "Transport — Facility scale"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_transport_year",
+          "variable": "tsin_facility_report_transport_year",
+          "title": {
+            "korean": "교통 — 상태 기준 연도",
+            "english": "Transport — Condition reference year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_public_age",
+          "variable": "tsin_facility_report_public_age",
+          "title": {
+            "korean": "공공설비 — 추정 시설 연령",
+            "english": "Public services — Estimated age"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_public_wear",
+          "variable": "tsin_facility_report_public_wear",
+          "title": {
+            "korean": "공공설비 — 마모 지수",
+            "english": "Public services — Wear index"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_public_gap",
+          "variable": "tsin_facility_report_public_gap",
+          "title": {
+            "korean": "공공설비 — 기술 격차",
+            "english": "Public services — Technology gap"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_public_size",
+          "variable": "tsin_facility_report_public_size",
+          "title": {
+            "korean": "공공설비 — 시설 규모",
+            "english": "Public services — Facility scale"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_report_public_year",
+          "variable": "tsin_facility_report_public_year",
+          "title": {
+            "korean": "공공설비 — 상태 기준 연도",
+            "english": "Public services — Condition reference year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "설비 조사 버튼으로 읽은 지방 묶음의 추정치입니다. 가동 산업 지방만 등록하며 실제 상태는 5~7년마다 갱신합니다. 나이는 규모 가중 추정, 마모는 0~100, 기술 격차는 국가의 활용 가능 기술 대비 단계 차이입니다.",
+            "english": "Province-bundle estimate read by Inspect. Only operating industrial districts are registered. Conditions update every 5–7 years; age is size-weighted, wear 0–100, gap relative to available national technology."
+          }
+        },
+        {
+          "id": "facility_budget",
+          "variable": "tsin_facility_support_budget",
+          "title": {
+            "korean": "지방 정비 지원 예산(1=켜짐)",
+            "english": "District support budget (1=on)"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "실제 정비 지원 결제 때 갱신하는 장부입니다. 정기 통계 조사를 추가하지 않습니다. 비용은 검사 시 국고에서 지급하며 현대화 비용과 별개입니다.",
+            "english": "Ledger updated when maintenance support is actually paid. No periodic statistics survey. Paid from treasury at inspections, separate from modernization."
+          }
+        },
+        {
+          "id": "facility_paid",
+          "variable": "tsin_facility_paid_amount",
+          "title": {
+            "korean": "마지막 지원 연도 지출",
+            "english": "Support spending in last funding year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "실제 정비 지원 결제 때 갱신하는 장부입니다. 정기 통계 조사를 추가하지 않습니다. 비용은 검사 시 국고에서 지급하며 현대화 비용과 별개입니다.",
+            "english": "Ledger updated when maintenance support is actually paid. No periodic statistics survey. Paid from treasury at inspections, separate from modernization."
+          }
+        },
+        {
+          "id": "facility_paid_year",
+          "variable": "tsin_facility_paid_year",
+          "title": {
+            "korean": "마지막 정비 지원 연도",
+            "english": "Last maintenance funding year"
+          },
+          "tabs": [
+            "economy"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "실제 정비 지원 결제 때 갱신하는 장부입니다. 정기 통계 조사를 추가하지 않습니다. 비용은 검사 시 국고에서 지급하며 현대화 비용과 별개입니다.",
+            "english": "Ledger updated when maintenance support is actually paid. No periodic statistics survey. Paid from treasury at inspections, separate from modernization."
+          }
+        }
+      ]
     }
   ],
   "histories": [

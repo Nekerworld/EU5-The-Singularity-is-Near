@@ -1,0 +1,3 @@
+﻿tsin_facility_repair_price = { gold = 100 }
+tsin_facility_modernize_price = { gold = 300 }
+tsin_facility_control_price = { gold = 0 }

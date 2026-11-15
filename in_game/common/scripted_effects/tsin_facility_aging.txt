@@ -1,0 +1,149 @@
+﻿tsin_facility_register_location_effect = {
+ province = {
+  if = { limit = { NOT = { has_variable = tsin_facility_registered } }
+   set_variable = tsin_facility_registered
+   save_scope_as = tsin_facility_district
+   tsin_facility_measure_effect = yes
+
+   set_variable = { name = tsin_facility_industry_size value = var:tsin_facility_industry_measured }
+   set_variable = { name = tsin_facility_industry_age value = 0 }
+   set_variable = { name = tsin_facility_industry_wear value = 0 }
+   # Unknown legacy installation date: neutral observation baseline, no bonus or free replacement.
+   set_variable = { name = tsin_facility_industry_grade value = tsin_facility_industry_technology }
+   set_variable = { name = tsin_facility_industry_year value = current_year }
+
+   set_variable = { name = tsin_facility_transport_size value = var:tsin_facility_transport_measured }
+   set_variable = { name = tsin_facility_transport_age value = 0 }
+   set_variable = { name = tsin_facility_transport_wear value = 0 }
+   # Unknown legacy installation date: neutral observation baseline, no bonus or free replacement.
+   set_variable = { name = tsin_facility_transport_grade value = tsin_facility_transport_technology }
+   set_variable = { name = tsin_facility_transport_year value = current_year }
+
+   set_variable = { name = tsin_facility_public_size value = var:tsin_facility_public_measured }
+   set_variable = { name = tsin_facility_public_age value = 0 }
+   set_variable = { name = tsin_facility_public_wear value = 0 }
+   # Unknown legacy installation date: neutral observation baseline, no bonus or free replacement.
+   set_variable = { name = tsin_facility_public_grade value = tsin_facility_public_technology }
+   set_variable = { name = tsin_facility_public_year value = current_year }
+
+   tsin_facility_schedule_review_effect = yes
+   add_to_global_variable_list = { name = tsin_facility_districts target = this }
+   set_global_variable = tsin_facility_aging_enabled
+  }
+ }
+}
+tsin_facility_schedule_review_effect = {
+ set_variable = { name = tsin_facility_due value = { value = current_year add = 5 } }
+ random_list = {
+  1 = { }
+  1 = { change_variable = { name = tsin_facility_due add = 1 } }
+  1 = { change_variable = { name = tsin_facility_due add = 2 } }
+ }
+}
+tsin_facility_measure_effect = {
+
+ set_variable = { name = tsin_facility_industry_measured value = 0 }
+
+ set_variable = { name = tsin_facility_transport_measured value = 0 }
+
+ set_variable = { name = tsin_facility_public_measured value = 0 }
+
+ every_location_in_province = {
+
+ save_temporary_scope_value_as = { name = tsin_facility_industry_size value = tsin_facility_industry_location_size }
+ scope:tsin_facility_district = { change_variable = { name = tsin_facility_industry_measured add = scope:tsin_facility_industry_size } }
+
+ save_temporary_scope_value_as = { name = tsin_facility_transport_size value = tsin_facility_transport_location_size }
+ scope:tsin_facility_district = { change_variable = { name = tsin_facility_transport_measured add = scope:tsin_facility_transport_size } }
+
+ save_temporary_scope_value_as = { name = tsin_facility_public_size value = tsin_facility_public_location_size }
+ scope:tsin_facility_district = { change_variable = { name = tsin_facility_public_measured add = scope:tsin_facility_public_size } }
+
+ }
+}
+tsin_facility_review_effect = {
+ set_global_variable = { name = tsin_facility_review_year value = current_year }
+ every_in_global_list = { variable = tsin_facility_districts
+  if = { limit = { exists = owner current_year >= var:tsin_facility_due }
+   save_scope_as = tsin_facility_district
+   tsin_facility_measure_effect = yes
+
+   set_local_variable = { name = tsin_facility_elapsed value = { value = current_year subtract = var:tsin_facility_industry_year min = 0 } }
+   change_variable = { name = tsin_facility_industry_age add = local_var:tsin_facility_elapsed }
+   if = { limit = { var:tsin_facility_industry_measured > var:tsin_facility_industry_size var:tsin_facility_industry_measured > 0 }
+    set_variable = { name = tsin_facility_industry_age value = { value = var:tsin_facility_industry_age multiply = var:tsin_facility_industry_size divide = var:tsin_facility_industry_measured } }
+   }
+   set_local_variable = { name = tsin_facility_cost value = { value = var:tsin_facility_industry_measured multiply = local_var:tsin_facility_elapsed multiply = 0.25 } }
+   if = { limit = { var:tsin_facility_industry_measured > 0 }
+    if = { limit = { owner ?= { gold >= local_var:tsin_facility_cost OR = { has_variable = tsin_facility_support_budget AND = { is_ai = yes gold >= { value = local_var:tsin_facility_cost multiply = 4 } } } } NOT = { any_location_in_province = { NOT = { controller ?= owner } } } }
+     owner = {
+      if = { limit = { OR = { NOT = { has_variable = tsin_facility_paid_year } current_year > var:tsin_facility_paid_year } }
+       set_variable = { name = tsin_facility_paid_year value = current_year }
+       set_variable = { name = tsin_facility_paid_amount value = 0 }
+      }
+      change_variable = { name = tsin_facility_paid_amount add = local_var:tsin_facility_cost }
+      add_gold = { value = local_var:tsin_facility_cost multiply = -1 }
+     }
+     set_variable = { name = tsin_facility_industry_wear value = { value = var:tsin_facility_industry_wear subtract = { value = local_var:tsin_facility_elapsed multiply = 3 } min = 0 max = 100 } }
+    } else = { set_variable = { name = tsin_facility_industry_wear value = { value = var:tsin_facility_industry_wear add = { value = local_var:tsin_facility_elapsed multiply = 2 } min = 0 max = 100 } } }
+   } else = {
+    set_variable = { name = tsin_facility_industry_wear value = 0 }
+    set_variable = { name = tsin_facility_industry_age value = 0 }
+   }
+   set_variable = { name = tsin_facility_industry_size value = var:tsin_facility_industry_measured }
+   set_variable = { name = tsin_facility_industry_year value = current_year }
+
+   set_local_variable = { name = tsin_facility_elapsed value = { value = current_year subtract = var:tsin_facility_transport_year min = 0 } }
+   change_variable = { name = tsin_facility_transport_age add = local_var:tsin_facility_elapsed }
+   if = { limit = { var:tsin_facility_transport_measured > var:tsin_facility_transport_size var:tsin_facility_transport_measured > 0 }
+    set_variable = { name = tsin_facility_transport_age value = { value = var:tsin_facility_transport_age multiply = var:tsin_facility_transport_size divide = var:tsin_facility_transport_measured } }
+   }
+   set_local_variable = { name = tsin_facility_cost value = { value = var:tsin_facility_transport_measured multiply = local_var:tsin_facility_elapsed multiply = 0.25 } }
+   if = { limit = { var:tsin_facility_transport_measured > 0 }
+    if = { limit = { owner ?= { gold >= local_var:tsin_facility_cost OR = { has_variable = tsin_facility_support_budget AND = { is_ai = yes gold >= { value = local_var:tsin_facility_cost multiply = 4 } } } } NOT = { any_location_in_province = { NOT = { controller ?= owner } } } }
+     owner = {
+      if = { limit = { OR = { NOT = { has_variable = tsin_facility_paid_year } current_year > var:tsin_facility_paid_year } }
+       set_variable = { name = tsin_facility_paid_year value = current_year }
+       set_variable = { name = tsin_facility_paid_amount value = 0 }
+      }
+      change_variable = { name = tsin_facility_paid_amount add = local_var:tsin_facility_cost }
+      add_gold = { value = local_var:tsin_facility_cost multiply = -1 }
+     }
+     set_variable = { name = tsin_facility_transport_wear value = { value = var:tsin_facility_transport_wear subtract = { value = local_var:tsin_facility_elapsed multiply = 3 } min = 0 max = 100 } }
+    } else = { set_variable = { name = tsin_facility_transport_wear value = { value = var:tsin_facility_transport_wear add = { value = local_var:tsin_facility_elapsed multiply = 2 } min = 0 max = 100 } } }
+   } else = {
+    set_variable = { name = tsin_facility_transport_wear value = 0 }
+    set_variable = { name = tsin_facility_transport_age value = 0 }
+   }
+   set_variable = { name = tsin_facility_transport_size value = var:tsin_facility_transport_measured }
+   set_variable = { name = tsin_facility_transport_year value = current_year }
+
+   set_local_variable = { name = tsin_facility_elapsed value = { value = current_year subtract = var:tsin_facility_public_year min = 0 } }
+   change_variable = { name = tsin_facility_public_age add = local_var:tsin_facility_elapsed }
+   if = { limit = { var:tsin_facility_public_measured > var:tsin_facility_public_size var:tsin_facility_public_measured > 0 }
+    set_variable = { name = tsin_facility_public_age value = { value = var:tsin_facility_public_age multiply = var:tsin_facility_public_size divide = var:tsin_facility_public_measured } }
+   }
+   set_local_variable = { name = tsin_facility_cost value = { value = var:tsin_facility_public_measured multiply = local_var:tsin_facility_elapsed multiply = 0.25 } }
+   if = { limit = { var:tsin_facility_public_measured > 0 }
+    if = { limit = { owner ?= { gold >= local_var:tsin_facility_cost OR = { has_variable = tsin_facility_support_budget AND = { is_ai = yes gold >= { value = local_var:tsin_facility_cost multiply = 4 } } } } NOT = { any_location_in_province = { NOT = { controller ?= owner } } } }
+     owner = {
+      if = { limit = { OR = { NOT = { has_variable = tsin_facility_paid_year } current_year > var:tsin_facility_paid_year } }
+       set_variable = { name = tsin_facility_paid_year value = current_year }
+       set_variable = { name = tsin_facility_paid_amount value = 0 }
+      }
+      change_variable = { name = tsin_facility_paid_amount add = local_var:tsin_facility_cost }
+      add_gold = { value = local_var:tsin_facility_cost multiply = -1 }
+     }
+     set_variable = { name = tsin_facility_public_wear value = { value = var:tsin_facility_public_wear subtract = { value = local_var:tsin_facility_elapsed multiply = 3 } min = 0 max = 100 } }
+    } else = { set_variable = { name = tsin_facility_public_wear value = { value = var:tsin_facility_public_wear add = { value = local_var:tsin_facility_elapsed multiply = 2 } min = 0 max = 100 } } }
+   } else = {
+    set_variable = { name = tsin_facility_public_wear value = 0 }
+    set_variable = { name = tsin_facility_public_age value = 0 }
+   }
+   set_variable = { name = tsin_facility_public_size value = var:tsin_facility_public_measured }
+   set_variable = { name = tsin_facility_public_year value = current_year }
+
+   tsin_facility_schedule_review_effect = yes
+  }
+ }
+}
