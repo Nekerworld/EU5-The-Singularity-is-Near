@@ -1,0 +1,29 @@
+﻿tsin_bill_sidebar_nobles_estate = { type = country random_valid = no
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_preferred_by_trigger = { ESTATE = nobles_estate } } localization_key = TSIN_BILL_SIDE_NOBLES_ESTATE_SUPPORT }
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_opposed_by_trigger = { ESTATE = nobles_estate } } localization_key = TSIN_BILL_SIDE_NOBLES_ESTATE_OPPOSE }
+ text = { localization_key = TSIN_BILL_SIDE_NOBLES_ESTATE_NEUTRAL }
+}
+
+tsin_bill_sidebar_clergy_estate = { type = country random_valid = no
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_preferred_by_trigger = { ESTATE = clergy_estate } } localization_key = TSIN_BILL_SIDE_CLERGY_ESTATE_SUPPORT }
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_opposed_by_trigger = { ESTATE = clergy_estate } } localization_key = TSIN_BILL_SIDE_CLERGY_ESTATE_OPPOSE }
+ text = { localization_key = TSIN_BILL_SIDE_CLERGY_ESTATE_NEUTRAL }
+}
+
+tsin_bill_sidebar_burghers_estate = { type = country random_valid = no
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_preferred_by_trigger = { ESTATE = burghers_estate } } localization_key = TSIN_BILL_SIDE_BURGHERS_ESTATE_SUPPORT }
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_opposed_by_trigger = { ESTATE = burghers_estate } } localization_key = TSIN_BILL_SIDE_BURGHERS_ESTATE_OPPOSE }
+ text = { localization_key = TSIN_BILL_SIDE_BURGHERS_ESTATE_NEUTRAL }
+}
+
+tsin_bill_sidebar_peasants_estate = { type = country random_valid = no
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_preferred_by_trigger = { ESTATE = peasants_estate } } localization_key = TSIN_BILL_SIDE_PEASANTS_ESTATE_SUPPORT }
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_opposed_by_trigger = { ESTATE = peasants_estate } } localization_key = TSIN_BILL_SIDE_PEASANTS_ESTATE_OPPOSE }
+ text = { localization_key = TSIN_BILL_SIDE_PEASANTS_ESTATE_NEUTRAL }
+}
+
+tsin_bill_sidebar_crown_estate = { type = country random_valid = no
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_preferred_by_trigger = { ESTATE = crown_estate } } localization_key = TSIN_BILL_SIDE_CROWN_ESTATE_SUPPORT }
+ text = { trigger = { has_variable = tsin_bill_policy tsin_bill_opposed_by_trigger = { ESTATE = crown_estate } } localization_key = TSIN_BILL_SIDE_CROWN_ESTATE_OPPOSE }
+ text = { localization_key = TSIN_BILL_SIDE_CROWN_ESTATE_NEUTRAL }
+}

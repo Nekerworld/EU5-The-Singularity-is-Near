@@ -1,0 +1,9 @@
+﻿tsin_bill_sidebar_power_nobles_estate = { value = "estate_power(estate_type:nobles_estate)" }
+
+tsin_bill_sidebar_power_clergy_estate = { value = "estate_power(estate_type:clergy_estate)" }
+
+tsin_bill_sidebar_power_burghers_estate = { value = "estate_power(estate_type:burghers_estate)" }
+
+tsin_bill_sidebar_power_peasants_estate = { value = "estate_power(estate_type:peasants_estate)" }
+
+tsin_bill_sidebar_power_crown_estate = { value = "estate_power(estate_type:crown_estate)" }

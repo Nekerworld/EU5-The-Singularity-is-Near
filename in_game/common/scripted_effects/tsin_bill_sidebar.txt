@@ -1,0 +1,9 @@
+﻿# Waiting-end month metadata only. Original expiring timer still controls actual readings.
+tsin_bill_schedule_sidebar_metadata_effect = {
+ set_variable = { name = tsin_bill_wait_year value = current_year }
+ set_variable = { name = tsin_bill_wait_month value = { value = current_month add = 3 } }
+ if = { limit = { var:tsin_bill_wait_month > 12 }
+  change_variable = { name = tsin_bill_wait_month add = -12 }
+  change_variable = { name = tsin_bill_wait_year add = 1 }
+ }
+}

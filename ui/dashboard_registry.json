@@ -2196,6 +2196,20 @@
           "open_variable": "tsin_ui_world_companies_open"
         }
       ]
+    },
+    {
+      "id": "legislation_sidebar",
+      "shortcuts": [
+        {
+          "id": "bill_sidebar",
+          "tab": "crises",
+          "title": {
+            "korean": "입법 현황 카드 표시",
+            "english": "Show legislation status card"
+          },
+          "open_variable": "tsin_ui_bill_sidebar_open"
+        }
+      ]
     }
   ],
   "histories": [

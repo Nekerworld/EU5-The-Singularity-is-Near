@@ -1,0 +1,31 @@
+﻿window = {
+ name = "tsin_bill_sidebar" layer = topbar parentanchor = right|top widgetanchor = right|top
+ position = { -420 220 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+ size = "[ToVector2f('(float)330', Select_float(GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded'), '(float)380', '(float)68'))]"
+ visible = "[And(GetPlayer.IsValid, And(GetPlayer.MakeScope.GetVariable('tsin_bill_policy').IsSet, Or(Not(GetVariableSystem.Exists('tsin_ui_bill_sidebar_closed')), GetVariableSystem.Exists('tsin_ui_bill_sidebar_open'))))]"
+ widget = { size = { 100% 100% } using = bg_window_default_alt }
+ widget = { parentanchor = right position = { -4 4 } size = { 28 28 } button_close_alt = { blockoverride "close_on_action" {
+ on_action = "[GetVariableSystem.Set('tsin_ui_bill_sidebar_closed', 'yes')]"
+ on_action = "[GetVariableSystem.Clear('tsin_ui_bill_sidebar_open')]"
+ } } }
+ vbox = { position = { 12 8 } spacing = 4
+ button_regular = { size = { 280 24 } action_tooltip = { title = "TSIN_BILL_SIDE_TITLE" on_action = "[GetVariableSystem.Toggle('tsin_ui_bill_sidebar_expanded')]" }
+ text_single = { size = { 270 23 } parentanchor = center fontsize = 14 text = "TSIN_BILL_SIDE_TITLE" }
+ }
+ text_single = { size = { 305 24 } autoresize = no fontsize = 14 fontsize_min = 10 text = "[GetPlayer.MakeScope.GetVariable('tsin_bill_policy').GetPolicy.GetNameWithNoTooltip]" }
+ vbox = { visible = "[GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded')]" spacing = 5
+ text_single = { fontsize = 14 text = "TSIN_BILL_SIDE_CHANCE" tooltip = "TSIN_BILL_SIDE_CHANCE_HELP" }
+ text_single = { text = "TSIN_BILL_SIDE_COUNTS" }
+ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet]" text = "TSIN_BILL_SIDE_DUE" tooltip = "TSIN_BILL_SIDE_DUE_HELP" }
+ text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet)]" text = "TSIN_BILL_SIDE_UNKNOWN_DUE" }
+
+text_single = { fontsize = 13 text = "[GetPlayer.Custom('tsin_bill_sidebar_nobles_estate')]" }
+text_single = { fontsize = 13 text = "[GetPlayer.Custom('tsin_bill_sidebar_clergy_estate')]" }
+text_single = { fontsize = 13 text = "[GetPlayer.Custom('tsin_bill_sidebar_burghers_estate')]" }
+text_single = { fontsize = 13 text = "[GetPlayer.Custom('tsin_bill_sidebar_peasants_estate')]" }
+text_single = { fontsize = 13 text = "[GetPlayer.Custom('tsin_bill_sidebar_crown_estate')]" }
+text_multi = { maximumsize = { 300 -1 } fontsize = 11 text = "TSIN_BILL_SIDE_HELP" }
+button_regular = { size = { 150 28 } action_tooltip = { title = "TSIN_BILL_SIDE_LAWS" on_action = "[OpenLateralView('laws')]" }
+ text_single = { size = { 145 27 } parentanchor = center fontsize = 13 text = "TSIN_BILL_SIDE_LAWS" }
+}
+} } }

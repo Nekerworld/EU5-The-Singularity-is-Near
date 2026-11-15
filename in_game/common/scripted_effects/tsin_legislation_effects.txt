@@ -24,6 +24,7 @@ tsin_table_bill_effect = {
 		set_variable = { name = tsin_bill_stalls value = 0 }
 		set_variable = { name = tsin_bill_bonus value = $BONUS$ }
 		set_variable = { name = tsin_bill_check_timer months = 3 }
+		tsin_bill_schedule_sidebar_metadata_effect = yes
 		remove_variable = tsin_bill_cooldown
 	}
 	else = {
@@ -47,11 +48,14 @@ tsin_clear_bill_effect = {
 	remove_variable = tsin_bill_stalls
 	remove_variable = tsin_bill_bonus
 	remove_variable = tsin_bill_check_timer
+	remove_variable = tsin_bill_wait_year
+	remove_variable = tsin_bill_wait_month
 }
 
 # Scope: country. One reading: roll tsin_bill_success_chance, then pass, abandon or maybe debate.
 tsin_bill_reading_effect = {
 	set_variable = { name = tsin_bill_check_timer months = 3 }
+		tsin_bill_schedule_sidebar_metadata_effect = yes
 	set_variable = { name = tsin_bill_roll value = 0 }
 	random = {
 		chance = {
