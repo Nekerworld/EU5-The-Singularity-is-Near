@@ -1,0 +1,21 @@
+﻿# An equipment-coverage index, never additional physical electricity supply.
+tsin_power_access_known = {
+ value = 0
+ if = { limit = { OR = { owner ?= { has_advance = tsin_distribution_grid_advance } has_building_with_at_least_one_level = tsin_distribution_substation has_building_with_at_least_one_level = tsin_power_station } } value = 1 }
+}
+tsin_power_access_index = {
+ value = 0
+ if = { limit = { tsin_power_access_known = 1 }
+  value = 0.1
+  add = { value = "location_building_level(building_type:tsin_distribution_substation)" multiply = 0.3 }
+  max = 1
+ }
+}
+tsin_grid_refrigeration_scale = {
+ value = 0
+ if = { limit = { any_buildings_in_location = { building_type = building_type:tsin_distribution_substation is_opened = yes building_employed_amount > 0 is_lacking_goods = no } any_buildings_in_location = { building_type = building_type:tsin_electric_cold_storage is_opened = yes building_employed_amount > 0 is_lacking_goods = no } }
+  value = "location_building_level(building_type:tsin_electric_cold_storage)"
+  multiply = tsin_power_access_index
+  multiply = tsin_location_power_ratio
+ }
+}

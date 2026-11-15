@@ -46,7 +46,7 @@ def integrate():
     pdx.write_text_bom(pdx.MOD_ROOT/'in_game/common/auto_modifiers/tsin_railway_connection.txt','''tsin_connected_railway_station = {
  category = location type = location
  potential_trigger = {
-  has_building_with_at_least_one_level = tsin_railway_station
+  any_buildings_in_location = { building_type = building_type:tsin_railway_station is_opened = yes building_employed_amount > 0 is_lacking_goods = no }
   controller ?= owner
   OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } }
  }

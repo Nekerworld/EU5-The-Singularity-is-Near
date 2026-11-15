@@ -301,6 +301,7 @@
  TSIN_UI_LINK_STORAGE_RESUME: "Resume reserve automation"
  TSIN_UI_LINK_STORAGE_RELEASE: "Request emergency release"
  TSIN_UI_LINK_STORAGE_INSPECT: "Inspect reserve site"
+ TSIN_UI_LINK_DISTRIBUTION_MAP: "Electricity accessibility map"
  TSIN_UI_LINK_TSIN_EDUCATION: "Education map"
  TSIN_UI_LINK_TSIN_LABOR_CONDITIONS: "Labor map"
  TSIN_UI_LINK_TSIN_METRO_CREATE: "Designate metropolitan core"

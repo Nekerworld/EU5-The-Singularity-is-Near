@@ -1741,6 +1741,20 @@
           }
         }
       ]
+    },
+    {
+      "id": "distribution_grid",
+      "shortcuts": [
+        {
+          "id": "distribution_map",
+          "tab": "economy",
+          "title": {
+            "korean": "전기 접근성 지도",
+            "english": "Electricity accessibility map"
+          },
+          "map_mode": "tsin_power_access"
+        }
+      ]
     }
   ],
   "histories": [

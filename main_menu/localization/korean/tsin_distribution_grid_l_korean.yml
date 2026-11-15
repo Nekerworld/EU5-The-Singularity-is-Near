@@ -1,0 +1,11 @@
+﻿l_korean:
+ tsin_distribution_substation: "지역 배전 변전소"
+ tsin_distribution_substation_maintenance: "배전 변전소 유지"
+ tsin_distribution_substation_desc: "전기 접근성의 설비 지수에 단계당 30%p를 더합니다. 최대 3단계입니다. 실제로 가동되는 설비는 같은 지점의 전기 냉동 보관소 보존 효율을 최대 단계당 2%p 추가 지원합니다. 시장 전력을 새로 생산하거나 미연결 공장의 소비를 차단하지 않습니다."
+ AUTO_MODIFIER_NAME_tsin_grid_refrigeration: "배전망 연계 냉동 보관"
+ mapmode_tsin_power_access_name: "전기 접근성"
+ MAPMODE_TSIN_POWER_ACCESS: "지역 배전 설비 보급 지수입니다. 시장 수급비와 다르며 미측정 지역은 회색입니다."
+ TSIN_POWER_ACCESS_TT: "[ROOT.GetLocation.GetName]: 설비 지수 [ROOT.ScriptValue('tsin_power_access_index')|%0]. 소규모 설비 기반 10% + 변전소 단계당 30%p. 시장 전력 공급 [ROOT.ScriptValue('tsin_location_power_supply')|1], 수요 [ROOT.ScriptValue('tsin_location_power_demand')|1]. 설비 수준의 실시간 조회이며 별도 송전 회랑·전력 실물량이 아닙니다."
+ LEGEND_TSIN_POWER_ACCESS_HIGH: "배전 설비 보급"
+ LEGEND_TSIN_POWER_ACCESS_LOW: "소규모 설비"
+ LEGEND_TSIN_POWER_ACCESS_UNKNOWN: "자료 없음"

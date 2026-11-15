@@ -1,0 +1,6 @@
+﻿tsin_grid_refrigeration = {
+ category = location type = location
+ potential_trigger = { has_building_with_at_least_one_level = tsin_electric_cold_storage controller ?= owner tsin_grid_refrigeration_scale > 0 }
+ scales_with = tsin_grid_refrigeration_scale
+ local_food_preservation_efficiency_modifier = 0.02
+}

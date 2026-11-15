@@ -1950,3 +1950,80 @@ tsin_pollution = {
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
 }
+
+tsin_power_access = {
+ map_color = { if = { limit = { tsin_power_access_known = 1 }
+  lerp = { min_color = define:NMapColors|MAP_COLOR_LOW max_color = define:NMapColors|MAP_COLOR_MAX factor = tsin_power_access_index }
+ } }
+ tooltip_key = { value = TSIN_POWER_ACCESS_TT }
+ legend_key = { desc = "LEGEND_TSIN_POWER_ACCESS_HIGH" color = define:NMapColors|MAP_COLOR_MAX }
+ legend_key = { desc = "LEGEND_TSIN_POWER_ACCESS_LOW" color = define:NMapColors|MAP_COLOR_LOW }
+ legend_key = { desc = "LEGEND_TSIN_POWER_ACCESS_UNKNOWN" color = define:NMapColors|MAP_COLOR_MIN }
+	small_map_names = location
+	medium_map_names = country
+	large_map_names = country
+
+	small_tooltip_context = location
+	medium_tooltip_context = location
+	large_tooltip_context = location
+
+	flatmap_behaviour = Always
+	force_brown_in_flatmap = only_in_rg_colorblind_mode
+	use_fow = no
+
+	category = economy
+	index = 3
+
+	map_markers = {
+		market_marker = no
+		fort_marker = no
+		toll_marker = no
+	}
+
+	gradient_parameters = {
+		zoom_step = @tsin_zoom_step_near
+
+		gradient_alpha_inside = 	@tsin_data_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_data_gradient_alpha_outside
+		gradient_width = 			@tsin_data_gradient_width
+		gradient_color_mult =		@tsin_data_gradient_color_mult
+		edge_width = 				@tsin_data_edge_width
+		edge_sharpness = 			@tsin_data_edge_sharpness
+		edge_alpha = 				@tsin_data_edge_alpha
+		edge_color_mult = 			@tsin_data_edge_color_mult
+		before_lighting_blend =		@tsin_data_before_lighting_blend
+		after_lighting_blend =		@tsin_data_after_lighting_blend
+	}
+
+	flatmap_gradient_parameters = {
+		zoom_step = @tsin_zoom_step_flatmap
+
+		gradient_alpha_inside = 	@tsin_flatmap_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_flatmap_gradient_alpha_outside
+		gradient_width = 			@tsin_flatmap_gradient_width
+		gradient_color_mult =		@tsin_flatmap_gradient_color_mult
+		edge_width = 				@tsin_flatmap_edge_width
+		edge_sharpness = 			@tsin_flatmap_edge_sharpness
+		edge_alpha = 				@tsin_flatmap_edge_alpha
+		edge_color_mult = 			@tsin_flatmap_edge_color_mult
+		before_lighting_blend =		@tsin_flatmap_before_lighting_blend
+		after_lighting_blend =		@tsin_flatmap_after_lighting_blend
+	}
+	flatmap_gradient_parameters = {
+		zoom_step = @tsin_zoom_step_flatmap_far
+
+		gradient_alpha_inside = 	@tsin_flatmap_gradient_alpha_inside
+		gradient_alpha_outside = 	@tsin_flatmap_gradient_alpha_outside
+		gradient_width = 			@tsin_flatmap_far_gradient_width
+		gradient_color_mult =		@tsin_flatmap_gradient_color_mult
+		edge_width = 				@tsin_flatmap_far_edge_width
+		edge_sharpness = 			@tsin_flatmap_edge_sharpness
+		edge_alpha = 				@tsin_flatmap_edge_alpha
+		edge_color_mult = 			@tsin_flatmap_edge_color_mult
+		before_lighting_blend =		@tsin_flatmap_before_lighting_blend
+		after_lighting_blend =		@tsin_flatmap_after_lighting_blend
+	}
+
+	refresh_colors_on_selection_change = yes
+	color_refresh_counters = { Month LocationOwnerChanged }
+}

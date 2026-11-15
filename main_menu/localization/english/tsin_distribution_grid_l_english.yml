@@ -1,0 +1,11 @@
+﻿l_english:
+ tsin_distribution_substation: "Local distribution substation"
+ tsin_distribution_substation_maintenance: "Substation maintenance"
+ tsin_distribution_substation_desc: "Adds 30 percentage points of equipment coverage per level, up to three. An operating station adds up to 2pp preservation per electric cold-storage level in this location. Does not generate electricity or prohibit unconnected factories from buying it."
+ AUTO_MODIFIER_NAME_tsin_grid_refrigeration: "Grid-assisted refrigerated storage"
+ mapmode_tsin_power_access_name: "Electricity accessibility"
+ MAPMODE_TSIN_POWER_ACCESS: "Local distribution equipment coverage. Separate from market supply adequacy. Unknown locations are grey."
+ TSIN_POWER_ACCESS_TT: "[ROOT.GetLocation.GetName]: equipment coverage [ROOT.ScriptValue('tsin_power_access_index')|%0]. Small-system base 10% + 30pp/substation level. Market supply [ROOT.ScriptValue('tsin_location_power_supply')|1], demand [ROOT.ScriptValue('tsin_location_power_demand')|1]. Live equipment query; does not represent a separate transmission corridor or physical electricity quantity."
+ LEGEND_TSIN_POWER_ACCESS_HIGH: "Distribution equipment coverage"
+ LEGEND_TSIN_POWER_ACCESS_LOW: "Small-scale equipment"
+ LEGEND_TSIN_POWER_ACCESS_UNKNOWN: "Unknown"

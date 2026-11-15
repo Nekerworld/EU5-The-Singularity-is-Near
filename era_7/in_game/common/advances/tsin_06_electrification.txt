@@ -39,6 +39,7 @@ tsin_central_power_station_advance = {
 }
 
 tsin_distribution_grid_advance = {
+	unlock_building = tsin_distribution_substation
 	age = age_7_industrialization
 	icon = contacts_network
 

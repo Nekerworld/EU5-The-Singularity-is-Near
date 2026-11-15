@@ -1,0 +1,14 @@
+﻿# Grid equipment, not a generator or independent electricity market.
+tsin_distribution_substation = {
+ audio_tier = 3 is_foreign = no pop_type = laborers forbidden_for_estates = yes
+ employment_size = 0.02 max_levels = 3 category = infrastructure_category
+ town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_distribution_grid_advance }
+ unique_production_methods = {
+  tsin_distribution_substation_maintenance = {
+   icon_type = goods icon = copper
+   copper = 0.05 tools = 0.02 tsin_electricity = 0.02 category = building_maintenance
+  }
+ }
+}
