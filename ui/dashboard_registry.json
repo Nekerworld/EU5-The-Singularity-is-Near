@@ -964,6 +964,33 @@
             "korean": "시대관 지도"
           },
           "map_mode": "tsin_industrial_institutions"
+        },
+        {
+          "id": "urban_project_1",
+          "tab": "economy",
+          "title": {
+            "korean": "산업부지 정비",
+            "english": "Prepare industrial site"
+          },
+          "generic_action": "tsin_urban_project_1"
+        },
+        {
+          "id": "urban_project_2",
+          "tab": "economy",
+          "title": {
+            "korean": "도시 구획 확장",
+            "english": "Expand urban district"
+          },
+          "generic_action": "tsin_urban_project_2"
+        },
+        {
+          "id": "urban_project_3",
+          "tab": "economy",
+          "title": {
+            "korean": "고밀도 개발",
+            "english": "High-density development"
+          },
+          "generic_action": "tsin_urban_project_3"
         }
       ],
       "migration_effect": "tsin_dashboard_age7_migrate_effect"

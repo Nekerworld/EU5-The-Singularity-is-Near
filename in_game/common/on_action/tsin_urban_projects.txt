@@ -1,0 +1,8 @@
+﻿monthly_country_pulse = { on_actions = { tsin_urban_project_global_review } }
+tsin_urban_project_global_review = {
+ trigger = { has_global_variable = tsin_urban_projects_enabled
+  OR = { NOT = { has_global_variable = tsin_urban_projects_review_month }
+   tsin_urban_calendar_month > global_var:tsin_urban_projects_review_month }
+ }
+ effect = { tsin_urban_project_review_effect = yes }
+}

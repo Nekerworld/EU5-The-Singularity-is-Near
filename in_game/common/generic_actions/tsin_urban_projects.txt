@@ -1,0 +1,137 @@
+﻿tsin_urban_project_1 = {
+ type = owncountry
+ show_message = yes
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ automation_tick = never
+ price = price:tsin_urban_project_1_price
+ potential = { scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ allow = { scope:actor = { has_advance = tsin_industrial_capitalism_advance }
+ trigger_if = { limit = { exists = scope:target_location } scope:target_location = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+NOT = { has_variable = tsin_urban_project_stage } } } }
+ select_trigger = {
+  looking_for_a = location
+  source = actor
+  target_flag = target_location
+  name = "choose_location"
+  column = { data = name }
+  column = { data = population }
+  visible = { owner ?= scope:actor OR = { is_city = yes location_rank ?= location_rank:town } }
+  enabled = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+NOT = { has_variable = tsin_urban_project_stage } }
+ }
+ effect = {
+  scope:target_location = {
+   set_variable = { name = tsin_urban_project_pending value = 1 }
+   set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 6 } }
+   add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+   add_location_modifier = { modifier = tsin_urban_project_underway months = 7 }
+  }
+  set_global_variable = tsin_urban_projects_enabled
+ }
+ ai_will_do = {
+  value = 0
+  if = { limit = { scope:actor = { gold >= 1200 }
+   scope:target_location = { total_building_levels >= { value = modifier:free_building_levels multiply = 0.8 } } }
+   add = 10
+  }
+ }
+}
+
+tsin_urban_project_2 = {
+ type = owncountry
+ show_message = yes
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ automation_tick = never
+ price = price:tsin_urban_project_2_price
+ potential = { scope:actor = { has_advance = tsin_urban_planning_advance } }
+ allow = { scope:actor = { has_advance = tsin_urban_planning_advance }
+ trigger_if = { limit = { exists = scope:target_location } scope:target_location = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+var:tsin_urban_project_stage = 1 } } }
+ select_trigger = {
+  looking_for_a = location
+  source = actor
+  target_flag = target_location
+  name = "choose_location"
+  column = { data = name }
+  column = { data = population }
+  visible = { owner ?= scope:actor OR = { is_city = yes location_rank ?= location_rank:town } }
+  enabled = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+var:tsin_urban_project_stage = 1 }
+ }
+ effect = {
+  scope:target_location = {
+   set_variable = { name = tsin_urban_project_pending value = 2 }
+   set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 12 } }
+   add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+   add_location_modifier = { modifier = tsin_urban_project_underway months = 13 }
+  }
+  set_global_variable = tsin_urban_projects_enabled
+ }
+ ai_will_do = {
+  value = 0
+  if = { limit = { scope:actor = { gold >= 2400 }
+   scope:target_location = { total_building_levels >= { value = modifier:free_building_levels multiply = 0.8 } } }
+   add = 10
+  }
+ }
+}
+
+tsin_urban_project_3 = {
+ type = owncountry
+ show_message = yes
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ automation_tick = never
+ price = price:tsin_urban_project_3_price
+ potential = { scope:actor = { has_advance = tsin_engineering_education_advance } }
+ allow = { scope:actor = { has_advance = tsin_engineering_education_advance }
+ trigger_if = { limit = { exists = scope:target_location } scope:target_location = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+var:tsin_urban_project_stage = 2 } } }
+ select_trigger = {
+  looking_for_a = location
+  source = actor
+  target_flag = target_location
+  name = "choose_location"
+  column = { data = name }
+  column = { data = population }
+  visible = { owner ?= scope:actor OR = { is_city = yes location_rank ?= location_rank:town } }
+  enabled = { owner ?= scope:actor
+controller ?= scope:actor
+OR = { is_city = yes location_rank ?= location_rank:town }
+NOT = { has_variable = tsin_urban_project_pending }
+var:tsin_urban_project_stage = 2 }
+ }
+ effect = {
+  scope:target_location = {
+   set_variable = { name = tsin_urban_project_pending value = 3 }
+   set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 18 } }
+   add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+   add_location_modifier = { modifier = tsin_urban_project_underway months = 19 }
+  }
+  set_global_variable = tsin_urban_projects_enabled
+ }
+ ai_will_do = {
+  value = 0
+  if = { limit = { scope:actor = { gold >= 4800 }
+   scope:target_location = { total_building_levels >= { value = modifier:free_building_levels multiply = 0.8 } } }
+   add = 10
+  }
+ }
+}

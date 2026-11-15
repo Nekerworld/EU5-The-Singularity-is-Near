@@ -1,0 +1,11 @@
+﻿l_english:
+ tsin_urban_project_1: "Industrial Site Preparation"
+ tsin_urban_project_1_desc: "Choose a location and invest 300 ducats. After 6 months, supported building levels increase by 25. Uses no building slot."
+ STATIC_MODIFIER_NAME_tsin_urban_project_1_completed: "Industrial Site Preparation"
+ tsin_urban_project_2: "Urban District Expansion"
+ tsin_urban_project_2_desc: "Choose a location and invest 600 ducats. After 12 months, supported building levels increase by 50. Uses no building slot."
+ STATIC_MODIFIER_NAME_tsin_urban_project_2_completed: "Urban District Expansion"
+ tsin_urban_project_3: "High-density Development"
+ tsin_urban_project_3_desc: "Choose a location and invest 1200 ducats. After 18 months, supported building levels increase by 75. Uses no building slot."
+ STATIC_MODIFIER_NAME_tsin_urban_project_3_completed: "High-density Development"
+ STATIC_MODIFIER_NAME_tsin_urban_project_underway: "Urban Expansion Works"

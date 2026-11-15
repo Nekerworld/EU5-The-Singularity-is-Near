@@ -1,0 +1,32 @@
+﻿tsin_urban_project_review_effect = {
+ set_global_variable = { name = tsin_urban_projects_review_month value = tsin_urban_calendar_month }
+ clear_list = tsin_urban_project_review
+ every_in_global_list = { variable = tsin_urban_project_sites add_to_list = tsin_urban_project_review }
+ every_in_list = { list = tsin_urban_project_review
+  if = { limit = { has_variable = tsin_urban_project_pending var:tsin_urban_project_due <= tsin_urban_calendar_month }
+if = { limit = { var:tsin_urban_project_pending = 1 }
+ if = { limit = { NOT = { has_location_modifier = tsin_urban_project_1_completed } }
+  add_location_modifier = { modifier = tsin_urban_project_1_completed }
+ }
+ set_variable = { name = tsin_urban_project_stage value = 1 }
+}
+if = { limit = { var:tsin_urban_project_pending = 2 }
+ if = { limit = { NOT = { has_location_modifier = tsin_urban_project_2_completed } }
+  add_location_modifier = { modifier = tsin_urban_project_2_completed }
+ }
+ set_variable = { name = tsin_urban_project_stage value = 2 }
+}
+if = { limit = { var:tsin_urban_project_pending = 3 }
+ if = { limit = { NOT = { has_location_modifier = tsin_urban_project_3_completed } }
+  add_location_modifier = { modifier = tsin_urban_project_3_completed }
+ }
+ set_variable = { name = tsin_urban_project_stage value = 3 }
+}
+   remove_variable = tsin_urban_project_pending
+   remove_variable = tsin_urban_project_due
+   remove_location_modifier = tsin_urban_project_underway
+   remove_list_global_variable = { name = tsin_urban_project_sites target = this }
+  }
+ }
+ clear_list = tsin_urban_project_review
+}

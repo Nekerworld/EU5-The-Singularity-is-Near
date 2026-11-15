@@ -149,6 +149,39 @@ button_regular = {
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_AGRICULTURE" }
 }
 }
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_1')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_URBAN_PROJECT_1"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_1" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_2')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_URBAN_PROJECT_2"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_2" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_3')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_URBAN_PROJECT_3"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_3" }
+}
+}
 }
 vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 10
 text_single = { maximumsize = { 820 -1 } multiline = yes text = "TSIN_UI_SOCIETY_HELP" }

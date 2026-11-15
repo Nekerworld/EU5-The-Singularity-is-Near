@@ -1,0 +1,11 @@
+﻿l_korean:
+ tsin_urban_project_1: "산업부지 정비"
+ tsin_urban_project_1_desc: "지점을 선택하여 300두캇을 투자합니다. 6개월 후 지원 건물 레벨이 25 증가합니다. 건물 슬롯을 소비하지 않습니다."
+ STATIC_MODIFIER_NAME_tsin_urban_project_1_completed: "산업부지 정비"
+ tsin_urban_project_2: "도시 구획 확장"
+ tsin_urban_project_2_desc: "지점을 선택하여 600두캇을 투자합니다. 12개월 후 지원 건물 레벨이 50 증가합니다. 건물 슬롯을 소비하지 않습니다."
+ STATIC_MODIFIER_NAME_tsin_urban_project_2_completed: "도시 구획 확장"
+ tsin_urban_project_3: "고밀도 개발"
+ tsin_urban_project_3_desc: "지점을 선택하여 1200두캇을 투자합니다. 18개월 후 지원 건물 레벨이 75 증가합니다. 건물 슬롯을 소비하지 않습니다."
+ STATIC_MODIFIER_NAME_tsin_urban_project_3_completed: "고밀도 개발"
+ STATIC_MODIFIER_NAME_tsin_urban_project_underway: "도시 수용력 확장 공사"

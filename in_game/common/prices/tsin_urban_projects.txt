@@ -1,0 +1,3 @@
+﻿tsin_urban_project_1_price = { gold = 300 }
+tsin_urban_project_2_price = { gold = 600 }
+tsin_urban_project_3_price = { gold = 1200 }

@@ -1,0 +1,4 @@
+﻿tsin_urban_project_1_completed = { game_data = { category = location } free_building_levels = 25 }
+tsin_urban_project_2_completed = { game_data = { category = location } free_building_levels = 50 }
+tsin_urban_project_3_completed = { game_data = { category = location } free_building_levels = 75 }
+tsin_urban_project_underway = { game_data = { category = location } }

@@ -1,0 +1,1 @@
+﻿tsin_urban_calendar_month = { value = current_year multiply = 12 add = current_month }
