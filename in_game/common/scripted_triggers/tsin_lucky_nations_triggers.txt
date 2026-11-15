@@ -1,0 +1,83 @@
+﻿# GENERATED. Shared human protection lives in gen_historical_progression.py.
+tsin_lucky_russia_candidate_trigger = {
+    tsin_history_ai_realm = yes
+    is_subject = no
+    is_junior_partner = no
+    culture = { has_culture_group = culture_group:russian_group }
+    num_locations > 1
+    OR = { owns = location:moscow owns = location:novgorod owns = location:tver owns = location:vladimir }
+}
+tsin_lucky_human_war_trigger = {
+    any_country = { tsin_history_human_realm = yes is_at_war_with = prev }
+}
+tsin_lucky_russia_campaign_trigger = {
+    current_year >= 1547
+    current_year < 1837
+    NOT = { has_game_rule = tsin_lucky_nations_off }
+    NOT = { country_exists = c:RUS }
+    NOT = { tsin_history_russia_player_blocked = yes }
+}
+tsin_lucky_russia_force_trigger = {
+    tsin_lucky_russia_campaign_trigger = yes
+    has_game_rule = tsin_lucky_nations_force
+    current_year >= 1700
+    tsin_lucky_russia_candidate_trigger = yes
+    at_war = no
+    NOT = { tsin_lucky_human_war_trigger = yes }
+location:moscow = { OR = {
+owner ?= scope:tsin_lucky_candidate
+AND = {
+    controller = owner
+    is_capital = no
+    owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > 1 }
+}
+} }
+location:novgorod = { OR = {
+owner ?= scope:tsin_lucky_candidate
+AND = {
+    controller = owner
+    is_capital = no
+    owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > 1 }
+}
+} }
+location:tver = { OR = {
+owner ?= scope:tsin_lucky_candidate
+AND = {
+    controller = owner
+    is_capital = no
+    owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > 1 }
+}
+} }
+location:vladimir = { OR = {
+owner ?= scope:tsin_lucky_candidate
+AND = {
+    controller = owner
+    is_capital = no
+    owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > 1 }
+}
+} }
+location:moscow.owner ?= {
+    trigger_if = {
+        limit = { NOT = { this = scope:tsin_lucky_candidate } }
+        num_locations > tsin_lucky_russia_outgoing_count
+    }
+}
+location:novgorod.owner ?= {
+    trigger_if = {
+        limit = { NOT = { this = scope:tsin_lucky_candidate } }
+        num_locations > tsin_lucky_russia_outgoing_count
+    }
+}
+location:tver.owner ?= {
+    trigger_if = {
+        limit = { NOT = { this = scope:tsin_lucky_candidate } }
+        num_locations > tsin_lucky_russia_outgoing_count
+    }
+}
+location:vladimir.owner ?= {
+    trigger_if = {
+        limit = { NOT = { this = scope:tsin_lucky_candidate } }
+        num_locations > tsin_lucky_russia_outgoing_count
+    }
+}
+}

@@ -1,0 +1,14 @@
+﻿yearly_country_pulse = { on_actions = { tsin_lucky_yearly } }
+on_war_declared = { on_actions = { tsin_lucky_cleanup } }
+on_join_war = { on_actions = { tsin_lucky_cleanup } }
+on_new_country_formed = { on_actions = { tsin_lucky_cleanup } }
+on_took_location_in_peace_treaty = { on_actions = { tsin_lucky_cleanup } }
+tsin_lucky_cleanup = { effect = { tsin_lucky_cleanup_effect = yes } }
+tsin_lucky_yearly = {
+    trigger = {
+        current_year >= 1547
+        current_year <= 1837
+        OR = { NOT = { has_global_variable = tsin_lucky_review_year } current_year > global_var:tsin_lucky_review_year }
+    }
+    effect = { tsin_lucky_russia_year_effect = yes }
+}

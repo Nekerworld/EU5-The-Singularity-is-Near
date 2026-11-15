@@ -1,0 +1,11 @@
+﻿namespace = tsin_lucky_russia
+tsin_lucky_russia.1 = {
+    type = country_event
+    title = tsin_lucky_russia.1.title
+    desc = tsin_lucky_russia.1.desc
+    outcome = neutral
+    illustration_tags = { 10 = exterior 10 = regular }
+    trigger = { is_ai = yes }
+    immediate = { tsin_lucky_russia_form_effect = yes }
+    option = { name = tsin_lucky_russia.1.a }
+}

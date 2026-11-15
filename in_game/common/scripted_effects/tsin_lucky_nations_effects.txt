@@ -1,0 +1,89 @@
+﻿# GENERATED. Coordinator runs once per world year, not once per country.
+tsin_lucky_remove_support_effect = {
+    remove_country_modifier = tsin_lucky_russia_support
+    remove_country_modifier = tsin_lucky_russia_support_strong
+}
+tsin_lucky_cleanup_effect = {
+    every_country = {
+        limit = { has_variable = tsin_lucky_support_years }
+        if = {
+            limit = { OR = {
+                NOT = { tsin_lucky_russia_campaign_trigger = yes }
+                NOT = { tsin_lucky_russia_candidate_trigger = yes }
+                tsin_lucky_human_war_trigger = yes
+            } }
+            tsin_lucky_remove_support_effect = yes
+        }
+    }
+}
+tsin_lucky_russia_form_effect = {
+    save_scope_as = tsin_lucky_candidate
+    # Re-check the complete transaction immediately before *any* ownership change.
+    if = {
+        limit = { tsin_lucky_russia_force_trigger = yes }
+location:moscow = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
+location:novgorod = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
+location:tver = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
+location:vladimir = { if = { limit = { NOT = { owner ?= scope:tsin_lucky_candidate } } change_location_owner = scope:tsin_lucky_candidate } }
+        form_country = formable_country:RUS_f
+        if = {
+            limit = { tag = RUS }
+            tsin_lucky_remove_support_effect = yes
+            set_global_variable = { name = tsin_lucky_russia_formed_year value = current_year }
+            debug_log = tsin_lucky_russia_formed_log
+        }
+    }
+}
+tsin_lucky_russia_year_effect = {
+    set_global_variable = { name = tsin_lucky_review_year value = current_year }
+    # Remove the previous year's support first: only the newly selected actor gets it.
+    every_country = { limit = { has_variable = tsin_lucky_support_years } tsin_lucky_remove_support_effect = yes }
+    if = {
+        limit = { tsin_lucky_russia_campaign_trigger = yes }
+        # Before 1700, a saved HEX role means this actor is left to HEX. The marker
+        # is a conservative compatibility hint, not proof of current mod activation.
+        if = {
+            limit = { c:MOS ?= { tsin_lucky_russia_candidate_trigger = yes } }
+            c:MOS = { save_scope_as = tsin_lucky_candidate }
+        }
+        else_if = {
+            limit = { location:moscow.owner ?= { tsin_lucky_russia_candidate_trigger = yes } }
+            location:moscow.owner = { save_scope_as = tsin_lucky_candidate }
+        }
+        else = {
+            ordered_country = {
+                limit = { tsin_lucky_russia_candidate_trigger = yes }
+                order_by = num_locations max = 1
+                save_scope_as = tsin_lucky_candidate
+            }
+        }
+        if = {
+            limit = { exists = scope:tsin_lucky_candidate }
+            scope:tsin_lucky_candidate = {
+                if = {
+                    limit = {
+                        NOT = { tsin_lucky_human_war_trigger = yes }
+                        NOT = { AND = { current_year < 1700 has_variable = hex_key } }
+                    }
+                    if = { limit = { NOT = { has_variable = tsin_lucky_support_years } } set_variable = { name = tsin_lucky_support_years value = 0 } }
+                    change_variable = { name = tsin_lucky_support_years add = 1 }
+                    if = { limit = { var:tsin_lucky_support_years >= 15 } add_country_modifier = { modifier = tsin_lucky_russia_support_strong years = 2 mode = replace } }
+                    else = { add_country_modifier = { modifier = tsin_lucky_russia_support years = 2 mode = replace } }
+                    # No land needs to move if the native core cities already belong to us.
+                    if = {
+                        limit = { owns = location:moscow
+owns = location:novgorod
+owns = location:tver
+owns = location:vladimir }
+                        form_country = formable_country:RUS_f
+                        tsin_lucky_remove_support_effect = yes
+                    }
+                    else_if = {
+                        limit = { tsin_lucky_russia_force_trigger = yes }
+                        trigger_event_non_silently = tsin_lucky_russia.1
+                    }
+                }
+            }
+        }
+    }
+}

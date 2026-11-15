@@ -1,0 +1,6 @@
+﻿tsin_lucky_russia_outgoing_count = { value = 0
+if = { limit = { owns = location:moscow } add = 1 }
+if = { limit = { owns = location:novgorod } add = 1 }
+if = { limit = { owns = location:tver } add = 1 }
+if = { limit = { owns = location:vladimir } add = 1 }
+}

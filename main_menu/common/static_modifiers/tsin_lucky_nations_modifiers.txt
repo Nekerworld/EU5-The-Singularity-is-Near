@@ -1,0 +1,14 @@
+﻿tsin_lucky_russia_support = {
+    game_data = { category = country }
+    land_morale_modifier = 0.20
+    discipline = 0.10
+    global_manpower_modifier = 0.30
+    siege_ability = 0.20
+}
+tsin_lucky_russia_support_strong = {
+    game_data = { category = country }
+    land_morale_modifier = 0.30
+    discipline = 0.15
+    global_manpower_modifier = 0.50
+    siege_ability = 0.25
+}

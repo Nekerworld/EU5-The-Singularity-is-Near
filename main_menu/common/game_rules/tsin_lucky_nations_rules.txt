@@ -1,0 +1,6 @@
+﻿tsin_lucky_nations = {
+    default = tsin_lucky_nations_assisted
+    tsin_lucky_nations_assisted = { flag = general_rule }
+    tsin_lucky_nations_force = { flag = general_rule }
+    tsin_lucky_nations_off = { flag = general_rule }
+}
