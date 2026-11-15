@@ -1,0 +1,7 @@
+﻿l_english:
+ tsin_border_trade: "TSIN AI exclave trade"
+ tsin_border_trade_desc: "At most one sale per AI seller per decade. Only unimportant, disconnected rural inland locations of unaccepted culture; capitals, forts, cores, mineral centers, historical formation cities and all human realms are excluded. Saved HEX roles do not participate. Actual cash settlement, never a free transfer."
+ tsin_border_trade_on: "Conservative cash sales"
+ tsin_border_trade_on_desc: "Enable strategically filtered AI-only sales with immediate revalidation."
+ tsin_border_trade_off: "Disabled"
+ tsin_border_trade_off_desc: "No scripted exclave sales."

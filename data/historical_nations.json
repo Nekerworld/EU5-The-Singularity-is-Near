@@ -1,0 +1,652 @@
+{
+  "schema_version": 1,
+  "nations": [
+    {
+      "id": "britain",
+      "tag": "GBR",
+      "name": {
+        "english": "United Kingdom",
+        "korean": "영국"
+      },
+      "start": 1707,
+      "fallback": 1801,
+      "end": 1901,
+      "cores": [
+        "london",
+        "edinburgh",
+        "dublin"
+      ],
+      "groups": [
+        "british_group",
+        "scottish_group"
+      ],
+      "preferred": [
+        "ENG",
+        "SCO"
+      ],
+      "minimum_locations": 20,
+      "regions": [
+        "great_britain_region",
+        "ireland_region"
+      ]
+    },
+    {
+      "id": "germany",
+      "tag": "GER",
+      "name": {
+        "english": "Germany",
+        "korean": "독일"
+      },
+      "start": 1815,
+      "fallback": 1871,
+      "end": 1915,
+      "cores": [
+        "berlin",
+        "frankfurt",
+        "munich"
+      ],
+      "groups": [
+        "german_group"
+      ],
+      "preferred": [
+        "PRU",
+        "BRA"
+      ],
+      "minimum_locations": 15,
+      "regions": [
+        "north_german_region",
+        "south_german_region"
+      ]
+    },
+    {
+      "id": "italy",
+      "tag": "ITA",
+      "name": {
+        "english": "Italy",
+        "korean": "이탈리아"
+      },
+      "start": 1848,
+      "fallback": 1871,
+      "end": 1915,
+      "cores": [
+        "turin",
+        "milano",
+        "florence",
+        "naples"
+      ],
+      "groups": [
+        "italian_group"
+      ],
+      "preferred": [
+        "SAR",
+        "SAV"
+      ],
+      "minimum_locations": 10,
+      "regions": [
+        "italy_region"
+      ]
+    },
+    {
+      "id": "austria_hungary",
+      "tag": "HAB",
+      "name": {
+        "english": "Austria-Hungary",
+        "korean": "오스트리아-헝가리"
+      },
+      "start": 1867,
+      "fallback": 1880,
+      "end": 1915,
+      "cores": [
+        "vienna",
+        "buda",
+        "pest"
+      ],
+      "groups": [
+        "german_group",
+        "hungarian_group"
+      ],
+      "preferred": [
+        "HAB"
+      ],
+      "minimum_locations": 15,
+      "regions": [
+        "south_german_region",
+        "carpathia_region"
+      ],
+      "extra": "government_type = government_type:monarchy"
+    },
+    {
+      "id": "usa",
+      "tag": "USA",
+      "name": {
+        "english": "United States",
+        "korean": "미합중국"
+      },
+      "start": 1776,
+      "fallback": 1815,
+      "end": 1901,
+      "cores": [
+        "shackamaxon",
+        "manhattan"
+      ],
+      "groups": [
+        "british_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 8,
+      "regions": [
+        "east_coast_region"
+      ],
+      "colonial": true
+    },
+    {
+      "id": "mexico",
+      "tag": "MEX",
+      "name": {
+        "english": "Mexico",
+        "korean": "멕시코"
+      },
+      "start": 1810,
+      "fallback": 1840,
+      "end": 1901,
+      "cores": [
+        "tenochtitlan"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 10,
+      "regions": [
+        "mesoamerica_region"
+      ],
+      "colonial": true
+    },
+    {
+      "id": "mughals",
+      "tag": "MUG",
+      "name": {
+        "english": "Mughal Empire",
+        "korean": "무굴 제국"
+      },
+      "start": 1526,
+      "fallback": 1600,
+      "end": 1751,
+      "cores": [
+        "delhi",
+        "agra",
+        "lahore"
+      ],
+      "groups": [
+        "iranian_group",
+        "turkic_group",
+        "mongolian_group"
+      ],
+      "preferred": [
+        "DLH",
+        "TIM"
+      ],
+      "minimum_locations": 12,
+      "regions": [
+        "hindustan_region"
+      ],
+      "extra": "religion.group = religion_group:muslim"
+    },
+    {
+      "id": "qing",
+      "tag": "TQG",
+      "name": {
+        "english": "Qing",
+        "korean": "청"
+      },
+      "start": 1644,
+      "fallback": 1837,
+      "end": 1901,
+      "cores": [
+        "dadu"
+      ],
+      "groups": [
+        "jurchen_group"
+      ],
+      "preferred": [
+        "MCH"
+      ],
+      "minimum_locations": 15,
+      "regions": [
+        "north_china_region",
+        "south_china_region",
+        "east_china_region",
+        "west_china_region",
+        "manchuria_region"
+      ],
+      "custom": true,
+      "flag": "CHI",
+      "color": "map_QNG"
+    },
+    {
+      "id": "japan",
+      "tag": "JAP",
+      "name": {
+        "english": "Japan",
+        "korean": "일본"
+      },
+      "start": 1603,
+      "fallback": 1868,
+      "end": 1901,
+      "cores": [
+        "kyoto"
+      ],
+      "groups": [
+        "japanese_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 15,
+      "regions": [
+        "japan_region"
+      ]
+    },
+    {
+      "id": "belgium",
+      "tag": "BEL",
+      "name": {
+        "english": "Belgium",
+        "korean": "벨기에"
+      },
+      "start": 1830,
+      "fallback": 1860,
+      "end": 1901,
+      "cores": [
+        "brussels"
+      ],
+      "groups": [
+        "netherlandish_group",
+        "french_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "north_german_region"
+      ]
+    },
+    {
+      "id": "greece",
+      "tag": "GRE",
+      "name": {
+        "english": "Greece",
+        "korean": "그리스"
+      },
+      "start": 1821,
+      "fallback": 1860,
+      "end": 1901,
+      "cores": [
+        "athens"
+      ],
+      "groups": [
+        "greek_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "balkan_region"
+      ]
+    },
+    {
+      "id": "romania",
+      "tag": "RMN",
+      "name": {
+        "english": "Romania",
+        "korean": "루마니아"
+      },
+      "start": 1859,
+      "fallback": 1881,
+      "end": 1915,
+      "cores": [
+        "bucharest"
+      ],
+      "groups": [
+        "romanian_group"
+      ],
+      "preferred": [
+        "WAL",
+        "MOL"
+      ],
+      "minimum_locations": 4,
+      "regions": [
+        "carpathia_region"
+      ]
+    },
+    {
+      "id": "serbia",
+      "tag": "SER",
+      "name": {
+        "english": "Serbia",
+        "korean": "세르비아"
+      },
+      "start": 1804,
+      "fallback": 1878,
+      "end": 1915,
+      "cores": [
+        "belgrad"
+      ],
+      "groups": [
+        "south_slavic_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "balkan_region"
+      ]
+    },
+    {
+      "id": "bulgaria",
+      "tag": "BUL",
+      "name": {
+        "english": "Bulgaria",
+        "korean": "불가리아"
+      },
+      "start": 1878,
+      "fallback": 1908,
+      "end": 1915,
+      "cores": [
+        "sredets"
+      ],
+      "groups": [
+        "south_slavic_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "balkan_region"
+      ]
+    },
+    {
+      "id": "brazil",
+      "tag": "TBR",
+      "name": {
+        "english": "Brazil",
+        "korean": "브라질"
+      },
+      "start": 1822,
+      "fallback": 1842,
+      "end": 1901,
+      "cores": [
+        "goana_para"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "brazil_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "POR",
+      "color": "map_POR"
+    },
+    {
+      "id": "argentina",
+      "tag": "TAR",
+      "name": {
+        "english": "Argentina",
+        "korean": "아르헨티나"
+      },
+      "start": 1816,
+      "fallback": 1840,
+      "end": 1901,
+      "cores": [
+        "chana"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "la_plata_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "chile",
+      "tag": "TCH",
+      "name": {
+        "english": "Chile",
+        "korean": "칠레"
+      },
+      "start": 1818,
+      "fallback": 1840,
+      "end": 1901,
+      "cores": [
+        "meli_pillan"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "andes_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "peru",
+      "tag": "TPE",
+      "name": {
+        "english": "Peru",
+        "korean": "페루"
+      },
+      "start": 1821,
+      "fallback": 1841,
+      "end": 1901,
+      "cores": [
+        "rimaq"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "andes_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "bolivia",
+      "tag": "TBO",
+      "name": {
+        "english": "Bolivia",
+        "korean": "볼리비아"
+      },
+      "start": 1825,
+      "fallback": 1845,
+      "end": 1901,
+      "cores": [
+        "ccantumarcani"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "andes_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "gran_colombia",
+      "tag": "TGC",
+      "name": {
+        "english": "Gran Colombia",
+        "korean": "그란콜롬비아"
+      },
+      "start": 1819,
+      "fallback": 1825,
+      "end": 1831,
+      "cores": [
+        "bosa_colombia",
+        "caracas",
+        "quito"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "colombia_region",
+        "andes_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "colombia",
+      "tag": "TCO",
+      "name": {
+        "english": "Colombia",
+        "korean": "콜롬비아"
+      },
+      "start": 1831,
+      "fallback": 1851,
+      "end": 1901,
+      "cores": [
+        "bosa_colombia"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "colombia_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "venezuela",
+      "tag": "TVZ",
+      "name": {
+        "english": "Venezuela",
+        "korean": "베네수엘라"
+      },
+      "start": 1830,
+      "fallback": 1850,
+      "end": 1901,
+      "cores": [
+        "caracas"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "colombia_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "ecuador",
+      "tag": "TEC",
+      "name": {
+        "english": "Ecuador",
+        "korean": "에콰도르"
+      },
+      "start": 1830,
+      "fallback": 1850,
+      "end": 1901,
+      "cores": [
+        "quito"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "andes_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "uruguay",
+      "tag": "TUY",
+      "name": {
+        "english": "Uruguay",
+        "korean": "우루과이"
+      },
+      "start": 1828,
+      "fallback": 1848,
+      "end": 1901,
+      "cores": [
+        "guenoa"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "la_plata_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    },
+    {
+      "id": "paraguay",
+      "tag": "TPY",
+      "name": {
+        "english": "Paraguay",
+        "korean": "파라과이"
+      },
+      "start": 1811,
+      "fallback": 1840,
+      "end": 1901,
+      "cores": [
+        "nemby"
+      ],
+      "groups": [
+        "iberian_group"
+      ],
+      "preferred": [],
+      "minimum_locations": 4,
+      "regions": [
+        "chaco_region"
+      ],
+      "colonial": true,
+      "custom": true,
+      "flag": "MEX",
+      "color": "map_MEX"
+    }
+  ]
+}

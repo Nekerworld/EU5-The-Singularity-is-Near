@@ -1,0 +1,667 @@
+﻿tsin_nation_britain_blocked = { OR = { location:london = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:edinburgh = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:dublin = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_britain_campaign = {
+current_year >= 1707 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { c:GBR ?= { owns = location:london owns = location:edinburgh owns = location:dublin } }
+NOT = { tsin_nation_britain_blocked = yes }
+}
+tsin_nation_britain_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 20
+OR = { culture = { has_culture_group = culture_group:british_group } culture = { has_culture_group = culture_group:scottish_group } }
+OR = { capital.region = region:great_britain_region capital.region = region:ireland_region }
+OR = { owns = location:london owns = location:edinburgh owns = location:dublin tag = ENG tag = SCO }
+NOT = { OR = { tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+ trigger_if = { limit = { country_exists = c:GBR } tag = GBR }
+}
+tsin_nation_britain_force = {
+tsin_nation_britain_campaign = yes tsin_nation_britain_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1801
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:london = { OR = { owner ?= scope:tsin_nation_britain_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_britain_outgoing } } } }
+location:edinburgh = { OR = { owner ?= scope:tsin_nation_britain_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_britain_outgoing } } } }
+location:dublin = { OR = { owner ?= scope:tsin_nation_britain_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_britain_outgoing } } } }
+}
+tsin_nation_germany_blocked = { OR = { location:berlin = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:frankfurt = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:munich = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_germany_campaign = {
+current_year >= 1815 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:GER }
+NOT = { tsin_nation_germany_blocked = yes }
+}
+tsin_nation_germany_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 15
+OR = { culture = { has_culture_group = culture_group:german_group } }
+OR = { capital.region = region:north_german_region capital.region = region:south_german_region }
+OR = { owns = location:berlin owns = location:frankfurt owns = location:munich tag = PRU tag = BRA }
+NOT = { OR = { tag = GBR tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_germany_force = {
+tsin_nation_germany_campaign = yes tsin_nation_germany_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1871
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:berlin = { OR = { owner ?= scope:tsin_nation_germany_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_germany_outgoing } } } }
+location:frankfurt = { OR = { owner ?= scope:tsin_nation_germany_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_germany_outgoing } } } }
+location:munich = { OR = { owner ?= scope:tsin_nation_germany_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_germany_outgoing } } } }
+}
+tsin_nation_italy_blocked = { OR = { location:turin = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:milano = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:florence = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:naples = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_italy_campaign = {
+current_year >= 1848 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:ITA }
+NOT = { tsin_nation_italy_blocked = yes }
+}
+tsin_nation_italy_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 10
+OR = { culture = { has_culture_group = culture_group:italian_group } }
+OR = { capital.region = region:italy_region }
+OR = { owns = location:turin owns = location:milano owns = location:florence owns = location:naples tag = SAR tag = SAV }
+NOT = { OR = { tag = GBR tag = GER tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_italy_force = {
+tsin_nation_italy_campaign = yes tsin_nation_italy_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1871
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:turin = { OR = { owner ?= scope:tsin_nation_italy_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_italy_outgoing } } } }
+location:milano = { OR = { owner ?= scope:tsin_nation_italy_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_italy_outgoing } } } }
+location:florence = { OR = { owner ?= scope:tsin_nation_italy_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_italy_outgoing } } } }
+location:naples = { OR = { owner ?= scope:tsin_nation_italy_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_italy_outgoing } } } }
+}
+tsin_nation_austria_hungary_blocked = { OR = { location:vienna = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:buda = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:pest = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_austria_hungary_campaign = {
+current_year >= 1867 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { any_country = { has_variable = tsin_austria_hungary_formed } }
+NOT = { tsin_nation_austria_hungary_blocked = yes }
+}
+tsin_nation_austria_hungary_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 15
+OR = { culture = { has_culture_group = culture_group:german_group } culture = { has_culture_group = culture_group:hungarian_group } }
+OR = { capital.region = region:south_german_region capital.region = region:carpathia_region }
+OR = { owns = location:vienna owns = location:buda owns = location:pest tag = HAB }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+government_type = government_type:monarchy
+}
+tsin_nation_austria_hungary_force = {
+tsin_nation_austria_hungary_campaign = yes tsin_nation_austria_hungary_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1880
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:vienna = { OR = { owner ?= scope:tsin_nation_austria_hungary_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_austria_hungary_outgoing } } } }
+location:buda = { OR = { owner ?= scope:tsin_nation_austria_hungary_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_austria_hungary_outgoing } } } }
+location:pest = { OR = { owner ?= scope:tsin_nation_austria_hungary_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_austria_hungary_outgoing } } } }
+}
+tsin_nation_usa_blocked = { OR = { location:shackamaxon = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:manhattan = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_usa_campaign = {
+current_year >= 1776 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:USA }
+NOT = { tsin_nation_usa_blocked = yes }
+}
+tsin_nation_usa_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 8
+OR = { culture = { has_culture_group = culture_group:british_group } }
+OR = { capital.region = region:east_coast_region }
+OR = { owns = location:shackamaxon owns = location:manhattan  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_usa_force = {
+tsin_nation_usa_campaign = yes tsin_nation_usa_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1815
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:shackamaxon = { OR = { owner ?= scope:tsin_nation_usa_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_usa_outgoing } } } }
+location:manhattan = { OR = { owner ?= scope:tsin_nation_usa_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_usa_outgoing } } } }
+}
+tsin_nation_mexico_blocked = { OR = { location:tenochtitlan = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_mexico_campaign = {
+current_year >= 1810 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:MEX }
+NOT = { tsin_nation_mexico_blocked = yes }
+}
+tsin_nation_mexico_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 10
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:mesoamerica_region }
+OR = { owns = location:tenochtitlan  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_mexico_force = {
+tsin_nation_mexico_campaign = yes tsin_nation_mexico_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1840
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:tenochtitlan = { OR = { owner ?= scope:tsin_nation_mexico_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_mexico_outgoing } } } }
+}
+tsin_nation_mughals_blocked = { OR = { location:delhi = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:agra = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:lahore = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_mughals_campaign = {
+current_year >= 1526 current_year < 1751
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:MUG }
+NOT = { tsin_nation_mughals_blocked = yes }
+}
+tsin_nation_mughals_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 12
+OR = { culture = { has_culture_group = culture_group:iranian_group } culture = { has_culture_group = culture_group:turkic_group } culture = { has_culture_group = culture_group:mongolian_group } }
+OR = { capital.region = region:hindustan_region }
+OR = { owns = location:delhi owns = location:agra owns = location:lahore tag = DLH tag = TIM }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+religion.group = religion_group:muslim
+}
+tsin_nation_mughals_force = {
+tsin_nation_mughals_campaign = yes tsin_nation_mughals_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1600
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:delhi = { OR = { owner ?= scope:tsin_nation_mughals_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_mughals_outgoing } } } }
+location:agra = { OR = { owner ?= scope:tsin_nation_mughals_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_mughals_outgoing } } } }
+location:lahore = { OR = { owner ?= scope:tsin_nation_mughals_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_mughals_outgoing } } } }
+}
+tsin_nation_qing_blocked = { OR = { location:dadu = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_qing_campaign = {
+current_year >= 1644 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TQG }
+NOT = { tsin_nation_qing_blocked = yes }
+}
+tsin_nation_qing_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 15
+OR = { culture = { has_culture_group = culture_group:jurchen_group } }
+OR = { capital.region = region:north_china_region capital.region = region:south_china_region capital.region = region:east_china_region capital.region = region:west_china_region capital.region = region:manchuria_region }
+OR = { owns = location:dadu tag = MCH }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_qing_force = {
+tsin_nation_qing_campaign = yes tsin_nation_qing_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1837
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:dadu = { OR = { owner ?= scope:tsin_nation_qing_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_qing_outgoing } } } }
+}
+tsin_nation_japan_blocked = { OR = { location:kyoto = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_japan_campaign = {
+current_year >= 1603 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:JAP }
+NOT = { tsin_nation_japan_blocked = yes }
+}
+tsin_nation_japan_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 15
+OR = { culture = { has_culture_group = culture_group:japanese_group } }
+OR = { capital.region = region:japan_region }
+OR = { owns = location:kyoto  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_japan_force = {
+tsin_nation_japan_campaign = yes tsin_nation_japan_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1868
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:kyoto = { OR = { owner ?= scope:tsin_nation_japan_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_japan_outgoing } } } }
+}
+tsin_nation_belgium_blocked = { OR = { location:brussels = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_belgium_campaign = {
+current_year >= 1830 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:BEL }
+NOT = { tsin_nation_belgium_blocked = yes }
+}
+tsin_nation_belgium_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:netherlandish_group } culture = { has_culture_group = culture_group:french_group } }
+OR = { capital.region = region:north_german_region }
+OR = { owns = location:brussels  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_belgium_force = {
+tsin_nation_belgium_campaign = yes tsin_nation_belgium_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1860
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:brussels = { OR = { owner ?= scope:tsin_nation_belgium_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_belgium_outgoing } } } }
+}
+tsin_nation_greece_blocked = { OR = { location:athens = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_greece_campaign = {
+current_year >= 1821 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:GRE }
+NOT = { tsin_nation_greece_blocked = yes }
+}
+tsin_nation_greece_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:greek_group } }
+OR = { capital.region = region:balkan_region }
+OR = { owns = location:athens  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_greece_force = {
+tsin_nation_greece_campaign = yes tsin_nation_greece_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1860
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:athens = { OR = { owner ?= scope:tsin_nation_greece_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_greece_outgoing } } } }
+}
+tsin_nation_romania_blocked = { OR = { location:bucharest = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_romania_campaign = {
+current_year >= 1859 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:RMN }
+NOT = { tsin_nation_romania_blocked = yes }
+}
+tsin_nation_romania_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:romanian_group } }
+OR = { capital.region = region:carpathia_region }
+OR = { owns = location:bucharest tag = WAL tag = MOL }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_romania_force = {
+tsin_nation_romania_campaign = yes tsin_nation_romania_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1881
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:bucharest = { OR = { owner ?= scope:tsin_nation_romania_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_romania_outgoing } } } }
+}
+tsin_nation_serbia_blocked = { OR = { location:belgrad = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_serbia_campaign = {
+current_year >= 1804 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:SER }
+NOT = { tsin_nation_serbia_blocked = yes }
+}
+tsin_nation_serbia_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:south_slavic_group } }
+OR = { capital.region = region:balkan_region }
+OR = { owns = location:belgrad  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_serbia_force = {
+tsin_nation_serbia_campaign = yes tsin_nation_serbia_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1878
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:belgrad = { OR = { owner ?= scope:tsin_nation_serbia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_serbia_outgoing } } } }
+}
+tsin_nation_bulgaria_blocked = { OR = { location:sredets = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_bulgaria_campaign = {
+current_year >= 1878 current_year < 1915
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:BUL }
+NOT = { tsin_nation_bulgaria_blocked = yes }
+}
+tsin_nation_bulgaria_candidate = {
+tsin_history_ai_realm = yes is_subject = no is_junior_partner = no
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:south_slavic_group } }
+OR = { capital.region = region:balkan_region }
+OR = { owns = location:sredets  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_bulgaria_force = {
+tsin_nation_bulgaria_campaign = yes tsin_nation_bulgaria_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1908
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:sredets = { OR = { owner ?= scope:tsin_nation_bulgaria_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_bulgaria_outgoing } } } }
+}
+tsin_nation_brazil_blocked = { OR = { location:goana_para = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_brazil_campaign = {
+current_year >= 1822 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TBR }
+NOT = { tsin_nation_brazil_blocked = yes }
+}
+tsin_nation_brazil_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:brazil_region }
+OR = { owns = location:goana_para  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_brazil_force = {
+tsin_nation_brazil_campaign = yes tsin_nation_brazil_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1842
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:goana_para = { OR = { owner ?= scope:tsin_nation_brazil_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_brazil_outgoing } } } }
+}
+tsin_nation_argentina_blocked = { OR = { location:chana = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_argentina_campaign = {
+current_year >= 1816 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TAR }
+NOT = { tsin_nation_argentina_blocked = yes }
+}
+tsin_nation_argentina_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:la_plata_region }
+OR = { owns = location:chana  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_argentina_force = {
+tsin_nation_argentina_campaign = yes tsin_nation_argentina_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1840
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:chana = { OR = { owner ?= scope:tsin_nation_argentina_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_argentina_outgoing } } } }
+}
+tsin_nation_chile_blocked = { OR = { location:meli_pillan = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_chile_campaign = {
+current_year >= 1818 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TCH }
+NOT = { tsin_nation_chile_blocked = yes }
+}
+tsin_nation_chile_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:andes_region }
+OR = { owns = location:meli_pillan  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_chile_force = {
+tsin_nation_chile_campaign = yes tsin_nation_chile_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1840
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:meli_pillan = { OR = { owner ?= scope:tsin_nation_chile_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_chile_outgoing } } } }
+}
+tsin_nation_peru_blocked = { OR = { location:rimaq = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_peru_campaign = {
+current_year >= 1821 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TPE }
+NOT = { tsin_nation_peru_blocked = yes }
+}
+tsin_nation_peru_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:andes_region }
+OR = { owns = location:rimaq  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_peru_force = {
+tsin_nation_peru_campaign = yes tsin_nation_peru_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1841
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:rimaq = { OR = { owner ?= scope:tsin_nation_peru_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_peru_outgoing } } } }
+}
+tsin_nation_bolivia_blocked = { OR = { location:ccantumarcani = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_bolivia_campaign = {
+current_year >= 1825 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TBO }
+NOT = { tsin_nation_bolivia_blocked = yes }
+}
+tsin_nation_bolivia_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:andes_region }
+OR = { owns = location:ccantumarcani  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_bolivia_force = {
+tsin_nation_bolivia_campaign = yes tsin_nation_bolivia_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1845
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:ccantumarcani = { OR = { owner ?= scope:tsin_nation_bolivia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_bolivia_outgoing } } } }
+}
+tsin_nation_gran_colombia_blocked = { OR = { location:bosa_colombia = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:caracas = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } location:quito = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_gran_colombia_campaign = {
+current_year >= 1819 current_year < 1831
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TGC }
+NOT = { tsin_nation_gran_colombia_blocked = yes }
+}
+tsin_nation_gran_colombia_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:colombia_region capital.region = region:andes_region }
+OR = { owns = location:bosa_colombia owns = location:caracas owns = location:quito  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TCO tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_gran_colombia_force = {
+tsin_nation_gran_colombia_campaign = yes tsin_nation_gran_colombia_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1825
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:bosa_colombia = { OR = { owner ?= scope:tsin_nation_gran_colombia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_gran_colombia_outgoing } } } }
+location:caracas = { OR = { owner ?= scope:tsin_nation_gran_colombia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_gran_colombia_outgoing } } } }
+location:quito = { OR = { owner ?= scope:tsin_nation_gran_colombia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_gran_colombia_outgoing } } } }
+}
+tsin_nation_colombia_blocked = { OR = { location:bosa_colombia = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_colombia_campaign = {
+current_year >= 1831 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TCO }
+NOT = { tsin_nation_colombia_blocked = yes }
+}
+tsin_nation_colombia_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:colombia_region }
+OR = { owns = location:bosa_colombia  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TVZ tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_colombia_force = {
+tsin_nation_colombia_campaign = yes tsin_nation_colombia_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1851
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:bosa_colombia = { OR = { owner ?= scope:tsin_nation_colombia_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_colombia_outgoing } } } }
+}
+tsin_nation_venezuela_blocked = { OR = { location:caracas = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_venezuela_campaign = {
+current_year >= 1830 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TVZ }
+NOT = { tsin_nation_venezuela_blocked = yes }
+}
+tsin_nation_venezuela_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:colombia_region }
+OR = { owns = location:caracas  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TEC tag = TUY tag = TPY } }
+
+}
+tsin_nation_venezuela_force = {
+tsin_nation_venezuela_campaign = yes tsin_nation_venezuela_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1850
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:caracas = { OR = { owner ?= scope:tsin_nation_venezuela_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_venezuela_outgoing } } } }
+}
+tsin_nation_ecuador_blocked = { OR = { location:quito = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_ecuador_campaign = {
+current_year >= 1830 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TEC }
+NOT = { tsin_nation_ecuador_blocked = yes }
+}
+tsin_nation_ecuador_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:andes_region }
+OR = { owns = location:quito  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TUY tag = TPY } }
+
+}
+tsin_nation_ecuador_force = {
+tsin_nation_ecuador_campaign = yes tsin_nation_ecuador_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1850
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:quito = { OR = { owner ?= scope:tsin_nation_ecuador_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_ecuador_outgoing } } } }
+}
+tsin_nation_uruguay_blocked = { OR = { location:guenoa = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_uruguay_campaign = {
+current_year >= 1828 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TUY }
+NOT = { tsin_nation_uruguay_blocked = yes }
+}
+tsin_nation_uruguay_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:la_plata_region }
+OR = { owns = location:guenoa  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TPY } }
+
+}
+tsin_nation_uruguay_force = {
+tsin_nation_uruguay_campaign = yes tsin_nation_uruguay_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1848
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:guenoa = { OR = { owner ?= scope:tsin_nation_uruguay_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_uruguay_outgoing } } } }
+}
+tsin_nation_paraguay_blocked = { OR = { location:nemby = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+tsin_nation_paraguay_campaign = {
+current_year >= 1811 current_year < 1901
+NOT = { has_game_rule = tsin_lucky_nations_off }
+NOT = { country_exists = c:TPY }
+NOT = { tsin_nation_paraguay_blocked = yes }
+}
+tsin_nation_paraguay_candidate = {
+tsin_history_ai_realm = yes OR = { is_subject = no is_subject_type = colonial_nation }
+num_locations >= 4
+OR = { culture = { has_culture_group = culture_group:iberian_group } }
+OR = { capital.region = region:chaco_region }
+OR = { owns = location:nemby  }
+NOT = { OR = { tag = GBR tag = GER tag = ITA tag = HAB tag = USA tag = MEX tag = MUG tag = TQG tag = JAP tag = BEL tag = GRE tag = RMN tag = SER tag = BUL tag = TBR tag = TAR tag = TCH tag = TPE tag = TBO tag = TGC tag = TCO tag = TVZ tag = TEC tag = TUY } }
+
+}
+tsin_nation_paraguay_force = {
+tsin_nation_paraguay_campaign = yes tsin_nation_paraguay_candidate = yes
+has_game_rule = tsin_lucky_nations_force current_year >= 1840
+at_war = no NOT = { tsin_lucky_human_war_trigger = yes }
+
+location:nemby = { OR = { owner ?= scope:tsin_nation_paraguay_candidate
+AND = { controller = owner is_capital = no is_historical_capital = no
+owner ?= { tsin_history_ai_realm = yes at_war = no num_locations > tsin_nation_paraguay_outgoing } } } }
+}

@@ -1,0 +1,5 @@
+﻿tsin_border_trade = {
+default = tsin_border_trade_on
+tsin_border_trade_on = { flag = general_rule }
+tsin_border_trade_off = { flag = general_rule }
+}

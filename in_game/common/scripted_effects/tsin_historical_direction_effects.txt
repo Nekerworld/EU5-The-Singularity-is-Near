@@ -1,0 +1,353 @@
+﻿tsin_direction_cleanup_effect = { remove_area_preference = tsin_priority_austria_area remove_area_preference = tsin_priority_bavaria_area remove_area_preference = tsin_priority_beiping_area remove_area_preference = tsin_priority_brabant_area remove_area_preference = tsin_priority_brandenburg_area remove_area_preference = tsin_priority_bulgaria_area remove_area_preference = tsin_priority_campania_area remove_area_preference = tsin_priority_caracas_area remove_area_preference = tsin_priority_celtic_sea_area remove_area_preference = tsin_priority_chala_area remove_area_preference = tsin_priority_chao_phraya_area remove_area_preference = tsin_priority_chunsa_area remove_area_preference = tsin_priority_connaught_area remove_area_preference = tsin_priority_doab_area remove_area_preference = tsin_priority_east_anglia_area remove_area_preference = tsin_priority_english_channel_area remove_area_preference = tsin_priority_hebridean_sea_area remove_area_preference = tsin_priority_hebrides_area remove_area_preference = tsin_priority_hesse_area remove_area_preference = tsin_priority_home_counties_area remove_area_preference = tsin_priority_hudson_area remove_area_preference = tsin_priority_ile_de_france_area remove_area_preference = tsin_priority_iraq_ajam_area remove_area_preference = tsin_priority_irish_sea_area remove_area_preference = tsin_priority_kinai_area remove_area_preference = tsin_priority_leinster_area remove_area_preference = tsin_priority_lombardy_area remove_area_preference = tsin_priority_mexihko_area remove_area_preference = tsin_priority_midlands_area remove_area_preference = tsin_priority_moscow_area remove_area_preference = tsin_priority_munster_area remove_area_preference = tsin_priority_ngulumapu_area remove_area_preference = tsin_priority_north_alfold_area remove_area_preference = tsin_priority_north_sea_area remove_area_preference = tsin_priority_northern_greece_area remove_area_preference = tsin_priority_northumbria_area remove_area_preference = tsin_priority_pampa_area remove_area_preference = tsin_priority_paraguay_area remove_area_preference = tsin_priority_pennsylvania_area remove_area_preference = tsin_priority_piemonte_area remove_area_preference = tsin_priority_pindorama_area remove_area_preference = tsin_priority_punjab_area remove_area_preference = tsin_priority_quitu_area remove_area_preference = tsin_priority_qullaw_area remove_area_preference = tsin_priority_scottish_highlands_area remove_area_preference = tsin_priority_scottish_lowlands_area remove_area_preference = tsin_priority_serbia_area remove_area_preference = tsin_priority_thrace_area remove_area_preference = tsin_priority_transdanubia_area remove_area_preference = tsin_priority_tuscany_area remove_area_preference = tsin_priority_ulster_area remove_area_preference = tsin_priority_wales_area remove_area_preference = tsin_priority_wallachia_area remove_area_preference = tsin_priority_west_country_area }
+tsin_direction_review_effect = { tsin_direction_cleanup_effect = yes save_scope_as = tsin_direction_actor
+if = { limit = { tag = GBR current_year >= 1707 current_year < 1901 }
+area:celtic_sea_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_celtic_sea_area }
+} } }
+area:connaught_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_connaught_area }
+} } }
+area:east_anglia_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_east_anglia_area }
+} } }
+area:english_channel_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_english_channel_area }
+} } }
+area:hebridean_sea_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_hebridean_sea_area }
+} } }
+area:hebrides_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_hebrides_area }
+} } }
+area:home_counties_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_home_counties_area }
+} } }
+area:irish_sea_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_irish_sea_area }
+} } }
+area:leinster_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_leinster_area }
+} } }
+area:midlands_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_midlands_area }
+} } }
+area:munster_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_munster_area }
+} } }
+area:north_sea_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_north_sea_area }
+} } }
+area:northumbria_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_northumbria_area }
+} } }
+area:scottish_highlands_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_scottish_highlands_area }
+} } }
+area:scottish_lowlands_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_scottish_lowlands_area }
+} } }
+area:ulster_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_ulster_area }
+} } }
+area:wales_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_wales_area }
+} } }
+area:west_country_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_west_country_area }
+} } }
+}
+if = { limit = { tag = GER current_year >= 1815 current_year < 1915 }
+area:bavaria_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_bavaria_area }
+} } }
+area:brandenburg_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_brandenburg_area }
+} } }
+area:hesse_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_hesse_area }
+} } }
+}
+if = { limit = { tag = ITA current_year >= 1848 current_year < 1915 }
+area:campania_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_campania_area }
+} } }
+area:lombardy_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_lombardy_area }
+} } }
+area:piemonte_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_piemonte_area }
+} } }
+area:tuscany_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_tuscany_area }
+} } }
+}
+if = { limit = { tag = HAB current_year >= 1867 current_year < 1915 }
+area:austria_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_austria_area }
+} } }
+area:north_alfold_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_north_alfold_area }
+} } }
+area:transdanubia_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_transdanubia_area }
+} } }
+}
+if = { limit = { tag = USA current_year >= 1776 current_year < 1901 }
+area:hudson_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_hudson_area }
+} } }
+area:pennsylvania_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pennsylvania_area }
+} } }
+}
+if = { limit = { tag = MEX current_year >= 1810 current_year < 1901 }
+area:mexihko_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_mexihko_area }
+} } }
+}
+if = { limit = { tag = MUG current_year >= 1526 current_year < 1751 }
+area:doab_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_doab_area }
+} } }
+area:punjab_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_punjab_area }
+} } }
+}
+if = { limit = { tag = TQG current_year >= 1644 current_year < 1901 }
+area:beiping_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_beiping_area }
+} } }
+}
+if = { limit = { tag = JAP current_year >= 1603 current_year < 1901 }
+area:kinai_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_kinai_area }
+} } }
+}
+if = { limit = { tag = BEL current_year >= 1830 current_year < 1901 }
+area:brabant_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_brabant_area }
+} } }
+}
+if = { limit = { tag = GRE current_year >= 1821 current_year < 1901 }
+area:northern_greece_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_northern_greece_area }
+} } }
+}
+if = { limit = { tag = RMN current_year >= 1859 current_year < 1915 }
+area:wallachia_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_wallachia_area }
+} } }
+}
+if = { limit = { tag = SER current_year >= 1804 current_year < 1915 }
+area:serbia_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_serbia_area }
+} } }
+}
+if = { limit = { tag = BUL current_year >= 1878 current_year < 1915 }
+area:bulgaria_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_bulgaria_area }
+} } }
+}
+if = { limit = { tag = TBR current_year >= 1822 current_year < 1901 }
+area:pindorama_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pindorama_area }
+} } }
+}
+if = { limit = { tag = TAR current_year >= 1816 current_year < 1901 }
+area:pampa_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pampa_area }
+} } }
+}
+if = { limit = { tag = TCH current_year >= 1818 current_year < 1901 }
+area:ngulumapu_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_ngulumapu_area }
+} } }
+}
+if = { limit = { tag = TPE current_year >= 1821 current_year < 1901 }
+area:chala_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chala_area }
+} } }
+}
+if = { limit = { tag = TBO current_year >= 1825 current_year < 1901 }
+area:qullaw_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_qullaw_area }
+} } }
+}
+if = { limit = { tag = TGC current_year >= 1819 current_year < 1831 }
+area:caracas_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_caracas_area }
+} } }
+area:chunsa_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chunsa_area }
+} } }
+area:quitu_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_quitu_area }
+} } }
+}
+if = { limit = { tag = TCO current_year >= 1831 current_year < 1901 }
+area:chunsa_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chunsa_area }
+} } }
+}
+if = { limit = { tag = TVZ current_year >= 1830 current_year < 1901 }
+area:caracas_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_caracas_area }
+} } }
+}
+if = { limit = { tag = TEC current_year >= 1830 current_year < 1901 }
+area:quitu_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_quitu_area }
+} } }
+}
+if = { limit = { tag = TUY current_year >= 1828 current_year < 1901 }
+area:pampa_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_pampa_area }
+} } }
+}
+if = { limit = { tag = TPY current_year >= 1811 current_year < 1901 }
+area:paraguay_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_paraguay_area }
+} } }
+}
+if = { limit = { tag = RUS current_year >= 1500 current_year < 1945 }
+area:moscow_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_moscow_area }
+} } }
+}
+if = { limit = { tag = FRA current_year >= 1500 current_year < 1945 }
+area:ile_de_france_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_ile_de_france_area }
+} } }
+}
+if = { limit = { tag = TUR current_year >= 1500 current_year < 1945 }
+area:thrace_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_thrace_area }
+} } }
+}
+if = { limit = { tag = IRA current_year >= 1500 current_year < 1945 }
+area:iraq_ajam_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_iraq_ajam_area }
+} } }
+}
+if = { limit = { tag = SIA current_year >= 1500 current_year < 1945 }
+area:chao_phraya_area = {
+if = { limit = { NOT = { any_location_in_area = { OR = { owner ?= { tsin_history_human_realm = yes } controller ?= { tsin_history_human_realm = yes } } } } }
+scope:tsin_direction_actor = {
+if = { limit = { "conquer_area_preference(prev)" <= 1 "conquer_area_preference(prev)" >= 1 } add_area_preference = tsin_priority_chao_phraya_area }
+} } }
+}
+}

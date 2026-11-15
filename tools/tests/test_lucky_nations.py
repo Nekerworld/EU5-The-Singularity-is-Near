@@ -59,6 +59,7 @@ class SafetyFixture:
                 answer=self.evaluate(self.definitions[key],obj,prev)
                 return answer==(value=='yes')
             if key=='any_country':return any(self.evaluate(value,country,obj) for country in self.countries)
+            if key=='has_variable':return value in obj
             if key=='has_game_rule':return value in self.rules
             if key=='country_exists':return False # Russia is absent in these fixtures.
             if key=='owns':return self.locations[value[9:]]['owner'] is obj

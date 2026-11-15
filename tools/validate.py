@@ -294,7 +294,7 @@ def check_tsin_names() -> None:
     loc = loc_keys("english")
     for p, clean in texts.items():
         unquoted = re.sub(r'"[^"\n]*"', '""', clean)
-        loc_refs = set(re.findall(r"\b(?:custom_tooltip|text|desc|title|debug_log)\s*=\s*(tsin_\w+)", unquoted))
+        loc_refs = set(re.findall(r"\b(?:custom_tooltip|text|desc|title|debug_log|change_country_name|change_country_adjective)\s*=\s*(tsin_\w+)", unquoted))
         for tok in set(re.findall(r"\b(tsin_\w+(?:\.\d+)?)", unquoted)):
             if tok in known or (tok in loc_refs and tok in loc):
                 continue

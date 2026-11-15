@@ -1,0 +1,9 @@
+﻿yearly_country_pulse = { on_actions = { tsin_nations_yearly } }
+on_war_declared = { on_actions = { tsin_nations_cleanup } }
+on_join_war = { on_actions = { tsin_nations_cleanup } }
+tsin_nations_cleanup = { effect = { tsin_nations_cleanup_effect = yes } }
+tsin_nations_yearly = {
+trigger = { current_year >= 1500 current_year <= 1945
+OR = { NOT = { has_global_variable = tsin_nations_review_year } current_year > global_var:tsin_nations_review_year } }
+effect = { tsin_nations_year_effect = yes }
+}

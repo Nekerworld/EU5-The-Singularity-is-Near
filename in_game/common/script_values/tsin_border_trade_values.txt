@@ -1,0 +1,1 @@
+﻿tsin_border_sale_price = { value = population multiply = 20 add = 10 min = 10 max = 1000 }

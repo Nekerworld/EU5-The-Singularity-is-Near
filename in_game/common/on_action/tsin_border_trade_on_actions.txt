@@ -1,0 +1,9 @@
+﻿yearly_country_pulse = { on_actions = { tsin_border_trade_yearly } }
+tsin_border_trade_yearly = {
+trigger = { current_year >= 1700 NOT = { has_game_rule = tsin_border_trade_off } tsin_history_ai_realm = yes
+is_subject = no at_war = no num_locations > 1
+NOT = { has_variable = hex_key }
+NOT = { has_variable = tsin_border_review_cooldown }
+NOT = { has_variable = tsin_border_sale_cooldown } }
+effect = { tsin_border_sale_review_effect = yes }
+}

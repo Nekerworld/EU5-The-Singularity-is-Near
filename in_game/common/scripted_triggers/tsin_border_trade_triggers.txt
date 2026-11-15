@@ -1,0 +1,28 @@
+﻿tsin_border_sale_location = {
+tsin_history_border_shortlist = yes
+owner = { is_subject = no NOT = { has_variable = hex_key }
+NOT = { has_primary_or_accepted_culture = prev.dominant_culture } }
+NOT = { is_core_of = owner }
+NOT = { has_building = building_type:castle }
+NOT = { has_building = building_type:fortress }
+NOT = { OR = { this = location:agra this = location:athens this = location:belgrad this = location:berlin this = location:bosa_colombia this = location:brussels this = location:bucharest this = location:buda this = location:caracas this = location:ccantumarcani this = location:chana this = location:dadu this = location:delhi this = location:dublin this = location:edinburgh this = location:florence this = location:frankfurt this = location:goana_para this = location:guenoa this = location:kyoto this = location:lahore this = location:london this = location:manhattan this = location:meli_pillan this = location:milano this = location:moscow this = location:munich this = location:naples this = location:nemby this = location:novgorod this = location:pest this = location:quito this = location:rimaq this = location:shackamaxon this = location:sredets this = location:tenochtitlan this = location:turin this = location:tver this = location:vienna this = location:vladimir } }
+}
+tsin_border_sale_buyer = {
+tsin_history_ai_realm = yes is_subject = no at_war = no
+NOT = { this = scope:tsin_border_seller }
+NOT = { has_variable = hex_key }
+has_primary_or_accepted_culture = scope:tsin_border_location.dominant_culture
+gold >= scope:tsin_border_seller.var:tsin_border_price
+}
+tsin_border_sale_transaction = {
+NOT = { has_game_rule = tsin_border_trade_off }
+exists = scope:tsin_border_seller exists = scope:tsin_border_buyer exists = scope:tsin_border_location
+scope:tsin_border_seller = { tsin_history_ai_realm = yes is_subject = no at_war = no num_locations > 1 NOT = { has_variable = hex_key } }
+scope:tsin_border_buyer = { tsin_border_sale_buyer = yes }
+scope:tsin_border_location = {
+tsin_border_sale_location = yes owner = scope:tsin_border_seller
+any_neighbor_location = {
+owner ?= scope:tsin_border_buyer controller = owner
+is_connected_to = owner.capital
+} }
+}

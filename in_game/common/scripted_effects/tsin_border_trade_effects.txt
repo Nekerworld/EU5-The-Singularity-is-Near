@@ -1,0 +1,27 @@
+﻿tsin_border_sale_settle_effect = {
+# Recheck the full contract before any money or location moves.
+if = { limit = { tsin_border_sale_transaction = yes }
+scope:tsin_border_buyer = { add_gold = { value = scope:tsin_border_seller.var:tsin_border_price multiply = -1 } }
+scope:tsin_border_seller = {
+add_gold = var:tsin_border_price
+set_variable = { name = tsin_border_sale_cooldown years = 10 }
+}
+scope:tsin_border_location = { change_location_owner = scope:tsin_border_buyer }
+}
+}
+tsin_border_sale_review_effect = {
+save_scope_as = tsin_border_seller
+# At most one sampled location and one completed sale per decade per seller.
+set_variable = { name = tsin_border_review_cooldown years = 10 }
+random_owned_location = {
+limit = { tsin_border_sale_location = yes }
+save_scope_as = tsin_border_location
+owner = { set_variable = { name = tsin_border_price value = prev.tsin_border_sale_price } }
+random_neighbor_location = {
+limit = { controller = owner is_connected_to = owner.capital owner ?= { tsin_border_sale_buyer = yes } }
+owner = { save_scope_as = tsin_border_buyer }
+}
+if = { limit = { exists = scope:tsin_border_buyer } tsin_border_sale_settle_effect = yes }
+}
+remove_variable = tsin_border_price
+}

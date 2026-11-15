@@ -1,0 +1,176 @@
+﻿namespace = tsin_nations
+tsin_nations.1 = { type = country_event
+title = tsin_nations.1.title desc = tsin_nations.1.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_britain_candidate = yes }
+immediate = { save_scope_as = tsin_nation_britain_candidate tsin_nation_britain_form = yes }
+option = { name = tsin_nations.1.a }
+}
+tsin_nations.2 = { type = country_event
+title = tsin_nations.2.title desc = tsin_nations.2.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_germany_candidate = yes }
+immediate = { save_scope_as = tsin_nation_germany_candidate tsin_nation_germany_form = yes }
+option = { name = tsin_nations.2.a }
+}
+tsin_nations.3 = { type = country_event
+title = tsin_nations.3.title desc = tsin_nations.3.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_italy_candidate = yes }
+immediate = { save_scope_as = tsin_nation_italy_candidate tsin_nation_italy_form = yes }
+option = { name = tsin_nations.3.a }
+}
+tsin_nations.4 = { type = country_event
+title = tsin_nations.4.title desc = tsin_nations.4.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_austria_hungary_candidate = yes }
+immediate = { save_scope_as = tsin_nation_austria_hungary_candidate tsin_nation_austria_hungary_form = yes }
+option = { name = tsin_nations.4.a }
+}
+tsin_nations.5 = { type = country_event
+title = tsin_nations.5.title desc = tsin_nations.5.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_usa_candidate = yes }
+immediate = { save_scope_as = tsin_nation_usa_candidate tsin_nation_usa_form = yes }
+option = { name = tsin_nations.5.a }
+}
+tsin_nations.6 = { type = country_event
+title = tsin_nations.6.title desc = tsin_nations.6.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_mexico_candidate = yes }
+immediate = { save_scope_as = tsin_nation_mexico_candidate tsin_nation_mexico_form = yes }
+option = { name = tsin_nations.6.a }
+}
+tsin_nations.7 = { type = country_event
+title = tsin_nations.7.title desc = tsin_nations.7.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_mughals_candidate = yes }
+immediate = { save_scope_as = tsin_nation_mughals_candidate tsin_nation_mughals_form = yes }
+option = { name = tsin_nations.7.a }
+}
+tsin_nations.8 = { type = country_event
+title = tsin_nations.8.title desc = tsin_nations.8.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_qing_candidate = yes }
+immediate = { save_scope_as = tsin_nation_qing_candidate tsin_nation_qing_form = yes }
+option = { name = tsin_nations.8.a }
+}
+tsin_nations.9 = { type = country_event
+title = tsin_nations.9.title desc = tsin_nations.9.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_japan_candidate = yes }
+immediate = { save_scope_as = tsin_nation_japan_candidate tsin_nation_japan_form = yes }
+option = { name = tsin_nations.9.a }
+}
+tsin_nations.10 = { type = country_event
+title = tsin_nations.10.title desc = tsin_nations.10.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_belgium_candidate = yes }
+immediate = { save_scope_as = tsin_nation_belgium_candidate tsin_nation_belgium_form = yes }
+option = { name = tsin_nations.10.a }
+}
+tsin_nations.11 = { type = country_event
+title = tsin_nations.11.title desc = tsin_nations.11.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_greece_candidate = yes }
+immediate = { save_scope_as = tsin_nation_greece_candidate tsin_nation_greece_form = yes }
+option = { name = tsin_nations.11.a }
+}
+tsin_nations.12 = { type = country_event
+title = tsin_nations.12.title desc = tsin_nations.12.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_romania_candidate = yes }
+immediate = { save_scope_as = tsin_nation_romania_candidate tsin_nation_romania_form = yes }
+option = { name = tsin_nations.12.a }
+}
+tsin_nations.13 = { type = country_event
+title = tsin_nations.13.title desc = tsin_nations.13.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_serbia_candidate = yes }
+immediate = { save_scope_as = tsin_nation_serbia_candidate tsin_nation_serbia_form = yes }
+option = { name = tsin_nations.13.a }
+}
+tsin_nations.14 = { type = country_event
+title = tsin_nations.14.title desc = tsin_nations.14.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_bulgaria_candidate = yes }
+immediate = { save_scope_as = tsin_nation_bulgaria_candidate tsin_nation_bulgaria_form = yes }
+option = { name = tsin_nations.14.a }
+}
+tsin_nations.15 = { type = country_event
+title = tsin_nations.15.title desc = tsin_nations.15.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_brazil_candidate = yes }
+immediate = { save_scope_as = tsin_nation_brazil_candidate tsin_nation_brazil_form = yes }
+option = { name = tsin_nations.15.a }
+}
+tsin_nations.16 = { type = country_event
+title = tsin_nations.16.title desc = tsin_nations.16.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_argentina_candidate = yes }
+immediate = { save_scope_as = tsin_nation_argentina_candidate tsin_nation_argentina_form = yes }
+option = { name = tsin_nations.16.a }
+}
+tsin_nations.17 = { type = country_event
+title = tsin_nations.17.title desc = tsin_nations.17.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_chile_candidate = yes }
+immediate = { save_scope_as = tsin_nation_chile_candidate tsin_nation_chile_form = yes }
+option = { name = tsin_nations.17.a }
+}
+tsin_nations.18 = { type = country_event
+title = tsin_nations.18.title desc = tsin_nations.18.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_peru_candidate = yes }
+immediate = { save_scope_as = tsin_nation_peru_candidate tsin_nation_peru_form = yes }
+option = { name = tsin_nations.18.a }
+}
+tsin_nations.19 = { type = country_event
+title = tsin_nations.19.title desc = tsin_nations.19.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_bolivia_candidate = yes }
+immediate = { save_scope_as = tsin_nation_bolivia_candidate tsin_nation_bolivia_form = yes }
+option = { name = tsin_nations.19.a }
+}
+tsin_nations.20 = { type = country_event
+title = tsin_nations.20.title desc = tsin_nations.20.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_gran_colombia_candidate = yes }
+immediate = { save_scope_as = tsin_nation_gran_colombia_candidate tsin_nation_gran_colombia_form = yes }
+option = { name = tsin_nations.20.a }
+}
+tsin_nations.21 = { type = country_event
+title = tsin_nations.21.title desc = tsin_nations.21.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_colombia_candidate = yes }
+immediate = { save_scope_as = tsin_nation_colombia_candidate tsin_nation_colombia_form = yes }
+option = { name = tsin_nations.21.a }
+}
+tsin_nations.22 = { type = country_event
+title = tsin_nations.22.title desc = tsin_nations.22.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_venezuela_candidate = yes }
+immediate = { save_scope_as = tsin_nation_venezuela_candidate tsin_nation_venezuela_form = yes }
+option = { name = tsin_nations.22.a }
+}
+tsin_nations.23 = { type = country_event
+title = tsin_nations.23.title desc = tsin_nations.23.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_ecuador_candidate = yes }
+immediate = { save_scope_as = tsin_nation_ecuador_candidate tsin_nation_ecuador_form = yes }
+option = { name = tsin_nations.23.a }
+}
+tsin_nations.24 = { type = country_event
+title = tsin_nations.24.title desc = tsin_nations.24.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_uruguay_candidate = yes }
+immediate = { save_scope_as = tsin_nation_uruguay_candidate tsin_nation_uruguay_form = yes }
+option = { name = tsin_nations.24.a }
+}
+tsin_nations.25 = { type = country_event
+title = tsin_nations.25.title desc = tsin_nations.25.desc outcome = neutral
+illustration_tags = { 10 = regular 10 = exterior }
+trigger = { tsin_nation_paraguay_candidate = yes }
+immediate = { save_scope_as = tsin_nation_paraguay_candidate tsin_nation_paraguay_form = yes }
+option = { name = tsin_nations.25.a }
+}

@@ -193,12 +193,12 @@ tsin_lucky_russia.1 = {
 '''
     en = {
         'tsin_lucky_nations':'TSIN historical lucky nations',
-        'tsin_lucky_nations_desc':'Russian pilot. Human ownership or control of any required city blocks scripted formation. Assisted mode never transfers land. Saved HEX actors are left to HEX before 1700.',
+        'tsin_lucky_nations_desc':'Historical formation paths including Russia, Britain and Ireland, Germany, Italy and colonial successors. Human ownership or control of any required core blocks the entire path. Assisted mode never transfers land. Each saved HEX actor is left to HEX until its fallback year.',
         'tsin_lucky_nations_assisted':'Assisted formation',
-        'tsin_lucky_nations_assisted_desc':'Support an eligible Russian AI; form Russia once it owns the four native core cities. No scripted land transfers. This is also the legacy-save default.',
+        'tsin_lucky_nations_assisted_desc':'Support eligible historical AI roles; form only after they own the required core cities. No land transfers or forced colonial independence. Also the legacy-save default.',
         'tsin_lucky_nations_force':'Assistance and territorial fallback',
-        'tsin_lucky_nations_force_desc':'After 1700, permit protected, peacetime transfer of the four core cities for a Russian AI. Capitals, human realms, occupied land and transfers that remove an AI owner are excluded.',
-        'tsin_lucky_nations_off':'Disabled', 'tsin_lucky_nations_off_desc':'No support or scripted Russian formation; existing TSIN support is removed on review.',
+        'tsin_lucky_nations_force_desc':'After each path-specific fallback year, permit protected peacetime core transfers and independence from AI overlords. Capitals, human realms, occupied land and transfers that eliminate an owner are excluded.',
+        'tsin_lucky_nations_off':'Disabled', 'tsin_lucky_nations_off_desc':'No historical-role support or scripted formation; existing TSIN support is removed on review.',
         'tsin_lucky_russia_support':'Russian consolidation support',
         'tsin_lucky_russia_support_desc':'Temporary support for delayed Russian consolidation. Ends at formation, human conflict, protected human city control or the end of the pilot period.',
         'tsin_lucky_russia_support_strong':'Intensified Russian consolidation support',
@@ -210,12 +210,12 @@ tsin_lucky_russia.1 = {
     }
     ko = {
         'tsin_lucky_nations':'TSIN 역사적 럭키네이션',
-        'tsin_lucky_nations_desc':'러시아 시제품입니다. 필수 도시 하나라도 인간 세력권이 소유·점령하면 스크립트 형성을 막습니다. 지원 모드는 영토를 이전하지 않으며 저장된 HEX 역할 보유국은 1700년 이전 HEX에 맡깁니다.',
+        'tsin_lucky_nations_desc':'러시아·영국(브리튼 제도와 아일랜드)·독일·이탈리아·식민 후계국 등의 역사적 형성 경로입니다. 필수 지점 하나라도 인간 세력권이 소유·점령하면 전체 경로를 막습니다. 지원 모드는 영토를 이전하지 않으며 HEX 역할 보유국은 각 보완 연도까지 HEX에 맡깁니다.',
         'tsin_lucky_nations_assisted':'형성 지원',
-        'tsin_lucky_nations_assisted_desc':'적합한 러시아권 AI를 지원하고 바닐라 핵심 도시 네 곳을 보유하면 러시아를 형성합니다. 영토는 이전하지 않습니다. 기존 세이브의 기본 동작입니다.',
+        'tsin_lucky_nations_assisted_desc':'역할별 AI를 지원하고 필수 지점을 모두 소유하면 형성합니다. 영토 이전·식민지 강제 독립은 없습니다. 기존 세이브의 기본 동작입니다.',
         'tsin_lucky_nations_force':'지원 및 영토 보완',
-        'tsin_lucky_nations_force_desc':'1700년 이후 조건을 통과한 러시아권 AI에 핵심 도시를 이전할 수 있습니다. 수도·인간 세력권·점령지·소유국이 사라지는 이전은 제외합니다.',
-        'tsin_lucky_nations_off':'끔','tsin_lucky_nations_off_desc':'러시아 지원과 스크립트 형성을 끕니다. 기존 TSIN 지원은 점검 시 제거합니다.',
+        'tsin_lucky_nations_force_desc':'각 경로의 보완 연도 이후 평화 시 핵심 지점 이전·AI 식민지 독립을 허용합니다. 수도·인간 세력권·점령지·소유국이 사라지는 이전은 제외합니다.',
+        'tsin_lucky_nations_off':'끔','tsin_lucky_nations_off_desc':'역사 국가 지원과 스크립트 형성을 끕니다. 기존 TSIN 지원은 점검 시 제거합니다.',
         'tsin_lucky_russia_support':'러시아 통합 지원',
         'tsin_lucky_russia_support_desc':'지연된 러시아 통합을 위한 임시 지원입니다. 형성·인간과의 전쟁·인간의 보호 도시 소유나 점령·시제품 기간 종료 시 정리합니다.',
         'tsin_lucky_russia_support_strong':'러시아 통합 집중 지원',

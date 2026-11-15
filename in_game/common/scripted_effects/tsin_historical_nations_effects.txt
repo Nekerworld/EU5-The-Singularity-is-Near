@@ -1,0 +1,972 @@
+﻿tsin_nation_britain_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_britain_force = yes }
+location:london = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
+location:edinburgh = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
+location:dublin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_britain_candidate } } change_location_owner = scope:tsin_nation_britain_candidate } }
+if = { limit = { NOT = { tag = GBR } } form_country = formable_country:tsin_nation_britain_f }
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_britain_log
+}
+}
+tsin_nation_britain_review = {
+if = { limit = { tsin_nation_britain_campaign = yes }
+
+if = { limit = { c:ENG ?= { tsin_nation_britain_candidate = yes } } c:ENG = { save_scope_as = tsin_nation_britain_candidate } }
+else_if = { limit = { c:SCO ?= { tsin_nation_britain_candidate = yes } } c:SCO = { save_scope_as = tsin_nation_britain_candidate } }
+else_if = { limit = { location:london.owner ?= { tsin_nation_britain_candidate = yes } } location:london.owner = { save_scope_as = tsin_nation_britain_candidate } }
+else_if = { limit = { location:edinburgh.owner ?= { tsin_nation_britain_candidate = yes } } location:edinburgh.owner = { save_scope_as = tsin_nation_britain_candidate } }
+else_if = { limit = { location:dublin.owner ?= { tsin_nation_britain_candidate = yes } } location:dublin.owner = { save_scope_as = tsin_nation_britain_candidate } }
+else = { ordered_country = { limit = { tsin_nation_britain_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_britain_candidate } }
+if = { limit = { exists = scope:tsin_nation_britain_candidate }
+scope:tsin_nation_britain_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1801 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 1 } } }
+set_variable = { name = tsin_nation_role value = 1 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:london owns = location:edinburgh owns = location:dublin }
+if = { limit = { NOT = { tag = GBR } } form_country = formable_country:tsin_nation_britain_f }
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_britain_force = yes } trigger_event_non_silently = tsin_nations.1 }
+}
+}
+}
+}
+}
+tsin_nation_germany_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_germany_force = yes }
+location:berlin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
+location:frankfurt = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
+location:munich = { if = { limit = { NOT = { owner ?= scope:tsin_nation_germany_candidate } } change_location_owner = scope:tsin_nation_germany_candidate } }
+form_country = formable_country:tsin_nation_germany_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_germany_log
+}
+}
+tsin_nation_germany_review = {
+if = { limit = { tsin_nation_germany_campaign = yes }
+
+if = { limit = { c:PRU ?= { tsin_nation_germany_candidate = yes } } c:PRU = { save_scope_as = tsin_nation_germany_candidate } }
+else_if = { limit = { c:BRA ?= { tsin_nation_germany_candidate = yes } } c:BRA = { save_scope_as = tsin_nation_germany_candidate } }
+else_if = { limit = { location:berlin.owner ?= { tsin_nation_germany_candidate = yes } } location:berlin.owner = { save_scope_as = tsin_nation_germany_candidate } }
+else_if = { limit = { location:frankfurt.owner ?= { tsin_nation_germany_candidate = yes } } location:frankfurt.owner = { save_scope_as = tsin_nation_germany_candidate } }
+else_if = { limit = { location:munich.owner ?= { tsin_nation_germany_candidate = yes } } location:munich.owner = { save_scope_as = tsin_nation_germany_candidate } }
+else = { ordered_country = { limit = { tsin_nation_germany_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_germany_candidate } }
+if = { limit = { exists = scope:tsin_nation_germany_candidate }
+scope:tsin_nation_germany_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1871 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 2 } } }
+set_variable = { name = tsin_nation_role value = 2 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:berlin owns = location:frankfurt owns = location:munich }
+form_country = formable_country:tsin_nation_germany_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_germany_force = yes } trigger_event_non_silently = tsin_nations.2 }
+}
+}
+}
+}
+}
+tsin_nation_italy_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_italy_force = yes }
+location:turin = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
+location:milano = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
+location:florence = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
+location:naples = { if = { limit = { NOT = { owner ?= scope:tsin_nation_italy_candidate } } change_location_owner = scope:tsin_nation_italy_candidate } }
+form_country = formable_country:tsin_nation_italy_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_italy_log
+}
+}
+tsin_nation_italy_review = {
+if = { limit = { tsin_nation_italy_campaign = yes }
+
+if = { limit = { c:SAR ?= { tsin_nation_italy_candidate = yes } } c:SAR = { save_scope_as = tsin_nation_italy_candidate } }
+else_if = { limit = { c:SAV ?= { tsin_nation_italy_candidate = yes } } c:SAV = { save_scope_as = tsin_nation_italy_candidate } }
+else_if = { limit = { location:turin.owner ?= { tsin_nation_italy_candidate = yes } } location:turin.owner = { save_scope_as = tsin_nation_italy_candidate } }
+else_if = { limit = { location:milano.owner ?= { tsin_nation_italy_candidate = yes } } location:milano.owner = { save_scope_as = tsin_nation_italy_candidate } }
+else_if = { limit = { location:florence.owner ?= { tsin_nation_italy_candidate = yes } } location:florence.owner = { save_scope_as = tsin_nation_italy_candidate } }
+else_if = { limit = { location:naples.owner ?= { tsin_nation_italy_candidate = yes } } location:naples.owner = { save_scope_as = tsin_nation_italy_candidate } }
+else = { ordered_country = { limit = { tsin_nation_italy_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_italy_candidate } }
+if = { limit = { exists = scope:tsin_nation_italy_candidate }
+scope:tsin_nation_italy_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1871 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 3 } } }
+set_variable = { name = tsin_nation_role value = 3 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:turin owns = location:milano owns = location:florence owns = location:naples }
+form_country = formable_country:tsin_nation_italy_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_italy_force = yes } trigger_event_non_silently = tsin_nations.3 }
+}
+}
+}
+}
+}
+tsin_nation_austria_hungary_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_austria_hungary_force = yes }
+location:vienna = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
+location:buda = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
+location:pest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_austria_hungary_candidate } } change_location_owner = scope:tsin_nation_austria_hungary_candidate } }
+
+set_variable = tsin_austria_hungary_formed
+change_country_name = tsin_austria_hungary_name
+change_country_adjective = tsin_austria_hungary_adjective
+if = { limit = { NOT = { has_variable = tsin_dual_monarchy } }
+set_variable = tsin_dual_monarchy
+add_country_modifier = { modifier = tsin_dual_monarchy months = -1 }
+location:buda.dominant_culture ?= { save_scope_as = tsin_ah_culture }
+if = { limit = { exists = scope:tsin_ah_culture } add_accepted_culture = scope:tsin_ah_culture }
+}
+
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_austria_hungary_log
+}
+}
+tsin_nation_austria_hungary_review = {
+if = { limit = { tsin_nation_austria_hungary_campaign = yes }
+
+if = { limit = { c:HAB ?= { tsin_nation_austria_hungary_candidate = yes } } c:HAB = { save_scope_as = tsin_nation_austria_hungary_candidate } }
+else_if = { limit = { location:vienna.owner ?= { tsin_nation_austria_hungary_candidate = yes } } location:vienna.owner = { save_scope_as = tsin_nation_austria_hungary_candidate } }
+else_if = { limit = { location:buda.owner ?= { tsin_nation_austria_hungary_candidate = yes } } location:buda.owner = { save_scope_as = tsin_nation_austria_hungary_candidate } }
+else_if = { limit = { location:pest.owner ?= { tsin_nation_austria_hungary_candidate = yes } } location:pest.owner = { save_scope_as = tsin_nation_austria_hungary_candidate } }
+else = { ordered_country = { limit = { tsin_nation_austria_hungary_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_austria_hungary_candidate } }
+if = { limit = { exists = scope:tsin_nation_austria_hungary_candidate }
+scope:tsin_nation_austria_hungary_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1880 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 4 } } }
+set_variable = { name = tsin_nation_role value = 4 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:vienna owns = location:buda owns = location:pest }
+
+set_variable = tsin_austria_hungary_formed
+change_country_name = tsin_austria_hungary_name
+change_country_adjective = tsin_austria_hungary_adjective
+if = { limit = { NOT = { has_variable = tsin_dual_monarchy } }
+set_variable = tsin_dual_monarchy
+add_country_modifier = { modifier = tsin_dual_monarchy months = -1 }
+location:buda.dominant_culture ?= { save_scope_as = tsin_ah_culture }
+if = { limit = { exists = scope:tsin_ah_culture } add_accepted_culture = scope:tsin_ah_culture }
+}
+
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_austria_hungary_force = yes } trigger_event_non_silently = tsin_nations.4 }
+}
+}
+}
+}
+}
+tsin_nation_usa_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_usa_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:shackamaxon = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate } }
+location:manhattan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_usa_candidate } } change_location_owner = scope:tsin_nation_usa_candidate } }
+form_country = formable_country:tsin_nation_usa_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_usa_log
+}
+}
+tsin_nation_usa_review = {
+if = { limit = { tsin_nation_usa_campaign = yes }
+
+if = { limit = { location:shackamaxon.owner ?= { tsin_nation_usa_candidate = yes } } location:shackamaxon.owner = { save_scope_as = tsin_nation_usa_candidate } }
+else_if = { limit = { location:manhattan.owner ?= { tsin_nation_usa_candidate = yes } } location:manhattan.owner = { save_scope_as = tsin_nation_usa_candidate } }
+else = { ordered_country = { limit = { tsin_nation_usa_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_usa_candidate } }
+if = { limit = { exists = scope:tsin_nation_usa_candidate }
+scope:tsin_nation_usa_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1815 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 5 } } }
+set_variable = { name = tsin_nation_role value = 5 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:shackamaxon owns = location:manhattan }
+form_country = formable_country:tsin_nation_usa_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_usa_force = yes } trigger_event_non_silently = tsin_nations.5 }
+}
+}
+}
+}
+}
+tsin_nation_mexico_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_mexico_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:tenochtitlan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mexico_candidate } } change_location_owner = scope:tsin_nation_mexico_candidate } }
+form_country = formable_country:tsin_nation_mexico_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_mexico_log
+}
+}
+tsin_nation_mexico_review = {
+if = { limit = { tsin_nation_mexico_campaign = yes }
+
+if = { limit = { location:tenochtitlan.owner ?= { tsin_nation_mexico_candidate = yes } } location:tenochtitlan.owner = { save_scope_as = tsin_nation_mexico_candidate } }
+else = { ordered_country = { limit = { tsin_nation_mexico_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_mexico_candidate } }
+if = { limit = { exists = scope:tsin_nation_mexico_candidate }
+scope:tsin_nation_mexico_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1840 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 6 } } }
+set_variable = { name = tsin_nation_role value = 6 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:tenochtitlan }
+form_country = formable_country:tsin_nation_mexico_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_mexico_force = yes } trigger_event_non_silently = tsin_nations.6 }
+}
+}
+}
+}
+}
+tsin_nation_mughals_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_mughals_force = yes }
+location:delhi = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
+location:agra = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
+location:lahore = { if = { limit = { NOT = { owner ?= scope:tsin_nation_mughals_candidate } } change_location_owner = scope:tsin_nation_mughals_candidate } }
+form_country = formable_country:tsin_nation_mughals_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_mughals_log
+}
+}
+tsin_nation_mughals_review = {
+if = { limit = { tsin_nation_mughals_campaign = yes }
+
+if = { limit = { c:DLH ?= { tsin_nation_mughals_candidate = yes } } c:DLH = { save_scope_as = tsin_nation_mughals_candidate } }
+else_if = { limit = { c:TIM ?= { tsin_nation_mughals_candidate = yes } } c:TIM = { save_scope_as = tsin_nation_mughals_candidate } }
+else_if = { limit = { location:delhi.owner ?= { tsin_nation_mughals_candidate = yes } } location:delhi.owner = { save_scope_as = tsin_nation_mughals_candidate } }
+else_if = { limit = { location:agra.owner ?= { tsin_nation_mughals_candidate = yes } } location:agra.owner = { save_scope_as = tsin_nation_mughals_candidate } }
+else_if = { limit = { location:lahore.owner ?= { tsin_nation_mughals_candidate = yes } } location:lahore.owner = { save_scope_as = tsin_nation_mughals_candidate } }
+else = { ordered_country = { limit = { tsin_nation_mughals_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_mughals_candidate } }
+if = { limit = { exists = scope:tsin_nation_mughals_candidate }
+scope:tsin_nation_mughals_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1600 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 7 } } }
+set_variable = { name = tsin_nation_role value = 7 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:delhi owns = location:agra owns = location:lahore }
+form_country = formable_country:tsin_nation_mughals_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_mughals_force = yes } trigger_event_non_silently = tsin_nations.7 }
+}
+}
+}
+}
+}
+tsin_nation_qing_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_qing_force = yes }
+location:dadu = { if = { limit = { NOT = { owner ?= scope:tsin_nation_qing_candidate } } change_location_owner = scope:tsin_nation_qing_candidate } }
+form_country = formable_country:tsin_nation_qing_f
+change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_qing_log
+}
+}
+tsin_nation_qing_review = {
+if = { limit = { tsin_nation_qing_campaign = yes }
+
+if = { limit = { c:MCH ?= { tsin_nation_qing_candidate = yes } } c:MCH = { save_scope_as = tsin_nation_qing_candidate } }
+else_if = { limit = { location:dadu.owner ?= { tsin_nation_qing_candidate = yes } } location:dadu.owner = { save_scope_as = tsin_nation_qing_candidate } }
+else = { ordered_country = { limit = { tsin_nation_qing_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_qing_candidate } }
+if = { limit = { exists = scope:tsin_nation_qing_candidate }
+scope:tsin_nation_qing_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1837 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 8 } } }
+set_variable = { name = tsin_nation_role value = 8 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:dadu }
+form_country = formable_country:tsin_nation_qing_f
+change_country_name = QNG change_country_adjective = QNG_ADJ change_country_color = map_QNG
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_qing_force = yes } trigger_event_non_silently = tsin_nations.8 }
+}
+}
+}
+}
+}
+tsin_nation_japan_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_japan_force = yes }
+location:kyoto = { if = { limit = { NOT = { owner ?= scope:tsin_nation_japan_candidate } } change_location_owner = scope:tsin_nation_japan_candidate } }
+form_country = formable_country:tsin_nation_japan_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_japan_log
+}
+}
+tsin_nation_japan_review = {
+if = { limit = { tsin_nation_japan_campaign = yes }
+
+if = { limit = { location:kyoto.owner ?= { tsin_nation_japan_candidate = yes } } location:kyoto.owner = { save_scope_as = tsin_nation_japan_candidate } }
+else = { ordered_country = { limit = { tsin_nation_japan_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_japan_candidate } }
+if = { limit = { exists = scope:tsin_nation_japan_candidate }
+scope:tsin_nation_japan_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1868 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 9 } } }
+set_variable = { name = tsin_nation_role value = 9 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:kyoto }
+form_country = formable_country:tsin_nation_japan_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_japan_force = yes } trigger_event_non_silently = tsin_nations.9 }
+}
+}
+}
+}
+}
+tsin_nation_belgium_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_belgium_force = yes }
+location:brussels = { if = { limit = { NOT = { owner ?= scope:tsin_nation_belgium_candidate } } change_location_owner = scope:tsin_nation_belgium_candidate } }
+form_country = formable_country:tsin_nation_belgium_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_belgium_log
+}
+}
+tsin_nation_belgium_review = {
+if = { limit = { tsin_nation_belgium_campaign = yes }
+
+if = { limit = { location:brussels.owner ?= { tsin_nation_belgium_candidate = yes } } location:brussels.owner = { save_scope_as = tsin_nation_belgium_candidate } }
+else = { ordered_country = { limit = { tsin_nation_belgium_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_belgium_candidate } }
+if = { limit = { exists = scope:tsin_nation_belgium_candidate }
+scope:tsin_nation_belgium_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1860 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 10 } } }
+set_variable = { name = tsin_nation_role value = 10 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:brussels }
+form_country = formable_country:tsin_nation_belgium_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_belgium_force = yes } trigger_event_non_silently = tsin_nations.10 }
+}
+}
+}
+}
+}
+tsin_nation_greece_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_greece_force = yes }
+location:athens = { if = { limit = { NOT = { owner ?= scope:tsin_nation_greece_candidate } } change_location_owner = scope:tsin_nation_greece_candidate } }
+form_country = formable_country:tsin_nation_greece_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_greece_log
+}
+}
+tsin_nation_greece_review = {
+if = { limit = { tsin_nation_greece_campaign = yes }
+
+if = { limit = { location:athens.owner ?= { tsin_nation_greece_candidate = yes } } location:athens.owner = { save_scope_as = tsin_nation_greece_candidate } }
+else = { ordered_country = { limit = { tsin_nation_greece_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_greece_candidate } }
+if = { limit = { exists = scope:tsin_nation_greece_candidate }
+scope:tsin_nation_greece_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1860 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 11 } } }
+set_variable = { name = tsin_nation_role value = 11 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:athens }
+form_country = formable_country:tsin_nation_greece_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_greece_force = yes } trigger_event_non_silently = tsin_nations.11 }
+}
+}
+}
+}
+}
+tsin_nation_romania_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_romania_force = yes }
+location:bucharest = { if = { limit = { NOT = { owner ?= scope:tsin_nation_romania_candidate } } change_location_owner = scope:tsin_nation_romania_candidate } }
+form_country = formable_country:tsin_nation_romania_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_romania_log
+}
+}
+tsin_nation_romania_review = {
+if = { limit = { tsin_nation_romania_campaign = yes }
+
+if = { limit = { c:WAL ?= { tsin_nation_romania_candidate = yes } } c:WAL = { save_scope_as = tsin_nation_romania_candidate } }
+else_if = { limit = { c:MOL ?= { tsin_nation_romania_candidate = yes } } c:MOL = { save_scope_as = tsin_nation_romania_candidate } }
+else_if = { limit = { location:bucharest.owner ?= { tsin_nation_romania_candidate = yes } } location:bucharest.owner = { save_scope_as = tsin_nation_romania_candidate } }
+else = { ordered_country = { limit = { tsin_nation_romania_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_romania_candidate } }
+if = { limit = { exists = scope:tsin_nation_romania_candidate }
+scope:tsin_nation_romania_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1881 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 12 } } }
+set_variable = { name = tsin_nation_role value = 12 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:bucharest }
+form_country = formable_country:tsin_nation_romania_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_romania_force = yes } trigger_event_non_silently = tsin_nations.12 }
+}
+}
+}
+}
+}
+tsin_nation_serbia_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_serbia_force = yes }
+location:belgrad = { if = { limit = { NOT = { owner ?= scope:tsin_nation_serbia_candidate } } change_location_owner = scope:tsin_nation_serbia_candidate } }
+form_country = formable_country:tsin_nation_serbia_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_serbia_log
+}
+}
+tsin_nation_serbia_review = {
+if = { limit = { tsin_nation_serbia_campaign = yes }
+
+if = { limit = { location:belgrad.owner ?= { tsin_nation_serbia_candidate = yes } } location:belgrad.owner = { save_scope_as = tsin_nation_serbia_candidate } }
+else = { ordered_country = { limit = { tsin_nation_serbia_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_serbia_candidate } }
+if = { limit = { exists = scope:tsin_nation_serbia_candidate }
+scope:tsin_nation_serbia_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1878 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 13 } } }
+set_variable = { name = tsin_nation_role value = 13 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:belgrad }
+form_country = formable_country:tsin_nation_serbia_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_serbia_force = yes } trigger_event_non_silently = tsin_nations.13 }
+}
+}
+}
+}
+}
+tsin_nation_bulgaria_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_bulgaria_force = yes }
+location:sredets = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bulgaria_candidate } } change_location_owner = scope:tsin_nation_bulgaria_candidate } }
+form_country = formable_country:tsin_nation_bulgaria_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_bulgaria_log
+}
+}
+tsin_nation_bulgaria_review = {
+if = { limit = { tsin_nation_bulgaria_campaign = yes }
+
+if = { limit = { location:sredets.owner ?= { tsin_nation_bulgaria_candidate = yes } } location:sredets.owner = { save_scope_as = tsin_nation_bulgaria_candidate } }
+else = { ordered_country = { limit = { tsin_nation_bulgaria_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_bulgaria_candidate } }
+if = { limit = { exists = scope:tsin_nation_bulgaria_candidate }
+scope:tsin_nation_bulgaria_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1908 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 14 } } }
+set_variable = { name = tsin_nation_role value = 14 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:sredets }
+form_country = formable_country:tsin_nation_bulgaria_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_bulgaria_force = yes } trigger_event_non_silently = tsin_nations.14 }
+}
+}
+}
+}
+}
+tsin_nation_brazil_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_brazil_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:goana_para = { if = { limit = { NOT = { owner ?= scope:tsin_nation_brazil_candidate } } change_location_owner = scope:tsin_nation_brazil_candidate } }
+form_country = formable_country:tsin_nation_brazil_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_brazil_log
+}
+}
+tsin_nation_brazil_review = {
+if = { limit = { tsin_nation_brazil_campaign = yes }
+
+if = { limit = { location:goana_para.owner ?= { tsin_nation_brazil_candidate = yes } } location:goana_para.owner = { save_scope_as = tsin_nation_brazil_candidate } }
+else = { ordered_country = { limit = { tsin_nation_brazil_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_brazil_candidate } }
+if = { limit = { exists = scope:tsin_nation_brazil_candidate }
+scope:tsin_nation_brazil_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1842 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 15 } } }
+set_variable = { name = tsin_nation_role value = 15 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:goana_para }
+form_country = formable_country:tsin_nation_brazil_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_brazil_force = yes } trigger_event_non_silently = tsin_nations.15 }
+}
+}
+}
+}
+}
+tsin_nation_argentina_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_argentina_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:chana = { if = { limit = { NOT = { owner ?= scope:tsin_nation_argentina_candidate } } change_location_owner = scope:tsin_nation_argentina_candidate } }
+form_country = formable_country:tsin_nation_argentina_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_argentina_log
+}
+}
+tsin_nation_argentina_review = {
+if = { limit = { tsin_nation_argentina_campaign = yes }
+
+if = { limit = { location:chana.owner ?= { tsin_nation_argentina_candidate = yes } } location:chana.owner = { save_scope_as = tsin_nation_argentina_candidate } }
+else = { ordered_country = { limit = { tsin_nation_argentina_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_argentina_candidate } }
+if = { limit = { exists = scope:tsin_nation_argentina_candidate }
+scope:tsin_nation_argentina_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1840 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 16 } } }
+set_variable = { name = tsin_nation_role value = 16 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:chana }
+form_country = formable_country:tsin_nation_argentina_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_argentina_force = yes } trigger_event_non_silently = tsin_nations.16 }
+}
+}
+}
+}
+}
+tsin_nation_chile_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_chile_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:meli_pillan = { if = { limit = { NOT = { owner ?= scope:tsin_nation_chile_candidate } } change_location_owner = scope:tsin_nation_chile_candidate } }
+form_country = formable_country:tsin_nation_chile_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_chile_log
+}
+}
+tsin_nation_chile_review = {
+if = { limit = { tsin_nation_chile_campaign = yes }
+
+if = { limit = { location:meli_pillan.owner ?= { tsin_nation_chile_candidate = yes } } location:meli_pillan.owner = { save_scope_as = tsin_nation_chile_candidate } }
+else = { ordered_country = { limit = { tsin_nation_chile_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_chile_candidate } }
+if = { limit = { exists = scope:tsin_nation_chile_candidate }
+scope:tsin_nation_chile_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1840 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 17 } } }
+set_variable = { name = tsin_nation_role value = 17 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:meli_pillan }
+form_country = formable_country:tsin_nation_chile_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_chile_force = yes } trigger_event_non_silently = tsin_nations.17 }
+}
+}
+}
+}
+}
+tsin_nation_peru_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_peru_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:rimaq = { if = { limit = { NOT = { owner ?= scope:tsin_nation_peru_candidate } } change_location_owner = scope:tsin_nation_peru_candidate } }
+form_country = formable_country:tsin_nation_peru_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_peru_log
+}
+}
+tsin_nation_peru_review = {
+if = { limit = { tsin_nation_peru_campaign = yes }
+
+if = { limit = { location:rimaq.owner ?= { tsin_nation_peru_candidate = yes } } location:rimaq.owner = { save_scope_as = tsin_nation_peru_candidate } }
+else = { ordered_country = { limit = { tsin_nation_peru_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_peru_candidate } }
+if = { limit = { exists = scope:tsin_nation_peru_candidate }
+scope:tsin_nation_peru_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1841 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 18 } } }
+set_variable = { name = tsin_nation_role value = 18 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:rimaq }
+form_country = formable_country:tsin_nation_peru_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_peru_force = yes } trigger_event_non_silently = tsin_nations.18 }
+}
+}
+}
+}
+}
+tsin_nation_bolivia_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_bolivia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:ccantumarcani = { if = { limit = { NOT = { owner ?= scope:tsin_nation_bolivia_candidate } } change_location_owner = scope:tsin_nation_bolivia_candidate } }
+form_country = formable_country:tsin_nation_bolivia_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_bolivia_log
+}
+}
+tsin_nation_bolivia_review = {
+if = { limit = { tsin_nation_bolivia_campaign = yes }
+
+if = { limit = { location:ccantumarcani.owner ?= { tsin_nation_bolivia_candidate = yes } } location:ccantumarcani.owner = { save_scope_as = tsin_nation_bolivia_candidate } }
+else = { ordered_country = { limit = { tsin_nation_bolivia_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_bolivia_candidate } }
+if = { limit = { exists = scope:tsin_nation_bolivia_candidate }
+scope:tsin_nation_bolivia_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1845 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 19 } } }
+set_variable = { name = tsin_nation_role value = 19 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:ccantumarcani }
+form_country = formable_country:tsin_nation_bolivia_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_bolivia_force = yes } trigger_event_non_silently = tsin_nations.19 }
+}
+}
+}
+}
+}
+tsin_nation_gran_colombia_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_gran_colombia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_gran_colombia_candidate } } change_location_owner = scope:tsin_nation_gran_colombia_candidate } }
+form_country = formable_country:tsin_nation_gran_colombia_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_gran_colombia_log
+}
+}
+tsin_nation_gran_colombia_review = {
+if = { limit = { tsin_nation_gran_colombia_campaign = yes }
+
+if = { limit = { location:bosa_colombia.owner ?= { tsin_nation_gran_colombia_candidate = yes } } location:bosa_colombia.owner = { save_scope_as = tsin_nation_gran_colombia_candidate } }
+else_if = { limit = { location:caracas.owner ?= { tsin_nation_gran_colombia_candidate = yes } } location:caracas.owner = { save_scope_as = tsin_nation_gran_colombia_candidate } }
+else_if = { limit = { location:quito.owner ?= { tsin_nation_gran_colombia_candidate = yes } } location:quito.owner = { save_scope_as = tsin_nation_gran_colombia_candidate } }
+else = { ordered_country = { limit = { tsin_nation_gran_colombia_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_gran_colombia_candidate } }
+if = { limit = { exists = scope:tsin_nation_gran_colombia_candidate }
+scope:tsin_nation_gran_colombia_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1825 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 20 } } }
+set_variable = { name = tsin_nation_role value = 20 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia owns = location:caracas owns = location:quito }
+form_country = formable_country:tsin_nation_gran_colombia_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_gran_colombia_force = yes } trigger_event_non_silently = tsin_nations.20 }
+}
+}
+}
+}
+}
+tsin_nation_colombia_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_colombia_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:bosa_colombia = { if = { limit = { NOT = { owner ?= scope:tsin_nation_colombia_candidate } } change_location_owner = scope:tsin_nation_colombia_candidate } }
+form_country = formable_country:tsin_nation_colombia_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_colombia_log
+}
+}
+tsin_nation_colombia_review = {
+if = { limit = { tsin_nation_colombia_campaign = yes }
+
+if = { limit = { location:bosa_colombia.owner ?= { tsin_nation_colombia_candidate = yes } } location:bosa_colombia.owner = { save_scope_as = tsin_nation_colombia_candidate } }
+else = { ordered_country = { limit = { tsin_nation_colombia_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_colombia_candidate } }
+if = { limit = { exists = scope:tsin_nation_colombia_candidate }
+scope:tsin_nation_colombia_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1851 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 21 } } }
+set_variable = { name = tsin_nation_role value = 21 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:bosa_colombia }
+form_country = formable_country:tsin_nation_colombia_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_colombia_force = yes } trigger_event_non_silently = tsin_nations.21 }
+}
+}
+}
+}
+}
+tsin_nation_venezuela_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_venezuela_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:caracas = { if = { limit = { NOT = { owner ?= scope:tsin_nation_venezuela_candidate } } change_location_owner = scope:tsin_nation_venezuela_candidate } }
+form_country = formable_country:tsin_nation_venezuela_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_venezuela_log
+}
+}
+tsin_nation_venezuela_review = {
+if = { limit = { tsin_nation_venezuela_campaign = yes }
+
+if = { limit = { location:caracas.owner ?= { tsin_nation_venezuela_candidate = yes } } location:caracas.owner = { save_scope_as = tsin_nation_venezuela_candidate } }
+else = { ordered_country = { limit = { tsin_nation_venezuela_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_venezuela_candidate } }
+if = { limit = { exists = scope:tsin_nation_venezuela_candidate }
+scope:tsin_nation_venezuela_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1850 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 22 } } }
+set_variable = { name = tsin_nation_role value = 22 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:caracas }
+form_country = formable_country:tsin_nation_venezuela_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_venezuela_force = yes } trigger_event_non_silently = tsin_nations.22 }
+}
+}
+}
+}
+}
+tsin_nation_ecuador_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_ecuador_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:quito = { if = { limit = { NOT = { owner ?= scope:tsin_nation_ecuador_candidate } } change_location_owner = scope:tsin_nation_ecuador_candidate } }
+form_country = formable_country:tsin_nation_ecuador_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_ecuador_log
+}
+}
+tsin_nation_ecuador_review = {
+if = { limit = { tsin_nation_ecuador_campaign = yes }
+
+if = { limit = { location:quito.owner ?= { tsin_nation_ecuador_candidate = yes } } location:quito.owner = { save_scope_as = tsin_nation_ecuador_candidate } }
+else = { ordered_country = { limit = { tsin_nation_ecuador_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_ecuador_candidate } }
+if = { limit = { exists = scope:tsin_nation_ecuador_candidate }
+scope:tsin_nation_ecuador_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1850 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 23 } } }
+set_variable = { name = tsin_nation_role value = 23 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:quito }
+form_country = formable_country:tsin_nation_ecuador_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_ecuador_force = yes } trigger_event_non_silently = tsin_nations.23 }
+}
+}
+}
+}
+}
+tsin_nation_uruguay_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_uruguay_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:guenoa = { if = { limit = { NOT = { owner ?= scope:tsin_nation_uruguay_candidate } } change_location_owner = scope:tsin_nation_uruguay_candidate } }
+form_country = formable_country:tsin_nation_uruguay_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_uruguay_log
+}
+}
+tsin_nation_uruguay_review = {
+if = { limit = { tsin_nation_uruguay_campaign = yes }
+
+if = { limit = { location:guenoa.owner ?= { tsin_nation_uruguay_candidate = yes } } location:guenoa.owner = { save_scope_as = tsin_nation_uruguay_candidate } }
+else = { ordered_country = { limit = { tsin_nation_uruguay_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_uruguay_candidate } }
+if = { limit = { exists = scope:tsin_nation_uruguay_candidate }
+scope:tsin_nation_uruguay_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1848 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 24 } } }
+set_variable = { name = tsin_nation_role value = 24 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:guenoa }
+form_country = formable_country:tsin_nation_uruguay_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_uruguay_force = yes } trigger_event_non_silently = tsin_nations.24 }
+}
+}
+}
+}
+}
+tsin_nation_paraguay_form = {
+# Execute once under fresh guards. Colonies only leave an AI overlord in force mode.
+if = { limit = { tsin_nation_paraguay_force = yes } if = { limit = { is_subject_type = colonial_nation } overlord = { cancel_subject = prev } }
+location:nemby = { if = { limit = { NOT = { owner ?= scope:tsin_nation_paraguay_candidate } } change_location_owner = scope:tsin_nation_paraguay_candidate } }
+form_country = formable_country:tsin_nation_paraguay_f
+remove_country_modifier = tsin_nation_support
+remove_country_modifier = tsin_nation_support_strong
+debug_log = tsin_nation_paraguay_log
+}
+}
+tsin_nation_paraguay_review = {
+if = { limit = { tsin_nation_paraguay_campaign = yes }
+
+if = { limit = { location:nemby.owner ?= { tsin_nation_paraguay_candidate = yes } } location:nemby.owner = { save_scope_as = tsin_nation_paraguay_candidate } }
+else = { ordered_country = { limit = { tsin_nation_paraguay_candidate = yes } order_by = num_locations max = 1 save_scope_as = tsin_nation_paraguay_candidate } }
+if = { limit = { exists = scope:tsin_nation_paraguay_candidate }
+scope:tsin_nation_paraguay_candidate = {
+if = { limit = { NOT = { tsin_lucky_human_war_trigger = yes }
+NOT = { AND = { has_variable = hex_key current_year < 1840 } } }
+if = { limit = { OR = { NOT = { has_variable = tsin_nation_role } NOT = { var:tsin_nation_role = 25 } } }
+set_variable = { name = tsin_nation_role value = 25 }
+set_variable = { name = tsin_nation_support_years value = 0 } }
+change_variable = { name = tsin_nation_support_years add = 1 }
+if = { limit = { var:tsin_nation_support_years >= 15 } add_country_modifier = { modifier = tsin_nation_support_strong years = 2 mode = replace } }
+else = { add_country_modifier = { modifier = tsin_nation_support years = 2 mode = replace } }
+if = { limit = { is_subject = no at_war = no owns = location:nemby }
+form_country = formable_country:tsin_nation_paraguay_f
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+else_if = { limit = { tsin_nation_paraguay_force = yes } trigger_event_non_silently = tsin_nations.25 }
+}
+}
+}
+}
+}
+tsin_nations_cleanup_effect = {
+every_country = { limit = { has_variable = tsin_nation_role }
+remove_country_modifier = tsin_nation_support remove_country_modifier = tsin_nation_support_strong
+}
+}
+tsin_nations_year_effect = {
+set_global_variable = { name = tsin_nations_review_year value = current_year }
+tsin_nations_cleanup_effect = yes
+
+tsin_nation_britain_review = yes
+tsin_nation_germany_review = yes
+tsin_nation_italy_review = yes
+tsin_nation_austria_hungary_review = yes
+tsin_nation_usa_review = yes
+tsin_nation_mexico_review = yes
+tsin_nation_mughals_review = yes
+tsin_nation_qing_review = yes
+tsin_nation_japan_review = yes
+tsin_nation_belgium_review = yes
+tsin_nation_greece_review = yes
+tsin_nation_romania_review = yes
+tsin_nation_serbia_review = yes
+tsin_nation_bulgaria_review = yes
+tsin_nation_brazil_review = yes
+tsin_nation_argentina_review = yes
+tsin_nation_chile_review = yes
+tsin_nation_peru_review = yes
+tsin_nation_bolivia_review = yes
+tsin_nation_gran_colombia_review = yes
+tsin_nation_colombia_review = yes
+tsin_nation_venezuela_review = yes
+tsin_nation_ecuador_review = yes
+tsin_nation_uruguay_review = yes
+tsin_nation_paraguay_review = yes
+}
