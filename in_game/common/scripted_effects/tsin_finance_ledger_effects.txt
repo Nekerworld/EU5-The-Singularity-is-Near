@@ -85,6 +85,18 @@ tsin_ledger_month_effect = {
 }
 
 
+tsin_currency_redenomination_effect = {
+# A denomination changes nominal local units, never the real contract value.
+# This world scan occurs only on the explicit, throttled reform action.
+save_scope_as = tsin_redenominating_country
+change_variable = { name = tsin_fx divide = 10 }
+change_variable = { name = tsin_foreign_liability_local divide = 10 }
+every_country = {
+limit = { has_variable = tsin_foreign_partner var:tsin_foreign_partner ?= scope:tsin_redenominating_country }
+change_variable = { name = tsin_foreign_local_principal divide = 10 }
+}
+set_variable = { name = tsin_reform_cooldown months = 12 }
+}
 tsin_foreign_open_effect = {
 save_scope_as = tsin_foreign_lender
 if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0

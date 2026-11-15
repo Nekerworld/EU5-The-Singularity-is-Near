@@ -59,7 +59,7 @@ def build():
     action('rate_up', 'Rate +1 point', '금리 +1%p', 'var:tsin_rate < 20', 'change_variable = { name = tsin_rate add = 1 }', 'MONEY')
     action('rate_down', 'Rate -1 point', '금리 -1%p', 'var:tsin_rate > 0', 'change_variable = { name = tsin_rate subtract = 1 }', 'MONEY')
     action('devalue', 'Devalue 10%', '10% 평가절하', 'NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx < 1000 OR = { NOT = { has_policy = policy:tsin_gold_standard_policy } has_variable = tsin_convertibility_suspended }', 'change_variable = { name = tsin_fx multiply = 1.10 } set_variable = { name = tsin_reform_cooldown months = 12 }', 'MONEY')
-    action('redenominate', 'Redenominate 10:1', '10:1 화폐개혁', 'NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx >= 10', 'change_variable = { name = tsin_fx divide = 10 } set_variable = { name = tsin_reform_cooldown months = 12 }', 'MONEY')
+    action('redenominate', 'Redenominate 10:1', '10:1 화폐개혁', 'NOT = { has_variable = tsin_reform_cooldown } var:tsin_fx >= 10', 'tsin_currency_redenomination_effect = yes', 'MONEY')
     action('contract', 'Place paid company contract', '기업에 유상 계약 발주', f'{cost} tsin_company_count > 0 {no_lf}', f'{debit} change_variable = {{ name = tsin_firm_cash add = tsin_ledger_lot }}', 'BANK')
     action('lend', 'Issue funded company loan', '기업 대출 실행', f'var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 {no_lf}', 'tsin_ledger_lend_effect = yes', 'BANK')
     action('repay', 'Repay company principal', '기업 원금 상환', 'var:tsin_firm_cash > 0 var:tsin_firm_debt > 0', 'tsin_ledger_repay_effect = yes', 'BANK')

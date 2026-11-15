@@ -12,12 +12,14 @@ from test_capital_markets import parse, get
 class LedgerFixture:
     def __init__(self):
         self.modifiers=set()
+        self.saved={}
         files=build()
         def blocks(s):return {b.key:parse(b.text[b.text.index('{')+1:-1]) for b in pdx.top_level_blocks(s)}
         self.values=blocks(files['in_game/common/script_values/tsin_finance_ledger_values.txt'])
         self.effects=blocks(files['in_game/common/scripted_effects/tsin_finance_ledger_effects.txt'])
         self.actions=blocks(files['in_game/common/scripted_guis/tsin_finance_ledger_guis.txt'])
         self.state={'gold':D(1000),'tsin_gold_cost_1':D(100),'tsin_company_count':D(1),'estate':D(0)}
+        self.countries=[self.state]
         self.run(self.effects['tsin_ledger_init_effect'])
 
     def num(self,value):
@@ -52,6 +54,7 @@ class LedgerFixture:
             if k=='AND':return self.valid(v)
             if k=='OR':return any(term(*r) for r in v)
             if k=='has_variable':return v in self.state
+            if k=='var:tsin_foreign_partner' and isinstance(v,str) and v.startswith('scope:'):return self.state.get('tsin_foreign_partner') is self.saved.get(v[6:])
             if k=='is_ai':return False
             if k=='country_has_estate':return True
             if k=='has_policy':return False
@@ -63,7 +66,14 @@ class LedgerFixture:
     def run(self,rows):
         previous_if=False
         for key,_,value in rows:
-            if key=='if':
+            if key=='save_scope_as':self.saved[value]=self.state
+            elif key=='every_country':
+                original=self.state
+                for country in self.countries:
+                    self.state=country
+                    if self.valid(get(value,'limit')):self.run([r for r in value if r[0]!='limit'])
+                self.state=original
+            elif key=='if':
                 previous_if=self.valid(get(value,'limit'))
                 if previous_if:self.run([r for r in value if r[0]!='limit'])
             elif key=='else':
@@ -126,6 +136,7 @@ class FinanceLedgerTests(unittest.TestCase):
 
     def test_every_new_panel_and_action_has_ui_wiring(self):
         self.modifiers=set()
+        self.saved={}
         files=build();ui=files['in_game/gui/tsin_finance_ledger.gui']
         for _,tab in EXTRA_TABS:self.assertIn('type '+tab+'_panel',ui)
         fixture=LedgerFixture()
