@@ -23,7 +23,7 @@ CATEGORIES = [
     (110, "Labour and welfare", ["tsin_labor_law", "tsin_welfare_law"]),
     (120, "Taxation, money and association", ["tsin_taxation_law", "tsin_monetary_standard_law", "tsin_assembly_law"]),
     (130, "Land and church", ["tsin_land_reform_law", "tsin_frontier_land_law", "tsin_church_state_law"]),
-    (140, "Industry and trusts", ["tsin_industrial_investment_law", "tsin_trust_law"]),
+    (140, "Industry and trusts", ["tsin_industrial_investment_law", "tsin_trust_law", "tsin_environment_law"]),
     (150, "Slavery", ["tsin_slave_trade_law", "slavery_laws"]),
     (160, "Press and immigration", ["press_law", "immigration_law"]),
     (170, "Popular education", ["education_masses_law"]),
@@ -51,7 +51,7 @@ def law_policies(law_text: str) -> list[tuple[str, str, str]]:
         sub = blocks(inner(text))
         pot = inner(sub["potential"]) if "potential" in sub else ""
         allow = inner(sub["allow"]) if "allow" in sub else ""
-        allow = "\n".join(l for l in allow.split("\n") if LOCK not in l)
+        allow = re.sub(r"\btsin_policy_enactable_trigger\s*=\s*yes\b", "", allow)
         out.append((key, pot, allow))
     return out
 
@@ -102,7 +102,7 @@ def main() -> int:
         "",
         "# Choose the field of the bill",
         "tsin_legislation.100 = {",
-        "\ttype = country_event",
+        "\ttype = country_event", "\toutcome = neutral",
         "\ttitle = tsin_legislation.100.title",
         "\tdesc = tsin_legislation.100.desc",
         "\tillustration_tags = {", "\t\t10 = interior", "\t\t10 = regular", "\t}",
@@ -119,7 +119,7 @@ def main() -> int:
 
     count = 0
     for eid, comment, law_keys in CATEGORIES:
-        lines += [f"# {comment}", f"tsin_legislation.{eid} = {{", "\ttype = country_event",
+        lines += [f"# {comment}", f"tsin_legislation.{eid} = {{", "\ttype = country_event", "\toutcome = neutral",
                   f"\ttitle = tsin_legislation.{eid}.title", f"\tdesc = tsin_legislation.{eid}.desc",
                   "\tillustration_tags = {", "\t\t10 = interior", "\t\t10 = regular", "\t}", ""]
         for law in law_keys:

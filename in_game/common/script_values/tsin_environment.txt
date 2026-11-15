@@ -1,0 +1,20 @@
+﻿tsin_environment_inspection_scale = { value = var:tsin_pollution_inspection_capacity min = 0 max = 1 }
+tsin_environment_air_retention = {
+ value = 1
+ if = { limit = { controller ?= owner owner ?= { has_policy = policy:tsin_environment_standards_policy } }
+  subtract = { value = tsin_environment_inspection_scale multiply = 0.20 }
+ } else_if = { limit = { controller ?= owner owner ?= { has_policy = policy:tsin_environment_inspections_policy } }
+  subtract = { value = tsin_environment_inspection_scale multiply = 0.10 }
+ }
+ min = 0.80 max = 1
+}
+tsin_environment_water_retention = {
+ value = 1
+ if = { limit = { controller ?= owner owner ?= { has_policy = policy:tsin_environment_standards_policy } }
+  subtract = { value = tsin_environment_inspection_scale multiply = 0.10 }
+ } else_if = { limit = { controller ?= owner owner ?= { has_policy = policy:tsin_environment_inspections_policy } }
+  subtract = { value = tsin_environment_inspection_scale multiply = 0.05 }
+ }
+ min = 0.90 max = 1
+}
+tsin_water_pollution_factor = { value = tsin_pollution_map_water divide = 100 min = 0 max = 1 }

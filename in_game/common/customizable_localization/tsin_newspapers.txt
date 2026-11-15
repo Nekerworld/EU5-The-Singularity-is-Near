@@ -1,5 +1,7 @@
 ﻿tsin_news_line_0 = { type = country random_valid = no
 
+ text = { trigger = { var:tsin_news_0_type = 22 } localization_key = TSIN_NEWS_LINE_0_22 }
+
  text = { trigger = { var:tsin_news_0_type = 10 } localization_key = TSIN_NEWS_LINE_0_10 }
 
  text = { trigger = { var:tsin_news_0_type = 20 } localization_key = TSIN_NEWS_LINE_0_20 }
@@ -14,6 +16,8 @@
 }
 
 tsin_news_line_1 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_1_type = 22 } localization_key = TSIN_NEWS_LINE_1_22 }
 
  text = { trigger = { var:tsin_news_1_type = 10 } localization_key = TSIN_NEWS_LINE_1_10 }
 
@@ -30,6 +34,8 @@ tsin_news_line_1 = { type = country random_valid = no
 
 tsin_news_line_2 = { type = country random_valid = no
 
+ text = { trigger = { var:tsin_news_2_type = 22 } localization_key = TSIN_NEWS_LINE_2_22 }
+
  text = { trigger = { var:tsin_news_2_type = 10 } localization_key = TSIN_NEWS_LINE_2_10 }
 
  text = { trigger = { var:tsin_news_2_type = 20 } localization_key = TSIN_NEWS_LINE_2_20 }
@@ -44,6 +50,8 @@ tsin_news_line_2 = { type = country random_valid = no
 }
 
 tsin_news_line_3 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_3_type = 22 } localization_key = TSIN_NEWS_LINE_3_22 }
 
  text = { trigger = { var:tsin_news_3_type = 10 } localization_key = TSIN_NEWS_LINE_3_10 }
 
@@ -60,6 +68,8 @@ tsin_news_line_3 = { type = country random_valid = no
 
 tsin_news_line_4 = { type = country random_valid = no
 
+ text = { trigger = { var:tsin_news_4_type = 22 } localization_key = TSIN_NEWS_LINE_4_22 }
+
  text = { trigger = { var:tsin_news_4_type = 10 } localization_key = TSIN_NEWS_LINE_4_10 }
 
  text = { trigger = { var:tsin_news_4_type = 20 } localization_key = TSIN_NEWS_LINE_4_20 }
@@ -74,6 +84,8 @@ tsin_news_line_4 = { type = country random_valid = no
 }
 
 tsin_news_line_5 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_5_type = 22 } localization_key = TSIN_NEWS_LINE_5_22 }
 
  text = { trigger = { var:tsin_news_5_type = 10 } localization_key = TSIN_NEWS_LINE_5_10 }
 

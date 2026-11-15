@@ -1,0 +1,5 @@
+﻿tsin_water_pollution_health = { category = location type = location
+ potential_trigger = { has_variable = tsin_pollution_water var:tsin_pollution_water > 0 }
+ scales_with = tsin_water_pollution_factor
+ local_disease_resistance = -0.05
+}

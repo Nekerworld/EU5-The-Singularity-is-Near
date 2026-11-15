@@ -37,6 +37,8 @@ tsin_facility_public_location_size = { value = 0
  add = "location_building_level(building_type:tsin_electric_cold_storage)"
  add = "location_building_level(building_type:tsin_electric_lighting)"
  add = "location_building_level(building_type:tsin_distribution_substation)"
+ add = "location_building_level(building_type:tsin_water_treatment_works)"
+ add = "location_building_level(building_type:tsin_environment_inspectorate)"
  add = "location_building_level(building_type:hospital)"
 }
 

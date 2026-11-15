@@ -295,6 +295,33 @@ tsin_ui_format_world_company_cash = {
 		localization_key = TSIN_UI_NUMBER_WORLD_COMPANY_CASH_BASE
 	}
 }
+tsin_ui_format_pollution_sample_population = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = { NOT = { has_variable = tsin_pollution_surveyed_people } }
+		localization_key = TSIN_UI_MISSING
+	}
+	text = {
+		trigger = { var:tsin_pollution_surveyed_people >= 1000000000000 }
+		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_T
+	}
+	text = {
+		trigger = { var:tsin_pollution_surveyed_people >= 1000000000 }
+		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_B
+	}
+	text = {
+		trigger = { var:tsin_pollution_surveyed_people >= 1000000 }
+		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_M
+	}
+	text = {
+		trigger = { var:tsin_pollution_surveyed_people >= 1000 }
+		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_K
+	}
+	text = {
+		localization_key = TSIN_UI_NUMBER_POLLUTION_SAMPLE_POPULATION_BASE
+	}
+}
 tsin_ui_format_gdp_sample_9 = {
 	type = country
 	random_valid = no

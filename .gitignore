@@ -38,6 +38,7 @@ tools/out/
 /in_game/common/building_types/tsin_distribution_grid.txt
 /in_game/common/building_types/tsin_education_buildings.txt
 /in_game/common/building_types/tsin_electric_cold_storage.txt
+/in_game/common/building_types/tsin_environment_buildings.txt
 /in_game/common/building_types/tsin_extraction_buildings.txt
 /in_game/common/building_types/tsin_housing_buildings.txt
 /in_game/common/building_types/tsin_industrial_buildings.txt
@@ -215,6 +216,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_electric_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_lighting.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_metro.dds
+/main_menu/gfx/interface/icons/buildings/tsin_environment_inspectorate.dds
 /main_menu/gfx/interface/icons/buildings/tsin_explosives_plant.dds
 /main_menu/gfx/interface/icons/buildings/tsin_farm_machinery_works.dds
 /main_menu/gfx/interface/icons/buildings/tsin_fertilized_fields.dds
@@ -236,6 +238,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_steam_sawmill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_strategic_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_tenement.dds
+/main_menu/gfx/interface/icons/buildings/tsin_water_treatment_works.dds
 /main_menu/gfx/interface/icons/buildings/tsin_waterworks.dds
 /main_menu/gfx/interface/icons/disasters/tsin_cholera.dds
 /main_menu/gfx/interface/icons/disasters/tsin_great_hunger.dds

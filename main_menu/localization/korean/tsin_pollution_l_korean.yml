@@ -4,7 +4,7 @@
  tsin_pollution_filter: "지역 여과 설비 지원"
  tsin_pollution_filter_desc: "300두캇으로 10년간 산업 대기 배출 추정치를 35% 낮춥니다. 수질 오염·기존 누적 공해는 즉시 없어지지 않습니다."
  AUTO_MODIFIER_NAME_tsin_pollution_air_exposure: "산업 공해 노출"
- TSIN_POLLUTION_MAPMODE_TT: "[ROOT.GetLocation.GetName]: 대기 [ROOT.ScriptValue('tsin_pollution_map_air')|1]/100, 수질 위험 [ROOT.ScriptValue('tsin_pollution_map_water')|1]/100, 대기 원배출 추정 [ROOT.ScriptValue('tsin_pollution_map_emissions')|1]. 조사 연도 [ROOT.ScriptValue('tsin_pollution_map_year')|0] (0=미측정). 산업 실제 고용 기반 연간 캐시. 발전소·채굴·교통 배출 미포함."
+ TSIN_POLLUTION_MAPMODE_TT: "[ROOT.GetLocation.GetName]: 대기 [ROOT.ScriptValue('tsin_pollution_map_air')|1]/100, 수질 위험 [ROOT.ScriptValue('tsin_pollution_map_water')|1]/100, 대기 원배출 추정 [ROOT.ScriptValue('tsin_pollution_map_emissions')|1]. 조사 연도 [ROOT.ScriptValue('tsin_pollution_map_year')|0] (0=미측정). 산업 실제 고용 기반 연간 캐시. 광산 RGO 산출·산업 고용 기반. 발전 연료·도시간 교통 배출 미포함."
  LEGEND_KEY_TSIN_POLLUTION_HIGH: "고공해"
  LEGEND_KEY_TSIN_POLLUTION_LOW: "저공해"
  LEGEND_KEY_TSIN_POLLUTION_UNKNOWN: "미측정"

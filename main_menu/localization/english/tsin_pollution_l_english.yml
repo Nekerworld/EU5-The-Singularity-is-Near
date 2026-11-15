@@ -4,7 +4,7 @@
  tsin_pollution_filter: "Fund local emission filters"
  tsin_pollution_filter_desc: "Pay 300 gold for 10 years of 35% lower estimated industrial air emissions. Does not erase water risk or accumulated pollution."
  AUTO_MODIFIER_NAME_tsin_pollution_air_exposure: "Industrial pollution exposure"
- TSIN_POLLUTION_MAPMODE_TT: "[ROOT.GetLocation.GetName]: air [ROOT.ScriptValue('tsin_pollution_map_air')|1]/100, water risk [ROOT.ScriptValue('tsin_pollution_map_water')|1]/100, estimated raw air emissions [ROOT.ScriptValue('tsin_pollution_map_emissions')|1]. Survey year [ROOT.ScriptValue('tsin_pollution_map_year')|0] (0=unmeasured). Annual industrial employment cache; excludes power, extraction and transport."
+ TSIN_POLLUTION_MAPMODE_TT: "[ROOT.GetLocation.GetName]: air [ROOT.ScriptValue('tsin_pollution_map_air')|1]/100, water risk [ROOT.ScriptValue('tsin_pollution_map_water')|1]/100, estimated raw air emissions [ROOT.ScriptValue('tsin_pollution_map_emissions')|1]. Survey year [ROOT.ScriptValue('tsin_pollution_map_year')|0] (0=unmeasured). Annual industrial employment cache; includes mine output and industrial employment; excludes generation fuel and intercity transport."
  LEGEND_KEY_TSIN_POLLUTION_HIGH: "High pollution"
  LEGEND_KEY_TSIN_POLLUTION_LOW: "Low pollution"
  LEGEND_KEY_TSIN_POLLUTION_UNKNOWN: "Unmeasured"

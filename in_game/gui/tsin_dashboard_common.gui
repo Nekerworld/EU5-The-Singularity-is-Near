@@ -590,35 +590,14 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_elect
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_electric').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
 }
-type tsin_ui_card_pollution_exposure = vbox {
+type tsin_ui_card_world_company_cash = vbox {
 size = { 258 75 }
 spacing = 3
 datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_POLLUTION_EXPOSURE"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_EXPOSURE" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').GetValue|1]" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
-}
-type tsin_ui_card_pollution_high_share = vbox {
-size = { 258 75 }
-spacing = 3
-datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_POLLUTION_HIGH_SHARE"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_HIGH_SHARE" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').GetValue|1]" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
-}
-type tsin_ui_card_pollution_year = vbox {
-size = { 258 75 }
-spacing = 3
-datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_POLLUTION_YEAR"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_YEAR" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').GetValue|1]" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+tooltip = "TSIN_UI_HELP_WORLD_COMPANY_CASH"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_WORLD_COMPANY_CASH" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_world_company_cash')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
 }
 type tsin_ui_card_facility_report_industry_age = vbox {
 size = { 258 75 }
@@ -800,14 +779,64 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
 }
-type tsin_ui_card_world_company_cash = vbox {
+type tsin_ui_card_pollution_sample_population = vbox {
 size = { 258 75 }
 spacing = 3
 datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_WORLD_COMPANY_CASH"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_WORLD_COMPANY_CASH" }
-text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_world_company_cash')]" }
-text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+tooltip = "TSIN_UI_HELP_POLLUTION_SAMPLE_POPULATION"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_SAMPLE_POPULATION" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_pollution_sample_population')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_exposure = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_EXPOSURE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_EXPOSURE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_exposure').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_high_share = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_HIGH_SHARE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_HIGH_SHARE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_high_share').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_water_exposure = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_WATER_EXPOSURE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_WATER_EXPOSURE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_water_exposure').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_water_exposure').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_water_exposure').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_pollution_water_high_share = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_POLLUTION_WATER_HIGH_SHARE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_POLLUTION_WATER_HIGH_SHARE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_water_high_share').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_pollution_water_high_share').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_pollution_water_high_share').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
 }
 type tsin_ui_history_gdp = vbox {
 spacing = 4

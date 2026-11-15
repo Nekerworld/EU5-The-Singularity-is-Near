@@ -202,6 +202,12 @@ def check_keys() -> None:
             if schema.exists():
                 known |= set(KEY_LINE.findall(pdx.strip_comments(pdx.read_text(schema))))
 
+        if d.endswith("/building_types"):
+            # Some documented schema fields are not used by the installed vanilla buildings.
+            schema = GAME / "in_game/common/building_types/readme.txt"
+            if schema.exists():
+                known |= set(re.findall(r"^\s*#\s*-\s*([a-z_]+)\s*:", pdx.read_text(schema), re.M))
+
         clean = pdx.strip_comments(pdx.read_text(p))
         for blk in pdx.top_level_blocks(clean):
             inner = blk.text[blk.text.index("{") + 1:-1]

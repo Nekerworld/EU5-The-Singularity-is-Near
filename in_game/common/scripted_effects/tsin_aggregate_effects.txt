@@ -1,9 +1,12 @@
 ﻿# Annual country aggregate (docs/education.md, docs/labor.md, docs/economic_statistics.md). root = country.
-# Vanilla has no country-wide building level sums, so one pass over owned towns and cities collects every
-# total that labor conditions, GDP, education and acceleration need. Nothing else iterates owned locations yearly.
+# One owned-location pass surveys urban areas and industrial-era mines for pollution.
+# The guarded urban body alone feeds labor, GDP, education and acceleration totals.
 
 tsin_annual_country_aggregate_effect = {
 	set_variable = { name = tsin_pollution_weighted value = 0 }
+ set_variable = { name = tsin_pollution_surveyed_pop value = 0 }
+ set_variable = { name = tsin_pollution_water_weighted value = 0 }
+ set_variable = { name = tsin_pollution_water_high_pop value = 0 }
 	set_variable = { name = tsin_pollution_high_pop value = 0 }
 	set_variable = { name = tsin_agg_urban_pop value = 0 }
 	set_variable = { name = tsin_agg_factory_jobs value = 0 }
@@ -15,14 +18,30 @@ tsin_annual_country_aggregate_effect = {
 	set_variable = { name = tsin_agg_tax_base value = 0 }
 
 	every_owned_location = {
-		limit = {
+  # Environment extension: retain the original urban-only GDP/education/labor body.
+  limit = { OR = {
+
 			OR = {
 				is_city = yes
 				location_rank ?= location_rank:town
 				tsin_is_metropolis_or_megalopolis = yes
 			}
-		}
-		tsin_pollution_location_tick_effect = yes
+
+   tsin_is_polluting_mine = yes has_variable = tsin_pollution_year
+  } }
+  tsin_pollution_location_tick_effect = yes
+  if = { limit = {
+
+			OR = {
+				is_city = yes
+				location_rank ?= location_rank:town
+				tsin_is_metropolis_or_megalopolis = yes
+			}
+
+ }
+
+
+
 		if = { limit = { var:tsin_pollution_raw_air > 0 tsin_location_industrial_jobs > 0 } tsin_facility_register_location_effect = yes }
 		set_local_variable = { name = tsin_agg_l_pop value = population }
 		set_local_variable = { name = tsin_agg_l_jobs value = tsin_location_industrial_jobs }
@@ -63,7 +82,9 @@ tsin_annual_country_aggregate_effect = {
 			limit = { has_variable = tsin_socialist_cell }
 			owner = { change_variable = { name = tsin_socialist_cells add = 1 } }
 		}
-	}
+
+ }
+}
 
 	# Factory share of the whole population, 0..1 (tsin_acceleration_points, tsin_labor_grievance_target)
 	set_variable = { name = tsin_factory_share value = 0 }

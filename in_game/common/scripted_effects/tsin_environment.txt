@@ -1,0 +1,19 @@
+﻿tsin_environment_finish_country_effect = {
+ set_variable = { name = tsin_pollution_surveyed_people value = { value = var:tsin_pollution_surveyed_pop multiply = 1000 } }
+ set_variable = { name = tsin_pollution_water_exposure value = 0 }
+ set_variable = { name = tsin_pollution_water_high_share value = 0 }
+ if = { limit = { var:tsin_pollution_surveyed_pop > 0 }
+  set_variable = { name = tsin_pollution_water_exposure value = { value = var:tsin_pollution_water_weighted divide = var:tsin_pollution_surveyed_pop } }
+  set_variable = { name = tsin_pollution_water_high_share value = { value = var:tsin_pollution_water_high_pop divide = var:tsin_pollution_surveyed_pop multiply = 100 } }
+ } else = {
+  remove_variable = tsin_pollution_exposure remove_variable = tsin_pollution_high_share
+  remove_variable = tsin_pollution_water_exposure remove_variable = tsin_pollution_water_high_share
+ }
+ if = { limit = { is_ai = no var:tsin_pollution_water_high_share >= 10 NOT = { has_variable = tsin_water_petition_cooldown } }
+  random_owned_location = { limit = { var:tsin_pollution_water_bad_years >= 2 population > 0 } save_scope_as = tsin_water_petition_site }
+  if = { limit = { exists = scope:tsin_water_petition_site }
+   set_variable = { name = tsin_water_petition_cooldown years = 8 }
+   trigger_event_non_silently = tsin_environment.1
+  }
+ }
+}

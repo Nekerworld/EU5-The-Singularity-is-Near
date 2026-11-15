@@ -6,6 +6,7 @@
 
 # Cities: planning
 tsin_urban_planning_advance = {
+	unlock_building = tsin_environment_inspectorate
 	age = age_7_industrialization
 	icon = city_building_advance
 
@@ -19,6 +20,7 @@ tsin_urban_planning_advance = {
 }
 
 tsin_modern_sewerage_advance = {
+	unlock_building = tsin_water_treatment_works
 	age = age_7_industrialization
 	icon = sanitation_advance
 

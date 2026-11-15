@@ -45,6 +45,7 @@ tsin_bill_law_policy_trigger = {
 			this = law:tsin_church_state_law
 			this = law:tsin_industrial_investment_law
 			this = law:tsin_trust_law
+			this = law:tsin_environment_law
 			this = law:tsin_frontier_land_law
 			this = law:tsin_slave_trade_law
 			this = law:press_law

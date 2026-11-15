@@ -1,8 +1,11 @@
-﻿# Scope: location, called only from the existing annual urban aggregate.
+﻿# ENVIRONMENT_EXTENSION
+# Scope: location, called only from the existing annual urban aggregate.
 tsin_pollution_location_tick_effect = {
  save_scope_as = tsin_pollution_site
  set_variable = { name = tsin_pollution_raw_air value = 0 }
  set_variable = { name = tsin_pollution_raw_water value = 0 }
+ set_variable = { name = tsin_pollution_treatment_capacity value = 0 }
+ set_variable = { name = tsin_pollution_inspection_capacity value = 0 }
  every_buildings_in_location = {
   limit = { is_opened = yes building_employed_amount > 0 }
   if = { limit = { OR = { building_type = building_type:tsin_steam_metro building_type = building_type:iron_mill building_type = building_type:steel_mill building_type = building_type:cannons_factory building_type = building_type:firearms_factory building_type = building_type:weapon_factory building_type = building_type:tsin_automated_iron_mill building_type = building_type:tsin_machine_works building_type = building_type:tsin_farm_machinery_works } }
@@ -26,7 +29,21 @@ tsin_pollution_location_tick_effect = {
     change_variable = { name = tsin_pollution_raw_water add = { value = scope:tsin_pollution_employed multiply = 1 } }
    }
   }
+
+  if = { limit = { building_type = building_type:tsin_water_treatment_works building_employment_size_amount > 0 is_lacking_goods = no }
+   save_temporary_scope_value_as = { name = tsin_environment_capacity value = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 multiply = building_level } }
+   scope:tsin_pollution_site = { change_variable = { name = tsin_pollution_treatment_capacity add = scope:tsin_environment_capacity } }
+  }
+  if = { limit = { building_type = building_type:tsin_environment_inspectorate building_employment_size_amount > 0 is_lacking_goods = no }
+   save_temporary_scope_value_as = { name = tsin_environment_capacity value = { value = building_employed_amount divide = building_employment_size_amount min = 0 max = 1 } }
+   scope:tsin_pollution_site = { change_variable = { name = tsin_pollution_inspection_capacity add = scope:tsin_environment_capacity } }
+  }
+}
+ if = { limit = { tsin_is_polluting_mine = yes raw_material_output > 0 }
+  change_variable = { name = tsin_pollution_raw_air add = { value = raw_material_output multiply = 0.08 } }
+  change_variable = { name = tsin_pollution_raw_water add = { value = raw_material_output multiply = 0.10 } }
  }
+
  if = { limit = { NOT = { has_variable = tsin_pollution_air } } set_variable = { name = tsin_pollution_air value = 0 } }
  if = { limit = { NOT = { has_variable = tsin_pollution_water } } set_variable = { name = tsin_pollution_water value = 0 } }
  set_variable = { name = tsin_pollution_air_previous value = var:tsin_pollution_air }
@@ -34,22 +51,34 @@ tsin_pollution_location_tick_effect = {
  set_variable = { name = tsin_pollution_air value = { value = var:tsin_pollution_air multiply = 0.4 add = { value = tsin_pollution_air_target multiply = 0.6 } min = 0 max = 100 } }
  set_variable = { name = tsin_pollution_water value = { value = var:tsin_pollution_water multiply = 0.4 add = { value = tsin_pollution_water_target multiply = 0.6 } min = 0 max = 100 } }
  set_variable = { name = tsin_pollution_year value = current_year }
+ if = { limit = { var:tsin_pollution_water >= 60 }
+  if = { limit = { NOT = { has_variable = tsin_pollution_water_bad_years } } set_variable = { name = tsin_pollution_water_bad_years value = 0 } }
+  change_variable = { name = tsin_pollution_water_bad_years add = 1 }
+ } else = { set_variable = { name = tsin_pollution_water_bad_years value = 0 } }
+
  if = { limit = { var:tsin_pollution_air >= 60 }
   if = { limit = { NOT = { has_variable = tsin_pollution_bad_years } } set_variable = { name = tsin_pollution_bad_years value = 0 } }
   change_variable = { name = tsin_pollution_bad_years add = 1 }
  } else = { set_variable = { name = tsin_pollution_bad_years value = 0 } }
  save_temporary_scope_value_as = { name = tsin_pollution_weighted value = { value = var:tsin_pollution_air multiply = population } }
  save_temporary_scope_value_as = { name = tsin_pollution_population value = population }
- owner = { change_variable = { name = tsin_pollution_weighted add = scope:tsin_pollution_weighted } }
+ save_temporary_scope_value_as = { name = tsin_pollution_water_weighted value = { value = var:tsin_pollution_water multiply = population } }
+ owner = {
+  change_variable = { name = tsin_pollution_weighted add = scope:tsin_pollution_weighted }
+  change_variable = { name = tsin_pollution_water_weighted add = scope:tsin_pollution_water_weighted }
+  change_variable = { name = tsin_pollution_surveyed_pop add = scope:tsin_pollution_population }
+ }
+ if = { limit = { var:tsin_pollution_water >= 60 } owner = { change_variable = { name = tsin_pollution_water_high_pop add = scope:tsin_pollution_population } } }
+
  if = { limit = { var:tsin_pollution_air >= 60 } owner = { change_variable = { name = tsin_pollution_high_pop add = scope:tsin_pollution_population } } }
 }
 tsin_pollution_finish_country_effect = {
  set_variable = { name = tsin_pollution_year value = current_year }
  set_variable = { name = tsin_pollution_exposure value = 0 }
  set_variable = { name = tsin_pollution_high_share value = 0 }
- if = { limit = { var:tsin_agg_urban_pop > 0 }
-  set_variable = { name = tsin_pollution_exposure value = { value = var:tsin_pollution_weighted divide = var:tsin_agg_urban_pop } }
-  set_variable = { name = tsin_pollution_high_share value = { value = var:tsin_pollution_high_pop divide = var:tsin_agg_urban_pop multiply = 100 } }
+ if = { limit = { var:tsin_pollution_surveyed_pop > 0 }
+  set_variable = { name = tsin_pollution_exposure value = { value = var:tsin_pollution_weighted divide = var:tsin_pollution_surveyed_pop } }
+  set_variable = { name = tsin_pollution_high_share value = { value = var:tsin_pollution_high_pop divide = var:tsin_pollution_surveyed_pop multiply = 100 } }
  }
  if = { limit = { is_ai = no NOT = { has_variable = tsin_pollution_petition_cooldown } var:tsin_pollution_high_share >= 10 }
   random_owned_location = { limit = { var:tsin_pollution_bad_years >= 2 } save_scope_as = tsin_pollution_petition_site }
@@ -58,4 +87,5 @@ tsin_pollution_finish_country_effect = {
    trigger_event_non_silently = tsin_pollution.1
   }
  }
+ tsin_environment_finish_country_effect = yes
 }

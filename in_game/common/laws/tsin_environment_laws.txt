@@ -1,0 +1,16 @@
+﻿tsin_environment_law = {
+ law_category = socioeconomic
+ potential = { has_advance = tsin_urban_planning_advance }
+ tsin_environment_unregulated_policy = {
+  allow = { tsin_policy_enactable_trigger = yes }
+  years = 5 estate_preferences = { burghers_estate nobles_estate }
+ }
+ tsin_environment_inspections_policy = {
+  allow = { tsin_policy_enactable_trigger = yes }
+  years = 5 estate_preferences = { crown_estate }
+ }
+ tsin_environment_standards_policy = {
+  allow = { has_advance = tsin_modern_sewerage_advance tsin_policy_enactable_trigger = yes }
+  years = 5 estate_preferences = { peasants_estate clergy_estate }
+ }
+}

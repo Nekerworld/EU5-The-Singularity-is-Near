@@ -10,8 +10,12 @@ LIGHT=['brewery_mill','printing_mill','textile_mill','fine_cloth_mill','furnitur
 
 def types(names):return 'OR = { '+' '.join('building_type = building_type:'+n for n in names)+' }'
 
-def registry_module():
+def _base_registry_module():
     return {'id':'pollution','metrics':[{'id':'pollution_'+k,'variable':'tsin_pollution_'+k,'title':{'korean':ko,'english':en},'tabs':['society'],'unit':'number','frequency':'annual','description':{'korean':'기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.','english':'Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included.'}} for k,ko,en in [('exposure','조사 도시 인구 가중 대기 노출','Surveyed urban air exposure'),('high_share','조사 도시 고위험 인구 비율(%)','Surveyed urban high exposure (%)'),('year','공해 조사 연도','Pollution survey year')]],'shortcuts':[{'id':'pollution_map','tab':'society','title':{'korean':'산업 공해 지도','english':'Industrial pollution map'},'map_mode':'tsin_pollution'},{'id':'pollution_filter','tab':'society','title':{'korean':'지역 여과 설비 지원','english':'Fund local emission filters'},'generic_action':'tsin_pollution_filter'}]}
+
+def registry_module():
+    from environment_extension import refine_registry
+    return refine_registry(_base_registry_module())
 
 def build():
     fx='''# Scope: location, called only from the existing annual urban aggregate.
@@ -105,9 +109,11 @@ tsin_pollution.1 = {
  type = country_event title = tsin_pollution.1.title desc = tsin_pollution.1.desc outcome = neutral
  immediate = { tsin_news_record_effect = { TYPE = 20 PRIORITY = 1 } }
  illustration_tags = { 10 = interior 10 = regular }
- option = { name = tsin_pollution.1.a trigger = { gold >= 300 }
-  add_gold = -300
-  scope:tsin_pollution_petition_site = { set_variable = { name = tsin_pollution_filters years = 10 } }
+ option = { name = tsin_pollution.1.a trigger = { gold >= 300 scope:tsin_pollution_petition_site ?= { owner ?= root controller ?= root } }
+  if = { limit = { gold >= 300 scope:tsin_pollution_petition_site ?= { owner ?= root controller ?= root } }
+   add_gold = -300
+   scope:tsin_pollution_petition_site = { set_variable = { name = tsin_pollution_filters years = 10 } }
+  }
   ai_chance = { factor = 3 }
  }
  option = { name = tsin_pollution.1.b ai_chance = { factor = 1 } }
@@ -118,7 +124,8 @@ tsin_pollution.1 = {
     labels['mapmode_tsin_pollution_name']=labels['tsin_pollution']
     labels['MAPMODE_TSIN_POLLUTION']=labels['tsin_pollution_desc']
     for lang,i in [('korean',0),('english',1)]:outputs[f'main_menu/localization/{lang}/tsin_pollution_l_{lang}.yml']='l_'+lang+':\n'+''.join(f' {k}: '+json.dumps(v[i],ensure_ascii=False)+'\n' for k,v in labels.items())
-    return outputs
+    from environment_extension import refine_pollution
+    return refine_pollution(outputs)
 
 def integrate():
     p=pdx.MOD_ROOT/'in_game/common/scripted_effects/tsin_aggregate_effects.txt';s=pdx.read_text(p)

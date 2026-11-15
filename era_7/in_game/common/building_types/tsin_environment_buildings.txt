@@ -1,0 +1,31 @@
+﻿tsin_water_treatment_works = {
+ audio_tier = 3 is_foreign = no forbidden_for_estates = yes pop_type = laborers
+ employment_size = 0.05 max_levels = 2 category = infrastructure_category
+ rural_settlement = yes town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { has_advance = tsin_modern_sewerage_advance }
+ location_potential = { OR = { population >= 30 tsin_location_mill_levels > 0 tsin_is_polluting_mine = yes } }
+ ai_construct_weight = { value = 0 if = { limit = { var:tsin_pollution_water >= 40 } add = 50 } }
+ unique_production_methods = {
+  tsin_water_treatment_steam = {
+   icon_type = goods icon = coal coal = 0.15 tools = 0.05 tsin_engines = 0.02 category = building_maintenance
+  }
+  tsin_water_treatment_electric = {
+   icon_type = goods icon = tsin_electricity tsin_electricity = 0.10 tools = 0.05 category = building_maintenance
+  }
+ }
+}
+tsin_environment_inspectorate = {
+ audio_tier = 2 is_foreign = no forbidden_for_estates = yes pop_type = burghers
+ employment_size = 0.02 max_levels = 1 category = infrastructure_category
+ rural_settlement = yes town = yes city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
+ build_time = infrastructure_build_time construction_demand = tsin_infrastructure_construction
+ country_potential = { OR = { has_policy = policy:tsin_environment_inspections_policy has_policy = policy:tsin_environment_standards_policy } }
+ location_potential = { OR = { population >= 30 tsin_location_mill_levels > 0 tsin_is_polluting_mine = yes } }
+ ai_construct_weight = { value = 0 if = { limit = { OR = { var:tsin_pollution_air >= 40 var:tsin_pollution_water >= 40 } } add = 40 } }
+ unique_production_methods = {
+  tsin_environment_inspectorate_maintenance = {
+   icon_type = goods icon = paper paper = 0.03 tools = 0.02 category = building_maintenance
+  }
+ }
+}

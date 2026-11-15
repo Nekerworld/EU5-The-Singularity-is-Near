@@ -1,0 +1,1 @@
+﻿tsin_is_polluting_mine = { current_age_or_later = { age = age_7_industrialization } is_mining_rgo = yes }

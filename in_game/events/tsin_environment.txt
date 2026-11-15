@@ -1,0 +1,14 @@
+﻿namespace = tsin_environment
+tsin_environment.1 = {
+ type = country_event title = tsin_environment.1.title desc = tsin_environment.1.desc outcome = neutral
+ illustration_tags = { 10 = interior 10 = regular }
+ immediate = { tsin_news_record_effect = { TYPE = 22 PRIORITY = 1 } }
+ option = { name = tsin_environment.1.a trigger = { gold >= 250 scope:tsin_water_petition_site ?= { owner ?= root controller ?= root } }
+  if = { limit = { gold >= 250 scope:tsin_water_petition_site ?= { owner ?= root controller ?= root } }
+   add_gold = -250
+   scope:tsin_water_petition_site = { set_variable = { name = tsin_water_emergency_services years = 5 } }
+  }
+  ai_chance = { factor = 3 }
+ }
+ option = { name = tsin_environment.1.b ai_chance = { factor = 1 } }
+}
