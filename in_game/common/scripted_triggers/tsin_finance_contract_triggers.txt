@@ -1,0 +1,6 @@
+﻿tsin_contract_mature_trigger = {
+ OR = {
+  AND = { "global_variable_map(tsin_fc_maturity_mode|scope:tsin_contract_id)" = 0 "global_variable_map(tsin_fc_maturity|scope:tsin_contract_id)" >= 0 tsin_contract_calendar_month >= "global_variable_map(tsin_fc_maturity|scope:tsin_contract_id)" }
+  AND = { "global_variable_map(tsin_fc_maturity_mode|scope:tsin_contract_id)" = 1 "global_variable_map(tsin_fc_timer_origin|scope:tsin_contract_id)" ?= { NOT = { has_variable = tsin_bond_maturity } } }
+ }
+}

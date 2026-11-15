@@ -54,8 +54,12 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 - 기업 증자는 지분 희석을 반영하고, 회사채는 36개월 만기·연 4% 이자를 기록합니다.
 - 은행은 기존 예금의 20%를 남겨야 신규 대출할 수 있습니다. 인출 미지급과 순자산 부족이 지속되면 신용 위축이 발생하며 실제 자금으로 회복해야 합니다.
-- 해외 기업 신용은 현재 국가당 동시 한 건의 계약입니다. 차입국 단위 원금, 환산 평가, 분기 이자·상환·연체 상각을 처리합니다.
+- 해외 기업 신용은 여러 계약을 동시에 유지합니다. 12개월·60개월 계약마다 발행 금리·통화 원금·만기·지급 주기·연체를 따로 저장하고 12개월 간격으로 발행합니다. 국내 기업 대출과 회사채도 금리·만기가 다른 계약을 합산하지 않습니다.
 - 연금은 적립금 지급과 실제 시민 자금으로 지급하는 부과 방식을 제공합니다. 보험은 조건을 만족하는 연체기에 한 번만 청구됩니다. 고령 인구별 수급권을 계산하는 모형은 아닙니다.
+
+합병 유형과 관계없이 **국가 자산·국가 채무 승계, 민간 자산·부채 보존, 계약 연속성**을 기본값으로 처리합니다. 준비 일지에 국고와 장부를 기록하고 합병 확인 후 인도하며 중복 콜백과 취소된 준비를 처리합니다. 원래 대출 객체의 당사자를 변경하고 여러 계약의 금리·만기를 유지합니다. 엔진 합병 전체의 원자적 롤백을 보장하는 기능은 아닙니다.
+
+구형 회사채는 원래 만료 타이머를 유지합니다. 엔진이 합병 때 그 정보를 없애면 날짜를 만들어 내지 않고 은행 화면에 **만기 확인 필요**로 표시합니다. 신규 계약은 처음부터 만기 월을 저장합니다. [계약 원장·승계·구형 만기 처리](docs/finance_contracts.md).
 
 통화는 **기준 두캇 위에 얹은 표시·채권 환산 모형**입니다. 역사 환율을 재현한 값이나 엔진의 다중통화 결제 체계로 해석하지 않습니다. 금본위 정책에서는 먼저 태환을 정지해야 평가절하할 수 있습니다. 10:1 화폐개혁은 환산율과 해당 외채·채권 액면을 함께 나누어 실질 가치를 보존합니다. 실물 금 상품 태환·통화동맹·개별 해외 지분 시장은 후속 개발 범위입니다.
 
@@ -269,7 +273,7 @@ python -B tools/audit.py
 python -B -m unittest discover -s tools/tests
 ```
 
-README 갱신 기준의 코드 검사 기록은 **회귀 99개 통과**, 전체 정적 검사 오류 0·경고 0, 별도 감사 오류 0·기존 경고 2입니다. 기본/Glorp 금융 생성물 14개와 시대 원본 371개의 실행 파일이 일치했습니다. 이는 인게임 검증 완료를 뜻하지 않습니다.
+README 갱신 기준의 코드 검사 기록은 **회귀 119개 통과**, 전체 정적 검사 오류 0·경고 0, 별도 감사 오류 0·기존 경고 2입니다. 기본/Glorp 금융 생성물 14개와 시대 원본 371개의 실행 파일이 일치했습니다. 이는 인게임 검증 완료를 뜻하지 않습니다.
 
 | 생성·분석 도구 | 역할 |
 |---|---|
@@ -289,7 +293,7 @@ README 도표는 `python tools/make_readme_media.py`로 재생성합니다. `mat
 
 ## 5. 남은 개발 범위
 
-국가 합병의 금융계정·계약 연속성, 해외 다중 계약, 개별 해외 지분·실물 금 태환·통화동맹·연령별 연금 수급권은 현재 모형에서 추가 개발이 필요한 항목입니다. 역사 사건은 별도 제작분 67개를 추가했지만 180개 소재 전체나 800~1200개 이벤트 목표를 완료한 것은 아닙니다. 복잡한 국경 돌출부·묶음 거래도 후속 범위입니다.
+국가 합병의 금융 승계와 해외 다중 계약은 구현했습니다. 실제 엔진의 Loan 승계·구형 만기 보존은 인게임 검증 대상입니다. 개별 해외 지분·실물 금 태환·통화동맹·연령별 연금 수급권은 추가 개발 범위입니다. 역사 사건은 별도 제작분 67개를 추가했지만 180개 소재 전체나 800~1200개 이벤트 목표를 완료한 것은 아닙니다. 복잡한 국경 돌출부·묶음 거래도 후속 범위입니다.
 
 8시대의 전용 3개 제도·정당·총력전과 9~12시대의 상세 기술·생산·정치 콘텐츠는 구체화된 계획부터 순차 개발합니다. **전선 중심 자동전투는 무기한 보류**입니다. 인게임 검증은 전체 구현 이후 진행하는 방침을 유지합니다.
 
@@ -299,10 +303,10 @@ README 도표는 `python tools/make_readme_media.py`로 재생성합니다. `mat
 
 **The Singularity is Near** extends Europa Universalis V to **2337.12.31**, with age-VII industrial content, shared economic systems, partial age-VIII content and age-IX–XII scaffolds. Version **0.7.0** targets game **1.4.x** and remains a development build.
 
-**Shared systems:** six-tab TSIN dashboard, 35 metrics, 22 operational warnings, 16 map modes, 14 hints and 76 encyclopedia concepts. GDP uses K/M/B/T formatting and ten annual observations. F2 remains Economy: Finance contains Overview, Stocks, Credit, Currency, Banks and Funds. Native loans, bonds, repayment and bankruptcy controls remain connected. Funded bank/company accounts, equity dilution, corporate bonds, foreign corporate credit and pension/insurance payments are implemented as aggregate models. Currency is an accounting overlay on native ducats; physical gold redemption and a native multicurrency market are not implemented.
+**Shared systems:** six-tab TSIN dashboard, 35 metrics, 22 operational warnings, 16 map modes, 14 hints and 76 encyclopedia concepts. GDP uses K/M/B/T formatting and ten annual observations. F2 remains Economy: Finance contains Overview, Stocks, Credit, Currency, Banks and Funds. Native loans, bonds, repayment and bankruptcy controls remain connected. Funded bank/company accounts, equity dilution, corporate bonds and pension/insurance payments use aggregate accounts. Loans retain separate contract IDs, rates, maturity and payment schedules. Annexation journals preserve treasury, liabilities and contract parties; they do not provide an engine-wide ACID rollback. Missing expiry data in legacy bonds is flagged for explicit repair rather than assigned a fabricated date. Currency is an accounting overlay on native ducats; physical gold redemption and a native multicurrency market are not implemented.
 
 **Historical progression:** Russia plus 25 additional paths, guarded AI restoration and paid rural enclave sales. Britain is limited to the British Isles and Ireland. Human owners/controllers and their subjects are protected from forced core transfers. Two historical waves add 24+43 events, already included in the **275** total TSIN event definitions; era-VII sources contain 214 of them. Historical material counts are not event counts or guaranteed popup frequency.
 
 **Age VII:** three institutions, 159 advances, seven goods, 26 building definitions, 19 units, 11 laws, eight situations and four disasters. **Age VIII:** nine advances, two facilities and two ships connect industrial agriculture, motor logistics, early aviation support and dreadnoughts. Dedicated political systems and institutions remain planned. **Ages IX–XII:** dated definitions, localization and placeholder art only.
 
-Edit era sources under `era_7/` and `era_8/`; run `python tools/sync_eras.py` before launching a source checkout. Shared features retain their existing paths. Glorp integration uses a local compatibility mod. Latest code verification recorded 99 passing regressions and zero validation errors/warnings; runtime layout, long-term balance and save continuity still require in-game checks. README images are explanatory diagrams, not gameplay screenshots.
+Edit era sources under `era_7/` and `era_8/`; run `python tools/sync_eras.py` before launching a source checkout. Shared features retain their existing paths. Glorp integration uses a local compatibility mod. Latest code verification recorded 119 passing regressions and zero validation errors/warnings; runtime layout, long-term balance and save continuity still require in-game checks. README images are explanatory diagrams, not gameplay screenshots.

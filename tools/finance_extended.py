@@ -4,7 +4,7 @@ These accounts are separate from native sovereign credit. Foreign principal is
 stored in borrower local units; revaluation changes claims, not cash balances.
 """
 
-VARIABLES = ['tsin_foreign_delinquency','tsin_deposits','tsin_withdrawal_due','tsin_liquidity_debt','tsin_foreign_principal','tsin_foreign_local_principal','tsin_foreign_liability_local','tsin_foreign_age','tsin_bank_losses','tsin_bank_stress','tsin_foreign_interest_paid']
+VARIABLES = ['tsin_unknown_maturity_contract_id','tsin_unknown_legacy_maturities','tsin_foreign_contract_count','tsin_foreign_delinquency','tsin_deposits','tsin_withdrawal_due','tsin_liquidity_debt','tsin_foreign_principal','tsin_foreign_local_principal','tsin_foreign_liability_local','tsin_foreign_age','tsin_bank_losses','tsin_bank_stress','tsin_foreign_interest_paid']
 
 
 def register(fields, action, loc):
@@ -14,8 +14,10 @@ def register(fields, action, loc):
         ('WITHDRAWALS','Unpaid withdrawal requests','미지급 인출 요구','tsin_withdrawal_due'),
         ('LIQUIDITY','Reserve facility principal','준비금 유동성 차입','tsin_liquidity_debt'),
         ('FOREIGN','Foreign credit · reference value','해외 신용자산 · 기준가액','tsin_foreign_principal'),
-        ('FOREIGN_LOCAL','Foreign credit · borrower units','해외 신용자산 · 차입국 단위','tsin_foreign_local_principal'),
+        ('FOREIGN_LOCAL','Active overseas contracts','활성 해외 신용 계약 수','tsin_foreign_contract_count'),
         ('LOSSES','Cumulative credit write-offs','누적 신용 상각','tsin_bank_losses'),
+        ('UNKNOWN_MATURITY','Legacy bond dates needing review','만기 확인이 필요한 구형 회사채','tsin_unknown_legacy_maturities'),
+        ('UNKNOWN_ID','Legacy maturity contract ID to review','만기 확인 대상 계약번호','tsin_unknown_maturity_contract_id'),
     ]:
         fields.append((key,en,ko,var));loc(key,en,ko)
     action('suspend_gold','Suspend convertibility','태환 일시 정지','has_policy = policy:tsin_gold_standard_policy NOT = { has_variable = tsin_convertibility_suspended }','set_variable = { name = tsin_convertibility_suspended years = 5 } add_country_modifier = { modifier = tsin_convertibility_suspension years = 5 mode = replace } add_prestige = -10','MONEY')
@@ -23,9 +25,11 @@ def register(fields, action, loc):
     action('stop_deposits','Close new deposits','신규 예금 중단','has_variable = tsin_bank_open','remove_variable = tsin_bank_open set_variable = tsin_bank_winding_down','BANK')
     action('liquidity','Provide reserve liquidity','준비 현금으로 유동성 대출','var:tsin_reserve >= tsin_ledger_lot var:tsin_withdrawal_due > 0','change_variable = { name = tsin_reserve subtract = tsin_ledger_lot } change_variable = { name = tsin_bank_cash add = tsin_ledger_lot } change_variable = { name = tsin_liquidity_debt add = tsin_ledger_lot }','BANK')
     action('liquidity_repay','Repay reserve facility','준비금 대출 상환','var:tsin_bank_cash > 0 var:tsin_liquidity_debt > 0','set_variable = { name = tsin_tx value = tsin_liquidity_repayment } change_variable = { name = tsin_bank_cash subtract = var:tsin_tx } change_variable = { name = tsin_reserve add = var:tsin_tx } change_variable = { name = tsin_liquidity_debt subtract = var:tsin_tx } remove_variable = tsin_tx','BANK')
-    action('writeoff','Restructure distressed business loan','부실 기업 채무 조정','var:tsin_arrears >= 12 var:tsin_firm_debt > 0 NOT = { has_variable = tsin_writeoff_cooldown }','set_variable = { name = tsin_tx value = tsin_credit_writeoff } change_variable = { name = tsin_firm_debt subtract = var:tsin_tx } change_variable = { name = tsin_bank_losses add = var:tsin_tx } remove_variable = tsin_tx set_variable = { name = tsin_writeoff_cooldown years = 3 }','BANK')
-    action('foreign','Fund one overseas credit contract','해외 기업 신용 계약 체결','var:tsin_bank_cash >= tsin_ledger_lot NOT = { has_variable = tsin_foreign_partner } NOT = { has_variable = tsin_foreign_cooldown } current_year >= 1600 any_country = { tsin_foreign_recipient_trigger = yes }','tsin_foreign_open_effect = yes','BANK')
-    loc('BANK_NOTE','Deposit banking is opt-in. Deposits debit burgher cash and create bank liabilities. Withdrawals retain unpaid claims; reserve lending must be repaid. Overseas credit selects one independent AI with a funded company cash account. Principal is denominated in borrower currency: devaluation reduces its reference value. No native foreign-exchange settlement or sovereign-loan replacement is implied.','예금 영업은 별도로 개시해야 합니다. 예금은 시민 현금을 차감하고 은행의 채무로 기록하며 미지급 인출은 채권으로 남습니다. 준비금 대출은 상환해야 합니다. 해외 신용은 독립 AI의 기업 현금 계정을 대상으로 한 건만 체결합니다. 원금은 차입국 화폐로 표시하므로 평가절하 시 기준 가액이 줄어듭니다. 기존 국가 대출과는 별도 계약입니다.')
+    action('writeoff','Restructure distressed business loan','부실 기업 채무 조정','var:tsin_arrears >= 12 var:tsin_firm_debt > 0 NOT = { has_variable = tsin_writeoff_cooldown }','if = { limit = { has_variable = tsin_contract_managed } tsin_contract_adjust_private_effect = { KIND = 2 LOSS = yes AMOUNT = tsin_credit_writeoff } set_variable = { name = tsin_writeoff_cooldown years = 3 } } else = { set_variable = { name = tsin_tx value = tsin_credit_writeoff } change_variable = { name = tsin_firm_debt subtract = var:tsin_tx } change_variable = { name = tsin_bank_losses add = var:tsin_tx } remove_variable = tsin_tx set_variable = { name = tsin_writeoff_cooldown years = 3 } }','BANK')
+    valid='var:tsin_bank_cash >= tsin_ledger_lot NOT = { has_variable = tsin_foreign_cooldown } current_year >= 1600 any_country = { tsin_foreign_recipient_trigger = yes }'
+    action('foreign','Fund 12-month overseas credit','12개월 해외 기업 신용 계약',valid,'tsin_foreign_open_effect = yes','BANK')
+    action('foreign_long','Fund 60-month overseas credit · +2pp','60개월 해외 기업 신용 · 금리 +2%p',valid+' has_global_variable = tsin_contracts_enabled','tsin_contract_open_foreign_effect = { MONTHS = 60 PREMIUM = 2 }','BANK')
+    loc('BANK_NOTE','Deposit banking is opt-in. Deposits debit burgher cash and create bank liabilities. Withdrawals retain unpaid claims; reserve lending must be repaid. Overseas contracts retain separate rates, maturity and currency principal. New contracts fix the current facility rate; 60-month credit adds 2pp. Issuance has a 12-month cooldown. Principal is denominated in borrower currency: devaluation reduces its reference value. No native foreign-exchange settlement or sovereign-loan replacement is implied.','예금 영업은 별도로 개시해야 합니다. 예금은 시민 현금을 차감하고 은행의 채무로 기록하며 미지급 인출은 채권으로 남습니다. 준비금 대출은 상환해야 합니다. 해외 신용은 독립 AI의 기업 현금 계정에 계약별로 제공하며 금리·만기·통화 원금을 따로 보존합니다. 신규 계약은 현재 신용 금리를 고정하고 60개월 계약에는 2%p를 가산합니다. 계약 체결은 12개월 간격입니다. 평가절하는 해당 통화 채권의 기준 가액을 줄입니다. 기존 국가 대출과는 별도 계약입니다.')
 
 
 VALUES = '''
@@ -63,9 +67,16 @@ every_country = {
 limit = { has_variable = tsin_foreign_partner var:tsin_foreign_partner ?= scope:tsin_redenominating_country }
 change_variable = { name = tsin_foreign_local_principal divide = 10 }
 }
+if = { limit = { has_global_variable = tsin_contracts_enabled } tsin_contract_redenominate_effect = yes }
 set_variable = { name = tsin_reform_cooldown months = 12 }
 }
 tsin_foreign_open_effect = {
+if = { limit = { has_global_variable = tsin_contracts_enabled }
+ tsin_contract_open_foreign_effect = { MONTHS = 12 PREMIUM = 0 }
+}
+else = { tsin_foreign_open_legacy_effect = yes }
+}
+tsin_foreign_open_legacy_effect = {
 save_scope_as = tsin_foreign_lender
 if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0
 NOT = { has_variable = tsin_foreign_partner } NOT = { has_variable = tsin_foreign_cooldown } }

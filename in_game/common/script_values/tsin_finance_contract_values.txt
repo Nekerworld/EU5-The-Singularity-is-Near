@@ -1,0 +1,3 @@
+﻿tsin_contract_calendar_month = { value = current_year multiply = 12 add = current_month }
+tsin_contract_reference_principal = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" divide = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" }
+tsin_contract_interest_due = { value = tsin_contract_reference_principal multiply = "global_variable_map(tsin_fc_rate|scope:tsin_contract_id)" multiply = "global_variable_map(tsin_fc_period|scope:tsin_contract_id)" divide = 1200 }

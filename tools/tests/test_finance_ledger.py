@@ -54,6 +54,7 @@ class LedgerFixture:
             if k=='AND':return self.valid(v)
             if k=='OR':return any(term(*r) for r in v)
             if k=='has_variable':return v in self.state
+            if k=='has_global_variable':return v in getattr(self,'globals',{})
             if k=='var:tsin_foreign_partner' and isinstance(v,str) and v.startswith('scope:'):return self.state.get('tsin_foreign_partner') is self.saved.get(v[6:])
             if k=='is_ai':return False
             if k=='country_has_estate':return True

@@ -1,0 +1,8 @@
+﻿# One global review per calendar month; work scales with active contracts.
+monthly_country_pulse = { on_actions = { tsin_contract_global_monthly } }
+tsin_contract_global_monthly = {
+ trigger = { OR = { has_global_variable = tsin_contracts_enabled current_year >= 1600 }
+ OR = { NOT = { has_global_variable = tsin_contract_review_month }
+ tsin_contract_calendar_month > global_var:tsin_contract_review_month } }
+ effect = { tsin_contract_month_effect = yes }
+}

@@ -26,7 +26,7 @@ def build():
     fields = [
         ('FX', 'Local units / reference ducat', '기준 두캇당 자국 화폐 단위', 'tsin_fx'),
         ('LOCAL', 'Treasury in local units', '자국 단위 국고', 'tsin_local_treasury'),
-        ('RATE', 'Facility annual rate (%)', '기업 신용창구 연 금리 (%)', 'tsin_rate'),
+        ('RATE', 'New credit annual rate (%)', '신규 신용 계약 연 금리 (%)', 'tsin_rate'),
         ('RESERVE', 'Monetary reserve escrow', '통화 준비 현금', 'tsin_reserve'),
         ('LIQUID', 'Bank cash', '은행 현금', 'tsin_bank_cash'),
         ('LOANS', 'Bank loans = company principal', '은행 대출자산 = 기업 원금채무', 'tsin_firm_debt'),
@@ -78,6 +78,10 @@ def build():
         effects.append(f'if = {{ limit = {{ NOT = {{ has_variable = {var} }} }} set_variable = {{ name = {var} value = {default} }} }}')
     effects += ['set_variable = { name = tsin_ledger_version value = 2 }', '}', '''
 tsin_ledger_lend_effect = {
+ if = { limit = { has_global_variable = tsin_contracts_enabled } tsin_contract_lend_facility_effect = yes }
+ else = { tsin_ledger_lend_effect_legacy = yes }
+}
+tsin_ledger_lend_effect_legacy = {
     if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_bank_net_worth >= 0 tsin_company_count > 0 }
         change_variable = { name = tsin_bank_cash subtract = tsin_ledger_lot }
         change_variable = { name = tsin_firm_cash add = tsin_ledger_lot }
@@ -85,6 +89,10 @@ tsin_ledger_lend_effect = {
     }
 }
 tsin_ledger_repay_effect = {
+ if = { limit = { has_global_variable = tsin_contracts_enabled } tsin_contract_repay_facility_effect = yes }
+ else = { tsin_ledger_repay_effect_legacy = yes }
+}
+tsin_ledger_repay_effect_legacy = {
     set_variable = { name = tsin_tx value = tsin_ledger_repayment }
     change_variable = { name = tsin_firm_cash subtract = var:tsin_tx }
     change_variable = { name = tsin_bank_cash add = var:tsin_tx }
@@ -95,6 +103,7 @@ tsin_ledger_month_effect = {
     tsin_ledger_init_effect = yes
     tsin_bank_optional_month_effect = yes
     tsin_corporate_finance_month_effect = yes
+    if = { limit = { NOT = { has_variable = tsin_contract_managed } }
     set_variable = { name = tsin_interest_paid value = tsin_ledger_interest_payment }
     change_variable = { name = tsin_firm_cash subtract = var:tsin_interest_paid }
     change_variable = { name = tsin_bank_cash add = var:tsin_interest_paid }
@@ -105,6 +114,8 @@ tsin_ledger_month_effect = {
         set_variable = { name = tsin_arrears value = 0 }
         if = { limit = { var:tsin_bond_arrears = 0 } remove_variable = tsin_insurance_claimed }
     }
+    }
+    if = { limit = { var:tsin_arrears = 0 var:tsin_bond_arrears = 0 } remove_variable = tsin_insurance_claimed }
     if = { limit = { OR = { var:tsin_arrears >= 6 var:tsin_bond_arrears >= 6 } NOT = { has_variable = tsin_insurance_claimed } var:tsin_insurance > 0 }
         set_variable = { name = tsin_tx value = tsin_ledger_claim }
         change_variable = { name = tsin_insurance subtract = var:tsin_tx }

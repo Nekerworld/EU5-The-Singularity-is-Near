@@ -1,0 +1,5 @@
+﻿# Both generic hooks apply to military, diplomatic, civil-war and colonization annexation.
+on_annex = { on_actions = { tsin_finance_annex_prepare } }
+on_annexed = { on_actions = { tsin_finance_annex_finish } }
+tsin_finance_annex_prepare = { effect = { tsin_finance_annex_prepare_effect = yes } }
+tsin_finance_annex_finish = { effect = { tsin_finance_annex_finish_effect = yes } }

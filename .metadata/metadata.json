@@ -4,7 +4,7 @@
   "version": "0.7.0",
   "game_id": "eu5",
   "supported_game_version": "1.4.*",
-  "short_description": "Industrialization content for Age VII, with era VIII–XII scaffolds from World Wars to Space Settlement. Future-era technologies and events are not implemented.",
+  "short_description": "Age VII industrialization, shared finance and historical progression, partial Age VIII agriculture/naval/transport content, and Age IX–XII scaffolds. End date: 2337.",
   "tags": [
     "Gameplay",
     "Historical"
