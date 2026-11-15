@@ -1,0 +1,16 @@
+﻿tsin_survey_domestic = {
+ type = owncountry
+ show_message = no
+ ai_tick = never
+ automation_tick = never
+ price = price:tsin_survey_price
+ effect = { scope:actor = { tsin_survey_domestic_effect = yes } }
+}
+tsin_survey_world = {
+ type = owncountry
+ show_message = no
+ ai_tick = never
+ automation_tick = never
+ price = price:tsin_survey_price
+ effect = { scope:actor = { tsin_survey_world_effect = yes } }
+}

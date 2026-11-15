@@ -42,7 +42,7 @@ def validate_registry(data):
     for metric in metrics:
         if metric['unit'] not in UNITS or not SAFE_ID.fullmatch(metric['variable']):
             raise ValueError(f'{metric["id"]}: unsupported unit/variable')
-        if metric['frequency'] not in {'annual','quarterly','monthly','event'}:
+        if metric['frequency'] not in {'annual','quarterly','monthly','event','manual'}:
             raise ValueError(f'{metric["id"]}: unsupported update frequency')
         if not set(metric['tabs']) <= set(tabs):
             raise ValueError(f'{metric["id"]}: unknown tab')
@@ -136,6 +136,7 @@ def build(data):
         'QUARTERLY': ('Updated quarterly', '분기 갱신'),
         'MONTHLY': ('Updated monthly', '월간 갱신'),
         'EVENT': ('Updated by events', '이벤트 발생 시 갱신'),
+        'MANUAL': ('Updated by survey', '조사 버튼으로 갱신'),
         'DATE': ('Annual aggregate year', '연간 통계 기준 연도'),
         'NO_DATE': ('Not recorded yet', '아직 기록되지 않음'),
         'NO_CRISIS': ('No registered crisis or bill is active.', '등록된 위기나 심의 중인 법안이 없습니다.'),

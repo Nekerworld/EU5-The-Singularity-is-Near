@@ -1,0 +1,1 @@
+﻿tsin_survey_price = { gold = 0 }

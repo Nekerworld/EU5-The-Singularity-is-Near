@@ -994,6 +994,286 @@
         }
       ],
       "migration_effect": "tsin_dashboard_age7_migrate_effect"
+    },
+    {
+      "id": "manual_surveys",
+      "metrics": [
+        {
+          "id": "report_year",
+          "variable": "tsin_report_year",
+          "title": {
+            "korean": "조사 연도",
+            "english": "Survey year"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_month",
+          "variable": "tsin_report_month",
+          "title": {
+            "korean": "조사 월",
+            "english": "Survey month"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_population",
+          "variable": "tsin_report_population",
+          "title": {
+            "korean": "국내 조사 인구",
+            "english": "Surveyed population"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_locations",
+          "variable": "tsin_report_locations",
+          "title": {
+            "korean": "국내 조사 지점",
+            "english": "Surveyed locations"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_urban",
+          "variable": "tsin_report_urban",
+          "title": {
+            "korean": "국내 시가화 지점",
+            "english": "Surveyed urban locations"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_buildings",
+          "variable": "tsin_report_buildings",
+          "title": {
+            "korean": "국내 건물 레벨 합계",
+            "english": "Surveyed building levels"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_companies",
+          "variable": "tsin_report_companies",
+          "title": {
+            "korean": "국내 기업 수",
+            "english": "Surveyed firms"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_gdp",
+          "variable": "tsin_report_gdp",
+          "title": {
+            "korean": "국내 추정 GDP 원자료",
+            "english": "Reported estimated GDP"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_year",
+          "variable": "tsin_report_world_year",
+          "title": {
+            "korean": "세계 조사 연도",
+            "english": "World survey year"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_month",
+          "variable": "tsin_report_world_month",
+          "title": {
+            "korean": "세계 조사 월",
+            "english": "World survey month"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_countries",
+          "variable": "tsin_report_world_countries",
+          "title": {
+            "korean": "세계 조사 국가 수",
+            "english": "Countries surveyed"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_population",
+          "variable": "tsin_report_world_population",
+          "title": {
+            "korean": "세계 조사 인구",
+            "english": "Surveyed world population"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_companies",
+          "variable": "tsin_report_world_companies",
+          "title": {
+            "korean": "세계 기업 수 합계",
+            "english": "Surveyed world firms"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_known_gdp",
+          "variable": "tsin_report_world_known_gdp",
+          "title": {
+            "korean": "GDP 자료 보유국 수",
+            "english": "Countries with GDP data"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        },
+        {
+          "id": "report_world_gdp",
+          "variable": "tsin_report_world_gdp",
+          "title": {
+            "korean": "자료 보유국 추정 GDP 합계",
+            "english": "Available estimated GDP total"
+          },
+          "tabs": [
+            "overview"
+          ],
+          "unit": "compact",
+          "frequency": "manual",
+          "description": {
+            "korean": "조사 버튼을 누른 시점의 보고서입니다. GDP·기업 원자료는 기존 장부의 마지막 계산값이며 보고서 기준일과 다를 수 있습니다.",
+            "english": "Snapshot requested by the survey button. GDP and firm sources retain their existing ledger update dates."
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "id": "survey_domestic",
+          "tab": "overview",
+          "title": {
+            "korean": "국내 통계 조사",
+            "english": "Survey domestic statistics"
+          },
+          "generic_action": "tsin_survey_domestic"
+        },
+        {
+          "id": "survey_world",
+          "tab": "overview",
+          "title": {
+            "korean": "세계 통계 조사",
+            "english": "Survey world statistics"
+          },
+          "generic_action": "tsin_survey_world"
+        }
+      ]
     }
   ],
   "histories": [

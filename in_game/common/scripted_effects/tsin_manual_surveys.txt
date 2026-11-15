@@ -1,0 +1,49 @@
+﻿tsin_survey_domestic_effect = {
+ save_scope_as = tsin_survey_requestor
+ set_variable = { name = tsin_report_year value = current_year }
+ set_variable = { name = tsin_report_month value = current_month }
+ set_variable = { name = tsin_report_population value = { value = total_population multiply = 1000 } }
+ set_variable = { name = tsin_report_companies value = tsin_company_count }
+ remove_variable = tsin_report_gdp
+ if = { limit = { has_variable = tsin_gdp } set_variable = { name = tsin_report_gdp value = var:tsin_gdp } }
+ set_variable = { name = tsin_report_locations value = 0 }
+ set_variable = { name = tsin_report_urban value = 0 }
+ set_variable = { name = tsin_report_buildings value = 0 }
+ every_owned_location = {
+  save_temporary_scope_value_as = { name = tsin_survey_buildings value = total_building_levels }
+  scope:tsin_survey_requestor = {
+   change_variable = { name = tsin_report_locations add = 1 }
+   change_variable = { name = tsin_report_buildings add = scope:tsin_survey_buildings }
+  }
+  if = { limit = { NOT = { location_rank ?= location_rank:rural_settlement } }
+   scope:tsin_survey_requestor = { change_variable = { name = tsin_report_urban add = 1 } }
+  }
+ }
+}
+tsin_survey_world_effect = {
+ save_scope_as = tsin_survey_requestor
+ set_variable = { name = tsin_report_world_year value = current_year }
+ set_variable = { name = tsin_report_world_month value = current_month }
+ set_variable = { name = tsin_report_world_countries value = 0 }
+ set_variable = { name = tsin_report_world_population value = 0 }
+ set_variable = { name = tsin_report_world_companies value = 0 }
+ set_variable = { name = tsin_report_world_known_gdp value = 0 }
+ set_variable = { name = tsin_report_world_gdp value = 0 }
+ every_country = {
+  limit = { is_real_country = yes exists = capital }
+  save_temporary_scope_value_as = { name = tsin_survey_population value = { value = total_population multiply = 1000 } }
+  save_temporary_scope_value_as = { name = tsin_survey_companies value = tsin_company_count }
+  scope:tsin_survey_requestor = {
+   change_variable = { name = tsin_report_world_countries add = 1 }
+   change_variable = { name = tsin_report_world_population add = scope:tsin_survey_population }
+   change_variable = { name = tsin_report_world_companies add = scope:tsin_survey_companies }
+  }
+  if = { limit = { has_variable = tsin_gdp }
+   save_temporary_scope_value_as = { name = tsin_survey_gdp value = var:tsin_gdp }
+   scope:tsin_survey_requestor = {
+    change_variable = { name = tsin_report_world_known_gdp add = 1 }
+    change_variable = { name = tsin_report_world_gdp add = scope:tsin_survey_gdp }
+   }
+  }
+ }
+}

@@ -1,0 +1,5 @@
+﻿l_korean:
+ tsin_survey_domestic: "국내 통계 조사"
+ tsin_survey_domestic_desc: "지금 한 번 집계하여 TSIN 국가 통계의 보고서를 갱신합니다. 이후 자동 재계산하지 않습니다."
+ tsin_survey_world: "세계 통계 조사"
+ tsin_survey_world_desc: "지금 한 번 집계하여 TSIN 국가 통계의 보고서를 갱신합니다. 이후 자동 재계산하지 않습니다."

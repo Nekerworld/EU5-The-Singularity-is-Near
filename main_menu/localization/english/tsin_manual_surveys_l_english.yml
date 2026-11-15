@@ -1,0 +1,5 @@
+﻿l_english:
+ tsin_survey_domestic: "Survey domestic statistics"
+ tsin_survey_domestic_desc: "Request one snapshot in TSIN national statistics. No automatic recalculation follows."
+ tsin_survey_world: "Survey world statistics"
+ tsin_survey_world_desc: "Request one snapshot in TSIN national statistics. No automatic recalculation follows."

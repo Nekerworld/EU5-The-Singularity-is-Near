@@ -344,6 +344,152 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_stock_farm_mac
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_stock_farm_machinery').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_QUARTERLY" }
 }
+type tsin_ui_card_report_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_month = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_MONTH"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_MONTH" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_month').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_month').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_month').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_population = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_POPULATION"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_POPULATION" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_report_population')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_locations = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_LOCATIONS"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_LOCATIONS" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_locations').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_locations').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_locations').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_urban = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_URBAN"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_URBAN" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_urban').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_urban').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_urban').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_buildings = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_BUILDINGS"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_BUILDINGS" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_buildings').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_buildings').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_buildings').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_companies = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_COMPANIES"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_COMPANIES" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_companies').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_companies').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_companies').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_gdp = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_GDP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_GDP" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_report_gdp')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_world_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_month = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_MONTH"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_MONTH" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_month').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_month').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_world_month').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_countries = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_COUNTRIES"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_COUNTRIES" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_countries').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_countries').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_world_countries').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_population = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_POPULATION"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_POPULATION" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_report_world_population')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_companies = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_COMPANIES"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_COMPANIES" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_companies').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_companies').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_world_companies').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_known_gdp = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_KNOWN_GDP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_KNOWN_GDP" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_known_gdp').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_report_world_known_gdp').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_report_world_known_gdp').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_report_world_gdp = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_REPORT_WORLD_GDP"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_REPORT_WORLD_GDP" }
+text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_report_world_gdp')]" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }
