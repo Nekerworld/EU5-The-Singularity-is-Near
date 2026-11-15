@@ -30,15 +30,15 @@ class StockMarketUITests(unittest.TestCase):
     def test_economy_body_preserved_and_balance_returns(self):
         source=pdx.read_text(pdx.game_root()/ECONOMY)
         patched=patch_economy(source)
-        inserted=f'\n\t\ttsin_stock_panel = {{ visible = "[{STOCK}]" }}\n'
+        inserted=f'\n\t\ttsin_finance_tabs = {{ visible = "[{STOCK}]" }}\n\t\ttsin_stock_panel = {{ visible = "[{STOCK}]" }}\n'
         restored=patched.replace(inserted,'').replace(f'\t\t\tvisible = "[Not({STOCK})]"\n','')
         self.assertEqual(restored,source)
         tabs=patch_tabs(source)
         self.assertIn("subtab = balance",tabs)
-        self.assertIn("subtab = tsin_stocks",tabs)
-        self.assertIn("GetScriptedGui('tsin_stock_ui_seed').Execute",tabs)
+        self.assertIn("TSIN_FINANCE_TAB",tabs)
+        self.assertIn("subtab = tsin_finance_overview",tabs)
         self.assertIn(f"[And(IsLateralViewOpened('economy'), Not({STOCK}))]",tabs)
-        for action in ["OpenLateralView('credit')","OpenLateralView('trade_policies')","subtab = markets","subtab = trades"]:
+        for action in ["OpenLateralViewWithParams('credit', 'subtab = tsin_finance_overview')","OpenLateralView('trade_policies')","subtab = markets","subtab = trades"]:
             self.assertIn(action,tabs)
 
     def test_guards_reject_changed_layout_and_duplicate_patch(self):
@@ -69,10 +69,10 @@ class StockMarketUITests(unittest.TestCase):
         source=pdx.workshop_root()/'3812518640'
         if not (source/GLORP_TABS).exists():self.skipTest('Glorp not installed')
         files=compat_files(source)
-        self.assertEqual(set(files),{ECONOMY,GLORP_TABS})
+        self.assertEqual(set(files),{ECONOMY,GLORP_TABS,"in_game/gui/credit.gui"})
         self.assertIn('tsin_stock_panel = {',files[ECONOMY])
         self.assertIn('using = economy_main_tabs',files[ECONOMY])
-        self.assertIn("subtab = tsin_stocks",files[GLORP_TABS])
+        self.assertIn("subtab = tsin_finance_overview",files[GLORP_TABS])
         self.assertIn("subtab = balance",files[GLORP_TABS])
 
 

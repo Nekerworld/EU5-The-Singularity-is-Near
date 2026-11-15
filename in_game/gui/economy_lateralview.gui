@@ -172,20 +172,18 @@ template economy_main_tabs {
 
 	button_main_tab_alt = {
 		using = layoutpolicy_expanding
-		tooltipwidget = {
-			using = SubTabCreditTooltip
-		}
+		tooltip = "TSIN_FINANCE_HELP"
 		widget = {
-			visible = "[Not(IsLateralViewOpened('credit'))]"
+			visible = "[Not(Or(IsLateralViewOpened('credit'), And(IsLateralViewOpened('economy'), LateralView.Vars.HasValue('subtab', 'tsin_stocks'))))]"
 			size = { 100% 100% }
 			name = "tab_credit"
 		}
-		down = "[IsLateralViewOpened('credit')]"
+		down = "[Or(IsLateralViewOpened('credit'), And(IsLateralViewOpened('economy'), LateralView.Vars.HasValue('subtab', 'tsin_stocks')))]"
 		datacontext = "[GetAutomatedSystemItem('credit')]"
 		using = automated_tab
 
-		blockoverride "on_action_left" { on_action = "[OpenLateralView('credit')]" }
-		blockoverride "text" { text = "lateralview_credit_entry_name" }
+		blockoverride "on_action_left" { on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_finance_overview')]" }
+		blockoverride "text" { text = "TSIN_FINANCE_TAB" }
 	}
 
 	button_main_tab_alt = {
@@ -245,18 +243,6 @@ template economy_main_tabs {
 			on_action = "[OpenLateralViewWithParams('trade', 'subtab = trades')]"
 		}
 	}
-
-    # TSIN stock entry belongs to the shared economy tab strip.
-    button_main_tab_alt = {
-        using = layoutpolicy_expanding
-        down = "[And(IsLateralViewOpened('economy'), LateralView.Vars.HasValue('subtab', 'tsin_stocks'))]"
-        blockoverride "tab_text" { text = "TSIN_STOCK_TAB" }
-        action_tooltip = {
-            title = "TSIN_STOCK_TAB"
-            on_action = "[GetScriptedGui('tsin_stock_ui_seed').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-            on_action = "[OpenLateralViewWithParams('economy', 'subtab = tsin_stocks')]"
-        }
-    }
 }
 
 template EstateIncomeBreakdownTooltip {
@@ -427,6 +413,7 @@ lateralview = {
 			}
 		}
 
+		tsin_finance_tabs = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_stocks')]" }
 		tsin_stock_panel = { visible = "[LateralView.Vars.HasValue('subtab', 'tsin_stocks')]" }
 
 		vbox = {
