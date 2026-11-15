@@ -1,0 +1,13 @@
+﻿tsin_history_review_decision = {
+    decision_category = other_decisions
+    potential = { is_ai = no }
+    allow = { NOT = { has_variable = tsin_history_review_cooldown } }
+    ai_will_do = { value = 0 }
+    option = {
+        name = tsin_history_review_decision.a
+        effect = {
+            tsin_history_review_effect = yes
+            trigger_event_non_silently = tsin_history_review.1
+        }
+    }
+}

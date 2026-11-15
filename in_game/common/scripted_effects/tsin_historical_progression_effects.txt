@@ -1,0 +1,32 @@
+﻿# GENERATED. Manual diagnostics, at most once per reviewer per game year.
+tsin_history_review_effect = {
+    save_scope_as = tsin_history_reviewer
+    set_variable = { name = tsin_history_review_countries value = 0 }
+    set_variable = { name = tsin_history_review_hex value = 0 }
+    set_variable = { name = tsin_history_review_border value = 0 }
+    set_variable = { name = tsin_history_review_russia_blocked value = 0 }
+    if = {
+        limit = { tsin_history_russia_player_blocked = yes }
+        set_variable = { name = tsin_history_review_russia_blocked value = 1 }
+    }
+    every_country = {
+        limit = { tsin_history_ai_realm = yes }
+        scope:tsin_history_reviewer = { change_variable = { name = tsin_history_review_countries add = 1 } }
+        if = {
+            limit = { has_variable = hex_key }
+            scope:tsin_history_reviewer = { change_variable = { name = tsin_history_review_hex add = 1 } }
+        }
+        if = { limit = { has_variable = tsin_history_border_sample } remove_variable = tsin_history_border_sample }
+        if = {
+            limit = { any_owned_location = { tsin_history_border_shortlist = yes } }
+            save_scope_as = tsin_history_review_owner
+            random_owned_location = {
+                limit = { tsin_history_border_shortlist = yes }
+                scope:tsin_history_review_owner = { set_variable = { name = tsin_history_border_sample value = prev years = 1 } }
+            }
+            scope:tsin_history_reviewer = { change_variable = { name = tsin_history_review_border add = 1 } }
+        }
+    }
+    set_variable = { name = tsin_history_review_cooldown years = 1 }
+    debug_log = tsin_history_review_log
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "russia": {
+    "role": "russia",
+    "preferred_tag": "MOS",
+    "formed_tag": "RUS",
+    "formable": "RUS_f",
+    "protected_locations": ["moscow", "novgorod", "tver", "vladimir"],
+    "support_start": 1547,
+    "fallback_start": 1700,
+    "support_end": 1837
+  }
+}

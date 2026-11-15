@@ -1,0 +1,9 @@
+﻿namespace = tsin_history_review
+tsin_history_review.1 = {
+    type = country_event
+    title = tsin_history_review.1.title
+    desc = tsin_history_review.1.desc
+    outcome = neutral
+    illustration_tags = { 10 = interior 10 = regular }
+    option = { name = tsin_history_review.1.a }
+}
