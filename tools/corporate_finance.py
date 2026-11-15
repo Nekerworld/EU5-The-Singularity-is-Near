@@ -91,7 +91,7 @@ remove_variable = tsin_tx
 }
 if = { limit = { var:tsin_bond_principal <= 0 } set_variable = { name = tsin_bond_arrears value = 0 } set_variable = { name = tsin_bond_interest_paid value = 0 } }
 if = { limit = { has_policy = policy:tsin_laissez_faire_policy tsin_company_count > 0 }
-if = { limit = { var:tsin_firm_cash < tsin_ledger_lot NOT = { has_variable = tsin_equity_cooldown } } tsin_private_equity_effect = yes }
+if = { limit = { tsin_can_use_banking = yes var:tsin_firm_cash < tsin_ledger_lot NOT = { has_variable = tsin_equity_cooldown } } tsin_private_equity_effect = yes }
 if = { limit = { var:tsin_firm_cash >= { value = tsin_ledger_lot multiply = 2 } country_has_estate = estate_type:burghers_estate }
 tsin_corporate_dividend_effect = yes
 }

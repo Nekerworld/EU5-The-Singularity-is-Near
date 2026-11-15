@@ -2,6 +2,7 @@
  TSIN_LEDGER_MONEY: "Currency"
  TSIN_LEDGER_BANK: "Capitalize bank"
  TSIN_LEDGER_FUNDS: "Insurance · pensions"
+ TSIN_LEDGER_TECH_HELP: "New banking requires Banking; securities require Stock Exchange; monetary policy requires Central Bank; insurance and pensions require their respective technologies. Existing account records, repayments and wind-down remain available."
  TSIN_LEDGER_NOTE: "All accounts settle in reference ducats. Currency conversion is a display overlay; native trade and loans retain their original units. These are funded aggregate accounts, not population bank accounts. Reserve cash is escrow, not newly mined bullion. Firm income below is paid contracts, not estimated GDP or stock valuations."
  TSIN_LEDGER_FX: "Local units / reference ducat"
  TSIN_LEDGER_LOCAL: "Treasury in local units"

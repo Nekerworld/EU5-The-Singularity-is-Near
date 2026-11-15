@@ -1,0 +1,8 @@
+﻿tsin_can_use_banking = { OR = { has_advance = banking_advance has_advance = tsin_stock_exchange_advance } }
+tsin_can_use_capital_markets = { OR = { has_advance = stock_exchange_advance has_advance = tsin_stock_exchange_advance } }
+tsin_can_use_monetary_policy = { OR = { has_advance = central_bank_advance has_advance = tsin_central_banking } }
+tsin_can_use_insurance = { OR = { has_advance = insurance_companies has_advance = tsin_social_insurance_advance } }
+tsin_can_use_pensions = { has_advance = tsin_social_insurance_advance }
+tsin_can_fund_bank = { OR = { tsin_can_use_banking = yes has_variable = tsin_bank_open has_variable = tsin_bank_winding_down } }
+tsin_can_fund_insurance = { OR = { tsin_can_use_insurance = yes var:tsin_insurance > 0 } }
+tsin_can_fund_pension = { OR = { tsin_can_use_pensions = yes has_variable = tsin_pension_active var:tsin_pension > 0 } }

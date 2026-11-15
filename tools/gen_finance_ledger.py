@@ -8,6 +8,7 @@ import json
 import pdx
 import finance_extended as extended
 import corporate_finance as corporate
+import finance_capabilities as capabilities
 
 EXTRA_TABS = [('MONEY', 'tsin_money'), ('BANK', 'tsin_bank'), ('FUNDS', 'tsin_funds')]
 
@@ -22,6 +23,7 @@ def build():
     loc('MONEY', 'Currency', '통화정책')
     loc('BANK', 'Banks · firms', '은행·기업금융')
     loc('FUNDS', 'Insurance · pensions', '보험·연금')
+    loc('TECH_HELP', 'New banking requires Banking; securities require Stock Exchange; monetary policy requires Central Bank; insurance and pensions require their respective technologies. Existing account records, repayments and wind-down remain available.', '신규 은행업은 은행업, 증권 발행은 증권거래소, 통화정책은 중앙은행, 보험·연금은 해당 기술을 요구합니다. 기존 장부 조회·상환·영업 정리는 계속 가능합니다.')
     loc('NOTE', 'All accounts settle in reference ducats. Currency conversion is a display overlay; native trade and loans retain their original units. These are funded aggregate accounts, not population bank accounts. Reserve cash is escrow, not newly mined bullion. Firm income below is paid contracts, not estimated GDP or stock valuations.', '모든 장부는 기준 두캇으로 결제됩니다. 통화 환산은 표시 체계이며 기존 교역·대출의 단위는 유지됩니다. 기금은 실제 자금을 출연한 통합 장부입니다. 준비금은 별도 보관한 현금이며 광물 금 생산량이 아닙니다. 기업 수입은 실제 지급된 계약금으로 GDP·주가 추정치에서 현금을 생성하지 않습니다.')
     fields = [
         ('FX', 'Local units / reference ducat', '기준 두캇당 자국 화폐 단위', 'tsin_fx'),
@@ -41,7 +43,7 @@ def build():
     actions = []
     def action(id, en, ko, valid, effect, tab):
         label = loc(id.upper(), en, ko)
-        actions.append((id, label, valid, effect, tab))
+        actions.append((id, label, capabilities.guard(id, valid), effect, tab))
     extended.register(fields, action, loc)
     corporate.register(fields, action, loc)
     init = 'tsin_ledger_init_effect = yes\n'
@@ -153,9 +155,9 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
     values += extended.VALUES + corporate.VALUES
     guis = []
     ui = ['types TSINLedger {']
-    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
+    field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
     for name, subtab in EXTRA_TABS:
-        ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}']
+        ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }']
         for key, _, _, var in fields:
             if key not in field_tabs[name]: continue
             # Script values initialize only on monthly tick or explicit action, never on render.
@@ -206,7 +208,7 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
         labels[lang]['STATIC_MODIFIER_DESC_tsin_bank_credit_contraction'] = labels[lang].pop('TSIN_LEDGER_CONTRACTION_DESC')
     for lang, entries in labels.items():
         result[f'main_menu/localization/{lang}/tsin_finance_ledger_l_{lang}.yml'] = 'l_'+lang+':\n'+'\n'.join(' '+k+': '+json.dumps(v,ensure_ascii=False) for k,v in entries.items())+'\n'
-    return {k: '\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()}
+    return capabilities.add_outputs({k: '\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()})
 
 
 def main():

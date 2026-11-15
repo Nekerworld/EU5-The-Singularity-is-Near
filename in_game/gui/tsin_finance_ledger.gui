@@ -2,6 +2,7 @@
 type tsin_money_panel = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
 text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }
 text_single = { text = "TSIN_LEDGER_UNIT" }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FX" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_fx').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LOCAL" } text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_local_treasury')|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_RATE" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_rate').GetValue|2L]" } }
@@ -38,6 +39,7 @@ text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_REF
 } } }
 type tsin_bank_panel = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
 text_single = { fontsize = 22 text = "TSIN_LEDGER_BANK" }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LIQUID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bank_cash').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LOANS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_firm_debt').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FIRM" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_firm_cash').GetValue|2L]" } }
@@ -50,6 +52,8 @@ hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LIQUI
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FOREIGN" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_foreign_principal').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FOREIGN_LOCAL" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_foreign_contract_count').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_LOSSES" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bank_losses').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_UNKNOWN_MATURITY" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_unknown_legacy_maturities').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_UNKNOWN_ID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_unknown_maturity_contract_id').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_SHARES" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_issued_shares').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_PUBLIC_SHARES" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_public_shares').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BOND_LOSSES" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bond_losses').GetValue|2L]" } }
@@ -123,6 +127,7 @@ text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_BAN
 } } }
 type tsin_funds_panel = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8
 text_single = { fontsize = 22 text = "TSIN_LEDGER_FUNDS" }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_INSURANCE" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_insurance').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_PENSION" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_pension').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BENEFITS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_pension_paid').GetValue|2L]" } }

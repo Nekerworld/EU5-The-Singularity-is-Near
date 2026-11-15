@@ -173,11 +173,11 @@ if = { limit = { var:tsin_deposits <= 0 } remove_variable = tsin_bank_winding_do
 }
 tsin_ai_finance_year_effect = {
 tsin_ledger_init_effect = yes
-if = { limit = { OR = { NOT = { has_variable = tsin_bank_open } tsin_bank_net_worth < 0 } NOT = { has_variable = tsin_bank_winding_down } gold >= { value = tsin_ledger_lot multiply = 5 } }
+if = { limit = { tsin_can_fund_bank = yes OR = { NOT = { has_variable = tsin_bank_open } tsin_bank_net_worth < 0 } NOT = { has_variable = tsin_bank_winding_down } gold >= { value = tsin_ledger_lot multiply = 5 } }
 add_gold = { value = tsin_ledger_lot multiply = -1 }
 change_variable = { name = tsin_bank_cash add = tsin_ledger_lot } set_variable = tsin_bank_open
 }
-if = { limit = { var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_company_count > 0 var:tsin_arrears = 0 var:tsin_firm_cash < tsin_ledger_lot } tsin_ledger_lend_effect = yes }
+if = { limit = { tsin_can_use_banking = yes var:tsin_bank_cash >= tsin_bank_lending_cash_required tsin_company_count > 0 var:tsin_arrears = 0 var:tsin_firm_cash < tsin_ledger_lot } tsin_ledger_lend_effect = yes }
 }
 tsin_bank_optional_month_effect = {
 if = { limit = { OR = { has_variable = tsin_bank_open has_variable = tsin_bank_winding_down has_variable = tsin_foreign_partner } NOT = { has_variable = tsin_bank_quarter_timer } }
