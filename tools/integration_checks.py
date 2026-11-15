@@ -199,7 +199,7 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
 
     # New history modules must be checked by the standard validator and release gate too.
     from importlib import import_module
-    for generator in ['gen_historical_progression', 'gen_lucky_nations', 'gen_historical_events_wave1', 'gen_finance_ledger', 'gen_historical_nations', 'gen_border_trade', 'gen_ai_direction', 'gen_historical_restorations', 'gen_historical_events_wave2', 'gen_age8_transport_military']:
+    for generator in ['gen_historical_progression', 'gen_lucky_nations', 'gen_historical_events_wave1', 'gen_finance_ledger', 'gen_historical_nations', 'gen_border_trade', 'gen_ai_direction', 'gen_historical_restorations', 'gen_historical_events_wave2', 'gen_age8_transport_military', 'gen_native_credit_profile']:
         if (root / ('tools/' + generator + '.py')).exists():
             try:
                 module = import_module(generator)

@@ -92,6 +92,12 @@ def build(game=None):
     loc('ENTRY', 'Excess-entry streak · quarters / 3', '과잉 진입 연속 분기 / 3')
     loc('SUPPLY', 'Severe oversupply streak · quarters / 4', '심각한 과잉공급 연속 분기 / 4')
     loc('MISSING', 'No sample recorded', '미관측')
+    loc('BOND_PRINCIPAL', 'Bonds · outstanding principal', '국채 · 잔여 원금')
+    loc('DUE_12', 'Loans due in 1–12 months', '향후 1~12개월 만기 대출')
+    loc('DUE_NOW', 'Loans at/past maturity', '만기 도래·경과 대출')
+    loc('TAX_TRADE_ANNUAL', 'Tax and trade income · annualized', '조세·교역 수입 · 연율 환산')
+    loc('DEBT_INCOME_RATIO', 'Debt / annualized tax and trade income · %', '부채 / 연율 조세·교역 수입 · %')
+    loc('PROFILE_NOTE', 'Debt profile: monthly snapshot in reference ducats, excluding TSIN company loans. Bonds are separated from dated loans. At/past maturity does not itself mean default: native renewal and settlement still apply. Annualized income is current monthly tax and trade income × 12, not recorded annual revenue. A missing ratio means no positive income sample.', '부채 요약은 매월 관측한 기준 두캇 값이며 TSIN 기업 대출은 제외합니다. 국채는 만기 대출과 구분합니다. 만기 경과가 곧 채무불이행을 뜻하지 않으며 기본 차환·결제 규칙을 따릅니다. 연율 수입은 현재 월 조세·교역 수입×12로 실제 연간 결산이 아닙니다. 양수 수입 표본이 없으면 비율은 미관측으로 표시합니다.')
     loc('NOTE', 'Treasury and debt are native accounts; the stock panel uses valuation indices. Streaks are stored quarterly observations, not a complete bank solvency or liquidity model. Use Credit for existing loans, bonds, repayments and bankruptcy.', '국고와 부채는 게임의 실제 장부이며 증시는 평가 지수입니다. 위험 지속치는 저장된 분기 관측값으로 은행의 지급 능력·유동성 전체를 나타내지 않습니다. 대출·채권·상환·파산은 신용에서 조작합니다.')
     for name, _ in EXTRA_TABS:
         for lang in labels:
@@ -117,6 +123,12 @@ def build(game=None):
         ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }}',
                f'text_single = {{ visible = "[{var}.IsSet]" text = "[{var}.GetValue|0]" }}',
                f'text_single = {{ visible = "[Not({var}.IsSet)]" text = "TSIN_FINANCE_MISSING" }}', '}']
+    for name, variable in [('BOND_PRINCIPAL', 'tsin_native_bond_principal'), ('DUE_12', 'tsin_native_due_12'), ('DUE_NOW', 'tsin_native_due_now'), ('TAX_TRADE_ANNUAL', 'tsin_native_tax_trade_annual'), ('DEBT_INCOME_RATIO', 'tsin_native_debt_income_ratio')]:
+        var = f"GetPlayer.MakeScope.GetVariable('{variable}')"
+        ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }}',
+               f'text_single = {{ visible = "[{var}.IsSet]" text = "[{var}.GetValue|1]" }}',
+               f'text_single = {{ visible = "[Not({var}.IsSet)]" text = "TSIN_FINANCE_MISSING" }}', '}']
+    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_PROFILE_NOTE" }']
     ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_NOTE" }', '}', '}']
     result = {CREDIT: '# GENERATED finance host; native credit content and controller retained.\n' + patch_credit(pdx.read_text(game / CREDIT)),
               'in_game/gui/tsin_finance.gui': '\n'.join(ui) + '\n',

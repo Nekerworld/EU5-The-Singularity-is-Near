@@ -65,6 +65,27 @@ hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_SUP
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_stress_quarters').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_stress_quarters').GetValue|0]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_stress_quarters').IsSet)]" text = "TSIN_FINANCE_MISSING" }
 }
+hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_BOND_PRINCIPAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_native_bond_principal').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_native_bond_principal').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_native_bond_principal').IsSet)]" text = "TSIN_FINANCE_MISSING" }
+}
+hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_DUE_12" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_native_due_12').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_native_due_12').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_native_due_12').IsSet)]" text = "TSIN_FINANCE_MISSING" }
+}
+hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_DUE_NOW" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_native_due_now').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_native_due_now').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_native_due_now').IsSet)]" text = "TSIN_FINANCE_MISSING" }
+}
+hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_TAX_TRADE_ANNUAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_native_tax_trade_annual').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_native_tax_trade_annual').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_native_tax_trade_annual').IsSet)]" text = "TSIN_FINANCE_MISSING" }
+}
+hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_DEBT_INCOME_RATIO" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_native_debt_income_ratio').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_native_debt_income_ratio').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_native_debt_income_ratio').IsSet)]" text = "TSIN_FINANCE_MISSING" }
+}
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_PROFILE_NOTE" }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_NOTE" }
 }
 }
