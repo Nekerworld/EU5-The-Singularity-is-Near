@@ -1,0 +1,7 @@
+﻿l_english:
+ tsin_industrial_safety.1.title: "Chemical spill in [tsin_spill_site.GetName]"
+ tsin_industrial_safety.1.desc: "An operating chemical works in a long-neglected industrial district has reported a spill. Such incidents are rare and require old facilities, wear of at least 90 and high water pollution. The affected location receives -10% mill/factory construction efficiency for six months and -5% local food production for ten years. No additional deaths, POP deletion or disease damage are simulated. Emergency work costs 200 ducats × max(district industry scale/25, 1), repairs industrial wear and reduces the restrictions to three months and soil effects to three years. It does not modernize technology or reset facility age."
+ tsin_industrial_safety.1.a: "Fund emergency repair and soil remediation"
+ tsin_industrial_safety.1.b: "Allow gradual recovery without additional support"
+ AUTO_MODIFIER_NAME_tsin_chemical_spill_shutdown: "Chemical-incident safety work"
+ AUTO_MODIFIER_NAME_tsin_chemical_spill_soil: "Soil effects of a chemical spill"

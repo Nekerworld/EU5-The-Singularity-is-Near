@@ -1695,20 +1695,6 @@
       ]
     },
     {
-      "id": "newspapers",
-      "shortcuts": [
-        {
-          "id": "read_newspaper",
-          "tab": "society",
-          "title": {
-            "korean": "신문·최근 기사 열람",
-            "english": "Read newspaper archive"
-          },
-          "generic_action": "tsin_read_newspaper"
-        }
-      ]
-    },
-    {
       "id": "environment",
       "shortcuts": [
         {
@@ -1890,6 +1876,48 @@
             "english": "World company statistics"
           },
           "open_variable": "tsin_ui_world_companies_open"
+        }
+      ]
+    },
+    {
+      "id": "communications",
+      "annual_effect": "tsin_communications_finish_country_effect",
+      "metrics": [
+        {
+          "id": "communications_telegraph",
+          "variable": "tsin_telegraph_coverage",
+          "title": {
+            "korean": "전신 설비 노출",
+            "english": "Telegraph equipment exposure"
+          },
+          "tabs": [
+            "research",
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
+            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
+          }
+        },
+        {
+          "id": "communications_telephone",
+          "variable": "tsin_telephone_coverage",
+          "title": {
+            "korean": "전화 설비 노출",
+            "english": "Telephone equipment exposure"
+          },
+          "tabs": [
+            "research",
+            "society"
+          ],
+          "unit": "percent_points",
+          "frequency": "annual",
+          "description": {
+            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
+            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
+          }
         }
       ]
     },
@@ -2288,44 +2316,16 @@
       ]
     },
     {
-      "id": "communications",
-      "annual_effect": "tsin_communications_finish_country_effect",
-      "metrics": [
+      "id": "newspapers",
+      "shortcuts": [
         {
-          "id": "communications_telegraph",
-          "variable": "tsin_telegraph_coverage",
+          "id": "read_newspaper",
+          "tab": "society",
           "title": {
-            "korean": "전신 설비 노출",
-            "english": "Telegraph equipment exposure"
+            "korean": "신문·최근 기사 열람",
+            "english": "Read newspaper archive"
           },
-          "tabs": [
-            "research",
-            "society"
-          ],
-          "unit": "percent_points",
-          "frequency": "annual",
-          "description": {
-            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
-            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
-          }
-        },
-        {
-          "id": "communications_telephone",
-          "variable": "tsin_telephone_coverage",
-          "title": {
-            "korean": "전화 설비 노출",
-            "english": "Telephone equipment exposure"
-          },
-          "tabs": [
-            "research",
-            "society"
-          ],
-          "unit": "percent_points",
-          "frequency": "annual",
-          "description": {
-            "korean": "연간 도시 조사에서 정상 가동·실제 고용 비율로 가중한 지점 인구 / 국가 전체 인구입니다. 가입자 수나 모든 농촌·전국 배선 연결률이 아닙니다. 점령·휴업·투입 부족은 제외하며 원격 POP을 이동시키지 않습니다.",
-            "english": "Population in annually surveyed urban locations weighted by operating, staffed equipment / total national population. Not subscribers, rural coverage or wired connectivity. Occupied, closed or input-starved sites do not count; no POP relocation."
-          }
+          "generic_action": "tsin_read_newspaper"
         }
       ]
     }

@@ -1,0 +1,30 @@
+﻿# Province scope, only after the existing 5–7-year facility inspection.
+tsin_industrial_safety_review_effect = {
+ owner ?= { save_scope_as = tsin_safety_owner }
+ if = { limit = {
+  var:tsin_facility_industry_size > 0 var:tsin_facility_industry_wear >= 90 var:tsin_facility_industry_age >= 20
+  NOT = { has_variable = tsin_spill_district_cooldown }
+  owner ?= { NOT = { has_variable = tsin_spill_country_cooldown } }
+  NOT = { any_location_in_province = { OR = { NOT = { owner ?= scope:tsin_safety_owner } NOT = { controller ?= scope:tsin_safety_owner } } } }
+  any_location_in_province = { owner ?= scope:tsin_safety_owner controller ?= owner var:tsin_pollution_water >= 60
+   any_buildings_in_location = { OR = { building_type = building_type:dyes_mill building_type = building_type:tannery_mill building_type = building_type:putrefaction_mill building_type = building_type:tsin_fertilizer_plant building_type = building_type:tsin_explosives_plant building_type = building_type:tsin_nitrogen_fixation_plant } is_opened = yes building_employed_amount > 0 }
+  }
+ }
+ random = { chance = 10
+  random_location_in_province = { limit = { owner ?= scope:tsin_safety_owner controller ?= owner var:tsin_pollution_water >= 60
+   any_buildings_in_location = { OR = { building_type = building_type:dyes_mill building_type = building_type:tannery_mill building_type = building_type:putrefaction_mill building_type = building_type:tsin_fertilizer_plant building_type = building_type:tsin_explosives_plant building_type = building_type:tsin_nitrogen_fixation_plant } is_opened = yes building_employed_amount > 0 }
+  }
+   save_scope_as = tsin_spill_site
+   remove_variable = tsin_spill_remediation_paid
+   set_variable = { name = tsin_spill_shutdown months = 6 }
+   set_variable = { name = tsin_spill_soil years = 10 }
+   province = { save_scope_as = tsin_spill_district set_variable = { name = tsin_spill_district_cooldown years = 20 } }
+   owner = {
+    set_variable = { name = tsin_spill_country_cooldown years = 10 }
+    tsin_news_record_effect = { TYPE = 31 PRIORITY = 1 }
+    trigger_event_non_silently = tsin_industrial_safety.1
+   }
+  }
+ }
+ }
+}

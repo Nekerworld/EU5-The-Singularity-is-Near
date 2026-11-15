@@ -124,7 +124,7 @@ tsin_facility_measure_effect = {
    set_variable = {{ name = tsin_facility_{group}_size value = var:tsin_facility_{group}_measured }}
    set_variable = {{ name = tsin_facility_{group}_year value = current_year }}
 ''')
- fx.append('   tsin_facility_schedule_review_effect = yes\n  }\n }\n}\n')
+ fx.append('   tsin_industrial_safety_review_effect = yes\n   tsin_facility_schedule_review_effect = yes\n  }\n }\n}\n')
  for state,ko,en,body in [('on','켜기','Enable','set_variable = { name = tsin_facility_support_budget value = 1 }'),('off','끄기','Disable','remove_variable = tsin_facility_support_budget')]:
   key='tsin_facility_budget_'+state
   actions.append(f'{key} = {{ type = owncountry price = price:tsin_facility_control_price show_message = no ai_tick = never automation_tick = never effect = {{ scope:actor = {{ {body} }} }} }}\n')

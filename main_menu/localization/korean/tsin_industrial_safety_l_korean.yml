@@ -1,0 +1,7 @@
+﻿l_korean:
+ tsin_industrial_safety.1.title: "[tsin_spill_site.GetName]의 화학 설비 유출 사고"
+ tsin_industrial_safety.1.desc: "장기간 정비되지 않은 산업 지방의 가동 화학 설비에서 유출 사고가 보고되었습니다. 고령·마모90 이상·높은 수질 오염이 겹쳤을 때만 드물게 발생합니다. 사고 지점에는 6개월 제분소·공장 건설 효율 -10%, 10년 지역 식량 생산 -5%가 적용됩니다. 사망자·POP 삭제·추가 질병 피해는 별도로 계산하지 않습니다. 긴급 복구비는 200두캇 × max(지방 산업 규모/25, 1)이며, 지급하면 산업 마모를 보수하고 사고 제한을 3개월·토양 후유증을 3년으로 단축합니다. 기술·시설 연령은 현대화하지 않습니다."
+ tsin_industrial_safety.1.a: "긴급 보수·토양 정화에 국고를 투입한다"
+ tsin_industrial_safety.1.b: "추가 지원 없이 점진적 회복을 기다린다"
+ AUTO_MODIFIER_NAME_tsin_chemical_spill_shutdown: "화학 사고 현장 안전 작업"
+ AUTO_MODIFIER_NAME_tsin_chemical_spill_soil: "화학 유출의 토양 후유증"

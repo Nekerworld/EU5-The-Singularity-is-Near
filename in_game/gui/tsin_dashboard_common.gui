@@ -658,6 +658,26 @@ text_single = { fontsize = 13 text = "TSIN_UI_METRIC_WORLD_COMPANY_CASH" }
 text_single = { fontsize = 22 text = "[Player.Custom('tsin_ui_format_world_company_cash')]" }
 text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
 }
+type tsin_ui_card_communications_telegraph = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_COMMUNICATIONS_TELEGRAPH"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMMUNICATIONS_TELEGRAPH" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').GetValue|1]%" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
+type tsin_ui_card_communications_telephone = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_COMMUNICATIONS_TELEPHONE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMMUNICATIONS_TELEPHONE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').GetValue|1]%" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
+}
 type tsin_ui_card_facility_report_industry_age = vbox {
 size = { 258 75 }
 spacing = 3
@@ -837,26 +857,6 @@ text_single = { fontsize = 13 text = "TSIN_UI_METRIC_FACILITY_PAID_YEAR" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').GetValue|1]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
-}
-type tsin_ui_card_communications_telegraph = vbox {
-size = { 258 75 }
-spacing = 3
-datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_COMMUNICATIONS_TELEGRAPH"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMMUNICATIONS_TELEGRAPH" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').GetValue|1]%" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_telegraph_coverage').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
-}
-type tsin_ui_card_communications_telephone = vbox {
-size = { 258 75 }
-spacing = 3
-datacontext = "[Player]"
-tooltip = "TSIN_UI_HELP_COMMUNICATIONS_TELEPHONE"
-text_single = { fontsize = 13 text = "TSIN_UI_METRIC_COMMUNICATIONS_TELEPHONE" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').GetValue|1]%" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_telephone_coverage').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
-text_single = { fontsize = 10 text = "TSIN_UI_ANNUAL" }
 }
 type tsin_ui_history_gdp = vbox {
 spacing = 4

@@ -1,0 +1,10 @@
+﻿tsin_chemical_spill_shutdown = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_spill_shutdown }
+ local_mills_build_buildings_efficiency = -0.10
+}
+tsin_chemical_spill_soil = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_spill_soil }
+ local_food_production_mult = -0.05
+}

@@ -1,0 +1,20 @@
+﻿namespace = tsin_industrial_safety
+tsin_industrial_safety.1 = {
+ type = country_event outcome = negative
+ title = tsin_industrial_safety.1.title desc = tsin_industrial_safety.1.desc
+ illustration_tags = { 10 = interior 10 = regular }
+ option = { name = tsin_industrial_safety.1.a
+  trigger = { scope:tsin_spill_site ?= { owner ?= root controller ?= root has_variable = tsin_spill_shutdown NOT = { has_variable = tsin_spill_remediation_paid } } scope:tsin_spill_district ?= { owner ?= root NOT = { any_location_in_province = { NOT = { controller ?= root } } } } gold >= scope:tsin_spill_district.tsin_spill_remediation_cost }
+  if = { limit = { scope:tsin_spill_site ?= { owner ?= root controller ?= root has_variable = tsin_spill_shutdown NOT = { has_variable = tsin_spill_remediation_paid } } scope:tsin_spill_district ?= { owner ?= root NOT = { any_location_in_province = { NOT = { controller ?= root } } } } gold >= scope:tsin_spill_district.tsin_spill_remediation_cost }
+   add_gold = { value = scope:tsin_spill_district.tsin_spill_remediation_cost multiply = -1 }
+   scope:tsin_spill_site = {
+    set_variable = { name = tsin_spill_remediation_paid years = 10 }
+    set_variable = { name = tsin_spill_shutdown months = 3 }
+    set_variable = { name = tsin_spill_soil years = 3 }
+   }
+   scope:tsin_spill_district = { set_variable = { name = tsin_facility_industry_wear value = 0 } }
+  }
+  ai_chance = { factor = 3 }
+ }
+ option = { name = tsin_industrial_safety.1.b ai_chance = { factor = 1 } }
+}

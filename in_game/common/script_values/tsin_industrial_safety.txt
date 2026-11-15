@@ -1,0 +1,1 @@
+﻿tsin_spill_remediation_cost = { value = tsin_facility_industry_price_factor multiply = 200 }

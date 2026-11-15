@@ -146,6 +146,7 @@ tsin_facility_review_effect = {
    set_variable = { name = tsin_facility_public_size value = var:tsin_facility_public_measured }
    set_variable = { name = tsin_facility_public_year value = current_year }
 
+   tsin_industrial_safety_review_effect = yes
    tsin_facility_schedule_review_effect = yes
   }
  }
