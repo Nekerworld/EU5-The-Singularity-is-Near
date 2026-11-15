@@ -1,0 +1,24 @@
+﻿tsin_dreadnought_construction = {
+steel = 14 tsin_engines = 4 cannons = 25 tools = 3 naval_supplies = 2 lumber = 20
+category = ship_construction
+}
+tsin_dreadnought_maintenance = {
+coal = 2 naval_supplies = 1.20 cannons = 2 liquor = 0.10 salt = 0.10
+category = ship_maintenance
+}
+tsin_dreadnought_repair = {
+steel = 2 tsin_engines = 0.40 tools = 0.50 naval_supplies = 0.40 lumber = 3
+category = ship_repair
+}
+tsin_oil_dreadnought_construction = {
+steel = 16 tsin_engines = 5 cannons = 28 tools = 3 naval_supplies = 2 lumber = 15 tsin_oil = 1
+category = ship_construction
+}
+tsin_oil_dreadnought_maintenance = {
+tsin_oil = 1.20 coal = 0.50 naval_supplies = 1.20 cannons = 2 liquor = 0.10 salt = 0.10
+category = ship_maintenance
+}
+tsin_oil_dreadnought_repair = {
+steel = 2.50 tsin_engines = 0.50 tools = 0.50 naval_supplies = 0.40 lumber = 2 tsin_oil = 0.10
+category = ship_repair
+}

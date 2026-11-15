@@ -1,0 +1,24 @@
+﻿n_tsin_dreadnought = {
+copy_from = n_tsin_pre_dreadnought
+age = age_8_world_wars
+buildable = yes
+# Unit numeric stats are additive after copy_from. These are increments.
+hull_size = 20
+cannons = 20
+movement_speed = 0.50
+construction_demand = tsin_dreadnought_construction
+maintenance_demand = tsin_dreadnought_maintenance
+repair_demand = tsin_dreadnought_repair
+}
+n_tsin_oil_fired_dreadnought = {
+copy_from = n_tsin_pre_dreadnought
+age = age_8_world_wars
+buildable = yes
+# Same parent avoids adding another complete ship on top of the coal variant.
+hull_size = 30
+cannons = 25
+movement_speed = 1
+construction_demand = tsin_oil_dreadnought_construction
+maintenance_demand = tsin_oil_dreadnought_maintenance
+repair_demand = tsin_oil_dreadnought_repair
+}

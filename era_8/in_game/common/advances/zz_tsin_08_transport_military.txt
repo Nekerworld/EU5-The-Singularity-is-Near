@@ -1,0 +1,58 @@
+﻿tsin_dreadnoughts_advance = {
+age = age_8_world_wars
+icon = military_tactics_advance_6
+requires = tsin_pre_dreadnought_advance
+requires = tsin_naval_gunnery_advance
+allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+unlock_unit = n_tsin_dreadnought
+ai_weight = { add = 25 }
+}
+
+tsin_oil_fired_battleships_advance = {
+age = age_8_world_wars
+icon = kor_gunpowder_engines
+requires = tsin_dreadnoughts_advance
+requires = tsin_internal_combustion_advance
+allow = { has_embraced_institution = institution:tsin_electrification }
+unlock_unit = n_tsin_oil_fired_dreadnought
+ai_weight = { add = 25 }
+}
+
+tsin_motor_transport_advance = {
+age = age_8_world_wars
+icon = kor_gunpowder_engines
+requires = tsin_internal_combustion_advance
+allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+unlock_building = tsin_motor_transport_depot
+ai_weight = { add = 25 }
+}
+
+tsin_motor_supply_columns_advance = {
+age = age_8_world_wars
+icon = army_country_movement_speed_advance
+requires = tsin_motor_transport_advance
+requires = tsin_railway_mobilization_advance
+allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+army_movement_speed = 0.05
+ai_weight = { add = 25 }
+}
+
+tsin_powered_flight_advance = {
+age = age_8_world_wars
+icon = scientific_revolution_advance
+requires = tsin_internal_combustion_advance
+requires = tsin_practical_electrical_engineering_advance
+allow = { has_embraced_institution = institution:tsin_electrification }
+unlock_building = tsin_capital_airfield
+ai_weight = { add = 25 }
+}
+
+tsin_aerial_observation_advance = {
+age = age_8_world_wars
+icon = army_country_movement_speed_advance
+requires = tsin_powered_flight_advance
+requires = tsin_general_staff_advance
+allow = { has_embraced_institution = institution:tsin_electrification }
+combat_speed_modifier = 0.05
+ai_weight = { add = 25 }
+}

@@ -199,12 +199,16 @@ def check(root: Path, game: Path, hud: Path | None = None) -> tuple[list[str], d
 
     # New history modules must be checked by the standard validator and release gate too.
     from importlib import import_module
-    for generator in ['gen_historical_progression', 'gen_lucky_nations', 'gen_historical_events_wave1', 'gen_finance_ledger', 'gen_historical_nations', 'gen_border_trade', 'gen_ai_direction', 'gen_historical_restorations', 'gen_historical_events_wave2']:
+    for generator in ['gen_historical_progression', 'gen_lucky_nations', 'gen_historical_events_wave1', 'gen_finance_ledger', 'gen_historical_nations', 'gen_border_trade', 'gen_ai_direction', 'gen_historical_restorations', 'gen_historical_events_wave2', 'gen_age8_transport_military']:
         if (root / ('tools/' + generator + '.py')).exists():
             try:
-                for rel, expected in import_module(generator).build().items():
+                module = import_module(generator)
+                generated = module.build()
+                if hasattr(module, 'assets'):
+                    generated.update(module.assets())
+                for rel, expected in generated.items():
                     target = root / rel
-                    if not target.exists() or pdx.read_text(target) != expected:
+                    if not target.exists() or (pdx.read_bytes(target) if isinstance(expected, bytes) else pdx.read_text(target)) != expected:
                         errors.append('integration: outdated historical module ' + rel)
             except (ValueError, KeyError, TypeError) as exc:
                 errors.append('integration: invalid historical module ' + generator + ': ' + str(exc))
