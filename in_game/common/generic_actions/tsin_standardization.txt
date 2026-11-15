@@ -24,6 +24,7 @@ tsin_standards_measure_1 = {
  NOT = { has_variable = tsin_standard_measure_cooldown }
  NOT = { var:tsin_standard_measure = 1 } }
    if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } } change_global_variable = { name = tsin_standards_common_measure add = 1 }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_measure value = 1 }
    set_variable = { name = tsin_standard_measure_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -48,6 +49,7 @@ tsin_standards_measure_2 = {
  NOT = { has_variable = tsin_standard_measure_cooldown }
  NOT = { var:tsin_standard_measure = 2 } }
    if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_measure value = 2 }
    set_variable = { name = tsin_standard_measure_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -72,6 +74,7 @@ tsin_standards_measure_3 = {
  NOT = { has_variable = tsin_standard_measure_cooldown }
  NOT = { var:tsin_standard_measure = 3 } }
    if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_measure value = 3 }
    set_variable = { name = tsin_standard_measure_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -96,6 +99,7 @@ tsin_standards_gauge_1 = {
  NOT = { has_variable = tsin_standard_gauge_cooldown }
  NOT = { var:tsin_standard_gauge = 1 } }
    if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } } change_global_variable = { name = tsin_standards_common_gauge add = 1 }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_gauge value = 1 }
    set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -120,6 +124,7 @@ tsin_standards_gauge_2 = {
  NOT = { has_variable = tsin_standard_gauge_cooldown }
  NOT = { var:tsin_standard_gauge = 2 } }
    if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_gauge value = 2 }
    set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -144,6 +149,7 @@ tsin_standards_gauge_3 = {
  NOT = { has_variable = tsin_standard_gauge_cooldown }
  NOT = { var:tsin_standard_gauge = 3 } }
    if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_gauge value = 3 }
    set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -168,6 +174,7 @@ tsin_standards_parts_1 = {
  NOT = { has_variable = tsin_standard_parts_cooldown }
  NOT = { var:tsin_standard_parts = 1 } }
    if = { limit = { var:tsin_standard_parts = 1 global_var:tsin_standards_common_parts > 0 } change_global_variable = { name = tsin_standards_common_parts add = -1 } } change_global_variable = { name = tsin_standards_common_parts add = 1 }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_parts value = 1 }
    set_variable = { name = tsin_standard_parts_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -192,6 +199,7 @@ tsin_standards_parts_3 = {
  NOT = { has_variable = tsin_standard_parts_cooldown }
  NOT = { var:tsin_standard_parts = 3 } }
    if = { limit = { var:tsin_standard_parts = 1 global_var:tsin_standards_common_parts > 0 } change_global_variable = { name = tsin_standards_common_parts add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_parts value = 3 }
    set_variable = { name = tsin_standard_parts_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -216,6 +224,7 @@ tsin_standards_electric_1 = {
  NOT = { has_variable = tsin_standard_electric_cooldown }
  NOT = { var:tsin_standard_electric = 1 } }
    if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } } change_global_variable = { name = tsin_standards_common_electric add = 1 }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_electric value = 1 }
    set_variable = { name = tsin_standard_electric_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -240,6 +249,7 @@ tsin_standards_electric_2 = {
  NOT = { has_variable = tsin_standard_electric_cooldown }
  NOT = { var:tsin_standard_electric = 2 } }
    if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_electric value = 2 }
    set_variable = { name = tsin_standard_electric_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }
@@ -264,6 +274,7 @@ tsin_standards_electric_3 = {
  NOT = { has_variable = tsin_standard_electric_cooldown }
  NOT = { var:tsin_standard_electric = 3 } }
    if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } }
+   tsin_news_record_effect = { TYPE = 10 PRIORITY = 1 }
    set_variable = { name = tsin_standard_electric value = 3 }
    set_variable = { name = tsin_standard_electric_cooldown years = 5 }
    if = { limit = { NOT = { has_variable = tsin_standards_participant } }

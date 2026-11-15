@@ -44,6 +44,7 @@ def build():
  effect = {{ scope:actor = {{
   if = {{ limit = {{ {gate} }}
    {count_change}
+   tsin_news_record_effect = {{ TYPE = 10 PRIORITY = 1 }}
    set_variable = {{ name = tsin_standard_{d} value = {n} }}
    set_variable = {{ name = tsin_standard_{d}_cooldown years = 5 }}
    if = {{ limit = {{ NOT = {{ has_variable = tsin_standards_participant }} }}

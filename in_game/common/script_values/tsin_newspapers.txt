@@ -1,0 +1,23 @@
+﻿tsin_news_0_year = { value = 0 if = { limit = { has_variable = tsin_news_0_year } value = var:tsin_news_0_year } }
+
+tsin_news_0_month = { value = 0 if = { limit = { has_variable = tsin_news_0_month } value = var:tsin_news_0_month } }
+
+tsin_news_1_year = { value = 0 if = { limit = { has_variable = tsin_news_1_year } value = var:tsin_news_1_year } }
+
+tsin_news_1_month = { value = 0 if = { limit = { has_variable = tsin_news_1_month } value = var:tsin_news_1_month } }
+
+tsin_news_2_year = { value = 0 if = { limit = { has_variable = tsin_news_2_year } value = var:tsin_news_2_year } }
+
+tsin_news_2_month = { value = 0 if = { limit = { has_variable = tsin_news_2_month } value = var:tsin_news_2_month } }
+
+tsin_news_3_year = { value = 0 if = { limit = { has_variable = tsin_news_3_year } value = var:tsin_news_3_year } }
+
+tsin_news_3_month = { value = 0 if = { limit = { has_variable = tsin_news_3_month } value = var:tsin_news_3_month } }
+
+tsin_news_4_year = { value = 0 if = { limit = { has_variable = tsin_news_4_year } value = var:tsin_news_4_year } }
+
+tsin_news_4_month = { value = 0 if = { limit = { has_variable = tsin_news_4_month } value = var:tsin_news_4_month } }
+
+tsin_news_5_year = { value = 0 if = { limit = { has_variable = tsin_news_5_year } value = var:tsin_news_5_year } }
+
+tsin_news_5_month = { value = 0 if = { limit = { has_variable = tsin_news_5_month } value = var:tsin_news_5_month } }

@@ -1,0 +1,73 @@
+﻿# Country scope; metadata-only record of an event which already happened.
+tsin_news_record_effect = {
+ if = { limit = { is_ai = no tsin_has_periodical_press = yes
+  NOT = { AND = { var:tsin_news_0_type = $TYPE$ var:tsin_news_0_year = current_year } }
+ }
+
+  if = { limit = { has_variable = tsin_news_4_type } set_variable = { name = tsin_news_5_type value = var:tsin_news_4_type } }
+  else = { remove_variable = tsin_news_5_type }
+
+  if = { limit = { has_variable = tsin_news_4_year } set_variable = { name = tsin_news_5_year value = var:tsin_news_4_year } }
+  else = { remove_variable = tsin_news_5_year }
+
+  if = { limit = { has_variable = tsin_news_4_month } set_variable = { name = tsin_news_5_month value = var:tsin_news_4_month } }
+  else = { remove_variable = tsin_news_5_month }
+
+  if = { limit = { has_variable = tsin_news_3_type } set_variable = { name = tsin_news_4_type value = var:tsin_news_3_type } }
+  else = { remove_variable = tsin_news_4_type }
+
+  if = { limit = { has_variable = tsin_news_3_year } set_variable = { name = tsin_news_4_year value = var:tsin_news_3_year } }
+  else = { remove_variable = tsin_news_4_year }
+
+  if = { limit = { has_variable = tsin_news_3_month } set_variable = { name = tsin_news_4_month value = var:tsin_news_3_month } }
+  else = { remove_variable = tsin_news_4_month }
+
+  if = { limit = { has_variable = tsin_news_2_type } set_variable = { name = tsin_news_3_type value = var:tsin_news_2_type } }
+  else = { remove_variable = tsin_news_3_type }
+
+  if = { limit = { has_variable = tsin_news_2_year } set_variable = { name = tsin_news_3_year value = var:tsin_news_2_year } }
+  else = { remove_variable = tsin_news_3_year }
+
+  if = { limit = { has_variable = tsin_news_2_month } set_variable = { name = tsin_news_3_month value = var:tsin_news_2_month } }
+  else = { remove_variable = tsin_news_3_month }
+
+  if = { limit = { has_variable = tsin_news_1_type } set_variable = { name = tsin_news_2_type value = var:tsin_news_1_type } }
+  else = { remove_variable = tsin_news_2_type }
+
+  if = { limit = { has_variable = tsin_news_1_year } set_variable = { name = tsin_news_2_year value = var:tsin_news_1_year } }
+  else = { remove_variable = tsin_news_2_year }
+
+  if = { limit = { has_variable = tsin_news_1_month } set_variable = { name = tsin_news_2_month value = var:tsin_news_1_month } }
+  else = { remove_variable = tsin_news_2_month }
+
+  if = { limit = { has_variable = tsin_news_0_type } set_variable = { name = tsin_news_1_type value = var:tsin_news_0_type } }
+  else = { remove_variable = tsin_news_1_type }
+
+  if = { limit = { has_variable = tsin_news_0_year } set_variable = { name = tsin_news_1_year value = var:tsin_news_0_year } }
+  else = { remove_variable = tsin_news_1_year }
+
+  if = { limit = { has_variable = tsin_news_0_month } set_variable = { name = tsin_news_1_month value = var:tsin_news_0_month } }
+  else = { remove_variable = tsin_news_1_month }
+
+  set_variable = { name = tsin_news_0_type value = $TYPE$ }
+  set_variable = { name = tsin_news_0_year value = current_year }
+  set_variable = { name = tsin_news_0_month value = current_month }
+  set_local_variable = { name = tsin_news_priority value = $PRIORITY$ }
+  if = { limit = { local_var:tsin_news_priority >= 2 } set_variable = tsin_news_pending_popup }
+ }
+}
+tsin_news_publication_effect = {
+ set_variable = { name = tsin_news_issue_year value = current_year }
+ if = { limit = { NOT = { has_variable = tsin_news_issue_number } } set_variable = { name = tsin_news_issue_number value = 0 } }
+ change_variable = { name = tsin_news_issue_number add = 1 }
+ if = { limit = { OR = { var:tsin_arrears >= 6 var:tsin_bond_arrears >= 6 } NOT = { has_variable = tsin_news_financial_arrears_covered } }
+  set_variable = tsin_news_financial_arrears_covered
+  tsin_news_record_effect = { TYPE = 40 PRIORITY = 2 }
+ }
+ else_if = { limit = { NOT = { OR = { var:tsin_arrears >= 6 var:tsin_bond_arrears >= 6 } } } remove_variable = tsin_news_financial_arrears_covered }
+ if = { limit = { has_variable = tsin_news_pending_popup OR = { NOT = { has_variable = tsin_news_popup_year } current_year > var:tsin_news_popup_year } }
+  set_variable = { name = tsin_news_popup_year value = current_year }
+  remove_variable = tsin_news_pending_popup
+  trigger_event_non_silently = tsin_news.1
+ }
+}

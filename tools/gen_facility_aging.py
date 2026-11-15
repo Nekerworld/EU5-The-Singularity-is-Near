@@ -105,7 +105,7 @@ tsin_facility_measure_effect = {
    }}
    set_local_variable = {{ name = tsin_facility_cost value = {{ value = var:tsin_facility_{group}_measured multiply = local_var:tsin_facility_elapsed multiply = 0.25 }} }}
    if = {{ limit = {{ var:tsin_facility_{group}_measured > 0 }}
-    if = {{ limit = {{ owner ?= {{ gold >= local_var:tsin_facility_cost OR = {{ has_variable = tsin_facility_support_budget AND = {{ is_ai = yes gold >= {{ value = local_var:tsin_facility_cost multiply = 4 }} }} }} }} NOT = {{ any_location_in_province = {{ NOT = {{ controller ?= owner }} }} }} }}
+    if = {{ limit = {{ local_var:tsin_facility_cost > 0 owner ?= {{ gold >= local_var:tsin_facility_cost OR = {{ has_variable = tsin_facility_support_budget AND = {{ is_ai = yes gold >= {{ value = local_var:tsin_facility_cost multiply = 4 }} }} }} }} NOT = {{ any_location_in_province = {{ NOT = {{ controller ?= owner }} }} }} }}
      owner = {{
       if = {{ limit = {{ OR = {{ NOT = {{ has_variable = tsin_facility_paid_year }} current_year > var:tsin_facility_paid_year }} }}
        set_variable = {{ name = tsin_facility_paid_year value = current_year }}
@@ -113,6 +113,7 @@ tsin_facility_measure_effect = {
       }}
       change_variable = {{ name = tsin_facility_paid_amount add = local_var:tsin_facility_cost }}
       add_gold = {{ value = local_var:tsin_facility_cost multiply = -1 }}
+      tsin_news_record_effect = {{ TYPE = 30 PRIORITY = 1 }}
      }}
      set_variable = {{ name = tsin_facility_{group}_wear value = {{ value = var:tsin_facility_{group}_wear subtract = {{ value = local_var:tsin_facility_elapsed multiply = 3 }} min = 0 max = 100 }} }}
     }} else = {{ set_variable = {{ name = tsin_facility_{group}_wear value = {{ value = var:tsin_facility_{group}_wear add = {{ value = local_var:tsin_facility_elapsed multiply = 2 }} min = 0 max = 100 }} }} }}

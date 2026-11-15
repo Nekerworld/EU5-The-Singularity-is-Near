@@ -9,6 +9,7 @@ tsin_cholera_seed_native_outbreak = {
 			}
 		}
 		change_variable = { name = tsin_cholera_outbreaks add = 1 }
+		tsin_news_record_effect = { TYPE = 21 PRIORITY = 2 }
 		ordered_owned_location = {
 			limit = {
 				tsin_cholera_risk_location_trigger = yes

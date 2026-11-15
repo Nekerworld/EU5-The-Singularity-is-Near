@@ -1312,82 +1312,6 @@
       ]
     },
     {
-      "id": "pollution",
-      "metrics": [
-        {
-          "id": "pollution_exposure",
-          "variable": "tsin_pollution_exposure",
-          "title": {
-            "korean": "조사 도시 인구 가중 대기 노출",
-            "english": "Surveyed urban air exposure"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
-            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
-          }
-        },
-        {
-          "id": "pollution_high_share",
-          "variable": "tsin_pollution_high_share",
-          "title": {
-            "korean": "조사 도시 고위험 인구 비율(%)",
-            "english": "Surveyed urban high exposure (%)"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
-            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
-          }
-        },
-        {
-          "id": "pollution_year",
-          "variable": "tsin_pollution_year",
-          "title": {
-            "korean": "공해 조사 연도",
-            "english": "Pollution survey year"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "annual",
-          "description": {
-            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
-            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
-          }
-        }
-      ],
-      "shortcuts": [
-        {
-          "id": "pollution_map",
-          "tab": "society",
-          "title": {
-            "korean": "산업 공해 지도",
-            "english": "Industrial pollution map"
-          },
-          "map_mode": "tsin_pollution"
-        },
-        {
-          "id": "pollution_filter",
-          "tab": "society",
-          "title": {
-            "korean": "지역 여과 설비 지원",
-            "english": "Fund local emission filters"
-          },
-          "generic_action": "tsin_pollution_filter"
-        }
-      ]
-    },
-    {
       "id": "strategic_storage",
       "shortcuts": [
         {
@@ -1556,6 +1480,20 @@
             "korean": "저장고 조사 버튼으로 선택한 지점의 마지막 상태를 읽습니다. 종류 1=석유, 2=석탄, 3=강철. 상태 0=대기, 1=매입, 2=매도, 9=정지, 99=검사 실패입니다.",
             "english": "Snapshot of the site selected with Inspect. Kind 1=oil, 2=coal, 3=steel. State 0=idle, 1=buy, 2=sell, 9=paused, 99=verification failed."
           }
+        }
+      ]
+    },
+    {
+      "id": "distribution_grid",
+      "shortcuts": [
+        {
+          "id": "distribution_map",
+          "tab": "economy",
+          "title": {
+            "korean": "전기 접근성 지도",
+            "english": "Electricity accessibility map"
+          },
+          "map_mode": "tsin_power_access"
         }
       ]
     },
@@ -1743,16 +1681,92 @@
       ]
     },
     {
-      "id": "distribution_grid",
+      "id": "pollution",
+      "metrics": [
+        {
+          "id": "pollution_exposure",
+          "variable": "tsin_pollution_exposure",
+          "title": {
+            "korean": "조사 도시 인구 가중 대기 노출",
+            "english": "Surveyed urban air exposure"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        },
+        {
+          "id": "pollution_high_share",
+          "variable": "tsin_pollution_high_share",
+          "title": {
+            "korean": "조사 도시 고위험 인구 비율(%)",
+            "english": "Surveyed urban high exposure (%)"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        },
+        {
+          "id": "pollution_year",
+          "variable": "tsin_pollution_year",
+          "title": {
+            "korean": "공해 조사 연도",
+            "english": "Pollution survey year"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "annual",
+          "description": {
+            "korean": "기존 연간 도시 집계에서 계산한 산업 고용 기반 추정치입니다. 발전소·채굴·교통 배출은 아직 포함하지 않습니다.",
+            "english": "Annual urban industrial-employment estimate. Power generation, extraction and transport emissions are not yet included."
+          }
+        }
+      ],
       "shortcuts": [
         {
-          "id": "distribution_map",
-          "tab": "economy",
+          "id": "pollution_map",
+          "tab": "society",
           "title": {
-            "korean": "전기 접근성 지도",
-            "english": "Electricity accessibility map"
+            "korean": "산업 공해 지도",
+            "english": "Industrial pollution map"
           },
-          "map_mode": "tsin_power_access"
+          "map_mode": "tsin_pollution"
+        },
+        {
+          "id": "pollution_filter",
+          "tab": "society",
+          "title": {
+            "korean": "지역 여과 설비 지원",
+            "english": "Fund local emission filters"
+          },
+          "generic_action": "tsin_pollution_filter"
+        }
+      ]
+    },
+    {
+      "id": "newspapers",
+      "shortcuts": [
+        {
+          "id": "read_newspaper",
+          "tab": "society",
+          "title": {
+            "korean": "신문·최근 기사 열람",
+            "english": "Read newspaper archive"
+          },
+          "generic_action": "tsin_read_newspaper"
         }
       ]
     },

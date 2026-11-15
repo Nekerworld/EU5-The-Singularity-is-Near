@@ -103,6 +103,7 @@ tsin_pollution_map_factor = { value = tsin_pollution_map_air divide = 100 }
     events='''namespace = tsin_pollution
 tsin_pollution.1 = {
  type = country_event title = tsin_pollution.1.title desc = tsin_pollution.1.desc outcome = neutral
+ immediate = { tsin_news_record_effect = { TYPE = 20 PRIORITY = 1 } }
  illustration_tags = { 10 = interior 10 = regular }
  option = { name = tsin_pollution.1.a trigger = { gold >= 300 }
   add_gold = -300

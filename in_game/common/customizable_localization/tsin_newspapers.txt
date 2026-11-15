@@ -1,0 +1,89 @@
+﻿tsin_news_line_0 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_0_type = 10 } localization_key = TSIN_NEWS_LINE_0_10 }
+
+ text = { trigger = { var:tsin_news_0_type = 20 } localization_key = TSIN_NEWS_LINE_0_20 }
+
+ text = { trigger = { var:tsin_news_0_type = 21 } localization_key = TSIN_NEWS_LINE_0_21 }
+
+ text = { trigger = { var:tsin_news_0_type = 30 } localization_key = TSIN_NEWS_LINE_0_30 }
+
+ text = { trigger = { var:tsin_news_0_type = 40 } localization_key = TSIN_NEWS_LINE_0_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY }
+}
+
+tsin_news_line_1 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_1_type = 10 } localization_key = TSIN_NEWS_LINE_1_10 }
+
+ text = { trigger = { var:tsin_news_1_type = 20 } localization_key = TSIN_NEWS_LINE_1_20 }
+
+ text = { trigger = { var:tsin_news_1_type = 21 } localization_key = TSIN_NEWS_LINE_1_21 }
+
+ text = { trigger = { var:tsin_news_1_type = 30 } localization_key = TSIN_NEWS_LINE_1_30 }
+
+ text = { trigger = { var:tsin_news_1_type = 40 } localization_key = TSIN_NEWS_LINE_1_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY_LINE }
+}
+
+tsin_news_line_2 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_2_type = 10 } localization_key = TSIN_NEWS_LINE_2_10 }
+
+ text = { trigger = { var:tsin_news_2_type = 20 } localization_key = TSIN_NEWS_LINE_2_20 }
+
+ text = { trigger = { var:tsin_news_2_type = 21 } localization_key = TSIN_NEWS_LINE_2_21 }
+
+ text = { trigger = { var:tsin_news_2_type = 30 } localization_key = TSIN_NEWS_LINE_2_30 }
+
+ text = { trigger = { var:tsin_news_2_type = 40 } localization_key = TSIN_NEWS_LINE_2_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY_LINE }
+}
+
+tsin_news_line_3 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_3_type = 10 } localization_key = TSIN_NEWS_LINE_3_10 }
+
+ text = { trigger = { var:tsin_news_3_type = 20 } localization_key = TSIN_NEWS_LINE_3_20 }
+
+ text = { trigger = { var:tsin_news_3_type = 21 } localization_key = TSIN_NEWS_LINE_3_21 }
+
+ text = { trigger = { var:tsin_news_3_type = 30 } localization_key = TSIN_NEWS_LINE_3_30 }
+
+ text = { trigger = { var:tsin_news_3_type = 40 } localization_key = TSIN_NEWS_LINE_3_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY_LINE }
+}
+
+tsin_news_line_4 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_4_type = 10 } localization_key = TSIN_NEWS_LINE_4_10 }
+
+ text = { trigger = { var:tsin_news_4_type = 20 } localization_key = TSIN_NEWS_LINE_4_20 }
+
+ text = { trigger = { var:tsin_news_4_type = 21 } localization_key = TSIN_NEWS_LINE_4_21 }
+
+ text = { trigger = { var:tsin_news_4_type = 30 } localization_key = TSIN_NEWS_LINE_4_30 }
+
+ text = { trigger = { var:tsin_news_4_type = 40 } localization_key = TSIN_NEWS_LINE_4_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY_LINE }
+}
+
+tsin_news_line_5 = { type = country random_valid = no
+
+ text = { trigger = { var:tsin_news_5_type = 10 } localization_key = TSIN_NEWS_LINE_5_10 }
+
+ text = { trigger = { var:tsin_news_5_type = 20 } localization_key = TSIN_NEWS_LINE_5_20 }
+
+ text = { trigger = { var:tsin_news_5_type = 21 } localization_key = TSIN_NEWS_LINE_5_21 }
+
+ text = { trigger = { var:tsin_news_5_type = 30 } localization_key = TSIN_NEWS_LINE_5_30 }
+
+ text = { trigger = { var:tsin_news_5_type = 40 } localization_key = TSIN_NEWS_LINE_5_40 }
+
+ text = { localization_key = TSIN_NEWS_EMPTY_LINE }
+}

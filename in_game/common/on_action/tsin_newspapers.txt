@@ -1,0 +1,5 @@
+﻿yearly_country_pulse = { on_actions = { tsin_newspaper_annual_publication } }
+tsin_newspaper_annual_publication = {
+ trigger = { is_ai = no tsin_has_periodical_press = yes OR = { NOT = { has_variable = tsin_news_issue_year } current_year > var:tsin_news_issue_year } }
+ effect = { tsin_news_publication_effect = yes }
+}

@@ -1,0 +1,1 @@
+﻿tsin_has_periodical_press = { OR = { has_advance = printing_press_advance has_advance = tsin_popular_press_advance has_advance = tsin_mass_communication_advance } }

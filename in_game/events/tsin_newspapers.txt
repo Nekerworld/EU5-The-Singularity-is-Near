@@ -1,0 +1,6 @@
+﻿namespace = tsin_news
+tsin_news.1 = {
+ type = country_event title = tsin_news.1.title desc = tsin_news.1.desc outcome = neutral
+ illustration_tags = { 10 = interior 10 = regular }
+ option = { name = tsin_news.1.a ai_chance = { factor = 1 } }
+}

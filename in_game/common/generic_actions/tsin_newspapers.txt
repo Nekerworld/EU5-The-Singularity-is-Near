@@ -1,0 +1,6 @@
+﻿tsin_read_newspaper = {
+ type = owncountry price = price:tsin_newspaper_read_price show_message = no
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { tsin_has_periodical_press = yes } }
+ effect = { scope:actor = { trigger_event_non_silently = tsin_news.1 } }
+}
