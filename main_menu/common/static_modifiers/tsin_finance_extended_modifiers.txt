@@ -1,0 +1,5 @@
+﻿tsin_bank_credit_contraction = {
+game_data = { category = country }
+global_construction_speed = -0.10
+global_production_efficiency = -0.05
+}

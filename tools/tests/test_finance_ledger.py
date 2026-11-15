@@ -11,6 +11,7 @@ from test_capital_markets import parse, get
 
 class LedgerFixture:
     def __init__(self):
+        self.modifiers=set()
         files=build()
         def blocks(s):return {b.key:parse(b.text[b.text.index('{')+1:-1]) for b in pdx.top_level_blocks(s)}
         self.values=blocks(files['in_game/common/script_values/tsin_finance_ledger_values.txt'])
@@ -23,6 +24,9 @@ class LedgerFixture:
         if isinstance(value,list):
             n=D(0)
             for key,_,v in value:
+                if key=='if':
+                    if self.valid(get(v,'limit')):n=self.num([('value','=',str(n))]+[r for r in v if r[0]!='limit'])
+                    continue
                 x=self.num(v)
                 if key=='value':n=x
                 elif key=='add':n+=x
@@ -35,7 +39,7 @@ class LedgerFixture:
             return n
         if value in self.values:return self.num(self.values[value])
         try:return D(value)
-        except Exception:return self.state.get(value.removeprefix('var:'),D(0))
+        except Exception:return self.state.get(value.removeprefix('var:').removeprefix('root.'),D(0))
 
     def valid(self,rows):
         def term(k,op,v):
@@ -46,6 +50,7 @@ class LedgerFixture:
             if k=='is_ai':return False
             if k=='country_has_estate':return True
             if k=='has_policy':return False
+            if k=='any_estate':return self.state['estate'] >= self.num('tsin_deposit_request')
             a,b=self.num(k),self.num(v)
             return {'=':a==b,'<':a<b,'>':a>b,'>=':a>=b,'<=':a<=b}[op]
         return all(term(*r) for r in rows)
@@ -65,6 +70,8 @@ class LedgerFixture:
                 name=get(value,'name');op,v=next((k,v) for k,_,v in value if k!='name');x=self.num(v)
                 self.state[name]={'add':lambda a:a+x,'subtract':lambda a:a-x,'multiply':lambda a:a*x,'divide':lambda a:a/x}[op](self.state[name])
             elif key=='remove_variable':self.state.pop(value,None)
+            elif key=='remove_country_modifier':self.modifiers.discard(value)
+            elif key=='add_country_modifier':self.modifiers.add(get(value,'modifier'))
             elif key=='add_gold':self.state['gold']+=self.num(value)
             elif key=='add_gold_to_estate':self.state['estate']+=self.num(get(value,'value'))
             elif key in self.effects:self.run(self.effects[key])
@@ -113,6 +120,7 @@ class FinanceLedgerTests(unittest.TestCase):
         self.assertEqual(f.state['tsin_insurance'],75);self.assertEqual(f.total(),1000)
 
     def test_every_new_panel_and_action_has_ui_wiring(self):
+        self.modifiers=set()
         files=build();ui=files['in_game/gui/tsin_finance_ledger.gui']
         for _,tab in EXTRA_TABS:self.assertIn('type '+tab+'_panel',ui)
         fixture=LedgerFixture()

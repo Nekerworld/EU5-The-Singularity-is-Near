@@ -1,0 +1,5 @@
+﻿tsin_foreign_recipient_trigger = {
+tsin_history_ai_realm = yes is_subject = no at_war = no
+NOT = { this = root } tsin_company_count > 0 has_variable = tsin_ledger_version
+has_variable = tsin_fx var:tsin_fx > 0 var:tsin_arrears = 0
+}

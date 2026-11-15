@@ -1,0 +1,12 @@
+﻿tsin_currency_name = { type = country
+text = { trigger = { OR = { tag = ENG tag = SCO tag = GBR } } localization_key = TSIN_LEDGER_CURRENCY_GBP }
+text = { trigger = { OR = { tag = FRA } } localization_key = TSIN_LEDGER_CURRENCY_FRF }
+text = { trigger = { OR = { tag = PRU tag = GER } } localization_key = TSIN_LEDGER_CURRENCY_DEM }
+text = { trigger = { OR = { tag = RUS tag = MOS } } localization_key = TSIN_LEDGER_CURRENCY_RUB }
+text = { trigger = { OR = { tag = JAP } } localization_key = TSIN_LEDGER_CURRENCY_JPY }
+text = { trigger = { OR = { tag = CHI tag = TQG tag = MCH } } localization_key = TSIN_LEDGER_CURRENCY_TAEL }
+text = { trigger = { OR = { tag = MUG } } localization_key = TSIN_LEDGER_CURRENCY_INR }
+text = { trigger = { OR = { tag = USA } } localization_key = TSIN_LEDGER_CURRENCY_USD }
+text = { trigger = { OR = { tag = MEX tag = TAR tag = TCH tag = TCO tag = TPE tag = TBO tag = TUY } } localization_key = TSIN_LEDGER_CURRENCY_PESO }
+text = { trigger = { OR = { tag = TBR } } localization_key = TSIN_LEDGER_CURRENCY_BRL }
+text = { fallback = yes localization_key = TSIN_LEDGER_CURRENCY_LOCAL } }
