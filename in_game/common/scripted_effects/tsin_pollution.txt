@@ -5,7 +5,7 @@ tsin_pollution_location_tick_effect = {
  set_variable = { name = tsin_pollution_raw_water value = 0 }
  every_buildings_in_location = {
   limit = { is_opened = yes building_employed_amount > 0 }
-  if = { limit = { OR = { building_type = building_type:iron_mill building_type = building_type:steel_mill building_type = building_type:cannons_factory building_type = building_type:firearms_factory building_type = building_type:weapon_factory building_type = building_type:tsin_automated_iron_mill building_type = building_type:tsin_machine_works building_type = building_type:tsin_farm_machinery_works } }
+  if = { limit = { OR = { building_type = building_type:tsin_steam_metro building_type = building_type:iron_mill building_type = building_type:steel_mill building_type = building_type:cannons_factory building_type = building_type:firearms_factory building_type = building_type:weapon_factory building_type = building_type:tsin_automated_iron_mill building_type = building_type:tsin_machine_works building_type = building_type:tsin_farm_machinery_works } }
    save_temporary_scope_value_as = { name = tsin_pollution_employed value = building_employed_amount }
    scope:tsin_pollution_site = {
     change_variable = { name = tsin_pollution_raw_air add = { value = scope:tsin_pollution_employed multiply = 6 } }

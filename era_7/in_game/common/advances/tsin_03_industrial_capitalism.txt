@@ -56,6 +56,7 @@ tsin_steel_rolling_stock_advance = {
 }
 
 tsin_railway_network_advance = {
+	unlock_building = tsin_steam_metro
 	age = age_7_industrialization
 	icon = modern_road_advance
 

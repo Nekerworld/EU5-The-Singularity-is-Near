@@ -29,19 +29,7 @@ tsin_railway_station = {
 		}
 	}
 
-	remove_if = {
-		location = {
-			is_capital = no
-			NOT = {
-				has_road_of_type_to = {
-					target = owner.capital
-					type = road_type:railroad
-				}
-			}
-		}
-		NOT = { owner = { at_war = yes } }
-		NOT = { owner = { in_civil_war = yes } }
-	}
+	# remove_if moved to cached-free connection modifier; assets are retained.
 
 	build_time = infrastructure_build_time
 
@@ -65,9 +53,7 @@ tsin_railway_station = {
 		}
 	}
 
-	modifier = {
-		local_market_access = 0.075
-	}
+	# modifier moved to cached-free connection modifier; assets are retained.
 
 	construction_demand = tsin_factory_construction
 }

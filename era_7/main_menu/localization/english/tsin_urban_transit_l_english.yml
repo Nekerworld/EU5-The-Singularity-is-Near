@@ -1,0 +1,8 @@
+﻿l_english:
+ tsin_steam_metro: "Steam metro pilot"
+ tsin_electric_metro: "Electric metro"
+ tsin_steam_metro_desc: "A costly pilot in a city of at least 100,000. One level adds 1% local capacity, 20% of one electric metro level. Does not connect intercity railways. The pilot limit is a game-balance choice."
+ tsin_electric_metro_desc: "Electric urban transit for cities of at least 100,000. Adds 5% local capacity per level, up to three. Replaces the steam pilot without creating intercity railway links."
+ AUTO_MODIFIER_NAME_tsin_connected_railway_station: "Capital-connected railway station"
+ tsin_steam_metro_maintenance: "Steam metro pilot"
+ tsin_electric_metro_maintenance: "Electric metro"

@@ -1,0 +1,10 @@
+﻿tsin_connected_railway_station = {
+ category = location type = location
+ potential_trigger = {
+  has_building_with_at_least_one_level = tsin_railway_station
+  controller ?= owner
+  OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } }
+ }
+ scales_with = "location_building_level(building_type:tsin_railway_station)"
+ local_market_access = 0.075
+}

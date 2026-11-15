@@ -50,6 +50,7 @@ tsin_distribution_grid_advance = {
 
 # Use
 tsin_electric_motor_advance = {
+	unlock_building = tsin_electric_metro
 	unlock_building = tsin_electric_cold_storage
 	age = age_7_industrialization
 	icon = saxon_industrialization

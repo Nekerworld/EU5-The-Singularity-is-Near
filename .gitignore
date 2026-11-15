@@ -44,6 +44,7 @@ tools/out/
 /in_game/common/building_types/tsin_mechanized_agriculture_buildings.txt
 /in_game/common/building_types/tsin_power_buildings.txt
 /in_game/common/building_types/tsin_railway_buildings.txt
+/in_game/common/building_types/tsin_urban_transit.txt
 /in_game/common/cabinet_actions/tsin_civic_cabinet_actions.txt
 /in_game/common/cabinet_actions/tsin_industry_cabinet_actions.txt
 /in_game/common/casus_belli/tsin_unification_cb.txt
@@ -210,6 +211,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_cold_storage.dds
 /main_menu/gfx/interface/icons/buildings/tsin_electric_lighting.dds
+/main_menu/gfx/interface/icons/buildings/tsin_electric_metro.dds
 /main_menu/gfx/interface/icons/buildings/tsin_explosives_plant.dds
 /main_menu/gfx/interface/icons/buildings/tsin_farm_machinery_works.dds
 /main_menu/gfx/interface/icons/buildings/tsin_fertilized_fields.dds
@@ -225,6 +227,7 @@ tools/out/
 /main_menu/gfx/interface/icons/buildings/tsin_public_school.dds
 /main_menu/gfx/interface/icons/buildings/tsin_railway_station.dds
 /main_menu/gfx/interface/icons/buildings/tsin_research_university.dds
+/main_menu/gfx/interface/icons/buildings/tsin_steam_metro.dds
 /main_menu/gfx/interface/icons/buildings/tsin_steam_port.dds
 /main_menu/gfx/interface/icons/buildings/tsin_steam_sawmill.dds
 /main_menu/gfx/interface/icons/buildings/tsin_tenement.dds
@@ -357,6 +360,7 @@ tools/out/
 /main_menu/localization/english/tsin_m7_stock_l_english.yml
 /main_menu/localization/english/tsin_m7_tech_l_english.yml
 /main_menu/localization/english/tsin_m7_wc_l_english.yml
+/main_menu/localization/english/tsin_urban_transit_l_english.yml
 /main_menu/localization/korean/tsin_age8_agriculture_l_korean.yml
 /main_menu/localization/korean/tsin_age8_transport_military_l_korean.yml
 /main_menu/localization/korean/tsin_chemistry_l_korean.yml
@@ -392,5 +396,6 @@ tools/out/
 /main_menu/localization/korean/tsin_m7_stock_l_korean.yml
 /main_menu/localization/korean/tsin_m7_tech_l_korean.yml
 /main_menu/localization/korean/tsin_m7_wc_l_korean.yml
+/main_menu/localization/korean/tsin_urban_transit_l_korean.yml
 # END GENERATED ERA RUNTIME FILES
 /tools/compat_manual/the_singularity_is_near/in_game/common/scripted_effects/chris_mining_towns.txt

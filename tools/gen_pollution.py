@@ -4,7 +4,7 @@ import sys,argparse,json,re
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import pdx
 
-HEAVY=['iron_mill','steel_mill','cannons_factory','firearms_factory','weapon_factory','tsin_automated_iron_mill','tsin_machine_works','tsin_farm_machinery_works']
+HEAVY=['tsin_steam_metro','iron_mill','steel_mill','cannons_factory','firearms_factory','weapon_factory','tsin_automated_iron_mill','tsin_machine_works','tsin_farm_machinery_works']
 CHEMICAL=['dyes_mill','tannery_mill','putrefaction_mill','tsin_fertilizer_plant','tsin_explosives_plant','tsin_nitrogen_fixation_plant']
 LIGHT=['brewery_mill','printing_mill','textile_mill','fine_cloth_mill','furniture_mill','glass_mill','distiller_mill','naval_supplies_mill','paper_mill','pottery_mill','tsin_mechanized_textile_mill','tsin_automated_glass_mill','tsin_automated_paper_mill','tsin_automated_furniture_mill','tsin_automated_printing_mill','tsin_automated_fine_cloth_mill']
 
