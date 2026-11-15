@@ -94,7 +94,7 @@ def era7_count(folder):
     from era_layout import entries
     prefix=folder.rstrip('/')+'/'
     return sum(len([b for b in pdx.top_level_blocks(pdx.read_text(source)) if not b.local_kind and ':' not in b.key and b.key.startswith(('tsin_', 'age_7', 'a_tsin_', 'n_tsin_', 'pa_tsin_', 'hint_tsin_'))])
-        for rel,(source,_,_) in entries(MOD).items() if rel.startswith(prefix) and rel.endswith('.txt'))
+        for rel,(source,_,_) in entries(MOD).items() if source.is_relative_to(MOD/'era_7') and rel.startswith(prefix) and rel.endswith('.txt'))
 
 
 def inventory():
@@ -144,12 +144,12 @@ def assignments(body):
 
 def global_overview():
     data=inventory()['global']
-    cards=[('공통 운영 화면',f"TSIN 관리 {data['관리 탭']}개 탭 · 현황 {data['운영 경고']}종\n경제 화면의 주식 탭 · 선택적 Glorp 연결"),
+    cards=[('공통 운영 화면',f"TSIN 관리 {data['관리 탭']}개 탭 · 현황 {data['운영 경고']}종\n경제 → 금융 하위 6탭 · Glorp 연결"),
         ('국가 통계',f"공용 지표 {data['공용 지표']}개 · GDP K / M / B / T\nGDP 10개 연간 관측 · 주가 8개 분기 관측"),
         ('지도와 안내',f"지도 모드 {data['지도 모드']}종 · 힌트 {data['힌트']}개\n백과사전 {data['백과사전']}개 · 한/영 현지화"),
         ('성장과 인구 조절','산업 가속 · 세계 인구 목표 곡선\n국가 성장 제동 · 인구 변천'),
         ('시대 연속성과 호환','바닐라 후반기 콘텐츠의 조건 연장\n기존 세이브 연결 · 플레이셋별 호환 패치'),
-        ('후속 시대 확장','공용 UI와 통계를 다음 시대에서도 사용\nVIII–XII는 현재 시대 정의만 등록')]
+        ('후속 시대 확장','공용 UI와 통계를 다음 시대에서도 사용\nVIII 농업·함선·물류 연결 / IX–XII 뼈대')]
     fig,ax=plt.subplots(figsize=(13,6.6));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
     for i,(title,body) in enumerate(cards):
         x=.015+(i%2)*.5;y=.69-(i//2)*.31
@@ -206,7 +206,7 @@ def banner():
     ax.text(.055,.76,'The Singularity is Near',fontsize=37,color='#f3e7c9',weight='bold',va='center')
     ax.text(.055,.58,'특이점이 온다 · Europa Universalis V',fontsize=22,color='#d8c79d')
     ax.text(.055,.41,'공통 운영 체계 위에 시대별 콘텐츠를 이어 갑니다',fontsize=19,color='#e0e6df')
-    ax.text(.055,.25,'VII 산업: 콘텐츠 구현  |  VIII–XII: 시대 뼈대',fontsize=17,color='#b7ccbe')
+    ax.text(.055,.25,'VII 산업: 콘텐츠  |  VIII: 부분 구현  |  IX–XII: 뼈대',fontsize=17,color='#b7ccbe')
     ax.text(.055,.12,f'종료일 {end_year()}.12.31 · 개발 빌드 / 인게임 검증 중',fontsize=14,color='#9fb3a6')
     fig.savefig(OUT/'banner.png',dpi=100,facecolor=fig.get_facecolor());plt.close(fig)
     print('wrote readme_media/banner.png')
@@ -227,8 +227,8 @@ def ages_timeline():
         ending=rows[i+1]['start_year'] if i+1<len(rows) else end_year()
         ax.text(x+.015,y+.245,f"{row['number']:02d}  {row['name']['korean']}",fontsize=19,weight='bold',color=color)
         ax.text(x+.015,y+.16,f"{row['start_year']}–{ending}",fontsize=17)
-        ax.text(x+.015,y+.07,'콘텐츠 구현 · 검증 중' if active else '시대 뼈대만 등록',fontsize=12,color=color)
-    fig.text(.10,.97,'각 시대별 변경사항 · 7시대 콘텐츠와 8–12시대 뼈대',fontsize=16,weight='bold')
+        ax.text(x+.015,y+.07,'콘텐츠 구현 · 검증 중' if active else ('농업·군사·물류 부분 구현' if row['implementation']=='partial' else '시대 뼈대만 등록'),fontsize=12,color=color)
+    fig.text(.10,.97,'각 시대별 변경사항 · 7시대 콘텐츠 / 8시대 부분 구현 / 9–12시대 뼈대',fontsize=16,weight='bold')
     fig.text(.10,.92,f'바닐라 I–VI 뒤에 연결 · 모드 종료일 {end_year()}.12.31',fontsize=12,color=GREY)
     fig.text(.10,.035,'등록된 시작 연도 기준 · 칸 너비는 기간과 무관 · 2200년은 장기 목표이며 종료일이 아닙니다.',fontsize=10,color=GREY)
     save(fig,'ages_timeline.png')

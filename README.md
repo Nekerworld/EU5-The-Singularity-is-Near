@@ -4,10 +4,10 @@
 
 > **유로파 유니버설리스 5가 1836년에 끝날 필요는 없습니다.**
 >
-> The Singularity is Near(특이점이 온다)는 공용 관리 UI·국가 통계·성장 조절 체계와 바닐라 여섯 시대 뒤의 **제7시대 「산업」(1837~1900)의 콘텐츠**와 **제8~12시대의 뼈대**를 더하고, 게임 종료일을 **2337년**까지 늘리는 확장 모드입니다. 현재 실제 콘텐츠 개발 범위는 제7시대이며, 이후 시대는 이름·시작 연도·기본 규칙·현지화만 등록되어 있습니다.
+> The Singularity is Near(특이점이 온다)는 공용 관리 UI·국가 통계·성장 조절 체계와 바닐라 여섯 시대 뒤의 **제7시대 「산업」(1837~1900)의 콘텐츠**와 **제8시대의 부분 콘텐츠·제9~12시대의 뼈대**를 더하고, 게임 종료일을 **2337년**까지 늘리는 확장 모드입니다. 제7시대 콘텐츠와 공용 금융·역사 진행을 개발했고, 제8시대에는 구체화된 농업·함선·물류 연결을 추가했습니다. 제9~12시대는 뼈대입니다.
 
 > [!WARNING]
-> 0.7.0은 **인게임 검증 중인 개발 빌드**입니다. 일부 기능은 플레이에서 확인했지만, 새 관리 UI와 제812시대 전환은 추가 검증이 필요합니다. 제812시대의 전용 기술·시대관·이벤트·새 밸런스는 아직 구현하지 않았습니다.
+> 0.7.0은 **인게임 검증 중인 개발 빌드**입니다. 일부 기능은 플레이에서 확인했지만, 새 관리 UI와 제8~12시대 전환은 추가 검증이 필요합니다. 제8시대 기술 9종·시설 2종·함선 2종은 부분 구현이며 전용 시대관·정치·총력전은 미구현입니다. 제9~12시대는 시대 뼈대입니다.
 
 ---
 
@@ -53,7 +53,7 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 #### 운영 현황 버튼
 
-기존 TSIN 관리 버튼 옆의 **현황** 버튼은 상품 가격·투입재·전력·적자·고용·시장 접근성·군대 식량·예비 인력·유지 수준·함대 소모·식량·과밀·교육 하락 압력·보조금 지원 적자·재정·주가의 운영 경고 16종을 모읍니다. 상황·재앙은 기존 상단 리본에 유지합니다.
+기존 TSIN 관리 버튼 옆의 **현황** 버튼은 상품 가격·투입재·전력·적자·고용·시장 접근성·군대 식량·예비 인력·유지 수준·함대 소모·식량·과밀·교육 하락 압력·보조금 지원 적자·재정·주가·은행 유동성·금융 장부의 운영 경고 22종을 모읍니다. 상황·재앙은 기존 상단 리본에 유지합니다.
 
 배지 숫자는 표시 중인 경고 종류 수입니다. 기본 경고는 실시간으로 읽고, 상세 집계는 플레이어 국가에만 3개월마다 수행합니다. 수동 점검은 게임 1일 1회이며, 우클릭으로 유형을 이번 실행 동안 숨겼다가 복원할 수 있습니다. 상품 가격 기준과 보조금·충원 경고의 의미 등은 [`docs/operational_alerts.md`](docs/operational_alerts.md)에 설명되어 있습니다. 실제 UI와 판정은 재실행 후 검증이 필요합니다.
 
@@ -61,11 +61,13 @@ GDP는 K·M·B·T로 표시하고 최근 10개 연간 관측치를 그래프로 
 
 경제 화면 상단의 **금융 → 증시**에서 최근 8개 관측값(통상 분기별)의 지수 선 그래프와 범용·국가 고유·산업 기업 카드를 확인합니다. 주가, 본사 이동, 관련 건물 레벨, 기업 가치 추정치를 표시하고 기존 기업 결단으로 연결합니다. 수지 탭으로 돌아갈 수 있으며 Glorp용 로컬 호환 파일에도 같은 진입 경로를 연결했습니다. 주식 탭 진입 시 기존 기업을 이행하고 표시용 통계를 갱신합니다. 공용 기업 회계는 분기마다 갱신합니다. 상세 내용과 재생성 절차는 `docs/stock_market_ui.md` 참고.
 
-### 역사 진행·러시아 지원·추가 사건
+금융 하위 탭은 **현황·증시·신용·통화·은행·기금**입니다. 실제 국고/시민 자금의 출연, 기업 대출·증자·회사채·배당, 은행 예금/인출·부실 상각, 국가당 한 건의 외화 기업 신용, 적립/부과 연금·보험을 연결했습니다. 현황은 바닐라 국가 대출의 만기 부담도 요약합니다. 통화는 기준 두캇 위의 표시/채권 환산 모형이며, 실물 금 태환이나 네이티브 다중통화 시장을 완성한 것은 아닙니다. [회계와 지원 범위](docs/finance_ledger.md).
 
-기타 결단의 **역사 진행·국경 점검**은 영토를 바꾸지 않는 진단 보고서를 제공합니다. 러시아 럭키네이션은 기본적으로 형성을 지원하며, 영토 보완은 별도 규칙입니다. 필수 도시를 인간 세력권이 소유·점령하면 전체 보완을 막습니다. HEX 역할 보유국은 1700년 이전 기존 모드에 맡깁니다. 청·무굴의 새 지원과 실제 월경지 매각은 아직 구현하지 않았습니다. [역사 진행 안내](docs/historical_progression.md)를 참고하세요.
+### 역사 진행·럭키네이션·추가 사건
 
-제7시대 첫 역사 제작분에는 우편·합성 염료·작업복·활동사진 사건열과 생활·과학 소재를 합쳐 **24개 이벤트**가 추가되었습니다. 별도 빈도 규칙으로 연 최대 1회 또는 2회 추첨하며 실제 시대·기술·도시 조건을 확인합니다. [사건 목록과 발생 조건](docs/historical_events_wave1.md)에 설명했습니다. 인게임 검증은 대기 상태입니다.
+기타 결단의 **역사 진행·국경 점검**은 변경 없는 진단 보고서를 제공합니다. 러시아와 추가 25개 역사 경로를 지원하고, 주도국 소멸 시 복원과 영토 보완은 별도 강제 규칙에서만 실행합니다. 필수 도시를 인간 또는 하위 종속국이 소유·점령하면 보완을 막습니다. 영국은 브리튼 제도+아일랜드로 제한하며 HEX 담당 경로와 중복 실행을 피합니다. AI 월경지는 보호 조건을 통과한 소규모 내륙 농촌만 실제 자금으로 거래합니다. [역사 진행 안내](docs/historical_progression.md)를 참고하세요.
+
+별도 역사 제작분은 **24+43개 이벤트**입니다. 첫 제작분의 우편·합성 염료·작업복·활동사진에 이어 노동 분쟁·군정 감사·물 관리·국경 중재·기업 공시·해외 시찰의 사건열 6개를 추가했습니다. 플레이어 추가 추첨 상한은 보통 연 3회, 고밀도 6회이며 실제 사건 조건·한 해 한 단계·당사자/지점 유효성을 확인합니다. [첫 제작분](docs/historical_events_wave1.md) · [두 번째 제작분](docs/historical_events_wave2.md). 인게임 검증은 대기 상태입니다.
 
 ### 전 시대 기업과 금융위기
 
@@ -129,7 +131,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 상황 8종의 진행 알림과 함께, 발전소가 없을 때(전력), 조약항을 내줬을 때, 운동이 급진화했을 때, 노동 불만이 50을 넘었을 때, 첫 법안을 낼 수 있을 때, 주가가 폭락했을 때 힌트가 뜹니다.
 
-#### 게임 규칙 6종
+#### 주요 게임 규칙
 
 | 규칙 | 선택지 |
 |---|---|
@@ -139,6 +141,9 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 | 확률 입법 | 켬 / 끔 |
 | 경제 통계 기록 | 끔 / 켬 (매년 게임 로그에 `TSIN_ECON` 통계 줄, `tools/econ_report.py`로 분석) |
 | 관찰 측정 기록 | 끔 / 켬 (관찰 실행 분석용) |
+| 역사 사건 빈도 | 보통 / 고밀도 / 끔 |
+| 럭키네이션 | 형성 지원 / 지원 및 영토 보완 / 끔 |
+| 국경 거래 | 켬 / 끔 (영토를 바꾸지 않는 진단 결단은 별도) |
 
 ### 바닐라 연속성과 세이브
 
@@ -152,12 +157,12 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 ## 2. 시대별 변경사항
 
-![7시대 산업 콘텐츠와 8~12시대 뼈대의 시작 연도와 구현 상태](readme_media/ages_timeline.png)
+![7시대 콘텐츠·8시대 부분 구현·9~12시대 뼈대의 시작 연도와 상태](readme_media/ages_timeline.png)
 
 | 시대 | 기간 | 컨셉 | 구현 상태 |
 |---|---|---|---|
 | VII 산업 | 1837~1900 | 공장·도시·국민국가·전기화 | 콘텐츠 구현, 인게임 검증 중 |
-| VIII 대전 | 1900~1945 | 대중 동원·총력전·제국 질서 재편 | 시대 뼈대만 |
+| VIII 대전 | 1900~1945 | 대중 동원·총력전·제국 질서 재편 | 농업·함선·물류 부분 구현 |
 | IX 원자력 | 1945~1990 | 핵 억지·국제 질서·대량소비 | 시대 뼈대만 |
 | X 정보화 | 1990~2035 | 네트워크·세계 공급망·지식경제 | 시대 뼈대만 |
 | XI 인공지능 | 2035~2120 | 지능형 자동화·노동과 통치의 전환 | 시대 뼈대만 |
@@ -165,7 +170,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 경계 연도는 다음 시대의 시작 연도입니다. 우주 개척의 2200년은 장기 개발 목표이며 새 시대 경계나 게임 종료일이 아닙니다. 기존 **2337.12.31 종료일은 유지**합니다.
 
-현재 전환 기준은 시대 정의의 시작 연도입니다. 세계적 보급 조건에 따른 동적 전환은 아직 구현하지 않았습니다. 후속 시대는 7시대의 경제·수요·기본 수치를 임시로 이어받으며, 전용 기술·이벤트·시대관과 새 시대 보너스를 추가하지 않았습니다. 아이콘과 기술 화면 배경은 기존 7시대 이미지를 수정 없이 임시 재사용합니다.
+현재 전환 기준은 시대 정의의 시작 연도입니다. 세계적 보급 조건에 따른 동적 전환은 아직 구현하지 않았습니다. 후속 시대는 7시대의 경제·수요·기본 수치를 이어받습니다. 8시대는 농업·함선·물류 기술을 부분 구현했고, 전용 제도·정치·이벤트 묶음은 아직 없습니다. 아이콘과 기술 화면 배경은 기존 7시대 이미지를 수정 없이 임시 재사용합니다.
 
 시대 등록 원본은 [`data/eras.json`](data/eras.json), 생성기는 [`tools/gen_era_skeleton.py`](tools/gen_era_skeleton.py)입니다. 정확한 ID와 검증 절차는 [`docs/future_era_skeleton.md`](docs/future_era_skeleton.md)에 있습니다.
 
@@ -177,7 +182,7 @@ GDP는 실제 국민계정이나 국고가 아닌 모드 내부의 생산 기반
 
 | 분야 | 구현된 내용 |
 |---|---|
-| 제도·발전 | 제도 3종, 발전 161개, 특화 기술 30개를 10개 분기·2~4단계로 구성 |
+| 제도·발전 | 제도 3종, 발전 159개, 특화 기술 30개를 10개 분기·2~4단계로 구성 |
 | 산업 | 재화 7종, 건물 26종, 개축·자동화·철도·화학·전력·기계화 농업 |
 | 사회·정치 | 정치 운동·노동·주거·교육·보건, 법 11종과 확률 입법, 기업 6종 |
 | 역사 콘텐츠 | 상황 8종, 재난 4종, 임무·원정·조약항·열강·문화 이벤트 |
@@ -240,7 +245,7 @@ flowchart LR
 
 ![제7시대 발전 분포](readme_media/advances.png)
 
-- 현재 **161개**입니다. 무료 특화 트리는 10개 분기·2~4단계로 나누고 선행 연구를 연결했습니다.
+- 현재 **159개**입니다. 무료 특화 트리는 10개 분기·2~4단계로 나누고 선행 연구를 연결했습니다.
 - 역사적으로 늦은 기술(속사포, 전노급 전함, 질소 고정)은 연도 조건 대신 **긴 선행 사슬과 교차 선행**(강철·전기)으로 늦춥니다.
 - 정부 유형·종교 발전은 해당 나라에만 보입니다.
 - 목표는 1900년 선도국이 제7시대 발전의 60~80%를 가진 상태입니다.
@@ -466,7 +471,7 @@ stateDiagram-v2
 
 ### 2.2. 제8시대 대전 (1900–1945)
 
-**시대 뼈대만 구현.** 컨셉: 대중 동원·산업 전쟁·정치 질서의 재편. 시작 연도·이름·기본 시대 정의·한/영 설명과 임시 이미지가 등록되어 있습니다. 전용 시대관·기술·이벤트·새 밸런스는 아직 없습니다.
+**부분 구현.** 기술 9종: 질소 고정·암모니아 합성·20세기 집약 농업, 노급 전함·중유 전함, 자동차 운송·보급대, 동력 비행·항공 관측. 시설 2종과 함선 2종을 추가했습니다. 기존 7시대 기술·연구 ID·함대를 유지하고 새 연구는 기존 산업화 제도를 요구합니다. 항공은 지상군 연락/관측 지원으로 표현합니다. 전용 시대관·정치·총력전은 아직 미구현입니다. [구현 범위](docs/age8_transport_military.md).
 
 
 
@@ -507,7 +512,7 @@ stateDiagram-v2
 
 ## 4. 개발자용 안내
 
-제7시대 콘텐츠 원본 354개는 [`era_7/`](era_7/README.md)에 모았습니다. 전역 UI·통계·공통 프레임워크·시대 연결 패치·제8~12시대 뼈대는 기존 경로를 유지합니다. 게임은 기존 `in_game`/`main_menu` 경로를 읽으므로, 원본을 수정하거나 저장소를 처음 받은 뒤에는 `python tools/sync_eras.py`**를 실행한 다음 게임을 시작**하세요. 생성기는 원본과 실행용 파일을 함께 갱신하며 배포 도구도 자동 동기화합니다. 구조와 새 파일 등록 방법은 `era_7/README.md` 참고.
+제7시대 원본 **360개**는 [`era_7/`](era_7/README.md), 제8시대 원본 **11개**는 [`era_8/`](era_8/README.md)에 있습니다. 전역 UI·통계·금융·역사 진행은 기존 공용 경로를 유지합니다. 게임 실행 전 `python tools/sync_eras.py`로 기존 `in_game`/`main_menu` 실행 경로에 동기화하세요. 생성기와 배포 도구도 같은 매핑을 사용합니다.
 
 ```
 in_game/         전역 게임 스크립트와 시대별 콘텐츠의 실행용 파일
@@ -541,21 +546,21 @@ README 도표는 `python tools/make_readme_media.py`로 다시 만듭니다(`mat
 2. 이미 등록한 제8시대 「대전」에 총력동원·기계화·대중정치 콘텐츠를 개발합니다.
 3. 제9시대 원자력 → 제10시대 정보화 → 제11시대 인공지능 → 제12시대 우주 개척 순으로 확장합니다.
 
-후속 시대의 역사적 사건·새 시대관·기술은 설계안이며 아직 게임 객체로 추가하지 않았습니다. 7시대의 교육·사회운동·GDP·기업 데이터는 유지하고 이후 모듈이 이어받도록 합니다. 시대 뼈대만으로 1900년 이후의 완성된 현대전·정치·우주 시뮬레이션이 제공되는 것은 아닙니다.
+제8시대의 구체화된 농업·함선·물류 연결은 구현했습니다. 그 밖의 후속 시대 역사 사건·새 제도·정치·우주 시스템은 설계 후보입니다. 7시대의 교육·사회운동·GDP·기업 데이터는 유지하고 이후 모듈이 이어받도록 합니다. 시대 뼈대만으로 1900년 이후의 완성된 현대전·정치·우주 시뮬레이션이 제공되는 것은 아닙니다.
 
 ## English summary
 
 **The Singularity is Near** adds shared systems to Europa Universalis V, followed by era-specific content. The end date is **2337.12.31**. Version 0.7.0 is a development build undergoing in-game verification.
 
-**Global systems:** a six-tab TSIN dashboard, 35 registered metrics, a neighboring current-situation button with 16 operational warning types, an icon-led economy **Stocks** tab with an eight-observation line chart, 16 map modes, 14 hints and 76 encyclopedia entries. GDP uses K/M/B/T formatting and ten annual observations; the stock chart shows eight observations, normally quarterly. Education, GDP, industrial acceleration and population control share common infrastructure. “Global” describes code ownership, not unconditional activation in 1337. Features retain their era, institution and country requirements. Native situation/disaster ribbons remain available. Glorp integration is optional.
+**Global systems:** a six-tab TSIN dashboard, 35 registered metrics, a neighboring current-situation button with 22 operational warning types, an Economy → **Finance** area with six subtabs with an eight-observation line chart, 16 map modes, 14 hints and 76 encyclopedia entries. GDP uses K/M/B/T formatting and ten annual observations; the stock chart shows eight observations, normally quarterly. Education, GDP, industrial acceleration and population control share common infrastructure. “Global” describes code ownership, not unconditional activation in 1337. Features retain their era, institution and country requirements. Native situation/disaster ribbons remain available. Glorp integration is optional.
 
 **Cross-era finance:** 14 early organizations plus six industrial sectors, five economic regimes, burgher-funded uncapped private entry under laissez-faire, local evidence-gated bubbles, and a 1900+ multi-market systemic crisis with a 25-year cooldown. Existing historical financial events retain their original choices and costs.
 
-**Age VII — Industry (1837–1900):** three institutions; 161 advances; 7 goods; 26 buildings; 19 units; 11 laws; six company types; eight situations and four disasters. Industrial production, automation, railways, electrification, mechanized agriculture, education, labor politics and probability-based legislation are implemented and being tested. The specialization tree uses ten branches with two to four tiers. The mod contains 181 events across era content and shared integration files.
+**Age VII — Industry (1837–1900):** three institutions; 159 advances; 7 goods; 26 buildings; 19 units; 11 laws; six company types; eight situations and four disasters. Industrial production, automation, railways, electrification, mechanized agriculture, education, labor politics and probability-based legislation are implemented and being tested. The specialization tree uses ten branches with two to four tiers. The mod contains 275 events across era content and shared integration files.
 
-**Ages VIII–XII — scaffolds only:** World Wars (1900), Atomic Power (1945), Information (1990), Artificial Intelligence (2035) and Space Settlement (2120). Names, dates and basic definitions exist; dedicated institutions, advances, events and new balancing do not. They temporarily reuse age-VII defaults and art. The year 2200 is a project milestone, not the end date.
+**Age VIII — partial content:** nine advances, two facilities and two capital ships connect agriculture, motor logistics, early aviation support and dreadnoughts to existing age-VII institutions. Dedicated age-VIII institutions and political systems remain planned. **Ages IX–XII — scaffolds:** Atomic Power (1945), Information (1990), Artificial Intelligence (2035) and Space Settlement (2120) retain dates, definitions and placeholder art. The year 2200 is a project milestone, not the end date.
 
-**Development layout:** edit Age VII sources under `era_7/`, then run `python tools/sync_eras.py` before launching. Shared content stays in its existing paths. Generators and release staging deploy to the original EU5 paths. Do not remove the mod from a save that has used its content. Runtime layout, performance and long-term balance still require in-game checks.
+**Development layout:** edit era sources under `era_7/` and `era_8/`, then run `python tools/sync_eras.py` before launching. Shared content stays in its existing paths. Generators and release staging deploy to the original EU5 paths. Do not remove the mod from a save that has used its content. Runtime layout, performance and long-term balance still require in-game checks.
 
 ---
 
