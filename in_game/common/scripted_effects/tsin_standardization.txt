@@ -1,0 +1,15 @@
+﻿tsin_standards_readiness_effect = {
+ set_global_variable = { name = tsin_standards_review_year value = current_year }
+ set_global_variable = { name = tsin_standards_industrial_countries value = 0 }
+ set_global_variable = { name = tsin_standards_common_measure value = 0 }
+ set_global_variable = { name = tsin_standards_common_gauge value = 0 }
+ set_global_variable = { name = tsin_standards_common_parts value = 0 }
+ set_global_variable = { name = tsin_standards_common_electric value = 0 }
+ every_country = { limit = { exists = capital num_locations > 0 }
+ if = { limit = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.05 tsin_country_secondary_education >= 10 capital = { market_access >= 0.5 } } change_global_variable = { name = tsin_standards_industrial_countries add = 1 } }
+ if = { limit = { var:tsin_standard_measure = 1 } change_global_variable = { name = tsin_standards_common_measure add = 1 } }
+ if = { limit = { var:tsin_standard_gauge = 1 } change_global_variable = { name = tsin_standards_common_gauge add = 1 } }
+ if = { limit = { var:tsin_standard_parts = 1 } change_global_variable = { name = tsin_standards_common_parts add = 1 } }
+ if = { limit = { var:tsin_standard_electric = 1 } change_global_variable = { name = tsin_standards_common_electric add = 1 } }
+ }
+}

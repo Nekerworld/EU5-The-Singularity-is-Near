@@ -1,0 +1,7 @@
+﻿yearly_country_pulse = { on_actions = { tsin_standards_annual_readiness } }
+tsin_standards_annual_readiness = {
+ trigger = { current_age_or_later = { age = age_7_industrialization }
+  OR = { NOT = { has_global_variable = tsin_standards_review_year } current_year > global_var:tsin_standards_review_year }
+ }
+ effect = { tsin_standards_readiness_effect = yes }
+}

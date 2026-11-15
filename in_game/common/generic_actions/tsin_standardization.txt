@@ -1,0 +1,276 @@
+﻿tsin_standards_host = {
+ type = owncountry price = price:tsin_standards_host_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { NOT = { has_global_variable = tsin_standards_pending } NOT = { has_global_variable = tsin_standards_cooldown } NOT = { is_situation_active = situation:tsin_standardization } }
+ allow = { global_var:tsin_standards_industrial_countries >= 3 scope:actor = { has_advance = tsin_engineering_education_advance at_war = no var:tsin_factory_share >= 0.1 tsin_country_secondary_education >= 20 exists = capital } }
+ ai_prerequisite = { gold >= 2500 }
+ effect = {
+  set_global_variable = tsin_standards_pending
+  set_global_variable = { name = tsin_standards_host_country value = scope:actor }
+ }
+ ai_will_do = { value = 20 }
+}
+
+tsin_standards_measure_1 = {
+ type = owncountry price = price:tsin_standards_measure_1_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ allow = { scope:actor = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 1 } } }
+ ai_prerequisite = { gold >= 600 NOT = { has_variable = tsin_standard_measure } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 1 } }
+   if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } } change_global_variable = { name = tsin_standards_common_measure add = 1 }
+   set_variable = { name = tsin_standard_measure value = 1 }
+   set_variable = { name = tsin_standard_measure_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 25 }
+}
+
+tsin_standards_measure_2 = {
+ type = owncountry price = price:tsin_standards_measure_2_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ allow = { scope:actor = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 2 } } }
+ ai_prerequisite = { gold >= 300 NOT = { has_variable = tsin_standard_measure } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 2 } }
+   if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } }
+   set_variable = { name = tsin_standard_measure value = 2 }
+   set_variable = { name = tsin_standard_measure_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_measure_3 = {
+ type = owncountry price = price:tsin_standards_measure_3_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ allow = { scope:actor = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 3 } } }
+ ai_prerequisite = { gold >= 100 NOT = { has_variable = tsin_standard_measure } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_industrial_capitalism_advance
+ NOT = { has_variable = tsin_standard_measure_cooldown }
+ NOT = { var:tsin_standard_measure = 3 } }
+   if = { limit = { var:tsin_standard_measure = 1 global_var:tsin_standards_common_measure > 0 } change_global_variable = { name = tsin_standards_common_measure add = -1 } }
+   set_variable = { name = tsin_standard_measure value = 3 }
+   set_variable = { name = tsin_standard_measure_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_gauge_1 = {
+ type = owncountry price = price:tsin_standards_gauge_1_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_steel_rolling_stock_advance } }
+ allow = { scope:actor = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 1 } } }
+ ai_prerequisite = { gold >= 800 NOT = { has_variable = tsin_standard_gauge } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 1 } }
+   if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } } change_global_variable = { name = tsin_standards_common_gauge add = 1 }
+   set_variable = { name = tsin_standard_gauge value = 1 }
+   set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 25 }
+}
+
+tsin_standards_gauge_2 = {
+ type = owncountry price = price:tsin_standards_gauge_2_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_steel_rolling_stock_advance } }
+ allow = { scope:actor = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 2 } } }
+ ai_prerequisite = { gold >= 400 NOT = { has_variable = tsin_standard_gauge } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 2 } }
+   if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } }
+   set_variable = { name = tsin_standard_gauge value = 2 }
+   set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_gauge_3 = {
+ type = owncountry price = price:tsin_standards_gauge_3_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_steel_rolling_stock_advance } }
+ allow = { scope:actor = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 3 } } }
+ ai_prerequisite = { gold >= 100 NOT = { has_variable = tsin_standard_gauge } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_steel_rolling_stock_advance
+ NOT = { has_variable = tsin_standard_gauge_cooldown }
+ NOT = { var:tsin_standard_gauge = 3 } }
+   if = { limit = { var:tsin_standard_gauge = 1 global_var:tsin_standards_common_gauge > 0 } change_global_variable = { name = tsin_standards_common_gauge add = -1 } }
+   set_variable = { name = tsin_standard_gauge value = 3 }
+   set_variable = { name = tsin_standard_gauge_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_parts_1 = {
+ type = owncountry price = price:tsin_standards_parts_1_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_engineering_education_advance } }
+ allow = { scope:actor = { has_advance = tsin_engineering_education_advance
+ NOT = { has_variable = tsin_standard_parts_cooldown }
+ NOT = { var:tsin_standard_parts = 1 } } }
+ ai_prerequisite = { gold >= 600 NOT = { has_variable = tsin_standard_parts } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_engineering_education_advance
+ NOT = { has_variable = tsin_standard_parts_cooldown }
+ NOT = { var:tsin_standard_parts = 1 } }
+   if = { limit = { var:tsin_standard_parts = 1 global_var:tsin_standards_common_parts > 0 } change_global_variable = { name = tsin_standards_common_parts add = -1 } } change_global_variable = { name = tsin_standards_common_parts add = 1 }
+   set_variable = { name = tsin_standard_parts value = 1 }
+   set_variable = { name = tsin_standard_parts_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 25 }
+}
+
+tsin_standards_parts_3 = {
+ type = owncountry price = price:tsin_standards_parts_3_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_engineering_education_advance } }
+ allow = { scope:actor = { has_advance = tsin_engineering_education_advance
+ NOT = { has_variable = tsin_standard_parts_cooldown }
+ NOT = { var:tsin_standard_parts = 3 } } }
+ ai_prerequisite = { gold >= 100 NOT = { has_variable = tsin_standard_parts } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_engineering_education_advance
+ NOT = { has_variable = tsin_standard_parts_cooldown }
+ NOT = { var:tsin_standard_parts = 3 } }
+   if = { limit = { var:tsin_standard_parts = 1 global_var:tsin_standards_common_parts > 0 } change_global_variable = { name = tsin_standards_common_parts add = -1 } }
+   set_variable = { name = tsin_standard_parts value = 3 }
+   set_variable = { name = tsin_standard_parts_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_electric_1 = {
+ type = owncountry price = price:tsin_standards_electric_1_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_distribution_grid_advance } }
+ allow = { scope:actor = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 1 } } }
+ ai_prerequisite = { gold >= 800 NOT = { has_variable = tsin_standard_electric } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 1 } }
+   if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } } change_global_variable = { name = tsin_standards_common_electric add = 1 }
+   set_variable = { name = tsin_standard_electric value = 1 }
+   set_variable = { name = tsin_standard_electric_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 25 }
+}
+
+tsin_standards_electric_2 = {
+ type = owncountry price = price:tsin_standards_electric_2_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_distribution_grid_advance } }
+ allow = { scope:actor = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 2 } } }
+ ai_prerequisite = { gold >= 400 NOT = { has_variable = tsin_standard_electric } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 2 } }
+   if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } }
+   set_variable = { name = tsin_standard_electric value = 2 }
+   set_variable = { name = tsin_standard_electric_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}
+
+tsin_standards_electric_3 = {
+ type = owncountry price = price:tsin_standards_electric_3_price show_message = no
+ ai_tick = monthly ai_tick_frequency = 12 automation_tick = never
+ potential = { OR = { is_situation_active = situation:tsin_standardization has_global_variable = tsin_standards_formed } scope:actor = { has_advance = tsin_distribution_grid_advance } }
+ allow = { scope:actor = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 3 } } }
+ ai_prerequisite = { gold >= 100 NOT = { has_variable = tsin_standard_electric } }
+ effect = { scope:actor = {
+  if = { limit = { has_advance = tsin_distribution_grid_advance
+ NOT = { has_variable = tsin_standard_electric_cooldown }
+ NOT = { var:tsin_standard_electric = 3 } }
+   if = { limit = { var:tsin_standard_electric = 1 global_var:tsin_standards_common_electric > 0 } change_global_variable = { name = tsin_standards_common_electric add = -1 } }
+   set_variable = { name = tsin_standard_electric value = 3 }
+   set_variable = { name = tsin_standard_electric_cooldown years = 5 }
+   if = { limit = { NOT = { has_variable = tsin_standards_participant } }
+    set_variable = tsin_standards_participant
+    change_global_variable = { name = tsin_standards_participants add = 1 }
+   }
+  }
+ } }
+ ai_will_do = { value = 10 }
+}

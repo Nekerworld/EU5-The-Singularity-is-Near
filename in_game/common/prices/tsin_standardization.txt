@@ -1,0 +1,12 @@
+﻿tsin_standards_host_price = { gold = 500 }
+tsin_standards_measure_1_price = { gold = 150 }
+tsin_standards_measure_2_price = { gold = 75 }
+tsin_standards_measure_3_price = { gold = 0 }
+tsin_standards_gauge_1_price = { gold = 200 }
+tsin_standards_gauge_2_price = { gold = 100 }
+tsin_standards_gauge_3_price = { gold = 0 }
+tsin_standards_parts_1_price = { gold = 150 }
+tsin_standards_parts_3_price = { gold = 0 }
+tsin_standards_electric_1_price = { gold = 200 }
+tsin_standards_electric_2_price = { gold = 100 }
+tsin_standards_electric_3_price = { gold = 0 }

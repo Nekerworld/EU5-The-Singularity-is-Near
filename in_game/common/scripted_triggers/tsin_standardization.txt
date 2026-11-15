@@ -1,0 +1,1 @@
+﻿tsin_standards_common_agreement = { OR = { global_var:tsin_standards_common_measure >= 2 global_var:tsin_standards_common_gauge >= 2 global_var:tsin_standards_common_parts >= 2 global_var:tsin_standards_common_electric >= 2 } }

@@ -1558,6 +1558,189 @@
           }
         }
       ]
+    },
+    {
+      "id": "standardization",
+      "shortcuts": [
+        {
+          "id": "standards_host",
+          "tab": "research",
+          "title": {
+            "korean": "국제 표준화 회의 개최",
+            "english": "Host standards conference"
+          },
+          "generic_action": "tsin_standards_host"
+        },
+        {
+          "id": "standards_measure_1",
+          "tab": "research",
+          "title": {
+            "korean": "도량형 — 공통 단위",
+            "english": "Measures — Common units"
+          },
+          "generic_action": "tsin_standards_measure_1"
+        },
+        {
+          "id": "standards_measure_2",
+          "tab": "research",
+          "title": {
+            "korean": "도량형 — 기존 단위와 병용",
+            "english": "Measures — Dual units"
+          },
+          "generic_action": "tsin_standards_measure_2"
+        },
+        {
+          "id": "standards_measure_3",
+          "tab": "research",
+          "title": {
+            "korean": "도량형 — 독자 단위 유지",
+            "english": "Measures — Keep domestic units"
+          },
+          "generic_action": "tsin_standards_measure_3"
+        },
+        {
+          "id": "standards_gauge_1",
+          "tab": "research",
+          "title": {
+            "korean": "철도 규격 — 권고 규격 채택",
+            "english": "Rail standards — Adopt recommended standard"
+          },
+          "generic_action": "tsin_standards_gauge_1"
+        },
+        {
+          "id": "standards_gauge_2",
+          "tab": "research",
+          "title": {
+            "korean": "철도 규격 — 기존 규격·환적 호환",
+            "english": "Rail standards — Keep gauge with interchange"
+          },
+          "generic_action": "tsin_standards_gauge_2"
+        },
+        {
+          "id": "standards_gauge_3",
+          "tab": "research",
+          "title": {
+            "korean": "철도 규격 — 독자 철도 규격",
+            "english": "Rail standards — Keep domestic rail standard"
+          },
+          "generic_action": "tsin_standards_gauge_3"
+        },
+        {
+          "id": "standards_parts_1",
+          "tab": "research",
+          "title": {
+            "korean": "산업 부품 — 공통 부품 규격",
+            "english": "Industrial parts — Common parts"
+          },
+          "generic_action": "tsin_standards_parts_1"
+        },
+        {
+          "id": "standards_parts_3",
+          "tab": "research",
+          "title": {
+            "korean": "산업 부품 — 국내 부품 규격",
+            "english": "Industrial parts — Domestic parts"
+          },
+          "generic_action": "tsin_standards_parts_3"
+        },
+        {
+          "id": "standards_electric_1",
+          "tab": "research",
+          "title": {
+            "korean": "전기 설비 — 상호접속 권고 규격",
+            "english": "Electrical equipment — Interconnection standard"
+          },
+          "generic_action": "tsin_standards_electric_1"
+        },
+        {
+          "id": "standards_electric_2",
+          "tab": "research",
+          "title": {
+            "korean": "전기 설비 — 변환 설비와 병용",
+            "english": "Electrical equipment — Compatibility converters"
+          },
+          "generic_action": "tsin_standards_electric_2"
+        },
+        {
+          "id": "standards_electric_3",
+          "tab": "research",
+          "title": {
+            "korean": "전기 설비 — 독자 전기 규격",
+            "english": "Electrical equipment — Domestic electrical standard"
+          },
+          "generic_action": "tsin_standards_electric_3"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "standard_measure",
+          "variable": "tsin_standard_measure",
+          "title": {
+            "korean": "도량형 선택",
+            "english": "Measures choice"
+          },
+          "tabs": [
+            "research"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "0=미선택, 1=공통 규격, 2=병용·호환, 3=독자 유지. 분야별 선택은 독립적입니다. 실제 모든 노선·단위를 강제 변경하지 않습니다.",
+            "english": "0=undecided, 1=common, 2=dual/compatible, 3=domestic. Domains are independent; does not forcibly rebuild every network."
+          }
+        },
+        {
+          "id": "standard_gauge",
+          "variable": "tsin_standard_gauge",
+          "title": {
+            "korean": "철도 규격 선택",
+            "english": "Rail standards choice"
+          },
+          "tabs": [
+            "research"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "0=미선택, 1=공통 규격, 2=병용·호환, 3=독자 유지. 분야별 선택은 독립적입니다. 실제 모든 노선·단위를 강제 변경하지 않습니다.",
+            "english": "0=undecided, 1=common, 2=dual/compatible, 3=domestic. Domains are independent; does not forcibly rebuild every network."
+          }
+        },
+        {
+          "id": "standard_parts",
+          "variable": "tsin_standard_parts",
+          "title": {
+            "korean": "산업 부품 선택",
+            "english": "Industrial parts choice"
+          },
+          "tabs": [
+            "research"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "0=미선택, 1=공통 규격, 2=병용·호환, 3=독자 유지. 분야별 선택은 독립적입니다. 실제 모든 노선·단위를 강제 변경하지 않습니다.",
+            "english": "0=undecided, 1=common, 2=dual/compatible, 3=domestic. Domains are independent; does not forcibly rebuild every network."
+          }
+        },
+        {
+          "id": "standard_electric",
+          "variable": "tsin_standard_electric",
+          "title": {
+            "korean": "전기 설비 선택",
+            "english": "Electrical equipment choice"
+          },
+          "tabs": [
+            "research"
+          ],
+          "unit": "number",
+          "frequency": "event",
+          "description": {
+            "korean": "0=미선택, 1=공통 규격, 2=병용·호환, 3=독자 유지. 분야별 선택은 독립적입니다. 실제 모든 노선·단위를 강제 변경하지 않습니다.",
+            "english": "0=undecided, 1=common, 2=dual/compatible, 3=domestic. Domains are independent; does not forcibly rebuild every network."
+          }
+        }
+      ]
     }
   ],
   "histories": [

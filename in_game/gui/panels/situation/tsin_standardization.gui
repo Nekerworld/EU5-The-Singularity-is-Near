@@ -1,0 +1,86 @@
+﻿situation_panel = {
+ blockoverride "situation_subheader_content" {}
+ blockoverride "situation_panel_main_content" {
+ vbox = { spacing = 8 layoutpolicy_horizontal = expanding
+ text_multi = { text = "TSIN_STANDARDS_HELP" fontsize = 15 layoutpolicy_horizontal = expanding }
+ text_single = { text = "TSIN_STANDARD_MEASURE" fontsize = 16 }
+ hbox = { spacing = 4
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_measure_1')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_measure_1" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_measure_1" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_measure_2')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_measure_2" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_measure_2" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_measure_3')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_measure_3" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_measure_3" }
+ }
+}
+ }
+ text_single = { text = "TSIN_STANDARD_GAUGE" fontsize = 16 }
+ hbox = { spacing = 4
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_gauge_1')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_gauge_1" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_gauge_1" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_gauge_2')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_gauge_2" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_gauge_2" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_gauge_3')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_gauge_3" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_gauge_3" }
+ }
+}
+ }
+ text_single = { text = "TSIN_STANDARD_PARTS" fontsize = 16 }
+ hbox = { spacing = 4
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_parts_1')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_parts_1" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_parts_1" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_parts_3')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_parts_3" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_parts_3" }
+ }
+}
+ }
+ text_single = { text = "TSIN_STANDARD_ELECTRIC" fontsize = 16 }
+ hbox = { spacing = 4
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_electric_1')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_electric_1" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_electric_1" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_electric_2')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_electric_2" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_electric_2" }
+ }
+}
+widget = { size = { 160 34 } datacontext = "[GetGenericAction('tsin_standards_electric_3')]"
+ button_regular = { size = { 160 34 }
+  action_tooltip = { title = "tsin_standards_electric_3" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+  text_single = { size = { 154 30 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_standards_electric_3" }
+ }
+}
+ }
+ }
+ }
+}

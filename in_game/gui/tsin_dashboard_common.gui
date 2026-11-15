@@ -580,6 +580,46 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_storage_report
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_storage_report_month').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
 }
+type tsin_ui_card_standard_measure = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STANDARD_MEASURE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STANDARD_MEASURE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_measure').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_standard_measure').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_measure').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
+type tsin_ui_card_standard_gauge = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STANDARD_GAUGE"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STANDARD_GAUGE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_gauge').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_standard_gauge').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_gauge').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
+type tsin_ui_card_standard_parts = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STANDARD_PARTS"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STANDARD_PARTS" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_parts').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_standard_parts').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_parts').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
+type tsin_ui_card_standard_electric = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_STANDARD_ELECTRIC"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_STANDARD_ELECTRIC" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_standard_electric').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_standard_electric').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_standard_electric').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }

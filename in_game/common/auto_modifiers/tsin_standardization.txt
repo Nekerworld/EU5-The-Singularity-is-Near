@@ -1,0 +1,39 @@
+﻿tsin_standards_measure_1 = {
+ potential_trigger = { var:tsin_standard_measure = 1 }
+ global_merchant_capacity_modifier = 0.02
+}
+
+tsin_standards_measure_2 = {
+ potential_trigger = { var:tsin_standard_measure = 2 }
+ global_merchant_capacity_modifier = 0.01
+}
+
+tsin_standards_gauge_1 = {
+ potential_trigger = { var:tsin_standard_gauge = 1 }
+ build_railroad_cost_modifier = -0.03
+}
+
+tsin_standards_gauge_2 = {
+ potential_trigger = { var:tsin_standard_gauge = 2 }
+ build_railroad_cost_modifier = -0.01
+}
+
+tsin_standards_parts_1 = {
+ potential_trigger = { var:tsin_standard_parts = 1 }
+ research_speed_modifier = 0.02
+}
+
+tsin_standards_parts_3 = {
+ potential_trigger = { var:tsin_standard_parts = 3 }
+ research_speed_modifier = 0.01
+}
+
+tsin_standards_electric_1 = {
+ potential_trigger = { var:tsin_standard_electric = 1 }
+ global_tsin_electricity_output_modifier = 0.03
+}
+
+tsin_standards_electric_2 = {
+ potential_trigger = { var:tsin_standard_electric = 2 }
+ global_tsin_electricity_output_modifier = 0.02
+}

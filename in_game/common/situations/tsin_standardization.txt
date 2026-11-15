@@ -1,0 +1,22 @@
+﻿tsin_standardization = {
+ monthly_spawn_chance = 100
+ can_start = { has_global_variable = tsin_standards_pending }
+ visible = { exists = capital num_locations > 0 }
+ on_start = {
+  tsin_standards_readiness_effect = yes
+  remove_global_variable = tsin_standards_pending
+  set_global_variable = { name = tsin_standards_participants value = 0 }
+  every_country = { limit = { exists = capital num_locations > 0 has_variable = tsin_standards_participant } change_global_variable = { name = tsin_standards_participants add = 1 } }
+ }
+ outcome = { name = tsin_standards_agreement trigger = { situation:tsin_standardization = { years_since_situation_start >= 3 } tsin_standards_common_agreement = yes } }
+ outcome = { name = tsin_standards_no_agreement trigger = { situation:tsin_standardization = { years_since_situation_start >= 3 } tsin_standards_common_agreement = no } }
+ on_ended = {
+  set_global_variable = { name = tsin_standards_cooldown years = 25 }
+  if = { limit = { tsin_standards_common_agreement = yes } set_global_variable = tsin_standards_formed }
+ }
+ map_color = {
+  if = { limit = { owner ?= { has_variable = tsin_standards_participant } } value = define:NMapColors|MAP_COLOR_MAX }
+  else = { value = define:NMapColors|DEFAULT_COLOR }
+ }
+ legend_key = { desc = "tsin_standards_participants_legend" color = define:NMapColors|MAP_COLOR_MAX }
+}
