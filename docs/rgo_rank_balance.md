@@ -9,3 +9,7 @@
 원본은 `tools/gen_rgo_rank_balance.py`, 실행 파일은 `in_game/common/location_ranks/00_default.txt` 및 `common/auto_modifiers/tsin_rgo_rank_balance.txt`다. 바닐라와 동일 경로의 등급 정의를 사용해 후속 모드의 별도 INJECT를 보존한다. 기존 등급 보정 외의 식량·고용·건설·승격·RGO 생산성 항목을 변경하지 않는다. 새로운 국가/세계 월간 순회는 추가하지 않는다.
 
 검증: 생성물 재현성, RGO 항목 이외 바닐라 등급 규칙 보존, 인구 10만 경계와 다른 등급 배제, 별도 광산 효과 미부여. 인게임에서 촌락·소도시·도시·10만 이상 도시·최상위 도시의 RGO 툴팁과 합산 내역을 확인해야 한다.
+
+## 도시 확장 후
+
+새 tsin_large_city는 자체 +20%를 갖고 메트로폴리스(megalopolis)와 신규 tsin_megalopolis는 0%다. 기존 city가 10만 이상이어도 승격 전에는 +20%로 처리하는 하위 호환 보정을 유지한다. 최초 기록의 네 등급 설명은 이전 구현 이력이다. 도시 생성기는 등급 허용·연결·현지화를 함께 생성하며 RGO 생성기에서 호출한다.

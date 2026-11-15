@@ -701,8 +701,8 @@ tsin_society.125 = {
 		var:tsin_socialism >= 40
 		capital ?= {
 			OR = {
-				location_rank = location_rank:city
-				location_rank = location_rank:megalopolis
+				tsin_is_city_or_large_city = yes
+				tsin_is_metropolis_or_megalopolis = yes
 			}
 		}
 	}

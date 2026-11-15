@@ -423,8 +423,8 @@ tsin_civic.90 = {
 		has_advance = tsin_modern_sewerage_advance
 		capital ?= {
 			OR = {
-				location_rank = location_rank:city
-				location_rank = location_rank:megalopolis
+				tsin_is_city_or_large_city = yes
+				tsin_is_metropolis_or_megalopolis = yes
 			}
 			NOT = { has_building_with_at_least_one_level = tsin_waterworks }
 		}

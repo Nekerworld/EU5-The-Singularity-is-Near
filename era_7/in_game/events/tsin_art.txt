@@ -58,7 +58,7 @@ tsin_art.20 = {
 	trigger = {
 		tsin_flavor_budget_available_trigger = yes
 		current_date > 1850.1.1
-		any_owned_location = { location_rank = location_rank:city }
+		any_owned_location = { tsin_is_city_or_large_city = yes }
 		NOT = { has_variable = tsin_art_realism_done }
 	}
 

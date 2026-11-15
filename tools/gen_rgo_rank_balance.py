@@ -37,7 +37,7 @@ def build():
     # Explicit native read: never use mod source/mirror redirection here.
     original = native.read_text(encoding='utf-8-sig')
     return {
-        REL_RANKS: rank_text(original),
+        REL_RANKS: __import__("gen_city_expansion").expand_ranks(rank_text(original)),
         REL_LARGE: '''# No scripted country/world pulse. The engine evaluates this local condition.
 # Existing city ID is retained for buildings and saves; 100 = 100,000 people.
 tsin_large_city_rgo_balance = {

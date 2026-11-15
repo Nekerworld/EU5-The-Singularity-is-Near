@@ -422,8 +422,8 @@ tsin_urbanization = {
 			limit = {
 				has_owner = yes
 				OR = {
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			value = define:NMapColors|MAP_COLOR_MAX
@@ -1087,8 +1087,10 @@ tsin_automation = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Factory site quality: market access, coal or iron, railway station, city rank.
 tsin_industrial_siting = {
 	map_color = {
@@ -1182,8 +1184,10 @@ tsin_industrial_siting = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Modern infrastructure buildings (docs/infrastructure.md).
 tsin_infrastructure = {
 	map_color = {
@@ -1288,8 +1292,10 @@ tsin_infrastructure = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Labor conditions of factory locations (docs/labor.md).
 tsin_labor_conditions = {
 	map_color = {
@@ -1398,8 +1404,10 @@ tsin_labor_conditions = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Crowding and worker housing (docs/housing.md).
 tsin_housing = {
 	map_color = {
@@ -1522,8 +1530,10 @@ tsin_housing = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Owner's estimated per-capita GDP against the world's highest (docs/economic_statistics.md).
 tsin_gdp_per_capita = {
 	map_color = {
@@ -1628,8 +1638,10 @@ tsin_gdp_per_capita = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Company headquarters and works of the owner's companies (docs/corporations.md).
 tsin_corporations = {
 	map_color = {
@@ -1741,8 +1753,10 @@ tsin_corporations = {
 
 	refresh_colors_on_selection_change = yes
 	color_refresh_counters = { Month LocationOwnerChanged }
-}
-
+}
+
+
+
 # Agricultural revolution stage and market food surplus (docs/agriculture.md).
 tsin_agriculture = {
 	map_color = {

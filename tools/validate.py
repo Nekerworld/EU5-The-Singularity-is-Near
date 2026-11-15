@@ -492,6 +492,9 @@ def check_gfx() -> None:
                     err(f"gfx: map mode {b.key} has no gfx/interface/icons/map_modes/{b.key}.dds")
         if "common/building_types" in r:
             for b in pdx.top_level_blocks(clean):
+                # Permission injections retain the existing type's icon; they do not define a new building.
+                if b.key.startswith(("TRY_INJECT:", "INJECT:", "INJECT_OR_CREATE:")):
+                    continue
                 if not gfx_exists(f"gfx/interface/icons/buildings/{b.key}.dds"):
                     err(f"gfx: building {b.key} has no gfx/interface/icons/buildings/{b.key}.dds")
             for kind, icon in re.findall(r"\bicon_type\s*=\s*(\w+)\s+icon\s*=\s*(\w+)", clean):

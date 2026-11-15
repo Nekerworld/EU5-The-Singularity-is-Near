@@ -19,8 +19,8 @@ TRY_REPLACE:sponsor_a_university = {
 			is_core_of = root
 			OR = {
 				location_rank = location_rank:town
-				location_rank = location_rank:city
-				location_rank = location_rank:megalopolis
+				tsin_is_city_or_large_city = yes
+				tsin_is_metropolis_or_megalopolis = yes
 			}
 			NOT = { OR = { has_building = building_type:university has_building = building_type:tsin_research_university } }
 		}
@@ -63,7 +63,7 @@ TRY_REPLACE:sponsor_a_university = {
 			order_by = {
 				value = population
 				if = {
-					limit = { OR = { location_rank = location_rank:city  location_rank = location_rank:megalopolis } }
+					limit = { OR = { tsin_is_city_or_large_city = yes  tsin_is_metropolis_or_megalopolis = yes } }
 					multiply = 5
 				}
 			}
@@ -72,8 +72,8 @@ TRY_REPLACE:sponsor_a_university = {
 				NOT = { OR = { has_building = building_type:university has_building = building_type:tsin_research_university } }
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			max = 1
@@ -114,7 +114,7 @@ TRY_REPLACE:grant_city_rights = {
 			NOT = {
 				any_neighbor_location = {
 					owner ?= root
-					OR = { location_rank = location_rank:city  location_rank = location_rank:megalopolis }
+					OR = { tsin_is_city_or_large_city = yes  tsin_is_metropolis_or_megalopolis = yes }
 				}
 			}
 		}
@@ -150,7 +150,7 @@ TRY_REPLACE:grant_city_rights = {
 				NOT = {
 					any_neighbor_location = {
 						owner ?= root
-						OR = { location_rank = location_rank:city  location_rank = location_rank:megalopolis }
+						OR = { tsin_is_city_or_large_city = yes  tsin_is_metropolis_or_megalopolis = yes }
 					}
 				}
 			}
@@ -160,7 +160,7 @@ TRY_REPLACE:grant_city_rights = {
 				add = num_buildings
 			}
 			max = 1
-			change_location_rank_effect = { location_rank = location_rank:city }
+			change_location_rank_effect = { tsin_is_city_or_large_city = yes }
 			change_development = development_weak_bonus
 			every_pop = {
 				limit = {
@@ -243,8 +243,8 @@ TRY_REPLACE:expand_docks = {
 				is_coastal = yes
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			construct_building = {
@@ -329,8 +329,8 @@ TRY_REPLACE:expand_dry_docks = {
 				is_coastal = yes
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			construct_building = {
@@ -413,8 +413,8 @@ TRY_REPLACE:expand_shipyards = {
 				is_coastal = yes
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			construct_building = {
@@ -495,8 +495,8 @@ TRY_REPLACE:expand_grand_shipyards = {
 				is_coastal = yes
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			construct_building = {
@@ -571,8 +571,8 @@ TRY_REPLACE:expand_naval_bases = {
 				is_coastal = yes
 				OR = {
 					location_rank = location_rank:town
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 			}
 			construct_building = {

@@ -131,6 +131,8 @@ def rewrite_code(text: str, main_menu: bool) -> str:
         else:
             code = RE_CUR.sub(f"current_age_or_later = {{ age = {AGE6} }}", code)
         code = RE_BIRTH.sub(f"OR = {{ birth_age = age:{AGE6} birth_age = age:{AGE7} }}", code)
+        from gen_city_expansion import rewrite_rank_checks
+        code = rewrite_rank_checks(code)
         out_lines.append(code + comment)
     return "\n".join(out_lines)
 

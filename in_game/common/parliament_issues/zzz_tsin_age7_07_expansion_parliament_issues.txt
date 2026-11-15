@@ -155,8 +155,8 @@ TRY_REPLACE:fund_monastery_network = {
 					NOT = { has_building = building_type:miaphysite_monastery }
 					OR = {
 						location_rank = location_rank:town
-						location_rank = location_rank:city
-						location_rank = location_rank:megalopolis
+						tsin_is_city_or_large_city = yes
+						tsin_is_metropolis_or_megalopolis = yes
 					}
 				}
 				order_by = population
@@ -178,8 +178,8 @@ TRY_REPLACE:fund_monastery_network = {
 					NOT = { has_building = building_type:orthodox_monastery }
 					OR = {
 						location_rank = location_rank:town
-						location_rank = location_rank:city
-						location_rank = location_rank:megalopolis
+						tsin_is_city_or_large_city = yes
+						tsin_is_metropolis_or_megalopolis = yes
 					}
 				}
 				order_by = population
@@ -198,8 +198,8 @@ TRY_REPLACE:fund_monastery_network = {
 					NOT = { has_building = building_type:monastery }
 					OR = {
 						location_rank = location_rank:town
-						location_rank = location_rank:city
-						location_rank = location_rank:megalopolis
+						tsin_is_city_or_large_city = yes
+						tsin_is_metropolis_or_megalopolis = yes
 					}
 				}
 				order_by = population

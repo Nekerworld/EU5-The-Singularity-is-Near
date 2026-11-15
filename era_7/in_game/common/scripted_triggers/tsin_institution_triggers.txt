@@ -20,8 +20,8 @@ tsin_industrial_capitalism_plausible_location = {
 tsin_mass_society_plausible_location = {
 	has_institution = institution:enlightenment
 	OR = {
-		location_rank = location_rank:city
-		location_rank = location_rank:megalopolis
+		tsin_is_city_or_large_city = yes
+		tsin_is_metropolis_or_megalopolis = yes
 	}
 	average_location_literacy > 40
 	num_pop_type:laborers > 30

@@ -175,8 +175,8 @@ tsin_culture.40 = {
 		at_war = no
 		capital ?= {
 			OR = {
-				location_rank = location_rank:city
-				location_rank = location_rank:megalopolis
+				tsin_is_city_or_large_city = yes
+				tsin_is_metropolis_or_megalopolis = yes
 			}
 		}
 	}

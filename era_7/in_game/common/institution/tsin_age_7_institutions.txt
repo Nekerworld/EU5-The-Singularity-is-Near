@@ -12,8 +12,8 @@ tsin_industrial_capitalism = {
 			AND = {
 				has_game_rule = institution_spawn_random_city
 				OR = {
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 				has_institution = institution:industrialization
 			}
@@ -64,8 +64,8 @@ tsin_mass_society = {
 			AND = {
 				has_game_rule = institution_spawn_random_city
 				OR = {
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 				has_institution = institution:enlightenment
 			}
@@ -117,8 +117,8 @@ tsin_electrification = {
 			AND = {
 				has_game_rule = institution_spawn_random_city
 				OR = {
-					location_rank = location_rank:city
-					location_rank = location_rank:megalopolis
+					tsin_is_city_or_large_city = yes
+					tsin_is_metropolis_or_megalopolis = yes
 				}
 				has_institution = institution:tsin_industrial_capitalism
 				owner ?= { has_advance = tsin_machine_tools_advance }
