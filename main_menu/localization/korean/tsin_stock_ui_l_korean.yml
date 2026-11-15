@@ -34,6 +34,7 @@
  TSIN_STOCK_CHEMICAL: "화학 회사"
  TSIN_STOCK_RAILWAY: "철도 회사"
  TSIN_STOCK_FARM_MACHINERY: "농기계 회사"
+ TSIN_CAP_WORLD_COMPANIES: "세계 기업 통계"
  TSIN_CAP_INDEX: "기업·주가 지수"
  TSIN_CAP_COUNT: "기업 수"
  TSIN_CAP_LIMIT: "기업 한도"

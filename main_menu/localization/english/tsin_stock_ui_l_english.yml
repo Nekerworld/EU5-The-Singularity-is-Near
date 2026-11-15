@@ -34,6 +34,7 @@
  TSIN_STOCK_CHEMICAL: "Chemical company"
  TSIN_STOCK_RAILWAY: "Railway company"
  TSIN_STOCK_FARM_MACHINERY: "Farm machinery company"
+ TSIN_CAP_WORLD_COMPANIES: "World company statistics"
  TSIN_CAP_INDEX: "Company index"
  TSIN_CAP_COUNT: "Firms"
  TSIN_CAP_LIMIT: "Company capacity"

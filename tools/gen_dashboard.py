@@ -50,9 +50,9 @@ def validate_registry(data):
         if entry['tab'] not in tabs:
             raise ValueError(f'{entry["id"]}: unknown tab')
     for entry in shortcuts:
-        if sum(k in entry for k in ('view','map_mode','generic_action')) != 1:
+        if sum(k in entry for k in ('view','map_mode','generic_action','open_variable')) != 1:
             raise ValueError('shortcut must have exactly one native view or map target')
-        target=entry.get('view',entry.get('map_mode',entry.get('generic_action')))
+        target=entry.get('view',entry.get('map_mode',entry.get('generic_action',entry.get('open_variable'))))
         if not SAFE_ID.fullmatch(target):
             raise ValueError('shortcut: invalid target')
     for entry in statuses:
@@ -281,6 +281,8 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
             key=title('LINK',s)
             close=f"GetVariableSystem.Clear('{open_var}')"
             if 'view' in s: ui.append(action_button(key,[f"OpenLateralView('{s['view']}')",close],220))
+            elif 'open_variable' in s:
+                ui.append(action_button(key,[f"GetVariableSystem.Set('{s['open_variable']}', 'yes')",close],220))
             elif 'generic_action' in s:
                 ui += [f'widget = {{ size = {{ 220 30 }} datacontext = "[GetGenericAction(\'{s["generic_action"]}\')]"',action_button(key,['PerformGenericAction(GenericAction.Self)',close],220),'}']
             else:

@@ -1,0 +1,1 @@
+﻿gui/tsin_world_companies.gui = tsin_world_company_window

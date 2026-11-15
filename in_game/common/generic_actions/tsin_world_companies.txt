@@ -1,0 +1,5 @@
+﻿tsin_survey_world_companies = {
+ type = owncountry price = price:tsin_world_company_survey_price show_message = no
+ ai_tick = never automation_tick = never
+ effect = { scope:actor = { tsin_world_company_survey_effect = yes } }
+}

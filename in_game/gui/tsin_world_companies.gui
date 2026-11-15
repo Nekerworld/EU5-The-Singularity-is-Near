@@ -1,0 +1,262 @@
+﻿window = {
+ name = "tsin_world_company_window" layer = topbar parentanchor = center widgetanchor = center
+ size = { 1000 900 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+ visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ui_world_companies_open'))]"
+ widget = { size = { 100% 100% } using = bg_window_default_alt }
+ widget = { parentanchor = right position = { -8 8 } size = { 40 40 } button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_world_companies_open')]" } } }
+ vbox = { position = { 20 18 } spacing = 5
+ text_single = { fontsize = 22 text = "TSIN_WCS_TITLE" }
+ text_multi = { maximumsize = { 945 -1 } fontsize = 12 text = "TSIN_WCS_HELP" }
+ hbox = { spacing = 10
+ widget = { size = { 200 30 } datacontext = "[GetGenericAction('tsin_survey_world_companies')]"
+ button_regular = { size = { 200 30 } action_tooltip = { title = "tsin_survey_world_companies" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+ text_single = { size = { 194 28 } parentanchor = center text = "tsin_survey_world_companies" } }
+ }
+ text_single = { text = "TSIN_WCS_DATE" }
+ }
+ hbox = { spacing = 5
+
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_0').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_0" on_action = "[GetScriptedGui('tsin_wcs_filter_0').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_0" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_1" on_action = "[GetScriptedGui('tsin_wcs_filter_1').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_1" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_2" on_action = "[GetScriptedGui('tsin_wcs_filter_2').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_2" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_3" on_action = "[GetScriptedGui('tsin_wcs_filter_3').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_3" }
+}
+}
+scrollarea = { size = { 950 100 }
+scrollbarpolicy_horizontal = always_off
+scrollbarpolicy_vertical = as_needed
+scrollwidget = {
+vbox = { spacing = 3
+hbox = { spacing = 4
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_10').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_10" on_action = "[GetScriptedGui('tsin_wcs_filter_10').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_10" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_11').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_11" on_action = "[GetScriptedGui('tsin_wcs_filter_11').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_11" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_12').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_12" on_action = "[GetScriptedGui('tsin_wcs_filter_12').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_12" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_13').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_13" on_action = "[GetScriptedGui('tsin_wcs_filter_13').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_13" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_14').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_14" on_action = "[GetScriptedGui('tsin_wcs_filter_14').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_14" }
+}
+}
+hbox = { spacing = 4
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_15').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_15" on_action = "[GetScriptedGui('tsin_wcs_filter_15').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_15" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_16').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_16" on_action = "[GetScriptedGui('tsin_wcs_filter_16').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_16" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_17').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_17" on_action = "[GetScriptedGui('tsin_wcs_filter_17').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_17" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_18').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_18" on_action = "[GetScriptedGui('tsin_wcs_filter_18').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_18" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_19').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_19" on_action = "[GetScriptedGui('tsin_wcs_filter_19').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_19" }
+}
+}
+hbox = { spacing = 4
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_20').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_20" on_action = "[GetScriptedGui('tsin_wcs_filter_20').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_20" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_21').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_21" on_action = "[GetScriptedGui('tsin_wcs_filter_21').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_21" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_22').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_22" on_action = "[GetScriptedGui('tsin_wcs_filter_22').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_22" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_23').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_23" on_action = "[GetScriptedGui('tsin_wcs_filter_23').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_23" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_24').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_24" on_action = "[GetScriptedGui('tsin_wcs_filter_24').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_24" }
+}
+}
+hbox = { spacing = 4
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_25').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_25" on_action = "[GetScriptedGui('tsin_wcs_filter_25').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_25" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_26').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_26" on_action = "[GetScriptedGui('tsin_wcs_filter_26').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_26" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_27').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_27" on_action = "[GetScriptedGui('tsin_wcs_filter_27').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_27" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_28').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_28" on_action = "[GetScriptedGui('tsin_wcs_filter_28').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_28" }
+}
+button_regular = { size = { 180 28 } enabled = "[GetScriptedGui('tsin_wcs_filter_29').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_filter_29" on_action = "[GetScriptedGui('tsin_wcs_filter_29').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 174 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_filter_29" }
+}
+}
+} } }
+hbox = { spacing = 5
+button_regular = { size = { 220 28 } enabled = "[GetScriptedGui('tsin_wcs_sort_0').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_sort_0" on_action = "[GetScriptedGui('tsin_wcs_sort_0').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 214 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_sort_0" }
+}
+button_regular = { size = { 220 28 } enabled = "[GetScriptedGui('tsin_wcs_sort_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_sort_1" on_action = "[GetScriptedGui('tsin_wcs_sort_1').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 214 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_sort_1" }
+}
+button_regular = { size = { 220 28 } enabled = "[GetScriptedGui('tsin_wcs_sort_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "tsin_wcs_sort_2" on_action = "[GetScriptedGui('tsin_wcs_sort_2').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 214 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "tsin_wcs_sort_2" }
+}
+}
+text_single = { text = "TSIN_WCS_TOTALS" fontsize = 12 }
+text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 12 }
+scrollarea = { size = { 950 410 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed scrollwidget = { vbox = { spacing = 4
+hbox = { spacing = 5
+text_single = { size = { 240 24 } fontsize = 13 text = "TSIN_WCS_COUNTRY" }
+text_single = { size = { 90 24 } fontsize = 13 text = "TSIN_WCS_COUNT" }
+text_single = { size = { 175 24 } fontsize = 13 text = "TSIN_WCS_CASH" }
+text_single = { size = { 175 24 } fontsize = 13 text = "TSIN_WCS_PROXY" }
+text_single = { size = { 100 24 } fontsize = 13 text = "TSIN_WCS_SOURCE" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_1_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_1_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_1_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_1_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_1_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_1_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_2_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_2_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_2_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_2_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_2_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_2_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_3_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_3_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_3_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_3_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_3_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_3_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_4_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_4_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_4_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_4_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_4_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_4_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_5_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_5_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_5_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_5_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_5_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_5_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_6_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_6_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_6_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_6_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_6_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_6_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_7_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_7_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_7_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_7_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_7_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_7_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_8_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_8_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_8_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_8_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_8_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_8_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_9_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_9_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_9_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_9_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_9_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_9_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_10_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_10_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_10_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_10_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_10_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_10_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_11_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_11_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_11_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_11_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_11_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_11_source_year').GetValue|0]" }
+}
+hbox = { spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_12_country').IsSet]"
+ widget = { size = { 240 23 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_12_country').GetCountry]"
+ text_single = { size = { 235 22 } autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = { using = CountryTooltip } } }
+ text_single = { size = { 90 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_12_count').GetValue|0]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_12_cash')]" }
+ text_single = { size = { 175 23 } text = "[GetPlayer.Custom('tsin_wcs_fmt_12_proxy')]" }
+ text_single = { size = { 100 23 } text = "[GetPlayer.MakeScope.GetVariable('tsin_wcs_display_12_source_year').GetValue|0]" }
+}
+hbox = { spacing = 8
+button_regular = { size = { 145 28 } enabled = "[GetScriptedGui('tsin_wcs_prev').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "TSIN_WCS_PREV" on_action = "[GetScriptedGui('tsin_wcs_prev').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 139 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "TSIN_WCS_PREV" }
+}
+button_regular = { size = { 145 28 } enabled = "[GetScriptedGui('tsin_wcs_next').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ action_tooltip = { title = "TSIN_WCS_NEXT" on_action = "[GetScriptedGui('tsin_wcs_next').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+ text_single = { size = { 139 26 } parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "TSIN_WCS_NEXT" }
+}
+text_single = { text = "TSIN_WCS_PAGE" }
+}
+} } }
+} }

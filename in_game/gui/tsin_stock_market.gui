@@ -217,6 +217,11 @@ text_single = { visible = "[GetScriptedGui('tsin_capital_is_private').IsValid(Gu
 text_single = { visible = "[Not(GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" text = "/ [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_company_limit')|0]" tooltip = "TSIN_CAP_LIMIT" }
 }
 hbox = { spacing = 6
+button_regular = { size = { 220 28 }
+
+action_tooltip = { title = "TSIN_CAP_WORLD_COMPANIES" on_action = "[GetVariableSystem.Set('tsin_ui_world_companies_open', 'yes')]" }
+text_single = { size = { 212 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_WORLD_COMPANIES" }
+}
 button_regular = { size = { 140 28 }
 
 action_tooltip = { title = "TSIN_CAP_LAW" on_action = "[OpenLateralView('laws')]" }

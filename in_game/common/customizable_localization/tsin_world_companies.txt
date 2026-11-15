@@ -1,0 +1,387 @@
+﻿tsin_wcs_fmt_1_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_1_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_1_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_1_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_1_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_1_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_1_cash >= 1000000 } localization_key = TSIN_WCS_FMT_1_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_1_cash >= 1000 } localization_key = TSIN_WCS_FMT_1_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_1_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_1_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_1_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_1_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_1_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_1_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_1_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_1_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_1_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_1_proxy >= 1000 } localization_key = TSIN_WCS_FMT_1_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_1_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_2_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_2_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_2_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_2_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_2_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_2_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_2_cash >= 1000000 } localization_key = TSIN_WCS_FMT_2_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_2_cash >= 1000 } localization_key = TSIN_WCS_FMT_2_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_2_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_2_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_2_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_2_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_2_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_2_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_2_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_2_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_2_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_2_proxy >= 1000 } localization_key = TSIN_WCS_FMT_2_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_2_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_3_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_3_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_3_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_3_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_3_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_3_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_3_cash >= 1000000 } localization_key = TSIN_WCS_FMT_3_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_3_cash >= 1000 } localization_key = TSIN_WCS_FMT_3_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_3_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_3_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_3_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_3_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_3_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_3_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_3_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_3_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_3_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_3_proxy >= 1000 } localization_key = TSIN_WCS_FMT_3_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_3_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_4_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_4_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_4_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_4_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_4_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_4_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_4_cash >= 1000000 } localization_key = TSIN_WCS_FMT_4_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_4_cash >= 1000 } localization_key = TSIN_WCS_FMT_4_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_4_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_4_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_4_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_4_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_4_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_4_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_4_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_4_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_4_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_4_proxy >= 1000 } localization_key = TSIN_WCS_FMT_4_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_4_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_5_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_5_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_5_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_5_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_5_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_5_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_5_cash >= 1000000 } localization_key = TSIN_WCS_FMT_5_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_5_cash >= 1000 } localization_key = TSIN_WCS_FMT_5_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_5_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_5_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_5_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_5_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_5_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_5_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_5_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_5_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_5_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_5_proxy >= 1000 } localization_key = TSIN_WCS_FMT_5_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_5_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_6_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_6_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_6_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_6_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_6_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_6_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_6_cash >= 1000000 } localization_key = TSIN_WCS_FMT_6_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_6_cash >= 1000 } localization_key = TSIN_WCS_FMT_6_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_6_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_6_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_6_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_6_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_6_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_6_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_6_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_6_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_6_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_6_proxy >= 1000 } localization_key = TSIN_WCS_FMT_6_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_6_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_7_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_7_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_7_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_7_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_7_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_7_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_7_cash >= 1000000 } localization_key = TSIN_WCS_FMT_7_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_7_cash >= 1000 } localization_key = TSIN_WCS_FMT_7_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_7_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_7_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_7_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_7_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_7_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_7_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_7_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_7_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_7_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_7_proxy >= 1000 } localization_key = TSIN_WCS_FMT_7_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_7_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_8_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_8_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_8_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_8_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_8_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_8_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_8_cash >= 1000000 } localization_key = TSIN_WCS_FMT_8_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_8_cash >= 1000 } localization_key = TSIN_WCS_FMT_8_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_8_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_8_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_8_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_8_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_8_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_8_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_8_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_8_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_8_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_8_proxy >= 1000 } localization_key = TSIN_WCS_FMT_8_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_8_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_9_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_9_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_9_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_9_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_9_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_9_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_9_cash >= 1000000 } localization_key = TSIN_WCS_FMT_9_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_9_cash >= 1000 } localization_key = TSIN_WCS_FMT_9_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_9_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_9_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_9_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_9_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_9_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_9_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_9_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_9_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_9_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_9_proxy >= 1000 } localization_key = TSIN_WCS_FMT_9_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_9_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_10_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_10_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_10_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_10_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_10_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_10_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_10_cash >= 1000000 } localization_key = TSIN_WCS_FMT_10_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_10_cash >= 1000 } localization_key = TSIN_WCS_FMT_10_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_10_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_10_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_10_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_10_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_10_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_10_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_10_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_10_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_10_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_10_proxy >= 1000 } localization_key = TSIN_WCS_FMT_10_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_10_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_11_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_11_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_11_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_11_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_11_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_11_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_11_cash >= 1000000 } localization_key = TSIN_WCS_FMT_11_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_11_cash >= 1000 } localization_key = TSIN_WCS_FMT_11_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_11_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_11_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_11_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_11_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_11_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_11_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_11_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_11_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_11_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_11_proxy >= 1000 } localization_key = TSIN_WCS_FMT_11_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_11_PROXY_BASE }
+
+}
+
+tsin_wcs_fmt_12_cash = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_12_cash_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_12_cash >= 1000000000000 } localization_key = TSIN_WCS_FMT_12_CASH_T }
+
+ text = { trigger = { var:tsin_wcs_display_12_cash >= 1000000000 } localization_key = TSIN_WCS_FMT_12_CASH_B }
+
+ text = { trigger = { var:tsin_wcs_display_12_cash >= 1000000 } localization_key = TSIN_WCS_FMT_12_CASH_M }
+
+ text = { trigger = { var:tsin_wcs_display_12_cash >= 1000 } localization_key = TSIN_WCS_FMT_12_CASH_K }
+
+ text = { localization_key = TSIN_WCS_FMT_12_CASH_BASE }
+
+}
+
+tsin_wcs_fmt_12_proxy = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_display_12_proxy_known = 0 } localization_key = TSIN_WCS_MISSING }
+
+ text = { trigger = { var:tsin_wcs_display_12_proxy >= 1000000000000 } localization_key = TSIN_WCS_FMT_12_PROXY_T }
+
+ text = { trigger = { var:tsin_wcs_display_12_proxy >= 1000000000 } localization_key = TSIN_WCS_FMT_12_PROXY_B }
+
+ text = { trigger = { var:tsin_wcs_display_12_proxy >= 1000000 } localization_key = TSIN_WCS_FMT_12_PROXY_M }
+
+ text = { trigger = { var:tsin_wcs_display_12_proxy >= 1000 } localization_key = TSIN_WCS_FMT_12_PROXY_K }
+
+ text = { localization_key = TSIN_WCS_FMT_12_PROXY_BASE }
+
+}
+
+tsin_wcs_filter_name = { type = country random_valid = no
+ text = { trigger = { var:tsin_wcs_filter = 0 } localization_key = tsin_wcs_filter_0 }
+ text = { trigger = { var:tsin_wcs_filter = 1 } localization_key = tsin_wcs_filter_1 }
+ text = { trigger = { var:tsin_wcs_filter = 2 } localization_key = tsin_wcs_filter_2 }
+ text = { trigger = { var:tsin_wcs_filter = 3 } localization_key = tsin_wcs_filter_3 }
+ text = { trigger = { var:tsin_wcs_filter = 10 } localization_key = tsin_wcs_filter_10 }
+ text = { trigger = { var:tsin_wcs_filter = 11 } localization_key = tsin_wcs_filter_11 }
+ text = { trigger = { var:tsin_wcs_filter = 12 } localization_key = tsin_wcs_filter_12 }
+ text = { trigger = { var:tsin_wcs_filter = 13 } localization_key = tsin_wcs_filter_13 }
+ text = { trigger = { var:tsin_wcs_filter = 14 } localization_key = tsin_wcs_filter_14 }
+ text = { trigger = { var:tsin_wcs_filter = 15 } localization_key = tsin_wcs_filter_15 }
+ text = { trigger = { var:tsin_wcs_filter = 16 } localization_key = tsin_wcs_filter_16 }
+ text = { trigger = { var:tsin_wcs_filter = 17 } localization_key = tsin_wcs_filter_17 }
+ text = { trigger = { var:tsin_wcs_filter = 18 } localization_key = tsin_wcs_filter_18 }
+ text = { trigger = { var:tsin_wcs_filter = 19 } localization_key = tsin_wcs_filter_19 }
+ text = { trigger = { var:tsin_wcs_filter = 20 } localization_key = tsin_wcs_filter_20 }
+ text = { trigger = { var:tsin_wcs_filter = 21 } localization_key = tsin_wcs_filter_21 }
+ text = { trigger = { var:tsin_wcs_filter = 22 } localization_key = tsin_wcs_filter_22 }
+ text = { trigger = { var:tsin_wcs_filter = 23 } localization_key = tsin_wcs_filter_23 }
+ text = { trigger = { var:tsin_wcs_filter = 24 } localization_key = tsin_wcs_filter_24 }
+ text = { trigger = { var:tsin_wcs_filter = 25 } localization_key = tsin_wcs_filter_25 }
+ text = { trigger = { var:tsin_wcs_filter = 26 } localization_key = tsin_wcs_filter_26 }
+ text = { trigger = { var:tsin_wcs_filter = 27 } localization_key = tsin_wcs_filter_27 }
+ text = { trigger = { var:tsin_wcs_filter = 28 } localization_key = tsin_wcs_filter_28 }
+ text = { trigger = { var:tsin_wcs_filter = 29 } localization_key = tsin_wcs_filter_29 }
+ text = { localization_key = tsin_wcs_filter_0 }
+}

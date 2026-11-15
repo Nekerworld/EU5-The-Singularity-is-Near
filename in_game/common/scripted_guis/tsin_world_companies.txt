@@ -1,0 +1,57 @@
+﻿tsin_wcs_prev = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year var:tsin_wcs_page > 0 } effect = { change_variable = { name = tsin_wcs_page add = -1 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_next = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year var:tsin_wcs_matches > { value = var:tsin_wcs_page add = 1 multiply = 12 } } effect = { change_variable = { name = tsin_wcs_page add = 1 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_0 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 0 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_1 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 1 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_2 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 2 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_3 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 3 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_10 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 10 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_11 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 11 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_12 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 12 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_13 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 13 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_14 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 14 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_15 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 15 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_16 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 16 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_17 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 17 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_18 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 18 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_19 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 19 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_20 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 20 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_21 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 21 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_22 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 22 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_23 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 23 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_24 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 24 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_25 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 25 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_26 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 26 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_27 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 27 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_28 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 28 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_filter_29 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_filter value = 29 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_sort_0 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_sort value = 0 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_sort_1 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_sort value = 1 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }
+
+tsin_wcs_sort_2 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_wcs_survey_year } effect = { set_variable = { name = tsin_wcs_sort value = 2 } set_variable = { name = tsin_wcs_page value = 0 } tsin_world_company_project_page_effect = yes } }

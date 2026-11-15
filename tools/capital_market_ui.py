@@ -17,6 +17,7 @@ def extend(result):
         return '\n'.join([f'button_regular = {{ size = {{ {width} 28 }}',f'enabled = "[{enabled}]"' if enabled else '',
             f'action_tooltip = {{ title = "{label}" on_action = "[{action}]" }}',
             f'text_single = {{ size = {{ {width-8} 26 }} parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "{label}" }}','}'])
+    loc('WORLD_COMPANIES','World company statistics','세계 기업 통계')
     loc('INDEX','Company index','기업·주가 지수');loc('COUNT','Firms','기업 수');loc('LIMIT','Company capacity','기업 한도')
     loc('PRIVATE','Private entry · no policy cap','민간 자율 진입 · 정책상 무제한')
     loc('PUBLIC','Public founding / licensed entry','국가 투자·인가 진입')
@@ -73,7 +74,7 @@ tooltip = "[{val('tsin_index_h'+str(i))}|1]" }}''']
         'text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(\'tsin_company_count\')|0]" }',
         f'text_single = {{ visible = "[{gui("tsin_capital_is_private")}]" text = "∞" tooltip = "TSIN_CAP_PRIVATE" }}',
         f'text_single = {{ visible = "[Not({gui("tsin_capital_is_private")})]" text = "/ [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(\'tsin_company_limit\')|0]" tooltip = "TSIN_CAP_LIMIT" }}','}',
-        'hbox = { spacing = 6',button('TSIN_CAP_LAW',"OpenLateralView('laws')"),
+        'hbox = { spacing = 6',button('TSIN_CAP_WORLD_COMPANIES',"GetVariableSystem.Set('tsin_ui_world_companies_open', 'yes')",width=220),button('TSIN_CAP_LAW',"OpenLateralView('laws')"),
         'text_single = { alwaystransparent = no text = "TSIN_CAP_RISK" tooltip = "TSIN_CAP_RISK_HELP" }','}',
         'hbox = { spacing = 10',
         'text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(\'tsin_sustainable_firms\')|1]" tooltip = "TSIN_CAP_CAPACITY" }',

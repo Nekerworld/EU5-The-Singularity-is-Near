@@ -1,0 +1,569 @@
+﻿tsin_world_company_survey_effect = {
+ save_scope_as = tsin_wcs_reader
+ every_in_list = { variable = tsin_wcs_rows
+  save_temporary_scope_value_as = { name = tsin_wcs_row value = this }
+
+ remove_from_global_variable_map = { name = tsin_wcs_country key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_count key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_industrial key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_generic key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_national key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_cash key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_cash_known key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_proxy key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_proxy_known key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_source_year key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_steel key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_machinery key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_textile key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_chemical key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_railway key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_farm_machinery key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_merchant_house key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_artisan_house key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_mining_syndicate key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_agricultural_house key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_shipping_house key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_merchant_bank key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_san_giorgio key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_eic key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_voc key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_french_indies key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_mitsui key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_songbang key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_south_sea key = scope:tsin_wcs_row }
+
+ remove_from_global_variable_map = { name = tsin_wcs_company_mississippi key = scope:tsin_wcs_row }
+
+ }
+ clear_variable_list = tsin_wcs_rows
+ if = { limit = { NOT = { has_global_variable = tsin_wcs_next_id } } set_global_variable = { name = tsin_wcs_next_id value = 0 } }
+ set_variable = { name = tsin_wcs_survey_year value = current_year }
+ set_variable = { name = tsin_wcs_survey_month value = current_month }
+ set_variable = { name = tsin_wcs_total_countries value = 0 }
+ set_variable = { name = tsin_wcs_total_firms value = 0 }
+ set_variable = { name = tsin_wcs_total_cash value = 0 }
+ set_variable = { name = tsin_wcs_cash_countries value = 0 }
+ every_country = { limit = { is_real_country = yes exists = capital tsin_company_count > 0 }
+  save_scope_as = tsin_wcs_country
+  set_global_variable = { name = tsin_wcs_next_id value = { value = global_var:tsin_wcs_next_id add = 1 } }
+  save_temporary_scope_value_as = { name = tsin_wcs_row value = global_var:tsin_wcs_next_id }
+
+  add_to_global_variable_map = { name = tsin_wcs_country key = scope:tsin_wcs_row value = this }
+
+  add_to_global_variable_map = { name = tsin_wcs_count key = scope:tsin_wcs_row value = tsin_company_count }
+
+  add_to_global_variable_map = { name = tsin_wcs_industrial key = scope:tsin_wcs_row value = tsin_wcs_industrial_count }
+
+  add_to_global_variable_map = { name = tsin_wcs_generic key = scope:tsin_wcs_row value = tsin_wcs_generic_count }
+
+  add_to_global_variable_map = { name = tsin_wcs_national key = scope:tsin_wcs_row value = tsin_wcs_national_count }
+
+  add_to_global_variable_map = { name = tsin_wcs_cash key = scope:tsin_wcs_row value = 0 }
+
+  add_to_global_variable_map = { name = tsin_wcs_cash_known key = scope:tsin_wcs_row value = 0 }
+
+  add_to_global_variable_map = { name = tsin_wcs_proxy key = scope:tsin_wcs_row value = 0 }
+
+  add_to_global_variable_map = { name = tsin_wcs_proxy_known key = scope:tsin_wcs_row value = 0 }
+
+  add_to_global_variable_map = { name = tsin_wcs_source_year key = scope:tsin_wcs_row value = 0 }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_steel key = scope:tsin_wcs_row value = tsin_firm_number_steel }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_machinery key = scope:tsin_wcs_row value = tsin_firm_number_machinery }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_textile key = scope:tsin_wcs_row value = tsin_firm_number_textile }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_chemical key = scope:tsin_wcs_row value = tsin_firm_number_chemical }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_railway key = scope:tsin_wcs_row value = tsin_firm_number_railway }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_farm_machinery key = scope:tsin_wcs_row value = tsin_firm_number_farm_machinery }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_merchant_house key = scope:tsin_wcs_row value = tsin_firm_number_merchant_house }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_artisan_house key = scope:tsin_wcs_row value = tsin_firm_number_artisan_house }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_mining_syndicate key = scope:tsin_wcs_row value = tsin_firm_number_mining_syndicate }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_agricultural_house key = scope:tsin_wcs_row value = tsin_firm_number_agricultural_house }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_shipping_house key = scope:tsin_wcs_row value = tsin_firm_number_shipping_house }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_merchant_bank key = scope:tsin_wcs_row value = tsin_firm_number_merchant_bank }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_san_giorgio key = scope:tsin_wcs_row value = tsin_firm_number_san_giorgio }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_eic key = scope:tsin_wcs_row value = tsin_firm_number_eic }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_voc key = scope:tsin_wcs_row value = tsin_firm_number_voc }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_french_indies key = scope:tsin_wcs_row value = tsin_firm_number_french_indies }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_mitsui key = scope:tsin_wcs_row value = tsin_firm_number_mitsui }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_songbang key = scope:tsin_wcs_row value = tsin_firm_number_songbang }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_south_sea key = scope:tsin_wcs_row value = tsin_firm_number_south_sea }
+
+  add_to_global_variable_map = { name = tsin_wcs_company_mississippi key = scope:tsin_wcs_row value = tsin_firm_number_mississippi }
+
+  if = { limit = { has_variable = tsin_firm_cash }
+add_to_global_variable_map = { name = tsin_wcs_cash key = scope:tsin_wcs_row value = var:tsin_firm_cash }
+add_to_global_variable_map = { name = tsin_wcs_cash_known key = scope:tsin_wcs_row value = 1 }
+   save_temporary_scope_value_as = { name = tsin_wcs_cash value = var:tsin_firm_cash }
+   scope:tsin_wcs_reader = { change_variable = { name = tsin_wcs_total_cash add = scope:tsin_wcs_cash } change_variable = { name = tsin_wcs_cash_countries add = 1 } }
+  }
+  if = { limit = { has_variable = tsin_statistics_company_value has_variable = tsin_stock_ui_stats_year }
+add_to_global_variable_map = { name = tsin_wcs_proxy key = scope:tsin_wcs_row value = var:tsin_statistics_company_value }
+add_to_global_variable_map = { name = tsin_wcs_proxy_known key = scope:tsin_wcs_row value = 1 }
+add_to_global_variable_map = { name = tsin_wcs_source_year key = scope:tsin_wcs_row value = var:tsin_stock_ui_stats_year }
+  }
+  save_temporary_scope_value_as = { name = tsin_wcs_count value = tsin_company_count }
+  scope:tsin_wcs_reader = {
+   add_to_variable_list = { name = tsin_wcs_rows target = scope:tsin_wcs_row }
+   change_variable = { name = tsin_wcs_total_countries add = 1 }
+   change_variable = { name = tsin_wcs_total_firms add = scope:tsin_wcs_count }
+  }
+ }
+ if = { limit = { NOT = { has_variable = tsin_wcs_filter } } set_variable = { name = tsin_wcs_filter value = 0 } }
+ if = { limit = { NOT = { has_variable = tsin_wcs_sort } } set_variable = { name = tsin_wcs_sort value = 0 } }
+ set_variable = { name = tsin_wcs_page value = 0 }
+ tsin_world_company_project_page_effect = yes
+}
+tsin_world_company_project_page_effect = {
+ save_scope_as = tsin_wcs_reader
+ set_variable = { name = tsin_wcs_matches value = 0 }
+ set_variable = { name = tsin_wcs_slot value = 0 }
+ set_local_variable = { name = tsin_wcs_offset value = { value = var:tsin_wcs_page multiply = 12 } }
+
+ remove_variable = tsin_wcs_display_1_country
+
+ remove_variable = tsin_wcs_display_1_count
+
+ remove_variable = tsin_wcs_display_1_cash
+
+ remove_variable = tsin_wcs_display_1_cash_known
+
+ remove_variable = tsin_wcs_display_1_proxy
+
+ remove_variable = tsin_wcs_display_1_proxy_known
+
+ remove_variable = tsin_wcs_display_1_source_year
+
+ remove_variable = tsin_wcs_display_2_country
+
+ remove_variable = tsin_wcs_display_2_count
+
+ remove_variable = tsin_wcs_display_2_cash
+
+ remove_variable = tsin_wcs_display_2_cash_known
+
+ remove_variable = tsin_wcs_display_2_proxy
+
+ remove_variable = tsin_wcs_display_2_proxy_known
+
+ remove_variable = tsin_wcs_display_2_source_year
+
+ remove_variable = tsin_wcs_display_3_country
+
+ remove_variable = tsin_wcs_display_3_count
+
+ remove_variable = tsin_wcs_display_3_cash
+
+ remove_variable = tsin_wcs_display_3_cash_known
+
+ remove_variable = tsin_wcs_display_3_proxy
+
+ remove_variable = tsin_wcs_display_3_proxy_known
+
+ remove_variable = tsin_wcs_display_3_source_year
+
+ remove_variable = tsin_wcs_display_4_country
+
+ remove_variable = tsin_wcs_display_4_count
+
+ remove_variable = tsin_wcs_display_4_cash
+
+ remove_variable = tsin_wcs_display_4_cash_known
+
+ remove_variable = tsin_wcs_display_4_proxy
+
+ remove_variable = tsin_wcs_display_4_proxy_known
+
+ remove_variable = tsin_wcs_display_4_source_year
+
+ remove_variable = tsin_wcs_display_5_country
+
+ remove_variable = tsin_wcs_display_5_count
+
+ remove_variable = tsin_wcs_display_5_cash
+
+ remove_variable = tsin_wcs_display_5_cash_known
+
+ remove_variable = tsin_wcs_display_5_proxy
+
+ remove_variable = tsin_wcs_display_5_proxy_known
+
+ remove_variable = tsin_wcs_display_5_source_year
+
+ remove_variable = tsin_wcs_display_6_country
+
+ remove_variable = tsin_wcs_display_6_count
+
+ remove_variable = tsin_wcs_display_6_cash
+
+ remove_variable = tsin_wcs_display_6_cash_known
+
+ remove_variable = tsin_wcs_display_6_proxy
+
+ remove_variable = tsin_wcs_display_6_proxy_known
+
+ remove_variable = tsin_wcs_display_6_source_year
+
+ remove_variable = tsin_wcs_display_7_country
+
+ remove_variable = tsin_wcs_display_7_count
+
+ remove_variable = tsin_wcs_display_7_cash
+
+ remove_variable = tsin_wcs_display_7_cash_known
+
+ remove_variable = tsin_wcs_display_7_proxy
+
+ remove_variable = tsin_wcs_display_7_proxy_known
+
+ remove_variable = tsin_wcs_display_7_source_year
+
+ remove_variable = tsin_wcs_display_8_country
+
+ remove_variable = tsin_wcs_display_8_count
+
+ remove_variable = tsin_wcs_display_8_cash
+
+ remove_variable = tsin_wcs_display_8_cash_known
+
+ remove_variable = tsin_wcs_display_8_proxy
+
+ remove_variable = tsin_wcs_display_8_proxy_known
+
+ remove_variable = tsin_wcs_display_8_source_year
+
+ remove_variable = tsin_wcs_display_9_country
+
+ remove_variable = tsin_wcs_display_9_count
+
+ remove_variable = tsin_wcs_display_9_cash
+
+ remove_variable = tsin_wcs_display_9_cash_known
+
+ remove_variable = tsin_wcs_display_9_proxy
+
+ remove_variable = tsin_wcs_display_9_proxy_known
+
+ remove_variable = tsin_wcs_display_9_source_year
+
+ remove_variable = tsin_wcs_display_10_country
+
+ remove_variable = tsin_wcs_display_10_count
+
+ remove_variable = tsin_wcs_display_10_cash
+
+ remove_variable = tsin_wcs_display_10_cash_known
+
+ remove_variable = tsin_wcs_display_10_proxy
+
+ remove_variable = tsin_wcs_display_10_proxy_known
+
+ remove_variable = tsin_wcs_display_10_source_year
+
+ remove_variable = tsin_wcs_display_11_country
+
+ remove_variable = tsin_wcs_display_11_count
+
+ remove_variable = tsin_wcs_display_11_cash
+
+ remove_variable = tsin_wcs_display_11_cash_known
+
+ remove_variable = tsin_wcs_display_11_proxy
+
+ remove_variable = tsin_wcs_display_11_proxy_known
+
+ remove_variable = tsin_wcs_display_11_source_year
+
+ remove_variable = tsin_wcs_display_12_country
+
+ remove_variable = tsin_wcs_display_12_count
+
+ remove_variable = tsin_wcs_display_12_cash
+
+ remove_variable = tsin_wcs_display_12_cash_known
+
+ remove_variable = tsin_wcs_display_12_proxy
+
+ remove_variable = tsin_wcs_display_12_proxy_known
+
+ remove_variable = tsin_wcs_display_12_source_year
+
+ clear_list = tsin_wcs_sort_rows
+ every_in_list = { variable = tsin_wcs_rows add_to_list = tsin_wcs_sort_rows }
+ ordered_in_list = {
+  list = tsin_wcs_sort_rows limit = { tsin_wcs_selected_count > 0 }
+  order_by = tsin_wcs_sort_value max = 100000
+  save_temporary_scope_value_as = { name = tsin_wcs_row value = this }
+  save_temporary_scope_value_as = { name = tsin_wcs_display_count value = tsin_wcs_selected_count }
+  scope:tsin_wcs_reader = {
+   change_variable = { name = tsin_wcs_matches add = 1 }
+   if = { limit = { var:tsin_wcs_matches > local_var:tsin_wcs_offset var:tsin_wcs_slot < 12 }
+    change_variable = { name = tsin_wcs_slot add = 1 }
+
+    if = { limit = { var:tsin_wcs_slot = 1 }
+
+     set_variable = { name = tsin_wcs_display_1_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_1_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_1_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_1_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_1_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_1_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_1_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 2 }
+
+     set_variable = { name = tsin_wcs_display_2_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_2_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_2_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_2_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_2_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_2_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_2_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 3 }
+
+     set_variable = { name = tsin_wcs_display_3_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_3_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_3_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_3_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_3_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_3_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_3_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 4 }
+
+     set_variable = { name = tsin_wcs_display_4_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_4_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_4_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_4_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_4_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_4_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_4_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 5 }
+
+     set_variable = { name = tsin_wcs_display_5_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_5_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_5_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_5_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_5_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_5_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_5_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 6 }
+
+     set_variable = { name = tsin_wcs_display_6_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_6_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_6_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_6_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_6_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_6_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_6_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 7 }
+
+     set_variable = { name = tsin_wcs_display_7_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_7_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_7_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_7_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_7_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_7_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_7_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 8 }
+
+     set_variable = { name = tsin_wcs_display_8_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_8_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_8_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_8_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_8_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_8_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_8_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 9 }
+
+     set_variable = { name = tsin_wcs_display_9_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_9_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_9_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_9_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_9_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_9_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_9_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 10 }
+
+     set_variable = { name = tsin_wcs_display_10_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_10_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_10_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_10_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_10_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_10_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_10_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 11 }
+
+     set_variable = { name = tsin_wcs_display_11_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_11_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_11_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_11_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_11_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_11_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_11_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+    if = { limit = { var:tsin_wcs_slot = 12 }
+
+     set_variable = { name = tsin_wcs_display_12_country value = "global_variable_map(tsin_wcs_country|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_12_count value = scope:tsin_wcs_display_count }
+
+     set_variable = { name = tsin_wcs_display_12_cash value = "global_variable_map(tsin_wcs_cash|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_12_cash_known value = "global_variable_map(tsin_wcs_cash_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_12_proxy value = "global_variable_map(tsin_wcs_proxy|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_12_proxy_known value = "global_variable_map(tsin_wcs_proxy_known|scope:tsin_wcs_row)" }
+
+     set_variable = { name = tsin_wcs_display_12_source_year value = "global_variable_map(tsin_wcs_source_year|scope:tsin_wcs_row)" }
+
+    }
+
+   }
+  }
+ }
+ clear_list = tsin_wcs_sort_rows
+}

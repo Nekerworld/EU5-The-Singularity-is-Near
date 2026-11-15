@@ -1,0 +1,301 @@
+﻿tsin_wcs_industrial_count = { value = 0
+ add = tsin_firm_number_steel
+ add = tsin_firm_number_machinery
+ add = tsin_firm_number_textile
+ add = tsin_firm_number_chemical
+ add = tsin_firm_number_railway
+ add = tsin_firm_number_farm_machinery
+}
+
+tsin_wcs_generic_count = { value = 0
+ add = tsin_firm_number_merchant_house
+ add = tsin_firm_number_artisan_house
+ add = tsin_firm_number_mining_syndicate
+ add = tsin_firm_number_agricultural_house
+ add = tsin_firm_number_shipping_house
+ add = tsin_firm_number_merchant_bank
+}
+
+tsin_wcs_national_count = { value = 0
+ add = tsin_firm_number_san_giorgio
+ add = tsin_firm_number_eic
+ add = tsin_firm_number_voc
+ add = tsin_firm_number_french_indies
+ add = tsin_firm_number_mitsui
+ add = tsin_firm_number_songbang
+ add = tsin_firm_number_south_sea
+ add = tsin_firm_number_mississippi
+}
+
+tsin_wcs_selected_count = { value = 0
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 0 } } value = "global_variable_map(tsin_wcs_count|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 1 } } value = "global_variable_map(tsin_wcs_industrial|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 2 } } value = "global_variable_map(tsin_wcs_generic|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 3 } } value = "global_variable_map(tsin_wcs_national|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 10 } } value = "global_variable_map(tsin_wcs_company_steel|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 11 } } value = "global_variable_map(tsin_wcs_company_machinery|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 12 } } value = "global_variable_map(tsin_wcs_company_textile|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 13 } } value = "global_variable_map(tsin_wcs_company_chemical|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 14 } } value = "global_variable_map(tsin_wcs_company_railway|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 15 } } value = "global_variable_map(tsin_wcs_company_farm_machinery|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 16 } } value = "global_variable_map(tsin_wcs_company_merchant_house|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 17 } } value = "global_variable_map(tsin_wcs_company_artisan_house|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 18 } } value = "global_variable_map(tsin_wcs_company_mining_syndicate|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 19 } } value = "global_variable_map(tsin_wcs_company_agricultural_house|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 20 } } value = "global_variable_map(tsin_wcs_company_shipping_house|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 21 } } value = "global_variable_map(tsin_wcs_company_merchant_bank|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 22 } } value = "global_variable_map(tsin_wcs_company_san_giorgio|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 23 } } value = "global_variable_map(tsin_wcs_company_eic|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 24 } } value = "global_variable_map(tsin_wcs_company_voc|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 25 } } value = "global_variable_map(tsin_wcs_company_french_indies|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 26 } } value = "global_variable_map(tsin_wcs_company_mitsui|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 27 } } value = "global_variable_map(tsin_wcs_company_songbang|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 28 } } value = "global_variable_map(tsin_wcs_company_south_sea|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_filter = 29 } } value = "global_variable_map(tsin_wcs_company_mississippi|this)" }
+}
+
+tsin_wcs_sort_value = {
+ value = tsin_wcs_selected_count
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_sort = 1 } } value = "global_variable_map(tsin_wcs_cash|this)" }
+ if = { limit = { scope:tsin_wcs_reader = { var:tsin_wcs_sort = 2 } } value = "global_variable_map(tsin_wcs_proxy|this)" }
+}
+
+tsin_wcs_fmt_1_cash_t = { value = var:tsin_wcs_display_1_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_1_cash_b = { value = var:tsin_wcs_display_1_cash divide = 1000000000 }
+
+tsin_wcs_fmt_1_cash_m = { value = var:tsin_wcs_display_1_cash divide = 1000000 }
+
+tsin_wcs_fmt_1_cash_k = { value = var:tsin_wcs_display_1_cash divide = 1000 }
+
+tsin_wcs_fmt_1_cash_base = { value = var:tsin_wcs_display_1_cash divide = 1 }
+
+tsin_wcs_fmt_1_proxy_t = { value = var:tsin_wcs_display_1_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_1_proxy_b = { value = var:tsin_wcs_display_1_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_1_proxy_m = { value = var:tsin_wcs_display_1_proxy divide = 1000000 }
+
+tsin_wcs_fmt_1_proxy_k = { value = var:tsin_wcs_display_1_proxy divide = 1000 }
+
+tsin_wcs_fmt_1_proxy_base = { value = var:tsin_wcs_display_1_proxy divide = 1 }
+
+tsin_wcs_fmt_2_cash_t = { value = var:tsin_wcs_display_2_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_2_cash_b = { value = var:tsin_wcs_display_2_cash divide = 1000000000 }
+
+tsin_wcs_fmt_2_cash_m = { value = var:tsin_wcs_display_2_cash divide = 1000000 }
+
+tsin_wcs_fmt_2_cash_k = { value = var:tsin_wcs_display_2_cash divide = 1000 }
+
+tsin_wcs_fmt_2_cash_base = { value = var:tsin_wcs_display_2_cash divide = 1 }
+
+tsin_wcs_fmt_2_proxy_t = { value = var:tsin_wcs_display_2_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_2_proxy_b = { value = var:tsin_wcs_display_2_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_2_proxy_m = { value = var:tsin_wcs_display_2_proxy divide = 1000000 }
+
+tsin_wcs_fmt_2_proxy_k = { value = var:tsin_wcs_display_2_proxy divide = 1000 }
+
+tsin_wcs_fmt_2_proxy_base = { value = var:tsin_wcs_display_2_proxy divide = 1 }
+
+tsin_wcs_fmt_3_cash_t = { value = var:tsin_wcs_display_3_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_3_cash_b = { value = var:tsin_wcs_display_3_cash divide = 1000000000 }
+
+tsin_wcs_fmt_3_cash_m = { value = var:tsin_wcs_display_3_cash divide = 1000000 }
+
+tsin_wcs_fmt_3_cash_k = { value = var:tsin_wcs_display_3_cash divide = 1000 }
+
+tsin_wcs_fmt_3_cash_base = { value = var:tsin_wcs_display_3_cash divide = 1 }
+
+tsin_wcs_fmt_3_proxy_t = { value = var:tsin_wcs_display_3_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_3_proxy_b = { value = var:tsin_wcs_display_3_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_3_proxy_m = { value = var:tsin_wcs_display_3_proxy divide = 1000000 }
+
+tsin_wcs_fmt_3_proxy_k = { value = var:tsin_wcs_display_3_proxy divide = 1000 }
+
+tsin_wcs_fmt_3_proxy_base = { value = var:tsin_wcs_display_3_proxy divide = 1 }
+
+tsin_wcs_fmt_4_cash_t = { value = var:tsin_wcs_display_4_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_4_cash_b = { value = var:tsin_wcs_display_4_cash divide = 1000000000 }
+
+tsin_wcs_fmt_4_cash_m = { value = var:tsin_wcs_display_4_cash divide = 1000000 }
+
+tsin_wcs_fmt_4_cash_k = { value = var:tsin_wcs_display_4_cash divide = 1000 }
+
+tsin_wcs_fmt_4_cash_base = { value = var:tsin_wcs_display_4_cash divide = 1 }
+
+tsin_wcs_fmt_4_proxy_t = { value = var:tsin_wcs_display_4_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_4_proxy_b = { value = var:tsin_wcs_display_4_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_4_proxy_m = { value = var:tsin_wcs_display_4_proxy divide = 1000000 }
+
+tsin_wcs_fmt_4_proxy_k = { value = var:tsin_wcs_display_4_proxy divide = 1000 }
+
+tsin_wcs_fmt_4_proxy_base = { value = var:tsin_wcs_display_4_proxy divide = 1 }
+
+tsin_wcs_fmt_5_cash_t = { value = var:tsin_wcs_display_5_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_5_cash_b = { value = var:tsin_wcs_display_5_cash divide = 1000000000 }
+
+tsin_wcs_fmt_5_cash_m = { value = var:tsin_wcs_display_5_cash divide = 1000000 }
+
+tsin_wcs_fmt_5_cash_k = { value = var:tsin_wcs_display_5_cash divide = 1000 }
+
+tsin_wcs_fmt_5_cash_base = { value = var:tsin_wcs_display_5_cash divide = 1 }
+
+tsin_wcs_fmt_5_proxy_t = { value = var:tsin_wcs_display_5_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_5_proxy_b = { value = var:tsin_wcs_display_5_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_5_proxy_m = { value = var:tsin_wcs_display_5_proxy divide = 1000000 }
+
+tsin_wcs_fmt_5_proxy_k = { value = var:tsin_wcs_display_5_proxy divide = 1000 }
+
+tsin_wcs_fmt_5_proxy_base = { value = var:tsin_wcs_display_5_proxy divide = 1 }
+
+tsin_wcs_fmt_6_cash_t = { value = var:tsin_wcs_display_6_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_6_cash_b = { value = var:tsin_wcs_display_6_cash divide = 1000000000 }
+
+tsin_wcs_fmt_6_cash_m = { value = var:tsin_wcs_display_6_cash divide = 1000000 }
+
+tsin_wcs_fmt_6_cash_k = { value = var:tsin_wcs_display_6_cash divide = 1000 }
+
+tsin_wcs_fmt_6_cash_base = { value = var:tsin_wcs_display_6_cash divide = 1 }
+
+tsin_wcs_fmt_6_proxy_t = { value = var:tsin_wcs_display_6_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_6_proxy_b = { value = var:tsin_wcs_display_6_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_6_proxy_m = { value = var:tsin_wcs_display_6_proxy divide = 1000000 }
+
+tsin_wcs_fmt_6_proxy_k = { value = var:tsin_wcs_display_6_proxy divide = 1000 }
+
+tsin_wcs_fmt_6_proxy_base = { value = var:tsin_wcs_display_6_proxy divide = 1 }
+
+tsin_wcs_fmt_7_cash_t = { value = var:tsin_wcs_display_7_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_7_cash_b = { value = var:tsin_wcs_display_7_cash divide = 1000000000 }
+
+tsin_wcs_fmt_7_cash_m = { value = var:tsin_wcs_display_7_cash divide = 1000000 }
+
+tsin_wcs_fmt_7_cash_k = { value = var:tsin_wcs_display_7_cash divide = 1000 }
+
+tsin_wcs_fmt_7_cash_base = { value = var:tsin_wcs_display_7_cash divide = 1 }
+
+tsin_wcs_fmt_7_proxy_t = { value = var:tsin_wcs_display_7_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_7_proxy_b = { value = var:tsin_wcs_display_7_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_7_proxy_m = { value = var:tsin_wcs_display_7_proxy divide = 1000000 }
+
+tsin_wcs_fmt_7_proxy_k = { value = var:tsin_wcs_display_7_proxy divide = 1000 }
+
+tsin_wcs_fmt_7_proxy_base = { value = var:tsin_wcs_display_7_proxy divide = 1 }
+
+tsin_wcs_fmt_8_cash_t = { value = var:tsin_wcs_display_8_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_8_cash_b = { value = var:tsin_wcs_display_8_cash divide = 1000000000 }
+
+tsin_wcs_fmt_8_cash_m = { value = var:tsin_wcs_display_8_cash divide = 1000000 }
+
+tsin_wcs_fmt_8_cash_k = { value = var:tsin_wcs_display_8_cash divide = 1000 }
+
+tsin_wcs_fmt_8_cash_base = { value = var:tsin_wcs_display_8_cash divide = 1 }
+
+tsin_wcs_fmt_8_proxy_t = { value = var:tsin_wcs_display_8_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_8_proxy_b = { value = var:tsin_wcs_display_8_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_8_proxy_m = { value = var:tsin_wcs_display_8_proxy divide = 1000000 }
+
+tsin_wcs_fmt_8_proxy_k = { value = var:tsin_wcs_display_8_proxy divide = 1000 }
+
+tsin_wcs_fmt_8_proxy_base = { value = var:tsin_wcs_display_8_proxy divide = 1 }
+
+tsin_wcs_fmt_9_cash_t = { value = var:tsin_wcs_display_9_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_9_cash_b = { value = var:tsin_wcs_display_9_cash divide = 1000000000 }
+
+tsin_wcs_fmt_9_cash_m = { value = var:tsin_wcs_display_9_cash divide = 1000000 }
+
+tsin_wcs_fmt_9_cash_k = { value = var:tsin_wcs_display_9_cash divide = 1000 }
+
+tsin_wcs_fmt_9_cash_base = { value = var:tsin_wcs_display_9_cash divide = 1 }
+
+tsin_wcs_fmt_9_proxy_t = { value = var:tsin_wcs_display_9_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_9_proxy_b = { value = var:tsin_wcs_display_9_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_9_proxy_m = { value = var:tsin_wcs_display_9_proxy divide = 1000000 }
+
+tsin_wcs_fmt_9_proxy_k = { value = var:tsin_wcs_display_9_proxy divide = 1000 }
+
+tsin_wcs_fmt_9_proxy_base = { value = var:tsin_wcs_display_9_proxy divide = 1 }
+
+tsin_wcs_fmt_10_cash_t = { value = var:tsin_wcs_display_10_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_10_cash_b = { value = var:tsin_wcs_display_10_cash divide = 1000000000 }
+
+tsin_wcs_fmt_10_cash_m = { value = var:tsin_wcs_display_10_cash divide = 1000000 }
+
+tsin_wcs_fmt_10_cash_k = { value = var:tsin_wcs_display_10_cash divide = 1000 }
+
+tsin_wcs_fmt_10_cash_base = { value = var:tsin_wcs_display_10_cash divide = 1 }
+
+tsin_wcs_fmt_10_proxy_t = { value = var:tsin_wcs_display_10_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_10_proxy_b = { value = var:tsin_wcs_display_10_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_10_proxy_m = { value = var:tsin_wcs_display_10_proxy divide = 1000000 }
+
+tsin_wcs_fmt_10_proxy_k = { value = var:tsin_wcs_display_10_proxy divide = 1000 }
+
+tsin_wcs_fmt_10_proxy_base = { value = var:tsin_wcs_display_10_proxy divide = 1 }
+
+tsin_wcs_fmt_11_cash_t = { value = var:tsin_wcs_display_11_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_11_cash_b = { value = var:tsin_wcs_display_11_cash divide = 1000000000 }
+
+tsin_wcs_fmt_11_cash_m = { value = var:tsin_wcs_display_11_cash divide = 1000000 }
+
+tsin_wcs_fmt_11_cash_k = { value = var:tsin_wcs_display_11_cash divide = 1000 }
+
+tsin_wcs_fmt_11_cash_base = { value = var:tsin_wcs_display_11_cash divide = 1 }
+
+tsin_wcs_fmt_11_proxy_t = { value = var:tsin_wcs_display_11_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_11_proxy_b = { value = var:tsin_wcs_display_11_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_11_proxy_m = { value = var:tsin_wcs_display_11_proxy divide = 1000000 }
+
+tsin_wcs_fmt_11_proxy_k = { value = var:tsin_wcs_display_11_proxy divide = 1000 }
+
+tsin_wcs_fmt_11_proxy_base = { value = var:tsin_wcs_display_11_proxy divide = 1 }
+
+tsin_wcs_fmt_12_cash_t = { value = var:tsin_wcs_display_12_cash divide = 1000000000000 }
+
+tsin_wcs_fmt_12_cash_b = { value = var:tsin_wcs_display_12_cash divide = 1000000000 }
+
+tsin_wcs_fmt_12_cash_m = { value = var:tsin_wcs_display_12_cash divide = 1000000 }
+
+tsin_wcs_fmt_12_cash_k = { value = var:tsin_wcs_display_12_cash divide = 1000 }
+
+tsin_wcs_fmt_12_cash_base = { value = var:tsin_wcs_display_12_cash divide = 1 }
+
+tsin_wcs_fmt_12_proxy_t = { value = var:tsin_wcs_display_12_proxy divide = 1000000000000 }
+
+tsin_wcs_fmt_12_proxy_b = { value = var:tsin_wcs_display_12_proxy divide = 1000000000 }
+
+tsin_wcs_fmt_12_proxy_m = { value = var:tsin_wcs_display_12_proxy divide = 1000000 }
+
+tsin_wcs_fmt_12_proxy_k = { value = var:tsin_wcs_display_12_proxy divide = 1000 }
+
+tsin_wcs_fmt_12_proxy_base = { value = var:tsin_wcs_display_12_proxy divide = 1 }
