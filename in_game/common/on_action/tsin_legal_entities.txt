@@ -1,0 +1,5 @@
+﻿monthly_country_pulse = { on_actions = { tsin_le_global_monthly } }
+tsin_le_global_monthly = {
+ trigger = { has_global_variable = tsin_le_next_id OR = { NOT = { has_global_variable = tsin_le_review_month } tsin_contract_calendar_month > global_var:tsin_le_review_month } }
+ effect = { tsin_le_month_effect = yes }
+}

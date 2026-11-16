@@ -1,0 +1,16 @@
+﻿tsin_le_selected_owned = { has_variable = tsin_le_selected "global_variable_map(tsin_le_owner|var:tsin_le_selected)" ?= root "global_variable_map(tsin_le_status|var:tsin_le_selected)" = 1 }
+tsin_le_selected_audit_allowed = {
+ "global_variable_map(tsin_le_audit_until|var:tsin_le_selected)" <= tsin_contract_calendar_month
+ "global_variable_map(tsin_le_cash|var:tsin_le_selected)" >= { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" add = "global_variable_map(tsin_le_claims|var:tsin_le_selected)" multiply = 0.01 min = 0.01 }
+}
+tsin_le_can_lend = {
+ tsin_can_use_banking = yes has_variable = tsin_le_primary_bank has_variable = tsin_le_primary_company
+ "global_variable_map(tsin_le_owner|var:tsin_le_primary_bank)" ?= root "global_variable_map(tsin_le_owner|var:tsin_le_primary_company)" ?= root
+ "global_variable_map(tsin_le_status|var:tsin_le_primary_bank)" = 1 "global_variable_map(tsin_le_status|var:tsin_le_primary_company)" = 1
+ "global_variable_map(tsin_le_cash|var:tsin_le_primary_bank)" >= tsin_ledger_lot "global_variable_map(tsin_le_missed|var:tsin_le_primary_company)" = 0
+ "global_variable_map(tsin_le_cash|var:tsin_le_primary_company)" >= "global_variable_map(tsin_le_debt|var:tsin_le_primary_company)"
+ OR = { NOT = { OR = { has_policy = policy:tsin_bank_prudential_policy has_policy = policy:tsin_bank_strict_policy } }
+  "global_variable_map(tsin_le_audit_until|var:tsin_le_primary_bank)" > tsin_contract_calendar_month }
+ OR = { NOT = { has_policy = policy:tsin_disclosure_audited_policy }
+  "global_variable_map(tsin_le_audit_until|var:tsin_le_primary_company)" > tsin_contract_calendar_month }
+}

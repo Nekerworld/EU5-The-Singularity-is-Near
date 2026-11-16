@@ -63,6 +63,15 @@ hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BONDS
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BOND_ARREARS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bond_arrears').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_BANK_AUDIT_PAID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_bank_audit_paid').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_FIRM_AUDIT_PAID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_firm_audit_paid').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_ID" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_id').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_KIND" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_kind').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_CASH" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_cash').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_CLAIMS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_claims').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_DEBT" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_debt').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_NET" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_net').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_PUBLIC" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_public').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_MISSED" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_missed').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_YEAR" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_year').GetValue|2L]" } }
 button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_open_bank').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_OPEN_BANK" on_action = "[GetScriptedGui('tsin_ledger_open_bank').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
@@ -120,6 +129,54 @@ enabled = "[GetScriptedGui('tsin_ledger_bank_loss_grant').IsValid(GuiScope.SetRo
 action_tooltip = { title = "TSIN_LEDGER_BANK_LOSS_GRANT" on_action = "[GetScriptedGui('tsin_ledger_bank_loss_grant').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_BANK_LOSS_GRANT" } }
 button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE" on_action = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_create_bank_public').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_BANK_PUBLIC" on_action = "[GetScriptedGui('tsin_ledger_entity_create_bank_public').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CREATE_BANK_PUBLIC" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_create_company_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_COMPANY_PRIVATE" on_action = "[GetScriptedGui('tsin_ledger_entity_create_company_private').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CREATE_COMPANY_PRIVATE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_create_company_public').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_COMPANY_PUBLIC" on_action = "[GetScriptedGui('tsin_ledger_entity_create_company_public').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CREATE_COMPANY_PUBLIC" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_next').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_NEXT" on_action = "[GetScriptedGui('tsin_ledger_entity_next').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_NEXT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_audit').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_AUDIT" on_action = "[GetScriptedGui('tsin_ledger_entity_audit').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_AUDIT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_private_equity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_PRIVATE_EQUITY" on_action = "[GetScriptedGui('tsin_ledger_entity_private_equity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_PRIVATE_EQUITY" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_public_equity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_PUBLIC_EQUITY" on_action = "[GetScriptedGui('tsin_ledger_entity_public_equity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_PUBLIC_EQUITY" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_contract').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CONTRACT" on_action = "[GetScriptedGui('tsin_ledger_entity_contract').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CONTRACT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_lend').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_LEND" on_action = "[GetScriptedGui('tsin_ledger_entity_lend').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_LEND" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_repay').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_REPAY" on_action = "[GetScriptedGui('tsin_ledger_entity_repay').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_REPAY" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_liquidate').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_LIQUIDATE" on_action = "[GetScriptedGui('tsin_ledger_entity_liquidate').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_LIQUIDATE" } }
+button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_bank').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_BANK" on_action = "[GetScriptedGui('tsin_ledger_bank').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_BANK" } }
@@ -139,6 +196,7 @@ button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_dividend').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_DIVIDEND" on_action = "[GetScriptedGui('tsin_ledger_dividend').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_DIVIDEND" } }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_BANK_NOTE" }
 } } }

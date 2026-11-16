@@ -10,6 +10,7 @@ import finance_extended as extended
 import corporate_finance as corporate
 import finance_capabilities as capabilities
 import finance_regulation as regulation
+import legal_entities
 
 EXTRA_TABS = [('MONEY', 'tsin_money'), ('BANK', 'tsin_bank'), ('FUNDS', 'tsin_funds')]
 
@@ -48,6 +49,7 @@ def build():
     extended.register(fields, action, loc)
     corporate.register(fields, action, loc)
     regulation.register(fields, action, loc)
+    legal_entities.register(fields, action, loc)
     init = 'tsin_ledger_init_effect = yes\n'
     no_lf = 'NOT = { has_policy = policy:tsin_laissez_faire_policy }'
     cost = 'gold >= tsin_ledger_lot'
@@ -158,6 +160,7 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
     guis = []
     ui = ['types TSINLedger {']
     field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID', 'BANK_AUDIT_PAID', 'FIRM_AUDIT_PAID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
+    field_tabs['BANK'] += ['ENTITY_'+key for key,_,_,_ in legal_entities.VIEW]
     for name, subtab in EXTRA_TABS:
         ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }']
         if name == 'BANK':
@@ -173,7 +176,8 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
 enabled = "[GetScriptedGui('tsin_ledger_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = {{ title = "{label}" on_action = "[GetScriptedGui('tsin_ledger_{id}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
 text_single = {{ parentanchor = center align = center text = "{label}" }} }}''']
-        note = 'REFORM_NOTE' if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
+        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }']
+        note = 'REFORM_NOTE'  if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
         if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }']
         ui += [f'text_single = {{ maximumsize = {{ 520 -1 }} multiline = yes text = "TSIN_LEDGER_{note}" }}', '} } }']
     ui += ['}']
@@ -214,6 +218,7 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
     for lang, entries in labels.items():
         result[f'main_menu/localization/{lang}/tsin_finance_ledger_l_{lang}.yml'] = 'l_'+lang+':\n'+'\n'.join(' '+k+': '+json.dumps(v,ensure_ascii=False) for k,v in entries.items())+'\n'
     result.update(regulation.build())
+    result.update(legal_entities.build())
     return capabilities.add_outputs({k: '\n'.join(line.rstrip() for line in v.splitlines())+'\n' for k,v in result.items()})
 
 

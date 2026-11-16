@@ -129,6 +129,7 @@ tsin_finance_annex_commit_effect = {{
  set_variable = { name = tsin_foreign_principal value = 0 }
  set_variable = { name = tsin_foreign_liability_local value = 0 }
  }
+ if = { limit = { has_global_variable = tsin_le_next_id } tsin_le_succession_effect = yes }
  tsin_finance_annex_clear_journal_effect = yes
  tsin_contract_refresh_effect = yes
  if = { limit = { NOT = { has_variable = tsin_finance_annex_commits } } set_variable = { name = tsin_finance_annex_commits value = 0 } }
