@@ -150,7 +150,7 @@ def global_overview():
         ('지도와 안내',f"지도 모드 {data['지도 모드']}종 · 힌트 {data['힌트']}개\n백과사전 {data['백과사전']}개 · 한/영 현지화"),
         ('성장과 인구 조절','산업 가속 · 세계 인구 목표 곡선\n국가 성장 제동 · 인구 변천'),
         ('시대 연속성과 호환','바닐라 후반기 콘텐츠의 조건 연장\n기존 세이브 연결 · 플레이셋별 호환 패치'),
-        ('후속 시대 확장','공용 UI와 통계를 다음 시대에서도 사용\nVIII 농업·함선·물류 연결 / IX–XII 뼈대')]
+        ('후속 시대 확장','공용 UI와 통계를 다음 시대에서도 사용\nVIII–X 교통 등 부분 구현 / XI–XII 뼈대')]
     fig,ax=plt.subplots(figsize=(13,6.6));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
     for i,(title,body) in enumerate(cards):
         x=.015+(i%2)*.5;y=.69-(i//2)*.31
@@ -207,7 +207,7 @@ def banner():
     ax.text(.055,.76,'The Singularity is Near',fontsize=37,color='#f3e7c9',weight='bold',va='center')
     ax.text(.055,.58,'특이점이 온다 · Europa Universalis V',fontsize=22,color='#d8c79d')
     ax.text(.055,.41,'공통 운영 체계 위에 시대별 콘텐츠를 이어 갑니다',fontsize=19,color='#e0e6df')
-    ax.text(.055,.25,'VII 산업: 콘텐츠  |  VIII: 부분 구현  |  IX–XII: 뼈대',fontsize=17,color='#b7ccbe')
+    ax.text(.055,.25,'VII 산업: 콘텐츠  |  VIII–X: 부분 구현  |  XI–XII: 뼈대',fontsize=17,color='#b7ccbe')
     ax.text(.055,.12,f'종료일 {end_year()}.12.31 · 개발 빌드 / 인게임 검증 중',fontsize=14,color='#9fb3a6')
     fig.savefig(OUT/'banner.png',dpi=100,facecolor=fig.get_facecolor());plt.close(fig)
     print('wrote readme_media/banner.png')
@@ -228,8 +228,8 @@ def ages_timeline():
         ending=rows[i+1]['start_year'] if i+1<len(rows) else end_year()
         ax.text(x+.015,y+.245,f"{row['number']:02d}  {row['name']['korean']}",fontsize=19,weight='bold',color=color)
         ax.text(x+.015,y+.16,f"{row['start_year']}–{ending}",fontsize=17)
-        ax.text(x+.015,y+.07,'콘텐츠 구현 · 검증 중' if active else ('농업·군사·물류 부분 구현' if row['implementation']=='partial' else '시대 뼈대만 등록'),fontsize=12,color=color)
-    fig.text(.10,.97,'각 시대별 변경사항 · 7시대 콘텐츠 / 8시대 부분 구현 / 9–12시대 뼈대',fontsize=16,weight='bold')
+        ax.text(x+.015,y+.07,'콘텐츠 구현 · 검증 중' if active else (('농업·군사·교통 부분 구현' if row['number']==8 else '교통 거점 일부 구현') if row['implementation']=='partial' else '시대 뼈대만 등록'),fontsize=12,color=color)
+    fig.text(.10,.97,'각 시대별 변경사항 · 7시대 콘텐츠 / 8–10시대 부분 구현 / 11–12시대 뼈대',fontsize=16,weight='bold')
     fig.text(.10,.92,f'바닐라 I–VI 뒤에 연결 · 모드 종료일 {end_year()}.12.31',fontsize=12,color=GREY)
     fig.text(.10,.035,'등록된 시작 연도 기준 · 칸 너비는 기간과 무관 · 2200년은 장기 목표이며 종료일이 아닙니다.',fontsize=10,color=GREY)
     save(fig,'ages_timeline.png')
@@ -368,6 +368,10 @@ def advances() -> int:
         p = MOD / "in_game/common/advances" / f"{stem}.txt"
         n = sum(1 for b in pdx.top_level_blocks(pdx.read_text(p)) if not b.local_kind and ":" not in b.key)
         counts.append((label, n))
+    # Count later era-VII source additions as well as the original branch files.
+    known={stem+'.txt' for stem,_ in BRANCHES}
+    extra=sum(1 for p in content_files('in_game/common/advances') if p.name not in known and pdx.content_path(p).is_relative_to(MOD/'era_7') for b in pdx.top_level_blocks(pdx.read_text(p)) if not b.local_kind and ':' not in b.key and b.key.startswith('tsin_'))
+    if extra:counts.append(('추가 교통·시대 기술',extra))
     total = sum(n for _, n in counts)
     fig, ax = plt.subplots(figsize=(11, 5.4))
     labels, ns = zip(*reversed(counts))
@@ -475,7 +479,7 @@ def finance_overview():
            ('증시','8개 관측값의 지수 그래프\n기업·본사·가치 추정'),
            ('신용','바닐라 대출·국채\n상환·파산 조작 유지'),
            ('통화','표시 환산·준비 현금·금리\n평가절하·화폐개혁'),
-           ('은행','예금·인출·기업 신용\n유동성·부실·해외 채권'),
+           ('은행','예금·감사·신용·해외 채권\n법인 출자·청산·통합'),
            ('기금','적립·부과 연금\n실제 출연·보험 지급')]
     fig,ax=plt.subplots(figsize=(12.5,6.5));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
     ax.text(.02,.95,'F2 경제  →  금융',fontsize=24,color=BLUE,weight='bold')
@@ -499,17 +503,19 @@ def age8_handoff():
             '노급 전함 → 중유 연료 주력함\n석탄형 / 석유 유지 수요'),
            ('자동차 물류','내연기관 · 철도 동원',
             '자동차 운송 → 자동차 보급대\n물류 거점 / 육군 이동 지원'),
+           ('도로 관리','기존 도로·자동차 운송','타르 마카담 → 아스팔트·콘크리트\n고속도로 교차·관리 거점'),
+           ('철도 현대화','복선 운용·자동차 운송','중량화물 거점 · 전기/디젤 한 단계\n기존 철도 연결·화물 역할 보존'),
            ('초기 항공','내연기관 · 실용 전기공학 · 참모부',
             '동력 비행 → 항공 관측 교리\n수도 항공 시설 / 지상군 지원')]
-    fig,ax=plt.subplots(figsize=(12.5,7));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
+    fig,ax=plt.subplots(figsize=(12.5,9.5));ax.axis('off');ax.set_xlim(0,1);ax.set_ylim(0,1)
     ax.text(.02,.95,'제8시대 · 7시대 기반을 이어받는 연구',fontsize=21,color=INK,weight='bold')
     for i,(title,parents,body) in enumerate(cards):
-        x=.02+(i%2)*.50;y=.49-(i//2)*.36
-        ax.add_patch(FancyBboxPatch((x,y),.46,.30,boxstyle='round,pad=.01',facecolor='white',edgecolor=GRID))
-        ax.text(x+.018,y+.235,title,fontsize=17,weight='bold',color=ACCENT)
-        ax.text(x+.018,y+.175,'기반: '+parents,fontsize=10.5,color=GREY)
-        ax.text(x+.018,y+.12,body,fontsize=12.5,va='top',linespacing=1.7)
-    fig.text(.10,.02,'발전 9종 · 시설 2종 · 함선 2종. 교차 선행을 요약한 그림이며 전용 시대관·정치·공중전 엔진은 미구현입니다.',fontsize=10,color=GREY)
+        x=.02+(i%2)*.50;y=.65-(i//2)*.29
+        ax.add_patch(FancyBboxPatch((x,y),.46,.24,boxstyle='round,pad=.01',facecolor='white',edgecolor=GRID))
+        ax.text(x+.018,y+.185,title,fontsize=17,weight='bold',color=ACCENT)
+        ax.text(x+.018,y+.135,'기반: '+parents,fontsize=10.5,color=GREY)
+        ax.text(x+.018,y+.09,body,fontsize=12.5,va='top',linespacing=1.7)
+    fig.text(.10,.02,f'발전 {era_count("era_8","in_game/common/advances")}종 · 시설 {era_count("era_8","in_game/common/building_types")}종 · 함선 2종. 거점은 별도 이동 경로 그래프가 아닙니다.',fontsize=10,color=GREY)
     save(fig,'age8_handoff.png')
 
 

@@ -1,6 +1,6 @@
 ﻿# GENERATED era scaffolds. Temporary age-VII defaults; no new gameplay content.
 
-# Era 8: 1900 onward. Skeleton only.
+# Era 8: 1900 onward. Shared age scaffold; gameplay content is defined separately.
 
 age_8_world_wars = {
 	year = 1900
@@ -86,7 +86,7 @@ age_8_world_wars = {
 	}
 }
 
-# Era 9: 1945 onward. Skeleton only.
+# Era 9: 1945 onward. Shared age scaffold; gameplay content is defined separately.
 
 age_9_atomic = {
 	year = 1945
@@ -172,7 +172,7 @@ age_9_atomic = {
 	}
 }
 
-# Era 10: 1990 onward. Skeleton only.
+# Era 10: 1990 onward. Shared age scaffold; gameplay content is defined separately.
 
 age_10_information = {
 	year = 1990
@@ -258,7 +258,7 @@ age_10_information = {
 	}
 }
 
-# Era 11: 2035 onward. Skeleton only.
+# Era 11: 2035 onward. Shared age scaffold; gameplay content is defined separately.
 
 age_11_artificial_intelligence = {
 	year = 2035
@@ -344,7 +344,7 @@ age_11_artificial_intelligence = {
 	}
 }
 
-# Era 12: 2120 onward. Skeleton only.
+# Era 12: 2120 onward. Shared age scaffold; gameplay content is defined separately.
 
 age_12_space = {
 	year = 2120

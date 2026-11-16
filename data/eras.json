@@ -41,7 +41,11 @@
         "english": "Nuclear deterrence, international institutions and mass consumption.",
         "korean": "핵 억지·국제 질서·대량소비사회."
       },
-      "implementation": "skeleton"
+      "implementation": "partial",
+      "implementation_note": {
+        "korean": " 고속철도·현대 도로·성숙 지하철 거점만 부분 구현했습니다. 원자력 산업·전용 시대관·정치·사건은 아직 개발 전입니다.",
+        "english": " Only high-speed rail, modern road and mature metro service hubs are partially implemented. Nuclear industry, dedicated institutions, politics and events remain undeveloped."
+      }
     },
     {
       "number": 10,
@@ -55,7 +59,11 @@
         "english": "Digital networks, global supply chains and the knowledge economy.",
         "korean": "디지털 네트워크·세계 공급망·지식경제."
       },
-      "implementation": "skeleton"
+      "implementation": "partial",
+      "implementation_note": {
+        "korean": " 현대식 철도 통합관제 거점만 부분 구현했습니다. 디지털 산업·전용 시대관·정치·사건은 아직 개발 전입니다.",
+        "english": " Only modern railway service control is partially implemented. Digital industry, dedicated institutions, politics and events remain undeveloped."
+      }
     },
     {
       "number": 11,

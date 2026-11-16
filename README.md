@@ -2,7 +2,7 @@
 
 ![version](https://img.shields.io/badge/version-0.7.0%20개발%20중-2f6b4f) ![game](https://img.shields.io/badge/Europa%20Universalis%20V-1.4.x-b8892b) ![languages](https://img.shields.io/badge/English%20%7C%20한국어-2f5a8a)
 
-**특이점이 온다**는 Europa Universalis V의 기존 캠페인에 산업화와 이후 시대를 이어 붙이는 확장 모드입니다. 제7시대 「산업」의 공장·교육·사회운동·정치를 중심으로, 여러 시대가 공유하는 기업·금융·역사 진행 체계를 추가합니다. 제8시대는 농업·함선·자동차 물류·초기 항공 지원까지 부분 구현했고, 제9~12시대는 시대 정의를 등록한 상태입니다. 게임 종료일은 **2337년 12월 31일**입니다.
+**특이점이 온다**는 Europa Universalis V의 기존 캠페인에 산업화와 이후 시대를 이어 붙이는 확장 모드입니다. 제7시대 「산업」의 공장·교육·사회운동·정치를 중심으로, 여러 시대가 공유하는 기업·금융·역사 진행 체계를 추가합니다. 제8시대는 농업·함선·자동차 물류·초기 항공 지원까지 부분 구현했고, 제9·10시대에는 구체화된 교통 거점만 부분 구현했고, 제11·12시대는 시대 정의를 등록한 상태입니다. 게임 종료일은 **2337년 12월 31일**입니다.
 
 현재 버전은 **0.7.0 개발 빌드**입니다. 코드 구현과 정적 검사를 마친 기능에도 인게임 표시·장기 밸런스·세이브 재로드 검증이 남아 있습니다. 아래 이미지는 실제 게임 화면을 촬영한 것이 아니라 현재 정의와 설계 범위를 설명하는 도표입니다.
 
@@ -25,7 +25,7 @@
 
 ### TSIN 관리와 운영 현황
 
-좌하단 **TSIN 관리** 버튼은 국가 통계·경제·인구와 사회·기업과 금융·위기와 정책·과학기술의 6개 탭을 엽니다. 공용 지표 35개, 상태 카드 16개, 기본 화면·지도 연결 10개를 제공합니다. 버튼 묶음과 관리창은 이동할 수 있습니다.
+좌하단 **TSIN 관리** 버튼은 국가 통계·경제·인구와 사회·기업과 금융·위기와 정책·과학기술의 6개 탭을 엽니다. 공용 지표 94개, 상태 카드 16개, 화면·지도·실제 조작 연결 57개를 제공합니다. 버튼 묶음과 관리창은 이동할 수 있습니다.
 
 GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 그래프로 보여 줍니다. GDP는 생산 기반의 추정 지표이며 국고나 실제 국민계정과는 구분합니다. 교육은 문해율 → 중등교육 → 고등교육으로 이어지고 현재치와 목표치를 따로 표시합니다. 집계 전인 값은 미관측으로 남습니다.
 
@@ -53,7 +53,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 은행·기업·보험·연금은 **실제 출연된 자금**을 사용합니다. 국고나 시민 계층의 현금을 차감해 출자·예금을 만들고 대출·이자·상환·배당·급여를 장부 사이에서 이동합니다. 주가 지수나 GDP 추정치를 현금으로 지급하지 않으며 기존 국가 대출에 이자를 다시 청구하지 않습니다.
 
 - 기업 증자는 지분 희석을 반영하고, 회사채는 36개월 만기·연 4% 이자를 기록합니다.
-- 은행은 기존 예금의 20%를 남겨야 신규 대출할 수 있습니다. 인출 미지급과 순자산 부족이 지속되면 신용 위축이 발생하며 실제 자금으로 회복해야 합니다.
+- 은행은 감독법에 따라 예금의 10%·20%(기본)·30%·40%를 남겨야 신규 대출할 수 있습니다. 건전성·엄격 감독과 의무 공시는 신규 조작에 유료 감사를 요구하며 기존 상환·인출은 유지합니다. 인출 미지급과 순자산 부족이 지속되면 신용 위축이 발생하며 실제 자금으로 회복해야 합니다.
 - 해외 기업 신용은 여러 계약을 동시에 유지합니다. 12개월·60개월 계약마다 발행 금리·통화 원금·만기·지급 주기·연체를 따로 저장하고 12개월 간격으로 발행합니다. 국내 기업 대출과 회사채도 금리·만기가 다른 계약을 합산하지 않습니다.
 - 연금은 적립금 지급과 실제 시민 자금으로 지급하는 부과 방식을 제공합니다. 보험은 조건을 만족하는 연체기에 한 번만 청구됩니다. 고령 인구별 수급권을 계산하는 모형은 아닙니다.
 
@@ -75,6 +75,31 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 [기업](docs/corporations.md) · [자본시장과 위기 조건](docs/capital_markets.md)
 
+### 확장된 도시·인프라·환경·사회
+
+| 범위 | 현재 구현 |
+|---|---|
+| 도시 | 소도시 5천→도시 3만→대도시 10만→메트로폴리스 40만→메갈로폴리스 100만. 마지막 단계는 개발도50·잠재 과세자산50도 요구하며 수도·시장 중심·종속국 제한은 없습니다. 도시권은 중심과 연결 지방을 묶는 근사입니다. |
+| 건물 수용력 | 실제 비용·기간을 갖는 도시 수용력 프로젝트. 새 도시 등급의 기본/호환 모드 건물 권한을 함께 연결합니다. |
+| 연구·식량 | 교육·언론을 통한 연구 속도 보너스. 시장에 보관된 식량의 부패를 줄이는 냉장·전기 냉동 시설. 기술별 병렬 전파·운송 부패 계산은 없습니다. |
+| 교통 | 마카담→타르 마카담→아스팔트·콘크리트→현대 도로 관리소. 초기 바닐라 철도를 유지하고 복선·중량화물·고속 여객·현대 관제 거점을 독립 투자합니다. 화물은 여객 해금 뒤에도 남습니다. |
+| 도시교통 | 효율이 낮은 단일 증기 지하철 시범선, 전기 지하철, 후기 성숙 지하철·광역급행 거점. 고속도로는 대도시의 교차·관리 거점입니다. |
+| 전력 | 기존 일반 시장의 전력 재화를 유지하고 지역 변전소·설비 접근성 지수를 추가했습니다. 독립 송전 회랑·실제 미연결 공장 소비 차단은 아직 없습니다. |
+| 전략 비축 | 고용0 석유·석탄·강철 저장고. 실제 시장 재고/국고로 저가 매입·고가 방출하며 수량 불일치는 자동 정지합니다. 실제 즉시 재고 조회는 인게임 검증 대상입니다. |
+| 공해·정비 | 실제 산업 고용·광산 산출 기반 대기/수질 지도, 감독법·검사 인력·수질 처리·청원. 지방 설비는 5~7년 검사하며 장기 방치된 화학 설비에만 드문 유출/토양 복구 사건이 생깁니다. |
+| 국제 표준·통신 | 산업국 보급에 따른 국제 회의에서 도량형·철도·부품·전기 규격을 따로 선택합니다. 실제 고용·투입재를 쓰는 전신국/전화 교환국과 연간 설비 노출 지수도 추가했습니다. |
+| 사회·신문 | 기존 법안을 읽기만 하는 입법 카드, 실제 발생한 사건의 최근6건 신문. 현대 사회 기반5종은 국내 통계 조사 버튼으로만 계산하며 실제 신규 POP/정치 영향력은 아닙니다. |
+
+교통은 **네이티브 연결 위의 별도 거점 설비 대안**입니다. 두 독립 도로/철도 경로망·새 선 표시·실제 부대/교역 경로 변경이나 POP 통근 이동을 구현했다고 해석하지 않습니다. 단절·휴업·투입 부족·적국 점령 때 편익을 중지하고 시설은 보존합니다.
+
+국내·세계 통계와 세계 기업 창은 명시적 조사 버튼으로만 스냅샷을 만듭니다. 세계 기업 창의 필터·정렬·페이지는 이미 저장한 행만 읽습니다. 기존 핵심 경제·교육·공해·통신의 시뮬레이션 계산 주기는 별개입니다. [단계별 실행 기록](docs/expansion_execution_2026_11_16.md)
+
+### 별도 재무 법인 시제품
+
+F2 금융→은행에서 새 자금을 실제 납입한 은행·기업 법인을 만들 수 있습니다. 영구 ID·별도 현금·지분·고정 금리 대출·유료 감사·상환·채권자 비례 청산을 제공합니다. 정부 증자는 지분을 만들고, 기존 지분 유상 매입은 소유주에게 대금을 지급하며, 유상 공공계약은 기업 수입으로 구분합니다. 완전 국영 기업의 장부 통합은 계약 ID·금리·만기를 보존합니다. 무채무·무채권 법인의 정상 종료는 남은 현금을 실제 지분 비율대로 반환합니다.
+
+기존 합산 현금/부채를 새 법인에 임의 배분하지 않습니다. 시범 은행은 예금을 받지 않는 출자금 기반 대주이며, 별도 법인의 자율 생산·기존 모든 기업/주식시장 자동 연결·보험 법인 전체를 완성한 모형은 아닙니다. 국가 합병은 소속만 바꾸어 법인 ID·현금·계약을 보존합니다. 조회는 기준일 스냅샷이고 모든 상태 변경은 버튼 실행 때 재검사합니다.
+
 ### 역사 진행·럭키네이션·국경 거래
 
 러시아와 추가 **25개 역사 경로**를 관리합니다. 영국·독일·이탈리아·오스트리아-헝가리·미국·멕시코·무굴·청·일본·벨기에·그리스·루마니아·세르비아·불가리아와 남미 11개 경로입니다. 영국의 대상 권역은 **브리튼 제도+아일랜드**이며 해외 제국 영토는 포함하지 않습니다.
@@ -95,7 +120,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 세계 인구 조절기는 1837년 세계 인구를 기준으로 1900년 ×1.6, 1950년 ×2.4, 2000년 ×5.5, 2100년 이후 ×7의 목표 곡선을 사용합니다. 실제 인구 예측이 아닌 게임 규칙입니다. 초과 수준에 따라 제동하며 ×7 이상에는 가장 강한 제동을 적용합니다. 국가별 급성장 제동·인구 변천·수용력 보정 상한도 함께 사용합니다.
 
-지도 모드는 **16종**, 힌트는 **14개**, 백과사전 개념은 **76개**입니다. 산업화·투자·도시화·노동·전력·교육·자동화·기반 시설·주거·GDP·기업·농업 등을 지도에서 확인할 수 있습니다.
+지도 모드는 **19종**, 힌트는 **14개**, 백과사전 개념은 **76개**입니다. 산업화·투자·도시화·노동·전력·교육·자동화·기반 시설·주거·GDP·기업·농업 등을 지도에서 확인할 수 있습니다.
 
 | 게임 규칙 | 선택 |
 |---|---|
@@ -121,8 +146,8 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 |---|---|---|
 | VII 산업 | 1837~1900 | 산업·교육·사회운동·정치·군사 콘텐츠 |
 | VIII 대전 | 1900~1945 | 농업·함선·자동차 물류·초기 항공 지원 부분 구현 |
-| IX 원자력 | 1945~1990 | 시대 정의·현지화·임시 그림 |
-| X 정보화 | 1990~2035 | 시대 정의·현지화·임시 그림 |
+| IX 원자력 | 1945~1990 | 고속철도·현대 도로·성숙 지하철 거점만 부분 구현 |
+| X 정보화 | 1990~2035 | 현대식 철도 통합관제 거점만 부분 구현 |
 | XI 인공지능 | 2035~2120 | 시대 정의·현지화·임시 그림 |
 | XII 우주 개척 | 2120~2337 | 시대 정의·현지화·임시 그림 |
 
@@ -132,7 +157,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 ### 제7시대: 산업
 
-제도 **3종**, 발전 **159개**, 재화 **7종**, 건물 정의 **26종**, 유닛 **19종**, 법 **11종**, 상황 **8종**, 재난 **4종**을 제공합니다. 건물 정의 수는 그 시대의 원본 소속을 기준으로 셉니다. 질소 고정 공장처럼 원본은 7시대 모듈에 남고 실제 해금은 8시대 기술로 옮긴 항목도 있습니다.
+제도 **3종**, 발전 **161개**, 재화 **7종**, 건물 정의 **39종**, 유닛 **19종**, 법 **11종**, 상황 **8종**, 재난 **4종**을 제공합니다. 건물 정의 수는 그 시대의 원본 소속을 기준으로 셉니다. 질소 고정 공장처럼 원본은 7시대 모듈에 남고 실제 해금은 8시대 기술로 옮긴 항목도 있습니다.
 
 #### 제도와 발전
 
@@ -144,7 +169,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 각 제도를 수용하면 관련 발전 줄기가 열립니다. 무료 특화는 30개 선택지를 10개 분기·2~4단계로 나누고 선행 연구를 연결합니다. 후기 기술은 긴 선행과 교차 선행으로 늦춥니다. **질소 고정·암모니아 합성은 현재 8시대 기술**이며 기존 집약 농업은 7시대에 유지합니다.
 
-![7시대 발전 159개의 분야별 분포](readme_media/advances.png)
+![7시대 발전 161개의 분야별 분포](readme_media/advances.png)
 
 처음에는 **증기의 시대**를 연구하고 산업 시대 제도 지도에서 발생·확산을 확인하세요. 기계 공장·예비군 제도를 확보하고 기존 건물의 개축과 산업 가속 단계를 살펴보는 것이 출발점입니다. 1900년 선도국의 발전 60~80% 확보는 밸런스 목표이며 검증된 결과는 아닙니다.
 
@@ -183,7 +208,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 #### 역사 사건·상황·재난
 
-모드 전체 TSIN 이벤트 정의는 **275개**이며 그중 7시대 원본은 **214개**입니다. 별도 역사 제작분 **24+43개**는 이 수에 이미 포함됩니다. 소재 수·파일 수·실제 팝업 횟수는 다른 단위입니다.
+모드 전체 TSIN 이벤트 정의는 **280개**이며 그중 7시대 원본은 **214개**입니다. 별도 역사 제작분 **24+43개**는 이 수에 이미 포함됩니다. 소재 수·파일 수·실제 팝업 횟수는 다른 단위입니다.
 
 첫 제작분은 우편·합성 염료·작업복·활동사진 사건열과 생활·과학 단발 사건입니다. 두 번째는 노동 분쟁·군정 감사·악취와 물 관리·국경의 돼지 분쟁·기업 공시·해외 산업 시찰의 6개 사건열입니다. 실제 시설·고용·군대·재정·상대국을 확인하며, 비용 선택은 실행할 때도 지급 능력을 다시 검사합니다.
 
@@ -200,7 +225,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 콜레라는 별도 질병(`tsin_cholera_disease`)으로 전파·감염·인구 피해를 처리하며 기존 재앙은 방역 대응 화면으로 유지합니다. 도시 인구를 직접 삭제하던 효과는 제거했습니다. [설명](docs/cholera_ui.md)
 
-도시 등급의 기본 RGO 규모 보너스를 촌락 +75%·소도시 +50%·도시 +30%·인구 10만 이상 도시 +20%·최상위 등급 0%로 조정했습니다. 기존 광산도시 추가 효과는 별도 합산됩니다. [설명](docs/rgo_rank_balance.md)
+도시 등급의 기본 RGO 규모 보너스를 촌락 +75%·소도시 +50%·도시 +30%·대도시 +20%·메트로폴리스·메갈로폴리스 0%로 조정했습니다. 기존 광산도시 추가 효과는 별도 합산됩니다. [설명](docs/rgo_rank_balance.md)
 
 연표의 점은 **발생 가능한 연도 문턱**입니다. 자동 발생일·종료일·상황 지속 기간을 뜻하지 않습니다. 19세기 대불황과 1900년 이후 공용 세계 대공황은 별도 체계입니다.
 
@@ -212,7 +237,7 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 ### 제8시대: 대전 — 부분 구현
 
-현재는 기술 **9종**, 새 시설 **2종**, 새 함선 **2종**입니다. 전용 시대관·정당·총력전 체계를 완성한 상태는 아닙니다.
+현재는 기술 **13종**, 새 시설 **6종**, 새 함선 **2종**입니다. 전용 시대관·정당·총력전 체계를 완성한 상태는 아닙니다.
 
 ![7시대 기반에서 이어지는 8시대 농업·함선·운송·항공 연구](readme_media/age8_handoff.png)
 
@@ -234,16 +259,16 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 [8시대 연결](docs/age8_transport_military.md) · [농업·사회 상태 인계](docs/age8_handoff.md)
 
-### 제9~12시대: 시대 뼈대
+### 제9~12시대: 구체화된 거점 일부와 시대 뼈대
 
-원자력은 핵 억지·국제 질서·대량소비, 정보화는 디지털 통신·세계 공급망, 인공지능은 자동화와 노동·통치 전환, 우주 개척은 지외 정착·우주 산업을 주제로 삼습니다. 현재는 이름·시작 연도·기본 규칙·현지화·임시 자산만 등록되어 있습니다. 전용 기술·생산 사슬·사건·새 제도나 실제 다행성 지도·성간 함대가 제공되는 것은 아닙니다.
+원자력은 핵 억지·국제 질서·대량소비, 정보화는 디지털 통신·세계 공급망, 인공지능은 자동화와 노동·통치 전환, 우주 개척은 지외 정착·우주 산업을 주제로 삼습니다. 9시대는 고속철도·현대 도로·성숙 지하철의 거점과 연구 3종, 10시대는 현대식 철도 통합관제 거점과 연구 1종을 추가했습니다. 11·12시대는 이름·시작 연도·기본 규칙·현지화·임시 자산만 등록되어 있습니다. 원자력·디지털·AI·우주 산업 전체, 전용 시대관·정치·사건이나 실제 다행성 지도·성간 함대는 아직 제공하지 않습니다.
 
 <a id="installation"></a>
 
 ## 3. 설치·호환성·기존 세이브
 
 1. 저장소를 `Documents/Paradox Interactive/Europa Universalis V/mod/The Singularity Is Near`에 둡니다.
-2. **소스 저장소를 사용하는 경우** 모드 루트에서 `python tools/sync_eras.py`를 실행해 `era_7`·`era_8` 원본을 게임 경로에 배치합니다. 배포 사본은 이 작업이 반영된 상태입니다.
+2. **소스 저장소를 사용하는 경우** 모드 루트에서 `python tools/sync_eras.py`를 실행해 `era_7`~`era_10` 원본을 게임 경로에 배치합니다. 배포 사본은 이 작업이 반영된 상태입니다.
 3. 런처 플레이셋에서 활성화합니다. Glorp를 사용하는 현재 로컬 구성은 **Glorp → TSIN → TSIN Playset Compat** 순서입니다. 호환 패치는 설치된 모드 버전에 맞춰 생성해야 합니다.
 4. GUI·콘텐츠 변경을 실제 게임에 반영하려면 게임을 다시 실행합니다. 문제 보고에는 오류 로그와 활성 플레이셋을 함께 첨부하세요.
 
@@ -259,8 +284,9 @@ GDP는 **K·M·B·T** 단위로 표시하며 최근 10개 연간 관측치를 �
 
 | 경로 | 역할 |
 |---|---|
-| `era_7/` | 7시대 편집 원본·manifest, 368개 등록 파일 |
-| `era_8/` | 8시대 편집 원본·manifest, 11개 등록 파일 |
+| `era_7/` | 7시대 편집 원본·manifest, 388개 등록 파일 |
+| `era_8/` | 8시대 편집 원본·manifest, 17개 등록 파일 |
+| `era_9/`·`era_10/` | 구체화된 후기 교통 거점 원본, 각각 5개·3개 등록 파일 |
 | `in_game/`·`main_menu/` | 전역 기능과 시대별 원본의 게임 실행용 파일 |
 | `loading_screen/` | 종료일 등의 defines |
 | `data/`·`ui/` | 시대·역사 국가·사건·관리 화면·경고의 원본 데이터 |
@@ -277,7 +303,7 @@ python -B tools/audit.py
 python -B -m unittest discover -s tools/tests
 ```
 
-README 갱신 기준의 코드 검사 기록은 **회귀 125개 통과**, 전체 정적 검사 오류 0·경고 0, 별도 감사 오류 0·기존 경고 2입니다. 기본/Glorp 금융 생성물 14개와 시대 원본 379개의 실행 파일이 일치했습니다. 이는 인게임 검증 완료를 뜻하지 않습니다.
+최근 코드 검사 기록은 **회귀 210개 통과**, validate.py의 오류 0·경고 0이며, 별도 audit.py는 오류 0·기존 경고 2입니다. 시대 원본 413개와 실행 파일이 일치했고 금융·합병 생성물 재현성을 확인했습니다. 이 결과는 인게임 검증 완료를 뜻하지 않습니다. 실제 테스트 대기 항목과 조건부 보류는 [최신 구현 상태](docs/expansion_status_2026_11_16.md)에 구분합니다.
 
 | 생성·분석 도구 | 역할 |
 |---|---|
@@ -299,25 +325,14 @@ README 도표는 `python tools/make_readme_media.py`로 재생성합니다. `mat
 
 국가 합병의 금융 승계와 해외 다중 계약은 구현했습니다. 실제 엔진의 Loan 승계·구형 만기 보존은 인게임 검증 대상입니다. 개별 해외 지분·실물 금 태환·통화동맹·연령별 연금 수급권은 추가 개발 범위입니다. 역사 사건은 별도 제작분 67개를 추가했지만 180개 소재 전체나 800~1200개 이벤트 목표를 완료한 것은 아닙니다. 복잡한 국경 돌출부·묶음 거래도 후속 범위입니다.
 
-8시대의 전용 3개 제도·정당·총력전과 9~12시대의 상세 기술·생산·정치 콘텐츠는 구체화된 계획부터 순차 개발합니다. **전선 중심 자동전투는 무기한 보류**입니다. 인게임 검증은 전체 구현 이후 진행하는 방침을 유지합니다.
+8시대의 전용 3개 제도·정당·총력전과 9~12시대의 상세 산업·정치 콘텐츠는 추가 설계 범위입니다. 이번에 구체화된 9·10시대 교통 거점만 별도로 구현했습니다. 발전 연료 판독, E2/E3 송전 회랑, 교통 구간 장부와 모든 기존 기업의 개별 법인 전환은 아직 완료하지 않았습니다. **전선 중심 자동전투는 무기한 보류**입니다. 인게임 검증은 전체 구현 이후 진행하는 방침을 유지합니다.
 
-[미래 개발계획과 구현 현황](docs/future_development_plan.md) · [중간커밋 이후 재개 기록](docs/resume_ac54046.md) · [변경 이력](docs/changelog.md)
+[최신 확장 구현 상태](docs/expansion_status_2026_11_16.md) · [미래 개발계획과 구현 현황](docs/future_development_plan.md) · [중간커밋 이후 재개 기록](docs/resume_ac54046.md) · [변경 이력](docs/changelog.md)
 
 ## English summary
 
-**The Singularity is Near** extends Europa Universalis V to **2337.12.31**, with age-VII industrial content, shared economic systems, partial age-VIII content and age-IX–XII scaffolds. Version **0.7.0** targets game **1.4.x** and remains a development build.
+**The Singularity is Near** extends EU5 to **2337.12.31**. Version **0.7.0** targets **1.4.x**. Age VII has industrial content; VIII has partial agricultural, military and transport content; IX–X contain only specified transport hubs; XI–XII remain scaffolds.
 
-**Shared systems:** six-tab TSIN dashboard, 35 metrics, 22 operational warnings, 16 map modes, 14 hints and 76 encyclopedia concepts. GDP uses K/M/B/T formatting and ten annual observations. F2 remains Economy: Finance contains Overview, Stocks, Credit, Currency, Banks and Funds. Native loans, bonds, repayment and bankruptcy controls remain connected. Funded bank/company accounts, equity dilution, corporate bonds and pension/insurance payments use aggregate accounts. Loans retain separate contract IDs, rates, maturity and payment schedules. Annexation journals preserve treasury, liabilities and contract parties; they do not provide an engine-wide ACID rollback. Missing expiry data in legacy bonds is flagged for explicit repair rather than assigned a fabricated date. Currency is an accounting overlay on native ducats; physical gold redemption and a native multicurrency market are not implemented.
+F2 remains Economy with six Finance subtabs. Funded aggregate accounts coexist with separately funded pilot legal entities, fixed-term contracts, audits, equity acquisition, creditor liquidation and limited public-company reorganization. Historical progression covers Russia plus 25 paths with player/subject protection. New systems include six urban ranks, manual statistics, regional city planning, refrigeration, zero-job strategic storage, staffed communications, pollution, maintenance, standardization, newspapers and a read-only bill card. Roads/railways use service hubs over native links, not a second native routing graph.
 
-**Historical progression:** Russia plus 25 additional paths, guarded AI restoration and paid rural enclave sales. Britain is limited to the British Isles and Ireland. Human owners/controllers and their subjects are protected from forced core transfers. Two historical waves add 24+43 events, already included in the **275** total TSIN event definitions; era-VII sources contain 214 of them. Historical material counts are not event counts or guaranteed popup frequency.
-
-**Age VII:** three institutions, 159 advances, seven goods, 26 building definitions, 19 units, 11 laws, eight situations and four disasters. **Age VIII:** nine advances, two facilities and two ships connect industrial agriculture, motor logistics, early aviation support and dreadnoughts. Dedicated political systems and institutions remain planned. **Ages IX–XII:** dated definitions, localization and placeholder art only.
-
-Edit era sources under `era_7/` and `era_8/`; run `python tools/sync_eras.py` before launching a source checkout. Shared features retain their existing paths. Glorp integration uses a local compatibility mod. Latest code verification recorded 119 passing regressions and zero validation errors/warnings; runtime layout, long-term balance and save continuity still require in-game checks. README images are explanatory diagrams, not gameplay screenshots.
-
-
-### 확장 개발 — 2026-11-16 진행 중
-
-교육·언론 정책에 따른 국가 연구 속도 보너스와 시장 냉장 보관소·전기 냉동 보관소를 추가했습니다. 기술별 병렬 전파나 운송 중 부패는 계산하지 않습니다. 전기 냉동은 기존 냉장 시설의 업그레이드이며 전력 유지비를 소비합니다. 연구·건설 화면의 최종 표시와 실제 보존 효과는 인게임 검증 대기입니다. 나머지 확장 개발계획은 아직 구현 완료가 아닙니다. [실행 기록](docs/expansion_execution_2026_11_16.md)
-
-도시 확장: 소도시 5천 → 도시 3만 → 대도시 10만 → 메트로폴리스 40만 → 메갈로폴리스 100만입니다. 마지막 단계는 개발도 50·잠재 과세자산 50도 요구합니다. 수도·시장 중심지·독립국 조건은 제거했으며, 기존 등급 ID와 건물 허용 조건을 연결했습니다. 실제 승격 UI는 인게임 검증 대기입니다.
+Current sources contain 94 dashboard metrics, 22 operational warnings, 19 map modes and 280 TSIN event definitions. Age VII has 161 advances and 39 building definitions; VIII has 13 advances, 6 facilities and 2 ships. The latest code checks passed **210 tests**, with **0 validation errors/warnings**, **0 audit errors (2 pre-existing warnings)** and **413 matching era files**. Runtime rendering, save/reload behavior and long-term balance remain untested in game. See [implementation status](docs/expansion_status_2026_11_16.md) for limitations and deferred decisions.

@@ -1,9 +1,9 @@
 {
   "global": {
     "관리 탭": 6,
-    "공용 지표": 35,
+    "공용 지표": 94,
     "운영 경고": 22,
-    "지도 모드": 16,
+    "지도 모드": 19,
     "힌트": 14,
     "백과사전": 76,
     "게임 규칙": 9,
@@ -11,8 +11,8 @@
     "기업 경제체제": 5
   },
   "era_7": {
-    "발전": 159,
-    "건물": 26,
+    "발전": 161,
+    "건물": 39,
     "유닛": 19,
     "법": 11,
     "상황": 8,
@@ -22,11 +22,11 @@
     "기업": 6
   },
   "era_8": {
-    "발전": 9,
-    "시설": 2,
+    "발전": 13,
+    "시설": 6,
     "함선": 2
   },
-  "all_events": 275,
+  "all_events": 280,
   "eras": [
     {
       "number": 7,
@@ -44,13 +44,13 @@
       "number": 9,
       "id": "age_9_atomic",
       "start_year": 1945,
-      "implementation": "skeleton"
+      "implementation": "partial"
     },
     {
       "number": 10,
       "id": "age_10_information",
       "start_year": 1990,
-      "implementation": "skeleton"
+      "implementation": "partial"
     },
     {
       "number": 11,

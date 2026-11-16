@@ -43,12 +43,13 @@ def build(root, data):
         b=baseline.replace(rows[0]['id'],row['id'],1)
         b,n=re.subn(r'\byear\s*=\s*1837\b','year = '+str(row['start_year']),b,count=1)
         assert n==1
-        future += [f'# Era {row["number"]}: {row["start_year"]} onward. Skeleton only.',b]
+        future += [f'# Era {row["number"]}: {row["start_year"]} onward. Shared age scaffold; gameplay content is defined separately.',b]
         for lang in loc:
             name=row['name'][lang]
             note=' Era scaffold only; dedicated technologies, institutions and events are not implemented.' if lang=='english' else ' 현재 시대 뼈대만 등록되어 있으며 전용 기술·시대관·이벤트는 구현되지 않았습니다.'
             if row.get('implementation')=='partial':
                 note=' Agricultural, transport and military transition content is implemented. Dedicated institutions and larger political systems remain under development.' if lang=='english' else ' 농업·운송·군사 전환 콘텐츠를 구현했습니다. 전용 시대관과 본격적인 정치 체계는 개발 예정입니다.'
+            note=row.get('implementation_note',{}).get(lang,note)
             values={row['id']:name,row['id']+'_desc':row['concept'][lang]+note,
                     'age_format_'+row['id']:(f'Age of ${row["id"]}$' if lang=='english' else f'${row["id"]}$의 시대')}
             for key,value in values.items():loc[lang].append(f' {key}: {json.dumps(value,ensure_ascii=False)}')
