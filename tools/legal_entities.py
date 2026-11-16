@@ -1,14 +1,18 @@
 """Funded pilot legal entities. Legacy pooled accounts and contracts remain separate."""
 import pdx
-FIELDS=('owner','kind','status','cash','units','public_units','claims','debt','missed','audit_until','audit_paid','losses','revenue')
+FIELDS=('owner','kind','status','cash','units','public_units','claims','debt','missed','audit_until','audit_paid','losses','revenue','merged_into','merger_phase','merger_source_cash','merger_survivor_cash','merger_source_units','merger_survivor_units')
 LOAN_FIELDS=('lender','borrower','principal','rate','maturity','next_coupon','missed','status')
 def r(field,ident='scope:tsin_le_id'):return f'"global_variable_map(tsin_le_{field}|{ident})"'
 def w(field,value,ident='scope:tsin_le_id'):return f'add_to_global_variable_map = {{ name = tsin_le_{field} key = {ident} value = {value} }}'
 def lr(field):return f'"global_variable_map(tsin_le_loan_{field}|scope:tsin_le_loan_id)"'
 def lw(field,value):return f'add_to_global_variable_map = {{ name = tsin_le_loan_{field} key = scope:tsin_le_loan_id value = {value} }}'
 VIEW=[('ID','선택 법인 ID','Selected legal entity ID','tsin_le_view_id'),('KIND','종류: 1 은행 / 2 기업','Kind: 1 bank / 2 company','tsin_le_view_kind'),('CASH','별도 법인 현금','Separate entity cash','tsin_le_view_cash'),('CLAIMS','별도 법인 대출자산','Entity loan receivables','tsin_le_view_claims'),('DEBT','별도 법인 원금채무','Entity principal debt','tsin_le_view_debt'),('NET','별도 법인 순자산','Entity net assets','tsin_le_view_net'),('PUBLIC','별도 법인 국가 지분(%)','Entity public equity (%)','tsin_le_view_public'),('MISSED','별도 법인 최장 연체 개월','Entity longest arrears (months)','tsin_le_view_missed'),('YEAR','법인 조회 기준 연도','Entity inspection year','tsin_le_view_year')]
+from legal_entity_restructuring import FIELDS as RESTRUCTURE_FIELDS
+VIEW += [(key,ko,en,var) for key,en,ko,var in RESTRUCTURE_FIELDS]
 def register(fields,action,loc):
  for key,ko,en,var in VIEW:fields.append(('ENTITY_'+key,en,ko,var));loc('ENTITY_'+key,en,ko)
+ from legal_entity_restructuring import register as register_restructuring
+ register_restructuring(action,loc)
  for kind,name in [(1,'bank'),(2,'company')]:
   for public in (False,True):
    cap='tsin_can_use_banking = yes'+(' tsin_company_count > 0' if kind==2 else '')
@@ -210,12 +214,13 @@ tsin_le_inspect_selected_effect = {{
  if = {{ limit = {{ has_variable = tsin_le_selected {r('owner',selected)} ?= root }}
  save_temporary_scope_value_as = {{ name = tsin_le_id value = var:tsin_le_selected }}
 ''')
- for field in ('id','kind','cash','claims','debt','missed'):
+ for field in ('id','kind','cash','claims','debt','missed','status','merged_into','losses'):
   val='scope:tsin_le_id' if field=='id' else r(field)
   e.append(f'set_variable = {{ name = tsin_le_view_{field} value = {val} }}')
  e += [f'''set_variable = {{ name = tsin_le_view_net value = {{ value = {r('cash')} add = {r('claims')} subtract = {r('debt')} }} }}
 set_variable = {{ name = tsin_le_view_public value = {{ value = {r('public_units')} divide = {{ value = {r('units')} min = 1 }} multiply = 100 }} }}
 set_variable = {{ name = tsin_le_view_year value = current_year }}
+set_variable = {{ name = tsin_le_view_audit_left value = {{ value = {r('audit_until')} subtract = tsin_contract_calendar_month min = 0 }} }}
  }}
 }}
 tsin_le_inspect_next_effect = {{
@@ -268,4 +273,5 @@ tsin_le_global_monthly = {
   b=next(b for b in pdx.top_level_blocks(effects) if b.key==name)
   body=b.text[b.text.index('{')+1:-1]
   effects=effects.replace(b.text,name+' = {\n if = { limit = { '+funding+' }\n'+body+'\n }\n}',1)
- return {'in_game/common/scripted_effects/tsin_legal_entities.txt':effects.rstrip()+'\n','in_game/common/scripted_triggers/tsin_legal_entities.txt':triggers,'in_game/common/on_action/tsin_legal_entities.txt':hooks}
+ from legal_entity_restructuring import extend_outputs
+ return extend_outputs({'in_game/common/scripted_effects/tsin_legal_entities.txt':effects.rstrip()+'\n','in_game/common/scripted_triggers/tsin_legal_entities.txt':triggers,'in_game/common/on_action/tsin_legal_entities.txt':hooks})

@@ -72,6 +72,10 @@ hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTIT
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_PUBLIC" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_public').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_MISSED" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_missed').GetValue|2L]" } }
 hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_YEAR" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_year').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_STATUS" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_status').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_MERGED" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_merged_into').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_LOSSES" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_losses').GetValue|2L]" } }
+hbox = { spacing = 8 text_single = { size = { 330 26 } text = "TSIN_LEDGER_ENTITY_AUDIT_LEFT" } text_single = { text = "[GetPlayer.MakeScope.GetVariable('tsin_le_view_audit_left').GetValue|2L]" } }
 button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_open_bank').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_OPEN_BANK" on_action = "[GetScriptedGui('tsin_ledger_open_bank').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
@@ -128,6 +132,18 @@ button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_bank_loss_grant').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_BANK_LOSS_GRANT" on_action = "[GetScriptedGui('tsin_ledger_bank_loss_grant').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_BANK_LOSS_GRANT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_buyout').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_BUYOUT" on_action = "[GetScriptedGui('tsin_ledger_entity_buyout').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_BUYOUT" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_merge').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_MERGE" on_action = "[GetScriptedGui('tsin_ledger_entity_merge').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_MERGE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_close').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_CLOSE" on_action = "[GetScriptedGui('tsin_ledger_entity_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CLOSE" } }
 button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE" on_action = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
@@ -197,6 +213,7 @@ enabled = "[GetScriptedGui('tsin_ledger_dividend').IsValid(GuiScope.SetRoot(GetP
 action_tooltip = { title = "TSIN_LEDGER_DIVIDEND" on_action = "[GetScriptedGui('tsin_ledger_dividend').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_DIVIDEND" } }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }
+text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE" }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }
 text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_BANK_NOTE" }
 } } }

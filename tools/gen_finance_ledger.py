@@ -177,7 +177,8 @@ enabled = "[GetScriptedGui('tsin_ledger_{id}').IsValid(GuiScope.SetRoot(GetPlaye
 action_tooltip = {{ title = "{label}" on_action = "[GetScriptedGui('tsin_ledger_{id}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
 text_single = {{ parentanchor = center align = center text = "{label}" }} }}''']
         if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }']
-        note = 'REFORM_NOTE'  if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
+        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE" }']
+        note = 'REFORM_NOTE'   if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
         if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }']
         ui += [f'text_single = {{ maximumsize = {{ 520 -1 }} multiline = yes text = "TSIN_LEDGER_{note}" }}', '} } }']
     ui += ['}']
