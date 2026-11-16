@@ -61,6 +61,9 @@ def integrate():
  p=pdx.MOD_ROOT/'in_game/common/advances/tsin_06_electrification.txt';s=pdx.read_text(p)
  if 'unlock_building = tsin_distribution_substation' not in s:
   b=next(b for b in pdx.top_level_blocks(s) if b.key=='tsin_distribution_grid_advance');s=s[:b.start]+b.text.replace('{','{\n\tunlock_building = tsin_distribution_substation',1)+s[b.end:];pdx.write_text_bom(p,s)
+ b=next(b for b in pdx.top_level_blocks(pdx.read_text(p)) if b.key=='tsin_distribution_grid_advance')
+ if not any(c.key=='ai_weight' for c in pdx.top_level_blocks(b.text[b.text.index('{')+1:-1])):
+  s=pdx.read_text(p);pdx.write_text_bom(p,s[:b.start]+b.text.replace('{','{\n\tai_weight = { add = 20 }',1)+s[b.end:])
  p=pdx.MOD_ROOT/'in_game/gfx/map/map_modes/tsin_map_modes.txt';s=pdx.read_text(p)
  if not any(b.key=='tsin_power_access' for b in pdx.top_level_blocks(s)):
   b=next(b.text for b in pdx.top_level_blocks(s) if b.key=='tsin_electrification');tail=b[b.index('\tsmall_map_names ='):]

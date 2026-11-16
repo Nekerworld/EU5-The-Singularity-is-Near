@@ -179,6 +179,7 @@ tsin_vulcanization_advance = {
 }
 
 tsin_oil_refining_advance = {
+	ai_weight = { add = 20 }
 	unlock_building = tsin_oil_storage
 	age = age_7_industrialization
 	icon = coke_smelting

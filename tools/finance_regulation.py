@@ -110,13 +110,15 @@ tsin_finance_regulation.1 = {
  option = { name = tsin_finance_regulation.1.a
   trigger = { tsin_bank_net_worth < 0 gold >= tsin_bank_loss_grant NOT = { has_variable = tsin_bank_grant_cooldown } }
   tsin_bank_loss_grant_effect = yes
+  ai_chance = { factor = 0 }
  }
  option = { name = tsin_finance_regulation.1.b
   if = { limit = { tsin_bank_net_worth < 0 }
    remove_variable = tsin_bank_open set_variable = tsin_bank_winding_down
   }
+  ai_chance = { factor = 1 }
  }
- option = { name = tsin_finance_regulation.1.c }
+ option = { name = tsin_finance_regulation.1.c ai_chance = { factor = 5 } }
 }
 '''
     entries.update({

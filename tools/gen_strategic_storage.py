@@ -181,5 +181,8 @@ def main():
             p=pdx.MOD_ROOT/'in_game/common/advances'/rel;s=pdx.read_text(p)
             if 'unlock_building = '+building not in s:
                 b=next(b for b in pdx.top_level_blocks(s) if b.key==advance);s=s[:b.start]+b.text.replace('{','{\n\tunlock_building = '+building,1)+s[b.end:];pdx.write_text_bom(p,s)
+            b=next(b for b in pdx.top_level_blocks(pdx.read_text(p)) if b.key==advance)
+            if not any(c.key=='ai_weight' for c in pdx.top_level_blocks(b.text[b.text.index('{')+1:-1])):
+                s=pdx.read_text(p);pdx.write_text_bom(p,s[:b.start]+b.text.replace('{','{\n\tai_weight = { add = 20 }',1)+s[b.end:])
     print('Strategic storage:',len(bad),'differences');return bool(bad)
 if __name__=='__main__':raise SystemExit(main())
