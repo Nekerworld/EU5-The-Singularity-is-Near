@@ -1,5 +1,7 @@
 ﻿tsin_survey_domestic_effect = {
  save_scope_as = tsin_survey_requestor
+ set_variable = { name = tsin_social_burghers value = 0 }
+ set_variable = { name = tsin_social_factory_jobs value = 0 }
  set_variable = { name = tsin_report_year value = current_year }
  set_variable = { name = tsin_report_month value = current_month }
  set_variable = { name = tsin_report_population value = { value = total_population multiply = 1000 } }
@@ -10,6 +12,12 @@
  set_variable = { name = tsin_report_urban value = 0 }
  set_variable = { name = tsin_report_buildings value = 0 }
  every_owned_location = {
+  save_temporary_scope_value_as = { name = tsin_social_burghers_here value = num_pop_type:burghers }
+  save_temporary_scope_value_as = { name = tsin_social_factory_jobs_here value = tsin_location_industrial_jobs }
+  scope:tsin_survey_requestor = {
+   change_variable = { name = tsin_social_burghers add = scope:tsin_social_burghers_here }
+   change_variable = { name = tsin_social_factory_jobs add = scope:tsin_social_factory_jobs_here }
+  }
   save_temporary_scope_value_as = { name = tsin_survey_buildings value = total_building_levels }
   scope:tsin_survey_requestor = {
    change_variable = { name = tsin_report_locations add = 1 }
@@ -19,6 +27,7 @@
    scope:tsin_survey_requestor = { change_variable = { name = tsin_report_urban add = 1 } }
   }
  }
+ tsin_social_bases_finish_effect = yes
 }
 tsin_survey_world_effect = {
  save_scope_as = tsin_survey_requestor

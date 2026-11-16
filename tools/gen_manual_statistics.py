@@ -91,6 +91,8 @@ tsin_survey_world_effect = {
  }
 }
 '''
+    from gen_social_bases import transform_survey
+    effects=transform_survey(effects)
     outputs={'in_game/common/generic_actions/tsin_manual_surveys.txt':'\n'.join(actions)+'\n',
       'in_game/common/prices/tsin_manual_surveys.txt':'tsin_survey_price = { gold = 0 }\n',
       'in_game/common/scripted_effects/tsin_manual_surveys.txt':effects}

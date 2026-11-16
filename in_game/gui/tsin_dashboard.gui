@@ -506,6 +506,17 @@ tsin_ui_card_pollution_water_high_share = {}
 hbox = { spacing = 12
 tsin_ui_card_communications_telegraph = {}
 tsin_ui_card_communications_telephone = {}
+tsin_ui_card_social_capital = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_social_workers = {}
+tsin_ui_card_social_intellectual = {}
+tsin_ui_card_social_clerical = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_social_technical = {}
+tsin_ui_card_social_survey_year = {}
+tsin_ui_card_social_education_year = {}
 }
 widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
@@ -624,6 +635,17 @@ button_regular = {
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_READ_NEWSPAPER" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY" }
 }
 }
 }

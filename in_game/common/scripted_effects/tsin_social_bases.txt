@@ -1,0 +1,23 @@
+﻿tsin_social_bases_finish_effect = {
+ remove_variable = tsin_social_capital remove_variable = tsin_social_workers
+ remove_variable = tsin_social_intellectual remove_variable = tsin_social_clerical remove_variable = tsin_social_technical
+ remove_variable = tsin_social_education_year
+ set_variable = { name = tsin_social_year value = current_year }
+ if = { limit = { total_population > 0 }
+  set_variable = { name = tsin_social_workers value = tsin_social_factory_share }
+  if = { limit = { tsin_company_count = 0 } set_variable = { name = tsin_social_capital value = 0 } }
+  else_if = { limit = { has_variable = tsin_ledger_version var:tsin_issued_shares > 0 }
+   set_variable = { name = tsin_social_capital value = { value = tsin_social_burgher_share multiply = tsin_social_private_share } }
+  }
+  if = { limit = { has_variable = tsin_higher_education }
+   set_variable = { name = tsin_social_intellectual value = { value = var:tsin_higher_education divide = 100 min = 0 max = 1 } }
+   set_variable = { name = tsin_social_technical value = { value = tsin_social_factory_share multiply = var:tsin_social_intellectual } }
+  }
+  if = { limit = { has_variable = tsin_secondary_education }
+   set_variable = { name = tsin_social_clerical value = { value = var:tsin_secondary_education divide = 100 min = 0 max = 1 multiply = tsin_social_burgher_share } }
+  }
+  if = { limit = { has_variable = tsin_statistics_year OR = { has_variable = tsin_secondary_education has_variable = tsin_higher_education } }
+   set_variable = { name = tsin_social_education_year value = var:tsin_statistics_year }
+  }
+ }
+}

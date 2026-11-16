@@ -858,6 +858,76 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_facility_paid_
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_facility_paid_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_EVENT" }
 }
+type tsin_ui_card_social_capital = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_CAPITAL"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_CAPITAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_capital').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_capital').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_capital').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_workers = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_WORKERS"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_WORKERS" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_workers').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_workers').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_workers').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_intellectual = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_INTELLECTUAL"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_INTELLECTUAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_intellectual').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_intellectual').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_intellectual').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_clerical = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_CLERICAL"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_CLERICAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_clerical').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_clerical').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_clerical').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_technical = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_TECHNICAL"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_TECHNICAL" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_technical').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_technical').GetValue|1%]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_technical').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_survey_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_SURVEY_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_SURVEY_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_social_education_year = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_SOCIAL_EDUCATION_YEAR"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_SOCIAL_EDUCATION_YEAR" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_education_year').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_social_education_year').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_education_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }
