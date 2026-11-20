@@ -5,6 +5,7 @@
  TSIN_STOCK_CHART: "Index history · quarterly observations"
  TSIN_STOCK_CHART_NOTE: "Oldest → newest · common scale, zero baseline. Founding price: 100. Observations normally update quarterly; exchange closures can leave gaps. Immediate shocks do not rewrite history."
  TSIN_STOCK_NO_HISTORY: "No observations yet. History appears after the first company enters the quarterly stock cycle."
+ TSIN_STOCK_NO_EXCHANGE: "Companies exist, but exchange technology is not yet available. Existing listings, debts and price records are kept; only new public offerings are paused."
  TSIN_STOCK_NO_MARKET: "No listed companies. Found a company through the existing decisions when its technology and costs are available."
  TSIN_STOCK_COMPANIES: "Industrial companies"
  TSIN_STOCK_LISTED: "Company established"

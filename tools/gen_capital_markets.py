@@ -79,7 +79,7 @@ if = {{ limit = {{ NOT = {{ has_country_modifier = tsin_company_{c} }} }}
 }}
 if = {{ limit = {{ NOT = {{ has_variable = tsin_firms_{c} }} }} set_variable = {{ name = tsin_firms_{c} value = 1 }} }}
 change_variable = {{ name = tsin_firms_{c} add = 1 }}
-set_variable = tsin_has_stock_market
+if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market }}
 ''')]
         # Unique historical company names cannot be duplicated within the same country.
         unique_allow=f'NOT = {{ has_country_modifier = tsin_company_{c} }}' if unique else ''
@@ -126,7 +126,7 @@ tsin_capital_cache_effect = yes
 if = {{ limit = {{ NOT = {{ has_variable = tsin_stock_{r['id']} }} }} set_variable = {{ name = tsin_stock_{r['id']} value = 100 }} }}
 if = {{ limit = {{ NOT = {{ has_variable = tsin_firms_{r['id']} }} }} set_variable = {{ name = tsin_firms_{r['id']} value = 1 }} }}
 if = {{ limit = {{ NOT = {{ has_variable = tsin_hq_{r['id']} }} }} capital ?= {{ root = {{ set_variable = {{ name = tsin_hq_{r['id']} value = prev }} }} }} }}
-set_variable = tsin_has_stock_market
+if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market }}
 }}''' for r in rows)
     effects += [block('TRY_REPLACE:tsin_init_existing_companies_effect',init)]
     dissolve='\n'.join(f'''if = {{ limit = {{ has_country_modifier = tsin_company_{r['id']} }} remove_country_modifier = tsin_company_{r['id']} }}

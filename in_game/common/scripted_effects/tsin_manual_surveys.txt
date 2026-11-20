@@ -27,6 +27,7 @@
    scope:tsin_survey_requestor = { change_variable = { name = tsin_report_urban add = 1 } }
   }
  }
+ tsin_cmp_record_domestic_effect = yes
  tsin_social_bases_finish_effect = yes
 }
 tsin_survey_world_effect = {
@@ -55,4 +56,71 @@ tsin_survey_world_effect = {
    }
   }
  }
+ tsin_cmpw_record_effect = yes
+}
+tsin_cmp_record_domestic_effect = {
+ if = { limit = { NOT = { has_global_variable = tsin_cmp_next_id } } set_global_variable = { name = tsin_cmp_next_id value = 0 } }
+ if = { limit = { NOT = { has_variable = tsin_cmp_id } }
+  set_global_variable = { name = tsin_cmp_next_id value = { value = global_var:tsin_cmp_next_id add = 1 } }
+  set_variable = { name = tsin_cmp_id value = global_var:tsin_cmp_next_id }
+ }
+ if = { limit = { NOT = { has_variable = tsin_cmp_count } } set_variable = { name = tsin_cmp_count value = 0 } }
+ change_variable = { name = tsin_cmp_count add = 1 }
+ save_temporary_scope_value_as = { name = tsin_cmp_row value = var:tsin_cmp_id }
+ save_temporary_scope_value_as = { name = tsin_cmph_key value = { value = var:tsin_cmp_id multiply = 100000 add = var:tsin_cmp_count } }
+ if = { limit = { var:tsin_cmp_count > 12 }
+  save_temporary_scope_value_as = { name = tsin_cmph_old value = { value = var:tsin_cmp_id multiply = 100000 add = var:tsin_cmp_count subtract = 12 } }
+  remove_from_global_variable_map = { name = tsin_cmph_serial key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_year key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_month key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_population key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_locations key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_urban key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_buildings key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_companies key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_gdp key = scope:tsin_cmph_old }
+  remove_from_global_variable_map = { name = tsin_cmph_gdp_known key = scope:tsin_cmph_old }
+ }
+ remove_from_global_variable_map = { name = tsin_cmph_serial key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_serial key = scope:tsin_cmph_key value = var:tsin_cmp_count }
+ remove_from_global_variable_map = { name = tsin_cmph_year key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_year key = scope:tsin_cmph_key value = var:tsin_report_year }
+ remove_from_global_variable_map = { name = tsin_cmph_month key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_month key = scope:tsin_cmph_key value = var:tsin_report_month }
+ remove_from_global_variable_map = { name = tsin_cmph_population key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_population key = scope:tsin_cmph_key value = var:tsin_report_population }
+ remove_from_global_variable_map = { name = tsin_cmph_locations key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_locations key = scope:tsin_cmph_key value = var:tsin_report_locations }
+ remove_from_global_variable_map = { name = tsin_cmph_urban key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_urban key = scope:tsin_cmph_key value = var:tsin_report_urban }
+ remove_from_global_variable_map = { name = tsin_cmph_buildings key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_buildings key = scope:tsin_cmph_key value = var:tsin_report_buildings }
+ remove_from_global_variable_map = { name = tsin_cmph_companies key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_companies key = scope:tsin_cmph_key value = var:tsin_report_companies }
+ if = { limit = { has_variable = tsin_report_gdp }
+  remove_from_global_variable_map = { name = tsin_cmph_gdp key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_gdp key = scope:tsin_cmph_key value = var:tsin_report_gdp }
+  remove_from_global_variable_map = { name = tsin_cmph_gdp_known key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_gdp_known key = scope:tsin_cmph_key value = 1 }
+ }
+ else = {
+  remove_from_global_variable_map = { name = tsin_cmph_gdp key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_gdp key = scope:tsin_cmph_key value = 0 }
+  remove_from_global_variable_map = { name = tsin_cmph_gdp_known key = scope:tsin_cmph_key } add_to_global_variable_map = { name = tsin_cmph_gdp_known key = scope:tsin_cmph_key value = 0 }
+ }
+ remove_from_global_variable_map = { name = tsin_cmp_country key = scope:tsin_cmp_row } add_to_global_variable_map = { name = tsin_cmp_country key = scope:tsin_cmp_row value = this }
+ remove_from_global_variable_map = { name = tsin_cmp_latest key = scope:tsin_cmp_row } add_to_global_variable_map = { name = tsin_cmp_latest key = scope:tsin_cmp_row value = var:tsin_cmp_count }
+ tsin_cmp_project_effect = yes
+}
+tsin_cmpw_record_effect = {
+ if = { limit = { NOT = { has_global_variable = tsin_cmpw_serial } } set_global_variable = { name = tsin_cmpw_serial value = 0 } }
+ set_global_variable = { name = tsin_cmpw_serial value = { value = global_var:tsin_cmpw_serial add = 1 } }
+ save_temporary_scope_value_as = { name = tsin_cmpw_key value = global_var:tsin_cmpw_serial }
+ if = { limit = { global_var:tsin_cmpw_serial > 12 }
+  save_temporary_scope_value_as = { name = tsin_cmpw_old value = { value = global_var:tsin_cmpw_serial subtract = 12 } }
+  remove_from_global_variable_map = { name = tsin_cmpw_year key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_month key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_countries key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_population key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_companies key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_known_gdp key = scope:tsin_cmpw_old }
+  remove_from_global_variable_map = { name = tsin_cmpw_gdp key = scope:tsin_cmpw_old }
+ }
+ remove_from_global_variable_map = { name = tsin_cmpw_year key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_year key = scope:tsin_cmpw_key value = var:tsin_report_world_year }
+ remove_from_global_variable_map = { name = tsin_cmpw_month key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_month key = scope:tsin_cmpw_key value = var:tsin_report_world_month }
+ remove_from_global_variable_map = { name = tsin_cmpw_countries key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_countries key = scope:tsin_cmpw_key value = var:tsin_report_world_countries }
+ remove_from_global_variable_map = { name = tsin_cmpw_population key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_population key = scope:tsin_cmpw_key value = var:tsin_report_world_population }
+ remove_from_global_variable_map = { name = tsin_cmpw_companies key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_companies key = scope:tsin_cmpw_key value = var:tsin_report_world_companies }
+ remove_from_global_variable_map = { name = tsin_cmpw_known_gdp key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_known_gdp key = scope:tsin_cmpw_key value = var:tsin_report_world_known_gdp }
+ remove_from_global_variable_map = { name = tsin_cmpw_gdp key = scope:tsin_cmpw_key } add_to_global_variable_map = { name = tsin_cmpw_gdp key = scope:tsin_cmpw_key value = var:tsin_report_world_gdp }
+ tsin_cmp_project_effect = yes
 }

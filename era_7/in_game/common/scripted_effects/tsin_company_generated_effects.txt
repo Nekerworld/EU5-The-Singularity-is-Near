@@ -13,7 +13,10 @@ tsin_found_company_steel_effect = {
 		set_variable = { name = tsin_hq_steel value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_steel value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 
@@ -64,7 +67,10 @@ tsin_found_company_machinery_effect = {
 		set_variable = { name = tsin_hq_machinery value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_machinery value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 
@@ -115,7 +121,10 @@ tsin_found_company_textile_effect = {
 		set_variable = { name = tsin_hq_textile value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_textile value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 
@@ -166,7 +175,10 @@ tsin_found_company_chemical_effect = {
 		set_variable = { name = tsin_hq_chemical value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_chemical value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 
@@ -217,7 +229,10 @@ tsin_found_company_railway_effect = {
 		set_variable = { name = tsin_hq_railway value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_railway value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 
@@ -268,7 +283,10 @@ tsin_found_company_farm_machinery_effect = {
 		set_variable = { name = tsin_hq_farm_machinery value = scope:tsin_company_hq }
 	}
 	set_variable = { name = tsin_stock_farm_machinery value = 100 }
-	set_variable = tsin_has_stock_market
+	if = {
+		limit = { tsin_exchange_can_open_trigger = yes }
+		set_variable = tsin_has_stock_market
+	}
 	tsin_capital_cache_effect = yes
 }
 

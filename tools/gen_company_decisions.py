@@ -182,7 +182,10 @@ def effects() -> str:
               f"\t\tset_variable = {{ name = tsin_hq_{c} value = scope:tsin_company_hq }}",
               "\t}",
               f"\tset_variable = {{ name = tsin_stock_{c} value = 100 }}",
-              "\tset_variable = tsin_has_stock_market",
+              "\tif = {",
+              "\t\tlimit = { tsin_exchange_can_open_trigger = yes }",
+              "\t\tset_variable = tsin_has_stock_market",
+              "\t}",
               "\ttsin_capital_cache_effect = yes",
               "}", ""]
         e += [f"tsin_update_stock_{c}_effect = {{",

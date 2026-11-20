@@ -1,0 +1,23 @@
+﻿tsin_cmp_prev = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_page var:tsin_cmp_page > 0 } effect = { tsin_cmp_prev_effect = yes } }
+tsin_cmp_next = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_page has_global_variable = tsin_cmp_next_id global_var:tsin_cmp_next_id > { value = var:tsin_cmp_page add = 1 multiply = 10 } } effect = { tsin_cmp_next_effect = yes } }
+tsin_cmp_clear = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_page } effect = { tsin_cmp_clear_effect = yes } }
+tsin_cmp_add_1 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r1_country } effect = { tsin_cmp_add_1_effect = yes } }
+tsin_cmp_detail_1 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r1_country } effect = { tsin_cmp_detail_1_effect = yes } }
+tsin_cmp_add_2 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r2_country } effect = { tsin_cmp_add_2_effect = yes } }
+tsin_cmp_detail_2 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r2_country } effect = { tsin_cmp_detail_2_effect = yes } }
+tsin_cmp_add_3 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r3_country } effect = { tsin_cmp_add_3_effect = yes } }
+tsin_cmp_detail_3 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r3_country } effect = { tsin_cmp_detail_3_effect = yes } }
+tsin_cmp_add_4 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r4_country } effect = { tsin_cmp_add_4_effect = yes } }
+tsin_cmp_detail_4 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r4_country } effect = { tsin_cmp_detail_4_effect = yes } }
+tsin_cmp_add_5 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r5_country } effect = { tsin_cmp_add_5_effect = yes } }
+tsin_cmp_detail_5 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r5_country } effect = { tsin_cmp_detail_5_effect = yes } }
+tsin_cmp_add_6 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r6_country } effect = { tsin_cmp_add_6_effect = yes } }
+tsin_cmp_detail_6 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r6_country } effect = { tsin_cmp_detail_6_effect = yes } }
+tsin_cmp_add_7 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r7_country } effect = { tsin_cmp_add_7_effect = yes } }
+tsin_cmp_detail_7 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r7_country } effect = { tsin_cmp_detail_7_effect = yes } }
+tsin_cmp_add_8 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r8_country } effect = { tsin_cmp_add_8_effect = yes } }
+tsin_cmp_detail_8 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r8_country } effect = { tsin_cmp_detail_8_effect = yes } }
+tsin_cmp_add_9 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r9_country } effect = { tsin_cmp_add_9_effect = yes } }
+tsin_cmp_detail_9 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r9_country } effect = { tsin_cmp_detail_9_effect = yes } }
+tsin_cmp_add_10 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r10_country } effect = { tsin_cmp_add_10_effect = yes } }
+tsin_cmp_detail_10 = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_cmp_r10_country } effect = { tsin_cmp_detail_10_effect = yes } }

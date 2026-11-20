@@ -84,7 +84,10 @@ def build(game=None):
     loc('OVERVIEW', 'Overview', '현황')
     loc('STOCKS', 'Stocks', '증시')
     loc('CREDIT', 'Credit', '신용')
-    loc('TREASURY', 'Treasury · reference ducats', '국고 · 기준 두캇')
+    loc('TREASURY', 'Treasury cash · ducats', '국고 현금 · 두캇')
+    loc('CAPACITY', 'Borrowing capacity', '차입 여력')
+    loc('CAPACITY_NA', 'No data. The native borrowing-limit query is not confirmed, so annual income is not used as lendable capacity.', '자료 없음. 네이티브 차입 한도 조회가 확인되지 않아 연간 수입을 대출 가능액으로 쓰지 않습니다.')
+    loc('CAPACITY_NOTE', 'Treasury cash and borrowing capacity are separate figures. Reserves, banks, pensions and GDP are not added to treasury cash.', '국고 현금과 차입 여력은 별개의 수치입니다. 준비금·은행·연금·GDP는 국고 현금에 더하지 않습니다.')
     loc('DEBT', 'Outstanding principal', '차입 원금')
     loc('COST', 'Monthly loan payments', '월간 차입 지급액')
     loc('INFLATION', 'Inflation', '인플레이션')
@@ -118,6 +121,9 @@ def build(game=None):
               ('FIRMS', "GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_company_count')|0")]
     for name, value in values:
         ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }} text_single = {{ text = "[{value}]" }} }}']
+    ui += ['hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_CAPACITY" }',
+           'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_CAPACITY_NA" } }',
+           'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_CAPACITY_NOTE" }']
     for name, variable in [('ENTRY', 'tsin_entry_risk_quarters'), ('SUPPLY', 'tsin_stress_quarters')]:
         var = f"GetPlayer.MakeScope.GetVariable('{variable}')"
         ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }}',

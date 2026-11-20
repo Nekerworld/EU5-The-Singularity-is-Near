@@ -175,9 +175,11 @@ tsin_world_company_project_page_effect = {
  for key,ko,en in [('COUNTRY','국가','Country'),('COUNT','기업 수','Firms'),('CASH','국가 기업 운영 현금','National operating cash'),('PROXY','국가 기업 평가 지표','National valuation proxy'),('SOURCE','평가 기준 연도','Valuation year'),('PREV','이전','Previous'),('NEXT','다음','Next'),('MISSING','—','—')]:label('TSIN_WCS_'+key,ko,en)
  label('TSIN_WCS_PAGE',"페이지: [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_wcs_page_display')|0] / 해당 국가 [GetPlayer.MakeScope.GetVariable('tsin_wcs_matches').GetValue|0]", "Page: [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_wcs_page_display')|0] / matching countries [GetPlayer.MakeScope.GetVariable('tsin_wcs_matches').GetValue|0]")
  outputs={'in_game/common/scripted_effects/tsin_world_companies.txt':'\n'.join(fx),'in_game/common/script_values/tsin_world_companies.txt':'\n'.join(values),'in_game/common/scripted_guis/tsin_world_companies.txt':'\n'.join(guis),'in_game/common/customizable_localization/tsin_world_companies.txt':'\n'.join(custom),'in_game/common/generic_actions/tsin_world_companies.txt':'''tsin_survey_world_companies = {
- type = owncountry price = price:tsin_world_company_survey_price show_message = no
- ai_tick = never automation_tick = never
- effect = { scope:actor = { tsin_world_company_survey_effect = yes } }
+  type = owncountry price = price:tsin_world_company_survey_price show_message = no
+  ai_tick = never automation_tick = never
+  # Checked before the survey effect, which clears the stored rows first. A refused request keeps the snapshot.
+  allow = { NOT = { has_variable = tsin_wcs_survey_cooldown } }
+  effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_wcs_survey_cooldown } } set_variable = { name = tsin_wcs_survey_cooldown value = yes days = 1 } tsin_world_company_survey_effect = yes } } }
 }
 ''','in_game/common/prices/tsin_world_companies.txt':'tsin_world_company_survey_price = { gold = 0 }\n','in_game/gui/tsin_world_companies.gui':'\n'.join(ui)+'\n','in_game/gui/scripted_widgets/tsin_world_companies.txt':'gui/tsin_world_companies.gui = tsin_world_company_window\n'}
  for lang,labels in loc.items():outputs[f'main_menu/localization/{lang}/tsin_world_companies_l_{lang}.yml']='l_'+lang+':\n'+''.join(f' {k}: '+json.dumps(v,ensure_ascii=False)+'\n' for k,v in labels.items())

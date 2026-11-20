@@ -25,7 +25,7 @@
 
 ## 본사와 주가
 
-- 설립 때 `tsin_found_company_<c>_effect`가 회사 건물 레벨이 가장 높은 소유 위치를 본사(`var:tsin_hq_<c>`)로 정하고, 주가 `var:tsin_stock_<c>` = 100, `var:tsin_has_stock_market`을 둡니다.
+- 설립 때 `tsin_found_company_<c>_effect`가 회사 건물 레벨이 가장 높은 소유 위치를 본사(`var:tsin_hq_<c>`)로 정하고, 주가 `var:tsin_stock_<c>` = 100을 둡니다. `var:tsin_has_stock_market`(거래소 운영)은 `tsin_exchange_can_open_trigger`(증권거래소 기술)가 있을 때만 세웁니다. 기술이 없으면 기업은 존재하지만 거래소는 운영되지 않으며, 기존 상장·채무·가격 기록은 취소하지 않고 신규 공개 발행만 `tsin_can_use_capital_markets`로 보류합니다. 기술 보유 후 월간 초기화가 플래그를 한 번 세웁니다.
 - 기업 가치 `tsin_company_value_<c>` = 주가 × 회사 건물 레벨 × 해당 업종의 기업 수. 합계 `tsin_company_total_value`.
 - 이전 세이브의 기업(주가 변수 없음)은 첫 분기 펄스에서 `tsin_init_existing_companies_effect`로 본사와 주가를 받습니다.
 

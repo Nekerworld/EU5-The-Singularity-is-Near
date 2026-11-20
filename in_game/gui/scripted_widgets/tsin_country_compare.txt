@@ -1,0 +1,1 @@
+﻿gui/tsin_country_compare.gui = tsin_country_compare_window

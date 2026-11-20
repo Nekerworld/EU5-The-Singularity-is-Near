@@ -1308,6 +1308,15 @@
             "english": "Survey world statistics"
           },
           "generic_action": "tsin_survey_world"
+        },
+        {
+          "id": "country_compare",
+          "tab": "overview",
+          "title": {
+            "korean": "국가 비교·이력 창",
+            "english": "Country comparison and history"
+          },
+          "open_variable": "tsin_ui_country_compare_open"
         }
       ]
     },
@@ -2467,7 +2476,8 @@
             "english": "Education source year used"
           },
           "tabs": [
-            "society"
+            "society",
+            "research"
           ],
           "unit": "number",
           "frequency": "manual",

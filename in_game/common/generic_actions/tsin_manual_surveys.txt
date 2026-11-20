@@ -4,7 +4,8 @@
  ai_tick = never
  automation_tick = never
  price = price:tsin_survey_price
- effect = { scope:actor = { tsin_survey_domestic_effect = yes } }
+ allow = { NOT = { has_variable = tsin_survey_domestic_cooldown } }
+ effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_survey_domestic_cooldown } } set_variable = { name = tsin_survey_domestic_cooldown value = yes days = 1 } tsin_survey_domestic_effect = yes } } }
 }
 tsin_survey_world = {
  type = owncountry
@@ -12,5 +13,6 @@ tsin_survey_world = {
  ai_tick = never
  automation_tick = never
  price = price:tsin_survey_price
- effect = { scope:actor = { tsin_survey_world_effect = yes } }
+ allow = { NOT = { has_variable = tsin_survey_world_cooldown } }
+ effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_survey_world_cooldown } } set_variable = { name = tsin_survey_world_cooldown value = yes days = 1 } tsin_survey_world_effect = yes } } }
 }

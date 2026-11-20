@@ -33,4 +33,12 @@ class WorldCompanyTests(unittest.TestCase):
   ui=b['in_game/gui/tsin_world_companies.gui']
   self.assertIn('scrollwidget',ui)
   self.assertNotIn('every_country',ui)
+class WorldCompanyCooldownTests(unittest.TestCase):
+ def test_cooldown_guard_is_in_generic_action_and_row_reset_stays_in_effect(self):
+  import gen_world_companies as g
+  a=g.build()['in_game/common/generic_actions/tsin_world_companies.txt']
+  self.assertIn('allow = { NOT = { has_variable = tsin_wcs_survey_cooldown } }',a)
+  self.assertIn('days = 1',a)
+  s=g.build()['in_game/common/scripted_effects/tsin_world_companies.txt']
+  self.assertLess(s.index('tsin_world_company_survey_effect = {'), s.index('remove_from_global_variable_map'))
 if __name__=='__main__':unittest.main()
