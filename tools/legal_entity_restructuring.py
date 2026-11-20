@@ -34,13 +34,55 @@ def register(action,loc):
  close=f'''tsin_le_selected_owned = yes {r('claims',s)} = 0 {r('debt',s)} = 0
  OR = {{ {r('public_units',s)} >= {r('units',s)} country_has_estate = estate_type:burghers_estate }}'''
  action('entity_close','Close debt-free entity and return remaining capital','무채무 법인 종료·잔여 현금 반환',close,'tsin_le_close_solvent_effect = yes','BANK')
+ # R08: liquidity (arrears) but positive net assets only. Loan IDs are kept; principal is not written down here.
+ restructure=f'''tsin_le_selected_owned = yes {r('kind',s)} = 2 {r('missed',s)} >= 1 {r('debt',s)} < {{ value = {r('cash',s)} add = {r('claims',s)} }} NOT = {{ has_policy = policy:tsin_laissez_faire_policy }}'''
+ action('entity_restructure','Restructure arrears loans of selected company (IDs kept, maturity +24 months, rate halved)','선택 기업 연체 대출 재조정 (ID 유지, 만기 +24개월, 금리 절반)',restructure,'tsin_le_restructure_loans_effect = yes','BANK')
+ # R08: secured by verified loan receivables the company holds; 50% of the receivables, capped by primary bank cash.
+ bank='var:tsin_le_primary_bank'
+ emergency=f'''tsin_le_selected_owned = yes {r('kind',s)} = 2 {r('missed',s)} >= 1 {r('claims',s)} >= 0.02 has_variable = tsin_le_primary_bank {r('owner',bank)} ?= root {r('cash',bank)} >= 0.01 NOT = {{ has_policy = policy:tsin_laissez_faire_policy }} {r('debt',s)} < {{ value = {r('cash',s)} add = {r('claims',s)} }}'''
+ action('entity_emergency_loan','Emergency loan secured by verified loan receivables (50% of receivables)','대출채권 담보 긴급대출 (채권의 50%, 은행 현금 한도)',emergency,'tsin_le_emergency_loan_effect = yes','BANK')
  loc('ENTITY_RESTRUCTURE_NOTE','Buying existing private equity pays burgher owners at positive book NAV; it adds no company cash and is not a recapitalization. Merger is limited to two wholly state-owned companies in the same country, costs 5% of one transaction lot (minimum 0.01), preserves every loan ID/rate/maturity and closes the absorbed ID. It neither transfers factories nor merges private owners without compensation. A merge marker prevents repeated processing; engine-wide rollback is not guaranteed.',
  '기존 민간 지분의 유상 매입은 양의 장부 순자산 기준으로 시민 소유주에게 지급하며 회사 현금을 늘리지 않습니다. 통합은 같은 나라의 완전 국영 기업끼리만 가능하며 거래 단위의 5%(최소0.01두캇)를 지불합니다. 모든 대출 ID·금리·만기를 보존하고 흡수 법인 ID를 닫습니다. 실제 공장을 옮기거나 민간 소유주를 무상 합병하지 않습니다. 처리 표식으로 중복을 막지만 엔진 전체의 원자적 롤백을 보장하지 않습니다.')
  return buy,merge,close
 def extend_outputs(outputs):
  gates=[]
  register(lambda ident,en,ko,gate,effect,tab:gates.append(gate),lambda *args:None)
- buy,merge,close=gates;s='var:tsin_le_selected';p='var:tsin_le_primary_company'
+ buy,merge,close,restructure,emergency=gates;s='var:tsin_le_selected';p='var:tsin_le_primary_company';bank='var:tsin_le_primary_bank'
+ e2=f'''tsin_le_restructure_loans_effect = {{
+ if = {{ limit = {{ {restructure} }}
+ save_scope_as = tsin_le_coordinator
+ every_in_global_list = {{ variable = tsin_active_entity_loans add_to_list = tsin_le_restructure_list }}
+ every_in_list = {{ list = tsin_le_restructure_list
+  save_temporary_scope_value_as = {{ name = tsin_le_loan_id value = this }}
+  scope:tsin_le_coordinator = {{ if = {{ limit = {{ {lr('borrower')} = var:tsin_le_selected {lr('status')} = 1 }}
+   {lw('maturity','{ value = '+lr('maturity')+' add = 24 }')}
+   {lw('rate','{ value = '+lr('rate')+' multiply = 0.5 min = 0 }')}
+   {lw('missed','0')}
+  }} }}
+ }}
+ tsin_le_refresh_totals_effect = yes tsin_le_inspect_selected_effect = yes
+ }}
+}}
+tsin_le_emergency_loan_effect = {{
+ if = {{ limit = {{ {emergency} }}
+ save_temporary_scope_value_as = {{ name = tsin_le_emergency_amount value = {{ value = {r('claims',s)} multiply = 0.5 max = {r('cash',bank)} }} }}
+ if = {{ limit = {{ scope:tsin_le_emergency_amount >= 0.01 }}
+  if = {{ limit = {{ NOT = {{ has_global_variable = tsin_le_next_loan }} }} set_global_variable = {{ name = tsin_le_next_loan value = 0 }} }}
+  set_global_variable = {{ name = tsin_le_next_loan value = {{ value = global_var:tsin_le_next_loan add = 1 }} }}
+  save_temporary_scope_value_as = {{ name = tsin_le_loan_id value = global_var:tsin_le_next_loan }}
+  add_to_global_variable_list = {{ name = tsin_active_entity_loans target = scope:tsin_le_loan_id }}
+  {lw('lender',bank)} {lw('borrower',s)}
+  {lw('principal','scope:tsin_le_emergency_amount')} {lw('rate','var:tsin_rate')}
+  {lw('maturity','{ value = tsin_contract_calendar_month add = 12 }')} {lw('next_coupon','{ value = tsin_contract_calendar_month add = 1 }')}
+  {lw('missed','0')} {lw('status','1')}
+  {w('cash','{ value = '+r('cash',bank)+' subtract = scope:tsin_le_emergency_amount }',bank)}
+  {w('cash','{ value = '+r('cash',s)+' add = scope:tsin_le_emergency_amount }',s)}
+  tsin_le_refresh_totals_effect = yes tsin_le_inspect_selected_effect = yes
+ }}
+ }}
+}}
+'''
+ s='var:tsin_le_selected';p='var:tsin_le_primary_company'
  e=f'''tsin_le_buyout_effect = {{
  if = {{ limit = {{ {buy} }}
  save_temporary_scope_value_as = {{ name = tsin_le_buyout_price value = {{ value = {r('cash',s)} add = {r('claims',s)} subtract = {r('debt',s)} multiply = {{ value = 1 subtract = {{ value = {r('public_units',s)} divide = {r('units',s)} }} min = 0 max = 1 }} }} }}
@@ -91,5 +133,5 @@ tsin_le_close_solvent_effect = {{
 }}
 '''
  outputs=dict(outputs)
- outputs['in_game/common/scripted_effects/tsin_legal_entities.txt']+=e.rstrip()+'\n'
+ outputs['in_game/common/scripted_effects/tsin_legal_entities.txt']+=e.rstrip()+'\n'+e2.rstrip()+'\n'
  return outputs

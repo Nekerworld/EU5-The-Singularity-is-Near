@@ -66,6 +66,8 @@
  TSIN_LEDGER_ENTITY_BUYOUT: "선택 법인 민간 지분 유상 매입"
  TSIN_LEDGER_ENTITY_MERGE: "완전 국영 기업을 기본 기업에 통합"
  TSIN_LEDGER_ENTITY_CLOSE: "무채무 법인 종료·잔여 현금 반환"
+ TSIN_LEDGER_ENTITY_RESTRUCTURE: "선택 기업 연체 대출 재조정 (ID 유지, 만기 +24개월, 금리 절반)"
+ TSIN_LEDGER_ENTITY_EMERGENCY_LOAN: "대출채권 담보 긴급대출 (채권의 50%, 은행 현금 한도)"
  TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE: "기존 민간 지분의 유상 매입은 양의 장부 순자산 기준으로 시민 소유주에게 지급하며 회사 현금을 늘리지 않습니다. 통합은 같은 나라의 완전 국영 기업끼리만 가능하며 거래 단위의 5%(최소0.01두캇)를 지불합니다. 모든 대출 ID·금리·만기를 보존하고 흡수 법인 ID를 닫습니다. 실제 공장을 옮기거나 민간 소유주를 무상 합병하지 않습니다. 처리 표식으로 중복을 막지만 엔진 전체의 원자적 롤백을 보장하지 않습니다."
  TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE: "민간 시범 은행 법인 출자"
  TSIN_LEDGER_ENTITY_CREATE_BANK_PUBLIC: "국영 시범 은행 법인 출자"

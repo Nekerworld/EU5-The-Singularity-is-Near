@@ -145,6 +145,14 @@ enabled = "[GetScriptedGui('tsin_ledger_entity_close').IsValid(GuiScope.SetRoot(
 action_tooltip = { title = "TSIN_LEDGER_ENTITY_CLOSE" on_action = "[GetScriptedGui('tsin_ledger_entity_close').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CLOSE" } }
 button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_restructure').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_RESTRUCTURE" on_action = "[GetScriptedGui('tsin_ledger_entity_restructure').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_RESTRUCTURE" } }
+button_regular = { size = { 480 28 }
+enabled = "[GetScriptedGui('tsin_ledger_entity_emergency_loan').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_ENTITY_EMERGENCY_LOAN" on_action = "[GetScriptedGui('tsin_ledger_entity_emergency_loan').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_EMERGENCY_LOAN" } }
+button_regular = { size = { 480 28 }
 enabled = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE" on_action = "[GetScriptedGui('tsin_ledger_entity_create_bank_private').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
 text_single = { parentanchor = center align = center text = "TSIN_LEDGER_ENTITY_CREATE_BANK_PRIVATE" } }

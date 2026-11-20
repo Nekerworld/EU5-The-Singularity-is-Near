@@ -366,6 +366,15 @@ button_regular = {
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_DISTRIBUTION_MAP" }
 }
 }
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_TRANSPORT_BUILDINGS"
+        on_action = "[OpenLateralView('buildings')]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TRANSPORT_BUILDINGS" }
+}
 widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_budget_on')]"
 button_regular = {
     size = { 220 30 }
@@ -464,15 +473,6 @@ button_regular = {
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC" }
 }
-}
-button_regular = {
-    size = { 220 30 }
-    action_tooltip = {
-        title = "TSIN_UI_LINK_TRANSPORT_BUILDINGS"
-        on_action = "[OpenLateralView('buildings')]"
-        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
-    }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TRANSPORT_BUILDINGS" }
 }
 }
 vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 10
