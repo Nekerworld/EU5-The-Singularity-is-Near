@@ -47,10 +47,12 @@ tsin_facility_{group}_gap_scale = {{ value = province.tsin_facility_{group}_gap 
    set_variable = {{ name = tsin_facility_{group}_year value = current_year }}
 ''')
   penalty={'industry':'local_mills_build_buildings_efficiency = -0.02','transport':'local_market_access = -0.02','public':'local_population_capacity_modifier = -0.03'}[group]
+  # The chemical spill shutdown already cuts the same mill-efficiency key; wear/obsolescence must not stack on it.
+  guard='NOT = { has_variable = tsin_spill_shutdown }' if group=='industry' else ''
   for state in ['wear','gap']:
    key=f'tsin_facility_{group}_{state}'
    autos.append(f'''{key} = {{ category = location type = location
- potential_trigger = {{ controller ?= owner tsin_facility_{group}_location_size > 0 province = {{ has_variable = tsin_facility_registered }} }}
+ potential_trigger = {{ controller ?= owner tsin_facility_{group}_location_size > 0 province = {{ has_variable = tsin_facility_registered }} {guard} }}
  scales_with = tsin_facility_{group}_{state}_scale
  {penalty}
 }}
@@ -75,7 +77,7 @@ set_variable = {{ name = tsin_facility_{group}_year value = current_year }}'''
 }}
 ''')
    labels[key]=(ko+' 설비 '+opko,open_+' '+en.lower()+' facilities')
-   labels[key+'_desc']=(f'등록 지방을 선택합니다. 비용 {cost}두캇 × max(해당 시설 규모/25, 1). 보수는 마모만 회복하고 현대화는 해당 묶음의 연령·국가 기술 대비 설비 기준을 갱신합니다. 다른 묶음을 초기화하지 않습니다.',f'Choose a registered province. Cost {cost} gold × max(bundle scale/25, 1). Repair restores condition only; modernization refreshes age and technology baseline for this bundle, without resetting other bundles.')
+   labels[key+'_desc']=(f'등록 지방을 선택합니다. 비용 {cost}두캇 × max(해당 시설 규모/25, 1). 보수는 마모만 회복하고 현대화는 해당 묶음의 연령·국가 기술 대비 설비 기준을 갱신합니다. 다른 묶음을 초기화하지 않습니다. 정비비는 정부 지원금이며 건물 유지 투입과 다릅니다. 고령 자체는 운영 손실이 아니고 마모·기술 격차만 가동 보정에 씁니다. 화학 유출 정지 중 산업 묶음 보정은 중복 적용하지 않습니다. 지원되는 보정 키만 쓰며 전체 지점 생산량을 직접 깎지 않습니다.',f'Choose a registered province. Cost {cost} gold × max(bundle scale/25, 1). Repair restores condition only; modernization refreshes age and technology baseline for this bundle, without resetting other bundles. Maintenance spending is a government subsidy, not building upkeep. Age alone causes no output loss; only wear and technology gap apply supported modifiers. During a chemical spill shutdown, the industry bundle does not stack its penalty. Only supported modifier keys are used; total location output is not cut directly.')
  fx.append('''   tsin_facility_schedule_review_effect = yes
    add_to_global_variable_list = { name = tsin_facility_districts target = this }
    set_global_variable = tsin_facility_aging_enabled

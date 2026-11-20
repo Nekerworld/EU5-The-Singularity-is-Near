@@ -1945,6 +1945,223 @@
       ]
     },
     {
+      "id": "transport_services",
+      "shortcuts": [
+        {
+          "id": "transport_buildings",
+          "tab": "economy",
+          "title": {
+            "korean": "도로·철도 거점 건설",
+            "english": "Build road and railway service hubs"
+          },
+          "view": "buildings"
+        }
+      ]
+    },
+    {
+      "id": "social_bases",
+      "shortcuts": [
+        {
+          "id": "social_bases_survey",
+          "tab": "society",
+          "title": {
+            "korean": "사회 구성 기반 조사",
+            "english": "Survey social bases"
+          },
+          "generic_action": "tsin_survey_domestic"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "social_capital",
+          "variable": "tsin_social_capital",
+          "title": {
+            "korean": "기업·민간 소유 연계 기반",
+            "english": "Business/private-ownership base"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "manual",
+          "description": {
+            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
+            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
+          }
+        },
+        {
+          "id": "social_workers",
+          "variable": "tsin_social_workers",
+          "title": {
+            "korean": "공장 고용 연계 기반",
+            "english": "Factory-employment base"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "manual",
+          "description": {
+            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
+            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
+          }
+        },
+        {
+          "id": "social_intellectual",
+          "variable": "tsin_social_intellectual",
+          "title": {
+            "korean": "고등교육 연계 기반",
+            "english": "Higher-education base"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "manual",
+          "description": {
+            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
+            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
+          }
+        },
+        {
+          "id": "social_clerical",
+          "variable": "tsin_social_clerical",
+          "title": {
+            "korean": "중등교육 시민 연계 기반",
+            "english": "Secondary-educated burgher base"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "manual",
+          "description": {
+            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
+            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
+          }
+        },
+        {
+          "id": "social_technical",
+          "variable": "tsin_social_technical",
+          "title": {
+            "korean": "고등교육·산업 연계 기반",
+            "english": "Higher-education/industry base"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "fraction",
+          "frequency": "manual",
+          "description": {
+            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
+            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
+          }
+        },
+        {
+          "id": "social_survey_year",
+          "variable": "tsin_social_year",
+          "title": {
+            "korean": "사회 기반 조사 연도",
+            "english": "Social-base survey year"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "마지막으로 국내 통계 조사를 요청한 연도입니다.",
+            "english": "Year of the last explicit domestic survey."
+          }
+        },
+        {
+          "id": "social_education_year",
+          "variable": "tsin_social_education_year",
+          "title": {
+            "korean": "사용한 교육 원자료 연도",
+            "english": "Education source year used"
+          },
+          "tabs": [
+            "society",
+            "research"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "교육 캐시의 원자료 기준 연도입니다. 조사 연도와 다를 수 있으며 미상이면 —입니다.",
+            "english": "Source year of cached education, possibly different from the survey year. Unknown is shown as —."
+          }
+        }
+      ]
+    },
+    {
+      "id": "metro_regions",
+      "shortcuts": [
+        {
+          "id": "metro_review",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 연결 재검사",
+            "english": "Review metropolitan connections"
+          },
+          "generic_action": "tsin_metro_review"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "metro_sites",
+          "variable": "tsin_metro_sites",
+          "title": {
+            "korean": "도시권 구성 지점 수",
+            "english": "Metropolitan member locations"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "분기 검토가 마지막으로 센 구성 지점 수입니다. 실제 인구나 식량을 공유하지 않습니다.",
+            "english": "Member locations counted by the last quarterly review. Population and food are not shared."
+          }
+        },
+        {
+          "id": "metro_broken",
+          "variable": "tsin_metro_broken",
+          "title": {
+            "korean": "단절된 구성 지점 수",
+            "english": "Disconnected member locations"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "마지막 검토에서 중심과 도로로 이어지지 않은 구성 지점 수입니다.",
+            "english": "Member locations without a road link to their core at the last review."
+          }
+        },
+        {
+          "id": "metro_hubs",
+          "variable": "tsin_metro_hubs",
+          "title": {
+            "korean": "도시권 중심 수",
+            "english": "Metropolitan cores"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "지정한 도시권 중심의 수입니다. 중심 하나는 역할 하나만 가질 수 있습니다.",
+            "english": "Number of designated cores. Each core has one role."
+          }
+        }
+      ]
+    },
+    {
       "id": "facility_aging",
       "shortcuts": [
         {
@@ -2334,223 +2551,6 @@
           "description": {
             "korean": "실제 정비 지원 결제 때 갱신하는 장부입니다. 정기 통계 조사를 추가하지 않습니다. 비용은 검사 시 국고에서 지급하며 현대화 비용과 별개입니다.",
             "english": "Ledger updated when maintenance support is actually paid. No periodic statistics survey. Paid from treasury at inspections, separate from modernization."
-          }
-        }
-      ]
-    },
-    {
-      "id": "transport_services",
-      "shortcuts": [
-        {
-          "id": "transport_buildings",
-          "tab": "economy",
-          "title": {
-            "korean": "도로·철도 거점 건설",
-            "english": "Build road and railway service hubs"
-          },
-          "view": "buildings"
-        }
-      ]
-    },
-    {
-      "id": "social_bases",
-      "shortcuts": [
-        {
-          "id": "social_bases_survey",
-          "tab": "society",
-          "title": {
-            "korean": "사회 구성 기반 조사",
-            "english": "Survey social bases"
-          },
-          "generic_action": "tsin_survey_domestic"
-        }
-      ],
-      "metrics": [
-        {
-          "id": "social_capital",
-          "variable": "tsin_social_capital",
-          "title": {
-            "korean": "기업·민간 소유 연계 기반",
-            "english": "Business/private-ownership base"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "fraction",
-          "frequency": "manual",
-          "description": {
-            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
-            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
-          }
-        },
-        {
-          "id": "social_workers",
-          "variable": "tsin_social_workers",
-          "title": {
-            "korean": "공장 고용 연계 기반",
-            "english": "Factory-employment base"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "fraction",
-          "frequency": "manual",
-          "description": {
-            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
-            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
-          }
-        },
-        {
-          "id": "social_intellectual",
-          "variable": "tsin_social_intellectual",
-          "title": {
-            "korean": "고등교육 연계 기반",
-            "english": "Higher-education base"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "fraction",
-          "frequency": "manual",
-          "description": {
-            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
-            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
-          }
-        },
-        {
-          "id": "social_clerical",
-          "variable": "tsin_social_clerical",
-          "title": {
-            "korean": "중등교육 시민 연계 기반",
-            "english": "Secondary-educated burgher base"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "fraction",
-          "frequency": "manual",
-          "description": {
-            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
-            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
-          }
-        },
-        {
-          "id": "social_technical",
-          "variable": "tsin_social_technical",
-          "title": {
-            "korean": "고등교육·산업 연계 기반",
-            "english": "Higher-education/industry base"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "fraction",
-          "frequency": "manual",
-          "description": {
-            "korean": "국내 통계 조사 버튼으로만 계산하는 서로 겹칠 수 있는 사회 기반 지표입니다. 실제 계급 인구·정치 영향력·합이100%인 구성비가 아닙니다. 기업=시민 비중×민간 지분비(장부 필요), 노동=공장 일자리/인구, 지식=고등교육률, 사무=시민 비중×중등교육률, 기술=공장 비중×고등교육률. 교육·지분은 기존 장부의 마지막 값이며 국고·인구·자산을 옮기지 않습니다.",
-            "english": "Explicit domestic-survey estimates, which may overlap. Not actual class populations, political power or shares summing to 100%. Business=burgher share × private ownership (ledger required); workers=factory jobs/population; intellectual=higher education; clerical=burgher share × secondary education; technical=factory share × higher education. Education/equity retain their source ledger dates. No population, wealth or treasury transfers."
-          }
-        },
-        {
-          "id": "social_survey_year",
-          "variable": "tsin_social_year",
-          "title": {
-            "korean": "사회 기반 조사 연도",
-            "english": "Social-base survey year"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "manual",
-          "description": {
-            "korean": "마지막으로 국내 통계 조사를 요청한 연도입니다.",
-            "english": "Year of the last explicit domestic survey."
-          }
-        },
-        {
-          "id": "social_education_year",
-          "variable": "tsin_social_education_year",
-          "title": {
-            "korean": "사용한 교육 원자료 연도",
-            "english": "Education source year used"
-          },
-          "tabs": [
-            "society",
-            "research"
-          ],
-          "unit": "number",
-          "frequency": "manual",
-          "description": {
-            "korean": "교육 캐시의 원자료 기준 연도입니다. 조사 연도와 다를 수 있으며 미상이면 —입니다.",
-            "english": "Source year of cached education, possibly different from the survey year. Unknown is shown as —."
-          }
-        }
-      ]
-    },
-    {
-      "id": "metro_regions",
-      "shortcuts": [
-        {
-          "id": "metro_review",
-          "tab": "society",
-          "title": {
-            "korean": "도시권 연결 재검사",
-            "english": "Review metropolitan connections"
-          },
-          "generic_action": "tsin_metro_review"
-        }
-      ],
-      "metrics": [
-        {
-          "id": "metro_sites",
-          "variable": "tsin_metro_sites",
-          "title": {
-            "korean": "도시권 구성 지점 수",
-            "english": "Metropolitan member locations"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "manual",
-          "description": {
-            "korean": "분기 검토가 마지막으로 센 구성 지점 수입니다. 실제 인구나 식량을 공유하지 않습니다.",
-            "english": "Member locations counted by the last quarterly review. Population and food are not shared."
-          }
-        },
-        {
-          "id": "metro_broken",
-          "variable": "tsin_metro_broken",
-          "title": {
-            "korean": "단절된 구성 지점 수",
-            "english": "Disconnected member locations"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "manual",
-          "description": {
-            "korean": "마지막 검토에서 중심과 도로로 이어지지 않은 구성 지점 수입니다.",
-            "english": "Member locations without a road link to their core at the last review."
-          }
-        },
-        {
-          "id": "metro_hubs",
-          "variable": "tsin_metro_hubs",
-          "title": {
-            "korean": "도시권 중심 수",
-            "english": "Metropolitan cores"
-          },
-          "tabs": [
-            "society"
-          ],
-          "unit": "number",
-          "frequency": "manual",
-          "description": {
-            "korean": "지정한 도시권 중심의 수입니다. 중심 하나는 역할 하나만 가질 수 있습니다.",
-            "english": "Number of designated cores. Each core has one role."
           }
         }
       ]
