@@ -57,6 +57,8 @@ tsin_news_line_2 = { type = country random_valid = no
 
 tsin_news_line_3 = { type = country random_valid = no
 
+ text = { trigger = { tsin_news_press_tier < 2 } localization_key = TSIN_NEWS_EMPTY_LINE }
+
  text = { trigger = { var:tsin_news_3_type = 31 } localization_key = TSIN_NEWS_LINE_3_31 }
 
  text = { trigger = { var:tsin_news_3_type = 22 } localization_key = TSIN_NEWS_LINE_3_22 }
@@ -76,6 +78,8 @@ tsin_news_line_3 = { type = country random_valid = no
 
 tsin_news_line_4 = { type = country random_valid = no
 
+ text = { trigger = { tsin_news_press_tier < 2 } localization_key = TSIN_NEWS_EMPTY_LINE }
+
  text = { trigger = { var:tsin_news_4_type = 31 } localization_key = TSIN_NEWS_LINE_4_31 }
 
  text = { trigger = { var:tsin_news_4_type = 22 } localization_key = TSIN_NEWS_LINE_4_22 }
@@ -94,6 +98,10 @@ tsin_news_line_4 = { type = country random_valid = no
 }
 
 tsin_news_line_5 = { type = country random_valid = no
+
+ text = { trigger = { tsin_news_press_tier < 2 } localization_key = TSIN_NEWS_EMPTY_LINE }
+
+ text = { trigger = { tsin_news_press_tier < 3 } localization_key = TSIN_NEWS_EMPTY_LINE }
 
  text = { trigger = { var:tsin_news_5_type = 31 } localization_key = TSIN_NEWS_LINE_5_31 }
 

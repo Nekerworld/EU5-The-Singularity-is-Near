@@ -46,9 +46,14 @@ tsin_news_publication_effect = {
 ''']
  # Priority comparison uses a temporary numeric value so expansion cannot create an invalid literal trigger key.
  effects[-1]=effects[-1].replace('if = { limit = { $PRIORITY$ >= 2 }','set_local_variable = { name = tsin_news_priority value = $PRIORITY$ }\n  if = { limit = { local_var:tsin_news_priority >= 2 }')
- values=[];custom=[];loc={'english':{},'korean':{}}
+ # Press stage = number of owned press technologies (irregular, periodical, mass); sets how many slots are in reach.
+ values=['tsin_news_press_tier = { value = 0 if = { limit = { has_advance = printing_press_advance } add = 1 } if = { limit = { has_advance = tsin_popular_press_advance } add = 1 } if = { limit = { has_advance = tsin_mass_communication_advance } add = 1 } }\n'];custom=[];loc={'english':{},'korean':{}}
  for slot in range(6):
   custom.append(f'tsin_news_line_{slot} = {{ type = country random_valid = no\n')
+  # Reach by press stage (tsin_news_press_tier): irregular 3 slots, periodical 5, mass 6. Records are kept beyond reach
+  # and reappear when the stage rises; nothing is discarded.
+  if slot>=3:custom.append(' text = { trigger = { tsin_news_press_tier < 2 } localization_key = TSIN_NEWS_EMPTY_LINE }\n')
+  if slot==5:custom.append(' text = { trigger = { tsin_news_press_tier < 3 } localization_key = TSIN_NEWS_EMPTY_LINE }\n')
   for code,(ko,en,kbody,ebody) in ARTICLES.items():
    key=f'TSIN_NEWS_LINE_{slot}_{code}'
    custom.append(f' text = {{ trigger = {{ var:tsin_news_{slot}_type = {code} }} localization_key = {key} }}\n')
@@ -58,7 +63,7 @@ tsin_news_publication_effect = {
   for field in ['year','month']:values.append(f'tsin_news_{slot}_{field} = {{ value = 0 if = {{ limit = {{ has_variable = tsin_news_{slot}_{field} }} value = var:tsin_news_{slot}_{field} }} }}\n')
  for lang in loc:
   ko=lang=='korean'
-  loc[lang].update({'tsin_read_newspaper':'신문·최근 기사 열람' if ko else 'Read newspaper archive','tsin_read_newspaper_desc':'인쇄술 이후 최근 기사 최대 6건을 읽습니다. 실제로 발생한 사건의 기록이며 열람으로 원래의 비용·효과·확률 판정을 다시 실행하지 않습니다. 주요호 팝업은 연 1회 이내입니다.' if ko else 'Read up to six recent factual articles after printing. Reading never repeats the original costs, effects or random rolls. Major-issue popups occur at most once a year.','tsin_news.1.title':'[ROOT.GetCountry.GetName] 공보' if ko else '[ROOT.GetCountry.GetName] Gazette','tsin_news.1.desc':'\n\n'.join(f"[ROOT.GetCountry.Custom('tsin_news_line_{slot}')]" for slot in range(6)),'tsin_news.1.a':'신문을 접는다' if ko else 'Put down the paper','TSIN_NEWS_EMPTY_LINE':'','TSIN_NEWS_EMPTY':'아직 등록된 기사가 없습니다.' if ko else 'No recorded article yet.'})
+  loc[lang].update({'tsin_read_newspaper':'신문·최근 기사 열람' if ko else 'Read newspaper archive','tsin_read_newspaper_desc':'인쇄술 이후 최근 기사를 읽습니다. 도달 범위: 비정기 인쇄(인쇄술)는 3건, 정기간행(대중 신문 기술)은 5건, 대중 매체 기술은 6건. 실제로 발생한 사건의 기록이며 열람으로 원래의 비용·효과·확률 판정을 다시 실행하지 않습니다. 주요호 팝업은 연 1회 이내입니다.' if ko else 'Read recent factual articles after printing. Reach: irregular press (printing) 3 items, periodicals (popular press) 5, mass media 6. Reading never repeats the original costs, effects or random rolls. Major-issue popups occur at most once a year.','tsin_news.1.title':'[ROOT.GetCountry.GetName] 공보' if ko else '[ROOT.GetCountry.GetName] Gazette','tsin_news.1.desc':'\n\n'.join(f"[ROOT.GetCountry.Custom('tsin_news_line_{slot}')]" for slot in range(6)),'tsin_news.1.a':'신문을 접는다' if ko else 'Put down the paper','TSIN_NEWS_EMPTY_LINE':'','TSIN_NEWS_EMPTY':'아직 등록된 기사가 없습니다.' if ko else 'No recorded article yet.'})
  outputs={'in_game/common/scripted_triggers/tsin_newspapers.txt':triggers,'in_game/common/scripted_effects/tsin_newspapers.txt':'\n'.join(effects),'in_game/common/script_values/tsin_newspapers.txt':'\n'.join(values),'in_game/common/customizable_localization/tsin_newspapers.txt':'\n'.join(custom),'in_game/common/generic_actions/tsin_newspapers.txt':'''tsin_read_newspaper = {
  type = owncountry price = price:tsin_newspaper_read_price show_message = no
  ai_tick = never automation_tick = never

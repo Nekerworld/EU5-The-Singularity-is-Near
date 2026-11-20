@@ -1,4 +1,6 @@
-﻿tsin_news_0_year = { value = 0 if = { limit = { has_variable = tsin_news_0_year } value = var:tsin_news_0_year } }
+﻿tsin_news_press_tier = { value = 0 if = { limit = { has_advance = printing_press_advance } add = 1 } if = { limit = { has_advance = tsin_popular_press_advance } add = 1 } if = { limit = { has_advance = tsin_mass_communication_advance } add = 1 } }
+
+tsin_news_0_year = { value = 0 if = { limit = { has_variable = tsin_news_0_year } value = var:tsin_news_0_year } }
 
 tsin_news_0_month = { value = 0 if = { limit = { has_variable = tsin_news_0_month } value = var:tsin_news_0_month } }
 

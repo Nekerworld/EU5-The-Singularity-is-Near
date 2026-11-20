@@ -42,7 +42,7 @@
  TSIN_NEWS_LINE_5_30: "#T [ROOT.ScriptValue('tsin_news_5_year')|0].[ROOT.ScriptValue('tsin_news_5_month')|0] — 지방 설비 정비 지원 집행#!\n정부가 산업 지방의 시설 정비에 자금을 집행했습니다. 설비 상태를 유지하는 지원과 새로운 기술을 도입하는 현대화 투자는 구분됩니다."
  TSIN_NEWS_LINE_5_40: "#T [ROOT.ScriptValue('tsin_news_5_year')|0].[ROOT.ScriptValue('tsin_news_5_month')|0] — 기업 이자 연체 장기화#!\n기업 신용 또는 회사채의 이자 지급 지연이 반년 이상 이어졌습니다. 금융권은 유동성 부족과 채무 상환 능력을 주시하고 있습니다."
  tsin_read_newspaper: "신문·최근 기사 열람"
- tsin_read_newspaper_desc: "인쇄술 이후 최근 기사 최대 6건을 읽습니다. 실제로 발생한 사건의 기록이며 열람으로 원래의 비용·효과·확률 판정을 다시 실행하지 않습니다. 주요호 팝업은 연 1회 이내입니다."
+ tsin_read_newspaper_desc: "인쇄술 이후 최근 기사를 읽습니다. 도달 범위: 비정기 인쇄(인쇄술)는 3건, 정기간행(대중 신문 기술)은 5건, 대중 매체 기술은 6건. 실제로 발생한 사건의 기록이며 열람으로 원래의 비용·효과·확률 판정을 다시 실행하지 않습니다. 주요호 팝업은 연 1회 이내입니다."
  tsin_news.1.title: "[ROOT.GetCountry.GetName] 공보"
  tsin_news.1.desc: "[ROOT.GetCountry.Custom('tsin_news_line_0')]\n\n[ROOT.GetCountry.Custom('tsin_news_line_1')]\n\n[ROOT.GetCountry.Custom('tsin_news_line_2')]\n\n[ROOT.GetCountry.Custom('tsin_news_line_3')]\n\n[ROOT.GetCountry.Custom('tsin_news_line_4')]\n\n[ROOT.GetCountry.Custom('tsin_news_line_5')]"
  tsin_news.1.a: "신문을 접는다"
