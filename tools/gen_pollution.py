@@ -60,10 +60,11 @@ tsin_pollution_finish_country_effect = {
   set_variable = { name = tsin_pollution_exposure value = { value = var:tsin_pollution_weighted divide = var:tsin_agg_urban_pop } }
   set_variable = { name = tsin_pollution_high_share value = { value = var:tsin_pollution_high_pop divide = var:tsin_agg_urban_pop multiply = 100 } }
  }
- if = { limit = { is_ai = no NOT = { has_variable = tsin_pollution_petition_cooldown } var:tsin_pollution_high_share >= 10 }
+ if = { limit = { is_ai = no NOT = { has_variable = tsin_pollution_petition_cooldown } var:tsin_pollution_high_share >= 10 tsin_env_popup_available_trigger = yes }
   random_owned_location = { limit = { var:tsin_pollution_bad_years >= 2 } save_scope_as = tsin_pollution_petition_site }
   if = { limit = { exists = scope:tsin_pollution_petition_site }
    set_variable = { name = tsin_pollution_petition_cooldown years = 8 }
+   tsin_env_popup_claim_effect = yes
    trigger_event_non_silently = tsin_pollution.1
   }
  }

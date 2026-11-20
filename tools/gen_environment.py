@@ -89,10 +89,11 @@ tsin_water_pollution_factor = { value = tsin_pollution_map_water divide = 100 mi
   remove_variable = tsin_pollution_exposure remove_variable = tsin_pollution_high_share
   remove_variable = tsin_pollution_water_exposure remove_variable = tsin_pollution_water_high_share
  }
- if = { limit = { is_ai = no var:tsin_pollution_water_high_share >= 10 NOT = { has_variable = tsin_water_petition_cooldown } }
+ if = { limit = { is_ai = no tsin_env_popup_available_trigger = yes var:tsin_pollution_water_high_share >= 10 NOT = { has_variable = tsin_water_petition_cooldown } }
   random_owned_location = { limit = { var:tsin_pollution_water_bad_years >= 2 population > 0 } save_scope_as = tsin_water_petition_site }
   if = { limit = { exists = scope:tsin_water_petition_site }
    set_variable = { name = tsin_water_petition_cooldown years = 8 }
+   tsin_env_popup_claim_effect = yes
    trigger_event_non_silently = tsin_environment.1
   }
  }

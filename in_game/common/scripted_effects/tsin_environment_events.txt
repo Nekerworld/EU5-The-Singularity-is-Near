@@ -1,0 +1,4 @@
+﻿# Country scope. Records that this year's popup budget is used.
+tsin_env_popup_claim_effect = {
+	set_variable = { name = tsin_env_popup_year value = current_year }
+}

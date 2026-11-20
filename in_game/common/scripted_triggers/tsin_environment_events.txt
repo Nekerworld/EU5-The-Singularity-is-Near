@@ -1,0 +1,8 @@
+﻿# Country scope. At most one major environment popup per country per year: pollution and water petitions,
+# chemical spills and tsin_envx events share this budget.
+tsin_env_popup_available_trigger = {
+	OR = {
+		NOT = { has_variable = tsin_env_popup_year }
+		current_year > var:tsin_env_popup_year
+	}
+}

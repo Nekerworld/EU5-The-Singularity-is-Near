@@ -13,6 +13,7 @@ tsin_industrial_safety_review_effect = {{
  if = {{ limit = {{
   var:tsin_facility_industry_size > 0 var:tsin_facility_industry_wear >= 90 var:tsin_facility_industry_age >= 20
   NOT = {{ has_variable = tsin_spill_district_cooldown }}
+  owner ?= {{ tsin_env_popup_available_trigger = yes }}
   owner ?= {{ NOT = {{ has_variable = tsin_spill_country_cooldown }} }}
   NOT = {{ any_location_in_province = {{ OR = {{ NOT = {{ owner ?= scope:tsin_safety_owner }} NOT = {{ controller ?= scope:tsin_safety_owner }} }} }} }}
   any_location_in_province = {{ owner ?= scope:tsin_safety_owner controller ?= owner var:tsin_pollution_water >= 60
@@ -31,6 +32,7 @@ tsin_industrial_safety_review_effect = {{
    owner = {{
     set_variable = {{ name = tsin_spill_country_cooldown years = 10 }}
     tsin_news_record_effect = {{ TYPE = 31 PRIORITY = 1 }}
+    tsin_env_popup_claim_effect = yes
     trigger_event_non_silently = tsin_industrial_safety.1
    }}
   }}

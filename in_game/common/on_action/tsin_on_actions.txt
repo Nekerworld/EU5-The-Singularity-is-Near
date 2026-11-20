@@ -30,6 +30,7 @@ yearly_country_pulse = {
 		tsin_art_yearly_pulse
 		tsin_flavor_yearly_pulse
 		tsin_society_yearly_pulse
+		tsin_envx_yearly_pulse
 		tsin_hunger_yearly_pulse
 		tsin_society_flavor_pulse
 	}
@@ -129,6 +130,31 @@ tsin_log_monthly_pulse = {
 	}
 	effect = {
 		tsin_log_heartbeat_effect = yes
+	}
+}
+
+# root = country. Environment popups (docs/environment_events.md). Records the peak of high exposure, then at most one popup a year.
+tsin_envx_yearly_pulse = {
+	trigger = {
+		is_ai = no
+	}
+	effect = {
+		if = {
+			limit = { has_variable = tsin_pollution_high_share var:tsin_pollution_high_share >= 20 }
+			set_variable = tsin_env_peak_high_share
+		}
+	}
+	random_events = {
+		10 = tsin_envx.1
+		10 = tsin_envx.2
+		10 = tsin_envx.3
+		10 = tsin_envx.4
+		10 = tsin_envx.5
+		10 = tsin_envx.6
+		10 = tsin_envx.7
+		10 = tsin_envx.8
+
+		chance_to_happen = 15
 	}
 }
 

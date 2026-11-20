@@ -126,6 +126,18 @@ tsin_bill_success_chance = {
 			value = tsin_bill_liberal_pressure
 		}
 	}
+	# Social state (R06): yearly movement values only, never the manual survey. Reform bills only.
+	if = {
+		limit = {
+			var:tsin_bill_policy = {
+				tsin_bill_reform_policy_trigger = yes
+			}
+		}
+		add = {
+			desc = tsin_bill_factor_social
+			value = tsin_bill_social_pressure
+		}
+	}
 	if = {
 		limit = { government_type = government_type:republic }
 		add = {
@@ -184,6 +196,22 @@ tsin_bill_liberal_pressure = {
 	}
 	divide = 500
 	max = 0.15
+}
+
+# Social state (R06, docs/social_politics.md): socialism and women's suffrage movement values from the yearly pass.
+# A capped support term for reform bills only; it does not normalise the social bases or create a political party.
+tsin_bill_social_pressure = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_socialism }
+		add = { value = var:tsin_socialism multiply = 0.0003 }
+	}
+	if = {
+		limit = { has_variable = tsin_womens_suffrage }
+		add = { value = var:tsin_womens_suffrage multiply = 0.0002 }
+	}
+	min = 0
+	max = 0.05
 }
 
 # Bill chance as a whole percent, for localization.
