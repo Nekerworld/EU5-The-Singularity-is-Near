@@ -19,6 +19,10 @@ M2 경제 시험용 결단(`tsin_debug_economy_decisions.txt`, 역시 `debug_onl
 | `tsin_debug_engines_shortage_decision` / `_glut_decision` | 수도 시장 기관 공급 `market_goods_extreme_loss` / `_gain` |
 | `tsin_debug_economy_events_a_decision` / `_b_decision` | 예산 초기화 후 `tsin_economy.10`·`.20` / `.30`·`.40` 실행 |
 
+## 상시 로그와 읽기 도구
+
+게임 규칙과 상관없이 플레이어 나라가 매달 `TSIN_LOG;...` 줄을 남기고, `python tools/read_log.py`가 그 로그를 보고서로 바꾼다. 자세한 내용은 `docs/mod_log.md`.
+
 ## 관찰 측정 기록기
 
 게임 규칙 "관찰 측정 기록"(`tsin_observer_log`, 기본 끔)을 켜거나 `-debug_mode`로 실행하면 1년에 한 번 `TSIN_OBS;...` 줄을 로그에 쓴다. `python tools/observer_report.py`가 그 줄을 모아 `docs/balance_targets.md`와 비교한다. 절차는 `docs/tests/observer_run.md`.

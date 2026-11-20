@@ -39,6 +39,7 @@ monthly_country_pulse = {
 	on_actions = {
 		tsin_gdp_history_initialization_pulse
 		tsin_bill_monthly_pulse
+		tsin_log_monthly_pulse
 	}
 }
 
@@ -117,6 +118,17 @@ tsin_observer_yearly_pulse = {
 			limit = { has_global_variable = tsin_obs_flavor_events }
 			remove_global_variable = tsin_obs_flavor_events
 		}
+	}
+}
+
+# root = country. Always-on mod log (docs/mod_log.md): one self-check block a month per player country.
+# Written by tools/gen_mod_log.py; read with tools/read_log.py.
+tsin_log_monthly_pulse = {
+	trigger = {
+		is_ai = no
+	}
+	effect = {
+		tsin_log_heartbeat_effect = yes
 	}
 }
 

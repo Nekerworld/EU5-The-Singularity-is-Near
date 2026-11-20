@@ -3,5 +3,5 @@
   ai_tick = never automation_tick = never
   # Checked before the survey effect, which clears the stored rows first. A refused request keeps the snapshot.
   allow = { NOT = { has_variable = tsin_wcs_survey_cooldown } }
-  effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_wcs_survey_cooldown } } set_variable = { name = tsin_wcs_survey_cooldown value = yes days = 1 } tsin_world_company_survey_effect = yes } } }
+  effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_wcs_survey_cooldown } } set_variable = { name = tsin_wcs_survey_cooldown value = yes days = 1 } tsin_world_company_survey_effect = yes debug_log = tsin_log_hook_survey_world_companies } else = { debug_log = tsin_log_hook_survey_world_companies_blocked } } }
 }

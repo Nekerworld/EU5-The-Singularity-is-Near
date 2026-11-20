@@ -185,7 +185,9 @@ def effects() -> str:
               "\tif = {",
               "\t\tlimit = { tsin_exchange_can_open_trigger = yes }",
               "\t\tset_variable = tsin_has_stock_market",
+              "\t\tdebug_log = tsin_log_hook_listing_exchange_open",
               "\t}",
+              "\telse = { debug_log = tsin_log_hook_listing_exchange_blocked }",
               "\ttsin_capital_cache_effect = yes",
               "}", ""]
         e += [f"tsin_update_stock_{c}_effect = {{",

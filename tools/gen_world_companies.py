@@ -179,7 +179,7 @@ tsin_world_company_project_page_effect = {
   ai_tick = never automation_tick = never
   # Checked before the survey effect, which clears the stored rows first. A refused request keeps the snapshot.
   allow = { NOT = { has_variable = tsin_wcs_survey_cooldown } }
-  effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_wcs_survey_cooldown } } set_variable = { name = tsin_wcs_survey_cooldown value = yes days = 1 } tsin_world_company_survey_effect = yes } } }
+  effect = { scope:actor = { if = { limit = { NOT = { has_variable = tsin_wcs_survey_cooldown } } set_variable = { name = tsin_wcs_survey_cooldown value = yes days = 1 } tsin_world_company_survey_effect = yes debug_log = tsin_log_hook_survey_world_companies } else = { debug_log = tsin_log_hook_survey_world_companies_blocked } } }
 }
 ''','in_game/common/prices/tsin_world_companies.txt':'tsin_world_company_survey_price = { gold = 0 }\n','in_game/gui/tsin_world_companies.gui':'\n'.join(ui)+'\n','in_game/gui/scripted_widgets/tsin_world_companies.txt':'gui/tsin_world_companies.gui = tsin_world_company_window\n'}
  for lang,labels in loc.items():outputs[f'main_menu/localization/{lang}/tsin_world_companies_l_{lang}.yml']='l_'+lang+':\n'+''.join(f' {k}: '+json.dumps(v,ensure_ascii=False)+'\n' for k,v in labels.items())

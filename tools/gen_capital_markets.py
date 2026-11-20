@@ -79,7 +79,7 @@ if = {{ limit = {{ NOT = {{ has_country_modifier = tsin_company_{c} }} }}
 }}
 if = {{ limit = {{ NOT = {{ has_variable = tsin_firms_{c} }} }} set_variable = {{ name = tsin_firms_{c} value = 1 }} }}
 change_variable = {{ name = tsin_firms_{c} add = 1 }}
-if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market }}
+if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market debug_log = tsin_log_hook_listing_exchange_open }} else = {{ debug_log = tsin_log_hook_listing_exchange_blocked }}
 ''')]
         # Unique historical company names cannot be duplicated within the same country.
         unique_allow=f'NOT = {{ has_country_modifier = tsin_company_{c} }}' if unique else ''
