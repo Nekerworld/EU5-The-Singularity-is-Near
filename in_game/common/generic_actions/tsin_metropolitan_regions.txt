@@ -16,6 +16,7 @@
    set_variable = { name = tsin_metro_members value = 1 }
   }
   scope:actor = { set_variable = tsin_ai_metro_created }
+  scope:actor = { if = { limit = { NOT = { has_variable = tsin_metro_hubs } } set_variable = { name = tsin_metro_hubs value = 0 } } change_variable = { name = tsin_metro_hubs add = 1 } }
  }
  ai_will_do = { value = 5 }
 }
@@ -75,4 +76,125 @@ tsin_metro_review = {
  type = owncountry price = price:tsin_metro_review_price show_message = no
  ai_tick = never automation_tick = never
  effect = { tsin_metro_review_effect = yes }
+}
+tsin_metro_role_commerce = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core total_building_levels >= 3 }
+ }
+ effect = { scope:metro_core = { set_variable = { name = tsin_metro_role value = 1 } } }
+}
+
+tsin_metro_role_residential = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core population >= 150 }
+ }
+ effect = { scope:metro_core = { set_variable = { name = tsin_metro_role value = 2 } } }
+}
+
+tsin_metro_role_port = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core is_coastal = yes }
+ }
+ effect = { scope:metro_core = { set_variable = { name = tsin_metro_role value = 3 } } }
+}
+
+tsin_metro_role_industrial = {
+ type = owncountry price = price:tsin_metro_review_price show_message = no
+ ai_tick = never automation_tick = never
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core tsin_location_industrial_jobs >= 1000 }
+ }
+ effect = { scope:metro_core = { set_variable = { name = tsin_metro_role value = 4 } } }
+}
+tsin_metro_bulk_1 = {
+ type = owncountry price = price:tsin_metro_review_price show_message = yes
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_industrial_capitalism_advance } }
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core }
+ }
+ effect = {
+  # Each site is checked again when it is reached: owner, controller, technology, stage, cash and no pending project.
+  every_in_global_list = { variable = tsin_metro_member_sites
+   limit = {
+    var:tsin_metro_hub ?= scope:metro_core
+    owner ?= scope:actor controller ?= scope:actor
+    tsin_urban_project_gate_1_trigger = yes
+    scope:actor = { gold >= 300 }
+   }
+   scope:actor = { add_gold = -300 }
+   tsin_urban_project_start_1_effect = yes
+  }
+ }
+}
+
+tsin_metro_bulk_2 = {
+ type = owncountry price = price:tsin_metro_review_price show_message = yes
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_urban_planning_advance } }
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core }
+ }
+ effect = {
+  # Each site is checked again when it is reached: owner, controller, technology, stage, cash and no pending project.
+  every_in_global_list = { variable = tsin_metro_member_sites
+   limit = {
+    var:tsin_metro_hub ?= scope:metro_core
+    owner ?= scope:actor controller ?= scope:actor
+    tsin_urban_project_gate_2_trigger = yes
+    scope:actor = { gold >= 600 }
+   }
+   scope:actor = { add_gold = -600 }
+   tsin_urban_project_start_2_effect = yes
+  }
+ }
+}
+
+tsin_metro_bulk_3 = {
+ type = owncountry price = price:tsin_metro_review_price show_message = yes
+ ai_tick = never automation_tick = never
+ potential = { scope:actor = { has_advance = tsin_engineering_education_advance } }
+ select_trigger = {
+  looking_for_a = location source = actor target_flag = metro_core name = "choose_metro_core"
+  column = { data = name }
+  visible = { owner ?= scope:actor has_variable = tsin_metro_core }
+  enabled = { owner ?= scope:actor has_variable = tsin_metro_core }
+ }
+ effect = {
+  # Each site is checked again when it is reached: owner, controller, technology, stage, cash and no pending project.
+  every_in_global_list = { variable = tsin_metro_member_sites
+   limit = {
+    var:tsin_metro_hub ?= scope:metro_core
+    owner ?= scope:actor controller ?= scope:actor
+    tsin_urban_project_gate_3_trigger = yes
+    scope:actor = { gold >= 1200 }
+   }
+   scope:actor = { add_gold = -1200 }
+   tsin_urban_project_start_3_effect = yes
+  }
+ }
 }

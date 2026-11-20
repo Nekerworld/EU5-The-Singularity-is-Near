@@ -8,6 +8,8 @@
 }
 tsin_metro_review_effect = {
  set_global_variable = { name = tsin_metro_review_month value = tsin_urban_calendar_month }
+ if = { limit = { NOT = { has_global_variable = tsin_metro_review_serial } } set_global_variable = { name = tsin_metro_review_serial value = 0 } }
+ change_global_variable = { name = tsin_metro_review_serial add = 1 }
  clear_list = tsin_metro_review_sites
  every_in_global_list = { variable = tsin_metro_member_sites add_to_list = tsin_metro_review_sites }
  every_in_list = { list = tsin_metro_review_sites
@@ -20,6 +22,18 @@ tsin_metro_review_effect = {
     var:tsin_metro_hub ?= { has_variable = tsin_metro_core controller ?= owner } }
     set_variable = { name = tsin_metro_connected value = 1 }
    }
+   # Management summary (read by the dashboard). Counters are reset per owner on the first counted site of each review
+   # serial, so no world-wide country scan is needed. Countries with no member left keep their last value until
+   # they own a site again; the dashboard description says the values are as of the last review.
+   owner = {
+    if = { limit = { NOT = { var:tsin_metro_review_seen = global_var:tsin_metro_review_serial } }
+     set_variable = { name = tsin_metro_review_seen value = global_var:tsin_metro_review_serial }
+     set_variable = { name = tsin_metro_sites value = 0 }
+     set_variable = { name = tsin_metro_broken value = 0 }
+    }
+    change_variable = { name = tsin_metro_sites add = 1 }
+   }
+   if = { limit = { var:tsin_metro_connected = 0 } owner = { change_variable = { name = tsin_metro_broken add = 1 } } }
   }
  }
  clear_list = tsin_metro_review_sites

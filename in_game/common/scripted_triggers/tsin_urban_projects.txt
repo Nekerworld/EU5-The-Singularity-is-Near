@@ -1,0 +1,27 @@
+﻿# Location scope, used by tsin_metro_bulk_N and the individual project gates.
+tsin_urban_project_gate_1_trigger = {
+ owner ?= scope:actor
+ controller ?= scope:actor
+ tsin_is_urban_location = yes
+ NOT = { has_variable = tsin_urban_project_pending }
+ NOT = { has_variable = tsin_urban_project_stage }
+ scope:actor = { has_advance = tsin_industrial_capitalism_advance }
+}
+
+tsin_urban_project_gate_2_trigger = {
+ owner ?= scope:actor
+ controller ?= scope:actor
+ tsin_is_urban_location = yes
+ NOT = { has_variable = tsin_urban_project_pending }
+ var:tsin_urban_project_stage = 1
+ scope:actor = { has_advance = tsin_urban_planning_advance }
+}
+
+tsin_urban_project_gate_3_trigger = {
+ owner ?= scope:actor
+ controller ?= scope:actor
+ tsin_is_urban_location = yes
+ NOT = { has_variable = tsin_urban_project_pending }
+ var:tsin_urban_project_stage = 2
+ scope:actor = { has_advance = tsin_engineering_education_advance }
+}

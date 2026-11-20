@@ -30,3 +30,28 @@ if = { limit = { var:tsin_urban_project_pending = 3 }
  }
  clear_list = tsin_urban_project_review
 }
+
+# Location scope: starts stage N (cash is charged by the caller).
+tsin_urban_project_start_1_effect = {
+ set_variable = { name = tsin_urban_project_pending value = 1 }
+ set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 6 } }
+ add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+ add_location_modifier = { modifier = tsin_urban_project_underway months = 7 }
+ set_global_variable = tsin_urban_projects_enabled
+}
+
+tsin_urban_project_start_2_effect = {
+ set_variable = { name = tsin_urban_project_pending value = 2 }
+ set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 12 } }
+ add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+ add_location_modifier = { modifier = tsin_urban_project_underway months = 13 }
+ set_global_variable = tsin_urban_projects_enabled
+}
+
+tsin_urban_project_start_3_effect = {
+ set_variable = { name = tsin_urban_project_pending value = 3 }
+ set_variable = { name = tsin_urban_project_due value = { value = tsin_urban_calendar_month add = 18 } }
+ add_to_global_variable_list = { name = tsin_urban_project_sites target = this }
+ add_location_modifier = { modifier = tsin_urban_project_underway months = 19 }
+ set_global_variable = tsin_urban_projects_enabled
+}

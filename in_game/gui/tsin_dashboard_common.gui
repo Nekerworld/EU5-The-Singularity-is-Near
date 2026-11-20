@@ -928,6 +928,36 @@ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_social_educati
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_social_education_year').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
 text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
 }
+type tsin_ui_card_metro_sites = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_METRO_SITES"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_METRO_SITES" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_metro_sites').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_metro_sites').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_metro_sites').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_metro_broken = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_METRO_BROKEN"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_METRO_BROKEN" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_metro_broken').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_metro_broken').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_metro_broken').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
+type tsin_ui_card_metro_hubs = vbox {
+size = { 258 75 }
+spacing = 3
+datacontext = "[Player]"
+tooltip = "TSIN_UI_HELP_METRO_HUBS"
+text_single = { fontsize = 13 text = "TSIN_UI_METRIC_METRO_HUBS" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_metro_hubs').IsSet]" fontsize = 22 text = "[GetPlayer.MakeScope.GetVariable('tsin_metro_hubs').GetValue|1]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_metro_hubs').IsSet)]" fontsize = 22 text = "TSIN_UI_MISSING" }
+text_single = { fontsize = 10 text = "TSIN_UI_MANUAL" }
+}
 type tsin_ui_history_gdp = vbox {
 spacing = 4
 text_single = { fontsize = 16 text = "TSIN_UI_METRIC_GDP" }

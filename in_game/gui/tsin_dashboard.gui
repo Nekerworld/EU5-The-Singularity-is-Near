@@ -527,6 +527,11 @@ tsin_ui_card_social_technical = {}
 tsin_ui_card_social_survey_year = {}
 tsin_ui_card_social_education_year = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_metro_sites = {}
+tsin_ui_card_metro_broken = {}
+tsin_ui_card_metro_hubs = {}
+}
 widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
     size = { 220 30 }
@@ -655,6 +660,17 @@ button_regular = {
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
     text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY" }
+}
+}
+widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_review')]"
+button_regular = {
+    size = { 220 30 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_METRO_REVIEW"
+        on_action = "[PerformGenericAction(GenericAction.Self)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_METRO_REVIEW" }
 }
 }
 }

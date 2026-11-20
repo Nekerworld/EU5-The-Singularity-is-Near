@@ -14,3 +14,26 @@ tsin_metro_linked = {
  local_population_capacity_modifier = 0.03
  local_construction_speed = 0.02
 }
+tsin_metro_role_commerce_modifier = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_metro_core has_variable = tsin_metro_role var:tsin_metro_role = 1 }
+ local_max_control = 0.02
+}
+
+tsin_metro_role_residential_modifier = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_metro_core has_variable = tsin_metro_role var:tsin_metro_role = 2 }
+ local_population_capacity_modifier = 0.03
+}
+
+tsin_metro_role_port_modifier = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_metro_core has_variable = tsin_metro_role var:tsin_metro_role = 3 }
+ local_trade_center_power = 0.02
+}
+
+tsin_metro_role_industrial_modifier = {
+ category = location type = location
+ potential_trigger = { has_variable = tsin_metro_core has_variable = tsin_metro_role var:tsin_metro_role = 4 }
+ local_mills_build_buildings_efficiency = 0.03
+}

@@ -100,6 +100,31 @@ tsin_urban_project_global_review = {
  effect = { tsin_urban_project_review_effect = yes }
 }
 '''}
+    # Shared per-site gate and start used by the individual project and the metropolitan bulk action (R07).
+    # Per-site checks: owner, controller, urban location, no pending project, previous stage. Cash and technology are
+    # checked by the caller (bulk action) and by the individual action's own allow.
+    triggers=[];starts=[]
+    for n,cost,months,slots,advance,ko,en in STAGES:
+        previous='NOT = { has_variable = tsin_urban_project_stage }' if n==1 else f'var:tsin_urban_project_stage = {n-1}'
+        triggers.append(f'''tsin_urban_project_gate_{n}_trigger = {{
+ owner ?= scope:actor
+ controller ?= scope:actor
+ tsin_is_urban_location = yes
+ NOT = {{ has_variable = tsin_urban_project_pending }}
+ {previous}
+ scope:actor = {{ has_advance = {advance} }}
+}}
+''')
+        starts.append(f'''tsin_urban_project_start_{n}_effect = {{
+ set_variable = {{ name = tsin_urban_project_pending value = {n} }}
+ set_variable = {{ name = tsin_urban_project_due value = {{ value = tsin_urban_calendar_month add = {months} }} }}
+ add_to_global_variable_list = {{ name = tsin_urban_project_sites target = this }}
+ add_location_modifier = {{ modifier = tsin_urban_project_underway months = {months+1} }}
+ set_global_variable = tsin_urban_projects_enabled
+}}
+''')
+    outputs['in_game/common/scripted_triggers/tsin_urban_projects.txt']='# Location scope, used by tsin_metro_bulk_N and the individual project gates.\n'+'\n'.join(triggers)
+    outputs['in_game/common/scripted_effects/tsin_urban_projects.txt']=outputs['in_game/common/scripted_effects/tsin_urban_projects.txt']+'\n# Location scope: starts stage N (cash is charged by the caller).\n'+'\n'.join(starts)
     for lang,rows in loc.items():
         outputs[f'main_menu/localization/{lang}/tsin_urban_projects_l_{lang}.yml']='l_'+lang+':\n'+''.join(f' {k}: "{v}"\n' for k,v in rows.items())
     return outputs

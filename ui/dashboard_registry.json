@@ -2487,6 +2487,73 @@
           }
         }
       ]
+    },
+    {
+      "id": "metro_regions",
+      "shortcuts": [
+        {
+          "id": "metro_review",
+          "tab": "society",
+          "title": {
+            "korean": "도시권 연결 재검사",
+            "english": "Review metropolitan connections"
+          },
+          "generic_action": "tsin_metro_review"
+        }
+      ],
+      "metrics": [
+        {
+          "id": "metro_sites",
+          "variable": "tsin_metro_sites",
+          "title": {
+            "korean": "도시권 구성 지점 수",
+            "english": "Metropolitan member locations"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "분기 검토가 마지막으로 센 구성 지점 수입니다. 실제 인구나 식량을 공유하지 않습니다.",
+            "english": "Member locations counted by the last quarterly review. Population and food are not shared."
+          }
+        },
+        {
+          "id": "metro_broken",
+          "variable": "tsin_metro_broken",
+          "title": {
+            "korean": "단절된 구성 지점 수",
+            "english": "Disconnected member locations"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "마지막 검토에서 중심과 도로로 이어지지 않은 구성 지점 수입니다.",
+            "english": "Member locations without a road link to their core at the last review."
+          }
+        },
+        {
+          "id": "metro_hubs",
+          "variable": "tsin_metro_hubs",
+          "title": {
+            "korean": "도시권 중심 수",
+            "english": "Metropolitan cores"
+          },
+          "tabs": [
+            "society"
+          ],
+          "unit": "number",
+          "frequency": "manual",
+          "description": {
+            "korean": "지정한 도시권 중심의 수입니다. 중심 하나는 역할 하나만 가질 수 있습니다.",
+            "english": "Number of designated cores. Each core has one role."
+          }
+        }
+      ]
     }
   ],
   "histories": [
