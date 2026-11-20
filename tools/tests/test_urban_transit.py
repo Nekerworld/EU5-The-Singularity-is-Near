@@ -20,6 +20,12 @@ class UrbanTransitTests(unittest.TestCase):
   a=pdx.read_text(pdx.MOD_ROOT/'in_game/common/auto_modifiers/tsin_railway_connection.txt')
   self.assertIn('controller ?= owner',a)
   self.assertIn('type = road_type:railroad',a)
+ def test_railway_scale_is_named_script_value(self):
+  a=pdx.read_text(pdx.MOD_ROOT/'in_game/common/auto_modifiers/tsin_railway_connection.txt')
+  self.assertIn('scales_with = tsin_railway_station_scale',a)
+  self.assertNotIn('scales_with = "location_building_level',a)
+  v=pdx.read_text(pdx.MOD_ROOT/'in_game/common/script_values/tsin_railway_station_scale.txt')
+  self.assertIn('location_building_level(building_type:tsin_railway_station)',v)
  def test_research_and_assets_connected(self):
   for key,rel in [('tsin_steam_metro','tsin_03_industrial_capitalism.txt'),('tsin_electric_metro','tsin_06_electrification.txt')]:
    self.assertIn('unlock_building = '+key,pdx.read_text(pdx.MOD_ROOT/'in_game/common/advances'/rel))

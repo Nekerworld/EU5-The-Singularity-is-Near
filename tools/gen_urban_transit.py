@@ -43,6 +43,11 @@ def integrate():
         target=next((n for n in nested if n.key==key),None)
         if target:s=s.replace(target.text,'# '+key+' moved to cached-free connection modifier; assets are retained.',1)
     pdx.write_text_bom(p,s)
+    # Named script value keeps the auto-modifier free of inline building-level expressions.
+    pdx.write_text_bom(pdx.MOD_ROOT/'in_game/common/script_values/tsin_railway_station_scale.txt','''tsin_railway_station_scale = {
+ value = "location_building_level(building_type:tsin_railway_station)"
+}
+''')
     pdx.write_text_bom(pdx.MOD_ROOT/'in_game/common/auto_modifiers/tsin_railway_connection.txt','''tsin_connected_railway_station = {
  category = location type = location
  potential_trigger = {
@@ -50,7 +55,7 @@ def integrate():
   controller ?= owner
   OR = { is_capital = yes has_road_of_type_to = { target = owner.capital type = road_type:railroad } }
  }
- scales_with = "location_building_level(building_type:tsin_railway_station)"
+ scales_with = tsin_railway_station_scale
  local_market_access = 0.075
 }
 ''')

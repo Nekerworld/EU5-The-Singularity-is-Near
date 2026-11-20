@@ -128,7 +128,8 @@ tsin_storage_site_tick_effect = {
    }}
    remove_variable = tsin_storage_emergency
   }}
-  else = {{ set_variable = {{ name = tsin_storage_state value = 0 }} }}
+  # Empty stock never reaches the sell branch, so an emergency request is cleared here (otherwise buying stays blocked).
+  else = {{ remove_variable = tsin_storage_emergency set_variable = {{ name = tsin_storage_state value = 0 }} }}
  }}
 '''
     effects+='''}

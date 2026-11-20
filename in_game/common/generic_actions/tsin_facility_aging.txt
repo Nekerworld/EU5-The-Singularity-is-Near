@@ -27,7 +27,6 @@ tsin_facility_modernize_industry = {
 }
  effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_industry_size > 0 OR = { tsin_facility_industry_gap > 0 var:tsin_facility_industry_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_industry_age value = { value = var:tsin_facility_industry_age add = { value = current_year subtract = var:tsin_facility_industry_year } } }
 set_variable = { name = tsin_facility_industry_year value = current_year }
-set_variable = { name = tsin_facility_industry_wear value = 0 }
 set_variable = { name = tsin_facility_industry_grade value = { value = tsin_facility_industry_technology min = var:tsin_facility_industry_grade } }
 set_variable = { name = tsin_facility_industry_age value = 0 } } } }
 }
@@ -61,7 +60,6 @@ tsin_facility_modernize_transport = {
 }
  effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_transport_size > 0 OR = { tsin_facility_transport_gap > 0 var:tsin_facility_transport_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_transport_age value = { value = var:tsin_facility_transport_age add = { value = current_year subtract = var:tsin_facility_transport_year } } }
 set_variable = { name = tsin_facility_transport_year value = current_year }
-set_variable = { name = tsin_facility_transport_wear value = 0 }
 set_variable = { name = tsin_facility_transport_grade value = { value = tsin_facility_transport_technology min = var:tsin_facility_transport_grade } }
 set_variable = { name = tsin_facility_transport_age value = 0 } } } }
 }
@@ -95,7 +93,6 @@ tsin_facility_modernize_public = {
 }
  effect = { scope:target_province = { if = { limit = { owner ?= scope:actor var:tsin_facility_public_size > 0 OR = { tsin_facility_public_gap > 0 var:tsin_facility_public_age >= 15 } NOT = { any_location_in_province = { NOT = { controller ?= scope:actor } } } } set_variable = { name = tsin_facility_public_age value = { value = var:tsin_facility_public_age add = { value = current_year subtract = var:tsin_facility_public_year } } }
 set_variable = { name = tsin_facility_public_year value = current_year }
-set_variable = { name = tsin_facility_public_wear value = 0 }
 set_variable = { name = tsin_facility_public_grade value = { value = tsin_facility_public_technology min = var:tsin_facility_public_grade } }
 set_variable = { name = tsin_facility_public_age value = 0 } } } }
 }

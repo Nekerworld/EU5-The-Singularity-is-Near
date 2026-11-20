@@ -61,8 +61,9 @@ tsin_facility_{group}_gap_scale = {{ value = province.tsin_facility_{group}_gap 
    condition=f'var:tsin_facility_{group}_wear > 0' if operation=='repair' else f'OR = {{ tsin_facility_{group}_gap > 0 var:tsin_facility_{group}_age >= 15 }}'
    gate=f'owner ?= scope:actor var:tsin_facility_{group}_size > 0 {condition} NOT = {{ any_location_in_province = {{ NOT = {{ controller ?= scope:actor }} }} }}'
    body=f'''set_variable = {{ name = tsin_facility_{group}_age value = {{ value = var:tsin_facility_{group}_age add = {{ value = current_year subtract = var:tsin_facility_{group}_year }} }} }}
-set_variable = {{ name = tsin_facility_{group}_year value = current_year }}
-set_variable = {{ name = tsin_facility_{group}_wear value = 0 }}'''
+set_variable = {{ name = tsin_facility_{group}_year value = current_year }}'''
+   # Repair clears wear only; modernization refreshes grade and age and leaves wear untouched.
+   if operation=='repair':body+=f'\nset_variable = {{ name = tsin_facility_{group}_wear value = 0 }}'
    if operation=='modernize':body+=f'\nset_variable = {{ name = tsin_facility_{group}_grade value = {{ value = tsin_facility_{group}_technology min = var:tsin_facility_{group}_grade }} }}\nset_variable = {{ name = tsin_facility_{group}_age value = 0 }}'
    actions.append(f'''{key} = {{
  type = owncountry price = price:tsin_facility_{operation}_price show_message = no

@@ -23,6 +23,10 @@ class FacilityAgingTests(unittest.TestCase):
    modern=actions['tsin_facility_modernize_'+g]
    self.assertIn(f'min = var:tsin_facility_{g}_grade',modern)
    self.assertNotIn('destroy_building',modern)
+ def test_modernization_keeps_wear(self):
+  b=build();actions={x.key:x.text for x in pdx.top_level_blocks(b['in_game/common/generic_actions/tsin_facility_aging.txt'])}
+  for g in GROUPS:
+   self.assertNotIn(f'name = tsin_facility_{g}_wear',actions['tsin_facility_modernize_'+g])
  def test_expansion_dilutes_age_instead_of_resetting_and_payments_are_bounded(self):
   s=build()['in_game/common/scripted_effects/tsin_facility_aging.txt']
   for g in GROUPS:

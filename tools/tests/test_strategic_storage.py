@@ -23,6 +23,9 @@ class StrategicStorageTests(unittest.TestCase):
   self.assertIn('subtract = local_var:tsin_storage_quantity',s)
   self.assertIn('remove_variable = tsin_storage_active',s)
   self.assertIn('tsin_storage_error_observed',s)
+ def test_empty_stock_clears_emergency_flag(self):
+  s=build()['in_game/common/scripted_effects/tsin_strategic_storage.txt']
+  self.assertIn('else = { remove_variable = tsin_storage_emergency',s)
  def test_occupied_no_capital_and_legacy_stock_are_protected(self):
   b=build();s=b['in_game/common/scripted_effects/tsin_strategic_storage.txt']
   self.assertIn('controller ?= owner',s)

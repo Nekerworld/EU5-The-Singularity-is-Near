@@ -47,7 +47,8 @@ tsin_storage_site_tick_effect = {
    }
    remove_variable = tsin_storage_emergency
   }
-  else = { set_variable = { name = tsin_storage_state value = 0 } }
+  # Empty stock never reaches the sell branch, so an emergency request is cleared here (otherwise buying stays blocked).
+  else = { remove_variable = tsin_storage_emergency set_variable = { name = tsin_storage_state value = 0 } }
  }
  if = { limit = { var:tsin_storage_kind = 2 exists = market "market.default_price(goods:coal)" > 0 }
   set_local_variable = { name = tsin_storage_ratio value = { value = "market.market_price(goods:coal)" divide = "market.default_price(goods:coal)" } }
@@ -83,7 +84,8 @@ tsin_storage_site_tick_effect = {
    }
    remove_variable = tsin_storage_emergency
   }
-  else = { set_variable = { name = tsin_storage_state value = 0 } }
+  # Empty stock never reaches the sell branch, so an emergency request is cleared here (otherwise buying stays blocked).
+  else = { remove_variable = tsin_storage_emergency set_variable = { name = tsin_storage_state value = 0 } }
  }
  if = { limit = { var:tsin_storage_kind = 3 exists = market "market.default_price(goods:steel)" > 0 }
   set_local_variable = { name = tsin_storage_ratio value = { value = "market.market_price(goods:steel)" divide = "market.default_price(goods:steel)" } }
@@ -119,7 +121,8 @@ tsin_storage_site_tick_effect = {
    }
    remove_variable = tsin_storage_emergency
   }
-  else = { set_variable = { name = tsin_storage_state value = 0 } }
+  # Empty stock never reaches the sell branch, so an emergency request is cleared here (otherwise buying stays blocked).
+  else = { remove_variable = tsin_storage_emergency set_variable = { name = tsin_storage_state value = 0 } }
  }
 }
 tsin_storage_verify_effect = {

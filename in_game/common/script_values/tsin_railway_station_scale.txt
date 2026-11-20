@@ -1,0 +1,3 @@
+﻿tsin_railway_station_scale = {
+ value = "location_building_level(building_type:tsin_railway_station)"
+}

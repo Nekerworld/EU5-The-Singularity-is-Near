@@ -45,7 +45,8 @@ def build():
   popgate='population >= 400' if family in ('highway','metro') else 'population >= 100' if family=='passenger' else 'population >= 30' if family=='road' else 'tsin_location_industrial_jobs > 0'
   extra=''
   if family=='highway':extra='OR = { has_building_with_at_least_one_level = tsin_asphalt_services has_building_with_at_least_one_level = tsin_modern_road_services }'
-  if family=='metro':extra='has_building_with_at_least_one_level = tsin_electric_metro'
+  # Entry needs the electric metro, or later levels of this hub once it stands (the electric metro becomes obsolete).
+  if family=='metro':extra=f'OR = {{ has_building_with_at_least_one_level = tsin_electric_metro has_building_with_at_least_one_level = {k} }}'
   higher=[key(n) for n,e,p,kk,ee,ff,pp,*_ in ROWS if ff==family and pp==name]
   # Descendant checks prevent rebuilding an obsolete lower-grade hub.
   frontier=list(higher)

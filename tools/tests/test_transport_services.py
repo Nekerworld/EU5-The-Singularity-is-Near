@@ -34,6 +34,12 @@ class TransportServiceTests(unittest.TestCase):
   road=next(b.text for b in pdx.top_level_blocks(buildings) if b.key=='tsin_macadam_services')
   for name in ('tarmac','asphalt','modern_road'):self.assertIn('NOT = { has_building_with_at_least_one_level = '+key(name)+' }',road)
   self.assertNotIn('NOT = { has_building_with_at_least_one_level = tsin_heavy_freight_services',road)
+ def test_mature_metro_allows_later_levels_after_electric_metro_obsolete(self):
+  buildings='\n'.join(s for p,s in build().items() if '/building_types/' in p)
+  block=next(b.text for b in pdx.top_level_blocks(buildings) if b.key==key('mature_metro'))
+  self.assertIn('has_building_with_at_least_one_level = tsin_electric_metro',block)
+  self.assertIn('has_building_with_at_least_one_level = '+key('mature_metro'),block)
+  self.assertIn('OR = {',block)
  def test_future_sources_and_actual_build_entry(self):
   b=build()
   for era in (7,8,9,10):

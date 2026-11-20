@@ -34,7 +34,7 @@ tsin_mature_metro_services = {
  category = infrastructure_category city = yes megalopolis = yes tsin_large_city = yes tsin_megalopolis = yes
  build_time = infrastructure_build_time construction_demand = tsin_factory_construction
  country_potential = { has_advance = tsin_mature_metro_services_advance }
- location_potential = { population >= 400 always = yes has_building_with_at_least_one_level = tsin_electric_metro  }
+ location_potential = { population >= 400 always = yes OR = { has_building_with_at_least_one_level = tsin_electric_metro has_building_with_at_least_one_level = tsin_mature_metro_services }  }
  obsolete = tsin_electric_metro
  ai_construct_weight = { value = 0 if = { limit = { owner ?= { gold >= 3000 } population >= 400 } add = 5 } }
  unique_production_methods = {
