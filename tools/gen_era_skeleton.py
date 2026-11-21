@@ -72,7 +72,8 @@ def build(root, data):
     result['in_game/common/scripted_triggers/tsin_age_triggers.txt']='\n'.join(triggers)+'\n\n'+tail
     for row in rows[1:]:
         for lang in loc:
-            value=f"Current [age|e] is [ShowAgeName('{row['id']}')] or later" if lang=='english' else f"현재 [age|e]가 [ShowAgeName('{row['id']}')] 또는 그 이후임"
+            # Prefer $age_format_$ over ShowAgeName — loading tips / early GUI can show ERROR for Show*.
+            value=f"Current [age|e] is $age_format_{row['id']}$ or later" if lang=='english' else f"현재 [age|e]가 $age_format_{row['id']}$ 또는 그 이후임"
             loc[lang].append(f' current_age_at_least_{row["number"]}_tt: {json.dumps(value,ensure_ascii=False)}')
     for lang,lines in loc.items(): result[f'main_menu/localization/{lang}/tsin_future_ages_l_{lang}.yml']='\n'.join(lines)+'\n'
     return result

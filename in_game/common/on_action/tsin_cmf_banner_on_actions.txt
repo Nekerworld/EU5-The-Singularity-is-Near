@@ -1,0 +1,33 @@
+﻿# Lobby banner for Community Mod Framework (soft dependency; Glorp/CMF pattern).
+# CMF fires cmf_on_banner_registration at on_game_start. Without CMF this leaf never runs.
+# Registration body mirrors cmf_register_lobby_banner so we do not call a CMF-only effect name.
+
+cmf_on_banner_registration = {
+	on_actions = {
+		tsin_register_lobby_banner
+	}
+}
+
+tsin_register_lobby_banner = {
+	effect = {
+		if = {
+			limit = { NOT = { is_target_in_global_variable_list = { name = cmf_active_mod_ids target = flag:tsin } } }
+			add_to_global_variable_list = {
+				name = cmf_active_mod_ids
+				target = flag:tsin
+			}
+		}
+		if = {
+			limit = { NOT = { has_global_variable = tsin_name } }
+			set_global_variable = { name = tsin_name value = flag:tsin_name }
+			set_global_variable = { name = tsin_desc value = flag:tsin_desc }
+		}
+		if = {
+			limit = { NOT = { is_target_in_global_variable_list = { name = cmf_lobby_banner_mod_ids target = flag:tsin } } }
+			add_to_global_variable_list = {
+				name = cmf_lobby_banner_mod_ids
+				target = flag:tsin
+			}
+		}
+	}
+}

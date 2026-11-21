@@ -53,6 +53,10 @@ python tools/compat_scan.py --mods 3620382806    # 창작마당 id 또는 모드
 - Modern Times (3792511867, 참고만 하고 함께 켜지 않는 모드): `yearly_country_pulse` 목록 병합과 define `NGame.END_DATE`(상대 2050.12.31, 우리 2337.12.31) 2건. 우리 `zzz_tsin_defines.txt`가 파일 이름순으로 뒤에 읽혀 우리 값이 적용될 것으로 본다(사용자 확인 필요). 0.7에서 가져온 콘텐츠는 모두 `tsin_` 이름으로 다시 썼으므로 함께 켜도 객체가 겹치지 않는다. 두 모드의 콘텐츠가 함께 돌아가며 비슷한 이벤트·건물이 겹치는 것은 권장하지 않는다.
 - 0.7에서 손으로 쓴 덮어쓰기는 늘지 않았다(`docs/overrides.md` 3절 그대로). 자동 생성 패치는 117개 객체, 42개 파일이다.
 
+## CMF 로비 배너 (소프트 의존)
+
+Community Mod Framework가 켜져 있으면 국가 선택 로비 오른쪽 위에 모드 라벨이 뜬다. TSIN은 Glorp와 같이 `cmf_on_banner_registration`에 등록한다(`in_game/common/on_action/tsin_cmf_banner_on_actions.txt`). 아이콘은 `main_menu/gfx/interface/icons/mods/tsin_banner_*.dds`, 이름은 현지화 `tsin_name`/`tsin_desc`. CMF가 없으면 등록 on_action이 호출되지 않아 영향 없다.
+
 ## 대응 방침
 
 1. **지금 할 수 있는 것:** 위 모드를 함께 쓰면 이 표의 객체에서 상대 모드의 변경이 사라진다는 점을 창작마당 설명(`docs/release.md`)에 적는다. 게임이 깨지지는 않는다.

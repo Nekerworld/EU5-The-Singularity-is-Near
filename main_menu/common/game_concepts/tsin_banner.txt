@@ -1,0 +1,12 @@
+﻿# CMF lobby banner (docs: Community Mod Framework cmf_on_banner_registration).
+# Textures live under main_menu/gfx/interface/icons/mods/. Soft-depends on CMF:
+# without CMF these concepts are unused and the registration on_action never fires.
+
+tsin_banner_logo = {
+	texture = "mods/tsin_banner_logo"
+	shown_in_encyclopedia = no
+}
+tsin_banner_background = {
+	texture = "mods/tsin_banner_background"
+	shown_in_encyclopedia = no
+}
