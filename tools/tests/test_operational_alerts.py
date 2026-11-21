@@ -52,7 +52,12 @@ class OperationalTests(unittest.TestCase):
         ui=dashboard(data)['in_game/gui/tsin_dashboard_dock.gui']
         self.assertEqual(ui.count('tsin_ops_button = {}'),1)
         self.assertIn("GetVariableSystem.Toggle('tsin_ui_dashboard_open')",ui)
-        self.assertIn("GetVariableSystem.Toggle('tsin_ui_dock_expanded')",ui)
+        self.assertIn('tsin_ui_manage_button',ui)
+        self.assertIn('tsin_hud_logo.dds',ui)
+        self.assertNotIn('tsin_ui_dock_expanded',ui)
+        ops=build(self.data)['in_game/gui/tsin_operational.gui']
+        self.assertIn('TSIN_OPS_LIST_TT',ops)
+        self.assertIn('size = { 88 88 }',ops)
 
     def test_unknown_native_alert_is_detectable(self):
         defs={b.key for p in (pdx.game_root()/'in_game/common/alert_descriptions').glob('*.txt') for b in pdx.top_level_blocks(pdx.read_text(p))}

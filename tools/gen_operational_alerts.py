@@ -33,7 +33,8 @@ def build(data):
         for r in items:total=f"Add_int32({total}, Select_int32({shown(r)}, '(int32)1', '(int32)0'))"
         return total
     count=sum_flags(rules);critical=sum_flags([r for r in rules if r['severity']=='critical'])
-    label('TSIN_OPS_BUTTON',f'Current situation · [{count}]',f'현황 · [{count}]')
+    label('TSIN_OPS_BUTTON',f'[{count}]',f'[{count}]')
+    label('TSIN_OPS_LIST_TT','Status list','현황 목록')
     label('TSIN_OPS_TITLE','Operational situation','국가 운영 현황')
     label('TSIN_OPS_EMPTY','No enabled operational warning is active.','표시하도록 설정한 운영 경고가 없습니다.')
     label('TSIN_OPS_REFRESH','Refresh details','상세 점검 갱신')
@@ -97,10 +98,41 @@ tsin_ops_quarterly_pulse = {
     def button(key,actions,width=180,enabled=None):
         return '\n'.join(['button_regular = {',f'size = {{ {width} 28 }}']+([f'enabled = "[{enabled}]"'] if enabled else [])+['action_tooltip = {',f'title = "{key}"']+[f'on_action = "[{a}]"' for a in actions]+['}',f'text_single = {{ size = {{ {width-8} 26 }} parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "{key}" }}','}'])
     scope='GuiScope.SetRoot(GetPlayer.MakeScope).End'
-    ui=['# GENERATED operational UI. Does not modify vanilla alerts or situations.', 'types TSINOperational {','type tsin_ops_button = widget {','size = { 100 30 }',
-        button('TSIN_OPS_BUTTON',[f"GetScriptedGui('tsin_ops_initialize').Execute({scope})","GetVariableSystem.Toggle('tsin_ops_open')"],100),
-        f'icon = {{ visible = "[GreaterThan_int32({critical}, \'(int32)0\')]" size = {{ 10 10 }} parentanchor = right texture = "gfx/interface/icons/disasters/end_requirements_green.dds" using = color_red_texture alwaystransparent = yes }}','}','}',
-        'window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 16 -230 } size = { 480 440 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"',
+    ops_badge = f'''type tsin_ops_button = widget {{
+size = {{ 88 88 }}
+button = {{
+size = {{ 88 88 }}
+tooltip = "TSIN_OPS_LIST_TT"
+down = "[GetVariableSystem.Exists('tsin_ops_open')]"
+action_tooltip = {{
+click_type = left
+click_mode = single
+click_modifier = default
+title = "TSIN_OPS_LIST_TT"
+on_action = "[GetScriptedGui('tsin_ops_initialize').Execute({scope})]"
+on_action = "[GetVariableSystem.Toggle('tsin_ops_open')]"
+}}
+block "button_texture" {{
+texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+texture_density = 2
+}}
+modify_texture = {{ using = color_new_gold_texture blend_mode = overlay alpha = 1 }}
+modify_texture = {{ using = overlay_stone_texture blend_mode = overlay alpha = 1 }}
+block "navigational_bg" {{
+background = {{
+texture = "gfx/interface/buttons/bg_button_light.dds"
+texture_density = 2
+modify_texture = {{ using = color_intense_brown_texture blend_mode = add }}
+modify_texture = {{ using = color_super_dark_brown_texture blend_mode = multiply alpha = 0.6 }}
+}}
+}}
+text_single = {{ size = {{ 72 40 }} parentanchor = center autoresize = no fontsize = 26 fontsize_min = 14 align = center|nobaseline text = "TSIN_OPS_BUTTON" }}
+}}
+icon = {{ visible = "[GreaterThan_int32({critical}, '(int32)0')]" size = {{ 14 14 }} parentanchor = right|top position = {{ -4 4 }} texture = "gfx/interface/icons/disasters/end_requirements_green.dds" using = color_red_texture alwaystransparent = yes }}
+}}'''
+    ui=['# GENERATED operational UI. Does not modify vanilla alerts or situations.', 'types TSINOperational {',
+        ops_badge, '}',
+        'window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 8 -140 } size = { 480 440 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"',
         'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'tsin_ops_open\'))]"','widget = { size = { 100% 100% } using = bg_window_default_alt }',
         'widget = { parentanchor = right position = { -8 5 } size = { 35 35 } button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear(\'tsin_ops_open\')]" } } }',
         'vbox = { position = { 14 12 } spacing = 8','text_single = { fontsize = 20 text = "TSIN_OPS_TITLE" }','hbox = { spacing = 8',
