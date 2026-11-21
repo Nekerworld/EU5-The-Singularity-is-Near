@@ -1,0 +1,16 @@
+﻿# H3 fuel penalties (unit category). 사용자 확인 필요.
+
+tsin_fuel_low = {
+	game_data = { category = unit }
+	army_movement_speed = -0.1
+	army_heavy_cavalry_power = -0.05
+}
+
+tsin_fuel_depleted = {
+	game_data = { category = unit }
+	army_movement_speed = -0.4
+	army_heavy_cavalry_power = -0.3
+	army_light_cavalry_power = -0.2
+	army_heavy_infantry_power = -0.05
+	discipline = -0.05
+}

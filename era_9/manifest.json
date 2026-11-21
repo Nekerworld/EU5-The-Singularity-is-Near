@@ -2,9 +2,14 @@
   "schema_version": 1,
   "files": {
     "in_game/common/advances/zz_tsin_transport_services_09.txt": "new-era-content",
+    "in_game/common/advances/zzz_tsin_09_h2_units.txt": "new-era-content",
     "in_game/common/building_types/zz_tsin_transport_services_09.txt": "new-era-content",
+    "in_game/common/goods_demand/tsin_age9_h2_land_demands.txt": "new-era-content",
+    "in_game/common/unit_types/zzz_tsin_09_h2_units.txt": "new-era-content",
     "main_menu/gfx/interface/icons/buildings/tsin_high_speed_services.dds": "new-era-content",
     "main_menu/gfx/interface/icons/buildings/tsin_mature_metro_services.dds": "new-era-content",
-    "main_menu/gfx/interface/icons/buildings/tsin_modern_road_services.dds": "new-era-content"
+    "main_menu/gfx/interface/icons/buildings/tsin_modern_road_services.dds": "new-era-content",
+    "main_menu/localization/english/tsin_h2_age9_l_english.yml": "new-era-content",
+    "main_menu/localization/korean/tsin_h2_age9_l_korean.yml": "new-era-content"
   }
 }

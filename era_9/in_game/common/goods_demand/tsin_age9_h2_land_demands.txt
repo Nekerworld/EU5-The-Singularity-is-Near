@@ -1,0 +1,32 @@
+﻿# Age IX land unit goods (H2).
+
+tsin_h2_main_battle_tank_construction = {
+	steel = 2.5
+	tsin_engines = 1.4
+	cannons = 1.2
+	tools = 0.5
+	copper = 0.3
+	category = regiment_construction
+}
+
+tsin_h2_main_battle_tank_maintenance = {
+	tsin_oil = 0.35
+	steel = 0.05
+	cannons = 0.25
+	category = regiment_maintenance
+}
+
+tsin_h2_rocket_artillery_battery_construction = {
+	cannons = 1.2
+	tsin_explosives = 1.2
+	steel = 1.2
+	tsin_engines = 0.8
+	category = regiment_construction
+}
+
+tsin_h2_rocket_artillery_battery_maintenance = {
+	cannons = 0.4
+	tsin_explosives = 0.5
+	tsin_oil = 0.15
+	category = regiment_maintenance
+}

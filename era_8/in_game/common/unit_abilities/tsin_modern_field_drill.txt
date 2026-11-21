@@ -1,0 +1,55 @@
+﻿# H2: modern field drill, patterned on vanilla drill_army (unlocked by tsin_modern_field_drill_advance).
+# More experience than drill_army, bigger upkeep and morale cost; ends at the first combat, move or siege.
+tsin_modern_field_drill = {
+	duration = -1
+	toggle = yes
+	army_only = yes
+	cancel_on_combat = yes
+	cancel_on_combat_end = yes
+	cancel_on_move = yes
+	animation_gfx_override = 1
+
+	map = yes
+
+	allow = {
+		has_only_prisoners = no
+		is_army = yes
+		in_combat = no
+		is_moving = no
+		is_exiled = no
+		in_siege = no
+		has_commander = yes
+		# Needs a non-negative small arms stockpile once the H1 system has started (사용자 확인 필요).
+		owner = {
+			OR = {
+				NOT = { has_variable = tsin_h_init }
+				var:tsin_eq_small_arms_stockpile >= 0
+			}
+		}
+	}
+
+	modifier = {
+		monthly_experience_gain = 3.5
+		force_army_maintenance = yes
+		army_maintenance_efficiency = -0.40
+		land_morale_modifier = -0.9
+	}
+
+	finished_when = {
+		OR = {
+			in_combat = yes
+			is_moving = yes
+			is_exiled = yes
+			in_siege = yes
+			has_commander = no
+		}
+	}
+
+	ai_will_do = {
+		value = -1
+	}
+
+	ai_will_revoke = {
+		value = 1
+	}
+}

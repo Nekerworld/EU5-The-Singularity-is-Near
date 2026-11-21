@@ -1,0 +1,231 @@
+﻿# H1 armament works (mill style: they also produce market goods so the AI builds them).
+tsin_small_arms_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	# Two alternative production lines. Switching the line is not read by the stockpile (H0 probe: set_production_method).
+	unique_production_methods = {
+		# inputs 10.00 gold -> firearms 3.83
+		tsin_small_arms_works_rifle_line = {
+			icon_type = goods
+			icon = steel
+			steel = 1.2
+			coal = 1.0
+			tools = 0.5
+			tsin_explosives = 0.1
+			produced = firearms
+			output = 3.83
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 12.80 gold -> firearms 4.91
+		tsin_small_arms_works_automatic_line = {
+			icon_type = goods
+			icon = tools
+			steel = 1.5
+			coal = 1.0
+			tools = 0.6
+			copper = 0.3
+			tsin_engines = 0.1
+			produced = firearms
+			output = 4.91
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+tsin_support_artillery_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	# Two alternative production lines. Switching the line is not read by the stockpile (H0 probe: set_production_method).
+	unique_production_methods = {
+		# inputs 13.00 gold -> cannons 3.74
+		tsin_support_artillery_works_howitzer_line = {
+			icon_type = goods
+			icon = cannons
+			steel = 1.6
+			coal = 1.0
+			tools = 0.5
+			tsin_explosives = 0.3
+			produced = cannons
+			output = 3.74
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 10.80 gold -> cannons 3.10
+		tsin_support_artillery_works_rocket_line = {
+			icon_type = goods
+			icon = tsin_explosives
+			steel = 1.2
+			tsin_explosives = 0.6
+			tools = 0.4
+			tsin_engines = 0.1
+			produced = cannons
+			output = 3.1
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+tsin_armored_vehicle_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	# Two alternative production lines. Switching the line is not read by the stockpile (H0 probe: set_production_method).
+	unique_production_methods = {
+		# inputs 16.20 gold -> tsin_engines 3.10
+		tsin_armored_vehicle_works_tank_line = {
+			icon_type = goods
+			icon = steel
+			steel = 2.0
+			tsin_engines = 0.5
+			tsin_oil = 0.2
+			cannons = 0.3
+			tools = 0.4
+			produced = tsin_engines
+			output = 3.1
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 11.10 gold -> tsin_engines 2.13
+		tsin_armored_vehicle_works_truck_line = {
+			icon_type = goods
+			icon = tsin_rubber
+			steel = 1.2
+			tsin_engines = 0.4
+			tsin_rubber = 0.3
+			tsin_oil = 0.15
+			tools = 0.3
+			produced = tsin_engines
+			output = 2.13
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}
+
+tsin_aircraft_works = {
+	audio_tier = 6
+	is_foreign = no
+	pop_type = laborers
+	is_mill = yes
+	max_levels = mills_max_level
+	startup_ramp_target = mills_startup_ramp_target
+
+	employment_size = mills_employment
+
+	category = basic_industry_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+
+	build_time = mills_build_time
+	graphical_tags = { factory_large }
+
+	# Two alternative production lines. Switching the line is not read by the stockpile (H0 probe: set_production_method).
+	unique_production_methods = {
+		# inputs 9.10 gold -> tsin_engines 1.74
+		tsin_aircraft_works_fighter_line = {
+			icon_type = goods
+			icon = tsin_engines
+			lumber = 0.8
+			steel = 0.6
+			tsin_engines = 0.5
+			copper = 0.2
+			tools = 0.3
+			tsin_oil = 0.1
+			produced = tsin_engines
+			output = 1.74
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+
+		# inputs 13.10 gold -> tsin_engines 2.51
+		tsin_aircraft_works_heavy_airframe_line = {
+			icon_type = goods
+			icon = steel
+			lumber = 0.4
+			steel = 1.2
+			tsin_engines = 0.7
+			copper = 0.3
+			tsin_rubber = 0.2
+			tsin_oil = 0.15
+			produced = tsin_engines
+			output = 2.51
+
+			debug_max_profit = mills_profit_margin
+			category = mills_input
+		}
+	}
+
+	construction_demand = tsin_factory_construction
+}

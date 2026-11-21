@@ -1,0 +1,35 @@
+﻿# H1: monthly stockpile pulse and battle-loss hooks. Gated by age VIII and tsin_mass_production_arms_advance.
+monthly_country_pulse = {
+	on_actions = { tsin_h1_stockpile_monthly }
+}
+
+on_battle_won = {
+	on_actions = { tsin_h1_battle_won }
+}
+
+on_battle_lost = {
+	on_actions = { tsin_h1_battle_lost }
+}
+
+tsin_h1_stockpile_monthly = {
+	trigger = { tsin_h_stockpile_gate_trigger = yes }
+	effect = { tsin_h1_stockpile_monthly_effect = yes }
+}
+
+# root = actor (winning unit), scope:actor.owner = winner
+tsin_h1_battle_won = {
+	effect = {
+		scope:actor.owner ?= {
+			if = { limit = { tsin_h_stockpile_gate_trigger = yes has_variable = tsin_h_init } tsin_eq_battle_loss_effect = yes }
+		}
+	}
+}
+
+# root = actor (losing unit), scope:actor.owner = loser
+tsin_h1_battle_lost = {
+	effect = {
+		scope:actor.owner ?= {
+			if = { limit = { tsin_h_stockpile_gate_trigger = yes has_variable = tsin_h_init } tsin_eq_battle_loss_effect = yes }
+		}
+	}
+}

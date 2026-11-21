@@ -1,0 +1,5 @@
+﻿l_korean:
+ STATIC_MODIFIER_NAME_tsin_fuel_low: "연료 부족 임박"
+ STATIC_MODIFIER_DESC_tsin_fuel_low: "국가 연료 비축이 저장 용량의 20% 미만입니다. 기갑·차량화 부대가 느려집니다."
+ STATIC_MODIFIER_NAME_tsin_fuel_depleted: "연료 고갈"
+ STATIC_MODIFIER_DESC_tsin_fuel_depleted: "연료 비축이 바닥났습니다. 기갑·차량화 부대의 이동과 전투력이 크게 떨어집니다."

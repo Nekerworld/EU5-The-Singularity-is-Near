@@ -1,0 +1,23 @@
+﻿# H1 shortage modifiers (unit category). 사용자 확인 필요: add_unit_modifier on armies, modifier names in unit scope.
+
+tsin_eq_shortage_small_arms = {
+	game_data = { category = unit }
+	army_light_infantry_power = -0.15
+	army_heavy_infantry_power = -0.15
+	discipline = -0.05
+	regiment_reinforcement_speed = -0.25
+}
+
+tsin_eq_shortage_support_artillery = {
+	game_data = { category = unit }
+	army_artillery_power = -0.2
+	regiment_reinforcement_speed = -0.15
+}
+
+tsin_eq_shortage_armored_vehicles = {
+	game_data = { category = unit }
+	army_heavy_cavalry_power = -0.2
+	army_light_cavalry_power = -0.2
+	army_movement_speed = -0.1
+	regiment_reinforcement_speed = -0.15
+}

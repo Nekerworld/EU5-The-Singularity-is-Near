@@ -1,0 +1,13 @@
+﻿# H4 air capacity (country scope). Capital airfield level +10 (ID preserved), each airbase level +12.
+tsin_air_capacity = {
+	value = 6
+	add = { value = total_effective_building_levels:tsin_capital_airfield multiply = 10 }
+	add = { value = total_effective_building_levels:tsin_airbase multiply = 12 }
+}
+
+tsin_air_total = {
+	value = var:tsin_air_fighter_stockpile
+	add = var:tsin_air_cas_stockpile
+	add = var:tsin_air_bomber_stockpile
+	add = var:tsin_air_transport_stockpile
+}

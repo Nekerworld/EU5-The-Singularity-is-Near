@@ -1,0 +1,19 @@
+﻿# H1/H3/H4 shared gates. Everything in the H-track is behind age VIII plus an advance, so age VII saves are untouched.
+tsin_h_age8_trigger = {
+	current_later_age_8_world_wars_trigger = yes
+}
+
+tsin_h_stockpile_gate_trigger = {
+	tsin_h_age8_trigger = yes
+	has_advance = tsin_mass_production_arms_advance
+}
+
+tsin_h_fuel_gate_trigger = {
+	tsin_h_age8_trigger = yes
+	has_advance = tsin_motor_transport_advance
+}
+
+tsin_h_air_gate_trigger = {
+	tsin_h_age8_trigger = yes
+	has_advance = tsin_aircraft_industry_advance
+}

@@ -1,0 +1,116 @@
+﻿# H3: national fuel. Scope: country.
+tsin_h3_fuel_init_effect = {
+	set_variable = { name = tsin_h3_init value = 1 }
+	set_variable = { name = tsin_fuel_stockpile value = 50 }
+	set_variable = { name = tsin_fuel_state value = 0 }
+}
+
+# Console switches: `effect tsin_h_fuel_market_off_effect = yes` stops market purchases (H0 probe fallback), `..._on_effect` resumes.
+tsin_h_fuel_market_off_effect = { set_global_variable = tsin_h_fuel_market_off }
+tsin_h_fuel_market_on_effect = { if = { limit = { has_global_variable = tsin_h_fuel_market_off } remove_global_variable = tsin_h_fuel_market_off } }
+
+# Buy up to 6 tsin_oil a month from the capital market; observed stock change is what counts.
+# 사용자 확인 필요: buy_goods_from_market in a monthly pulse (price spikes, market access, AI distortion).
+tsin_h3_fuel_market_effect = {
+	if = {
+		limit = {
+			exists = capital
+			NOT = { has_global_variable = tsin_h_fuel_market_off }
+			var:tsin_fuel_stockpile < tsin_fuel_capacity
+		}
+		set_variable = { name = tsin_fuel_room value = { value = tsin_fuel_capacity subtract = var:tsin_fuel_stockpile } }
+		save_scope_as = tsin_fuel_operator
+		capital = {
+			set_variable = { name = tsin_fuel_observed value = 0 }
+			if = {
+				limit = {
+					exists = market
+					"market.market_price(goods:tsin_oil)" > 0
+					"market.stockpile_in_market(goods:tsin_oil)" > 0
+				}
+				save_scope_as = tsin_fuel_site
+				set_variable = { name = tsin_fuel_before value = "market.stockpile_in_market(goods:tsin_oil)" }
+				set_variable = {
+					name = tsin_fuel_quantity
+					value = {
+						value = 6
+						max = "market.stockpile_in_market(goods:tsin_oil)"
+						max = { value = scope:tsin_fuel_operator.var:tsin_fuel_room divide = 5 }
+						max = { value = scope:tsin_fuel_operator.gold multiply = 0.02 divide = "market.market_price(goods:tsin_oil)" }
+						min = 0
+					}
+				}
+				if = {
+					limit = { var:tsin_fuel_quantity > 0 }
+					scope:tsin_fuel_operator = {
+						buy_goods_from_market = {
+							market = scope:tsin_fuel_site.market
+							goods = goods:tsin_oil
+							amount = scope:tsin_fuel_site.var:tsin_fuel_quantity
+						}
+					}
+					set_variable = {
+						name = tsin_fuel_observed
+						value = { value = var:tsin_fuel_before subtract = "market.stockpile_in_market(goods:tsin_oil)" max = var:tsin_fuel_quantity min = 0 }
+					}
+				}
+			}
+		}
+		change_variable = { name = tsin_fuel_stockpile add = { value = capital.var:tsin_fuel_observed multiply = 5 } }
+	}
+}
+
+# State: 0 normal, 1 low (<20% of capacity), 2 depleted (consumption exceeded the reserve this month).
+tsin_h3_fuel_monthly_effect = {
+	if = { limit = { NOT = { has_variable = tsin_h3_init } } tsin_h3_fuel_init_effect = yes }
+	tsin_h_count_units_effect = yes
+	change_variable = { name = tsin_fuel_stockpile add = tsin_fuel_baseline_inflow }
+	tsin_h3_fuel_market_effect = yes
+	change_variable = { name = tsin_fuel_stockpile subtract = tsin_fuel_use }
+	if = {
+		limit = { var:tsin_fuel_stockpile < 0 }
+		set_variable = { name = tsin_fuel_stockpile value = 0 }
+		set_variable = { name = tsin_fuel_state value = 2 }
+	}
+	else_if = {
+		limit = { var:tsin_fuel_stockpile < { value = tsin_fuel_capacity multiply = 0.2 } }
+		set_variable = { name = tsin_fuel_state value = 1 }
+	}
+	else = { set_variable = { name = tsin_fuel_state value = 0 } }
+	if = {
+		limit = { var:tsin_fuel_stockpile > tsin_fuel_capacity }
+		set_variable = { name = tsin_fuel_stockpile value = tsin_fuel_capacity }
+	}
+	tsin_h3_fuel_penalty_effect = yes
+}
+
+# Penalties go on armies that contain armored or motorized regiments; modifiers are renewed monthly (31 days)
+# and removed on recovery. add_unit_modifier on armies is 사용자 확인 필요.
+tsin_h3_fuel_penalty_effect = {
+	if = {
+		limit = { var:tsin_fuel_state = 2 }
+		every_army = {
+			limit = { any_sub_unit = { tsin_h_unit_fuel_user_trigger = yes } }
+			if = { limit = { has_unit_modifier = tsin_fuel_low } remove_unit_modifier = tsin_fuel_low }
+			add_unit_modifier = { modifier = tsin_fuel_depleted days = 31 mode = add_and_extend }
+		}
+		set_variable = { name = tsin_fuel_penalty_on value = 1 }
+	}
+	else_if = {
+		limit = { var:tsin_fuel_state = 1 }
+		every_army = {
+			limit = { any_sub_unit = { tsin_h_unit_fuel_user_trigger = yes } }
+			if = { limit = { has_unit_modifier = tsin_fuel_depleted } remove_unit_modifier = tsin_fuel_depleted }
+			add_unit_modifier = { modifier = tsin_fuel_low days = 31 mode = add_and_extend }
+		}
+		set_variable = { name = tsin_fuel_penalty_on value = 1 }
+	}
+	else_if = {
+		limit = { has_variable = tsin_fuel_penalty_on }
+		every_army = {
+			if = { limit = { has_unit_modifier = tsin_fuel_low } remove_unit_modifier = tsin_fuel_low }
+			if = { limit = { has_unit_modifier = tsin_fuel_depleted } remove_unit_modifier = tsin_fuel_depleted }
+		}
+		remove_variable = tsin_fuel_penalty_on
+	}
+}

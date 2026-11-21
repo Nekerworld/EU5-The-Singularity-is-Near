@@ -1,0 +1,37 @@
+﻿# H2 unit role sets (sub_unit scope). Used by the H1 counters and the H3 fuel penalties.
+tsin_h_unit_infantry_trigger = {
+	OR = {
+		sub_unit_category = sub_unit_category:army_light_infantry
+		sub_unit_category = sub_unit_category:army_heavy_infantry
+	}
+}
+
+tsin_h_unit_artillery_trigger = {
+	sub_unit_category = sub_unit_category:army_artillery
+}
+
+# Heavy armor: tanks and armored cars.
+tsin_h_unit_armored_trigger = {
+	OR = {
+		sub_unit_type = unit_type:a_tsin_armored_car_recon
+		sub_unit_type = unit_type:a_tsin_tank_battalion
+		sub_unit_type = unit_type:a_tsin_main_battle_tank
+	}
+}
+
+# Motorized units: mechanized infantry, self-propelled/rocket artillery, motor transport.
+tsin_h_unit_motorized_trigger = {
+	OR = {
+		sub_unit_type = unit_type:a_tsin_mechanized_infantry
+		sub_unit_type = unit_type:a_tsin_self_propelled_battery
+		sub_unit_type = unit_type:a_tsin_motor_supply_column
+		sub_unit_type = unit_type:a_tsin_rocket_artillery_battery
+	}
+}
+
+tsin_h_unit_fuel_user_trigger = {
+	OR = {
+		tsin_h_unit_armored_trigger = yes
+		tsin_h_unit_motorized_trigger = yes
+	}
+}

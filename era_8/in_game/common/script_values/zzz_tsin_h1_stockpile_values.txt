@@ -1,0 +1,58 @@
+﻿# H1 stockpile flows. Country scope. Numbers are placeholders (docs/military_hybrid_h_track.md).
+tsin_eq_stockpile_cap = 600
+tsin_eq_stockpile_floor = -300
+
+# Wartime factor: peacetime upkeep is 40% of wartime upkeep.
+tsin_h_war_factor = {
+	value = 1
+	if = { limit = { at_war = no } multiply = 0.4 }
+}
+
+tsin_eq_small_arms_production = {
+	value = total_effective_building_levels:tsin_small_arms_works
+	multiply = 8
+	multiply = var:tsin_line_eff_small_arms
+}
+
+tsin_eq_support_artillery_production = {
+	value = total_effective_building_levels:tsin_support_artillery_works
+	multiply = 4
+	multiply = var:tsin_line_eff_support_artillery
+}
+
+tsin_eq_armored_vehicles_production = {
+	value = total_effective_building_levels:tsin_armored_vehicle_works
+	multiply = 3
+	multiply = var:tsin_line_eff_armored_vehicles
+}
+
+tsin_eq_aircraft_production = {
+	value = total_effective_building_levels:tsin_aircraft_works
+	multiply = 2
+	multiply = var:tsin_line_eff_aircraft
+}
+
+# Demand before the war factor: infantry/artillery regiments, armored (heavy) and motorized (light) vehicles.
+tsin_eq_small_arms_demand_base = { value = var:tsin_h_n_infantry multiply = 0.12 }
+tsin_eq_support_artillery_demand_base = { value = var:tsin_h_n_artillery multiply = 0.30 }
+tsin_eq_armored_vehicles_demand_base = {
+	value = var:tsin_h_n_armored multiply = 0.40
+	add = { value = var:tsin_h_n_motorized multiply = 0.15 }
+}
+tsin_eq_aircraft_demand_base = 0
+
+tsin_eq_small_arms_demand = { value = tsin_eq_small_arms_demand_base multiply = tsin_h_war_factor }
+# A free national reserve (legacy conscript stock) covers 30% of the base demand.
+tsin_eq_small_arms_baseline = { value = tsin_eq_small_arms_demand_base multiply = 0.3 }
+
+tsin_eq_support_artillery_demand = { value = tsin_eq_support_artillery_demand_base multiply = tsin_h_war_factor }
+# A free national reserve (legacy conscript stock) covers 30% of the base demand.
+tsin_eq_support_artillery_baseline = { value = tsin_eq_support_artillery_demand_base multiply = 0.3 }
+
+tsin_eq_armored_vehicles_demand = { value = tsin_eq_armored_vehicles_demand_base multiply = tsin_h_war_factor }
+# A free national reserve (legacy conscript stock) covers 30% of the base demand.
+tsin_eq_armored_vehicles_baseline = { value = tsin_eq_armored_vehicles_demand_base multiply = 0.3 }
+
+tsin_eq_aircraft_demand = { value = tsin_eq_aircraft_demand_base multiply = tsin_h_war_factor }
+# A free national reserve (legacy conscript stock) covers 30% of the base demand.
+tsin_eq_aircraft_baseline = { value = tsin_eq_aircraft_demand_base multiply = 0.3 }

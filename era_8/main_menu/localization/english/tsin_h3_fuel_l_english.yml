@@ -1,0 +1,5 @@
+﻿l_english:
+ STATIC_MODIFIER_NAME_tsin_fuel_low: "Low fuel"
+ STATIC_MODIFIER_DESC_tsin_fuel_low: "National fuel reserves are below 20% of capacity. Armored and motorized units slow down."
+ STATIC_MODIFIER_NAME_tsin_fuel_depleted: "Fuel depleted"
+ STATIC_MODIFIER_DESC_tsin_fuel_depleted: "The fuel reserve ran dry. Armored and motorized units crawl and fight poorly."

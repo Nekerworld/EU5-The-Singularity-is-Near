@@ -1,0 +1,42 @@
+﻿# H3 fuel flows (country scope). Placeholder numbers: docs/military_hybrid_h_track.md.
+# Storage: base 100 + 120 per oil storage level + 60 per motor depot level + 40 per airbase level.
+tsin_fuel_capacity = {
+	value = 100
+	add = { value = total_effective_building_levels:tsin_oil_storage multiply = 120 }
+	add = { value = total_effective_building_levels:tsin_motor_transport_depot multiply = 60 }
+	add = { value = total_effective_building_levels:tsin_airbase multiply = 40 }
+}
+
+# Wartime consumption is weighted 2.0, peacetime 0.3.
+tsin_fuel_war_factor = {
+	value = 2
+	if = { limit = { at_war = no } multiply = 0.15 }
+}
+
+# Armored units burn 0.6 per regiment-month (before the war factor), motorized units 0.25.
+tsin_fuel_ground_use = {
+	value = var:tsin_h_n_armored
+	multiply = 0.6
+	add = { value = var:tsin_h_n_motorized multiply = 0.25 }
+}
+
+# Last month's active aircraft (written by the H4 air operations), 0.15 each.
+tsin_fuel_air_use = {
+	value = 0
+	if = {
+		limit = { has_variable = tsin_air_active_aircraft }
+		add = { value = var:tsin_air_active_aircraft multiply = 0.15 }
+	}
+}
+
+tsin_fuel_use = {
+	value = tsin_fuel_ground_use
+	add = tsin_fuel_air_use
+	multiply = tsin_fuel_war_factor
+}
+
+# Domestic synthetic/coal-derived fuel placeholder plus depot throughput.
+tsin_fuel_baseline_inflow = {
+	value = 1.5
+	add = { value = total_effective_building_levels:tsin_motor_transport_depot multiply = 0.5 }
+}

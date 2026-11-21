@@ -1,0 +1,9 @@
+﻿l_english:
+ tsin_main_battle_tank_advance: "Main battle tank"
+ tsin_main_battle_tank_advance_desc: "A balanced tank with better armor and engines replaces the early tank battalion."
+ tsin_rocket_artillery_advance: "Rocket artillery"
+ tsin_rocket_artillery_advance_desc: "Truck-mounted rocket batteries deliver a heavy barrage."
+ a_tsin_main_battle_tank: "Main battle tank"
+ a_tsin_main_battle_tank_desc: "Late tank that improves on the tank battalion."
+ a_tsin_rocket_artillery_battery: "Rocket artillery battery"
+ a_tsin_rocket_artillery_battery_desc: "Truck-mounted rocket launchers."

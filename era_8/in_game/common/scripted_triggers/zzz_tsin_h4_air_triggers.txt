@@ -1,0 +1,7 @@
+﻿# Fuel must not be depleted for sorties (H3 state 2 = depleted).
+tsin_h4_sorties_possible_trigger = {
+	OR = {
+		NOT = { has_variable = tsin_fuel_state }
+		var:tsin_fuel_state < 2
+	}
+}

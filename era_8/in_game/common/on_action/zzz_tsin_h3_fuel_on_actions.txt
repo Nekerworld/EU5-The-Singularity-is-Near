@@ -1,0 +1,9 @@
+﻿# H3: monthly fuel pulse. Gated by age VIII and tsin_motor_transport_advance.
+monthly_country_pulse = {
+	on_actions = { tsin_h3_fuel_monthly }
+}
+
+tsin_h3_fuel_monthly = {
+	trigger = { tsin_h_fuel_gate_trigger = yes }
+	effect = { tsin_h3_fuel_monthly_effect = yes }
+}

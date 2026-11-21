@@ -1,0 +1,149 @@
+﻿# H1: national equipment stockpiles. Scope: country.
+
+tsin_h_init_effect = {
+	set_variable = { name = tsin_h_init value = 1 }
+	set_variable = { name = tsin_h_n_infantry value = 0 }
+	set_variable = { name = tsin_h_n_artillery value = 0 }
+	set_variable = { name = tsin_h_n_armored value = 0 }
+	set_variable = { name = tsin_h_n_motorized value = 0 }
+	set_variable = { name = tsin_eq_small_arms_stockpile value = 60 }
+	set_variable = { name = tsin_line_eff_small_arms value = 1 }
+	set_variable = { name = tsin_eq_support_artillery_stockpile value = 30 }
+	set_variable = { name = tsin_line_eff_support_artillery value = 1 }
+	set_variable = { name = tsin_eq_armored_vehicles_stockpile value = 20 }
+	set_variable = { name = tsin_line_eff_armored_vehicles value = 1 }
+	set_variable = { name = tsin_eq_aircraft_stockpile value = 0 }
+	set_variable = { name = tsin_line_eff_aircraft value = 1 }
+}
+
+# Counts regiments by role once per month (other H modules reuse the counters).
+tsin_h_count_units_effect = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = tsin_h_count_stamp }
+				tsin_urban_calendar_month > var:tsin_h_count_stamp
+			}
+		}
+		set_variable = { name = tsin_h_count_stamp value = tsin_urban_calendar_month }
+		set_variable = { name = tsin_h_n_infantry value = 0 }
+		set_variable = { name = tsin_h_n_artillery value = 0 }
+		set_variable = { name = tsin_h_n_armored value = 0 }
+		set_variable = { name = tsin_h_n_motorized value = 0 }
+		save_scope_as = tsin_h_country
+		every_army = {
+			every_sub_unit = {
+				limit = { tsin_h_unit_infantry_trigger = yes }
+				scope:tsin_h_country = { change_variable = { name = tsin_h_n_infantry add = 1 } }
+			}
+			every_sub_unit = {
+				limit = { tsin_h_unit_artillery_trigger = yes }
+				scope:tsin_h_country = { change_variable = { name = tsin_h_n_artillery add = 1 } }
+			}
+			every_sub_unit = {
+				limit = { tsin_h_unit_armored_trigger = yes }
+				scope:tsin_h_country = { change_variable = { name = tsin_h_n_armored add = 1 } }
+			}
+			every_sub_unit = {
+				limit = { tsin_h_unit_motorized_trigger = yes }
+				scope:tsin_h_country = { change_variable = { name = tsin_h_n_motorized add = 1 } }
+			}
+		}
+	}
+}
+
+# Line efficiency drops after a retool and recovers 5 points a month.
+tsin_h_line_recover_effect = {
+	if = { limit = { var:tsin_line_eff_small_arms < 1 } change_variable = { name = tsin_line_eff_small_arms add = 0.05 } if = { limit = { var:tsin_line_eff_small_arms > 1 } set_variable = { name = tsin_line_eff_small_arms value = 1 } } }
+	if = { limit = { var:tsin_line_eff_support_artillery < 1 } change_variable = { name = tsin_line_eff_support_artillery add = 0.05 } if = { limit = { var:tsin_line_eff_support_artillery > 1 } set_variable = { name = tsin_line_eff_support_artillery value = 1 } } }
+	if = { limit = { var:tsin_line_eff_armored_vehicles < 1 } change_variable = { name = tsin_line_eff_armored_vehicles add = 0.05 } if = { limit = { var:tsin_line_eff_armored_vehicles > 1 } set_variable = { name = tsin_line_eff_armored_vehicles value = 1 } } }
+	if = { limit = { var:tsin_line_eff_aircraft < 1 } change_variable = { name = tsin_line_eff_aircraft add = 0.05 } if = { limit = { var:tsin_line_eff_aircraft > 1 } set_variable = { name = tsin_line_eff_aircraft value = 1 } } }
+}
+
+# Call after a production line change for small_arms. Not hooked to production method switches yet (H0 probe).
+tsin_h_retool_small_arms_effect = { if = { limit = { var:tsin_line_eff_small_arms > 0.5 } set_variable = { name = tsin_line_eff_small_arms value = 0.5 } } }
+
+# Call after a production line change for support_artillery. Not hooked to production method switches yet (H0 probe).
+tsin_h_retool_support_artillery_effect = { if = { limit = { var:tsin_line_eff_support_artillery > 0.5 } set_variable = { name = tsin_line_eff_support_artillery value = 0.5 } } }
+
+# Call after a production line change for armored_vehicles. Not hooked to production method switches yet (H0 probe).
+tsin_h_retool_armored_vehicles_effect = { if = { limit = { var:tsin_line_eff_armored_vehicles > 0.5 } set_variable = { name = tsin_line_eff_armored_vehicles value = 0.5 } } }
+
+# Call after a production line change for aircraft. Not hooked to production method switches yet (H0 probe).
+tsin_h_retool_aircraft_effect = { if = { limit = { var:tsin_line_eff_aircraft > 0.5 } set_variable = { name = tsin_line_eff_aircraft value = 0.5 } } }
+
+# Monthly accrual: production + reserve - demand, clamped to the cap/floor.
+tsin_h1_stockpile_monthly_effect = {
+	if = { limit = { NOT = { has_variable = tsin_h_init } } tsin_h_init_effect = yes }
+	tsin_h_count_units_effect = yes
+	change_variable = { name = tsin_eq_small_arms_stockpile add = tsin_eq_small_arms_production }
+	change_variable = { name = tsin_eq_small_arms_stockpile add = tsin_eq_small_arms_baseline }
+	change_variable = { name = tsin_eq_small_arms_stockpile subtract = tsin_eq_small_arms_demand }
+	if = { limit = { var:tsin_eq_small_arms_stockpile > tsin_eq_stockpile_cap } set_variable = { name = tsin_eq_small_arms_stockpile value = tsin_eq_stockpile_cap } }
+	if = { limit = { var:tsin_eq_small_arms_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_small_arms_stockpile value = tsin_eq_stockpile_floor } }
+	change_variable = { name = tsin_eq_support_artillery_stockpile add = tsin_eq_support_artillery_production }
+	change_variable = { name = tsin_eq_support_artillery_stockpile add = tsin_eq_support_artillery_baseline }
+	change_variable = { name = tsin_eq_support_artillery_stockpile subtract = tsin_eq_support_artillery_demand }
+	if = { limit = { var:tsin_eq_support_artillery_stockpile > tsin_eq_stockpile_cap } set_variable = { name = tsin_eq_support_artillery_stockpile value = tsin_eq_stockpile_cap } }
+	if = { limit = { var:tsin_eq_support_artillery_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_support_artillery_stockpile value = tsin_eq_stockpile_floor } }
+	change_variable = { name = tsin_eq_armored_vehicles_stockpile add = tsin_eq_armored_vehicles_production }
+	change_variable = { name = tsin_eq_armored_vehicles_stockpile add = tsin_eq_armored_vehicles_baseline }
+	change_variable = { name = tsin_eq_armored_vehicles_stockpile subtract = tsin_eq_armored_vehicles_demand }
+	if = { limit = { var:tsin_eq_armored_vehicles_stockpile > tsin_eq_stockpile_cap } set_variable = { name = tsin_eq_armored_vehicles_stockpile value = tsin_eq_stockpile_cap } }
+	if = { limit = { var:tsin_eq_armored_vehicles_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_armored_vehicles_stockpile value = tsin_eq_stockpile_floor } }
+	change_variable = { name = tsin_eq_aircraft_stockpile add = tsin_eq_aircraft_production }
+	change_variable = { name = tsin_eq_aircraft_stockpile add = tsin_eq_aircraft_baseline }
+	change_variable = { name = tsin_eq_aircraft_stockpile subtract = tsin_eq_aircraft_demand }
+	if = { limit = { var:tsin_eq_aircraft_stockpile > tsin_eq_stockpile_cap } set_variable = { name = tsin_eq_aircraft_stockpile value = tsin_eq_stockpile_cap } }
+	if = { limit = { var:tsin_eq_aircraft_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_aircraft_stockpile value = tsin_eq_stockpile_floor } }
+	tsin_h_line_recover_effect = yes
+	tsin_h_apply_shortage_effect = yes
+}
+
+# Shortage: a negative stockpile puts a unit modifier on armies while at war or when the deficit is deep.
+# add_and_extend with 31 days is renewed every month; the modifier is removed when the stock recovers.
+tsin_h_apply_shortage_effect = {
+	if = {
+		limit = { var:tsin_eq_small_arms_stockpile < 0 OR = { at_war = yes var:tsin_eq_small_arms_stockpile < -150 } }
+		every_army = {  add_unit_modifier = { modifier = tsin_eq_shortage_small_arms days = 31 mode = add_and_extend } }
+		set_variable = { name = tsin_h_short_small_arms value = 1 }
+	}
+	else_if = {
+		limit = { has_variable = tsin_h_short_small_arms }
+		every_army = { remove_unit_modifier = tsin_eq_shortage_small_arms }
+		remove_variable = tsin_h_short_small_arms
+	}
+	if = {
+		limit = { var:tsin_eq_support_artillery_stockpile < 0 OR = { at_war = yes var:tsin_eq_support_artillery_stockpile < -150 } }
+		every_army = {  add_unit_modifier = { modifier = tsin_eq_shortage_support_artillery days = 31 mode = add_and_extend } }
+		set_variable = { name = tsin_h_short_support_artillery value = 1 }
+	}
+	else_if = {
+		limit = { has_variable = tsin_h_short_support_artillery }
+		every_army = { remove_unit_modifier = tsin_eq_shortage_support_artillery }
+		remove_variable = tsin_h_short_support_artillery
+	}
+	if = {
+		limit = { var:tsin_eq_armored_vehicles_stockpile < 0 OR = { at_war = yes var:tsin_eq_armored_vehicles_stockpile < -150 } }
+		every_army = { limit = { any_sub_unit = { tsin_h_unit_fuel_user_trigger = yes } } add_unit_modifier = { modifier = tsin_eq_shortage_armored_vehicles days = 31 mode = add_and_extend } }
+		set_variable = { name = tsin_h_short_armored_vehicles value = 1 }
+	}
+	else_if = {
+		limit = { has_variable = tsin_h_short_armored_vehicles }
+		every_army = { remove_unit_modifier = tsin_eq_shortage_armored_vehicles }
+		remove_variable = tsin_h_short_armored_vehicles
+	}
+}
+
+# Battle losses: scope:lost_land_units is soldiers lost (on_battle_won / on_battle_lost, root = actor unit).
+# Each side subtracts its own losses. Whether lost_land_units is the actor's own loss is 사용자 확인 필요.
+tsin_eq_battle_loss_effect = {
+	if = { limit = { exists = scope:lost_land_units }
+		change_variable = { name = tsin_eq_small_arms_stockpile subtract = { value = scope:lost_land_units multiply = 0.004 } }
+		if = { limit = { var:tsin_eq_small_arms_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_small_arms_stockpile value = tsin_eq_stockpile_floor } }
+		change_variable = { name = tsin_eq_support_artillery_stockpile subtract = { value = scope:lost_land_units multiply = 0.0005 } }
+		if = { limit = { var:tsin_eq_support_artillery_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_support_artillery_stockpile value = tsin_eq_stockpile_floor } }
+		change_variable = { name = tsin_eq_armored_vehicles_stockpile subtract = { value = scope:lost_land_units multiply = 0.0008 } }
+		if = { limit = { var:tsin_eq_armored_vehicles_stockpile < tsin_eq_stockpile_floor } set_variable = { name = tsin_eq_armored_vehicles_stockpile value = tsin_eq_stockpile_floor } }
+	}
+}

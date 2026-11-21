@@ -1,0 +1,57 @@
+﻿# Age VIII land templates (H2), continuing tsin_00_age_templates.txt. Hidden; real units copy_from them.
+
+a_age_8_world_wars_light_infantry = {
+	copy_from = a_light_infantry
+	hide = yes
+	buildable = no
+	max_strength = 4
+	combat_power = 4.5
+	age = "age_8_world_wars"
+}
+
+a_age_8_world_wars_heavy_infantry = {
+	copy_from = a_heavy_infantry
+	hide = yes
+	buildable = no
+	max_strength = 4
+	combat_power = 4.5
+	age = "age_8_world_wars"
+}
+
+a_age_8_world_wars_light_cavalry = {
+	copy_from = a_light_cavalry
+	hide = yes
+	buildable = no
+	max_strength = 1.4
+	combat_power = 4
+	age = "age_8_world_wars"
+}
+
+a_age_8_world_wars_heavy_cavalry = {
+	copy_from = a_heavy_cavalry
+	hide = yes
+	buildable = no
+	max_strength = 1.4
+	combat_power = 4
+	age = "age_8_world_wars"
+}
+
+a_age_8_world_wars_auxiliary = {
+	hide = yes
+	buildable = no
+	category = army_auxiliary
+	max_strength = 0.3
+	combat_power = 0.35
+	age = "age_8_world_wars"
+}
+
+a_age_8_world_wars_artillery = {
+	hide = yes
+	buildable = no
+	category = army_artillery
+	max_strength = 2
+	combat_power = 11.5
+	bombard_efficiency = 0.5
+	artillery_barrage = 13
+	age = "age_8_world_wars"
+}

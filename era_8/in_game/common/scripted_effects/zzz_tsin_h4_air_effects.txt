@@ -1,0 +1,210 @@
+﻿# H4: aircraft stockpiles and wartime operations. Scope: country. All numbers are placeholders.
+
+tsin_h4_init_effect = {
+	set_variable = { name = tsin_h4_init value = 1 }
+	set_variable = { name = tsin_air_fighter_stockpile value = 0 }
+	set_variable = { name = tsin_air_cas_stockpile value = 0 }
+	set_variable = { name = tsin_air_bomber_stockpile value = 0 }
+	set_variable = { name = tsin_air_transport_stockpile value = 0 }
+	set_variable = { name = tsin_air_active_aircraft value = 0 }
+	set_variable = { name = tsin_air_enemy_fighters value = 0 }
+	set_variable = { name = tsin_air_superiority_index value = 0 }
+}
+
+# Split up to 20 pooled aircraft a month into the four types while there is airbase room.
+tsin_h4_distribute_effect = {
+	if = {
+		limit = { var:tsin_eq_aircraft_stockpile >= 4 tsin_air_total < tsin_air_capacity }
+		set_variable = { name = tsin_air_batch value = { value = var:tsin_eq_aircraft_stockpile max = 20 } }
+		change_variable = { name = tsin_air_fighter_stockpile add = { value = var:tsin_air_batch multiply = 0.35 } }
+		change_variable = { name = tsin_air_cas_stockpile add = { value = var:tsin_air_batch multiply = 0.3 } }
+		change_variable = { name = tsin_air_bomber_stockpile add = { value = var:tsin_air_batch multiply = 0.15 } }
+		change_variable = { name = tsin_air_transport_stockpile add = { value = var:tsin_air_batch multiply = 0.2 } }
+		change_variable = { name = tsin_eq_aircraft_stockpile subtract = var:tsin_air_batch }
+	}
+}
+
+tsin_h4_clear_targets_effect = {
+	if = { limit = { has_variable = tsin_air_target_superiority } remove_variable = tsin_air_target_superiority }
+	if = { limit = { has_variable = tsin_air_target_cas } remove_variable = tsin_air_target_cas }
+	if = { limit = { has_variable = tsin_air_target_bombing } remove_variable = tsin_air_target_bombing }
+	if = { limit = { has_variable = tsin_air_target_supply } remove_variable = tsin_air_target_supply }
+}
+
+# AI: the first army in combat picks the province for superiority, close support and air supply.
+tsin_h4_ai_assign_effect = {
+	random_army = {
+		limit = { in_combat = yes }
+		unit_location = { save_scope_as = tsin_air_ai_location }
+	}
+	if = {
+		limit = { exists = scope:tsin_air_ai_location }
+		set_variable = { name = tsin_air_target_superiority value = scope:tsin_air_ai_location.province }
+		set_variable = { name = tsin_air_target_cas value = scope:tsin_air_ai_location.province }
+		set_variable = { name = tsin_air_target_supply value = scope:tsin_air_ai_location.province }
+	}
+	else = { tsin_h4_clear_targets_effect = yes }
+}
+
+# Mission 1: air superiority. Index in -1..1 from own and enemy fighters; units in the target province get +/- modifiers.
+tsin_h4_superiority_effect = {
+	if = {
+		limit = { has_variable = tsin_air_target_superiority var:tsin_air_fighter_stockpile > 0 tsin_h4_sorties_possible_trigger = yes }
+		change_variable = { name = tsin_air_active_aircraft add = var:tsin_air_fighter_stockpile }
+		set_variable = {
+			name = tsin_air_superiority_index
+			value = {
+				value = var:tsin_air_fighter_stockpile
+				subtract = var:tsin_air_enemy_fighters
+				divide = { value = var:tsin_air_fighter_stockpile add = var:tsin_air_enemy_fighters add = 1 }
+			}
+		}
+		var:tsin_air_target_superiority = {
+			every_location_in_province = {
+				every_unit_in_location = {
+					limit = { owner ?= scope:tsin_air_owner }
+					if = {
+						limit = { scope:tsin_air_owner.var:tsin_air_superiority_index > 0.15 }
+						add_unit_modifier = { modifier = tsin_air_superiority_bonus days = 31 mode = add_and_extend }
+					}
+					else_if = {
+						limit = { scope:tsin_air_owner.var:tsin_air_superiority_index < -0.15 }
+						add_unit_modifier = { modifier = tsin_air_inferiority_penalty days = 31 mode = add_and_extend }
+					}
+				}
+			}
+		}
+		# Air combat losses: 3% of own fighters plus 2% of the enemy fighters.
+		change_variable = {
+			name = tsin_air_fighter_stockpile
+			subtract = { value = var:tsin_air_enemy_fighters multiply = 0.02 add = { value = var:tsin_air_fighter_stockpile multiply = 0.03 } }
+		}
+		if = { limit = { var:tsin_air_fighter_stockpile < 0 } set_variable = { name = tsin_air_fighter_stockpile value = 0 } }
+	}
+}
+
+# Mission 2: close air support. Damages enemy units that are in combat in the target province; anti-air halves it.
+tsin_h4_cas_effect = {
+	if = {
+		limit = { has_variable = tsin_air_target_cas var:tsin_air_cas_stockpile >= 4 tsin_h4_sorties_possible_trigger = yes }
+		change_variable = { name = tsin_air_active_aircraft add = var:tsin_air_cas_stockpile }
+		var:tsin_air_target_cas = {
+			every_location_in_province = {
+				if = {
+					limit = { has_building_with_at_least_one_level = tsin_anti_air_battery }
+					scope:tsin_air_owner = { change_variable = { name = tsin_air_cas_stockpile subtract = 1 } }
+					every_unit_in_location = {
+						limit = { in_combat = yes owner ?= { is_at_war_with = scope:tsin_air_owner } }
+						damage_unit_percent = { 0 0.015 }
+						damage_unit_morale_percent = { 0.01 0.03 }
+					}
+				}
+				else = {
+					every_unit_in_location = {
+						limit = { in_combat = yes owner ?= { is_at_war_with = scope:tsin_air_owner } }
+						damage_unit_percent = { 0 0.03 }
+						damage_unit_morale_percent = { 0.02 0.06 }
+					}
+				}
+			}
+		}
+		# Sortie losses 3% a month.
+		change_variable = { name = tsin_air_cas_stockpile subtract = { value = var:tsin_air_cas_stockpile multiply = 0.03 } }
+		if = { limit = { var:tsin_air_cas_stockpile < 0 } set_variable = { name = tsin_air_cas_stockpile value = 0 } }
+	}
+}
+
+# Mission 3: strategic bombing. Small chance per enemy location to knock down one building level; anti-air lowers it and costs bombers.
+# change_garrison_size / add_breach for sieges are not wired (names unverified).
+tsin_h4_bombing_effect = {
+	if = {
+		limit = { has_variable = tsin_air_target_bombing var:tsin_air_bomber_stockpile >= 6 tsin_h4_sorties_possible_trigger = yes }
+		change_variable = { name = tsin_air_active_aircraft add = var:tsin_air_bomber_stockpile }
+		var:tsin_air_target_bombing = {
+			every_location_in_province = {
+				limit = { owner ?= { is_at_war_with = scope:tsin_air_owner } }
+				if = {
+					limit = { has_building_with_at_least_one_level = tsin_anti_air_battery }
+					scope:tsin_air_owner = { change_variable = { name = tsin_air_bomber_stockpile subtract = 2 } }
+					random = {
+						chance = 5
+						tsin_h4_bomb_location_effect = yes
+					}
+				}
+				else = {
+					random = {
+						chance = 12
+						tsin_h4_bomb_location_effect = yes
+					}
+				}
+			}
+		}
+		# Bomber losses: 3% plus 1% of the enemy fighters.
+		change_variable = {
+			name = tsin_air_bomber_stockpile
+			subtract = { value = var:tsin_air_enemy_fighters multiply = 0.01 add = { value = var:tsin_air_bomber_stockpile multiply = 0.03 } }
+		}
+		if = { limit = { var:tsin_air_bomber_stockpile < 0 } set_variable = { name = tsin_air_bomber_stockpile value = 0 } }
+	}
+}
+
+# Location scope.
+tsin_h4_bomb_location_effect = {
+	ordered_buildings_in_location = {
+		order_by = building_level
+		max = 1
+		location = { minor_destroy_building_levels_in_location = yes }
+	}
+	change_prosperity = prosperity_weak_penalty
+}
+
+# Mission 4: air supply. Own armies besieged in the target province get food.
+tsin_h4_supply_effect = {
+	if = {
+		limit = { has_variable = tsin_air_target_supply var:tsin_air_transport_stockpile >= 3 tsin_h4_sorties_possible_trigger = yes }
+		change_variable = { name = tsin_air_active_aircraft add = var:tsin_air_transport_stockpile }
+		var:tsin_air_target_supply = {
+			every_location_in_province = {
+				every_unit_in_location = {
+					limit = { owner ?= scope:tsin_air_owner in_siege = yes }
+					add_food_percentage = { 0.05 0.10 }
+				}
+			}
+		}
+		change_variable = { name = tsin_air_transport_stockpile subtract = { value = var:tsin_air_transport_stockpile multiply = 0.02 } }
+		if = { limit = { var:tsin_air_transport_stockpile < 0 } set_variable = { name = tsin_air_transport_stockpile value = 0 } }
+	}
+}
+
+# Wartime operations. Only countries at war reach this effect.
+tsin_h4_war_ops_effect = {
+	save_scope_as = tsin_air_owner
+	if = { limit = { is_ai = yes } tsin_h4_ai_assign_effect = yes }
+	set_variable = { name = tsin_air_active_aircraft value = 0 }
+	set_variable = { name = tsin_air_enemy_fighters value = 0 }
+	every_current_war = {
+		every_war_participant = {
+			limit = { is_at_war_with = scope:tsin_air_owner has_variable = tsin_air_fighter_stockpile }
+			save_temporary_scope_value_as = { name = tsin_air_enemy_value value = var:tsin_air_fighter_stockpile }
+			scope:tsin_air_owner = { change_variable = { name = tsin_air_enemy_fighters add = scope:tsin_air_enemy_value } }
+		}
+	}
+	tsin_h4_superiority_effect = yes
+	tsin_h4_cas_effect = yes
+	tsin_h4_bombing_effect = yes
+	tsin_h4_supply_effect = yes
+}
+
+tsin_h4_air_monthly_effect = {
+	if = { limit = { NOT = { has_variable = tsin_h4_init } } tsin_h4_init_effect = yes }
+	tsin_h4_distribute_effect = yes
+	if = {
+		limit = { at_war = yes }
+		tsin_h4_war_ops_effect = yes
+	}
+	else_if = {
+		limit = { OR = { has_variable = tsin_air_target_superiority has_variable = tsin_air_target_cas has_variable = tsin_air_target_bombing has_variable = tsin_air_target_supply } }
+		tsin_h4_clear_targets_effect = yes
+		set_variable = { name = tsin_air_active_aircraft value = 0 }
+	}
+}

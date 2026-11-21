@@ -1,0 +1,25 @@
+﻿# H1 (HOI4 hybrid military). 사용자 확인 필요: all research, buildings and unlocks are untested in game.
+tsin_mass_production_arms_advance = {
+	age = age_8_world_wars
+	icon = military_tactics_advance_6
+
+	requires = tsin_general_staff_advance
+	requires = tsin_internal_combustion_advance
+	allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+
+	unlock_building = tsin_small_arms_works
+	unlock_building = tsin_support_artillery_works
+	ai_weight = { add = 25 }
+}
+
+tsin_armored_vehicle_industry_advance = {
+	age = age_8_world_wars
+	icon = kor_gunpowder_engines
+
+	requires = tsin_mass_production_arms_advance
+	requires = tsin_motor_transport_advance
+	allow = { has_embraced_institution = institution:tsin_industrial_capitalism }
+
+	unlock_building = tsin_armored_vehicle_works
+	ai_weight = { add = 20 }
+}

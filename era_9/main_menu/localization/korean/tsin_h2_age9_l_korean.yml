@@ -1,0 +1,9 @@
+﻿l_korean:
+ tsin_main_battle_tank_advance: "주력 전차"
+ tsin_main_battle_tank_advance_desc: "장갑과 엔진이 개선된 범용 전차가 초기 전차 대대를 대신합니다."
+ tsin_rocket_artillery_advance: "로켓 포병"
+ tsin_rocket_artillery_advance_desc: "트럭에 실은 로켓 포대가 강력한 일제 사격을 가합니다."
+ a_tsin_main_battle_tank: "주력 전차"
+ a_tsin_main_battle_tank_desc: "전차 대대보다 개량된 후기 전차입니다."
+ a_tsin_rocket_artillery_battery: "로켓 포병 포대"
+ a_tsin_rocket_artillery_battery_desc: "트럭에 실은 로켓 발사기입니다."

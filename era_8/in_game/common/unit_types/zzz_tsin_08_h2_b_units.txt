@@ -1,0 +1,74 @@
+﻿# Age VIII land units (H2). Stats after copy_from are increments (same convention as tsin_age7_units.txt; 사용자 확인 필요).
+
+a_tsin_armored_car_recon = {
+	copy_from = a_age_8_world_wars_light_cavalry
+	buildable = yes
+	hide = no
+	initiative = 6
+	combat_power = 0.5
+	movement_speed = 1.5
+
+	maintenance_demand = tsin_h2_armored_car_recon_maintenance
+	construction_demand = tsin_h2_armored_car_recon_construction
+}
+
+a_tsin_tank_battalion = {
+	copy_from = a_age_8_world_wars_heavy_cavalry
+	buildable = yes
+	hide = no
+	combat_power = 3
+	initiative = 2
+	movement_speed = 0.5
+
+	maintenance_demand = tsin_h2_tank_battalion_maintenance
+	construction_demand = tsin_h2_tank_battalion_construction
+}
+
+a_tsin_mountain_paratroopers = {
+	copy_from = a_age_8_world_wars_light_infantry
+	buildable = yes
+	hide = no
+	initiative = 4
+	flanking_ability = 0.3
+	combat_power = 0.5
+
+	maintenance_demand = tsin_h2_mountain_paratroopers_maintenance
+	construction_demand = tsin_h2_mountain_paratroopers_construction
+
+	gfx_tags = { rifle_tag light_tag }
+}
+
+a_tsin_mechanized_infantry = {
+	copy_from = a_age_8_world_wars_heavy_infantry
+	buildable = yes
+	hide = no
+	combat_power = 1
+	movement_speed = 1
+
+	maintenance_demand = tsin_h2_mechanized_infantry_maintenance
+	construction_demand = tsin_h2_mechanized_infantry_construction
+
+	gfx_tags = { rifle_tag medium_tag }
+}
+
+a_tsin_self_propelled_battery = {
+	copy_from = a_age_8_world_wars_artillery
+	buildable = yes
+	hide = no
+	combat_power = 1.5
+	artillery_barrage = 3
+	movement_speed = 1
+
+	maintenance_demand = tsin_h2_self_propelled_battery_maintenance
+	construction_demand = tsin_h2_self_propelled_battery_construction
+}
+
+a_tsin_motor_supply_column = {
+	copy_from = a_age_8_world_wars_auxiliary
+	buildable = yes
+	hide = no
+	movement_speed = 1.5
+
+	maintenance_demand = tsin_h2_motor_supply_column_maintenance
+	construction_demand = tsin_h2_motor_supply_column_construction
+}

@@ -1,0 +1,1 @@
+﻿tsin_air_order_price = { gold = 0 }

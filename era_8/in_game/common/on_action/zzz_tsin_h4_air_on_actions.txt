@@ -1,0 +1,9 @@
+﻿# H4: monthly air pulse. Gated by age VIII and tsin_aircraft_industry_advance; operations run only while at war.
+monthly_country_pulse = {
+	on_actions = { tsin_h4_air_monthly }
+}
+
+tsin_h4_air_monthly = {
+	trigger = { tsin_h_air_gate_trigger = yes }
+	effect = { tsin_h4_air_monthly_effect = yes }
+}

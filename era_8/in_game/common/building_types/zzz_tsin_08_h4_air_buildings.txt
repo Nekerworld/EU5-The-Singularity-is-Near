@@ -1,0 +1,55 @@
+﻿# H4 regional airbase and anti-air stubs. Same infrastructure pattern as tsin_capital_airfield.
+
+tsin_airbase = {
+	audio_tier = 6
+	is_foreign = no
+	forbidden_for_estates = yes
+	pop_type = laborers
+	max_levels = 3
+	employment_size = generic_peasant_building_employment
+	category = infrastructure_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+	country_potential = { has_advance = tsin_regional_airbase_advance }
+	build_time = infrastructure_build_time
+	graphical_tags = { factory_large }
+	unique_production_methods = {
+		tsin_airbase_maintenance = {
+			icon_type = goods
+			icon = tsin_engines
+			tsin_engines = 0.08 tsin_oil = 0.15 tsin_rubber = 0.05 tools = 0.08
+			category = building_maintenance
+		}
+	}
+	construction_demand = tsin_factory_construction
+}
+
+tsin_anti_air_battery = {
+	audio_tier = 6
+	is_foreign = no
+	forbidden_for_estates = yes
+	pop_type = laborers
+	max_levels = 3
+	employment_size = generic_peasant_building_employment
+	category = infrastructure_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	tsin_large_city = yes
+	tsin_megalopolis = yes
+	country_potential = { has_advance = tsin_anti_aircraft_advance }
+	build_time = infrastructure_build_time
+	graphical_tags = { factory_large }
+	unique_production_methods = {
+		tsin_anti_air_battery_maintenance = {
+			icon_type = goods
+			icon = cannons
+			cannons = 0.1 tsin_explosives = 0.05 steel = 0.05 tools = 0.05
+			category = building_maintenance
+		}
+	}
+	construction_demand = tsin_factory_construction
+}

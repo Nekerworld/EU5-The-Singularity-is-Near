@@ -1,0 +1,85 @@
+﻿# Age VIII land unit goods (H2). Existing goods only: firearms, cannons, steel, engines, oil, rubber.
+
+tsin_h2_armored_car_recon_construction = {
+	tsin_engines = 0.8
+	steel = 0.6
+	tsin_rubber = 0.2
+	firearms = 0.3
+	category = regiment_construction
+}
+
+tsin_h2_armored_car_recon_maintenance = {
+	tsin_oil = 0.1
+	tsin_rubber = 0.05
+	firearms = 0.2
+	category = regiment_maintenance
+}
+
+tsin_h2_tank_battalion_construction = {
+	steel = 2.0
+	tsin_engines = 1.0
+	cannons = 1.0
+	tools = 0.4
+	category = regiment_construction
+}
+
+tsin_h2_tank_battalion_maintenance = {
+	tsin_oil = 0.3
+	steel = 0.05
+	cannons = 0.2
+	category = regiment_maintenance
+}
+
+tsin_h2_mountain_paratroopers_construction = {
+	firearms = 1.5
+	tools = 0.2
+	leather = 0.2
+	category = regiment_construction
+}
+
+tsin_h2_mountain_paratroopers_maintenance = {
+	firearms = 0.5
+	tsin_explosives = 0.05
+	category = regiment_maintenance
+}
+
+tsin_h2_mechanized_infantry_construction = {
+	firearms = 1.2
+	tsin_engines = 0.5
+	steel = 0.5
+	tsin_rubber = 0.2
+	category = regiment_construction
+}
+
+tsin_h2_mechanized_infantry_maintenance = {
+	firearms = 0.4
+	tsin_oil = 0.15
+	category = regiment_maintenance
+}
+
+tsin_h2_self_propelled_battery_construction = {
+	cannons = 1.8
+	steel = 1.5
+	tsin_engines = 0.8
+	category = regiment_construction
+}
+
+tsin_h2_self_propelled_battery_maintenance = {
+	cannons = 0.6
+	tsin_explosives = 0.3
+	tsin_oil = 0.15
+	category = regiment_maintenance
+}
+
+tsin_h2_motor_supply_column_construction = {
+	tsin_engines = 0.6
+	steel = 0.3
+	tsin_rubber = 0.3
+	category = regiment_construction
+}
+
+tsin_h2_motor_supply_column_maintenance = {
+	tsin_oil = 0.2
+	tsin_rubber = 0.05
+	category = regiment_maintenance
+}

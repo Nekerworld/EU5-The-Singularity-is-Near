@@ -1,0 +1,92 @@
+﻿# H4 air mission assignment. Province targeting: the area selector type is not used elsewhere in this mod (Area targeting: 사용자 확인 필요).
+
+# Price is zero; missions run in the monthly air pulse and only while at war.
+
+tsin_air_target_superiority = {
+	type = owncountry
+	price = price:tsin_air_order_price
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+	potential = { scope:actor = { has_advance = tsin_air_operations_advance } }
+	allow = { scope:actor = { has_variable = tsin_h4_init tsin_h_air_gate_trigger = yes } }
+	select_trigger = {
+		looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+		column = { data = name }
+		visible = { any_location_in_province = { controller ?= scope:actor } }
+		enabled = { any_location_in_province = { always = yes } }
+	}
+	effect = {
+		scope:actor = { set_variable = { name = tsin_air_target_superiority value = scope:target_province } }
+	}
+}
+
+tsin_air_target_cas = {
+	type = owncountry
+	price = price:tsin_air_order_price
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+	potential = { scope:actor = { has_advance = tsin_air_operations_advance } }
+	allow = { scope:actor = { has_variable = tsin_h4_init tsin_h_air_gate_trigger = yes } }
+	select_trigger = {
+		looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+		column = { data = name }
+		visible = { any_location_in_province = { OR = { owner ?= { is_at_war_with = scope:actor } controller ?= { is_at_war_with = scope:actor } } } }
+		enabled = { any_location_in_province = { always = yes } }
+	}
+	effect = {
+		scope:actor = { set_variable = { name = tsin_air_target_cas value = scope:target_province } }
+	}
+}
+
+tsin_air_target_bombing = {
+	type = owncountry
+	price = price:tsin_air_order_price
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+	potential = { scope:actor = { has_advance = tsin_air_operations_advance } }
+	allow = { scope:actor = { has_variable = tsin_h4_init tsin_h_air_gate_trigger = yes } }
+	select_trigger = {
+		looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+		column = { data = name }
+		visible = { any_location_in_province = { OR = { owner ?= { is_at_war_with = scope:actor } controller ?= { is_at_war_with = scope:actor } } } }
+		enabled = { any_location_in_province = { always = yes } }
+	}
+	effect = {
+		scope:actor = { set_variable = { name = tsin_air_target_bombing value = scope:target_province } }
+	}
+}
+
+tsin_air_target_supply = {
+	type = owncountry
+	price = price:tsin_air_order_price
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+	potential = { scope:actor = { has_advance = tsin_air_operations_advance } }
+	allow = { scope:actor = { has_variable = tsin_h4_init tsin_h_air_gate_trigger = yes } }
+	select_trigger = {
+		looking_for_a = province source = actor target_flag = target_province name = "choose_province"
+		column = { data = name }
+		visible = { any_location_in_province = { controller ?= scope:actor } }
+		enabled = { any_location_in_province = { always = yes } }
+	}
+	effect = {
+		scope:actor = { set_variable = { name = tsin_air_target_supply value = scope:target_province } }
+	}
+}
+
+tsin_air_recall = {
+	type = owncountry
+	price = price:tsin_air_order_price
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+	potential = { scope:actor = { has_advance = tsin_air_operations_advance } }
+	allow = { scope:actor = { has_variable = tsin_h4_init } }
+	effect = {
+		scope:actor = { tsin_h4_clear_targets_effect = yes }
+	}
+}

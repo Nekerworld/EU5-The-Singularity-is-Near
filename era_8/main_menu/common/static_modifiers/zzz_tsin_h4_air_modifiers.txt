@@ -1,0 +1,13 @@
+﻿# H4 air superiority modifiers (unit category). 사용자 확인 필요.
+
+tsin_air_superiority_bonus = {
+	game_data = { category = unit }
+	army_movement_speed = 0.05
+	discipline = 0.03
+}
+
+tsin_air_inferiority_penalty = {
+	game_data = { category = unit }
+	army_movement_speed = -0.05
+	discipline = -0.03
+}

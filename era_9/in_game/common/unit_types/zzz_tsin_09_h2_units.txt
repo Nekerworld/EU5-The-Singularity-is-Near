@@ -1,0 +1,27 @@
+﻿# Age IX land units (H2): improvements of the age VIII units. Increments after copy_from.
+
+a_tsin_main_battle_tank = {
+	copy_from = a_tsin_tank_battalion
+	buildable = yes
+	hide = no
+	age = "age_9_atomic"
+	combat_power = 2
+	initiative = 1
+	movement_speed = 0.5
+
+	maintenance_demand = tsin_h2_main_battle_tank_maintenance
+	construction_demand = tsin_h2_main_battle_tank_construction
+}
+
+a_tsin_rocket_artillery_battery = {
+	copy_from = a_tsin_self_propelled_battery
+	buildable = yes
+	hide = no
+	age = "age_9_atomic"
+	artillery_barrage = 4
+	bombard_efficiency = 0.05
+	combat_power = 1
+
+	maintenance_demand = tsin_h2_rocket_artillery_battery_maintenance
+	construction_demand = tsin_h2_rocket_artillery_battery_construction
+}
