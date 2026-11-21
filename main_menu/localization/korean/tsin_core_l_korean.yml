@@ -3,7 +3,7 @@
  age_7_industrialization: "산업"
  age_7_industrialization_desc: "석탄과 철, 증기가 사람과 물레방아의 힘이 지녔던 오래된 한계를 깨뜨렸습니다. 공장은 농촌의 가난한 이들을 굉음이 울리는 도시로 끌어모으고, 철도는 멀리 떨어진 시장들을 하나로 묶으며, 국가의 부는 이제 강철의 톤수로 측정됩니다. 새로운 기계를 다스리는 자는 이 세기를 지배할 것이며, 그러지 못한 자는 그 기계를 섬기게 될 것입니다."
  age_format_age_7_industrialization: "$age_7_industrialization$ 시대"
- current_age_at_least_7_tt: "현재 [age|e]가 [ShowAgeName('age_7_industrialization')] 또는 그 이후임"
+ current_age_at_least_7_tt: "현재 [age|e]가 $age_format_age_7_industrialization$ 또는 그 이후임"
 
  # 제도
  tsin_industrial_capitalism: "산업자본주의"
@@ -101,9 +101,9 @@
  p_building_age_7_industrialization: "[ShowAgeNameWithNoTooltip('age_7_industrialization')] 건물"
  p_expensive_building_age_7_industrialization: "값비싼 [ShowAgeNameWithNoTooltip('age_7_industrialization')] 건물"
  MODIFIER_TYPE_NAME_p_building_age_7_industrialization_cost_modifier: "$p_building_age_7_industrialization$"
- MODIFIER_TYPE_DESC_p_building_age_7_industrialization_cost_modifier: "[ShowAgeName('age_7_industrialization')] 시대에 활성화된 [buildings|e]을 건설하는 데 드는 [costs|e]에 영향을 줍니다."
+ MODIFIER_TYPE_DESC_p_building_age_7_industrialization_cost_modifier: "$age_format_age_7_industrialization$에 활성화된 [buildings|e]을 건설하는 데 드는 [costs|e]에 영향을 줍니다."
  MODIFIER_TYPE_NAME_p_expensive_building_age_7_industrialization_cost_modifier: "$p_expensive_building_age_7_industrialization$"
- MODIFIER_TYPE_DESC_p_expensive_building_age_7_industrialization_cost_modifier: "[ShowAgeName('age_7_industrialization')] 시대에 활성화된 [buildings|e]을 건설하는 데 드는 [costs|e]에 영향을 줍니다."
+ MODIFIER_TYPE_DESC_p_expensive_building_age_7_industrialization_cost_modifier: "$age_format_age_7_industrialization$에 활성화된 [buildings|e]을 건설하는 데 드는 [costs|e]에 영향을 줍니다."
 
  # 유닛 템플릿
  a_age_7_industrialization_light_infantry: "산업 시대 경보병대"
@@ -160,7 +160,7 @@
 
  # 지도 모드
  mapmode_tsin_industrial_institutions_name: "산업 시대 제도"
- MAPMODE_TSIN_INDUSTRIAL_INSTITUTIONS: "#T $mapmode_tsin_industrial_institutions_name$#!\n각 [location|e]에 자리 잡은 [ShowAgeName('age_7_industrialization')]의 가장 발전한 [institution|e]에 따라 [locations|e]을 색상으로 표시합니다."
+ MAPMODE_TSIN_INDUSTRIAL_INSTITUTIONS: "#T $mapmode_tsin_industrial_institutions_name$#!\n각 [location|e]에 자리 잡은 $age_format_age_7_industrialization$의 가장 발전한 [institution|e]에 따라 [locations|e]을 색상으로 표시합니다."
  LEGEND_KEY_TSIN_ELECTRIFICATION: "$tsin_electrification$"
  LEGEND_KEY_TSIN_MASS_SOCIETY: "$tsin_mass_society$"
  LEGEND_KEY_TSIN_INDUSTRIAL_CAPITALISM: "$tsin_industrial_capitalism$"
@@ -168,7 +168,7 @@
 
  # 시스템 이벤트
  tsin_system.2.title: "산업 시대"
- tsin_system.2.desc: "세계가 [ShowAgeName('age_7_industrialization')]에 들어섰습니다. 앞으로 수십 년에 걸쳐 $tsin_industrial_capitalism$, $tsin_mass_society$, $tsin_electrification$라는 세 가지 새로운 [institutions|e]가 나타날 것입니다([tsin_industrial_institutions_concept|e] 참고). 각 제도를 수용하면 새로운 [advances|e]가 열립니다.\n\n이 시대에는 정해진 끝이 없으며, 게임은 2337년까지 계속됩니다. 이 시대가 더하는 모든 것은 백과사전의 [tsin_singularity_concept|e] 항목에서 설명합니다."
+ tsin_system.2.desc: "세계가 $age_format_age_7_industrialization$에 들어섰습니다. 앞으로 수십 년에 걸쳐 $tsin_industrial_capitalism$, $tsin_mass_society$, $tsin_electrification$라는 세 가지 새로운 [institutions|e]가 나타날 것입니다([tsin_industrial_institutions_concept|e] 참고). 각 제도를 수용하면 새로운 [advances|e]가 열립니다.\n\n이 시대에는 정해진 끝이 없으며, 게임은 2337년까지 계속됩니다. 이 시대가 더하는 모든 것은 백과사전의 [tsin_singularity_concept|e] 항목에서 설명합니다."
  tsin_system.2.a: "전속력으로 전진하라."
  tsin_system.10.title: "$tsin_industrial_capitalism$의 등장"
  tsin_system.10.desc: "한 사람의 장인이 아닌 주주들의 자금으로 세운 공장, 그리고 더 큰 공장에 다시 투입되는 이윤에 관한 소식이 들려옵니다. 새로운 [institution|e]인 $tsin_industrial_capitalism$가 세계에 나타났습니다."

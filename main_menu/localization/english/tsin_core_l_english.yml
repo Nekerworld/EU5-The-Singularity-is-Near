@@ -3,7 +3,7 @@
  age_7_industrialization: "Industry"
  age_7_industrialization_desc: "Coal, iron and steam have broken the old limits of muscle and water. Factories gather the rural poor into roaring cities, railways bind distant markets together, and the wealth of nations is now measured in tons of steel. Those who master the new machines will command the century; those who do not will be made to serve them."
  age_format_age_7_industrialization: "Age of $age_7_industrialization$"
- current_age_at_least_7_tt: "Current [age|e] is at least [ShowAgeName('age_7_industrialization')] or later"
+ current_age_at_least_7_tt: "Current [age|e] is at least $age_format_age_7_industrialization$ or later"
 
  # Institutions
  tsin_industrial_capitalism: "Industrial Capitalism"
@@ -101,9 +101,9 @@
  p_building_age_7_industrialization: "[ShowAgeNameWithNoTooltip('age_7_industrialization')] Buildings"
  p_expensive_building_age_7_industrialization: "Expensive [ShowAgeNameWithNoTooltip('age_7_industrialization')] Buildings"
  MODIFIER_TYPE_NAME_p_building_age_7_industrialization_cost_modifier: "$p_building_age_7_industrialization$"
- MODIFIER_TYPE_DESC_p_building_age_7_industrialization_cost_modifier: "This impacts how much it [costs|e] to build [buildings|e] enabled in [ShowAgeName('age_7_industrialization')]."
+ MODIFIER_TYPE_DESC_p_building_age_7_industrialization_cost_modifier: "This impacts how much it [costs|e] to build [buildings|e] enabled in $age_format_age_7_industrialization$."
  MODIFIER_TYPE_NAME_p_expensive_building_age_7_industrialization_cost_modifier: "$p_expensive_building_age_7_industrialization$"
- MODIFIER_TYPE_DESC_p_expensive_building_age_7_industrialization_cost_modifier: "This impacts how much it [costs|e] to build [buildings|e] enabled in [ShowAgeName('age_7_industrialization')]."
+ MODIFIER_TYPE_DESC_p_expensive_building_age_7_industrialization_cost_modifier: "This impacts how much it [costs|e] to build [buildings|e] enabled in $age_format_age_7_industrialization$."
 
  # Unit templates
  a_age_7_industrialization_light_infantry: "Age of Industry Light Infantry"
@@ -160,7 +160,7 @@
 
  # Map modes
  mapmode_tsin_industrial_institutions_name: "Industrial Institutions"
- MAPMODE_TSIN_INDUSTRIAL_INSTITUTIONS: "#T $mapmode_tsin_industrial_institutions_name$#!\n$mapmode_common_start$ the most advanced [ShowAgeName('age_7_industrialization')] [institution|e] present in each [location|e]."
+ MAPMODE_TSIN_INDUSTRIAL_INSTITUTIONS: "#T $mapmode_tsin_industrial_institutions_name$#!\n$mapmode_common_start$ the most advanced $age_format_age_7_industrialization$ [institution|e] present in each [location|e]."
  LEGEND_KEY_TSIN_ELECTRIFICATION: "$tsin_electrification$"
  LEGEND_KEY_TSIN_MASS_SOCIETY: "$tsin_mass_society$"
  LEGEND_KEY_TSIN_INDUSTRIAL_CAPITALISM: "$tsin_industrial_capitalism$"
@@ -168,7 +168,7 @@
 
  # System events
  tsin_system.2.title: "The Age of Industry"
- tsin_system.2.desc: "The world has entered the [ShowAgeName('age_7_industrialization')]. Three new [tsin_industrial_institutions_concept|e] will emerge over the coming decades: $tsin_industrial_capitalism$, $tsin_mass_society$ and $tsin_electrification$. Each opens new [advances|e] once embraced.\n\nThis age has no fixed end: the game continues until the year 2337. The encyclopedia entry [tsin_singularity_concept|e] explains everything the age adds."
+ tsin_system.2.desc: "The world has entered the $age_format_age_7_industrialization$. Three new [tsin_industrial_institutions_concept|e] will emerge over the coming decades: $tsin_industrial_capitalism$, $tsin_mass_society$ and $tsin_electrification$. Each opens new [advances|e] once embraced.\n\nThis age has no fixed end: the game continues until the year 2337. The encyclopedia entry [tsin_singularity_concept|e] explains everything the age adds."
  tsin_system.2.a: "Full steam ahead."
  tsin_system.10.title: "$tsin_industrial_capitalism$ Emerges"
  tsin_system.10.desc: "Word reaches us of factories financed by shareholders rather than single masters, and of profits ploughed back into ever larger mills. A new [institution|e], $tsin_industrial_capitalism$, has appeared in the world."
