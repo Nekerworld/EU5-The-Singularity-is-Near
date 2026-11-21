@@ -32,31 +32,31 @@ tsin_bill_schedule_sidebar_metadata_effect = {
   for suffix,k,e,color in [('SUPPORT','지지','supports','G'),('OPPOSE','반대','opposes','R'),('NEUTRAL','중립','neutral','V')]:label('TSIN_BILL_SIDE_'+estate.upper()+'_'+suffix,f'#{color} {ko} — {k}#! · {power}',f'#{color} {en} — {e}#! · {power}')
  ui=['''window = {
  name = "tsin_bill_sidebar" layer = topbar parentanchor = right|top widgetanchor = right|top
- position = { -420 220 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
- size = "[ToVector2f('(float)330', Select_float(GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded'), '(float)380', '(float)68'))]"
+ position = { -440 220 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+ size = "[ToVector2f('(float)360', Select_float(GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded'), '(float)420', '(float)84'))]"
  visible = "[And(GetPlayer.IsValid, And(GetPlayer.MakeScope.GetVariable('tsin_bill_policy').IsSet, Or(Not(GetVariableSystem.Exists('tsin_ui_bill_sidebar_closed')), GetVariableSystem.Exists('tsin_ui_bill_sidebar_open'))))]"
- widget = { size = { 100% 100% } using = bg_window_default_alt }
- widget = { parentanchor = right position = { -4 4 } size = { 28 28 } button_close_alt = { blockoverride "close_on_action" {
+ widget = { size = { 100% 100% } using = bg_window_default_alt
+ widget = { parentanchor = right position = { -5 5 } size = { 36 36 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" {
  on_action = "[GetVariableSystem.Set('tsin_ui_bill_sidebar_closed', 'yes')]"
  on_action = "[GetVariableSystem.Clear('tsin_ui_bill_sidebar_open')]"
  } } }
- vbox = { position = { 12 8 } spacing = 4
- button_regular = { size = { 280 24 } action_tooltip = { title = "TSIN_BILL_SIDE_TITLE" on_action = "[GetVariableSystem.Toggle('tsin_ui_bill_sidebar_expanded')]" }
- text_single = { size = { 270 23 } parentanchor = center fontsize = 14 text = "TSIN_BILL_SIDE_TITLE" }
+ vbox = { using = window_margin_alt spacing = 6
+ button_regular = { size = { 300 40 } action_tooltip = { title = "TSIN_BILL_SIDE_TITLE" on_action = "[GetVariableSystem.Toggle('tsin_ui_bill_sidebar_expanded')]" }
+ text_single = { size = { 292 36 } parentanchor = center autoresize = no maximumsize = { 292 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_BILL_SIDE_TITLE" }
  }
- text_single = { size = { 305 24 } autoresize = no fontsize = 14 fontsize_min = 10 text = "[GetPlayer.MakeScope.GetVariable('tsin_bill_policy').GetPolicy.GetNameWithNoTooltip]" }
- vbox = { visible = "[GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded')]" spacing = 5
- text_single = { fontsize = 14 text = "TSIN_BILL_SIDE_CHANCE" tooltip = "TSIN_BILL_SIDE_CHANCE_HELP" }
- text_single = { text = "TSIN_BILL_SIDE_COUNTS" }
- text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet]" text = "TSIN_BILL_SIDE_DUE" tooltip = "TSIN_BILL_SIDE_DUE_HELP" }
- text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet)]" text = "TSIN_BILL_SIDE_UNKNOWN_DUE" }
+ text_single = { size = { 320 28 } autoresize = no fontsize = 15 fontsize_min = 11 text = "[GetPlayer.MakeScope.GetVariable('tsin_bill_policy').GetPolicy.GetNameWithNoTooltip]" }
+ vbox = { visible = "[GetVariableSystem.Exists('tsin_ui_bill_sidebar_expanded')]" using = bg_main_inner_alt margin = { 8 6 } spacing = 6
+ text_single = { fontsize = 15 text = "TSIN_BILL_SIDE_CHANCE" tooltip = "TSIN_BILL_SIDE_CHANCE_HELP" }
+ text_single = { fontsize = 14 text = "TSIN_BILL_SIDE_COUNTS" }
+ text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet]" fontsize = 14 text = "TSIN_BILL_SIDE_DUE" tooltip = "TSIN_BILL_SIDE_DUE_HELP" }
+ text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_bill_wait_year').IsSet)]" fontsize = 14 text = "TSIN_BILL_SIDE_UNKNOWN_DUE" }
 ''']
- for estate,ko,en in ESTATES:ui.append(f'text_single = {{ fontsize = 13 text = "[GetPlayer.Custom(\'tsin_bill_sidebar_{estate}\')]" }}')
- ui+=['''text_multi = { maximumsize = { 300 -1 } fontsize = 11 text = "TSIN_BILL_SIDE_HELP" }
-button_regular = { size = { 150 28 } action_tooltip = { title = "TSIN_BILL_SIDE_LAWS" on_action = "[OpenLateralView('laws')]" }
- text_single = { size = { 145 27 } parentanchor = center fontsize = 13 text = "TSIN_BILL_SIDE_LAWS" }
+ for estate,ko,en in ESTATES:ui.append(f'text_single = {{ fontsize = 14 text = "[GetPlayer.Custom(\'tsin_bill_sidebar_{estate}\')]" }}')
+ ui+=['''text_multi = { maximumsize = { 320 -1 } fontsize = 12 text = "TSIN_BILL_SIDE_HELP" }
+button_regular = { size = { 168 40 } action_tooltip = { title = "TSIN_BILL_SIDE_LAWS" on_action = "[OpenLateralView('laws')]" }
+ text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_BILL_SIDE_LAWS" }
 }
-} } }
+} } } }
 ''']
  label('TSIN_BILL_SIDE_TITLE',"입법 현황 · 성공 [GetPlayer.MakeScope.GetVariable('tsin_bill_successes').GetValue|0]/3", "Legislation · readings [GetPlayer.MakeScope.GetVariable('tsin_bill_successes').GetValue|0]/3")
  label('TSIN_BILL_SIDE_CHANCE',"다음 심의 성공 [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_bill_success_chance')|%0]", "Next reading success [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_bill_success_chance')|%0]")

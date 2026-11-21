@@ -217,15 +217,15 @@ text_single = { visible = "[GetScriptedGui('tsin_capital_is_private').IsValid(Gu
 text_single = { visible = "[Not(GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" text = "/ [GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_company_limit')|0]" tooltip = "TSIN_CAP_LIMIT" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 220 28 }
+button_regular = { size = { 220 40 }
 
 action_tooltip = { title = "TSIN_CAP_WORLD_COMPANIES" on_action = "[GetVariableSystem.Set('tsin_ui_world_companies_open', 'yes')]" }
-text_single = { size = { 212 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_WORLD_COMPANIES" }
+text_single = { size = { 212 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 212 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_WORLD_COMPANIES" }
 }
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 
 action_tooltip = { title = "TSIN_CAP_LAW" on_action = "[OpenLateralView('laws')]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_LAW" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_LAW" }
 }
 text_single = { alwaystransparent = no text = "TSIN_CAP_RISK" tooltip = "TSIN_CAP_RISK_HELP" }
 }
@@ -249,17 +249,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_merchant_house').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_merchant_house').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_merchant_house'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_merchant_house').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_merchant_house').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_merchant_house').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_merchant_house').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -277,17 +277,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_artisan_house').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_artisan_house').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_artisan_house'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_artisan_house').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_artisan_house').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_artisan_house').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_artisan_house').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -305,17 +305,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_mining_syndicate').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_mining_syndicate').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_mining_syndicate'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_mining_syndicate').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_mining_syndicate').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mining_syndicate').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mining_syndicate').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -333,17 +333,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_agricultural_house').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_agricultural_house').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_agricultural_house'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_agricultural_house').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_agricultural_house').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_agricultural_house').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_agricultural_house').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -361,17 +361,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_shipping_house').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_shipping_house').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_shipping_house'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_shipping_house').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_shipping_house').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_shipping_house').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_shipping_house').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -389,17 +389,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_merchant_bank').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_merchant_bank').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_merchant_bank'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_merchant_bank').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_merchant_bank').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_merchant_bank').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_merchant_bank').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -418,17 +418,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_san_giorgio').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_san_giorgio').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_san_giorgio'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_san_giorgio').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_san_giorgio').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_san_giorgio').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_san_giorgio').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -446,17 +446,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_eic').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_eic').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_eic'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_eic').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_eic').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_eic').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_eic').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -474,17 +474,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_voc').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_voc').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_voc'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_voc').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_voc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_voc').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_voc').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -502,17 +502,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_french_indies').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_french_indies').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_french_indies'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_french_indies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_french_indies').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_french_indies').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_french_indies').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -530,17 +530,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_mitsui').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_mitsui').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_mitsui'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_mitsui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_mitsui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mitsui').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mitsui').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -558,17 +558,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_songbang').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_songbang').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_songbang'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_songbang').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_songbang').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_songbang').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_songbang').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -586,17 +586,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_south_sea').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_south_sea').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_south_sea'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_south_sea').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_south_sea').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_south_sea').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_south_sea').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -614,17 +614,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_mississippi').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_mississippi').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_mississippi'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_mississippi').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_mississippi').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_2')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mississippi').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_mississippi').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -643,17 +643,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_steel').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_steel').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_steel'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_steel').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_steel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_steel').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_steel').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -671,17 +671,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_machinery').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_machinery').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_machinery'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_machinery').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_machinery').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_machinery').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_machinery').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -699,17 +699,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_textile').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_textile').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_textile'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_textile').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_textile').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_textile').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_textile').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -727,17 +727,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_chemical').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_chemical').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_chemical'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_chemical').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_chemical').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_chemical').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_chemical').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -755,17 +755,17 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_railway').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_railway').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_railway'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_railway').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_railway').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_railway').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_railway').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
@@ -783,22 +783,22 @@ icon = { size = { 20 20 } texture = "gfx/interface/icons/map_modes/tsin_gdp_per_
 text_single = { text = "[Multiply_CFixedPoint(Multiply_CFixedPoint(GetPlayer.MakeScope.GetVariable('tsin_stock_farm_machinery').GetValue, GetPlayer.MakeScope.GetVariable('tsin_stock_ui_levels_farm_machinery').GetValue), GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_firm_number_farm_machinery'))|1L]" tooltip = "TSIN_CAP_VALUE" }
 }
 hbox = { spacing = 6
-button_regular = { size = { 140 28 }
+button_regular = { size = { 168 40 }
 enabled = "[GetScriptedGui('tsin_capital_form_farm_machinery').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = { title = "TSIN_CAP_FOUND" on_action = "[GetScriptedGui('tsin_capital_form_farm_machinery').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_FOUND" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_FOUND" }
 }
 text_single = { text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_gold_cost_4')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }
-widget = { size = { 145 28 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_farm_machinery').GetLocation]"
-button_regular = { size = { 140 28 }
+widget = { size = { 168 40 } datacontext = "[GetPlayer.MakeScope.GetVariable('tsin_hq_farm_machinery').GetLocation]"
+button_regular = { size = { 168 40 }
 enabled = "[Location.IsValid]"
 action_tooltip = { title = "TSIN_CAP_HQ" on_action = "[ShowLocation(Location.Self)]" }
-text_single = { size = { 132 26 } parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "TSIN_CAP_HQ" }
+text_single = { size = { 160 36 } parentanchor = center align = center|nobaseline autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 elide = right text = "TSIN_CAP_HQ" }
 }
 }
 }
 }
-text_single = { maximumsize = { 510 -1 } multiline = yes fontsize = 11 text = "TSIN_CAP_HELP" }
+text_single = { maximumsize = { 510 -1 } multiline = yes fontsize = 12 text = "TSIN_CAP_HELP" }
 }
 }
 }

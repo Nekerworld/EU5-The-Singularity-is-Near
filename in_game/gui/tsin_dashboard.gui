@@ -4,1014 +4,1003 @@ name = "tsin_dashboard_window"
 layer = topbar
 parentanchor = center
 widgetanchor = center
-size = { 900 660 }
+size = { 1000 720 }
 movable = yes
 allow_outside = yes
 datacontext = "[GetPlayer]"
 visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ui_dashboard_open'))]"
-widget = { size = { 100% 100% } using = bg_window_default_alt }
-widget = { parentanchor = right position = { -8 8 } size = { 40 40 } button_close_alt = { blockoverride "close_on_action" {
+widget = { size = { 100% 100% } using = bg_window_default_alt
+widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" {
 on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
 } } }
-vbox = { position = { 24 20 } spacing = 10
-text_single = { fontsize = 22 text = "TSIN_UI_TITLE" }
-hbox = { spacing = 8
-text_single = { text = "TSIN_UI_DATE" }
-text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet]" text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').GetValue|0]" }
-text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet )]" text = "TSIN_UI_NO_DATE" }
+vbox = { using = window_margin_alt
+window_header_alt = { blockoverride "header_text" { text = "TSIN_UI_TITLE" } }
+header_main_tabs = { blockoverride "content" {
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_OVERVIEW"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'overview')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'overview')]"
 }
-hbox = { spacing = 4
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_OVERVIEW"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'overview')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_OVERVIEW" }
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_ECONOMY"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'economy')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'economy')]"
 }
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_ECONOMY"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'economy')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_ECONOMY" }
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_SOCIETY"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'society')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]"
 }
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_SOCIETY"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'society')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_SOCIETY" }
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_FINANCE"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'finance')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'finance')]"
 }
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_FINANCE"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'finance')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_FINANCE" }
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_CRISES"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'crises')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'crises')]"
 }
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_CRISES"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'crises')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_CRISES" }
+button_main_tab_alt = {
+using = layoutpolicy_expanding
+text = "TSIN_UI_TAB_RESEARCH"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
+onclick = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'research')]"
+down = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'research')]"
 }
-button_regular = {
-    size = { 136 30 }
-    action_tooltip = {
-        title = "TSIN_UI_TAB_RESEARCH"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_open', 'yes')]"
-        on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'research')]"
-    }
-    text_single = { size = { 128 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_TAB_RESEARCH" }
+} }
+hbox = { layoutpolicy_horizontal = expanding margin = { 8 4 } spacing = 10
+text_single = { using = Font_Size_Medium text = "TSIN_UI_DATE" }
+text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet]" using = Font_Size_Medium text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').GetValue|0]" }
+text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet )]" using = Font_Size_Medium text = "TSIN_UI_NO_DATE" }
 }
-}
-text_single = { maximumsize = { 840 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_GUIDE" }
-scrollarea = { size = { 850 450 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 8
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'overview')]" spacing = 10
-hbox = { spacing = 12
+text_single = { maximumsize = { 940 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_GUIDE" }
+vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
+scrollarea = { size = { 960 500 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 10 8 }
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'overview')]" spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_gdp = {}
 tsin_ui_card_gdp_per_capita = {}
 tsin_ui_card_growth = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_population = {}
 tsin_ui_card_secondary = {}
 tsin_ui_card_higher = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_industry = {}
 tsin_ui_card_stock = {}
 tsin_ui_card_report_year = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_report_month = {}
 tsin_ui_card_report_population = {}
 tsin_ui_card_report_locations = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_report_urban = {}
 tsin_ui_card_report_buildings = {}
 tsin_ui_card_report_companies = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_report_gdp = {}
 tsin_ui_card_report_world_year = {}
 tsin_ui_card_report_world_month = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_report_world_countries = {}
 tsin_ui_card_report_world_population = {}
 tsin_ui_card_report_world_companies = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_report_world_known_gdp = {}
 tsin_ui_card_report_world_gdp = {}
 }
 tsin_ui_history_gdp = {}
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_SURVEY_DOMESTIC"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_SURVEY_DOMESTIC" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_SURVEY_DOMESTIC" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_survey_world')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_survey_world')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_SURVEY_WORLD"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_SURVEY_WORLD" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_SURVEY_WORLD" }
 }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_COUNTRY_COMPARE"
         on_action = "[GetVariableSystem.Set('tsin_ui_country_compare_open', 'yes')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_COUNTRY_COMPARE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_COUNTRY_COMPARE" }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'economy')]" spacing = 10
-text_single = { maximumsize = { 820 -1 } multiline = yes text = "TSIN_UI_ECONOMY_HELP" }
-hbox = { spacing = 12
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'economy')]" spacing = 12
+text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_ECONOMY_HELP" }
+hbox = { spacing = 14
 tsin_ui_card_gdp = {}
 tsin_ui_card_gdp_per_capita = {}
 tsin_ui_card_growth = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_industry = {}
 tsin_ui_card_factory_jobs = {}
 tsin_ui_card_tax_base = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_storage_report_amount = {}
 tsin_ui_card_storage_report_capacity = {}
 tsin_ui_card_storage_report_kind = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_storage_report_state = {}
 tsin_ui_card_storage_report_year = {}
 tsin_ui_card_storage_report_month = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_report_industry_age = {}
 tsin_ui_card_facility_report_industry_wear = {}
 tsin_ui_card_facility_report_industry_gap = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_report_industry_size = {}
 tsin_ui_card_facility_report_industry_year = {}
 tsin_ui_card_facility_report_transport_age = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_report_transport_wear = {}
 tsin_ui_card_facility_report_transport_gap = {}
 tsin_ui_card_facility_report_transport_size = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_report_transport_year = {}
 tsin_ui_card_facility_report_public_age = {}
 tsin_ui_card_facility_report_public_wear = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_report_public_gap = {}
 tsin_ui_card_facility_report_public_size = {}
 tsin_ui_card_facility_report_public_year = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_facility_budget = {}
 tsin_ui_card_facility_paid = {}
 tsin_ui_card_facility_paid_year = {}
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_ECONOMY_VIEW"
         on_action = "[OpenLateralView('economy')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_ECONOMY_VIEW" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_ECONOMY_VIEW" }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_industrialization')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_industrialization')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_INDUSTRIALIZATION"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_INDUSTRIALIZATION" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_INDUSTRIALIZATION" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_electrification')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_electrification')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_ELECTRIFICATION"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_ELECTRIFICATION" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_ELECTRIFICATION" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_agriculture')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_agriculture')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_AGRICULTURE"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_AGRICULTURE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_AGRICULTURE" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_1')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_urban_project_1')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_URBAN_PROJECT_1"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_1" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_URBAN_PROJECT_1" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_2')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_urban_project_2')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_URBAN_PROJECT_2"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_2" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_URBAN_PROJECT_2" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_urban_project_3')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_urban_project_3')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_URBAN_PROJECT_3"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_URBAN_PROJECT_3" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_URBAN_PROJECT_3" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_oil')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_oil')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_OIL"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_OIL" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_OIL" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_coal')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_coal')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_COAL"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_COAL" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_COAL" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_steel')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_steel')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_STEEL"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_STEEL" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_STEEL" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_pause')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_pause')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_PAUSE"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_PAUSE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_PAUSE" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_resume')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_resume')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_RESUME"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_RESUME" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_RESUME" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_release')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_release')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_RELEASE"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_RELEASE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_RELEASE" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_storage_inspect')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_storage_inspect')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STORAGE_INSPECT"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STORAGE_INSPECT" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STORAGE_INSPECT" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_power_access')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_power_access')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_DISTRIBUTION_MAP"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_DISTRIBUTION_MAP" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_DISTRIBUTION_MAP" }
 }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TRANSPORT_BUILDINGS"
         on_action = "[OpenLateralView('buildings')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TRANSPORT_BUILDINGS" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TRANSPORT_BUILDINGS" }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_budget_on')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_budget_on')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_BUDGET_ON"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_BUDGET_ON" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_BUDGET_ON" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_budget_off')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_budget_off')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_BUDGET_OFF"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_BUDGET_OFF" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_BUDGET_OFF" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_inspect')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_inspect')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_INSPECT"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_INSPECT" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_INSPECT" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_industry')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_repair_industry')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_REPAIR_INDUSTRY"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_INDUSTRY" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_REPAIR_INDUSTRY" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_industry')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_modernize_industry')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_MODERNIZE_INDUSTRY"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_INDUSTRY" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_MODERNIZE_INDUSTRY" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_transport')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_repair_transport')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_REPAIR_TRANSPORT"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_TRANSPORT" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_REPAIR_TRANSPORT" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_transport')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_modernize_transport')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_MODERNIZE_TRANSPORT" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_repair_public')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_repair_public')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_REPAIR_PUBLIC" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_facility_modernize_public')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_facility_modernize_public')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_FACILITY_MODERNIZE_PUBLIC" }
 }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 10
-text_single = { maximumsize = { 820 -1 } multiline = yes text = "TSIN_UI_SOCIETY_HELP" }
-hbox = { spacing = 12
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 12
+text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_SOCIETY_HELP" }
+hbox = { spacing = 14
 tsin_ui_card_population = {}
 tsin_ui_card_secondary = {}
 tsin_ui_card_higher = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_secondary_target = {}
 tsin_ui_card_higher_target = {}
 tsin_ui_card_schools = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_universities = {}
 tsin_ui_card_labor = {}
 tsin_ui_card_labor_conditions = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_liberalism = {}
 tsin_ui_card_nationalism = {}
 tsin_ui_card_labor_unionism = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_socialism = {}
 tsin_ui_card_abolitionism = {}
 tsin_ui_card_womens_suffrage = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_pollution_sample_population = {}
 tsin_ui_card_pollution_exposure = {}
 tsin_ui_card_pollution_high_share = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_pollution_year = {}
 tsin_ui_card_pollution_water_exposure = {}
 tsin_ui_card_pollution_water_high_share = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_communications_telegraph = {}
 tsin_ui_card_communications_telephone = {}
 tsin_ui_card_social_capital = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_social_workers = {}
 tsin_ui_card_social_intellectual = {}
 tsin_ui_card_social_clerical = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_social_technical = {}
 tsin_ui_card_social_survey_year = {}
 tsin_ui_card_social_education_year = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_metro_sites = {}
 tsin_ui_card_metro_broken = {}
 tsin_ui_card_metro_hubs = {}
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_education')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_EDUCATION"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_EDUCATION" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_EDUCATION" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_labor_conditions')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_labor_conditions')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_LABOR_CONDITIONS"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_LABOR_CONDITIONS" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_LABOR_CONDITIONS" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_create')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_metro_create')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_METRO_CREATE"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_METRO_CREATE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_METRO_CREATE" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_expand')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_metro_expand')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_METRO_EXPAND"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_METRO_EXPAND" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_METRO_EXPAND" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_leave')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_metro_leave')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_METRO_LEAVE"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_METRO_LEAVE" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_METRO_LEAVE" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_review')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_metro_review')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_METRO_REVIEW"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_METRO_REVIEW" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_METRO_REVIEW" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_water_pollution')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_water_pollution')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_WATER_POLLUTION_MAP"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_WATER_POLLUTION_MAP" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_WATER_POLLUTION_MAP" }
 }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_ENVIRONMENT_LAWS"
         on_action = "[OpenLateralView('laws')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_ENVIRONMENT_LAWS" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_ENVIRONMENT_LAWS" }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_pollution')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_pollution')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_POLLUTION_MAP"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_POLLUTION_MAP" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_POLLUTION_MAP" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_pollution_filter')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_pollution_filter')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_POLLUTION_FILTER"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_POLLUTION_FILTER" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_POLLUTION_FILTER" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_read_newspaper')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_read_newspaper')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_READ_NEWSPAPER"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_READ_NEWSPAPER" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_READ_NEWSPAPER" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_SOCIAL_BASES_SURVEY" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_metro_review')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_metro_review')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_METRO_REVIEW"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_METRO_REVIEW" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_METRO_REVIEW" }
 }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'finance')]" spacing = 10
-text_single = { maximumsize = { 820 -1 } multiline = yes text = "TSIN_UI_FINANCE_HELP" }
-hbox = { spacing = 12
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'finance')]" spacing = 12
+text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_FINANCE_HELP" }
+hbox = { spacing = 14
 tsin_ui_card_stock = {}
 tsin_ui_card_companies = {}
 tsin_ui_card_company_limit = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_company_value = {}
 tsin_ui_card_stock_steel = {}
 tsin_ui_card_stock_machinery = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_stock_textile = {}
 tsin_ui_card_stock_chemical = {}
 tsin_ui_card_stock_railway = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_stock_farm_machinery = {}
 tsin_ui_card_world_company_cash = {}
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_corporations')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_corporations')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_CORPORATIONS"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_CORPORATIONS" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_CORPORATIONS" }
 }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_WORLD_COMPANIES"
         on_action = "[GetVariableSystem.Set('tsin_ui_world_companies_open', 'yes')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_WORLD_COMPANIES" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_WORLD_COMPANIES" }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'crises')]" spacing = 10
-hbox = { spacing = 12
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'crises')]" spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_cholera_progress = {}
 tsin_ui_card_cholera_outbreaks = {}
 tsin_ui_card_bill_successes = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_bill_stalls = {}
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_DISASTER_CHOLERA" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_DISASTER_CHOLERA" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_CHOLERA" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_CHOLERA" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_DISASTER_GREAT_HUNGER" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_DISASTER_GREAT_HUNGER" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_GREAT_HUNGER" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_GREAT_HUNGER" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_DISASTER_MILLENARIAN_REBELLION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_DISASTER_MILLENARIAN_REBELLION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_MILLENARIAN_REBELLION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_MILLENARIAN_REBELLION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_DISASTER_SECESSION_CRISIS" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_DISASTER_SECESSION_CRISIS" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_SECESSION_CRISIS" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_SECESSION_CRISIS" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_DEFENSIVE_MODERNIZATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_DEFENSIVE_MODERNIZATION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_DEFENSIVE_MODERNIZATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_DEFENSIVE_MODERNIZATION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_GRAIN_INVASION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_GRAIN_INVASION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GRAIN_INVASION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_GRAIN_INVASION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_GREAT_MIGRATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_GREAT_MIGRATION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GREAT_MIGRATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_GREAT_MIGRATION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_LONG_DEPRESSION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_LONG_DEPRESSION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_LONG_DEPRESSION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_LONG_DEPRESSION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_NATIONAL_UNIFICATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_NATIONAL_UNIFICATION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_NATIONAL_UNIFICATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_NATIONAL_UNIFICATION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_SCRAMBLE_FOR_COLONIES" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_SCRAMBLE_FOR_COLONIES" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SCRAMBLE_FOR_COLONIES" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_SCRAMBLE_FOR_COLONIES" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_SPRINGTIME_OF_NATIONS" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_SPRINGTIME_OF_NATIONS" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SPRINGTIME_OF_NATIONS" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_SPRINGTIME_OF_NATIONS" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_SITUATION_WORLD_EXHIBITION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_SITUATION_WORLD_EXHIBITION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_WORLD_EXHIBITION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_WORLD_EXHIBITION" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_BILL" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_BILL" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_BILL" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_BILL" }
 }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_no_crises').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_NO_CRISIS" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_no_crises').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_NO_CRISIS" }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_GOVERNMENT_VIEW"
         on_action = "[OpenLateralView('government')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_GOVERNMENT_VIEW" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_GOVERNMENT_VIEW" }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_BILL_SIDEBAR"
         on_action = "[GetVariableSystem.Set('tsin_ui_bill_sidebar_open', 'yes')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_BILL_SIDEBAR" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_BILL_SIDEBAR" }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'research')]" spacing = 10
-text_single = { maximumsize = { 820 -1 } multiline = yes text = "TSIN_UI_RESEARCH_HELP" }
-hbox = { spacing = 12
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'research')]" spacing = 12
+text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_RESEARCH_HELP" }
+hbox = { spacing = 14
 tsin_ui_card_standard_measure = {}
 tsin_ui_card_standard_gauge = {}
 tsin_ui_card_standard_parts = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_standard_electric = {}
 tsin_ui_card_communications_telegraph = {}
 tsin_ui_card_communications_telephone = {}
 }
-hbox = { spacing = 12
+hbox = { spacing = 14
 tsin_ui_card_social_education_year = {}
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_MASS_SOCIETY" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_MASS_SOCIETY" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_MASS_SOCIETY" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_MASS_SOCIETY" }
 }
-vbox = { spacing = 3
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
 
-text_single = { fontsize = 16 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_ELECTRIFICATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 800 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_ELECTRIFICATION" }
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_ELECTRIFICATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
+text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_ELECTRIFICATION" }
 }
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_RESEARCH_VIEW"
         on_action = "[OpenLateralView('advances')]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_RESEARCH_VIEW" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_RESEARCH_VIEW" }
 }
-widget = { size = { 220 30 } datacontext = "[GetMapMode('tsin_industrial_institutions')]"
+widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_industrial_institutions')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_TSIN_INDUSTRIAL_INSTITUTIONS"
         on_action = "[MapMode.SetMapMode]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_TSIN_INDUSTRIAL_INSTITUTIONS" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TSIN_INDUSTRIAL_INSTITUTIONS" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_host')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_host')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_HOST"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_HOST" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_HOST" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_measure_1')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_measure_1')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_MEASURE_1"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_MEASURE_1" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_MEASURE_1" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_measure_2')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_measure_2')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_MEASURE_2"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_MEASURE_2" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_MEASURE_2" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_measure_3')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_measure_3')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_MEASURE_3"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_MEASURE_3" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_MEASURE_3" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_gauge_1')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_gauge_1')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_GAUGE_1"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_GAUGE_1" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_GAUGE_1" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_gauge_2')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_gauge_2')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_GAUGE_2"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_GAUGE_2" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_GAUGE_2" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_gauge_3')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_gauge_3')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_GAUGE_3"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_GAUGE_3" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_GAUGE_3" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_parts_1')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_parts_1')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_PARTS_1"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_PARTS_1" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_PARTS_1" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_parts_3')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_parts_3')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_PARTS_3"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_PARTS_3" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_PARTS_3" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_electric_1')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_electric_1')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_ELECTRIC_1"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_1" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_1" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_electric_2')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_electric_2')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_ELECTRIC_2"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_2" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_2" }
 }
 }
-widget = { size = { 220 30 } datacontext = "[GetGenericAction('tsin_standards_electric_3')]"
+widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_standards_electric_3')]"
 button_regular = {
-    size = { 220 30 }
+    size = { 234 40 }
     action_tooltip = {
         title = "TSIN_UI_LINK_STANDARDS_ELECTRIC_3"
         on_action = "[PerformGenericAction(GenericAction.Self)]"
         on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
     }
-    text_single = { size = { 212 28 } parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_3" }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_3" }
 }
 }
 }
 } } }
-}
+} } }
 }

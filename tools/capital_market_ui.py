@@ -13,10 +13,10 @@ def extend(result):
     def val(name):return var(name)+'.GetValue'
     def isset(name):return var(name)+'.IsSet'
     def gui(name):return f"GetScriptedGui('{name}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
-    def button(label,action,enabled=None,width=140):
-        return '\n'.join([f'button_regular = {{ size = {{ {width} 28 }}',f'enabled = "[{enabled}]"' if enabled else '',
+    def button(label,action,enabled=None,width=168):
+        return '\n'.join([f'button_regular = {{ size = {{ {width} 40 }}',f'enabled = "[{enabled}]"' if enabled else '',
             f'action_tooltip = {{ title = "{label}" on_action = "[{action}]" }}',
-            f'text_single = {{ size = {{ {width-8} 26 }} parentanchor = center align = center|nobaseline fontsize = 12 autoresize = no fontsize_min = 9 text = "{label}" }}','}'])
+            f'text_single = {{ size = {{ {width-8} 36 }} parentanchor = center align = center|nobaseline autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 elide = right text = "{label}" }}','}'])
     loc('WORLD_COMPANIES','World company statistics','세계 기업 통계')
     loc('INDEX','Company index','기업·주가 지수');loc('COUNT','Firms','기업 수');loc('LIMIT','Company capacity','기업 한도')
     loc('PRIVATE','Private entry · no policy cap','민간 자율 진입 · 정책상 무제한')
@@ -109,9 +109,9 @@ tooltip = "[{val('tsin_index_h'+str(i))}|1]" }}''']
                 'hbox = { spacing = 6',
                 button('TSIN_CAP_FOUND',f"GetScriptedGui('tsin_capital_form_{c}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)",gui('tsin_capital_form_'+c)),
                 f'text_single = {{ text = "[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue(\'tsin_gold_cost_{cost}\')|1] @gold!" tooltip = "TSIN_CAP_FORM_HELP" }}',
-                f'widget = {{ size = {{ 145 28 }} datacontext = "[{var("tsin_hq_"+c)}.GetLocation]"',
+                f'widget = {{ size = {{ 168 40 }} datacontext = "[{var("tsin_hq_"+c)}.GetLocation]"',
                 button('TSIN_CAP_HQ','ShowLocation(Location.Self)','Location.IsValid'),'}','}','}']
-    ui += ['text_single = { maximumsize = { 510 -1 } multiline = yes fontsize = 11 text = "TSIN_CAP_HELP" }','}','}','}','}','}']
+    ui += ['text_single = { maximumsize = { 510 -1 } multiline = yes fontsize = 12 text = "TSIN_CAP_HELP" }','}','}','}','}','}']
     result['in_game/gui/tsin_stock_market.gui']='\n'.join(ui)+'\n'
     s=result['in_game/common/scripted_guis/tsin_stock_market_guis.txt']
     s=s.replace('effect = { tsin_dashboard_age7_migrate_effect = yes }','effect = { tsin_capital_policy_init_effect = yes tsin_init_existing_companies_effect = yes tsin_dashboard_age7_migrate_effect = yes tsin_capital_cache_effect = yes }')

@@ -110,48 +110,49 @@ tsin_world_company_project_page_effect = {
   key='tsin_wcs_filter_'+str(code);script(key,'has_variable = tsin_wcs_survey_year',f'set_variable = {{ name = tsin_wcs_filter value = {code} }} set_variable = {{ name = tsin_wcs_page value = 0 }} tsin_world_company_project_page_effect = yes');label(key,ko,en)
  for code,ko,en in [(0,'기업 수순','Sort by firms'),(1,'국가 기업 현금순','Sort by country corporate cash'),(2,'국가 평가 지표순','Sort by country valuation proxy')]:
   key='tsin_wcs_sort_'+str(code);script(key,'has_variable = tsin_wcs_survey_year',f'set_variable = {{ name = tsin_wcs_sort value = {code} }} set_variable = {{ name = tsin_wcs_page value = 0 }} tsin_world_company_project_page_effect = yes');label(key,ko,en)
- def button(key,scripted,width=145):return f'''button_regular = {{ size = {{ {width} 28 }} enabled = "[GetScriptedGui('{scripted}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+ def button(key,scripted,width=168):return f'''button_regular = {{ size = {{ {width} 40 }} enabled = "[GetScriptedGui('{scripted}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
  action_tooltip = {{ title = "{key}" on_action = "[GetScriptedGui('{scripted}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
- text_single = {{ size = {{ {width-6} 26 }} parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "{key}" }}
+ text_single = {{ size = {{ {width-8} 36 }} parentanchor = center autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{key}" }}
 }}'''
  ui=['''window = {
  name = "tsin_world_company_window" layer = topbar parentanchor = center widgetanchor = center
- size = { 1000 900 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+ size = { 1040 900 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
  visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ui_world_companies_open'))]"
- widget = { size = { 100% 100% } using = bg_window_default_alt }
- widget = { parentanchor = right position = { -8 8 } size = { 40 40 } button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_world_companies_open')]" } } }
- vbox = { position = { 20 18 } spacing = 5
- text_single = { fontsize = 22 text = "TSIN_WCS_TITLE" }
- text_multi = { maximumsize = { 945 -1 } fontsize = 12 text = "TSIN_WCS_HELP" }
- hbox = { spacing = 10
- widget = { size = { 200 30 } datacontext = "[GetGenericAction('tsin_survey_world_companies')]"
- button_regular = { size = { 200 30 } action_tooltip = { title = "tsin_survey_world_companies" on_action = "[PerformGenericAction(GenericAction.Self)]" }
- text_single = { size = { 194 28 } parentanchor = center text = "tsin_survey_world_companies" } }
+ widget = { size = { 100% 100% } using = bg_window_default_alt
+ widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_world_companies_open')]" } } }
+ vbox = { using = window_margin_alt
+ window_header_alt = { blockoverride "header_text" { text = "TSIN_WCS_TITLE" } }
+ text_multi = { maximumsize = { 980 -1 } fontsize = 13 text = "TSIN_WCS_HELP" }
+ hbox = { spacing = 12 margin = { 4 4 }
+ widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_survey_world_companies')]"
+ button_regular = { size = { 234 40 } action_tooltip = { title = "tsin_survey_world_companies" on_action = "[PerformGenericAction(GenericAction.Self)]" }
+ text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "tsin_survey_world_companies" } }
  }
- text_single = { text = "TSIN_WCS_DATE" }
+ text_single = { using = Font_Size_Medium text = "TSIN_WCS_DATE" }
  }
- hbox = { spacing = 5
+ vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt spacing = 8
+ hbox = { spacing = 8 margin = { 8 4 }
 ''']
- for code,ko,en,field in filters[:4]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),180))
- ui+=['}','scrollarea = { size = { 950 100 }','scrollbarpolicy_horizontal = always_off','scrollbarpolicy_vertical = as_needed','scrollwidget = {','vbox = { spacing = 3']
+ for code,ko,en,field in filters[:4]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),200))
+ ui+=['}','scrollarea = { size = { 990 120 }','scrollbarpolicy_horizontal = always_off','scrollbarpolicy_vertical = as_needed','scrollwidget = {','vbox = { spacing = 6 margin = { 8 4 }']
  for start in range(4,len(filters),5):
-  ui.append('hbox = { spacing = 4')
-  for code,ko,en,field in filters[start:start+5]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),180))
+  ui.append('hbox = { spacing = 6')
+  for code,ko,en,field in filters[start:start+5]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),190))
   ui.append('}')
- ui+=['} } }','hbox = { spacing = 5']
- for code in range(3):ui.append(button('tsin_wcs_sort_'+str(code),'tsin_wcs_sort_'+str(code),220))
- ui+=['}','text_single = { text = "TSIN_WCS_TOTALS" fontsize = 12 }','text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 12 }','scrollarea = { size = { 950 410 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed scrollwidget = { vbox = { spacing = 4','hbox = { spacing = 5']
- for key,width in [('COUNTRY',240),('COUNT',90),('CASH',175),('PROXY',175),('SOURCE',100)]:ui.append(f'text_single = {{ size = {{ {width} 24 }} fontsize = 13 text = "TSIN_WCS_{key}" }}')
+ ui+=['} } }','hbox = { spacing = 8 margin = { 8 4 }']
+ for code in range(3):ui.append(button('tsin_wcs_sort_'+str(code),'tsin_wcs_sort_'+str(code),234))
+ ui+=['}','text_single = { text = "TSIN_WCS_TOTALS" fontsize = 13 }','text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 13 }','scrollarea = { size = { 990 420 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed scrollwidget = { vbox = { spacing = 6 margin = { 8 4 }','hbox = { spacing = 6']
+ for key,width in [('COUNTRY',240),('COUNT',90),('CASH',175),('PROXY',175),('SOURCE',100)]:ui.append(f'text_single = {{ size = {{ {width} 26 }} fontsize = 14 text = "TSIN_WCS_{key}" }}')
  ui.append('}')
  for slot in range(1,PAGE+1):
   prefix='tsin_wcs_display_'+str(slot)+'_'
-  ui.append(f'''hbox = {{ spacing = 5 visible = "[GetPlayer.MakeScope.GetVariable('{prefix}country').IsSet]"
- widget = {{ size = {{ 240 23 }} datacontext = "[GetPlayer.MakeScope.GetVariable('{prefix}country').GetCountry]"
- text_single = {{ size = {{ 235 22 }} autoresize = no fontsize = 13 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = {{ using = CountryTooltip }} }} }}
- text_single = {{ size = {{ 90 23 }} text = "[GetPlayer.MakeScope.GetVariable('{prefix}count').GetValue|0]" }}
- text_single = {{ size = {{ 175 23 }} text = "[GetPlayer.Custom('tsin_wcs_fmt_{slot}_cash')]" }}
- text_single = {{ size = {{ 175 23 }} text = "[GetPlayer.Custom('tsin_wcs_fmt_{slot}_proxy')]" }}
- text_single = {{ size = {{ 100 23 }} text = "[GetPlayer.MakeScope.GetVariable('{prefix}source_year').GetValue|0]" }}
+  ui.append(f'''hbox = {{ spacing = 6 visible = "[GetPlayer.MakeScope.GetVariable('{prefix}country').IsSet]"
+ widget = {{ size = {{ 240 26 }} datacontext = "[GetPlayer.MakeScope.GetVariable('{prefix}country').GetCountry]"
+ text_single = {{ size = {{ 235 26 }} autoresize = no fontsize = 14 fontsize_min = 10 text = "[Country.GetName]" tooltipwidget = {{ using = CountryTooltip }} }} }}
+ text_single = {{ size = {{ 90 26 }} fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('{prefix}count').GetValue|0]" }}
+ text_single = {{ size = {{ 175 26 }} fontsize = 14 text = "[GetPlayer.Custom('tsin_wcs_fmt_{slot}_cash')]" }}
+ text_single = {{ size = {{ 175 26 }} fontsize = 14 text = "[GetPlayer.Custom('tsin_wcs_fmt_{slot}_proxy')]" }}
+ text_single = {{ size = {{ 100 26 }} fontsize = 14 text = "[GetPlayer.MakeScope.GetVariable('{prefix}source_year').GetValue|0]" }}
 }}''')
   for field in ['cash','proxy']:
    variable=prefix+field;name=f'tsin_wcs_fmt_{slot}_{field}';custom.append(f'{name} = {{ type = country random_valid = no\n text = {{ trigger = {{ var:{variable}_known = 0 }} localization_key = TSIN_WCS_MISSING }}\n')
@@ -163,7 +164,7 @@ tsin_world_company_project_page_effect = {
     label(key,f'[{getter}|1]'+('' if suffix=='BASE' else suffix),f'[{getter}|1]'+('' if suffix=='BASE' else suffix))
     values.append(f'tsin_wcs_fmt_{slot}_{field}_{suffix.lower()} = {{ value = var:{variable} divide = {div} }}\n')
    custom.append('}\n')
- ui+=['hbox = { spacing = 8',button('TSIN_WCS_PREV','tsin_wcs_prev'),button('TSIN_WCS_NEXT','tsin_wcs_next'),'text_single = { text = "TSIN_WCS_PAGE" }','}','} } }','} }']
+ ui+=['hbox = { spacing = 10',button('TSIN_WCS_PREV','tsin_wcs_prev',168),button('TSIN_WCS_NEXT','tsin_wcs_next',168),'text_single = { using = Font_Size_Medium text = "TSIN_WCS_PAGE" }','}','} } }','} } } }']
  custom.append('tsin_wcs_filter_name = { type = country random_valid = no\n'+''.join(f' text = {{ trigger = {{ var:tsin_wcs_filter = {code} }} localization_key = tsin_wcs_filter_{code} }}\n' for code,_,_,_ in filters)+' text = { localization_key = tsin_wcs_filter_0 }\n}\n')
  label('TSIN_WCS_FILTER_CURRENT',"현재 필터: [GetPlayer.Custom('tsin_wcs_filter_name')] — 전체 조사 기업 현금 [GetPlayer.Custom('tsin_ui_format_world_company_cash')]","Current filter: [GetPlayer.Custom('tsin_wcs_filter_name')] — all-survey corporate cash [GetPlayer.Custom('tsin_ui_format_world_company_cash')]")
  label('TSIN_WCS_TITLE','세계 기업 통계','World company statistics')

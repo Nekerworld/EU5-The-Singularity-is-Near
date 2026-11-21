@@ -52,10 +52,10 @@ def has(name):
 
 
 def button(key, action, enabled=None):
-    return '\n'.join(['button_regular = { size = { 180 28 }',
+    return '\n'.join(['button_regular = { size = { 234 40 }',
         *( [f'enabled = "[{enabled}]"'] if enabled else []),
         f'action_tooltip = {{ title = "{key}" on_action = "[{action}]" }}',
-        f'text_single = {{ size = {{ 172 26 }} parentanchor = center align = center|nobaseline autoresize = no fontsize = 12 fontsize_min = 9 text = "{key}" }}', '}'])
+        f'text_single = {{ size = {{ 226 36 }} parentanchor = center align = center|nobaseline autoresize = no maximumsize = {{ 226 36 }} fontsize = 14 fontsize_min = 10 elide = right text = "{key}" }}', '}'])
 
 
 def build(game=None):

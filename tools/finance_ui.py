@@ -113,29 +113,29 @@ def build(game=None):
                'blockoverride "on_action_left" {',
                'on_action = "[GetScriptedGui(\'tsin_stock_ui_seed\').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"' if name == 'STOCKS' else '',
                f'on_action = "[OpenLateralViewWithParams(\'credit\', \'subtab = {subtab}\')]"', '}', '}']
-    ui += ['} }', 'type tsin_finance_overview = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 10',
+    ui += ['} }', 'type tsin_finance_overview = scrollarea { using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 12',
            'text_single = { fontsize = 22 text = "TSIN_FINANCE_TAB" }']
     values = [('TREASURY', "GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_finance_treasury')|1L"),
               ('DEBT', 'Player.GetEconomy.GetTotalDebt|1L'), ('COST', 'CreditLateralView.GetTotalLoansTakenMonthlyCost|2'),
               ('INFLATION', "GetPlayer.GetFixedPointCurrencyValue('inflation')|2%"),
               ('FIRMS', "GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('tsin_company_count')|0")]
     for name, value in values:
-        ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }} text_single = {{ text = "[{value}]" }} }}']
-    ui += ['hbox = { spacing = 12 text_single = { size = { 300 26 } text = "TSIN_FINANCE_CAPACITY" }',
-           'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_CAPACITY_NA" } }',
-           'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_CAPACITY_NOTE" }']
+        ui += [f'hbox = {{ spacing = 14 text_single = {{ size = {{ 320 30 }} fontsize = 14 text = "TSIN_FINANCE_{name}" }} text_single = {{ fontsize = 16 text = "[{value}]" }} }}']
+    ui += ['hbox = { spacing = 14 text_single = { size = { 320 30 } fontsize = 14 text = "TSIN_FINANCE_CAPACITY" }',
+           'text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 14 text = "TSIN_FINANCE_CAPACITY_NA" } }',
+           'text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_FINANCE_CAPACITY_NOTE" }']
     for name, variable in [('ENTRY', 'tsin_entry_risk_quarters'), ('SUPPLY', 'tsin_stress_quarters')]:
         var = f"GetPlayer.MakeScope.GetVariable('{variable}')"
-        ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }}',
-               f'text_single = {{ visible = "[{var}.IsSet]" text = "[{var}.GetValue|0]" }}',
-               f'text_single = {{ visible = "[Not({var}.IsSet)]" text = "TSIN_FINANCE_MISSING" }}', '}']
+        ui += [f'hbox = {{ spacing = 14 text_single = {{ size = {{ 320 30 }} fontsize = 14 text = "TSIN_FINANCE_{name}" }}',
+               f'text_single = {{ visible = "[{var}.IsSet]" fontsize = 16 text = "[{var}.GetValue|0]" }}',
+               f'text_single = {{ visible = "[Not({var}.IsSet)]" fontsize = 16 text = "TSIN_FINANCE_MISSING" }}', '}']
     for name, variable in [('BOND_PRINCIPAL', 'tsin_native_bond_principal'), ('DUE_12', 'tsin_native_due_12'), ('DUE_NOW', 'tsin_native_due_now'), ('TAX_TRADE_ANNUAL', 'tsin_native_tax_trade_annual'), ('DEBT_INCOME_RATIO', 'tsin_native_debt_income_ratio')]:
         var = f"GetPlayer.MakeScope.GetVariable('{variable}')"
-        ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 300 26 }} text = "TSIN_FINANCE_{name}" }}',
-               f'text_single = {{ visible = "[{var}.IsSet]" text = "[{var}.GetValue|1]" }}',
-               f'text_single = {{ visible = "[Not({var}.IsSet)]" text = "TSIN_FINANCE_MISSING" }}', '}']
-    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_PROFILE_NOTE" }']
-    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_FINANCE_NOTE" }', '}', '}', '}', '}']
+        ui += [f'hbox = {{ spacing = 14 text_single = {{ size = {{ 320 30 }} fontsize = 14 text = "TSIN_FINANCE_{name}" }}',
+               f'text_single = {{ visible = "[{var}.IsSet]" fontsize = 16 text = "[{var}.GetValue|1]" }}',
+               f'text_single = {{ visible = "[Not({var}.IsSet)]" fontsize = 16 text = "TSIN_FINANCE_MISSING" }}', '}']
+    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_FINANCE_PROFILE_NOTE" }']
+    ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_FINANCE_NOTE" }', '}', '}', '}', '}']
     result = {CREDIT: '# GENERATED finance host; native credit content and controller retained.\n' + patch_credit(pdx.read_text(game / CREDIT)),
               'in_game/gui/tsin_finance.gui': '\n'.join(ui) + '\n',
               'in_game/common/script_values/tsin_finance_values.txt': 'tsin_finance_treasury = { value = gold }\n'}

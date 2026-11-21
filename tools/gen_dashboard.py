@@ -119,8 +119,9 @@ def build(data):
         return variable(name) + '.IsSet'
     def gate(id):
         return f"GetScriptedGui('tsin_ui_check_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
-    def action_button(key, actions, width=130):
-        return '\n'.join(['button_regular = {', f'    size = {{ {width} 30 }}', '    action_tooltip = {', f'        title = "{key}"'] + [f'        on_action = "[{a}]"' for a in actions] + ['    }', f'    text_single = {{ size = {{ {width-8} 28 }} parentanchor = center autoresize = no fontsize = 13 fontsize_min = 10 align = center|nobaseline text = "{key}" }}', '}'])
+    def action_button(key, actions, width=168):
+        # Sakuya-style readable action buttons (Cheat Menu ~168×40, fontsize 14).
+        return '\n'.join(['button_regular = {', f'    size = {{ {width} 40 }}', '    action_tooltip = {', f'        title = "{key}"'] + [f'        on_action = "[{a}]"' for a in actions] + ['    }', f'    text_single = {{ size = {{ {width-8} 36 }} parentanchor = center autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{key}" }}', '}'])
     open_var = 'tsin_ui_dashboard_open'
     tab_var = 'tsin_ui_dashboard_tab'
     def open_tab(id):
@@ -169,7 +170,7 @@ def build(data):
     for m in metrics:
         if m['unit'] == 'compact': formatter(m['id'],m['variable'])
     def value_widget(m, small=False):
-        size = 14 if small else 22
+        size = 15 if small else 24
         if m['id']=='company_limit':
             free="GetScriptedGui('tsin_capital_is_private').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
             return f"""text_single = {{ visible = "[{free}]" fontsize = {size} text = "∞" }}
@@ -188,21 +189,22 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
         desc = f'TSIN_UI_HELP_{m["id"].upper()}'
         for lang in LANGUAGES:
             loc[lang][desc] = m.get('description',{}).get(lang,'') or loc[lang]['TSIN_UI_UNAVAILABLE']
-        common += [f'type tsin_ui_card_{m["id"]} = vbox {{', 'size = { 258 75 }', 'spacing = 3', 'datacontext = "[Player]"',
-                   f'tooltip = "{desc}"',f'text_single = {{ fontsize = 13 text = "{key}" }}',value_widget(m),
-                   f'text_single = {{ fontsize = 10 text = "TSIN_UI_{m["frequency"].upper()}" }}','}']
+        # Paper cards match Cheat Menu readability (bg_paper_card + larger type).
+        common += [f'type tsin_ui_card_{m["id"]} = vbox {{', 'size = { 292 96 }', 'using = bg_paper_card', 'margin = { 10 8 }', 'spacing = 4', 'datacontext = "[Player]"',
+                   f'tooltip = "{desc}"',f'text_single = {{ fontsize = 14 text = "{key}" }}',value_widget(m),
+                   f'text_single = {{ fontsize = 11 text = "TSIN_UI_{m["frequency"].upper()}" }}','}']
     for history in data.get('histories',[]):
         id=history['id']; m=by_id[id]
-        common += [f'type tsin_ui_history_{id} = vbox {{', 'spacing = 4',f'text_single = {{ fontsize = 16 text = "TSIN_UI_METRIC_{id.upper()}" }}']
+        common += [f'type tsin_ui_history_{id} = vbox {{', 'using = bg_paper_card', 'margin = { 10 8 }', 'spacing = 6',f'text_single = {{ fontsize = 17 text = "TSIN_UI_METRIC_{id.upper()}" }}']
         for i in reversed(range(history['samples'])):
             var=history['value_prefix']+str(i); year=history['year_prefix']+str(i)
             formatter(f'{id}_sample_{i}',var)
-            common += ['hbox = {','spacing = 8',f'visible = "[{is_set(year)}]"',
-                       f'text_single = {{ size = {{ 48 20 }} text = "[{variable(year)}.GetValue|0]" }}',
-                       'progressbar = { size = { 230 12 } min = 0 max = 1 using = progressbar_bar_small',
+            common += ['hbox = {','spacing = 10',f'visible = "[{is_set(year)}]"',
+                       f'text_single = {{ size = {{ 52 22 }} fontsize = 13 text = "[{variable(year)}.GetValue|0]" }}',
+                       'progressbar = { size = { 260 14 } min = 0 max = 1 using = progressbar_bar_small',
                        f'value = "[Divide_float(FixedPointToFloat({variable(var)}.GetValue), Max_float(FixedPointToFloat({variable(history["peak_variable"])}.GetValue), \'(float)1\'))]" }}',
-                       f'text_single = {{ size = {{ 105 20 }} text = "[Player.Custom(\'tsin_ui_format_{id}_sample_{i}\')]" }}','}']
-        common += ['text_single = { maximumsize = { 430 -1 } multiline = yes text = "TSIN_UI_HISTORY_NOTE" }','}']
+                       f'text_single = {{ size = {{ 120 22 }} fontsize = 13 text = "[Player.Custom(\'tsin_ui_format_{id}_sample_{i}\')]" }}','}']
+        common += ['text_single = { maximumsize = { 480 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_HISTORY_NOTE" }','}']
     # Stable compatibility alias for pre-existing Glorp tooltip callers.
     common += ['type tsin_gdp_history_tooltip = SimpleContextualTooltipType {', 'blockoverride "title_icon" {}',
                'blockoverride "title_text" { text = "TSIN_UI_METRIC_GDP" }',
@@ -286,45 +288,64 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
         'tsin_ops_button = {}',
         '}',
         '}',
-        'window = {','name = "tsin_dashboard_window"','layer = topbar','parentanchor = center','widgetanchor = center','size = { 900 660 }','movable = yes','allow_outside = yes','datacontext = "[GetPlayer]"',f'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'{open_var}\'))]"','widget = { size = { 100% 100% } using = bg_window_default_alt }',
-           'widget = { parentanchor = right position = { -8 8 } size = { 40 40 } button_close_alt = { blockoverride "close_on_action" {',f'on_action = "[GetVariableSystem.Clear(\'{open_var}\')]"','} } }',
-           'vbox = { position = { 24 20 } spacing = 10','text_single = { fontsize = 22 text = "TSIN_UI_TITLE" }',
-           'hbox = { spacing = 8','text_single = { text = "TSIN_UI_DATE" }',
-           f'text_single = {{ visible = "[{is_set("tsin_statistics_year")}]" text = "[{variable("tsin_statistics_year")}.GetValue|0]" }}',
-           f'text_single = {{ visible = "[Not({is_set("tsin_statistics_year")} )]" text = "TSIN_UI_NO_DATE" }}','}', 'hbox = { spacing = 4']
-    for tab in data['tabs']: ui.append(action_button('TSIN_UI_TAB_'+tab['id'].upper(),open_tab(tab['id']),136))
-    ui += ['}', 'text_single = { maximumsize = { 840 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_GUIDE" }',
-           'scrollarea = { size = { 850 450 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 8']
+        # Standalone window shell mirrors Cheat Menu (Sakuya): header_alt + main tabs + inner panel.
+        'window = {','name = "tsin_dashboard_window"','layer = topbar','parentanchor = center','widgetanchor = center','size = { 1000 720 }','movable = yes','allow_outside = yes','datacontext = "[GetPlayer]"',
+           f'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'{open_var}\'))]"',
+           'widget = { size = { 100% 100% } using = bg_window_default_alt',
+           'widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" {',
+           f'on_action = "[GetVariableSystem.Clear(\'{open_var}\')]"','} } }',
+           'vbox = { using = window_margin_alt',
+           'window_header_alt = { blockoverride "header_text" { text = "TSIN_UI_TITLE" } }',
+           'header_main_tabs = { blockoverride "content" {']
     for tab in data['tabs']:
-        id=tab['id']; ui += [f'vbox = {{ visible = "[{selected(id)}]" spacing = 10']
+        tid = tab['id']
+        ui.append('\n'.join([
+            'button_main_tab_alt = {',
+            'using = layoutpolicy_expanding',
+            f'text = "TSIN_UI_TAB_{tid.upper()}"',
+            f'onclick = "[GetVariableSystem.Set(\'{open_var}\', \'yes\')]"',
+            f'onclick = "[GetVariableSystem.Set(\'{tab_var}\', \'{tid}\')]"',
+            f'down = "[GetVariableSystem.HasValue(\'{tab_var}\', \'{tid}\')]"',
+            '}',
+        ]))
+    ui += ['} }',
+           'hbox = { layoutpolicy_horizontal = expanding margin = { 8 4 } spacing = 10',
+           'text_single = { using = Font_Size_Medium text = "TSIN_UI_DATE" }',
+           f'text_single = {{ visible = "[{is_set("tsin_statistics_year")}]" using = Font_Size_Medium text = "[{variable("tsin_statistics_year")}.GetValue|0]" }}',
+           f'text_single = {{ visible = "[Not({is_set("tsin_statistics_year")} )]" using = Font_Size_Medium text = "TSIN_UI_NO_DATE" }}','}',
+           'text_single = { maximumsize = { 940 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_GUIDE" }',
+           'vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt',
+           'scrollarea = { size = { 960 500 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 10 8 }']
+    for tab in data['tabs']:
+        id=tab['id']; ui += [f'vbox = {{ visible = "[{selected(id)}]" spacing = 12']
         help_key={'society':'SOCIETY_HELP','economy':'ECONOMY_HELP','finance':'FINANCE_HELP','research':'RESEARCH_HELP'}.get(id)
-        if help_key: ui += [f'text_single = {{ maximumsize = {{ 820 -1 }} multiline = yes text = "TSIN_UI_{help_key}" }}']
+        if help_key: ui += [f'text_single = {{ maximumsize = {{ 920 -1 }} multiline = yes fontsize = 13 text = "TSIN_UI_{help_key}" }}']
         subset=[m for m in metrics if id in m['tabs']]
         for offset in range(0,len(subset),3):
-            ui += ['hbox = { spacing = 12']+[f'tsin_ui_card_{m["id"]} = {{}}' for m in subset[offset:offset+3]]+['}']
+            ui += ['hbox = { spacing = 14']+[f'tsin_ui_card_{m["id"]} = {{}}' for m in subset[offset:offset+3]]+['}']
         for h in data.get('histories',[]):
             if h['tab']==id: ui += [f'tsin_ui_history_{h["id"]} = {{}}']
         for s in statuses:
             if s['tab']!=id: continue
             visible = f'visible = "[{gate(s["id"])}]"' if id=='crises' else ''
-            ui += ['vbox = { spacing = 3',visible,f'text_single = {{ fontsize = 16 text = "TSIN_UI_STATUS_{s["id"].upper()}" }}',
-                   f'text_single = {{ visible = "[{gate(s["id"])}]" text = "TSIN_UI_{"ACTIVE" if id=="crises" else "MET"}" }}']
-            if id!='crises': ui += [f'text_single = {{ visible = "[Not({gate(s["id"])})]" text = "TSIN_UI_NOT_MET" }}']
-            ui += [f'text_single = {{ maximumsize = {{ 800 -1 }} multiline = yes fontsize = 12 text = "TSIN_UI_STATUS_HELP_{s["id"].upper()}" }}','}']
-        if id=='crises': ui += [f'text_single = {{ visible = "[{gate("no_crises")}]" text = "TSIN_UI_NO_CRISIS" }}']
+            ui += ['vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4',visible,f'text_single = {{ fontsize = 17 text = "TSIN_UI_STATUS_{s["id"].upper()}" }}',
+                   f'text_single = {{ visible = "[{gate(s["id"])}]" fontsize = 14 text = "TSIN_UI_{"ACTIVE" if id=="crises" else "MET"}" }}']
+            if id!='crises': ui += [f'text_single = {{ visible = "[Not({gate(s["id"])})]" fontsize = 14 text = "TSIN_UI_NOT_MET" }}']
+            ui += [f'text_single = {{ maximumsize = {{ 900 -1 }} multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_{s["id"].upper()}" }}','}']
+        if id=='crises': ui += [f'text_single = {{ visible = "[{gate("no_crises")}]" fontsize = 14 text = "TSIN_UI_NO_CRISIS" }}']
         for s in shortcuts:
             if s['tab']!=id: continue
             key=title('LINK',s)
             close=f"GetVariableSystem.Clear('{open_var}')"
-            if 'view' in s: ui.append(action_button(key,[f"OpenLateralView('{s['view']}')",close],220))
+            if 'view' in s: ui.append(action_button(key,[f"OpenLateralView('{s['view']}')",close],234))
             elif 'open_variable' in s:
-                ui.append(action_button(key,[f"GetVariableSystem.Set('{s['open_variable']}', 'yes')",close],220))
+                ui.append(action_button(key,[f"GetVariableSystem.Set('{s['open_variable']}', 'yes')",close],234))
             elif 'generic_action' in s:
-                ui += [f'widget = {{ size = {{ 220 30 }} datacontext = "[GetGenericAction(\'{s["generic_action"]}\')]"',action_button(key,['PerformGenericAction(GenericAction.Self)',close],220),'}']
+                ui += [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetGenericAction(\'{s["generic_action"]}\')]"',action_button(key,['PerformGenericAction(GenericAction.Self)',close],234),'}']
             else:
-                ui += [f'widget = {{ size = {{ 220 30 }} datacontext = "[GetMapMode(\'{s["map_mode"]}\')]"',action_button(key,['MapMode.SetMapMode',close],220),'}']
+                ui += [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetMapMode(\'{s["map_mode"]}\')]"',action_button(key,['MapMode.SetMapMode',close],234),'}']
         ui += ['}']
-    ui += ['} } }','}','}']
+    ui += ['} } }','} } }','}']
     version=data['schema_version']
     effects=['# GENERATED dashboard metadata. Calculation providers belong to era modules.',
              'tsin_dashboard_migrate_effect = {',

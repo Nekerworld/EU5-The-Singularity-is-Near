@@ -168,40 +168,41 @@ def scripted_guis():
 
 # ---- window -------------------------------------------------------------------------------
 def _v(name): return f"GetPlayer.MakeScope.GetVariable('{name}')"
-def _num(name,w): return f'text_single = {{ size = {{ {w} 22 }} autoresize = no fontsize = 12 text = "[{_v(name)}.GetValue|0]" }}'
-def _date(p,w): return f'text_single = {{ size = {{ {w} 22 }} autoresize = no fontsize = 12 text = "[{_v(p+"_year")}.GetValue|0].[{_v(p+"_month")}.GetValue|0]" }}'
+def _num(name,w): return f'text_single = {{ size = {{ {w} 26 }} autoresize = no fontsize = 13 text = "[{_v(name)}.GetValue|0]" }}'
+def _date(p,w): return f'text_single = {{ size = {{ {w} 26 }} autoresize = no fontsize = 13 text = "[{_v(p+"_year")}.GetValue|0].[{_v(p+"_month")}.GetValue|0]" }}'
 def _name(p,w):
-    return (f'hbox = {{ visible = "[{_v(p+"_country")}.IsSet]" widget = {{ size = {{ {w} 22 }} datacontext = "[{_v(p+"_country")}.GetCountry]" '
-            f'text_single = {{ size = {{ {w-4} 22 }} autoresize = no fontsize = 12 fontsize_min = 8 text = "[Country.GetName]" }} }} }}')
-def _lbl(key,w): return f'text_single = {{ size = {{ {w} 22 }} autoresize = no fontsize = 12 fontsize_min = 8 text = "{key}" }}'
+    return (f'hbox = {{ visible = "[{_v(p+"_country")}.IsSet]" widget = {{ size = {{ {w} 26 }} datacontext = "[{_v(p+"_country")}.GetCountry]" '
+            f'text_single = {{ size = {{ {w-4} 26 }} autoresize = no fontsize = 13 fontsize_min = 9 text = "[Country.GetName]" }} }} }}')
+def _lbl(key,w): return f'text_single = {{ size = {{ {w} 26 }} autoresize = no fontsize = 13 fontsize_min = 9 text = "{key}" }}'
 def _btn(key,scripted,width):
-    return f'''button_regular = {{ size = {{ {width} 26 }} enabled = "[GetScriptedGui('{scripted}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+    return f'''button_regular = {{ size = {{ {width} 40 }} enabled = "[GetScriptedGui('{scripted}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
  action_tooltip = {{ title = "{key}" on_action = "[GetScriptedGui('{scripted}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
- text_single = {{ size = {{ {width-6} 24 }} parentanchor = center autoresize = no fontsize = 12 fontsize_min = 8 text = "{key}" }}
+ text_single = {{ size = {{ {width-8} 36 }} parentanchor = center autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{key}" }}
 }}'''
 
 def window_gui():
     ui=['''window = {
  name = "tsin_country_compare_window" layer = topbar parentanchor = center widgetanchor = center
- size = { 1000 900 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+ size = { 1040 900 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
  visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ui_country_compare_open'))]"
- widget = { size = { 100% 100% } using = bg_window_default_alt }
- widget = { parentanchor = right position = { -8 8 } size = { 40 40 } button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_country_compare_open')]" } } }
- vbox = { position = { 20 18 } spacing = 5
- text_single = { fontsize = 22 text = "TSIN_CMP_TITLE" }
- text_multi = { maximumsize = { 945 -1 } fontsize = 12 text = "TSIN_CMP_HELP" }
- text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet)]" fontsize = 12 text = "TSIN_CMP_EMPTY" }
- scrollarea = { size = { 950 800 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed
+ widget = { size = { 100% 100% } using = bg_window_default_alt
+ widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_country_compare_open')]" } } }
+ vbox = { using = window_margin_alt
+ window_header_alt = { blockoverride "header_text" { text = "TSIN_CMP_TITLE" } }
+ text_multi = { maximumsize = { 980 -1 } fontsize = 13 text = "TSIN_CMP_HELP" }
+ text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet)]" fontsize = 14 text = "TSIN_CMP_EMPTY" }
+ vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
+ scrollarea = { size = { 990 720 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed
  visible = "[GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet]"
- scrollwidget = { vbox = { spacing = 4''']
-    ui.append('text_single = { fontsize = 16 text = "TSIN_CMP_LIST" }')
-    ui.append('hbox = { spacing = 5 '+_btn('tsin_cmp_prev','tsin_cmp_prev',120)+' '+_btn('tsin_cmp_next','tsin_cmp_next',120)+' '+_btn('tsin_cmp_clear','tsin_cmp_clear',160)+' }')
-    ui.append('hbox = { spacing = 5 '+_lbl('TSIN_CMP_COL_COUNTRY',200)+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_POP',140)+_lbl('TSIN_CMP_COL_GDP',150)+_lbl('TSIN_CMP_COL_FIRMS',70)+'}')
+ scrollwidget = { vbox = { spacing = 8 margin = { 10 8 }''']
+    ui.append('text_single = { fontsize = 17 text = "TSIN_CMP_LIST" }')
+    ui.append('hbox = { spacing = 8 '+_btn('tsin_cmp_prev','tsin_cmp_prev',130)+' '+_btn('tsin_cmp_next','tsin_cmp_next',130)+' '+_btn('tsin_cmp_clear','tsin_cmp_clear',200)+' }')
+    ui.append('hbox = { spacing = 6 '+_lbl('TSIN_CMP_COL_COUNTRY',200)+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_POP',140)+_lbl('TSIN_CMP_COL_GDP',150)+_lbl('TSIN_CMP_COL_FIRMS',70)+'}')
     for i in range(1,PAGE+1):
         p=f'tsin_cmp_r{i}'
-        ui.append(f'hbox = {{ spacing = 5 visible = "[{_v(p+"_country")}.IsSet]" '+_name(p,200)+' '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_population',140)+' '+_num(p+'_gdp',150)+' '+_num(p+'_companies',70)+' '+_btn(f'tsin_cmp_add_{i}',f'tsin_cmp_add_{i}',100)+' '+_btn(f'tsin_cmp_detail_{i}',f'tsin_cmp_detail_{i}',100)+' }')
-    ui.append('text_single = { fontsize = 16 text = "TSIN_CMP_COMPARE" }')
-    ui.append('hbox = { spacing = 5 '+_lbl('TSIN_CMP_COL_ITEM',150)+''.join(_lbl(f'TSIN_CMP_SLOT_{s}',200) for s in range(1,SLOTS+1))+'}')
+        ui.append(f'hbox = {{ spacing = 6 visible = "[{_v(p+"_country")}.IsSet]" '+_name(p,200)+' '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_population',140)+' '+_num(p+'_gdp',150)+' '+_num(p+'_companies',70)+' '+_btn(f'tsin_cmp_add_{i}',f'tsin_cmp_add_{i}',110)+' '+_btn(f'tsin_cmp_detail_{i}',f'tsin_cmp_detail_{i}',110)+' }')
+    ui.append('text_single = { fontsize = 17 text = "TSIN_CMP_COMPARE" }')
+    ui.append('hbox = { spacing = 6 '+_lbl('TSIN_CMP_COL_ITEM',150)+''.join(_lbl(f'TSIN_CMP_SLOT_{s}',200) for s in range(1,SLOTS+1))+'}')
     rows=[('TSIN_CMP_COL_COUNTRY','name',None),('TSIN_CMP_COL_SERIAL','serial',None),('TSIN_CMP_COL_DATE','date',None),
           ('TSIN_CMP_COL_POP','num','population'),('TSIN_CMP_COL_LOC','num','locations'),('TSIN_CMP_COL_URBAN','num','urban'),
           ('TSIN_CMP_COL_BLD','num','buildings'),('TSIN_CMP_COL_FIRMS','num','companies'),('TSIN_CMP_COL_GDP','num','gdp')]
@@ -213,22 +214,22 @@ def window_gui():
             elif kind=='date': cells.append(_date(p,200))
             elif kind=='serial': cells.append(_num(p+'_serial',200))
             else: cells.append(_num(f'{p}_{field}',200))
-        ui.append('hbox = { spacing = 5 '+_lbl(label,150)+' '+' '.join(cells)+' }')
-    ui.append('text_single = { fontsize = 16 text = "TSIN_CMP_HISTORY" }')
-    ui.append('hbox = { spacing = 5 '+_lbl('TSIN_CMP_DETAIL_OF',150)+' '+_name('tsin_cmp_d',240)+' }')
-    ui.append('hbox = { spacing = 5 '+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_POP',140)+_lbl('TSIN_CMP_COL_LOC',110)+_lbl('TSIN_CMP_COL_BLD',110)+_lbl('TSIN_CMP_COL_FIRMS',90)+_lbl('TSIN_CMP_COL_GDP',170)+'}')
+        ui.append('hbox = { spacing = 6 '+_lbl(label,150)+' '+' '.join(cells)+' }')
+    ui.append('text_single = { fontsize = 17 text = "TSIN_CMP_HISTORY" }')
+    ui.append('hbox = { spacing = 6 '+_lbl('TSIN_CMP_DETAIL_OF',150)+' '+_name('tsin_cmp_d',240)+' }')
+    ui.append('hbox = { spacing = 6 '+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_POP',140)+_lbl('TSIN_CMP_COL_LOC',110)+_lbl('TSIN_CMP_COL_BLD',110)+_lbl('TSIN_CMP_COL_FIRMS',90)+_lbl('TSIN_CMP_COL_GDP',170)+'}')
     for k in range(HISTORY):
         p=f'tsin_cmp_h{k}'
-        ui.append('hbox = { spacing = 5 '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_population',140)+' '+_num(p+'_locations',110)+' '+_num(p+'_buildings',110)+' '+_num(p+'_companies',90)+' '+_num(p+'_gdp',170)+' }')
-    ui.append('text_single = { fontsize = 16 text = "TSIN_CMP_WORLD" }')
-    ui.append('hbox = { spacing = 5 '+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_WCOUNTRIES',110)+_lbl('TSIN_CMP_COL_WPOP',140)+_lbl('TSIN_CMP_COL_FIRMS',90)+_lbl('TSIN_CMP_COL_WKNOWN',110)+_lbl('TSIN_CMP_COL_WGDP',170)+'}')
+        ui.append('hbox = { spacing = 6 '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_population',140)+' '+_num(p+'_locations',110)+' '+_num(p+'_buildings',110)+' '+_num(p+'_companies',90)+' '+_num(p+'_gdp',170)+' }')
+    ui.append('text_single = { fontsize = 17 text = "TSIN_CMP_WORLD" }')
+    ui.append('hbox = { spacing = 6 '+_lbl('TSIN_CMP_COL_SERIAL',60)+_lbl('TSIN_CMP_COL_DATE',100)+_lbl('TSIN_CMP_COL_WCOUNTRIES',110)+_lbl('TSIN_CMP_COL_WPOP',140)+_lbl('TSIN_CMP_COL_FIRMS',90)+_lbl('TSIN_CMP_COL_WKNOWN',110)+_lbl('TSIN_CMP_COL_WGDP',170)+'}')
     for k in range(HISTORY):
         p=f'tsin_cmp_w{k}'
-        ui.append('hbox = { spacing = 5 '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_countries',110)+' '+_num(p+'_population',140)+' '+_num(p+'_companies',90)+' '+_num(p+'_known_gdp',110)+' '+_num(p+'_gdp',170)+' }')
-    ui.append('text_single = { fontsize = 11 text = "TSIN_CMP_ZERO_NOTE" }')
-    ui.append('} } }')
-    ui.append('}')
-    ui.append('}')
+        ui.append('hbox = { spacing = 6 '+_num(p+'_serial',60)+' '+_date(p,100)+' '+_num(p+'_countries',110)+' '+_num(p+'_population',140)+' '+_num(p+'_companies',90)+' '+_num(p+'_known_gdp',110)+' '+_num(p+'_gdp',170)+' }')
+    ui.append('text_single = { fontsize = 12 text = "TSIN_CMP_ZERO_NOTE" }')
+    ui.append('} } }')  # scroll content / scrollwidget / scrollarea
+    ui.append('} } }')  # inner / margin / bg widget
+    ui.append('}')  # window
     return '\n'.join(ui)+'\n'
 
 LABELS={

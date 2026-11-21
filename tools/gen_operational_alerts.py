@@ -96,7 +96,7 @@ tsin_ops_quarterly_pulse = {
 }
 '''
     def button(key,actions,width=180,enabled=None):
-        return '\n'.join(['button_regular = {',f'size = {{ {width} 28 }}']+([f'enabled = "[{enabled}]"'] if enabled else [])+['action_tooltip = {',f'title = "{key}"']+[f'on_action = "[{a}]"' for a in actions]+['}',f'text_single = {{ size = {{ {width-8} 26 }} parentanchor = center fontsize = 12 autoresize = no fontsize_min = 9 align = center|nobaseline text = "{key}" }}','}'])
+        return '\n'.join(['button_regular = {',f'size = {{ {width} 40 }}']+([f'enabled = "[{enabled}]"'] if enabled else [])+['action_tooltip = {',f'title = "{key}"']+[f'on_action = "[{a}]"' for a in actions]+['}',f'text_single = {{ size = {{ {width-8} 36 }} parentanchor = center autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{key}" }}','}'])
     scope='GuiScope.SetRoot(GetPlayer.MakeScope).End'
     ops_badge = f'''type tsin_ops_button = widget {{
 size = {{ 88 88 }}
@@ -132,35 +132,42 @@ icon = {{ visible = "[GreaterThan_int32({critical}, '(int32)0')]" size = {{ 14 1
 }}'''
     ui=['# GENERATED operational UI. Does not modify vanilla alerts or situations.', 'types TSINOperational {',
         ops_badge, '}',
-        'window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 8 -140 } size = { 480 440 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"',
-        'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'tsin_ops_open\'))]"','widget = { size = { 100% 100% } using = bg_window_default_alt }',
-        'widget = { parentanchor = right position = { -8 5 } size = { 35 35 } button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear(\'tsin_ops_open\')]" } } }',
-        'vbox = { position = { 14 12 } spacing = 8','text_single = { fontsize = 20 text = "TSIN_OPS_TITLE" }','hbox = { spacing = 8',
-        button('TSIN_OPS_REFRESH',[f"GetScriptedGui('tsin_ops_refresh').Execute({scope})"],205,f"GetScriptedGui('tsin_ops_refresh').IsValid({scope})"),
-        button('TSIN_OPS_RESTORE',[f"GetVariableSystem.Clear('tsin_ops_hide_{r['id']}')" for r in rules],225),'}',
-        'scrollarea = { size = { 450 266 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12',
-        f'text_single = {{ visible = "[EqualTo_int32({count}, \'(int32)0\')]" maximumsize = {{ 430 -1 }} multiline = yes text = "TSIN_OPS_EMPTY" }}']
+        # Cheat Menu shell: header_alt + inner panel + larger action buttons.
+        'window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 8 -160 } size = { 520 520 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"',
+        'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'tsin_ops_open\'))]"',
+        'widget = { size = { 100% 100% } using = bg_window_default_alt',
+        'widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear(\'tsin_ops_open\')]" } } }',
+        'vbox = { using = window_margin_alt',
+        'window_header_alt = { blockoverride "header_text" { text = "TSIN_OPS_TITLE" } }',
+        'hbox = { layoutpolicy_horizontal = expanding margin = { 6 4 } spacing = 10',
+        button('TSIN_OPS_REFRESH',[f"GetScriptedGui('tsin_ops_refresh').Execute({scope})"],220,f"GetScriptedGui('tsin_ops_refresh').IsValid({scope})"),
+        button('TSIN_OPS_RESTORE',[f"GetVariableSystem.Clear('tsin_ops_hide_{r['id']}')" for r in rules],240),'}',
+        'vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt',
+        'scrollarea = { size = { 480 320 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 8 6 }',
+        f'text_single = {{ visible = "[EqualTo_int32({count}, \'(int32)0\')]" maximumsize = {{ 450 -1 }} multiline = yes fontsize = 14 text = "TSIN_OPS_EMPTY" }}']
     for r in rules:
         severity='CRITICAL' if r['severity']=='critical' else 'ATTENTION'
-        ui += [f'vbox = {{ visible = "[{shown(r)}]" spacing = 3 alwaystransparent = no',
+        ui += [f'vbox = {{ visible = "[{shown(r)}]" using = bg_paper_card margin = {{ 10 8 }} spacing = 4 alwaystransparent = no',
                'action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"',f'on_action = "[GetVariableSystem.Set(\'tsin_ops_hide_{r["id"]}\', \'yes\')]"','}',
-               f'text_single = {{ fontsize = 11 text = "TSIN_OPS_{severity}" }}',f'text_single = {{ fontsize = 15 text = "TSIN_OPS_RULE_{r["id"].upper()}" }}',
-               f'text_single = {{ maximumsize = {{ 430 -1 }} multiline = yes fontsize = 12 text = "TSIN_OPS_DETAIL_{r["id"].upper()}" }}']
+               f'text_single = {{ fontsize = 12 text = "TSIN_OPS_{severity}" }}',f'text_single = {{ fontsize = 16 text = "TSIN_OPS_RULE_{r["id"].upper()}" }}',
+               f'text_single = {{ maximumsize = {{ 440 -1 }} multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_{r["id"].upper()}" }}']
         if r['id']=='prices':
             for g in data['goods']:
                 id=g['id'];k='TSIN_OPS_GOOD_'+id.upper()
                 en=f"{g['name']['english']}: [{var(id+'_markets')}.GetValue|0] markets; highest [{var(id+'_ratio')}.GetValue|0%] of benchmark (price [{var(id+'_price')}.GetValue|2])."
                 ko=f"{g['name']['korean']}: [{var(id+'_markets')}.GetValue|0]개 시장 · 최고 [{var(id+'_ratio')}.GetValue|0%] (기준가 100%, 가격 [{var(id+'_price')}.GetValue|2])"
                 label(k,en,ko)
-                ui += [f'vbox = {{ visible = "[GreaterThan_CFixedPoint({var(id+"_markets")}.GetValue, \'(CFixedPoint)0\')]"',
-                       f'text_single = {{ maximumsize = {{ 430 -1 }} multiline = yes fontsize = 12 text = "{k}" }}',
-                       f'widget = {{ size = {{ 230 28 }} datacontext = "[{var(id+"_market")}.GetMarket]"',
-                       button('TSIN_OPS_MARKET',['ShowMarket(Market.Self)',"GetVariableSystem.Clear('tsin_ops_open')"],230,'Market.IsValid'),'}','}']
+                ui += [f'vbox = {{ visible = "[GreaterThan_CFixedPoint({var(id+"_markets")}.GetValue, \'(CFixedPoint)0\')]" spacing = 4',
+                       f'text_single = {{ maximumsize = {{ 440 -1 }} multiline = yes fontsize = 13 text = "{k}" }}',
+                       f'widget = {{ size = {{ 234 40 }} datacontext = "[{var(id+"_market")}.GetMarket]"',
+                       button('TSIN_OPS_MARKET',['ShowMarket(Market.Self)',"GetVariableSystem.Clear('tsin_ops_open')"],234,'Market.IsValid'),'}','}']
         actions=r['actions']+["GetVariableSystem.Clear('tsin_ops_open')"]
-        ui += [button('TSIN_OPS_VIEW',actions,150),'}']
-    ui += ['} } }',f'text_single = {{ visible = "[{var("ready")}.IsSet]" fontsize = 11 text = "TSIN_OPS_DATE" }}',
-           f'text_single = {{ visible = "[Not({var("ready")}.IsSet)]" fontsize = 11 text = "TSIN_OPS_NOT_READY" }}',
-           'text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 11 text = "TSIN_OPS_HELP" }','}','}']
+        ui += [button('TSIN_OPS_VIEW',actions,168),'}']
+    ui += ['} } }',
+           f'text_single = {{ visible = "[{var("ready")}.IsSet]" fontsize = 12 text = "TSIN_OPS_DATE" }}',
+           f'text_single = {{ visible = "[Not({var("ready")}.IsSet)]" fontsize = 12 text = "TSIN_OPS_NOT_READY" }}',
+           'text_single = { maximumsize = { 470 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_HELP" }',
+           '} } } }']
     output={'in_game/common/scripted_effects/tsin_operational_effects.txt':'\n'.join(fx)+'\n',
             'in_game/common/scripted_guis/tsin_operational_guis.txt':'\n'.join(sgui)+'\n',
             'in_game/common/on_action/tsin_operational_on_actions.txt':hooks,

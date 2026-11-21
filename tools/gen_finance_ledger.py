@@ -162,20 +162,20 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
     field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID', 'BANK_AUDIT_PAID', 'FIRM_AUDIT_PAID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
     field_tabs['BANK'] += ['ENTITY_'+key for key,_,_,_ in legal_entities.VIEW]
     for name, subtab in EXTRA_TABS:
-        ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 8', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_TECH_HELP" }']
+        ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 12', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_LEDGER_TECH_HELP" }']
         if name == 'BANK':
             ui += ["text_single = { text = \"[GetPlayer.Custom('tsin_bank_audit_status')]\" }", "text_single = { text = \"[GetPlayer.Custom('tsin_firm_audit_status')]\" }"]
         for key, _, _, var in fields:
             if key not in field_tabs[name]: continue
             # Script values initialize only on monthly tick or explicit action, never on render.
             expression = f"GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('{var}')|2L" if key == 'LOCAL' else f"GetPlayer.MakeScope.GetVariable('{var}').GetValue|2L"
-            ui += [f'hbox = {{ spacing = 8 text_single = {{ size = {{ 330 26 }} text = "TSIN_LEDGER_{key}" }} text_single = {{ text = "[{expression}]" }} }}']
+            ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 340 30 }} fontsize = 14 text = "TSIN_LEDGER_{key}" }} text_single = {{ fontsize = 16 text = "[{expression}]" }} }}']
         for id, label, valid, effect, tab in actions:
             if tab != name: continue
-            ui += [f'''button_regular = {{ size = {{ 480 28 }}
+            ui += [f'''button_regular = {{ size = {{ 480 40 }}
 enabled = "[GetScriptedGui('tsin_ledger_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = {{ title = "{label}" on_action = "[GetScriptedGui('tsin_ledger_{id}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
-text_single = {{ parentanchor = center align = center text = "{label}" }} }}''']
+text_single = {{ size = {{ 472 36 }} parentanchor = center autoresize = no maximumsize = {{ 472 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{label}" }} }}''']
         if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }']
         if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE" }']
         note = 'REFORM_NOTE'   if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
