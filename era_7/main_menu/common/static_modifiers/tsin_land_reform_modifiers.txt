@@ -1,0 +1,25 @@
+﻿# Permanent land-reform packages after serfdom abolition (V3). Applied with months = -1.
+
+tsin_land_reform_redeemed = {
+	game_data = { category = country }
+	peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
+	non_rural_migration_attraction = 0.1
+	global_pop_promotion_speed_modifier = 0.05
+	global_nobles_estate_power = -0.05
+}
+
+tsin_land_reform_landless = {
+	game_data = { category = country }
+	peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+	non_rural_migration_attraction = 0.2
+	global_pop_promotion_speed_modifier = 0.1
+	global_nobles_estate_power = -0.05
+}
+
+tsin_land_reform_full = {
+	game_data = { category = country }
+	peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+	non_rural_migration_attraction = 0.25
+	global_pop_promotion_speed_modifier = 0.1
+	global_nobles_estate_power = -0.1
+}

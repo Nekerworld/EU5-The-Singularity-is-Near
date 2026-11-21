@@ -81,10 +81,10 @@ tsin_flavor.20 = {
 		set_variable = tsin_flavor_emancipation_done
 	}
 
-	# Free them with land, paid off in redemption dues
+	# Free them with land, paid off in redemption dues (shares V3 abolition effect)
 	option = {
 		name = tsin_flavor.20.a
-		tsin_flavor_end_serfdom_effect = yes
+		tsin_serfdom_abolish_redeemed_effect = yes
 		change_societal_value = {
 			type = serfdom_vs_free_subjects
 			value = societal_value_large_move_to_right
@@ -97,10 +97,10 @@ tsin_flavor.20 = {
 		}
 	}
 
-	# Free them without land
+	# Free them without land (shares V3 abolition effect)
 	option = {
 		name = tsin_flavor.20.b
-		tsin_flavor_end_serfdom_effect = yes
+		tsin_serfdom_abolish_landless_effect = yes
 		change_societal_value = {
 			type = serfdom_vs_free_subjects
 			value = societal_value_move_to_right

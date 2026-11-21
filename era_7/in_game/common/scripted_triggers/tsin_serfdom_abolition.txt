@@ -1,0 +1,28 @@
+﻿# Country scope. Industrial-era end of serfdom (V3). No country-tag conditions.
+
+tsin_serfdom_abolition_trigger = {
+	NOT = { has_variable = tsin_serfdom_abolished }
+	OR = {
+		# Law path: redemption or full emancipation held for 5+ years (counter set by yearly pulse).
+		AND = {
+			OR = {
+				has_policy = policy:tsin_redemption_payments_policy
+				has_policy = policy:tsin_full_emancipation_policy
+			}
+			has_variable = tsin_emancipation_policy_years
+			var:tsin_emancipation_policy_years >= 5
+		}
+		# Industry path: burgher power at least matches nobles, factories and towns exist, serfdom value already low.
+		AND = {
+			"estate_power(estate_type:burghers_estate)" >= "estate_power(estate_type:nobles_estate)"
+			any_owned_location = { tsin_location_industrial_jobs >= 1000 }
+			any_owned_location = { tsin_is_urban_location = yes }
+			societal_value:serfdom_vs_free_subjects <= 0
+		}
+		# External shock: modernization failure with a strongly free-subject value (Crimean-war style).
+		AND = {
+			has_variable = tsin_modernization_failed
+			societal_value:serfdom_vs_free_subjects <= -20
+		}
+	}
+}

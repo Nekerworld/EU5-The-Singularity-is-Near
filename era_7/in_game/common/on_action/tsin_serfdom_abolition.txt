@@ -1,0 +1,21 @@
+﻿yearly_country_pulse = { on_actions = { tsin_serfdom_yearly_pulse } }
+monthly_country_pulse = { on_actions = { tsin_serfdom_monthly_pulse } }
+
+tsin_serfdom_yearly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+	}
+	effect = {
+		tsin_serfdom_yearly_pulse_effect = yes
+	}
+}
+
+tsin_serfdom_monthly_pulse = {
+	trigger = {
+		current_age_or_later = { age = age_7_industrialization }
+		NOT = { has_variable = tsin_serfdom_abolished }
+	}
+	effect = {
+		tsin_serfdom_monthly_pulse_effect = yes
+	}
+}

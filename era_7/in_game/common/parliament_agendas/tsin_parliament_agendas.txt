@@ -123,6 +123,7 @@ pa_tsin_restore_landlord_rights = {
 	potential = {
 		current_age_or_later = { age = age_7_industrialization }
 		has_policy = policy:tsin_redemption_payments_policy
+		NOT = { has_variable = tsin_serfdom_abolished }
 	}
 
 	on_accept = {

@@ -1,0 +1,10 @@
+﻿# V3: clear the serfdom ↔ free-subjects axis once abolition is recorded.
+# TRY_INJECT only — do not TRY_REPLACE the whole value (compat with other mods).
+# 사용자 확인 필요: whether allow becoming false mid-game removes the value and its modifiers,
+# and whether vanilla readers error when the value is absent.
+
+TRY_INJECT:serfdom_vs_free_subjects = {
+	allow = {
+		NOT = { has_variable = tsin_serfdom_abolished }
+	}
+}

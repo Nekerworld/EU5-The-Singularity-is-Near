@@ -217,6 +217,8 @@ tsin_land_reform_law = {
 	tsin_serfdom_retained_policy = {
 		allow = {
 			tsin_policy_enactable_trigger = yes
+			# V3: block re-enserfment after abolition.
+			NOT = { has_variable = tsin_serfdom_abolished }
 		}
 		country_modifier = {
 			nobles_estate_target_satisfaction = small_permanent_target_satisfaction

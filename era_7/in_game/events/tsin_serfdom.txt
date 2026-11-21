@@ -1,0 +1,138 @@
+﻿namespace = tsin_serfdom
+
+# Royal emancipation decree (monarchy). Historical analogies appear only in localization.
+tsin_serfdom.1 = {
+	type = country_event
+	title = tsin_serfdom.1.title
+	desc = tsin_serfdom.1.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_serfdom_abolished }
+	}
+
+	option = {
+		name = tsin_serfdom.1.a
+		# Freedom with land, paid in redemption dues
+		tsin_serfdom_abolish_redeemed_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+		add_prestige = 10
+		ai_chance = { factor = 40 }
+	}
+	option = {
+		name = tsin_serfdom.1.b
+		# Freedom without land
+		tsin_serfdom_abolish_landless_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+		ai_chance = { factor = 35 }
+	}
+	option = {
+		name = tsin_serfdom.1.c
+		# Full emancipation without dues
+		tsin_serfdom_abolish_full_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+		add_prestige = 5
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Parliamentary emancipation (republic).
+tsin_serfdom.2 = {
+	type = country_event
+	title = tsin_serfdom.2.title
+	desc = tsin_serfdom.2.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_serfdom_abolished }
+	}
+
+	option = {
+		name = tsin_serfdom.2.a
+		tsin_serfdom_abolish_redeemed_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+		ai_chance = { factor = 45 }
+	}
+	option = {
+		name = tsin_serfdom.2.b
+		tsin_serfdom_abolish_full_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+		ai_chance = { factor = 40 }
+	}
+	option = {
+		name = tsin_serfdom.2.c
+		tsin_serfdom_abolish_landless_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# Crisis / industrial pressure emancipation (other governments).
+tsin_serfdom.3 = {
+	type = country_event
+	title = tsin_serfdom.3.title
+	desc = tsin_serfdom.3.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		NOT = { has_variable = tsin_serfdom_abolished }
+	}
+
+	option = {
+		name = tsin_serfdom.3.a
+		tsin_serfdom_abolish_full_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_large_move_to_right
+		}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = tsin_serfdom.3.b
+		tsin_serfdom_abolish_redeemed_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+		ai_chance = { factor = 35 }
+	}
+	option = {
+		name = tsin_serfdom.3.c
+		tsin_serfdom_abolish_landless_effect = yes
+		change_societal_value = {
+			type = serfdom_vs_free_subjects
+			value = societal_value_move_to_right
+		}
+		ai_chance = { factor = 15 }
+	}
+}

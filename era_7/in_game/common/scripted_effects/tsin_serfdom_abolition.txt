@@ -1,0 +1,105 @@
+﻿# Country scope. Shared emancipation finish (V3). Flavor.20 options call into these.
+
+tsin_serfdom_abolish_core_effect = {
+	tsin_flavor_end_serfdom_effect = yes
+	set_variable = tsin_serfdom_abolished
+	set_variable = tsin_flavor_emancipation_done
+	remove_variable = tsin_serfdom_event_pending
+	if = {
+		limit = { has_policy = policy:tsin_serfdom_retained_policy }
+		add_policy = policy:tsin_full_emancipation_policy
+	}
+}
+
+# Land with redemption dues.
+tsin_serfdom_abolish_redeemed_effect = {
+	tsin_serfdom_abolish_core_effect = yes
+	remove_country_modifier = tsin_land_reform_landless
+	remove_country_modifier = tsin_land_reform_full
+	add_country_modifier = { modifier = tsin_land_reform_redeemed months = -1 }
+	if = {
+		limit = { NOT = { has_policy = policy:tsin_redemption_payments_policy } }
+		add_policy = policy:tsin_redemption_payments_policy
+	}
+}
+
+# Freedom without land allotment.
+tsin_serfdom_abolish_landless_effect = {
+	tsin_serfdom_abolish_core_effect = yes
+	remove_country_modifier = tsin_land_reform_redeemed
+	remove_country_modifier = tsin_land_reform_full
+	add_country_modifier = { modifier = tsin_land_reform_landless months = -1 }
+	if = {
+		limit = { NOT = { has_policy = policy:tsin_full_emancipation_policy } }
+		add_policy = policy:tsin_full_emancipation_policy
+	}
+}
+
+# Full emancipation without dues (strongest permanent package).
+tsin_serfdom_abolish_full_effect = {
+	tsin_serfdom_abolish_core_effect = yes
+	remove_country_modifier = tsin_land_reform_redeemed
+	remove_country_modifier = tsin_land_reform_landless
+	add_country_modifier = { modifier = tsin_land_reform_full months = -1 }
+	if = {
+		limit = { NOT = { has_policy = policy:tsin_full_emancipation_policy } }
+		add_policy = policy:tsin_full_emancipation_policy
+	}
+}
+
+tsin_serfdom_yearly_pulse_effect = {
+	# Legacy: flavor emancipation already done → mark abolished once.
+	if = {
+		limit = {
+			has_variable = tsin_flavor_emancipation_done
+			NOT = { has_variable = tsin_serfdom_abolished }
+		}
+		set_variable = tsin_serfdom_abolished
+		if = {
+			limit = { has_policy = policy:tsin_redemption_payments_policy }
+			add_country_modifier = { modifier = tsin_land_reform_redeemed months = -1 }
+		}
+		else = {
+			add_country_modifier = { modifier = tsin_land_reform_full months = -1 }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_policy = policy:tsin_redemption_payments_policy
+				has_policy = policy:tsin_full_emancipation_policy
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = tsin_emancipation_policy_years } }
+			set_variable = { name = tsin_emancipation_policy_years value = 0 }
+		}
+		change_variable = { name = tsin_emancipation_policy_years add = 1 }
+	}
+	else = {
+		if = { limit = { has_variable = tsin_emancipation_policy_years } remove_variable = tsin_emancipation_policy_years }
+	}
+}
+
+tsin_serfdom_monthly_pulse_effect = {
+	if = {
+		limit = {
+			tsin_serfdom_abolition_trigger = yes
+			NOT = { has_variable = tsin_serfdom_event_pending }
+			NOT = { has_variable = tsin_serfdom_abolished }
+		}
+		set_variable = tsin_serfdom_event_pending
+		# Route by government form; localization mentions historical analogies only in the text.
+		if = {
+			limit = { government_type = government_type:monarchy }
+			trigger_event_non_silently = tsin_serfdom.1
+		}
+		else_if = {
+			limit = { government_type = government_type:republic }
+			trigger_event_non_silently = tsin_serfdom.2
+		}
+		else = {
+			trigger_event_non_silently = tsin_serfdom.3
+		}
+	}
+}
