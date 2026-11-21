@@ -10,7 +10,7 @@ ROOT = pdx.MOD_ROOT
 
 def hb(time, **checks):
     """One heartbeat as the game would write it (checks default to the healthy values)."""
-    rows = [f'[{time}][jomini_effect_impl.cpp:479]: common/scripted_effects/tsin_mod_log_effects.txt:5: TSIN_LOG;k=hb;schema=1']
+    rows = [f'[{time}][jomini_effect_impl.cpp:479]: common/scripted_effects/tsin_mod_log_effects.txt:5: TSIN_LOG;k=hb;schema={spec.SCHEMA}']
     for cid, _ko, _t in spec.CHECKS:
         v = checks.get(cid, 0)
         rows.append(f'[{time}][jomini_effect_impl.cpp:479]: common/scripted_effects/tsin_mod_log_effects.txt:9: TSIN_LOG;k=chk;id={cid};v={int(v)}')
@@ -69,11 +69,20 @@ class GeneratedLogTests(unittest.TestCase):
             if line.startswith((' tsin_log_chk_', ' tsin_log_hook_')):
                 self.assertNotIn('[', line)
 
-    def test_monthly_on_action_is_wired_for_players_only(self):
-        t = pdx.read_text(ROOT / 'in_game/common/on_action/tsin_on_actions.txt')
-        self.assertIn('\t\ttsin_log_monthly_pulse\n', t)
-        m = re.search(r'tsin_log_monthly_pulse = \{\s*trigger = \{\s*is_ai = no\s*\}', t)
-        self.assertTrue(m)
+    def test_session_and_monthly_on_actions_are_wired(self):
+        t = pdx.read_text(ROOT / 'in_game/common/on_action/tsin_mod_log.txt')
+        self.assertIn('monthly_country_pulse = { on_actions = { tsin_log_monthly_pulse } }', t)
+        self.assertIn('on_game_started_after_lobby = { on_actions = { tsin_log_session_pulse } }', t)
+        self.assertIn('tsin_log_session_effect = yes', t)
+        self.assertIn('is_ai = no', t)
+        # Old hand-wired pulse must not remain (would double-fire monthly).
+        main = pdx.read_text(ROOT / 'in_game/common/on_action/tsin_on_actions.txt')
+        self.assertNotIn('tsin_log_monthly_pulse', main)
+
+    def test_session_hook_is_declared_and_written(self):
+        self.assertIn(('session_start', '세션 시작 점검(로비 종료·세이브 로드 직후)'), spec.HOOKS)
+        self.assertIn('debug_log = tsin_log_hook_session_start', spec.effect_text())
+        self.assertEqual(spec.SCHEMA, 2)
 
     def test_metric_variables_are_guarded_before_reading(self):
         text = spec.effect_text()
@@ -89,11 +98,13 @@ class ReaderTests(unittest.TestCase):
         self.assertIn('**FAIL** 모드 로그가 한 줄도 없음', r)
 
     def test_healthy_run_passes_without_fail(self):
-        lines = hb('03:01:00', age7=1, capital_tech=1, exchange_open=1, stock_market=1)
+        lines = [hook('03:00:50', 'session_start')]
+        lines += hb('03:01:00', age7=1, capital_tech=1, exchange_open=1, stock_market=1)
         lines += [hook('03:01:30', 'survey_domestic')]
         lines += hb('03:02:00', age7=1, capital_tech=1, exchange_open=1, stock_market=1, report_domestic=1)
         r = report(lines)
         self.assertNotIn('**FAIL**', r)
+        self.assertIn('**PASS** 세션 시작 점검(로비 종료·세이브 로드 직후) (1회)', r)
         self.assertIn('**PASS** 국내 통계 조사 실행 (1회)', r)
         self.assertIn('거래소 표식', r)
 

@@ -40,7 +40,6 @@ monthly_country_pulse = {
 	on_actions = {
 		tsin_gdp_history_initialization_pulse
 		tsin_bill_monthly_pulse
-		tsin_log_monthly_pulse
 	}
 }
 
@@ -122,16 +121,7 @@ tsin_observer_yearly_pulse = {
 	}
 }
 
-# root = country. Always-on mod log (docs/mod_log.md): one self-check block a month per player country.
-# Written by tools/gen_mod_log.py; read with tools/read_log.py.
-tsin_log_monthly_pulse = {
-	trigger = {
-		is_ai = no
-	}
-	effect = {
-		tsin_log_heartbeat_effect = yes
-	}
-}
+# Always-on mod log pulses live in in_game/common/on_action/tsin_mod_log.txt (tools/gen_mod_log.py).
 
 # root = country. Environment popups (docs/environment_events.md). Records the peak of high exposure, then at most one popup a year.
 tsin_envx_yearly_pulse = {

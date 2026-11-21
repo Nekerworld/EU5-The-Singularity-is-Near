@@ -122,9 +122,16 @@ def verdicts(beats, hooks, loc_errors):
 
     if not beats:
         add("FAIL", "모드 로그가 한 줄도 없음",
-            "플레이어 월간 펄스(tsin_log_monthly_pulse)가 한 번도 돌지 않았다. 게임에서 최소 한 달을 진행했는지, 모드가 활성인지, "
-            "플레이어가 AI가 아닌 나라인지(is_ai = no) 확인한다. 옵서버 모드라면 이 로그는 비어 있는 것이 정상일 수 있다.")
+            "세션 시작 펄스(on_game_started_after_lobby → tsin_log_session_pulse)와 월간 펄스가 한 번도 돌지 않았다. "
+            "게임을 켜 로비가 끝난 뒤인지, 모드가 활성인지, 플레이어가 AI가 아닌 나라인지(is_ai = no) 확인한다. "
+            "옵서버 모드라면 이 로그는 비어 있는 것이 정상일 수 있다.")
         return res
+    n_session = sum(1 for h in hooks if h[1] == "session_start")
+    if n_session:
+        add("PASS", f"{HOOK_KO['session_start']} ({n_session}회)", "로비 종료 직후 점검이 기록됐다.")
+    else:
+        add("정보", "세션 시작 훅 없음",
+            "월간 펄스만 남았다. 이어하기에서 on_game_started_after_lobby가 안 돌았을 수 있다(사용자 확인 필요).")
     # 1) implications
     for a, b, why in spec.IMPLIES:
         bad = [i for i, bt in enumerate(beats) if bt["chk"].get(a) and bt["chk"].get(b) is False]
