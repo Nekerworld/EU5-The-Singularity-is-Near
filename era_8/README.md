@@ -5,3 +5,5 @@
 `python -B tools/sync_eras.py`로 기존 게임 실행 경로에 배치한다. 등록된 원본을 편집하고 실행용 미러만 직접 고치지 않는다. 새 파일은 `python -B tools/sync_eras.py --register`로 등록한다. 농업 이관의 원본/기존 효과는 `data/age8_advance_migration.json`과 회귀 검사로 확인한다. 군사·물류 생성기는 `tools/gen_age8_transport_military.py`이며 `--check`로 재현성을 검사한다.
 
 기존 질소 고정·암모니아 합성의 ID와 효과를 유지했다. 집약 농업·전노급 전함·내연기관 등 기존 7시대 콘텐츠는 삭제하지 않는다. 전용 3개 제도·정치·총력전은 미구현이고 항공은 별도 공중 전투 엔진이 아닌 지상군 지원이다. 인게임 검증은 전체 구현 이후 수행한다.
+
+8시대 이후 군수 비축·야전 훈련·연료·공군 하이브리드(H1~H4)는 `docs/military_hybrid_h_track.md`, 엔진 실험 질문은 `docs/h0_engine_probes.md`. 모두 사용자 확인 필요.

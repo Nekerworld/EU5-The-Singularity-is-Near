@@ -132,3 +132,5 @@
 - 포격(`artillery_barrage`)과 요새 포격 효율(`bombard_efficiency`)은 원본 그대로다.
 - 7시대 포병(전투력 9.5)과 `a_tsin_*` 포병 유닛은 바꾸지 않았다. 1~6시대 포병이 낮아져 7시대와의 격차가 커진 점은 `docs/p_track_probes.md`에 적었다.
 - 파일: `in_game/common/unit_formation_preference/tsin_artillery_reserve.txt`, `in_game/common/unit_types/zzz_tsin_artillery_reserve_templates.txt`. 검사: `tools/tests/test_artillery_reserve.py`.
+
+8시대 이후 군수 비축·야전 훈련·연료·공군 하이브리드(H1~H4)는 `docs/military_hybrid_h_track.md`, 엔진 실험 질문은 `docs/h0_engine_probes.md`. 모두 사용자 확인 필요.

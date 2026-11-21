@@ -49,3 +49,7 @@
 - 같은 객체를 `TRY_REPLACE`하는 다른 모드가 있으면 나중에 로드된 쪽이 이긴다.
   - 확인된 예: 3827499481(`revolution_disaster`, `revolutionary_chaos`), 3604169106(전쟁명분 일부)
   - 호환 스캔: `python tools/validate.py --compat` (설치된 창작마당 전체), `python tools/compat_scan.py` (실제 플레이셋, 결과와 방침은 `docs/compat.md`)
+
+- H축(8시대+ 군수·연료·공군)은 바닐라 파일을 덮어쓰지 않는다. 새 ID만 추가한다.
+- 이름이 `zzz_tsin_h*`/`tsin_*`인 on_action 파일이 `monthly_country_pulse`, `on_battle_won`, `on_battle_lost`의 `on_actions` 목록에 항목을 더한다. 병합되는지는 **사용자 확인 필요**다(월간 훅은 이미 쓰는 방식, 전투 훅은 H0 실험 P3에서 확인). 병합되지 않으면 H 효과만 안 돌고 다른 기능은 영향이 없다.
+- 상세는 `docs/h0_engine_probes.md`, `docs/military_hybrid_h_track.md`.
