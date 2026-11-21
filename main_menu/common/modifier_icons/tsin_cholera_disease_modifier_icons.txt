@@ -1,0 +1,19 @@
+national_tsin_cholera_disease_resistance_modifier = {
+	positive = "gfx/interface/icons/modifier_types/influenza_resistance_modifier.dds"
+}
+
+local_tsin_cholera_disease_resistance_modifier = {
+	positive = "gfx/interface/icons/modifier_types/influenza_resistance_modifier.dds"
+}
+
+national_tsin_cholera_disease_growth_modifier = {
+	positive = "gfx/interface/icons/modifier_types/influenza_growth_modifier.dds"
+}
+
+local_tsin_cholera_disease_growth_modifier = {
+	positive = "gfx/interface/icons/modifier_types/influenza_growth_modifier.dds"
+}
+
+local_tsin_cholera_disease_impact_modifier = {
+	positive = "gfx/interface/icons/modifier_types/local_influenza_impact_modifier.dds"
+}

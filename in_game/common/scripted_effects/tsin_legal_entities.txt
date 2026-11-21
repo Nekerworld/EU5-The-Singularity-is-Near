@@ -50,9 +50,9 @@ tsin_le_refresh_totals_effect = {
   scope:tsin_le_coordinator = {
    save_temporary_scope_value_as = { name = tsin_le_lender value = "global_variable_map(tsin_le_loan_lender|scope:tsin_le_loan_id)" }
    save_temporary_scope_value_as = { name = tsin_le_borrower value = "global_variable_map(tsin_le_loan_borrower|scope:tsin_le_loan_id)" }
-   add_to_global_variable_map = { name = tsin_le_claims key = scope:tsin_le_lender value = { value = "global_variable_map(tsin_le_claims|scope:tsin_le_lender)" add = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" } }
-   add_to_global_variable_map = { name = tsin_le_debt key = scope:tsin_le_borrower value = { value = "global_variable_map(tsin_le_debt|scope:tsin_le_borrower)" add = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" } }
-   add_to_global_variable_map = { name = tsin_le_missed key = scope:tsin_le_borrower value = { value = "global_variable_map(tsin_le_missed|scope:tsin_le_borrower)" min = "global_variable_map(tsin_le_loan_missed|scope:tsin_le_loan_id)" } }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_1 value = { value = "global_variable_map(tsin_le_claims|scope:tsin_le_lender)" add = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" } } add_to_global_variable_map = { name = tsin_le_claims key = scope:tsin_le_lender value = scope:tsin_le_map_tmp_1 }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_2 value = { value = "global_variable_map(tsin_le_debt|scope:tsin_le_borrower)" add = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" } } add_to_global_variable_map = { name = tsin_le_debt key = scope:tsin_le_borrower value = scope:tsin_le_map_tmp_2 }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_3 value = { value = "global_variable_map(tsin_le_missed|scope:tsin_le_borrower)" min = "global_variable_map(tsin_le_loan_missed|scope:tsin_le_loan_id)" } } add_to_global_variable_map = { name = tsin_le_missed key = scope:tsin_le_borrower value = scope:tsin_le_map_tmp_3 }
   }
  }
 }
@@ -64,10 +64,10 @@ tsin_le_lend_effect = {
  add_to_global_variable_list = { name = tsin_active_entity_loans target = scope:tsin_le_loan_id }
  add_to_global_variable_map = { name = tsin_le_loan_lender key = scope:tsin_le_loan_id value = var:tsin_le_primary_bank } add_to_global_variable_map = { name = tsin_le_loan_borrower key = scope:tsin_le_loan_id value = var:tsin_le_primary_company }
  add_to_global_variable_map = { name = tsin_le_loan_principal key = scope:tsin_le_loan_id value = tsin_ledger_lot } add_to_global_variable_map = { name = tsin_le_loan_rate key = scope:tsin_le_loan_id value = var:tsin_rate }
- add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = { value = tsin_contract_calendar_month add = 36 } } add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = { value = tsin_contract_calendar_month add = 1 } }
+ save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_4 value = { value = tsin_contract_calendar_month add = 36 } } add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_4 } save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_5 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_5 }
  add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = 0 } add_to_global_variable_map = { name = tsin_le_loan_status key = scope:tsin_le_loan_id value = 1 }
- add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_bank value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_bank)" subtract = tsin_ledger_lot } }
- add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_company value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_company)" add = tsin_ledger_lot } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_6 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_bank)" subtract = tsin_ledger_lot } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_bank value = scope:tsin_le_map_tmp_6 }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_7 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_company)" add = tsin_ledger_lot } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_company value = scope:tsin_le_map_tmp_7 }
  tsin_le_refresh_totals_effect = yes tsin_le_inspect_selected_effect = yes
  }
 }
@@ -81,9 +81,9 @@ tsin_le_pay_principal_effect = {
  save_temporary_scope_value_as = { name = tsin_le_lender value = "global_variable_map(tsin_le_loan_lender|scope:tsin_le_loan_id)" }
  save_temporary_scope_value_as = { name = tsin_le_borrower value = "global_variable_map(tsin_le_loan_borrower|scope:tsin_le_loan_id)" }
  save_temporary_scope_value_as = { name = tsin_le_payment value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" max = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" min = 0 } }
- add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_borrower value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" subtract = scope:tsin_le_payment } }
- add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } }
- add_to_global_variable_map = { name = tsin_le_loan_principal key = scope:tsin_le_loan_id value = { value = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" subtract = scope:tsin_le_payment min = 0 } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_8 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" subtract = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_borrower value = scope:tsin_le_map_tmp_8 }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_9 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = scope:tsin_le_map_tmp_9 }
+ save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_10 value = { value = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" subtract = scope:tsin_le_payment min = 0 } } add_to_global_variable_map = { name = tsin_le_loan_principal key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_10 }
  tsin_le_close_loan_if_paid_effect = yes
 }
 tsin_le_month_effect = {
@@ -99,17 +99,17 @@ tsin_le_month_effect = {
     "global_variable_map(tsin_le_owner|scope:tsin_le_lender)" ?= { num_locations > 0 } "global_variable_map(tsin_le_owner|scope:tsin_le_borrower)" ?= { num_locations > 0 } }
     save_temporary_scope_value_as = { name = tsin_le_due value = { value = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" multiply = "global_variable_map(tsin_le_loan_rate|scope:tsin_le_loan_id)" divide = 1200 } }
     save_temporary_scope_value_as = { name = tsin_le_payment value = { value = scope:tsin_le_due max = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" min = 0 } }
-    add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_borrower value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" subtract = scope:tsin_le_payment } }
-    add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } }
+    save_temporary_scope_value_as = { name = tsin_le_map_tmp_11 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" subtract = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_borrower value = scope:tsin_le_map_tmp_11 }
+    save_temporary_scope_value_as = { name = tsin_le_map_tmp_12 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = scope:tsin_le_map_tmp_12 }
     save_temporary_scope_value_as = { name = tsin_le_unpaid value = 0 }
     if = { limit = { scope:tsin_le_payment < scope:tsin_le_due } save_temporary_scope_value_as = { name = tsin_le_unpaid value = 1 } }
     if = { limit = { tsin_contract_calendar_month >= "global_variable_map(tsin_le_loan_maturity|scope:tsin_le_loan_id)" }
      if = { limit = { "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" > "global_variable_map(tsin_le_cash|scope:tsin_le_borrower)" } save_temporary_scope_value_as = { name = tsin_le_unpaid value = 1 } }
      tsin_le_pay_principal_effect = yes
     }
-    if = { limit = { scope:tsin_le_unpaid = 1 } add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = { value = "global_variable_map(tsin_le_loan_missed|scope:tsin_le_loan_id)" add = 1 } } }
+    if = { limit = { scope:tsin_le_unpaid = 1 } save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_13 value = { value = "global_variable_map(tsin_le_loan_missed|scope:tsin_le_loan_id)" add = 1 } } add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_13 } }
     else = { add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = 0 } }
-    add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = { value = tsin_contract_calendar_month add = 1 } }
+    save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_14 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_14 }
    }
   }
  }
@@ -139,10 +139,10 @@ tsin_le_equity_effect = {
  else = { save_temporary_scope_value_as = { name = tsin_le_new_units value = { value = tsin_ledger_lot multiply = "global_variable_map(tsin_le_units|scope:tsin_le_id)" divide = scope:tsin_le_net } } }
  if = { limit = { always = $PUBLIC$ }
   add_gold = { value = tsin_ledger_lot multiply = -1 }
-  add_to_global_variable_map = { name = tsin_le_public_units key = scope:tsin_le_id value = { value = "global_variable_map(tsin_le_public_units|scope:tsin_le_id)" add = scope:tsin_le_new_units } }
+  save_temporary_scope_value_as = { name = tsin_le_map_tmp_15 value = { value = "global_variable_map(tsin_le_public_units|scope:tsin_le_id)" add = scope:tsin_le_new_units } } add_to_global_variable_map = { name = tsin_le_public_units key = scope:tsin_le_id value = scope:tsin_le_map_tmp_15 }
  } else = { add_gold_to_estate = { estate_type = estate_type:burghers_estate value = { value = tsin_ledger_lot multiply = -1 } } }
- add_to_global_variable_map = { name = tsin_le_units key = scope:tsin_le_id value = { value = "global_variable_map(tsin_le_units|scope:tsin_le_id)" add = scope:tsin_le_new_units } }
- add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_id value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_id)" add = tsin_ledger_lot } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_16 value = { value = "global_variable_map(tsin_le_units|scope:tsin_le_id)" add = scope:tsin_le_new_units } } add_to_global_variable_map = { name = tsin_le_units key = scope:tsin_le_id value = scope:tsin_le_map_tmp_16 }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_17 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_id)" add = tsin_ledger_lot } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_id value = scope:tsin_le_map_tmp_17 }
  tsin_le_inspect_selected_effect = yes
  }
 
@@ -151,8 +151,8 @@ tsin_le_equity_effect = {
 tsin_le_paid_contract_effect = {
  if = { limit = { tsin_le_selected_owned = yes "global_variable_map(tsin_le_kind|var:tsin_le_selected)" = 2 gold >= tsin_ledger_lot NOT = { has_policy = policy:tsin_laissez_faire_policy } }
   add_gold = { value = tsin_ledger_lot multiply = -1 }
-  add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" add = tsin_ledger_lot } }
-  add_to_global_variable_map = { name = tsin_le_revenue key = var:tsin_le_selected value = { value = "global_variable_map(tsin_le_revenue|var:tsin_le_selected)" add = tsin_ledger_lot } }
+  save_temporary_scope_value_as = { name = tsin_le_map_tmp_18 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" add = tsin_ledger_lot } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = scope:tsin_le_map_tmp_18 }
+  save_temporary_scope_value_as = { name = tsin_le_map_tmp_19 value = { value = "global_variable_map(tsin_le_revenue|var:tsin_le_selected)" add = tsin_ledger_lot } } add_to_global_variable_map = { name = tsin_le_revenue key = var:tsin_le_selected value = scope:tsin_le_map_tmp_19 }
   tsin_le_inspect_selected_effect = yes
  }
 }
@@ -160,8 +160,8 @@ tsin_le_audit_effect = {
  if = { limit = { tsin_le_selected_owned = yes tsin_le_selected_audit_allowed = yes }
  save_temporary_scope_value_as = { name = tsin_le_id value = var:tsin_le_selected }
  save_temporary_scope_value_as = { name = tsin_le_fee value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_id)" add = "global_variable_map(tsin_le_claims|scope:tsin_le_id)" multiply = 0.01 min = 0.01 } }
- add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_id value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_id)" subtract = scope:tsin_le_fee } } add_to_global_variable_map = { name = tsin_le_audit_paid key = scope:tsin_le_id value = scope:tsin_le_fee }
- add_to_global_variable_map = { name = tsin_le_audit_until key = scope:tsin_le_id value = { value = tsin_contract_calendar_month add = 12 } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_20 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_id)" subtract = scope:tsin_le_fee } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_id value = scope:tsin_le_map_tmp_20 } add_to_global_variable_map = { name = tsin_le_audit_paid key = scope:tsin_le_id value = scope:tsin_le_fee }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_21 value = { value = tsin_contract_calendar_month add = 12 } } add_to_global_variable_map = { name = tsin_le_audit_until key = scope:tsin_le_id value = scope:tsin_le_map_tmp_21 }
  tsin_le_inspect_selected_effect = yes
  }
 }
@@ -177,9 +177,9 @@ tsin_le_liquidate_selected_effect = {
   scope:tsin_le_coordinator = { if = { limit = { "global_variable_map(tsin_le_loan_borrower|scope:tsin_le_loan_id)" = var:tsin_le_selected }
    save_temporary_scope_value_as = { name = tsin_le_lender value = "global_variable_map(tsin_le_loan_lender|scope:tsin_le_loan_id)" }
    save_temporary_scope_value_as = { name = tsin_le_payment value = { value = scope:tsin_le_estate_cash multiply = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" divide = scope:tsin_le_estate_debt max = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" min = 0 } }
-   add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" subtract = scope:tsin_le_payment } }
-   add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } }
-   add_to_global_variable_map = { name = tsin_le_losses key = scope:tsin_le_lender value = { value = "global_variable_map(tsin_le_losses|scope:tsin_le_lender)" add = { value = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" subtract = scope:tsin_le_payment min = 0 } } }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_22 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" subtract = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = scope:tsin_le_map_tmp_22 }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_23 value = { value = "global_variable_map(tsin_le_cash|scope:tsin_le_lender)" add = scope:tsin_le_payment } } add_to_global_variable_map = { name = tsin_le_cash key = scope:tsin_le_lender value = scope:tsin_le_map_tmp_23 }
+   save_temporary_scope_value_as = { name = tsin_le_map_tmp_24 value = { value = "global_variable_map(tsin_le_losses|scope:tsin_le_lender)" add = { value = "global_variable_map(tsin_le_loan_principal|scope:tsin_le_loan_id)" subtract = scope:tsin_le_payment min = 0 } } } add_to_global_variable_map = { name = tsin_le_losses key = scope:tsin_le_lender value = scope:tsin_le_map_tmp_24 }
    add_to_global_variable_map = { name = tsin_le_loan_principal key = scope:tsin_le_loan_id value = 0 } add_to_global_variable_map = { name = tsin_le_loan_status key = scope:tsin_le_loan_id value = 3 }
    remove_list_global_variable = { name = tsin_active_entity_loans target = scope:tsin_le_loan_id }
   } }
@@ -267,9 +267,9 @@ tsin_le_merge_effect = {
  add_to_global_variable_map = { name = tsin_le_merger_source_units key = var:tsin_le_selected value = "global_variable_map(tsin_le_units|var:tsin_le_selected)" } add_to_global_variable_map = { name = tsin_le_merger_survivor_units key = var:tsin_le_selected value = "global_variable_map(tsin_le_units|var:tsin_le_primary_company)" }
  add_to_global_variable_map = { name = tsin_le_merged_into key = var:tsin_le_selected value = var:tsin_le_primary_company } add_to_global_variable_map = { name = tsin_le_merger_phase key = var:tsin_le_selected value = 1 }
  add_gold = { value = tsin_ledger_lot multiply = -0.05 max = -0.01 }
- add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_company value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_company)" add = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_31 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_company)" add = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_company value = scope:tsin_le_map_tmp_31 }
  add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = 0 }
- add_to_global_variable_map = { name = tsin_le_units key = var:tsin_le_primary_company value = { value = "global_variable_map(tsin_le_units|var:tsin_le_primary_company)" add = "global_variable_map(tsin_le_units|var:tsin_le_selected)" } }
+ save_temporary_scope_value_as = { name = tsin_le_map_tmp_32 value = { value = "global_variable_map(tsin_le_units|var:tsin_le_primary_company)" add = "global_variable_map(tsin_le_units|var:tsin_le_selected)" } } add_to_global_variable_map = { name = tsin_le_units key = var:tsin_le_primary_company value = scope:tsin_le_map_tmp_32 }
  add_to_global_variable_map = { name = tsin_le_public_units key = var:tsin_le_primary_company value = "global_variable_map(tsin_le_units|var:tsin_le_primary_company)" }
  add_to_global_variable_map = { name = tsin_le_units key = var:tsin_le_selected value = 0 } add_to_global_variable_map = { name = tsin_le_public_units key = var:tsin_le_selected value = 0 }
  add_to_global_variable_map = { name = tsin_le_merger_phase key = var:tsin_le_selected value = 2 }
@@ -307,8 +307,8 @@ tsin_le_restructure_loans_effect = {
  every_in_list = { list = tsin_le_restructure_list
   save_temporary_scope_value_as = { name = tsin_le_loan_id value = this }
   scope:tsin_le_coordinator = { if = { limit = { "global_variable_map(tsin_le_loan_borrower|scope:tsin_le_loan_id)" = var:tsin_le_selected "global_variable_map(tsin_le_loan_status|scope:tsin_le_loan_id)" = 1 }
-   add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = { value = "global_variable_map(tsin_le_loan_maturity|scope:tsin_le_loan_id)" add = 24 } }
-   add_to_global_variable_map = { name = tsin_le_loan_rate key = scope:tsin_le_loan_id value = { value = "global_variable_map(tsin_le_loan_rate|scope:tsin_le_loan_id)" multiply = 0.5 min = 0 } }
+   save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_25 value = { value = "global_variable_map(tsin_le_loan_maturity|scope:tsin_le_loan_id)" add = 24 } } add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_25 }
+   save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_26 value = { value = "global_variable_map(tsin_le_loan_rate|scope:tsin_le_loan_id)" multiply = 0.5 min = 0 } } add_to_global_variable_map = { name = tsin_le_loan_rate key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_26 }
    add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = 0 }
   } }
  }
@@ -325,10 +325,10 @@ tsin_le_emergency_loan_effect = {
   add_to_global_variable_list = { name = tsin_active_entity_loans target = scope:tsin_le_loan_id }
   add_to_global_variable_map = { name = tsin_le_loan_lender key = scope:tsin_le_loan_id value = var:tsin_le_primary_bank } add_to_global_variable_map = { name = tsin_le_loan_borrower key = scope:tsin_le_loan_id value = var:tsin_le_selected }
   add_to_global_variable_map = { name = tsin_le_loan_principal key = scope:tsin_le_loan_id value = scope:tsin_le_emergency_amount } add_to_global_variable_map = { name = tsin_le_loan_rate key = scope:tsin_le_loan_id value = var:tsin_rate }
-  add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = { value = tsin_contract_calendar_month add = 12 } } add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = { value = tsin_contract_calendar_month add = 1 } }
+  save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_27 value = { value = tsin_contract_calendar_month add = 12 } } add_to_global_variable_map = { name = tsin_le_loan_maturity key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_27 } save_temporary_scope_value_as = { name = tsin_le_loan_map_tmp_28 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_le_loan_next_coupon key = scope:tsin_le_loan_id value = scope:tsin_le_loan_map_tmp_28 }
   add_to_global_variable_map = { name = tsin_le_loan_missed key = scope:tsin_le_loan_id value = 0 } add_to_global_variable_map = { name = tsin_le_loan_status key = scope:tsin_le_loan_id value = 1 }
-  add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_bank value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_bank)" subtract = scope:tsin_le_emergency_amount } }
-  add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" add = scope:tsin_le_emergency_amount } }
+  save_temporary_scope_value_as = { name = tsin_le_map_tmp_29 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_primary_bank)" subtract = scope:tsin_le_emergency_amount } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_primary_bank value = scope:tsin_le_map_tmp_29 }
+  save_temporary_scope_value_as = { name = tsin_le_map_tmp_30 value = { value = "global_variable_map(tsin_le_cash|var:tsin_le_selected)" add = scope:tsin_le_emergency_amount } } add_to_global_variable_map = { name = tsin_le_cash key = var:tsin_le_selected value = scope:tsin_le_map_tmp_30 }
   tsin_le_refresh_totals_effect = yes tsin_le_inspect_selected_effect = yes
  }
  }

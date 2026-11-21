@@ -56,9 +56,17 @@ class CountryCompareTests(unittest.TestCase):
   self.assertIn('var:tsin_cmp_page multiply = 10',proj)
   self.assertIn('var:tsin_cmp_r1_id > global_var:tsin_cmp_next_id',proj)
   self.assertNotIn('every_in_global_list',proj)
+ def test_empty_rows_skip_map_lookup(self):
+  proj=build()['in_game/common/scripted_effects/tsin_country_compare.txt']
+  self.assertIn('if = { limit = { var:tsin_cmp_r2_id > 0 }',proj)
+  self.assertIn('if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 0 }',proj)
+  # Empty slots zero fields instead of reading none/any map values.
+  self.assertIn('else = {\n  set_variable = { name = tsin_cmp_r2_serial value = 0 }',proj)
  def test_window_and_buttons_are_registered(self):
   b=build();gui=b['in_game/gui/tsin_country_compare.gui'];sg=b['in_game/common/scripted_guis/tsin_country_compare.txt']
   self.assertIn('tsin_country_compare_window',gui)
+  self.assertIn('scrollbar_vertical = { using = Scrollbar_Vertical }',gui)
+  self.assertNotIn('scrollbarpolicy_vertical',gui)
   for key in ('tsin_cmp_prev','tsin_cmp_next','tsin_cmp_clear','tsin_cmp_add_10','tsin_cmp_detail_10'):
    self.assertIn(key+' = {',sg)
   d=registry_module();self.assertIn('country_compare',[s['id'] for s in d['shortcuts']])

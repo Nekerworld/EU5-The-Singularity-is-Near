@@ -25,6 +25,7 @@ def build():
     loc('MONEY', 'Currency', '통화정책')
     loc('BANK', 'Banks · firms', '은행·기업금융')
     loc('FUNDS', 'Insurance · pensions', '보험·연금')
+    loc('ACTIONS', 'Actions', '조작')
     loc('TECH_HELP', 'New banking requires Banking; securities require Stock Exchange; monetary policy requires Central Bank; insurance and pensions require their respective technologies. Existing account records, repayments and wind-down remain available.', '신규 은행업은 은행업, 증권 발행은 증권거래소, 통화정책은 중앙은행, 보험·연금은 해당 기술을 요구합니다. 기존 장부 조회·상환·영업 정리는 계속 가능합니다.')
     loc('NOTE', 'All accounts settle in reference ducats. Currency conversion is a display overlay; native trade and loans retain their original units. These are funded aggregate accounts, not population bank accounts. Reserve cash is escrow, not newly mined bullion. Firm income below is paid contracts, not estimated GDP or stock valuations.', '모든 장부는 기준 두캇으로 결제됩니다. 통화 환산은 표시 체계이며 기존 교역·대출의 단위는 유지됩니다. 기금은 실제 자금을 출연한 통합 장부입니다. 준비금은 별도 보관한 현금이며 광물 금 생산량이 아닙니다. 기업 수입은 실제 지급된 계약금으로 GDP·주가 추정치에서 현금을 생성하지 않습니다.')
     fields = [
@@ -158,33 +159,180 @@ tsin_ledger_claim = { value = var:tsin_insurance multiply = 0.25 max = tsin_ledg
 '''
     values += extended.VALUES + corporate.VALUES
     guis = []
+    from finance_ui import icon_metric, paper_card, help_icon
+    ledger_icon = 'gfx/interface/icons/flat_icons/balance/budget.dds'
     ui = ['types TSINLedger {']
     field_tabs = {'MONEY': ['FX', 'LOCAL', 'RATE', 'RESERVE'], 'BANK': ['LIQUID', 'LOANS', 'FIRM', 'INTEREST', 'ARREARS', 'DEPOSITS', 'WITHDRAWALS', 'LIQUIDITY', 'FOREIGN', 'FOREIGN_LOCAL', 'FOREIGN_OWED', 'LOSSES', 'SHARES', 'PUBLIC_SHARES', 'BONDS', 'BOND_ARREARS', 'BOND_LOSSES', 'UNKNOWN_MATURITY', 'UNKNOWN_ID', 'BANK_AUDIT_PAID', 'FIRM_AUDIT_PAID'], 'FUNDS': ['INSURANCE', 'PENSION', 'BENEFITS', 'PENSION_GAP']}
     field_tabs['BANK'] += ['ENTITY_'+key for key,_,_,_ in legal_entities.VIEW]
-    for name, subtab in EXTRA_TABS:
-        ui += [f'type {subtab}_panel = scrollarea {{ using = layoutpolicy_expanding scrollbarpolicy_horizontal = always_off scrollbar_vertical = {{ using = Scrollbar_Vertical }} scrollwidget = {{ vbox = {{ using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt spacing = 12', f'text_single = {{ fontsize = 22 text = "TSIN_LEDGER_{name}" }}', 'text_single = { maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_LEDGER_TECH_HELP" }']
-        if name == 'BANK':
-            ui += ["text_single = { text = \"[GetPlayer.Custom('tsin_bank_audit_status')]\" }", "text_single = { text = \"[GetPlayer.Custom('tsin_firm_audit_status')]\" }"]
+    loc('CURRENCY_PICK', 'Currency name', '통화 이름')
+    loc('CURRENCY_RENAME', 'Rename currency', '통화 이름 변경')
+    loc('CURRENCY_RESET', 'Reset to default', '기본 이름으로')
+    loc('CURRENCY_HELP', 'Type a display name like location rename. Does not change settlement units or exchange rates.', '지점 이름 변경처럼 직접 입력합니다. 결제 단위·환율은 바꾸지 않습니다.')
+    # Live name: session VariableSystem, then saved label, then country default custom loc.
+    currency_shown = (
+        "Select_CString(GetVariableSystem.Exists(Concatenate('tsin_cur_', GetPlayer.GetTag)), "
+        "GetVariableSystem.Get(Concatenate('tsin_cur_', GetPlayer.GetTag)), "
+        "Select_CString(GetPlayer.MakeScope.GetVariable('tsin_currency_label').IsSet, "
+        "GetPlayer.MakeScope.GetVariable('tsin_currency_label').GetFlagName, "
+        "GetPlayer.Custom('tsin_currency_name')))"
+    )
+    currency_save = (
+        "ExecuteConsoleCommand(Concatenate('effect c:', Concatenate(GetPlayer.GetTag, "
+        "Concatenate(' = { set_variable = { name = tsin_currency_label value = \"', "
+        "Concatenate(PdxGuiEditboxGetText(PdxGuiWidget.Self), '\" } } }'))))"
+    )
+
+    def metric_rows(keys):
+        rows = []
         for key, _, _, var in fields:
-            if key not in field_tabs[name]: continue
-            # Script values initialize only on monthly tick or explicit action, never on render.
-            expression = f"GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('{var}')|2L" if key == 'LOCAL' else f"GetPlayer.MakeScope.GetVariable('{var}').GetValue|2L"
-            ui += [f'hbox = {{ spacing = 12 text_single = {{ size = {{ 340 30 }} fontsize = 14 text = "TSIN_LEDGER_{key}" }} text_single = {{ fontsize = 16 text = "[{expression}]" }} }}']
+            if key not in keys:
+                continue
+            expression = (
+                f"[GuiScope.SetRoot(GetPlayer.MakeScope).ScriptValue('{var}')|2L]"
+                if key == 'LOCAL'
+                else f"[GetPlayer.MakeScope.GetVariable('{var}').GetValue|2L]"
+            )
+            rows.append(icon_metric(f'TSIN_LEDGER_{key}', expression, ledger_icon, f'TSIN_LEDGER_{key}'))
+        return rows
+
+    for name, subtab in EXTRA_TABS:
+        note = 'REFORM_NOTE' if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
+        keys = field_tabs[name]
+        action_buttons = []
         for id, label, valid, effect, tab in actions:
-            if tab != name: continue
-            ui += [f'''button_regular = {{ size = {{ 480 40 }}
+            if tab != name:
+                continue
+            action_buttons.append(
+                f'''button_regular = {{ size = {{ 248 40 }}
 enabled = "[GetScriptedGui('tsin_ledger_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 action_tooltip = {{ title = "{label}" on_action = "[GetScriptedGui('tsin_ledger_{id}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }}
-text_single = {{ size = {{ 472 36 }} parentanchor = center autoresize = no maximumsize = {{ 472 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{label}" }} }}''']
-        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_NOTE" }']
-        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE" }']
-        note = 'REFORM_NOTE'   if name == 'MONEY' else 'FUND_NOTE' if name == 'FUNDS' else 'BANK_NOTE'
-        if name == 'BANK': ui += ['text_single = { maximumsize = { 520 -1 } multiline = yes text = "TSIN_LEDGER_AUDIT_NOTE" }']
-        ui += [f'text_single = {{ maximumsize = {{ 520 -1 }} multiline = yes text = "TSIN_LEDGER_{note}" }}', '} } }']
+text_single = {{ size = {{ 240 36 }} parentanchor = center autoresize = no maximumsize = {{ 240 36 }} fontsize = 13 fontsize_min = 10 align = center|nobaseline elide = right text = "{label}" }} }}'''
+            )
+        header = [
+            'hbox = {',
+            'layoutpolicy_horizontal = expanding',
+            'spacing = 8',
+            'text_single = {',
+            'autoresize = yes',
+            'fontsize = 20',
+            f'text = "TSIN_LEDGER_{name}"',
+            'using = Font_Type_Headers',
+            'default_format = "#yellow_titles"',
+            '}',
+            'expand = {}',
+            help_icon('TSIN_LEDGER_TECH_HELP'),
+            help_icon(f'TSIN_LEDGER_{note}'),
+            '}',
+        ]
+        if name == 'MONEY':
+            header += [
+                'hbox = {',
+                'layoutpolicy_horizontal = expanding',
+                'spacing = 8',
+                'text_single = { autoresize = yes fontsize = 15 text = "TSIN_LEDGER_CURRENCY_PICK" using = Font_Type_Headers }',
+                'hbox = {',
+                'visible = "[Not(LateralView.Vars.Exists(\'tsin_edit_currency\'))]"',
+                'spacing = 6',
+                f'text_single = {{ autoresize = yes fontsize = 18 raw_text = "[{currency_shown}]" }}',
+                '''button = {
+size = { 28 28 }
+tooltip = "TSIN_LEDGER_CURRENCY_RENAME"
+tagtooltip_enabled = yes
+action_tooltip = { title = "TSIN_LEDGER_CURRENCY_RENAME" on_action = "[LateralView.Vars.Toggle('tsin_edit_currency')]" }
+icon = { size = { 22 22 } parentanchor = center texture = "gfx/interface/buttons/flats/rename_new.dds" texture_density = 2 }
+}''',
+                '''button_regular = { size = { 110 32 }
+enabled = "[GetScriptedGui('tsin_ledger_currency_reset').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+action_tooltip = { title = "TSIN_LEDGER_CURRENCY_RESET"
+on_action = "[GetVariableSystem.Clear(Concatenate('tsin_cur_', GetPlayer.GetTag))]"
+on_action = "[GetScriptedGui('tsin_ledger_currency_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" }
+text_single = { size = { 104 28 } parentanchor = center autoresize = no maximumsize = { 104 28 } fontsize = 11 align = center|nobaseline text = "TSIN_LEDGER_CURRENCY_RESET" } }''',
+                help_icon('TSIN_LEDGER_CURRENCY_HELP'),
+                '}',
+                'hbox = {',
+                'visible = "[LateralView.Vars.Exists(\'tsin_edit_currency\')]"',
+                'layoutpolicy_horizontal = expanding',
+                'spacing = 6',
+                f'''editbox = {{
+name = "tsin_currency_name_edit"
+using = layoutpolicy_expanding
+size = {{ -1 34 }}
+fontsize = 16
+align = left|nobaseline
+maxcharacters = 32
+multiline = no
+focus_on_visible = yes
+focuspolicy = all
+alwaystransparent = no
+raw_text = "[{currency_shown}]"
+oneditingfinished_with_changes = "[GetVariableSystem.Set(Concatenate('tsin_cur_', GetPlayer.GetTag), PdxGuiEditboxGetText(PdxGuiWidget.Self))]"
+oneditingfinished_with_changes = "[{currency_save}]"
+oneditingfinished = "[LateralView.Vars.Clear('tsin_edit_currency')]"
+onfocusout = "[LateralView.Vars.Clear('tsin_edit_currency')]"
+}}''',
+                '}',
+                '}',
+            ]
+        if name == 'BANK':
+            mid = (len(keys) + 1) // 2
+            left_keys, right_keys = keys[:mid], keys[mid:]
+            body = header + [
+                'hbox = {',
+                'layoutpolicy_horizontal = expanding',
+                'spacing = 8',
+                paper_card('TSIN_LEDGER_BANK_COL_CASH', metric_rows(left_keys) + [
+                    "text_single = { multiline = yes maximumsize = { -1 -1 } fontsize = 12 text = \"[GetPlayer.Custom('tsin_bank_audit_status')]\" tooltip = \"TSIN_LEDGER_AUDIT_NOTE\" tagtooltip_enabled = yes }",
+                ], tooltip=f'TSIN_LEDGER_{note}'),
+                paper_card('TSIN_LEDGER_BANK_COL_MARKETS', metric_rows(right_keys) + [
+                    "text_single = { multiline = yes maximumsize = { -1 -1 } fontsize = 12 text = \"[GetPlayer.Custom('tsin_firm_audit_status')]\" tooltip = \"TSIN_LEDGER_ENTITY_NOTE\" tagtooltip_enabled = yes }",
+                ], tooltip='TSIN_LEDGER_ENTITY_RESTRUCTURE_NOTE'),
+                '}',
+            ]
+            if action_buttons:
+                body.append(paper_card('TSIN_LEDGER_ACTIONS', [
+                    'flowcontainer = {',
+                    'layoutpolicy_horizontal = expanding',
+                    'spacing = 6',
+                    *action_buttons,
+                    '}',
+                ], tooltip=f'TSIN_LEDGER_{note}'))
+        else:
+            body = header + [paper_card(f'TSIN_LEDGER_{name}', metric_rows(keys), tooltip=f'TSIN_LEDGER_{note}')]
+            if action_buttons:
+                body.append(paper_card('TSIN_LEDGER_ACTIONS', [
+                    'flowcontainer = {',
+                    'layoutpolicy_horizontal = expanding',
+                    'spacing = 6',
+                    *action_buttons,
+                    '}',
+                ], tooltip=f'TSIN_LEDGER_{note}'))
+        ui += [
+            f'type {subtab}_panel = scrollarea {{',
+            'using = layoutpolicy_expanding',
+            'scrollbarpolicy_horizontal = always_off',
+            'autoresizescrollarea = no',
+            'scrollbar_vertical = { using = Scrollbar_Vertical }',
+            'scrollwidget = {',
+            'vbox = {',
+            'using = layoutpolicy_expanding',
+            'using = bg_secondary_inner_alt',
+            'using = bg_secondary_inner_image_alt',
+            'blockoverride "image" { texture = "gfx/interface/economy/bg_credit.dds" }',
+            'margin = { 10 12 }',
+            'spacing = 10',
+            *body,
+            '}',
+            '}',
+            '}',
+        ]
     ui += ['}']
     for id, label, valid, effect, _ in actions:
         # The same guard is checked at execution, not only the GUI enabled state.
         guis.append(f'tsin_ledger_{id} = {{ scope = country is_shown = {{ always = yes }} is_valid = {{ {valid} }} effect = {{ {init} if = {{ limit = {{ {valid} }} {effect} }} }} }}')
+    guis.append(
+        "tsin_ledger_currency_reset = { scope = country is_shown = { always = yes } is_valid = { is_ai = no } "
+        "effect = { if = { limit = { has_variable = tsin_currency_label } remove_variable = tsin_currency_label } } }"
+    )
     result = {
         'in_game/common/scripted_effects/tsin_finance_ledger_effects.txt': '\n'.join(effects),
         'in_game/common/script_values/tsin_finance_ledger_values.txt': values,
@@ -200,13 +348,30 @@ tsin_finance_ledger_monthly = { trigger = { num_locations > 0 OR = { is_ai = no 
     result['main_menu/common/static_modifiers/tsin_finance_extended_modifiers.txt'] = extended.MODIFIERS
     loc('UNIT', 'Accounting currency: [GetPlayer.Custom(\'tsin_currency_name\')]', '표시 화폐: [GetPlayer.Custom(\'tsin_currency_name\')]')
     loc('CURRENCY_LOCAL', 'National accounting unit', '국가 환산 단위')
+    loc('BANK_COL_CASH', 'Cash · credit', '현금·신용')
+    loc('BANK_COL_MARKETS', 'Securities · entities', '증권·법인')
     currency = ['tsin_currency_name = { type = country']
-    for tags, code, en, ko in [(['ENG','SCO','GBR'],'GBP','Pound sterling','파운드 스털링'),(['FRA'],'FRF','Franc','프랑'),(['PRU','GER'],'DEM','Mark / thaler accounting unit','마르크·탈러 환산 단위'),(['RUS','MOS'],'RUB','Ruble','루블'),(['JAP'],'JPY','Yen / ryo accounting unit','엔·료 환산 단위'),(['CHI','TQG','MCH'],'TAEL','Silver tael','은량'),(['MUG'],'INR','Rupee','루피'),(['USA'],'USD','Dollar','달러'),(['MEX','XAR','XCZ','XCO','XPE','XBO','XUY'],'PESO','Peso','페소'),(['XBR'],'BRL','Real','헤알')]:
-        loc('CURRENCY_'+code,en,ko)
-        currency.append('text = { trigger = { OR = { '+' '.join('tag = '+t for t in tags)+' } } localization_key = TSIN_LEDGER_CURRENCY_'+code+' }')
+    for tags, code, en, ko in [
+        (['ENG', 'SCO', 'GBR'], 'GBP', 'Pound sterling', '파운드 스털링'),
+        (['FRA'], 'FRF', 'Franc', '프랑'),
+        (['PRU', 'GER'], 'DEM', 'Mark / thaler accounting unit', '마르크·탈러 환산 단위'),
+        (['RUS', 'MOS'], 'RUB', 'Ruble', '루블'),
+        (['JAP'], 'JPY', 'Yen / ryo accounting unit', '엔·료 환산 단위'),
+        (['CHI', 'TQG', 'MCH'], 'TAEL', 'Silver tael', '은량'),
+        (['MUG'], 'INR', 'Rupee', '루피'),
+        (['USA'], 'USD', 'Dollar', '달러'),
+        (['MEX', 'XAR', 'XCZ', 'XCO', 'XPE', 'XBO', 'XUY'], 'PESO', 'Peso', '페소'),
+        (['XBR'], 'BRL', 'Real', '헤알'),
+        (['NED', 'HOL'], 'NLG', 'Guilder', '겔더'),
+        (['KOR'], 'KRW', 'Won', '원'),
+    ]:
+        loc('CURRENCY_'+code, en, ko)
+        tag_or = ' '.join('tag = ' + t for t in tags)
+        currency.append(
+            f'text = {{ trigger = {{ OR = {{ {tag_or} }} }} localization_key = TSIN_LEDGER_CURRENCY_{code} }}'
+        )
     currency.append('text = { fallback = yes localization_key = TSIN_LEDGER_CURRENCY_LOCAL } }')
     result['in_game/common/customizable_localization/tsin_currency_names.txt'] = '\n'.join(currency)
-    result['in_game/gui/tsin_finance_ledger.gui'] = result['in_game/gui/tsin_finance_ledger.gui'].replace('text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }','text_single = { fontsize = 22 text = "TSIN_LEDGER_MONEY" }\ntext_single = { text = "TSIN_LEDGER_UNIT" }')
     loc('CONTRACTION_NAME','Bank credit contraction','은행 신용 위축')
     loc('CONTRACTION_DESC','Unpaid depositor withdrawals persisted for four quarterly reviews. Restore liquidity and settle claims to recover.','예금 인출 미지급이 4회 분기 점검 동안 지속되었습니다. 유동성을 확보하고 인출 채권을 결제하면 회복됩니다.')
     loc('SUSPENSION_NAME','Suspended gold convertibility','금 태환 정지')

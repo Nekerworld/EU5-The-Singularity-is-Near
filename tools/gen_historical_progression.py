@@ -68,6 +68,12 @@ tsin_history_review_effect = {
         }
     }
     set_variable = { name = tsin_history_review_cooldown years = 1 }
+    # debug_log cannot read ROOT; copy onto globals first (same pattern as TSIN_LOG snapshots).
+    set_global_variable = { name = tsin_hist_review_country value = this }
+    set_global_variable = { name = tsin_hist_review_countries value = var:tsin_history_review_countries }
+    set_global_variable = { name = tsin_hist_review_hex value = var:tsin_history_review_hex }
+    set_global_variable = { name = tsin_hist_review_border value = var:tsin_history_review_border }
+    set_global_variable = { name = tsin_hist_review_russia_blocked value = var:tsin_history_review_russia_blocked }
     debug_log = tsin_history_review_log
 }
 '''
@@ -102,7 +108,7 @@ tsin_history_review.1 = {
         'tsin_history_review.1.title': 'Historical progression review',
         'tsin_history_review.1.desc': "AI realms: [ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_countries').GetValue|0]\nWith saved HEX role markers: [ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_hex').GetValue|0]\nRealms with an isolated rural shortlist sample: [ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_border').GetValue|0]\nRussia blocked by human ownership or control of a protected city (1=yes): [ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_russia_blocked').GetValue|0]\n\nA saved HEX marker does not prove the mod is currently enabled. Shortlist samples exclude capitals, ports, market centres and selected mining resources but still need strategic review. No land, cash, armies or HEX state changed.",
         'tsin_history_review.1.a': 'File the report.',
-        'tsin_history_review_log': "TSIN_HISTORY_REVIEW [ROOT.GetCountry.GetName] AI=[ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_countries').GetValue|0] HEX_MARKERS=[ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_hex').GetValue|0] BORDER_REALMS=[ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_border').GetValue|0] RUSSIA_HUMAN_BLOCK=[ROOT.GetCountry.MakeScope.GetVariable('tsin_history_review_russia_blocked').GetValue|0]",
+        'tsin_history_review_log': "TSIN_HISTORY_REVIEW [GetGlobalVariable('tsin_hist_review_country').GetCountry.GetNameWithNoTooltip] AI=[GetGlobalVariable('tsin_hist_review_countries').GetValue|0] HEX_MARKERS=[GetGlobalVariable('tsin_hist_review_hex').GetValue|0] BORDER_REALMS=[GetGlobalVariable('tsin_hist_review_border').GetValue|0] RUSSIA_HUMAN_BLOCK=[GetGlobalVariable('tsin_hist_review_russia_blocked').GetValue|0]",
     }
     ko = {
         'tsin_history_review_decision.title': '역사 진행·국경 점검',

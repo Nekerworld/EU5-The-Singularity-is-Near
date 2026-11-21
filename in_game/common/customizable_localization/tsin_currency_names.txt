@@ -9,4 +9,6 @@ text = { trigger = { OR = { tag = MUG } } localization_key = TSIN_LEDGER_CURRENC
 text = { trigger = { OR = { tag = USA } } localization_key = TSIN_LEDGER_CURRENCY_USD }
 text = { trigger = { OR = { tag = MEX tag = XAR tag = XCZ tag = XCO tag = XPE tag = XBO tag = XUY } } localization_key = TSIN_LEDGER_CURRENCY_PESO }
 text = { trigger = { OR = { tag = XBR } } localization_key = TSIN_LEDGER_CURRENCY_BRL }
+text = { trigger = { OR = { tag = NED tag = HOL } } localization_key = TSIN_LEDGER_CURRENCY_NLG }
+text = { trigger = { OR = { tag = KOR } } localization_key = TSIN_LEDGER_CURRENCY_KRW }
 text = { fallback = yes localization_key = TSIN_LEDGER_CURRENCY_LOCAL } }

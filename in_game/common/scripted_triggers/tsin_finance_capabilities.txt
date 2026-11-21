@@ -1,5 +1,12 @@
 ﻿tsin_can_use_banking = { OR = { has_advance = banking_advance has_advance = tsin_stock_exchange_advance } }
-tsin_can_use_capital_markets = { OR = { has_advance = stock_exchange_advance has_advance = tsin_stock_exchange_advance } }
+# Public stock market: vanilla/age-7 stock-exchange advances, or embracing industrial capitalism.
+tsin_can_use_capital_markets = {
+	OR = {
+		has_advance = stock_exchange_advance
+		has_advance = tsin_stock_exchange_advance
+		has_embraced_institution = institution:tsin_industrial_capitalism
+	}
+}
 # Exchange operation: founding and the monthly init set tsin_has_stock_market only while this holds. Existing listings are never cancelled by it.
 tsin_exchange_can_open_trigger = { tsin_can_use_capital_markets = yes }
 tsin_can_use_monetary_policy = { OR = { has_advance = central_bank_advance has_advance = tsin_central_banking } }

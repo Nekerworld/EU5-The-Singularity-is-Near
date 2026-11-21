@@ -1,0 +1,4 @@
+﻿tsin_tr_broken_treaty = {
+	value = -50
+	yearly_decay = 5
+}

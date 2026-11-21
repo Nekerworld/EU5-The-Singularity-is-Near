@@ -111,4 +111,8 @@ class LegalEntityTests(unittest.TestCase):
   self.assertEqual(f.globals['tsin_le_next_id'],count);self.assertEqual(f.maps['tsin_le_cash'],cash)
   recipient=f.country();f.annex('prepare',recipient,c);f.annex('finish',recipient,c)
   self.assertIs(f.maps['tsin_le_owner'][bank],c);self.assertEqual(f.maps['tsin_le_cash'],cash)
+ def test_complex_map_values_are_staged_before_write(self):
+  text=le.build()['in_game/common/scripted_effects/tsin_legal_entities.txt']
+  self.assertNotRegex(text,r'add_to_global_variable_map\s*=\s*\{[^{}]*value\s*=\s*\{')
+  self.assertIn('save_temporary_scope_value_as = { name = tsin_le_map_tmp_',text)
 if __name__=='__main__':unittest.main()

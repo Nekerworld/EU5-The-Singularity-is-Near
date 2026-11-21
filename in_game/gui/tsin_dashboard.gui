@@ -4,7 +4,7 @@ name = "tsin_dashboard_window"
 layer = topbar
 parentanchor = center
 widgetanchor = center
-size = { 1000 720 }
+size = { 1360 820 }
 movable = yes
 allow_outside = yes
 datacontext = "[GetPlayer]"
@@ -64,50 +64,10 @@ text_single = { using = Font_Size_Medium text = "TSIN_UI_DATE" }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet]" using = Font_Size_Medium text = "[GetPlayer.MakeScope.GetVariable('tsin_statistics_year').GetValue|0]" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_statistics_year').IsSet )]" using = Font_Size_Medium text = "TSIN_UI_NO_DATE" }
 }
-text_single = { maximumsize = { 940 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_GUIDE" }
 vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
-scrollarea = { size = { 960 500 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 10 8 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'overview')]" spacing = 12
-hbox = { spacing = 14
-tsin_ui_card_gdp = {}
-tsin_ui_card_gdp_per_capita = {}
-tsin_ui_card_growth = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_population = {}
-tsin_ui_card_secondary = {}
-tsin_ui_card_higher = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_industry = {}
-tsin_ui_card_stock = {}
-tsin_ui_card_report_year = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_report_month = {}
-tsin_ui_card_report_population = {}
-tsin_ui_card_report_locations = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_report_urban = {}
-tsin_ui_card_report_buildings = {}
-tsin_ui_card_report_companies = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_report_gdp = {}
-tsin_ui_card_report_world_year = {}
-tsin_ui_card_report_world_month = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_report_world_countries = {}
-tsin_ui_card_report_world_population = {}
-tsin_ui_card_report_world_companies = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_report_world_known_gdp = {}
-tsin_ui_card_report_world_gdp = {}
-}
-tsin_ui_history_gdp = {}
+scrollarea = { size = { 1320 620 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 10 margin = { 10 8 }
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'overview')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 widget = { size = { 234 40 } datacontext = "[GetGenericAction('tsin_survey_domestic')]"
 button_regular = {
     size = { 234 40 }
@@ -139,59 +99,56 @@ button_regular = {
     }
     text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_COUNTRY_COMPARE" }
 }
+button_regular = {
+    size = { 234 40 }
+    action_tooltip = {
+        title = "TSIN_UI_LINK_TREATIES"
+        on_action = "[GetVariableSystem.Set('tsin_ui_treaties_open', 'yes')]"
+        on_action = "[GetScriptedGui('tsin_tr_init_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+        on_action = "[GetVariableSystem.Clear('tsin_ui_dashboard_open')]"
+    }
+    text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_TREATIES" }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'economy')]" spacing = 12
-text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_ECONOMY_HELP" }
-hbox = { spacing = 14
+}
+hbox = { spacing = 12
 tsin_ui_card_gdp = {}
 tsin_ui_card_gdp_per_capita = {}
 tsin_ui_card_growth = {}
+tsin_ui_card_population = {}
 }
-hbox = { spacing = 14
+hbox = { spacing = 12
+tsin_ui_card_secondary = {}
+tsin_ui_card_higher = {}
 tsin_ui_card_industry = {}
-tsin_ui_card_factory_jobs = {}
-tsin_ui_card_tax_base = {}
+tsin_ui_card_stock = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_storage_report_amount = {}
-tsin_ui_card_storage_report_capacity = {}
-tsin_ui_card_storage_report_kind = {}
+hbox = { spacing = 12
+tsin_ui_card_report_year = {}
+tsin_ui_card_report_month = {}
+tsin_ui_card_report_population = {}
+tsin_ui_card_report_locations = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_storage_report_state = {}
-tsin_ui_card_storage_report_year = {}
-tsin_ui_card_storage_report_month = {}
+hbox = { spacing = 12
+tsin_ui_card_report_urban = {}
+tsin_ui_card_report_buildings = {}
+tsin_ui_card_report_companies = {}
+tsin_ui_card_report_gdp = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_facility_report_industry_age = {}
-tsin_ui_card_facility_report_industry_wear = {}
-tsin_ui_card_facility_report_industry_gap = {}
+hbox = { spacing = 12
+tsin_ui_card_report_world_year = {}
+tsin_ui_card_report_world_month = {}
+tsin_ui_card_report_world_countries = {}
+tsin_ui_card_report_world_population = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_facility_report_industry_size = {}
-tsin_ui_card_facility_report_industry_year = {}
-tsin_ui_card_facility_report_transport_age = {}
+hbox = { spacing = 12
+tsin_ui_card_report_world_companies = {}
+tsin_ui_card_report_world_known_gdp = {}
+tsin_ui_card_report_world_gdp = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_facility_report_transport_wear = {}
-tsin_ui_card_facility_report_transport_gap = {}
-tsin_ui_card_facility_report_transport_size = {}
+tsin_ui_history_gdp = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_facility_report_transport_year = {}
-tsin_ui_card_facility_report_public_age = {}
-tsin_ui_card_facility_report_public_wear = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_facility_report_public_gap = {}
-tsin_ui_card_facility_report_public_size = {}
-tsin_ui_card_facility_report_public_year = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_facility_budget = {}
-tsin_ui_card_facility_paid = {}
-tsin_ui_card_facility_paid_year = {}
-}
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'economy')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 button_regular = {
     size = { 234 40 }
     action_tooltip = {
@@ -464,63 +421,55 @@ button_regular = {
 }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 12
-text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_SOCIETY_HELP" }
-hbox = { spacing = 14
-tsin_ui_card_population = {}
-tsin_ui_card_secondary = {}
-tsin_ui_card_higher = {}
+hbox = { spacing = 12
+tsin_ui_card_gdp = {}
+tsin_ui_card_gdp_per_capita = {}
+tsin_ui_card_growth = {}
+tsin_ui_card_industry = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_secondary_target = {}
-tsin_ui_card_higher_target = {}
-tsin_ui_card_schools = {}
+hbox = { spacing = 12
+tsin_ui_card_factory_jobs = {}
+tsin_ui_card_tax_base = {}
+tsin_ui_card_storage_report_amount = {}
+tsin_ui_card_storage_report_capacity = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_universities = {}
-tsin_ui_card_labor = {}
-tsin_ui_card_labor_conditions = {}
+hbox = { spacing = 12
+tsin_ui_card_storage_report_kind = {}
+tsin_ui_card_storage_report_state = {}
+tsin_ui_card_storage_report_year = {}
+tsin_ui_card_storage_report_month = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_liberalism = {}
-tsin_ui_card_nationalism = {}
-tsin_ui_card_labor_unionism = {}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_industry_age = {}
+tsin_ui_card_facility_report_industry_wear = {}
+tsin_ui_card_facility_report_industry_gap = {}
+tsin_ui_card_facility_report_industry_size = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_socialism = {}
-tsin_ui_card_abolitionism = {}
-tsin_ui_card_womens_suffrage = {}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_industry_year = {}
+tsin_ui_card_facility_report_transport_age = {}
+tsin_ui_card_facility_report_transport_wear = {}
+tsin_ui_card_facility_report_transport_gap = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_pollution_sample_population = {}
-tsin_ui_card_pollution_exposure = {}
-tsin_ui_card_pollution_high_share = {}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_transport_size = {}
+tsin_ui_card_facility_report_transport_year = {}
+tsin_ui_card_facility_report_public_age = {}
+tsin_ui_card_facility_report_public_wear = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_pollution_year = {}
-tsin_ui_card_pollution_water_exposure = {}
-tsin_ui_card_pollution_water_high_share = {}
+hbox = { spacing = 12
+tsin_ui_card_facility_report_public_gap = {}
+tsin_ui_card_facility_report_public_size = {}
+tsin_ui_card_facility_report_public_year = {}
+tsin_ui_card_facility_budget = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_communications_telegraph = {}
-tsin_ui_card_communications_telephone = {}
-tsin_ui_card_social_capital = {}
+hbox = { spacing = 12
+tsin_ui_card_facility_paid = {}
+tsin_ui_card_facility_paid_year = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_social_workers = {}
-tsin_ui_card_social_intellectual = {}
-tsin_ui_card_social_clerical = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_social_technical = {}
-tsin_ui_card_social_survey_year = {}
-tsin_ui_card_social_education_year = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_metro_sites = {}
-tsin_ui_card_metro_broken = {}
-tsin_ui_card_metro_hubs = {}
-}
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'society')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_education')]"
 button_regular = {
     size = { 234 40 }
@@ -663,27 +612,60 @@ button_regular = {
 }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'finance')]" spacing = 12
-text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_FINANCE_HELP" }
-hbox = { spacing = 14
-tsin_ui_card_stock = {}
-tsin_ui_card_companies = {}
-tsin_ui_card_company_limit = {}
+hbox = { spacing = 12
+tsin_ui_card_population = {}
+tsin_ui_card_secondary = {}
+tsin_ui_card_higher = {}
+tsin_ui_card_secondary_target = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_company_value = {}
-tsin_ui_card_stock_steel = {}
-tsin_ui_card_stock_machinery = {}
+hbox = { spacing = 12
+tsin_ui_card_higher_target = {}
+tsin_ui_card_schools = {}
+tsin_ui_card_universities = {}
+tsin_ui_card_labor = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_stock_textile = {}
-tsin_ui_card_stock_chemical = {}
-tsin_ui_card_stock_railway = {}
+hbox = { spacing = 12
+tsin_ui_card_labor_conditions = {}
+tsin_ui_card_liberalism = {}
+tsin_ui_card_nationalism = {}
+tsin_ui_card_labor_unionism = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_stock_farm_machinery = {}
-tsin_ui_card_world_company_cash = {}
+hbox = { spacing = 12
+tsin_ui_card_socialism = {}
+tsin_ui_card_abolitionism = {}
+tsin_ui_card_womens_suffrage = {}
+tsin_ui_card_pollution_sample_population = {}
 }
+hbox = { spacing = 12
+tsin_ui_card_pollution_exposure = {}
+tsin_ui_card_pollution_high_share = {}
+tsin_ui_card_pollution_year = {}
+tsin_ui_card_pollution_water_exposure = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_pollution_water_high_share = {}
+tsin_ui_card_communications_telegraph = {}
+tsin_ui_card_communications_telephone = {}
+tsin_ui_card_social_capital = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_social_workers = {}
+tsin_ui_card_social_intellectual = {}
+tsin_ui_card_social_clerical = {}
+tsin_ui_card_social_technical = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_social_survey_year = {}
+tsin_ui_card_social_education_year = {}
+tsin_ui_card_metro_sites = {}
+tsin_ui_card_metro_broken = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_metro_hubs = {}
+}
+}
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'finance')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 widget = { size = { 234 40 } datacontext = "[GetMapMode('tsin_corporations')]"
 button_regular = {
     size = { 234 40 }
@@ -705,94 +687,26 @@ button_regular = {
     text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_WORLD_COMPANIES" }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'crises')]" spacing = 12
-hbox = { spacing = 14
-tsin_ui_card_cholera_progress = {}
-tsin_ui_card_cholera_outbreaks = {}
-tsin_ui_card_bill_successes = {}
+hbox = { spacing = 12
+tsin_ui_card_stock = {}
+tsin_ui_card_companies = {}
+tsin_ui_card_company_limit = {}
+tsin_ui_card_company_value = {}
 }
-hbox = { spacing = 14
-tsin_ui_card_bill_stalls = {}
+hbox = { spacing = 12
+tsin_ui_card_stock_steel = {}
+tsin_ui_card_stock_machinery = {}
+tsin_ui_card_stock_textile = {}
+tsin_ui_card_stock_chemical = {}
 }
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_CHOLERA" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_CHOLERA" }
+hbox = { spacing = 12
+tsin_ui_card_stock_railway = {}
+tsin_ui_card_stock_farm_machinery = {}
+tsin_ui_card_world_company_cash = {}
 }
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_GREAT_HUNGER" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_GREAT_HUNGER" }
 }
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_MILLENARIAN_REBELLION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_MILLENARIAN_REBELLION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_SECESSION_CRISIS" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_DISASTER_SECESSION_CRISIS" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_DEFENSIVE_MODERNIZATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_DEFENSIVE_MODERNIZATION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GRAIN_INVASION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_GRAIN_INVASION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GREAT_MIGRATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_GREAT_MIGRATION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_LONG_DEPRESSION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_LONG_DEPRESSION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_NATIONAL_UNIFICATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_NATIONAL_UNIFICATION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SCRAMBLE_FOR_COLONIES" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_SCRAMBLE_FOR_COLONIES" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SPRINGTIME_OF_NATIONS" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_SPRINGTIME_OF_NATIONS" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_WORLD_EXHIBITION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_SITUATION_WORLD_EXHIBITION" }
-}
-vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_BILL" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_BILL" }
-}
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_no_crises').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_NO_CRISIS" }
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'crises')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 button_regular = {
     size = { 234 40 }
     action_tooltip = {
@@ -812,42 +726,107 @@ button_regular = {
     text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_BILL_SIDEBAR" }
 }
 }
-vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'research')]" spacing = 12
-text_single = { maximumsize = { 920 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_RESEARCH_HELP" }
-hbox = { spacing = 14
-tsin_ui_card_standard_measure = {}
-tsin_ui_card_standard_gauge = {}
-tsin_ui_card_standard_parts = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_standard_electric = {}
-tsin_ui_card_communications_telegraph = {}
-tsin_ui_card_communications_telephone = {}
-}
-hbox = { spacing = 14
-tsin_ui_card_social_education_year = {}
+hbox = { spacing = 12
+tsin_ui_card_cholera_progress = {}
+tsin_ui_card_cholera_outbreaks = {}
+tsin_ui_card_bill_successes = {}
+tsin_ui_card_bill_stalls = {}
 }
 vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
+visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_DISASTER_CHOLERA"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_CHOLERA" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_cholera').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
 }
 vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_MASS_SOCIETY" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_MASS_SOCIETY" }
+visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_DISASTER_GREAT_HUNGER"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_GREAT_HUNGER" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_great_hunger').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
 }
 vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
-
-text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_ELECTRIFICATION" }
-text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
-text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
-text_single = { maximumsize = { 900 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_ELECTRIFICATION" }
+visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_DISASTER_MILLENARIAN_REBELLION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_MILLENARIAN_REBELLION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_millenarian_rebellion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
 }
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_DISASTER_SECESSION_CRISIS"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_DISASTER_SECESSION_CRISIS" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_disaster_secession_crisis').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_DEFENSIVE_MODERNIZATION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_DEFENSIVE_MODERNIZATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_defensive_modernization').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_GRAIN_INVASION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GRAIN_INVASION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_grain_invasion').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_GREAT_MIGRATION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_GREAT_MIGRATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_great_migration').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_LONG_DEPRESSION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_LONG_DEPRESSION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_long_depression').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_NATIONAL_UNIFICATION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_NATIONAL_UNIFICATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_national_unification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_SCRAMBLE_FOR_COLONIES"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SCRAMBLE_FOR_COLONIES" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_scramble_for_colonies').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_SPRINGTIME_OF_NATIONS"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_SPRINGTIME_OF_NATIONS" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_springtime_of_nations').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_SITUATION_WORLD_EXHIBITION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_SITUATION_WORLD_EXHIBITION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_situation_world_exhibition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+tooltip = "TSIN_UI_STATUS_HELP_BILL"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_BILL" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_bill').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_ACTIVE" }
+}
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_no_crises').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_NO_CRISIS" }
+}
+vbox = { visible = "[GetVariableSystem.HasValue('tsin_ui_dashboard_tab', 'research')]" spacing = 10
+flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8
 button_regular = {
     size = { 234 40 }
     action_tooltip = {
@@ -999,6 +978,42 @@ button_regular = {
     }
     text_single = { size = { 226 36 } parentanchor = center autoresize = no maximumsize = { 226 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_UI_LINK_STANDARDS_ELECTRIC_3" }
 }
+}
+}
+hbox = { spacing = 12
+tsin_ui_card_standard_measure = {}
+tsin_ui_card_standard_gauge = {}
+tsin_ui_card_standard_parts = {}
+tsin_ui_card_standard_electric = {}
+}
+hbox = { spacing = 12
+tsin_ui_card_communications_telegraph = {}
+tsin_ui_card_communications_telephone = {}
+tsin_ui_card_social_education_year = {}
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+
+tooltip = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_INDUSTRIAL_CAPITALISM" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_industrial_capitalism').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+
+tooltip = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_MASS_SOCIETY"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_MASS_SOCIETY" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_mass_society').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
+}
+vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4
+
+tooltip = "TSIN_UI_STATUS_HELP_INSTITUTION_TSIN_ELECTRIFICATION"
+tagtooltip_enabled = yes
+text_single = { fontsize = 17 text = "TSIN_UI_STATUS_INSTITUTION_TSIN_ELECTRIFICATION" }
+text_single = { visible = "[GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" fontsize = 14 text = "TSIN_UI_MET" }
+text_single = { visible = "[Not(GetScriptedGui('tsin_ui_check_institution_tsin_electrification').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" fontsize = 14 text = "TSIN_UI_NOT_MET" }
 }
 }
 } } }

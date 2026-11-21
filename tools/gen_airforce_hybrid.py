@@ -118,6 +118,7 @@ tsin_air_capacity = {
 	value = 6
 	add = { value = total_effective_building_levels:tsin_capital_airfield multiply = 10 }
 	add = { value = total_effective_building_levels:tsin_airbase multiply = 12 }
+	if = { limit = { has_variable = tsin_tr_airbase_bonus } add = var:tsin_tr_airbase_bonus }
 }
 
 tsin_air_total = {

@@ -128,3 +128,4 @@ tsin_ledger_pension_on = { scope = country is_shown = { always = yes } is_valid 
  if = { limit = { tsin_can_use_pensions = yes country_has_estate = estate_type:peasants_estate NOT = { has_variable = tsin_pension_active } var:tsin_pension > 0 } set_variable = tsin_pension_active } } }
 tsin_ledger_pension_off = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_pension_active } effect = { tsin_ledger_init_effect = yes
  if = { limit = { has_variable = tsin_pension_active } remove_variable = tsin_pension_active } } }
+tsin_ledger_currency_reset = { scope = country is_shown = { always = yes } is_valid = { is_ai = no } effect = { if = { limit = { has_variable = tsin_currency_label } remove_variable = tsin_currency_label } } }

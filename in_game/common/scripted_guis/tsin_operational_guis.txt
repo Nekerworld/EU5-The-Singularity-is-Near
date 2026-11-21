@@ -1,17 +1,17 @@
 ﻿# GENERATED read-only checks and explicitly requested cache refreshes.
-tsin_ops_check_inputs = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_important_buildings_missing_input is_alert_triggered = has_buildings_missing_input } } }
-tsin_ops_check_army_food = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_army_with_very_low_food is_alert_triggered = has_army_with_low_food } } }
-tsin_ops_check_naval_loss = { scope = country is_shown = { always = yes } is_valid = { is_alert_triggered = has_navy_attrition } }
-tsin_ops_check_food = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_starving_provinces is_alert_triggered = has_low_food_stockpile_market } } }
+tsin_ops_check_inputs = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_alert_inputs > 0 } }
+tsin_ops_check_army_food = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_alert_army_food > 0 } }
+tsin_ops_check_naval_loss = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_alert_naval_loss > 0 } }
+tsin_ops_check_food = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_alert_food > 0 } }
 tsin_ops_check_bank_withdrawals = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_withdrawal_due var:tsin_withdrawal_due > 0 } }
 tsin_ops_check_bank_capital = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ledger_version tsin_bank_net_worth < 0 } }
 tsin_ops_check_prices = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_expensive_count > 0 } }
 tsin_ops_check_power = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_power_markets > 0 } }
-tsin_ops_check_loss = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_unprofitable_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_loss_streak >= 2 } } } }
-tsin_ops_check_employment = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = lack_pop_promotion_to_fill_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_low_employment > 0 } } } }
+tsin_ops_check_loss = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready OR = { var:tsin_ops_alert_loss > 0 var:tsin_ops_loss_streak >= 2 } } }
+tsin_ops_check_employment = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready OR = { var:tsin_ops_alert_employment > 0 var:tsin_ops_low_employment > 0 } } }
 tsin_ops_check_access = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_poor_access > 0 } }
 tsin_ops_check_reserve = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_reserve_low > 0 } }
-tsin_ops_check_maintenance = { scope = country is_shown = { always = yes } is_valid = { OR = { is_alert_triggered = has_low_army_maintenance is_alert_triggered = has_low_navy_maintenance } } }
+tsin_ops_check_maintenance = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_alert_maintenance > 0 } }
 tsin_ops_check_crowding = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_overcrowded > 0 } }
 tsin_ops_check_education = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_education_pressure > 0 } }
 tsin_ops_check_subsidy = { scope = country is_shown = { always = yes } is_valid = { has_variable = tsin_ops_ready var:tsin_ops_subsidy_streak >= 2 } }

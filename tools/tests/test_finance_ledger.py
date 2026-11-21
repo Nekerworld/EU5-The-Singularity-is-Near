@@ -156,5 +156,27 @@ class FinanceLedgerTests(unittest.TestCase):
         for action in fixture.actions:self.assertIn("GetScriptedGui('"+action+"').Execute",ui)
         self.assertNotIn('every_owned_location',str(files));self.assertNotIn('GetTotalDebt',str(files))
 
+    def test_bank_is_two_column_and_currency_name_is_typed(self):
+        files=build()
+        ui=files['in_game/gui/tsin_finance_ledger.gui']
+        self.assertIn('TSIN_LEDGER_BANK_COL_CASH',ui)
+        self.assertIn('TSIN_LEDGER_BANK_COL_MARKETS',ui)
+        self.assertIn('tsin_currency_name_edit',ui)
+        self.assertIn('LateralView.Vars.Toggle(\'tsin_edit_currency\')',ui)
+        self.assertIn('PdxGuiEditboxGetText',ui)
+        self.assertIn('ExecuteConsoleCommand',ui)
+        self.assertNotIn('tsin_ledger_currency_next',ui)
+        self.assertNotIn('tsin_ledger_currency_prev',ui)
+        guis=files['in_game/common/scripted_guis/tsin_finance_ledger_guis.txt']
+        self.assertIn('tsin_ledger_currency_reset',guis)
+        self.assertNotIn('tsin_currency_name_id',guis)
+        custom=files['in_game/common/customizable_localization/tsin_currency_names.txt']
+        self.assertNotIn('tsin_currency_name_id',custom)
+        self.assertIn('TSIN_LEDGER_CURRENCY_KRW',custom)
+        effects=files['in_game/common/scripted_effects/tsin_finance_ledger_effects.txt']
+        self.assertNotIn('tsin_currency_name_id',effects)
+        self.assertNotIn('TSIN_LEDGER_TECH_HELP" default_format',ui)
+        self.assertIn('tooltip = "TSIN_LEDGER_TECH_HELP"',ui)
+
 
 if __name__=='__main__':unittest.main()

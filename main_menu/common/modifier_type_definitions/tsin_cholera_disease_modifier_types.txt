@@ -1,0 +1,36 @@
+# Auto-required disease modifiers for disease key tsin_cholera_disease.
+national_tsin_cholera_disease_resistance_modifier={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_tsin_cholera_disease_resistance_modifier={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+
+national_tsin_cholera_disease_growth_modifier={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_tsin_cholera_disease_growth_modifier={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+
+local_tsin_cholera_disease_impact_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=location
+	}
+}

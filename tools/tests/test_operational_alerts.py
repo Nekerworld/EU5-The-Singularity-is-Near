@@ -23,16 +23,20 @@ class OperationalTests(unittest.TestCase):
         hook=generated['in_game/common/on_action/tsin_operational_on_actions.txt']
         self.assertIn('is_ai = no',hook)
         self.assertIn('NOT = { has_variable = tsin_ops_scan_timer }',hook)
+        self.assertIn('tsin_ops_monthly_alert_pulse',hook)
         effects=generated['in_game/common/scripted_effects/tsin_operational_effects.txt']
         self.assertEqual(effects.count('every_owned_location ='),1)
         self.assertEqual(effects.count('every_buildings_in_location ='),1)
         self.assertIn('is_in_list = tsin_ops_seen_markets',effects)
         self.assertEqual(effects.count('clear_list = tsin_ops_seen_markets'),2)
         self.assertNotIn('every_country',effects)
-        self.assertNotIn('is_alert_triggered',effects)
+        self.assertIn('tsin_ops_alert_cache_effect',effects)
+        self.assertIn('is_alert_triggered',effects)
+        self.assertIn('tsin_ops_alert_inputs',effects)
         self.assertIn('has_variable = tsin_ops_persistence_timer',effects)
         self.assertIn('name = tsin_ops_persistence_timer months = 3',effects)
-
+        sgui=generated['in_game/common/scripted_guis/tsin_operational_guis.txt']
+        self.assertNotIn('is_alert_triggered',sgui)
         self.assertNotIn('every_owned_location',generated['in_game/gui/tsin_operational.gui'])
 
     def test_badge_and_rows_share_hidden_rule_conditions(self):
@@ -40,11 +44,17 @@ class OperationalTests(unittest.TestCase):
         for rule in self.data['rules']:
             self.assertIn("tsin_ops_hide_"+rule['id'],ui)
             self.assertIn("GetScriptedGui('tsin_ops_check_"+rule['id']+"')",ui)
+            self.assertIn(f"GetVariableSystem.Set('tsin_ops_hide_{rule['id']}', 'yes')",ui)
         self.assertIn('TSIN_OPS_EMPTY',ui)
         self.assertIn('TSIN_OPS_RESTORE',ui)
+        self.assertIn('TSIN_OPS_HIDE',ui)
         self.assertIn('ShowMarket(Market.Self)',ui)
         self.assertIn('Market.IsValid',ui)
         self.assertNotIn('AlertEntry.SetMuted',ui)
+        # vbox cannot host action_tooltip; hide must be an explicit button on the card.
+        for block in (b for b in ui.split('vbox = {') if 'using = bg_paper_card' in b):
+            head=block.split('hbox = {',1)[0]
+            self.assertNotIn('action_tooltip',head)
 
 
     def test_existing_tsin_button_is_kept(self):
@@ -61,8 +71,11 @@ class OperationalTests(unittest.TestCase):
 
     def test_unknown_native_alert_is_detectable(self):
         defs={b.key for p in (pdx.game_root()/'in_game/common/alert_descriptions').glob('*.txt') for b in pdx.top_level_blocks(pdx.read_text(p))}
+        effects=build(self.data)['in_game/common/scripted_effects/tsin_operational_effects.txt']
+        for id in re.findall(r'is_alert_triggered\s*=\s*(\w+)',effects):
+            self.assertIn(id,defs)
         for rule in self.data['rules']:
-            for id in re.findall(r'is_alert_triggered\s*=\s*(\w+)',rule['condition']):self.assertIn(id,defs)
+            self.assertNotIn('is_alert_triggered',rule['condition'])
 
     def test_scan_ready_after_all_counters_and_reference_thresholds(self):
         fx=build(self.data)['in_game/common/scripted_effects/tsin_operational_effects.txt']

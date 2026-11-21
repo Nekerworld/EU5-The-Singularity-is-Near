@@ -1,6 +1,7 @@
 ﻿# GENERATED icon-led capital market. Economy entry points are generated separately.
 types TSINStockMarket { type tsin_stock_panel = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt datacontext = "[GetPlayer]" spacing = 6
-widget = { size = { 530 260 } using = bg_text_mask_container_dark_brown
+text_single = { visible = "[Not(GetScriptedGui('tsin_stock_ui_exchange_open').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" maximumsize = { 520 -1 } multiline = yes fontsize = 13 text = "TSIN_CAP_LOCKED" }
+widget = { size = { 530 260 } using = bg_text_mask_container_dark_brown visible = "[GetScriptedGui('tsin_stock_ui_exchange_open').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 vbox = { position = { 8 6 } spacing = 5
 hbox = { spacing = 8 icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_corporations.dds" }
 text_single = { fontsize = 14 text = "TSIN_CAP_INDEX" }

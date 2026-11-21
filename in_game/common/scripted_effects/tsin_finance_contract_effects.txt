@@ -55,8 +55,8 @@ add_to_global_variable_map = { name = tsin_fc_currency_live key = scope:tsin_con
 add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id value = scope:tsin_fc_borrower.var:tsin_fx }
 add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = var:tsin_foreign_local_principal }
 add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = 4 }
-add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = { value = 12 subtract = { value = var:tsin_foreign_age multiply = 3 } min = 0 } } }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 3 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_1 value = { value = tsin_contract_calendar_month add = { value = 12 subtract = { value = var:tsin_foreign_age multiply = 3 } min = 0 } } } add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_1 }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_2 value = { value = tsin_contract_calendar_month add = 3 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_2 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 3 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = var:tsin_foreign_delinquency }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 1 }
@@ -88,10 +88,10 @@ add_to_global_variable_map = { name = tsin_fc_borrower key = scope:tsin_contract
 add_to_global_variable_map = { name = tsin_fc_currency key = scope:tsin_contract_id value = scope:tsin_fc_borrower }
 add_to_global_variable_map = { name = tsin_fc_currency_live key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id value = scope:tsin_fc_borrower.var:tsin_fx }
-add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = { value = tsin_ledger_lot multiply = scope:tsin_fc_borrower.var:tsin_fx } }
-add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = { value = var:tsin_rate add = $PREMIUM$ min = 0 max = 20 } }
-add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = $MONTHS$ } }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 3 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_3 value = { value = tsin_ledger_lot multiply = scope:tsin_fc_borrower.var:tsin_fx } } add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_3 }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_4 value = { value = var:tsin_rate add = $PREMIUM$ min = 0 max = 20 } } add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_4 }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_5 value = { value = tsin_contract_calendar_month add = $MONTHS$ } } add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_5 }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_6 value = { value = tsin_contract_calendar_month add = 3 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_6 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 3 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 1 }
@@ -119,15 +119,15 @@ tsin_contract_service_one_effect = {
   scope:tsin_fc_lender = { change_variable = { name = tsin_bank_cash add = scope:tsin_fc_paid } }
   if = { limit = { "global_variable_map(tsin_fc_kind|scope:tsin_contract_id)" = 2 } scope:tsin_fc_borrower = { change_variable = { name = tsin_interest_paid add = scope:tsin_fc_paid } } }
  }
- if = { limit = { scope:tsin_fc_paid < scope:tsin_fc_due } add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = { value = "global_variable_map(tsin_fc_missed|scope:tsin_contract_id)" add = 1 } } }
+ if = { limit = { scope:tsin_fc_paid < scope:tsin_fc_due } save_temporary_scope_value_as = { name = tsin_fc_map_tmp_12 value = { value = "global_variable_map(tsin_fc_missed|scope:tsin_contract_id)" add = 1 } } add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_12 } }
  else = { add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 } }
- add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = "global_variable_map(tsin_fc_period|scope:tsin_contract_id)" } }
+ save_temporary_scope_value_as = { name = tsin_fc_map_tmp_13 value = { value = tsin_contract_calendar_month add = "global_variable_map(tsin_fc_period|scope:tsin_contract_id)" } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_13 }
  if = { limit = { tsin_contract_mature_trigger = yes }
   save_temporary_scope_value_as = { name = tsin_fc_principal_paid value = { value = tsin_contract_reference_principal max = scope:tsin_fc_borrower.var:tsin_firm_cash min = 0 } }
   scope:tsin_fc_borrower = { change_variable = { name = tsin_firm_cash subtract = scope:tsin_fc_principal_paid } }
   if = { limit = { "global_variable_map(tsin_fc_kind|scope:tsin_contract_id)" = 3 } scope:tsin_fc_lender = { add_gold_to_estate = { estate_type = estate_type:burghers_estate value = scope:tsin_fc_principal_paid } } }
   else = { scope:tsin_fc_lender = { change_variable = { name = tsin_bank_cash add = scope:tsin_fc_principal_paid } } }
-  add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" subtract = { value = scope:tsin_fc_principal_paid multiply = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" } min = 0 } }
+  save_temporary_scope_value_as = { name = tsin_fc_map_tmp_14 value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" subtract = { value = scope:tsin_fc_principal_paid multiply = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" } min = 0 } } add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_14 }
  }
  if = { limit = { "global_variable_map(tsin_fc_kind|scope:tsin_contract_id)" = 1 "global_variable_map(tsin_fc_missed|scope:tsin_contract_id)" >= 12 "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" > 0 }
   scope:tsin_fc_lender = { change_variable = { name = tsin_bank_losses add = tsin_contract_reference_principal } }
@@ -197,8 +197,8 @@ tsin_contract_redenominate_effect = {
   save_temporary_scope_value_as = { name = tsin_contract_id value = this }
   scope:tsin_contract_coordinator = {
    if = { limit = { "global_variable_map(tsin_fc_currency_live|scope:tsin_contract_id)" = 1 "global_variable_map(tsin_fc_currency|scope:tsin_contract_id)" ?= scope:tsin_fc_reforming_country }
-    add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" divide = 10 } }
-    add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id value = { value = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" divide = 10 } }
+    save_temporary_scope_value_as = { name = tsin_fc_map_tmp_10 value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" divide = 10 } } add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_10 }
+    save_temporary_scope_value_as = { name = tsin_fc_map_tmp_11 value = { value = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" divide = 10 } } add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_11 }
    }
   }
  }
@@ -219,7 +219,7 @@ add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id va
 add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = var:tsin_firm_debt }
 add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = var:tsin_rate }
 add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = -1 }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 1 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_15 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_15 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 2 }
@@ -239,7 +239,7 @@ add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id va
 add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = var:tsin_bond_principal }
 add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = 4 }
 add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = 0 }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 1 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_16 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_16 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 3 }
@@ -265,7 +265,7 @@ add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id va
 add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = tsin_ledger_lot }
 add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = var:tsin_rate }
 add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = -1 }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 1 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_17 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_17 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 2 }
@@ -291,8 +291,8 @@ add_to_global_variable_map = { name = tsin_fc_currency_live key = scope:tsin_con
 add_to_global_variable_map = { name = tsin_fc_fx key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = tsin_ledger_lot }
 add_to_global_variable_map = { name = tsin_fc_rate key = scope:tsin_contract_id value = 4 }
-add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 36 } }
-add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = { value = tsin_contract_calendar_month add = 1 } }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_18 value = { value = tsin_contract_calendar_month add = 36 } } add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_18 }
+save_temporary_scope_value_as = { name = tsin_fc_map_tmp_19 value = { value = tsin_contract_calendar_month add = 1 } } add_to_global_variable_map = { name = tsin_fc_next_coupon key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_19 }
 add_to_global_variable_map = { name = tsin_fc_period key = scope:tsin_contract_id value = 1 }
 add_to_global_variable_map = { name = tsin_fc_missed key = scope:tsin_contract_id value = 0 }
 add_to_global_variable_map = { name = tsin_fc_kind key = scope:tsin_contract_id value = 3 }
@@ -325,7 +325,7 @@ tsin_contract_adjust_private_effect = {
   if = { limit = { "global_variable_map(tsin_fc_kind|scope:tsin_contract_id)" = 3 } scope:tsin_fc_borrower = { change_variable = { name = tsin_bond_losses add = scope:tsin_fc_adjust_amount } } }
   else = { scope:tsin_fc_lender = { change_variable = { name = tsin_bank_losses add = scope:tsin_fc_adjust_amount } } }
  }
- add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" subtract = { value = scope:tsin_fc_adjust_amount multiply = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" } min = 0 } }
+ save_temporary_scope_value_as = { name = tsin_fc_map_tmp_20 value = { value = "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" subtract = { value = scope:tsin_fc_adjust_amount multiply = "global_variable_map(tsin_fc_fx|scope:tsin_contract_id)" } min = 0 } } add_to_global_variable_map = { name = tsin_fc_principal key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_20 }
  save_temporary_scope_value_as = { name = tsin_fc_adjust_left value = { value = scope:tsin_fc_adjust_left subtract = scope:tsin_fc_adjust_amount min = 0 } }
  if = { limit = { "global_variable_map(tsin_fc_principal|scope:tsin_contract_id)" <= 0 } tsin_contract_forget_effect = yes }
  }
@@ -347,7 +347,7 @@ tsin_contract_restore_legacy_maturity_effect = {
  "global_variable_map(tsin_fc_borrower|scope:tsin_contract_id)" ?= scope:tsin_fc_restore_actor
  scope:tsin_fc_restore_year >= 1337 scope:tsin_fc_restore_year <= 2337
  scope:tsin_fc_restore_month >= 1 scope:tsin_fc_restore_month <= 12 }
- add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = { value = scope:tsin_fc_restore_year multiply = 12 add = scope:tsin_fc_restore_month } }
+ save_temporary_scope_value_as = { name = tsin_fc_map_tmp_21 value = { value = scope:tsin_fc_restore_year multiply = 12 add = scope:tsin_fc_restore_month } } add_to_global_variable_map = { name = tsin_fc_maturity key = scope:tsin_contract_id value = scope:tsin_fc_map_tmp_21 }
  add_to_global_variable_map = { name = tsin_fc_maturity_mode key = scope:tsin_contract_id value = 0 }
  tsin_contract_refresh_effect = yes
  }

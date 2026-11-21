@@ -35,6 +35,8 @@
 | `in_game/common/goods_demand/tsin_railroad_demands.txt` | `build_railroad_demand`, `maintain_railroad_demand` | `special_construction_demands.txt:66-79` | 철도 건설·유지에 석탄·도구 추가(M3). 패치 후 원본 값이 바뀌었는지 확인 |
 | `in_game/common/unit_types/zzz_tsin_artillery_reserve_templates.txt` | `a_age_1_traditions_artillery` ~ `a_age_6_revolutions_artillery` 6개 | `unit_types/00_age_templates_land.txt` (1.4.x) | P축(포병 예비대). `TRY_REPLACE:`로 전체 교체. `combat_power`를 같은 시대 보병 아래로 낮추고 `strength_damage_done`을 임시 공식으로 보상. `max_strength`·`bombard_efficiency`·`artillery_barrage`는 원본과 같음. 7시대 템플릿은 건드리지 않음. 패치 후 원본 값 재확인 |
 | `era_7/.../societal_values/zzz_tsin_serfdom_abolition.txt` (sync → `in_game/...`) | `TRY_INJECT:serfdom_vs_free_subjects` | 바닐라 `serfdom_vs_free_subjects` | V3: 폐지 후 값 축을 끄는 `allow`만 주입. 전체 `TRY_REPLACE`는 쓰지 않음 |
+| `in_game/gui/decisions_lateralview.gui` · `technology_lateralview.gui` · `advances_lateralview.gui` | CONTENT 시대 브라우저 · 기술 시대 탭 스크롤 · 고유발전 시대 행 | 바닐라 동명 GUI | 제7–12시대가 콘텐츠/기술 UI에 보이도록. 생성기 `tools/gen_content_ages_ui.py`. 패치 후 재생성 |
+| `in_game/gui/credit.gui` · `in_game/gui/ingame_topbar.gui` | 금융 하위탭 호스트 · `@left_panel_width` 570→780 | 바닐라 동명 GUI | 금융(현황·증시·신용·통화·은행·기금) 패널이 겹치지 않도록 좌측 창을 넓히고 `credit`에 TSIN 패널을 주입. 생성기 `tools/finance_ui.py` → `gen_stock_market_ui.py`. 네이티브 대출/채권 본문은 유지. 패치 후 재생성 |
 
 (새 항목은 이 표에 추가한다.)
 

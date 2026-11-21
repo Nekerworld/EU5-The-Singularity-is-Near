@@ -113,6 +113,7 @@ tsin_observer_yearly_pulse = {
 	}
 	effect = {
 		set_global_variable = { name = tsin_obs_logged_recently value = yes days = 360 }
+		tsin_observer_log_snapshot_effect = yes
 		debug_log = tsin_observer_log_line
 		if = {
 			limit = { has_global_variable = tsin_obs_flavor_events }

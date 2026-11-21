@@ -1,0 +1,10 @@
+﻿# Granted only by treaty early-withdrawal; not manually created.
+tsin_tr_broken_treaty_cb = {
+	speed = 8
+	create_visible = { always = no }
+	create_enabled = { always = no }
+	war_goal_type = take_capital
+	ai_will_do = {
+		add = { desc = "BASE" value = 20 }
+	}
+}

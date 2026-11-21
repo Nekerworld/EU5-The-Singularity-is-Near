@@ -29,7 +29,7 @@
         "english": "Buildings lack inputs",
         "korean": "건물 투입재 부족"
       },
-      "condition": "OR = { is_alert_triggered = has_important_buildings_missing_input is_alert_triggered = has_buildings_missing_input }",
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_alert_inputs > 0",
       "detail": {
         "english": "The native game reports missing building inputs. Inspect the production filters and goods supply.",
         "korean": "기본 게임이 건물 투입재 부족을 판정했습니다. 생산 화면에서 원료와 시장 공급을 확인하십시오."
@@ -61,7 +61,7 @@
         "english": "Unprofitable buildings",
         "korean": "적자 건물 점검"
       },
-      "condition": "OR = { is_alert_triggered = has_unprofitable_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_loss_streak >= 2 } }",
+      "condition": "has_variable = tsin_ops_ready OR = { var:tsin_ops_alert_loss > 0 var:tsin_ops_loss_streak >= 2 }",
       "detail": {
         "english": "Native unprofitable-building alert or repeated negative-profit samples. Newly constructed and intentionally subsidized facilities may need time.",
         "korean": "기본 적자 건물 경고 또는 두 차례 연속 상세 점검의 적자 판정입니다. 신설·정책 지원 시설의 초기 적자는 정상일 수 있습니다."
@@ -78,7 +78,7 @@
         "english": "Unfilled jobs",
         "korean": "건물 고용 부족"
       },
-      "condition": "OR = { is_alert_triggered = lack_pop_promotion_to_fill_buildings AND = { has_variable = tsin_ops_ready var:tsin_ops_low_employment > 0 } }",
+      "condition": "has_variable = tsin_ops_ready OR = { var:tsin_ops_alert_employment > 0 var:tsin_ops_low_employment > 0 }",
       "detail": {
         "english": "Native hiring warning or local buildings below 50% of effective worker capacity. Compare available workers, wages and profitability.",
         "korean": "기본 고용 경고 또는 상세 점검에서 고용 인원이 정원의 50% 미만인 자국 영토 내 건물이 있습니다. 노동력·임금·수익성을 함께 확인하십시오."
@@ -110,7 +110,7 @@
         "english": "Army food is low",
         "korean": "군대 식량 부족"
       },
-      "condition": "OR = { is_alert_triggered = has_army_with_very_low_food is_alert_triggered = has_army_with_low_food }",
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_alert_army_food > 0",
       "detail": {
         "english": "The native army food warning is active. Inspect army food, supply limits and replenishment; this is not a newly simulated ammunition system.",
         "korean": "기본 게임의 군대 식량 경고가 활성화됐습니다. 군대별 식량·보급 한계·충원을 확인하십시오. 별도의 탄약 보급 체계를 가정하지 않습니다."
@@ -142,7 +142,7 @@
         "english": "Military maintenance is reduced",
         "korean": "군사 유지 수준 저하"
       },
-      "condition": "OR = { is_alert_triggered = has_low_army_maintenance is_alert_triggered = has_low_navy_maintenance }",
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_alert_maintenance > 0",
       "detail": {
         "english": "Native army/navy maintenance warning. Reduced maintenance may be intentional in peacetime.",
         "korean": "기본 게임의 육군·해군 유지 수준 경고입니다. 평시에는 의도적인 절감일 수 있습니다."
@@ -158,7 +158,7 @@
         "english": "Fleets suffer attrition",
         "korean": "함대 소모 발생"
       },
-      "condition": "is_alert_triggered = has_navy_attrition",
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_alert_naval_loss > 0",
       "detail": {
         "english": "The native naval attrition warning is active. Inspect fleet location, range and repair access.",
         "korean": "기본 게임이 함대 소모를 감지했습니다. 위치·작전 범위·수리 접근성을 확인하십시오."
@@ -174,7 +174,7 @@
         "english": "Food shortage or starving provinces",
         "korean": "식량 부족·굶주리는 주"
       },
-      "condition": "OR = { is_alert_triggered = has_starving_provinces is_alert_triggered = has_low_food_stockpile_market }",
+      "condition": "has_variable = tsin_ops_ready var:tsin_ops_alert_food > 0",
       "detail": {
         "english": "Native starvation/low-food-stockpile warning. Inspect the affected markets and provincial food balance. No famine disaster entry is duplicated here.",
         "korean": "기본 게임의 기아 주·식량 비축 부족 경고입니다. 해당 시장과 주의 식량 수지를 확인하십시오. 대기근 재앙 항목 자체를 중복 표시하지 않습니다."

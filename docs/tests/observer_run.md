@@ -8,9 +8,11 @@
 |---|---|
 | 켜는 조건 | 게임 규칙 "관찰 측정 기록" = 켬, 또는 `-debug_mode`로 실행 (`tsin_observer_logging_trigger`) |
 | 기록 시점 | 나라별 연간 맥동 중 그해 처음 도는 나라가 한 줄을 쓴다. 전역 변수 `tsin_obs_logged_recently`(360일)로 1년에 한 번만 쓴다 |
-| 기록 효과 | `debug_log = tsin_observer_log_line` (`in_game/common/on_action/tsin_on_actions.txt`) |
-| 지표 | `in_game/common/script_values/tsin_observer_values.txt` |
+| 기록 효과 | `tsin_observer_log_snapshot_effect` → `debug_log = tsin_observer_log_line` (`in_game/common/on_action/tsin_on_actions.txt`) |
+| 지표 | `in_game/common/script_values/tsin_observer_values.txt` → 전역 `tsin_obslog_*` 복사 후 `[GetGlobalVariable(...)]`로 기록 |
 | 보고서 | `python tools/observer_report.py [--csv docs/results/observer_<날짜>.csv]` |
+
+`debug_log`는 ROOT를 못 읽으므로(프랑스 1달 플레이 error.log) 숫자를 전역 변수로 옮긴 뒤 찍는다(**사용자 확인 필요**: 값이 채워진 `TSIN_OBS` 줄).
 
 규칙이 꺼져 있고 `-debug_mode`도 아니면 맥동 조건 첫 줄에서 멈추므로 일반 플레이 비용은 없다. 켜져 있을 때도 1년에 한 번 전 세계를 20회 남짓 순회할 뿐이다.
 

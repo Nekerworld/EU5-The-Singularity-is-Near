@@ -307,5 +307,10 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(c['tsin_bank_losses'],25)
         self.assertEqual(c['tsin_bank_cash']+c['tsin_firm_cash'],before)
 
+    def test_complex_map_values_are_staged_before_write(self):
+        text=contracts.build()['in_game/common/scripted_effects/tsin_finance_contract_effects.txt']
+        self.assertNotRegex(text,r'add_to_global_variable_map\s*=\s*\{[^{}]*value\s*=\s*\{')
+        self.assertIn('save_temporary_scope_value_as = { name = tsin_fc_map_tmp_',text)
+
 
 if __name__=='__main__':unittest.main()

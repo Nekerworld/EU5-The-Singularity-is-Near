@@ -6,10 +6,9 @@
  widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_country_compare_open')]" } } }
  vbox = { using = window_margin_alt
  window_header_alt = { blockoverride "header_text" { text = "TSIN_CMP_TITLE" } }
- text_multi = { maximumsize = { 980 -1 } fontsize = 13 text = "TSIN_CMP_HELP" }
  text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet)]" fontsize = 14 text = "TSIN_CMP_EMPTY" }
  vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
- scrollarea = { size = { 990 720 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed
+ scrollarea = { size = { 990 720 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical }
  visible = "[GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet]"
  scrollwidget = { vbox = { spacing = 8 margin = { 10 8 }
 text_single = { fontsize = 17 text = "TSIN_CMP_LIST" }

@@ -36,7 +36,7 @@ button_regular = { size = { 200 40 } enabled = "[GetScriptedGui('tsin_wcs_filter
 }
 scrollarea = { size = { 990 120 }
 scrollbarpolicy_horizontal = always_off
-scrollbarpolicy_vertical = as_needed
+scrollbar_vertical = { using = Scrollbar_Vertical }
 scrollwidget = {
 vbox = { spacing = 6 margin = { 8 4 }
 hbox = { spacing = 6
@@ -144,7 +144,7 @@ button_regular = { size = { 234 40 } enabled = "[GetScriptedGui('tsin_wcs_sort_2
 }
 text_single = { text = "TSIN_WCS_TOTALS" fontsize = 13 }
 text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 13 }
-scrollarea = { size = { 990 420 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed scrollwidget = { vbox = { spacing = 6 margin = { 8 4 }
+scrollarea = { size = { 990 420 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 6 margin = { 8 4 }
 hbox = { spacing = 6
 text_single = { size = { 240 26 } fontsize = 14 text = "TSIN_WCS_COUNTRY" }
 text_single = { size = { 90 26 } fontsize = 14 text = "TSIN_WCS_COUNT" }

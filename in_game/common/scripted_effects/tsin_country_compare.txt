@@ -27,455 +27,977 @@
  set_variable = { name = tsin_cmp_r10_id value = { value = var:tsin_cmp_page multiply = 10 add = 10 } }
  if = { limit = { var:tsin_cmp_r10_id > global_var:tsin_cmp_next_id } set_variable = { name = tsin_cmp_r10_id value = 0 } }
  remove_variable = tsin_cmp_r1_country
- save_temporary_scope_value_as = { name = tsin_cmp_r1_pid value = var:tsin_cmp_r1_id }
- set_variable = { name = tsin_cmp_r1_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r1_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r1_key value = { value = scope:tsin_cmp_r1_pid multiply = 100000 add = var:tsin_cmp_r1_serial } }
- set_variable = { name = tsin_cmp_r1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r1_key)" }
- set_variable = { name = tsin_cmp_r1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r1_key)" }
- if = { limit = { var:tsin_cmp_r1_id > 0 } set_variable = { name = tsin_cmp_r1_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r1_pid)" } }
+ if = { limit = { var:tsin_cmp_r1_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r1_pid value = var:tsin_cmp_r1_id }
+  set_variable = { name = tsin_cmp_r1_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r1_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r1_key value = { value = scope:tsin_cmp_r1_pid multiply = 100000 add = var:tsin_cmp_r1_serial } }
+  set_variable = { name = tsin_cmp_r1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r1_key)" }
+  set_variable = { name = tsin_cmp_r1_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r1_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r1_serial value = 0 }
+  set_variable = { name = tsin_cmp_r1_year value = 0 }
+  set_variable = { name = tsin_cmp_r1_month value = 0 }
+  set_variable = { name = tsin_cmp_r1_population value = 0 }
+  set_variable = { name = tsin_cmp_r1_locations value = 0 }
+  set_variable = { name = tsin_cmp_r1_urban value = 0 }
+  set_variable = { name = tsin_cmp_r1_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r1_companies value = 0 }
+  set_variable = { name = tsin_cmp_r1_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r1_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r2_country
- save_temporary_scope_value_as = { name = tsin_cmp_r2_pid value = var:tsin_cmp_r2_id }
- set_variable = { name = tsin_cmp_r2_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r2_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r2_key value = { value = scope:tsin_cmp_r2_pid multiply = 100000 add = var:tsin_cmp_r2_serial } }
- set_variable = { name = tsin_cmp_r2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r2_key)" }
- set_variable = { name = tsin_cmp_r2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r2_key)" }
- if = { limit = { var:tsin_cmp_r2_id > 0 } set_variable = { name = tsin_cmp_r2_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r2_pid)" } }
+ if = { limit = { var:tsin_cmp_r2_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r2_pid value = var:tsin_cmp_r2_id }
+  set_variable = { name = tsin_cmp_r2_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r2_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r2_key value = { value = scope:tsin_cmp_r2_pid multiply = 100000 add = var:tsin_cmp_r2_serial } }
+  set_variable = { name = tsin_cmp_r2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r2_key)" }
+  set_variable = { name = tsin_cmp_r2_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r2_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r2_serial value = 0 }
+  set_variable = { name = tsin_cmp_r2_year value = 0 }
+  set_variable = { name = tsin_cmp_r2_month value = 0 }
+  set_variable = { name = tsin_cmp_r2_population value = 0 }
+  set_variable = { name = tsin_cmp_r2_locations value = 0 }
+  set_variable = { name = tsin_cmp_r2_urban value = 0 }
+  set_variable = { name = tsin_cmp_r2_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r2_companies value = 0 }
+  set_variable = { name = tsin_cmp_r2_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r2_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r3_country
- save_temporary_scope_value_as = { name = tsin_cmp_r3_pid value = var:tsin_cmp_r3_id }
- set_variable = { name = tsin_cmp_r3_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r3_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r3_key value = { value = scope:tsin_cmp_r3_pid multiply = 100000 add = var:tsin_cmp_r3_serial } }
- set_variable = { name = tsin_cmp_r3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r3_key)" }
- set_variable = { name = tsin_cmp_r3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r3_key)" }
- if = { limit = { var:tsin_cmp_r3_id > 0 } set_variable = { name = tsin_cmp_r3_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r3_pid)" } }
+ if = { limit = { var:tsin_cmp_r3_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r3_pid value = var:tsin_cmp_r3_id }
+  set_variable = { name = tsin_cmp_r3_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r3_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r3_key value = { value = scope:tsin_cmp_r3_pid multiply = 100000 add = var:tsin_cmp_r3_serial } }
+  set_variable = { name = tsin_cmp_r3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r3_key)" }
+  set_variable = { name = tsin_cmp_r3_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r3_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r3_serial value = 0 }
+  set_variable = { name = tsin_cmp_r3_year value = 0 }
+  set_variable = { name = tsin_cmp_r3_month value = 0 }
+  set_variable = { name = tsin_cmp_r3_population value = 0 }
+  set_variable = { name = tsin_cmp_r3_locations value = 0 }
+  set_variable = { name = tsin_cmp_r3_urban value = 0 }
+  set_variable = { name = tsin_cmp_r3_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r3_companies value = 0 }
+  set_variable = { name = tsin_cmp_r3_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r3_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r4_country
- save_temporary_scope_value_as = { name = tsin_cmp_r4_pid value = var:tsin_cmp_r4_id }
- set_variable = { name = tsin_cmp_r4_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r4_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r4_key value = { value = scope:tsin_cmp_r4_pid multiply = 100000 add = var:tsin_cmp_r4_serial } }
- set_variable = { name = tsin_cmp_r4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r4_key)" }
- set_variable = { name = tsin_cmp_r4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r4_key)" }
- if = { limit = { var:tsin_cmp_r4_id > 0 } set_variable = { name = tsin_cmp_r4_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r4_pid)" } }
+ if = { limit = { var:tsin_cmp_r4_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r4_pid value = var:tsin_cmp_r4_id }
+  set_variable = { name = tsin_cmp_r4_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r4_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r4_key value = { value = scope:tsin_cmp_r4_pid multiply = 100000 add = var:tsin_cmp_r4_serial } }
+  set_variable = { name = tsin_cmp_r4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r4_key)" }
+  set_variable = { name = tsin_cmp_r4_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r4_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r4_serial value = 0 }
+  set_variable = { name = tsin_cmp_r4_year value = 0 }
+  set_variable = { name = tsin_cmp_r4_month value = 0 }
+  set_variable = { name = tsin_cmp_r4_population value = 0 }
+  set_variable = { name = tsin_cmp_r4_locations value = 0 }
+  set_variable = { name = tsin_cmp_r4_urban value = 0 }
+  set_variable = { name = tsin_cmp_r4_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r4_companies value = 0 }
+  set_variable = { name = tsin_cmp_r4_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r4_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r5_country
- save_temporary_scope_value_as = { name = tsin_cmp_r5_pid value = var:tsin_cmp_r5_id }
- set_variable = { name = tsin_cmp_r5_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r5_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r5_key value = { value = scope:tsin_cmp_r5_pid multiply = 100000 add = var:tsin_cmp_r5_serial } }
- set_variable = { name = tsin_cmp_r5_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r5_key)" }
- set_variable = { name = tsin_cmp_r5_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r5_key)" }
- if = { limit = { var:tsin_cmp_r5_id > 0 } set_variable = { name = tsin_cmp_r5_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r5_pid)" } }
+ if = { limit = { var:tsin_cmp_r5_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r5_pid value = var:tsin_cmp_r5_id }
+  set_variable = { name = tsin_cmp_r5_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r5_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r5_key value = { value = scope:tsin_cmp_r5_pid multiply = 100000 add = var:tsin_cmp_r5_serial } }
+  set_variable = { name = tsin_cmp_r5_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r5_key)" }
+  set_variable = { name = tsin_cmp_r5_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r5_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r5_serial value = 0 }
+  set_variable = { name = tsin_cmp_r5_year value = 0 }
+  set_variable = { name = tsin_cmp_r5_month value = 0 }
+  set_variable = { name = tsin_cmp_r5_population value = 0 }
+  set_variable = { name = tsin_cmp_r5_locations value = 0 }
+  set_variable = { name = tsin_cmp_r5_urban value = 0 }
+  set_variable = { name = tsin_cmp_r5_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r5_companies value = 0 }
+  set_variable = { name = tsin_cmp_r5_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r5_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r6_country
- save_temporary_scope_value_as = { name = tsin_cmp_r6_pid value = var:tsin_cmp_r6_id }
- set_variable = { name = tsin_cmp_r6_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r6_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r6_key value = { value = scope:tsin_cmp_r6_pid multiply = 100000 add = var:tsin_cmp_r6_serial } }
- set_variable = { name = tsin_cmp_r6_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r6_key)" }
- set_variable = { name = tsin_cmp_r6_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r6_key)" }
- if = { limit = { var:tsin_cmp_r6_id > 0 } set_variable = { name = tsin_cmp_r6_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r6_pid)" } }
+ if = { limit = { var:tsin_cmp_r6_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r6_pid value = var:tsin_cmp_r6_id }
+  set_variable = { name = tsin_cmp_r6_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r6_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r6_key value = { value = scope:tsin_cmp_r6_pid multiply = 100000 add = var:tsin_cmp_r6_serial } }
+  set_variable = { name = tsin_cmp_r6_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r6_key)" }
+  set_variable = { name = tsin_cmp_r6_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r6_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r6_serial value = 0 }
+  set_variable = { name = tsin_cmp_r6_year value = 0 }
+  set_variable = { name = tsin_cmp_r6_month value = 0 }
+  set_variable = { name = tsin_cmp_r6_population value = 0 }
+  set_variable = { name = tsin_cmp_r6_locations value = 0 }
+  set_variable = { name = tsin_cmp_r6_urban value = 0 }
+  set_variable = { name = tsin_cmp_r6_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r6_companies value = 0 }
+  set_variable = { name = tsin_cmp_r6_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r6_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r7_country
- save_temporary_scope_value_as = { name = tsin_cmp_r7_pid value = var:tsin_cmp_r7_id }
- set_variable = { name = tsin_cmp_r7_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r7_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r7_key value = { value = scope:tsin_cmp_r7_pid multiply = 100000 add = var:tsin_cmp_r7_serial } }
- set_variable = { name = tsin_cmp_r7_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r7_key)" }
- set_variable = { name = tsin_cmp_r7_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r7_key)" }
- if = { limit = { var:tsin_cmp_r7_id > 0 } set_variable = { name = tsin_cmp_r7_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r7_pid)" } }
+ if = { limit = { var:tsin_cmp_r7_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r7_pid value = var:tsin_cmp_r7_id }
+  set_variable = { name = tsin_cmp_r7_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r7_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r7_key value = { value = scope:tsin_cmp_r7_pid multiply = 100000 add = var:tsin_cmp_r7_serial } }
+  set_variable = { name = tsin_cmp_r7_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r7_key)" }
+  set_variable = { name = tsin_cmp_r7_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r7_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r7_serial value = 0 }
+  set_variable = { name = tsin_cmp_r7_year value = 0 }
+  set_variable = { name = tsin_cmp_r7_month value = 0 }
+  set_variable = { name = tsin_cmp_r7_population value = 0 }
+  set_variable = { name = tsin_cmp_r7_locations value = 0 }
+  set_variable = { name = tsin_cmp_r7_urban value = 0 }
+  set_variable = { name = tsin_cmp_r7_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r7_companies value = 0 }
+  set_variable = { name = tsin_cmp_r7_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r7_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r8_country
- save_temporary_scope_value_as = { name = tsin_cmp_r8_pid value = var:tsin_cmp_r8_id }
- set_variable = { name = tsin_cmp_r8_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r8_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r8_key value = { value = scope:tsin_cmp_r8_pid multiply = 100000 add = var:tsin_cmp_r8_serial } }
- set_variable = { name = tsin_cmp_r8_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r8_key)" }
- set_variable = { name = tsin_cmp_r8_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r8_key)" }
- if = { limit = { var:tsin_cmp_r8_id > 0 } set_variable = { name = tsin_cmp_r8_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r8_pid)" } }
+ if = { limit = { var:tsin_cmp_r8_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r8_pid value = var:tsin_cmp_r8_id }
+  set_variable = { name = tsin_cmp_r8_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r8_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r8_key value = { value = scope:tsin_cmp_r8_pid multiply = 100000 add = var:tsin_cmp_r8_serial } }
+  set_variable = { name = tsin_cmp_r8_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r8_key)" }
+  set_variable = { name = tsin_cmp_r8_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r8_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r8_serial value = 0 }
+  set_variable = { name = tsin_cmp_r8_year value = 0 }
+  set_variable = { name = tsin_cmp_r8_month value = 0 }
+  set_variable = { name = tsin_cmp_r8_population value = 0 }
+  set_variable = { name = tsin_cmp_r8_locations value = 0 }
+  set_variable = { name = tsin_cmp_r8_urban value = 0 }
+  set_variable = { name = tsin_cmp_r8_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r8_companies value = 0 }
+  set_variable = { name = tsin_cmp_r8_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r8_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r9_country
- save_temporary_scope_value_as = { name = tsin_cmp_r9_pid value = var:tsin_cmp_r9_id }
- set_variable = { name = tsin_cmp_r9_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r9_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r9_key value = { value = scope:tsin_cmp_r9_pid multiply = 100000 add = var:tsin_cmp_r9_serial } }
- set_variable = { name = tsin_cmp_r9_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r9_key)" }
- set_variable = { name = tsin_cmp_r9_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r9_key)" }
- if = { limit = { var:tsin_cmp_r9_id > 0 } set_variable = { name = tsin_cmp_r9_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r9_pid)" } }
+ if = { limit = { var:tsin_cmp_r9_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r9_pid value = var:tsin_cmp_r9_id }
+  set_variable = { name = tsin_cmp_r9_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r9_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r9_key value = { value = scope:tsin_cmp_r9_pid multiply = 100000 add = var:tsin_cmp_r9_serial } }
+  set_variable = { name = tsin_cmp_r9_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r9_key)" }
+  set_variable = { name = tsin_cmp_r9_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r9_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r9_serial value = 0 }
+  set_variable = { name = tsin_cmp_r9_year value = 0 }
+  set_variable = { name = tsin_cmp_r9_month value = 0 }
+  set_variable = { name = tsin_cmp_r9_population value = 0 }
+  set_variable = { name = tsin_cmp_r9_locations value = 0 }
+  set_variable = { name = tsin_cmp_r9_urban value = 0 }
+  set_variable = { name = tsin_cmp_r9_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r9_companies value = 0 }
+  set_variable = { name = tsin_cmp_r9_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r9_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_r10_country
- save_temporary_scope_value_as = { name = tsin_cmp_r10_pid value = var:tsin_cmp_r10_id }
- set_variable = { name = tsin_cmp_r10_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r10_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_r10_key value = { value = scope:tsin_cmp_r10_pid multiply = 100000 add = var:tsin_cmp_r10_serial } }
- set_variable = { name = tsin_cmp_r10_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r10_key)" }
- set_variable = { name = tsin_cmp_r10_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r10_key)" }
- if = { limit = { var:tsin_cmp_r10_id > 0 } set_variable = { name = tsin_cmp_r10_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r10_pid)" } }
+ if = { limit = { var:tsin_cmp_r10_id > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_r10_pid value = var:tsin_cmp_r10_id }
+  set_variable = { name = tsin_cmp_r10_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_r10_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_r10_key value = { value = scope:tsin_cmp_r10_pid multiply = 100000 add = var:tsin_cmp_r10_serial } }
+  set_variable = { name = tsin_cmp_r10_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_r10_key)" }
+  set_variable = { name = tsin_cmp_r10_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_r10_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_r10_serial value = 0 }
+  set_variable = { name = tsin_cmp_r10_year value = 0 }
+  set_variable = { name = tsin_cmp_r10_month value = 0 }
+  set_variable = { name = tsin_cmp_r10_population value = 0 }
+  set_variable = { name = tsin_cmp_r10_locations value = 0 }
+  set_variable = { name = tsin_cmp_r10_urban value = 0 }
+  set_variable = { name = tsin_cmp_r10_buildings value = 0 }
+  set_variable = { name = tsin_cmp_r10_companies value = 0 }
+  set_variable = { name = tsin_cmp_r10_gdp value = 0 }
+  set_variable = { name = tsin_cmp_r10_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_c1_country
- save_temporary_scope_value_as = { name = tsin_cmp_c1_pid value = var:tsin_cmp_slot_1 }
- set_variable = { name = tsin_cmp_c1_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c1_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_c1_key value = { value = scope:tsin_cmp_c1_pid multiply = 100000 add = var:tsin_cmp_c1_serial } }
- set_variable = { name = tsin_cmp_c1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c1_key)" }
- set_variable = { name = tsin_cmp_c1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c1_key)" }
- if = { limit = { var:tsin_cmp_slot_1 > 0 } set_variable = { name = tsin_cmp_c1_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c1_pid)" } }
+ if = { limit = { var:tsin_cmp_slot_1 > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_c1_pid value = var:tsin_cmp_slot_1 }
+  set_variable = { name = tsin_cmp_c1_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c1_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_c1_key value = { value = scope:tsin_cmp_c1_pid multiply = 100000 add = var:tsin_cmp_c1_serial } }
+  set_variable = { name = tsin_cmp_c1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c1_key)" }
+  set_variable = { name = tsin_cmp_c1_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c1_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_c1_serial value = 0 }
+  set_variable = { name = tsin_cmp_c1_year value = 0 }
+  set_variable = { name = tsin_cmp_c1_month value = 0 }
+  set_variable = { name = tsin_cmp_c1_population value = 0 }
+  set_variable = { name = tsin_cmp_c1_locations value = 0 }
+  set_variable = { name = tsin_cmp_c1_urban value = 0 }
+  set_variable = { name = tsin_cmp_c1_buildings value = 0 }
+  set_variable = { name = tsin_cmp_c1_companies value = 0 }
+  set_variable = { name = tsin_cmp_c1_gdp value = 0 }
+  set_variable = { name = tsin_cmp_c1_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_c2_country
- save_temporary_scope_value_as = { name = tsin_cmp_c2_pid value = var:tsin_cmp_slot_2 }
- set_variable = { name = tsin_cmp_c2_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c2_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_c2_key value = { value = scope:tsin_cmp_c2_pid multiply = 100000 add = var:tsin_cmp_c2_serial } }
- set_variable = { name = tsin_cmp_c2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c2_key)" }
- set_variable = { name = tsin_cmp_c2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c2_key)" }
- if = { limit = { var:tsin_cmp_slot_2 > 0 } set_variable = { name = tsin_cmp_c2_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c2_pid)" } }
+ if = { limit = { var:tsin_cmp_slot_2 > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_c2_pid value = var:tsin_cmp_slot_2 }
+  set_variable = { name = tsin_cmp_c2_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c2_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_c2_key value = { value = scope:tsin_cmp_c2_pid multiply = 100000 add = var:tsin_cmp_c2_serial } }
+  set_variable = { name = tsin_cmp_c2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c2_key)" }
+  set_variable = { name = tsin_cmp_c2_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c2_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_c2_serial value = 0 }
+  set_variable = { name = tsin_cmp_c2_year value = 0 }
+  set_variable = { name = tsin_cmp_c2_month value = 0 }
+  set_variable = { name = tsin_cmp_c2_population value = 0 }
+  set_variable = { name = tsin_cmp_c2_locations value = 0 }
+  set_variable = { name = tsin_cmp_c2_urban value = 0 }
+  set_variable = { name = tsin_cmp_c2_buildings value = 0 }
+  set_variable = { name = tsin_cmp_c2_companies value = 0 }
+  set_variable = { name = tsin_cmp_c2_gdp value = 0 }
+  set_variable = { name = tsin_cmp_c2_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_c3_country
- save_temporary_scope_value_as = { name = tsin_cmp_c3_pid value = var:tsin_cmp_slot_3 }
- set_variable = { name = tsin_cmp_c3_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c3_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_c3_key value = { value = scope:tsin_cmp_c3_pid multiply = 100000 add = var:tsin_cmp_c3_serial } }
- set_variable = { name = tsin_cmp_c3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c3_key)" }
- set_variable = { name = tsin_cmp_c3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c3_key)" }
- if = { limit = { var:tsin_cmp_slot_3 > 0 } set_variable = { name = tsin_cmp_c3_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c3_pid)" } }
+ if = { limit = { var:tsin_cmp_slot_3 > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_c3_pid value = var:tsin_cmp_slot_3 }
+  set_variable = { name = tsin_cmp_c3_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c3_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_c3_key value = { value = scope:tsin_cmp_c3_pid multiply = 100000 add = var:tsin_cmp_c3_serial } }
+  set_variable = { name = tsin_cmp_c3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c3_key)" }
+  set_variable = { name = tsin_cmp_c3_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c3_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_c3_serial value = 0 }
+  set_variable = { name = tsin_cmp_c3_year value = 0 }
+  set_variable = { name = tsin_cmp_c3_month value = 0 }
+  set_variable = { name = tsin_cmp_c3_population value = 0 }
+  set_variable = { name = tsin_cmp_c3_locations value = 0 }
+  set_variable = { name = tsin_cmp_c3_urban value = 0 }
+  set_variable = { name = tsin_cmp_c3_buildings value = 0 }
+  set_variable = { name = tsin_cmp_c3_companies value = 0 }
+  set_variable = { name = tsin_cmp_c3_gdp value = 0 }
+  set_variable = { name = tsin_cmp_c3_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_c4_country
- save_temporary_scope_value_as = { name = tsin_cmp_c4_pid value = var:tsin_cmp_slot_4 }
- set_variable = { name = tsin_cmp_c4_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c4_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_c4_key value = { value = scope:tsin_cmp_c4_pid multiply = 100000 add = var:tsin_cmp_c4_serial } }
- set_variable = { name = tsin_cmp_c4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c4_key)" }
- set_variable = { name = tsin_cmp_c4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c4_key)" }
- if = { limit = { var:tsin_cmp_slot_4 > 0 } set_variable = { name = tsin_cmp_c4_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c4_pid)" } }
+ if = { limit = { var:tsin_cmp_slot_4 > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_c4_pid value = var:tsin_cmp_slot_4 }
+  set_variable = { name = tsin_cmp_c4_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_c4_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_c4_key value = { value = scope:tsin_cmp_c4_pid multiply = 100000 add = var:tsin_cmp_c4_serial } }
+  set_variable = { name = tsin_cmp_c4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_c4_key)" }
+  set_variable = { name = tsin_cmp_c4_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_c4_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_c4_serial value = 0 }
+  set_variable = { name = tsin_cmp_c4_year value = 0 }
+  set_variable = { name = tsin_cmp_c4_month value = 0 }
+  set_variable = { name = tsin_cmp_c4_population value = 0 }
+  set_variable = { name = tsin_cmp_c4_locations value = 0 }
+  set_variable = { name = tsin_cmp_c4_urban value = 0 }
+  set_variable = { name = tsin_cmp_c4_buildings value = 0 }
+  set_variable = { name = tsin_cmp_c4_companies value = 0 }
+  set_variable = { name = tsin_cmp_c4_gdp value = 0 }
+  set_variable = { name = tsin_cmp_c4_gdp_known value = 0 }
+ }
  remove_variable = tsin_cmp_d_country
- save_temporary_scope_value_as = { name = tsin_cmp_d_pid value = var:tsin_cmp_detail }
- set_variable = { name = tsin_cmp_d_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_d_pid)" }
- save_temporary_scope_value_as = { name = tsin_cmp_d_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_d_serial } }
- set_variable = { name = tsin_cmp_d_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_d_key)" }
- set_variable = { name = tsin_cmp_d_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_d_key)" }
- if = { limit = { var:tsin_cmp_detail > 0 } set_variable = { name = tsin_cmp_d_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_d_pid)" } }
- set_variable = { name = tsin_cmp_h0_serial value = { value = var:tsin_cmp_d_serial subtract = 0 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h0_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h0_serial } }
- set_variable = { name = tsin_cmp_h0_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h0_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h0_key)" }
- set_variable = { name = tsin_cmp_h1_serial value = { value = var:tsin_cmp_d_serial subtract = 1 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h1_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h1_serial } }
- set_variable = { name = tsin_cmp_h1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h1_key)" }
- set_variable = { name = tsin_cmp_h2_serial value = { value = var:tsin_cmp_d_serial subtract = 2 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h2_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h2_serial } }
- set_variable = { name = tsin_cmp_h2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h2_key)" }
- set_variable = { name = tsin_cmp_h3_serial value = { value = var:tsin_cmp_d_serial subtract = 3 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h3_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h3_serial } }
- set_variable = { name = tsin_cmp_h3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h3_key)" }
- set_variable = { name = tsin_cmp_h4_serial value = { value = var:tsin_cmp_d_serial subtract = 4 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h4_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h4_serial } }
- set_variable = { name = tsin_cmp_h4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h4_key)" }
- set_variable = { name = tsin_cmp_h5_serial value = { value = var:tsin_cmp_d_serial subtract = 5 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h5_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h5_serial } }
- set_variable = { name = tsin_cmp_h5_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h5_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h5_key)" }
- set_variable = { name = tsin_cmp_h6_serial value = { value = var:tsin_cmp_d_serial subtract = 6 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h6_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h6_serial } }
- set_variable = { name = tsin_cmp_h6_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h6_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h6_key)" }
- set_variable = { name = tsin_cmp_h7_serial value = { value = var:tsin_cmp_d_serial subtract = 7 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h7_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h7_serial } }
- set_variable = { name = tsin_cmp_h7_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h7_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h7_key)" }
- set_variable = { name = tsin_cmp_h8_serial value = { value = var:tsin_cmp_d_serial subtract = 8 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h8_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h8_serial } }
- set_variable = { name = tsin_cmp_h8_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h8_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h8_key)" }
- set_variable = { name = tsin_cmp_h9_serial value = { value = var:tsin_cmp_d_serial subtract = 9 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h9_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h9_serial } }
- set_variable = { name = tsin_cmp_h9_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h9_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h9_key)" }
- set_variable = { name = tsin_cmp_h10_serial value = { value = var:tsin_cmp_d_serial subtract = 10 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h10_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h10_serial } }
- set_variable = { name = tsin_cmp_h10_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h10_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h10_key)" }
- set_variable = { name = tsin_cmp_h11_serial value = { value = var:tsin_cmp_d_serial subtract = 11 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_h11_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h11_serial } }
- set_variable = { name = tsin_cmp_h11_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_h11_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h11_key)" }
- set_variable = { name = tsin_cmp_w0_serial value = { value = global_var:tsin_cmpw_serial subtract = 0 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w0_key value = var:tsin_cmp_w0_serial }
- set_variable = { name = tsin_cmp_w0_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w0_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w0_key)" }
- set_variable = { name = tsin_cmp_w1_serial value = { value = global_var:tsin_cmpw_serial subtract = 1 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w1_key value = var:tsin_cmp_w1_serial }
- set_variable = { name = tsin_cmp_w1_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w1_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w1_key)" }
- set_variable = { name = tsin_cmp_w2_serial value = { value = global_var:tsin_cmpw_serial subtract = 2 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w2_key value = var:tsin_cmp_w2_serial }
- set_variable = { name = tsin_cmp_w2_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w2_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w2_key)" }
- set_variable = { name = tsin_cmp_w3_serial value = { value = global_var:tsin_cmpw_serial subtract = 3 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w3_key value = var:tsin_cmp_w3_serial }
- set_variable = { name = tsin_cmp_w3_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w3_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w3_key)" }
- set_variable = { name = tsin_cmp_w4_serial value = { value = global_var:tsin_cmpw_serial subtract = 4 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w4_key value = var:tsin_cmp_w4_serial }
- set_variable = { name = tsin_cmp_w4_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w4_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w4_key)" }
- set_variable = { name = tsin_cmp_w5_serial value = { value = global_var:tsin_cmpw_serial subtract = 5 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w5_key value = var:tsin_cmp_w5_serial }
- set_variable = { name = tsin_cmp_w5_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w5_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w5_key)" }
- set_variable = { name = tsin_cmp_w6_serial value = { value = global_var:tsin_cmpw_serial subtract = 6 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w6_key value = var:tsin_cmp_w6_serial }
- set_variable = { name = tsin_cmp_w6_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w6_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w6_key)" }
- set_variable = { name = tsin_cmp_w7_serial value = { value = global_var:tsin_cmpw_serial subtract = 7 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w7_key value = var:tsin_cmp_w7_serial }
- set_variable = { name = tsin_cmp_w7_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w7_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w7_key)" }
- set_variable = { name = tsin_cmp_w8_serial value = { value = global_var:tsin_cmpw_serial subtract = 8 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w8_key value = var:tsin_cmp_w8_serial }
- set_variable = { name = tsin_cmp_w8_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w8_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w8_key)" }
- set_variable = { name = tsin_cmp_w9_serial value = { value = global_var:tsin_cmpw_serial subtract = 9 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w9_key value = var:tsin_cmp_w9_serial }
- set_variable = { name = tsin_cmp_w9_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w9_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w9_key)" }
- set_variable = { name = tsin_cmp_w10_serial value = { value = global_var:tsin_cmpw_serial subtract = 10 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w10_key value = var:tsin_cmp_w10_serial }
- set_variable = { name = tsin_cmp_w10_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w10_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w10_key)" }
- set_variable = { name = tsin_cmp_w11_serial value = { value = global_var:tsin_cmpw_serial subtract = 11 min = 0 } }
- save_temporary_scope_value_as = { name = tsin_cmp_w11_key value = var:tsin_cmp_w11_serial }
- set_variable = { name = tsin_cmp_w11_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w11_key)" }
- set_variable = { name = tsin_cmp_w11_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w11_key)" }
+ if = { limit = { var:tsin_cmp_detail > 0 }
+  save_temporary_scope_value_as = { name = tsin_cmp_d_pid value = var:tsin_cmp_detail }
+  set_variable = { name = tsin_cmp_d_serial value = "global_variable_map(tsin_cmp_latest|scope:tsin_cmp_d_pid)" }
+  save_temporary_scope_value_as = { name = tsin_cmp_d_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_d_serial } }
+  set_variable = { name = tsin_cmp_d_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_d_key)" }
+  set_variable = { name = tsin_cmp_d_country value = "global_variable_map(tsin_cmp_country|scope:tsin_cmp_d_pid)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_d_serial value = 0 }
+  set_variable = { name = tsin_cmp_d_year value = 0 }
+  set_variable = { name = tsin_cmp_d_month value = 0 }
+  set_variable = { name = tsin_cmp_d_population value = 0 }
+  set_variable = { name = tsin_cmp_d_locations value = 0 }
+  set_variable = { name = tsin_cmp_d_urban value = 0 }
+  set_variable = { name = tsin_cmp_d_buildings value = 0 }
+  set_variable = { name = tsin_cmp_d_companies value = 0 }
+  set_variable = { name = tsin_cmp_d_gdp value = 0 }
+  set_variable = { name = tsin_cmp_d_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 0 }
+  set_variable = { name = tsin_cmp_h0_serial value = { value = var:tsin_cmp_d_serial subtract = 0 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h0_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h0_serial } }
+  set_variable = { name = tsin_cmp_h0_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h0_key)" }
+  set_variable = { name = tsin_cmp_h0_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h0_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h0_serial value = 0 }
+  set_variable = { name = tsin_cmp_h0_year value = 0 }
+  set_variable = { name = tsin_cmp_h0_month value = 0 }
+  set_variable = { name = tsin_cmp_h0_population value = 0 }
+  set_variable = { name = tsin_cmp_h0_locations value = 0 }
+  set_variable = { name = tsin_cmp_h0_urban value = 0 }
+  set_variable = { name = tsin_cmp_h0_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h0_companies value = 0 }
+  set_variable = { name = tsin_cmp_h0_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h0_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 1 }
+  set_variable = { name = tsin_cmp_h1_serial value = { value = var:tsin_cmp_d_serial subtract = 1 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h1_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h1_serial } }
+  set_variable = { name = tsin_cmp_h1_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h1_key)" }
+  set_variable = { name = tsin_cmp_h1_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h1_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h1_serial value = 0 }
+  set_variable = { name = tsin_cmp_h1_year value = 0 }
+  set_variable = { name = tsin_cmp_h1_month value = 0 }
+  set_variable = { name = tsin_cmp_h1_population value = 0 }
+  set_variable = { name = tsin_cmp_h1_locations value = 0 }
+  set_variable = { name = tsin_cmp_h1_urban value = 0 }
+  set_variable = { name = tsin_cmp_h1_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h1_companies value = 0 }
+  set_variable = { name = tsin_cmp_h1_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h1_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 2 }
+  set_variable = { name = tsin_cmp_h2_serial value = { value = var:tsin_cmp_d_serial subtract = 2 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h2_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h2_serial } }
+  set_variable = { name = tsin_cmp_h2_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h2_key)" }
+  set_variable = { name = tsin_cmp_h2_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h2_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h2_serial value = 0 }
+  set_variable = { name = tsin_cmp_h2_year value = 0 }
+  set_variable = { name = tsin_cmp_h2_month value = 0 }
+  set_variable = { name = tsin_cmp_h2_population value = 0 }
+  set_variable = { name = tsin_cmp_h2_locations value = 0 }
+  set_variable = { name = tsin_cmp_h2_urban value = 0 }
+  set_variable = { name = tsin_cmp_h2_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h2_companies value = 0 }
+  set_variable = { name = tsin_cmp_h2_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h2_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 3 }
+  set_variable = { name = tsin_cmp_h3_serial value = { value = var:tsin_cmp_d_serial subtract = 3 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h3_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h3_serial } }
+  set_variable = { name = tsin_cmp_h3_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h3_key)" }
+  set_variable = { name = tsin_cmp_h3_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h3_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h3_serial value = 0 }
+  set_variable = { name = tsin_cmp_h3_year value = 0 }
+  set_variable = { name = tsin_cmp_h3_month value = 0 }
+  set_variable = { name = tsin_cmp_h3_population value = 0 }
+  set_variable = { name = tsin_cmp_h3_locations value = 0 }
+  set_variable = { name = tsin_cmp_h3_urban value = 0 }
+  set_variable = { name = tsin_cmp_h3_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h3_companies value = 0 }
+  set_variable = { name = tsin_cmp_h3_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h3_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 4 }
+  set_variable = { name = tsin_cmp_h4_serial value = { value = var:tsin_cmp_d_serial subtract = 4 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h4_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h4_serial } }
+  set_variable = { name = tsin_cmp_h4_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h4_key)" }
+  set_variable = { name = tsin_cmp_h4_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h4_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h4_serial value = 0 }
+  set_variable = { name = tsin_cmp_h4_year value = 0 }
+  set_variable = { name = tsin_cmp_h4_month value = 0 }
+  set_variable = { name = tsin_cmp_h4_population value = 0 }
+  set_variable = { name = tsin_cmp_h4_locations value = 0 }
+  set_variable = { name = tsin_cmp_h4_urban value = 0 }
+  set_variable = { name = tsin_cmp_h4_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h4_companies value = 0 }
+  set_variable = { name = tsin_cmp_h4_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h4_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 5 }
+  set_variable = { name = tsin_cmp_h5_serial value = { value = var:tsin_cmp_d_serial subtract = 5 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h5_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h5_serial } }
+  set_variable = { name = tsin_cmp_h5_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h5_key)" }
+  set_variable = { name = tsin_cmp_h5_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h5_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h5_serial value = 0 }
+  set_variable = { name = tsin_cmp_h5_year value = 0 }
+  set_variable = { name = tsin_cmp_h5_month value = 0 }
+  set_variable = { name = tsin_cmp_h5_population value = 0 }
+  set_variable = { name = tsin_cmp_h5_locations value = 0 }
+  set_variable = { name = tsin_cmp_h5_urban value = 0 }
+  set_variable = { name = tsin_cmp_h5_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h5_companies value = 0 }
+  set_variable = { name = tsin_cmp_h5_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h5_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 6 }
+  set_variable = { name = tsin_cmp_h6_serial value = { value = var:tsin_cmp_d_serial subtract = 6 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h6_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h6_serial } }
+  set_variable = { name = tsin_cmp_h6_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h6_key)" }
+  set_variable = { name = tsin_cmp_h6_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h6_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h6_serial value = 0 }
+  set_variable = { name = tsin_cmp_h6_year value = 0 }
+  set_variable = { name = tsin_cmp_h6_month value = 0 }
+  set_variable = { name = tsin_cmp_h6_population value = 0 }
+  set_variable = { name = tsin_cmp_h6_locations value = 0 }
+  set_variable = { name = tsin_cmp_h6_urban value = 0 }
+  set_variable = { name = tsin_cmp_h6_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h6_companies value = 0 }
+  set_variable = { name = tsin_cmp_h6_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h6_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 7 }
+  set_variable = { name = tsin_cmp_h7_serial value = { value = var:tsin_cmp_d_serial subtract = 7 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h7_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h7_serial } }
+  set_variable = { name = tsin_cmp_h7_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h7_key)" }
+  set_variable = { name = tsin_cmp_h7_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h7_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h7_serial value = 0 }
+  set_variable = { name = tsin_cmp_h7_year value = 0 }
+  set_variable = { name = tsin_cmp_h7_month value = 0 }
+  set_variable = { name = tsin_cmp_h7_population value = 0 }
+  set_variable = { name = tsin_cmp_h7_locations value = 0 }
+  set_variable = { name = tsin_cmp_h7_urban value = 0 }
+  set_variable = { name = tsin_cmp_h7_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h7_companies value = 0 }
+  set_variable = { name = tsin_cmp_h7_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h7_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 8 }
+  set_variable = { name = tsin_cmp_h8_serial value = { value = var:tsin_cmp_d_serial subtract = 8 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h8_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h8_serial } }
+  set_variable = { name = tsin_cmp_h8_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h8_key)" }
+  set_variable = { name = tsin_cmp_h8_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h8_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h8_serial value = 0 }
+  set_variable = { name = tsin_cmp_h8_year value = 0 }
+  set_variable = { name = tsin_cmp_h8_month value = 0 }
+  set_variable = { name = tsin_cmp_h8_population value = 0 }
+  set_variable = { name = tsin_cmp_h8_locations value = 0 }
+  set_variable = { name = tsin_cmp_h8_urban value = 0 }
+  set_variable = { name = tsin_cmp_h8_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h8_companies value = 0 }
+  set_variable = { name = tsin_cmp_h8_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h8_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 9 }
+  set_variable = { name = tsin_cmp_h9_serial value = { value = var:tsin_cmp_d_serial subtract = 9 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h9_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h9_serial } }
+  set_variable = { name = tsin_cmp_h9_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h9_key)" }
+  set_variable = { name = tsin_cmp_h9_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h9_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h9_serial value = 0 }
+  set_variable = { name = tsin_cmp_h9_year value = 0 }
+  set_variable = { name = tsin_cmp_h9_month value = 0 }
+  set_variable = { name = tsin_cmp_h9_population value = 0 }
+  set_variable = { name = tsin_cmp_h9_locations value = 0 }
+  set_variable = { name = tsin_cmp_h9_urban value = 0 }
+  set_variable = { name = tsin_cmp_h9_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h9_companies value = 0 }
+  set_variable = { name = tsin_cmp_h9_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h9_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 10 }
+  set_variable = { name = tsin_cmp_h10_serial value = { value = var:tsin_cmp_d_serial subtract = 10 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h10_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h10_serial } }
+  set_variable = { name = tsin_cmp_h10_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h10_key)" }
+  set_variable = { name = tsin_cmp_h10_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h10_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h10_serial value = 0 }
+  set_variable = { name = tsin_cmp_h10_year value = 0 }
+  set_variable = { name = tsin_cmp_h10_month value = 0 }
+  set_variable = { name = tsin_cmp_h10_population value = 0 }
+  set_variable = { name = tsin_cmp_h10_locations value = 0 }
+  set_variable = { name = tsin_cmp_h10_urban value = 0 }
+  set_variable = { name = tsin_cmp_h10_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h10_companies value = 0 }
+  set_variable = { name = tsin_cmp_h10_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h10_gdp_known value = 0 }
+ }
+ if = { limit = { var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > 11 }
+  set_variable = { name = tsin_cmp_h11_serial value = { value = var:tsin_cmp_d_serial subtract = 11 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_h11_key value = { value = scope:tsin_cmp_d_pid multiply = 100000 add = var:tsin_cmp_h11_serial } }
+  set_variable = { name = tsin_cmp_h11_year value = "global_variable_map(tsin_cmph_year|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_month value = "global_variable_map(tsin_cmph_month|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_population value = "global_variable_map(tsin_cmph_population|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_locations value = "global_variable_map(tsin_cmph_locations|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_urban value = "global_variable_map(tsin_cmph_urban|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_buildings value = "global_variable_map(tsin_cmph_buildings|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_companies value = "global_variable_map(tsin_cmph_companies|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_gdp value = "global_variable_map(tsin_cmph_gdp|scope:tsin_cmp_h11_key)" }
+  set_variable = { name = tsin_cmp_h11_gdp_known value = "global_variable_map(tsin_cmph_gdp_known|scope:tsin_cmp_h11_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_h11_serial value = 0 }
+  set_variable = { name = tsin_cmp_h11_year value = 0 }
+  set_variable = { name = tsin_cmp_h11_month value = 0 }
+  set_variable = { name = tsin_cmp_h11_population value = 0 }
+  set_variable = { name = tsin_cmp_h11_locations value = 0 }
+  set_variable = { name = tsin_cmp_h11_urban value = 0 }
+  set_variable = { name = tsin_cmp_h11_buildings value = 0 }
+  set_variable = { name = tsin_cmp_h11_companies value = 0 }
+  set_variable = { name = tsin_cmp_h11_gdp value = 0 }
+  set_variable = { name = tsin_cmp_h11_gdp_known value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 0 }
+  set_variable = { name = tsin_cmp_w0_serial value = { value = global_var:tsin_cmpw_serial subtract = 0 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w0_key value = var:tsin_cmp_w0_serial }
+  set_variable = { name = tsin_cmp_w0_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w0_key)" }
+  set_variable = { name = tsin_cmp_w0_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w0_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w0_serial value = 0 }
+  set_variable = { name = tsin_cmp_w0_year value = 0 }
+  set_variable = { name = tsin_cmp_w0_month value = 0 }
+  set_variable = { name = tsin_cmp_w0_countries value = 0 }
+  set_variable = { name = tsin_cmp_w0_population value = 0 }
+  set_variable = { name = tsin_cmp_w0_companies value = 0 }
+  set_variable = { name = tsin_cmp_w0_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w0_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 1 }
+  set_variable = { name = tsin_cmp_w1_serial value = { value = global_var:tsin_cmpw_serial subtract = 1 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w1_key value = var:tsin_cmp_w1_serial }
+  set_variable = { name = tsin_cmp_w1_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w1_key)" }
+  set_variable = { name = tsin_cmp_w1_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w1_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w1_serial value = 0 }
+  set_variable = { name = tsin_cmp_w1_year value = 0 }
+  set_variable = { name = tsin_cmp_w1_month value = 0 }
+  set_variable = { name = tsin_cmp_w1_countries value = 0 }
+  set_variable = { name = tsin_cmp_w1_population value = 0 }
+  set_variable = { name = tsin_cmp_w1_companies value = 0 }
+  set_variable = { name = tsin_cmp_w1_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w1_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 2 }
+  set_variable = { name = tsin_cmp_w2_serial value = { value = global_var:tsin_cmpw_serial subtract = 2 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w2_key value = var:tsin_cmp_w2_serial }
+  set_variable = { name = tsin_cmp_w2_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w2_key)" }
+  set_variable = { name = tsin_cmp_w2_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w2_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w2_serial value = 0 }
+  set_variable = { name = tsin_cmp_w2_year value = 0 }
+  set_variable = { name = tsin_cmp_w2_month value = 0 }
+  set_variable = { name = tsin_cmp_w2_countries value = 0 }
+  set_variable = { name = tsin_cmp_w2_population value = 0 }
+  set_variable = { name = tsin_cmp_w2_companies value = 0 }
+  set_variable = { name = tsin_cmp_w2_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w2_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 3 }
+  set_variable = { name = tsin_cmp_w3_serial value = { value = global_var:tsin_cmpw_serial subtract = 3 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w3_key value = var:tsin_cmp_w3_serial }
+  set_variable = { name = tsin_cmp_w3_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w3_key)" }
+  set_variable = { name = tsin_cmp_w3_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w3_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w3_serial value = 0 }
+  set_variable = { name = tsin_cmp_w3_year value = 0 }
+  set_variable = { name = tsin_cmp_w3_month value = 0 }
+  set_variable = { name = tsin_cmp_w3_countries value = 0 }
+  set_variable = { name = tsin_cmp_w3_population value = 0 }
+  set_variable = { name = tsin_cmp_w3_companies value = 0 }
+  set_variable = { name = tsin_cmp_w3_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w3_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 4 }
+  set_variable = { name = tsin_cmp_w4_serial value = { value = global_var:tsin_cmpw_serial subtract = 4 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w4_key value = var:tsin_cmp_w4_serial }
+  set_variable = { name = tsin_cmp_w4_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w4_key)" }
+  set_variable = { name = tsin_cmp_w4_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w4_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w4_serial value = 0 }
+  set_variable = { name = tsin_cmp_w4_year value = 0 }
+  set_variable = { name = tsin_cmp_w4_month value = 0 }
+  set_variable = { name = tsin_cmp_w4_countries value = 0 }
+  set_variable = { name = tsin_cmp_w4_population value = 0 }
+  set_variable = { name = tsin_cmp_w4_companies value = 0 }
+  set_variable = { name = tsin_cmp_w4_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w4_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 5 }
+  set_variable = { name = tsin_cmp_w5_serial value = { value = global_var:tsin_cmpw_serial subtract = 5 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w5_key value = var:tsin_cmp_w5_serial }
+  set_variable = { name = tsin_cmp_w5_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w5_key)" }
+  set_variable = { name = tsin_cmp_w5_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w5_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w5_serial value = 0 }
+  set_variable = { name = tsin_cmp_w5_year value = 0 }
+  set_variable = { name = tsin_cmp_w5_month value = 0 }
+  set_variable = { name = tsin_cmp_w5_countries value = 0 }
+  set_variable = { name = tsin_cmp_w5_population value = 0 }
+  set_variable = { name = tsin_cmp_w5_companies value = 0 }
+  set_variable = { name = tsin_cmp_w5_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w5_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 6 }
+  set_variable = { name = tsin_cmp_w6_serial value = { value = global_var:tsin_cmpw_serial subtract = 6 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w6_key value = var:tsin_cmp_w6_serial }
+  set_variable = { name = tsin_cmp_w6_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w6_key)" }
+  set_variable = { name = tsin_cmp_w6_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w6_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w6_serial value = 0 }
+  set_variable = { name = tsin_cmp_w6_year value = 0 }
+  set_variable = { name = tsin_cmp_w6_month value = 0 }
+  set_variable = { name = tsin_cmp_w6_countries value = 0 }
+  set_variable = { name = tsin_cmp_w6_population value = 0 }
+  set_variable = { name = tsin_cmp_w6_companies value = 0 }
+  set_variable = { name = tsin_cmp_w6_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w6_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 7 }
+  set_variable = { name = tsin_cmp_w7_serial value = { value = global_var:tsin_cmpw_serial subtract = 7 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w7_key value = var:tsin_cmp_w7_serial }
+  set_variable = { name = tsin_cmp_w7_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w7_key)" }
+  set_variable = { name = tsin_cmp_w7_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w7_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w7_serial value = 0 }
+  set_variable = { name = tsin_cmp_w7_year value = 0 }
+  set_variable = { name = tsin_cmp_w7_month value = 0 }
+  set_variable = { name = tsin_cmp_w7_countries value = 0 }
+  set_variable = { name = tsin_cmp_w7_population value = 0 }
+  set_variable = { name = tsin_cmp_w7_companies value = 0 }
+  set_variable = { name = tsin_cmp_w7_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w7_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 8 }
+  set_variable = { name = tsin_cmp_w8_serial value = { value = global_var:tsin_cmpw_serial subtract = 8 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w8_key value = var:tsin_cmp_w8_serial }
+  set_variable = { name = tsin_cmp_w8_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w8_key)" }
+  set_variable = { name = tsin_cmp_w8_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w8_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w8_serial value = 0 }
+  set_variable = { name = tsin_cmp_w8_year value = 0 }
+  set_variable = { name = tsin_cmp_w8_month value = 0 }
+  set_variable = { name = tsin_cmp_w8_countries value = 0 }
+  set_variable = { name = tsin_cmp_w8_population value = 0 }
+  set_variable = { name = tsin_cmp_w8_companies value = 0 }
+  set_variable = { name = tsin_cmp_w8_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w8_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 9 }
+  set_variable = { name = tsin_cmp_w9_serial value = { value = global_var:tsin_cmpw_serial subtract = 9 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w9_key value = var:tsin_cmp_w9_serial }
+  set_variable = { name = tsin_cmp_w9_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w9_key)" }
+  set_variable = { name = tsin_cmp_w9_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w9_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w9_serial value = 0 }
+  set_variable = { name = tsin_cmp_w9_year value = 0 }
+  set_variable = { name = tsin_cmp_w9_month value = 0 }
+  set_variable = { name = tsin_cmp_w9_countries value = 0 }
+  set_variable = { name = tsin_cmp_w9_population value = 0 }
+  set_variable = { name = tsin_cmp_w9_companies value = 0 }
+  set_variable = { name = tsin_cmp_w9_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w9_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 10 }
+  set_variable = { name = tsin_cmp_w10_serial value = { value = global_var:tsin_cmpw_serial subtract = 10 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w10_key value = var:tsin_cmp_w10_serial }
+  set_variable = { name = tsin_cmp_w10_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w10_key)" }
+  set_variable = { name = tsin_cmp_w10_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w10_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w10_serial value = 0 }
+  set_variable = { name = tsin_cmp_w10_year value = 0 }
+  set_variable = { name = tsin_cmp_w10_month value = 0 }
+  set_variable = { name = tsin_cmp_w10_countries value = 0 }
+  set_variable = { name = tsin_cmp_w10_population value = 0 }
+  set_variable = { name = tsin_cmp_w10_companies value = 0 }
+  set_variable = { name = tsin_cmp_w10_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w10_gdp value = 0 }
+ }
+ if = { limit = { has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > 11 }
+  set_variable = { name = tsin_cmp_w11_serial value = { value = global_var:tsin_cmpw_serial subtract = 11 } }
+  save_temporary_scope_value_as = { name = tsin_cmp_w11_key value = var:tsin_cmp_w11_serial }
+  set_variable = { name = tsin_cmp_w11_year value = "global_variable_map(tsin_cmpw_year|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_month value = "global_variable_map(tsin_cmpw_month|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_countries value = "global_variable_map(tsin_cmpw_countries|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_population value = "global_variable_map(tsin_cmpw_population|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_companies value = "global_variable_map(tsin_cmpw_companies|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_known_gdp value = "global_variable_map(tsin_cmpw_known_gdp|scope:tsin_cmp_w11_key)" }
+  set_variable = { name = tsin_cmp_w11_gdp value = "global_variable_map(tsin_cmpw_gdp|scope:tsin_cmp_w11_key)" }
+ }
+ else = {
+  set_variable = { name = tsin_cmp_w11_serial value = 0 }
+  set_variable = { name = tsin_cmp_w11_year value = 0 }
+  set_variable = { name = tsin_cmp_w11_month value = 0 }
+  set_variable = { name = tsin_cmp_w11_countries value = 0 }
+  set_variable = { name = tsin_cmp_w11_population value = 0 }
+  set_variable = { name = tsin_cmp_w11_companies value = 0 }
+  set_variable = { name = tsin_cmp_w11_known_gdp value = 0 }
+  set_variable = { name = tsin_cmp_w11_gdp value = 0 }
+ }
 }
 # GENERATED by tools/gen_manual_statistics.py
 tsin_cmp_prev_effect = { if = { limit = { var:tsin_cmp_page > 0 } change_variable = { name = tsin_cmp_page add = -1 } } tsin_cmp_project_effect = yes debug_log = tsin_log_hook_cmp_page }

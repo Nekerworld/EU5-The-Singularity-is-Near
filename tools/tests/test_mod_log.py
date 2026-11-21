@@ -82,7 +82,7 @@ class GeneratedLogTests(unittest.TestCase):
     def test_session_hook_is_declared_and_written(self):
         self.assertIn(('session_start', '세션 시작 점검(로비 종료·세이브 로드 직후)'), spec.HOOKS)
         self.assertIn('debug_log = tsin_log_hook_session_start', spec.effect_text())
-        self.assertEqual(spec.SCHEMA, 2)
+        self.assertEqual(spec.SCHEMA, 3)
 
     def test_metric_variables_are_guarded_before_reading(self):
         text = spec.effect_text()

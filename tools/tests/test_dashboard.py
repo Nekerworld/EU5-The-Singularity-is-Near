@@ -54,10 +54,23 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('type tsin_gdp_history_tooltip',common)
         controller=generated['in_game/gui/tsin_dashboard_dock.gui']
         self.assertIn('tsin_dashboard_dock',controller)
+        self.assertIn('parentanchor = left|bottom',controller)
+        self.assertIn('position = { 0 0 }',controller)
+        self.assertIn('Not(IsPauseMenuShown)',controller)
         self.assertNotIn('sakuya_',controller)
         metadata=generated['in_game/common/scripted_effects/tsin_dashboard_core_effects.txt']
         self.assertNotIn('remove_variable',metadata)
         self.assertIn('var:tsin_dashboard_data_version < 1',metadata)
+
+    def test_compact_metrics_use_show_when_gates(self):
+        generated=build(self.data)
+        predicates=generated['in_game/common/scripted_guis/tsin_dashboard_predicates.txt']
+        common=generated['in_game/gui/tsin_dashboard_common.gui']
+        self.assertIn('tsin_ui_show_industry',predicates)
+        self.assertIn('tsin_ui_show_stock',predicates)
+        self.assertIn('tsin_exchange_can_open_trigger = yes',predicates)
+        self.assertIn("GetScriptedGui('tsin_ui_show_industry')",common)
+        self.assertIn("GetScriptedGui('tsin_ui_show_stock')",common)
 
     def test_every_metric_has_a_card_and_both_localizations(self):
         generated=build(self.data)
@@ -66,5 +79,21 @@ class DashboardTests(unittest.TestCase):
             self.assertIn('type tsin_ui_card_'+metric['id'],generated['in_game/gui/tsin_dashboard_common.gui'])
             for lang in ['english','korean']:
                 self.assertIn('TSIN_UI_METRIC_'+metric['id'].upper()+':',generated[f'main_menu/localization/{lang}/tsin_dashboard_l_{lang}.yml'])
+
+    def test_management_window_is_dense_without_filler_copy(self):
+        generated=build(self.data)
+        ui=generated['in_game/gui/tsin_dashboard.gui']
+        self.assertIn('size = { 1360 820 }',ui)
+        self.assertNotIn('TSIN_UI_GUIDE',ui)
+        self.assertNotIn('TSIN_UI_HISTORY_NOTE',generated['in_game/gui/tsin_dashboard_common.gui'])
+        self.assertNotIn('TSIN_UI_SOCIETY_HELP',ui)
+        self.assertIn('TSIN_UI_LINK_SURVEY_DOMESTIC',ui)
+        # Shortcuts come before metric cards in the overview tab body.
+        self.assertLess(ui.index('TSIN_UI_LINK_COUNTRY_COMPARE'),ui.index('tsin_ui_card_population'))
+        fmt=generated['in_game/common/customizable_localization/tsin_dashboard_formatters.txt']
+        self.assertIn('var:tsin_statistics_population >= 1000',fmt)
+        self.assertIn('Multiply_CFixedPoint',generated['main_menu/localization/korean/tsin_dashboard_l_korean.yml'])
+        self.assertIn('인구"',generated['main_menu/localization/korean/tsin_dashboard_l_korean.yml'])
+        self.assertNotIn('인구 (천 명)',generated['main_menu/localization/korean/tsin_dashboard_l_korean.yml'])
 
 if __name__=='__main__': unittest.main()

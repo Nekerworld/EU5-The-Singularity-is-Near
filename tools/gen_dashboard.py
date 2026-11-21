@@ -13,7 +13,7 @@ import pdx
 REGISTRY = 'ui/dashboard_registry.json'
 LANGUAGES = ('english', 'korean')
 SAFE_ID = re.compile(r'^[a-z][a-z0-9_]*$')
-UNITS = {'number', 'compact', 'percent_points', 'fraction'}
+UNITS = {'number', 'compact', 'people', 'percent_points', 'fraction'}
 
 
 def validate_registry(data):
@@ -46,6 +46,11 @@ def validate_registry(data):
             raise ValueError(f'{metric["id"]}: unsupported update frequency')
         if not set(metric['tabs']) <= set(tabs):
             raise ValueError(f'{metric["id"]}: unknown tab')
+        if 'show_when' in metric:
+            if not isinstance(metric['show_when'], str) or not metric['show_when'].strip():
+                raise ValueError(f'{metric["id"]}: show_when must be a non-empty trigger string')
+            if re.search(r'\b(?:any_country|every_country|random_country|every_location|any_owned_location|every_owned_location)\b', metric['show_when']):
+                raise ValueError('UI predicates must read cheap cached conditions, not scan the world/locations')
     for entry in statuses + shortcuts:
         if entry['tab'] not in tabs:
             raise ValueError(f'{entry["id"]}: unknown tab')
@@ -119,6 +124,8 @@ def build(data):
         return variable(name) + '.IsSet'
     def gate(id):
         return f"GetScriptedGui('tsin_ui_check_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
+    def show(id):
+        return f"GetScriptedGui('tsin_ui_show_{id}').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)"
     def action_button(key, actions, width=168):
         # Sakuya-style readable action buttons (Cheat Menu ~168×40, fontsize 14).
         return '\n'.join(['button_regular = {', f'    size = {{ {width} 40 }}', '    action_tooltip = {', f'        title = "{key}"'] + [f'        on_action = "[{a}]"' for a in actions] + ['    }', f'    text_single = {{ size = {{ {width-8} 36 }} parentanchor = center autoresize = no maximumsize = {{ {width-8} 36 }} fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "{key}" }}', '}'])
@@ -145,30 +152,39 @@ def build(data):
         'ACTIVE': ('Active', '진행 중'),
         'MET': ('Requirement met', '조건 충족'),
         'NOT_MET': ('Requirement not met', '조건 미충족'),
-        'GUIDE': ('Read-only cached statistics. Use the linked native views for actions and their normal costs and requirements.', '저장된 통계를 표시합니다. 행동은 연결된 기본 화면에서 기존 조건과 비용에 따라 실행합니다.'),
+        # Kept for tooltips / docs tests; not rendered as permanent panel copy.
         'SOCIETY_HELP': ('Education approaches its targets annually. Targets are constrained by literacy, lower education, capacity and policy. Movement values use a 0–100 scale.', '교육률은 매년 목표치에 접근합니다. 목표는 문해율·하위 교육·시설 정원·정책의 제한을 받습니다. 사회운동은 0~100 척도입니다.'),
-        'ECONOMY_HELP': ('Annual output and industry aggregates. Inspect individual goods and construction in the economy screen; the dashboard does not scan all locations on hover.', '연간 산출·산업 집계입니다. 개별 상품과 건설은 경제 화면에서 확인하십시오. 호버 시 전국 지점을 재집계하지 않습니다.'),
-        'FINANCE_HELP': ('Company totals are annual snapshots. Existing stock prices update quarterly. Founding, charters and dissolution retain their existing decisions and costs.', '기업 수·상한·가치 합계는 연간 집계이며 기존 주가는 분기 갱신됩니다. 기업 설립·특허장·해산은 기존 결단과 비용을 유지합니다.'),
+        'ECONOMY_HELP': ('Annual output and industry aggregates. Inspect individual goods and construction in the economy screen.', '연간 산출·산업 집계입니다. 개별 상품과 건설은 경제 화면에서 확인하십시오.'),
+        'FINANCE_HELP': ('Company totals are annual snapshots. The public stock index unlocks with a stock-exchange advance or by embracing industrial capitalism.', '기업 수·상한·가치 합계는 연간 집계입니다. 공개 주가지수는 증권거래소 기술 또는 산업자본주의 시대관 수용 후에 열립니다.'),
         'RESEARCH_HELP': ('Institution acceptance opens a technology root; it does not grant the technology. Native technologies show prerequisites and individual unlocks. Academic exchange adds cumulative 2/5/9/15% from the cached education tiers, then multiplies by 1.2 (free press), 0.5 (state press only) or 0.75 (censored). Maximum 18%. No new research slots or world technology rotation. The education source year shows when that cache was measured.', '시대관 수용은 뿌리 기술의 연구 조건을 엽니다. 기술 자체를 지급하지 않습니다. 선행 관계와 개별 해금은 기본 기술 화면에서 확인하십시오. 학술 교류 보너스는 기존 교육 캐시(중등·고등 교육률)에 따라 2·5·9·15%가 누적되며, 자유 언론 ×1.2, 국가 언론 ×0.5, 검열 ×0.75를 곱합니다. 최대 18%이며 새 연구 슬롯이나 세계 기술 순회는 없습니다. 교육 원자료 연도는 이 교육 캐시를 측정한 연도입니다.'),
-        'HISTORY_NOTE': ('Oldest observation first; shared scale. Only recorded observations are shown, with no reconstructed past. K=1,000 · M=1,000,000 · B=1,000,000,000 · T=1,000,000,000,000.', '오래된 관측치부터 같은 척도로 비교합니다. 기록한 관측치만 표시하며 과거를 복원하지 않습니다. K=천 · M=백만 · B=십억 · T=조.'),
     }
     for key, (en, ko) in labels.items(): localized('TSIN_UI_' + key, en, ko)
     for tab in data['tabs']: title('TAB', tab)
     custom = []
-    def formatter(id, var):
+    def formatter(id, var, *, people=False):
+        # people: engine total_population is in thousands; show headcount like vanilla (5.698M).
         custom.extend([f'tsin_ui_format_{id} = {{', '\ttype = country', '\trandom_valid = no', '\ttext = {', f'\t\ttrigger = {{ NOT = {{ has_variable = {var} }} }}', '\t\tlocalization_key = TSIN_UI_MISSING', '\t}'])
-        for suffix, divisor in [('T',10**12),('B',10**9),('M',10**6),('K',10**3),('',1)]:
+        steps = [('T',10**9),('B',10**6),('M',10**3),('K',1),('',1)] if people else [('T',10**12),('B',10**9),('M',10**6),('K',10**3),('',1)]
+        for suffix, divisor in steps:
             key = f'TSIN_UI_NUMBER_{id.upper()}_{suffix or "BASE"}'
             custom.extend(['\ttext = {'])
             if suffix: custom.append(f'\t\ttrigger = {{ var:{var} >= {divisor} }}')
             custom.extend([f'\t\tlocalization_key = {key}', '\t}'])
             getter = variable(var) + '.GetValue'
-            value = f"[Divide_CFixedPoint({getter}, '(CFixedPoint){divisor}')|1]{suffix}" if suffix else f'[{getter}|{3 if id == "gdp_per_capita" else 0}]'
+            if people and not suffix:
+                value = f"[Multiply_CFixedPoint({getter}, '(CFixedPoint)1000')|0]"
+            elif people:
+                value = f"[Divide_CFixedPoint({getter}, '(CFixedPoint){divisor}')|1]{suffix}"
+            elif suffix:
+                value = f"[Divide_CFixedPoint({getter}, '(CFixedPoint){divisor}')|1]{suffix}"
+            else:
+                value = f'[{getter}|{3 if id == "gdp_per_capita" else 0}]'
             localized(key,value,value)
         custom.append('}')
     # All frontends use these shared generated metric formatters.
     for m in metrics:
-        if m['unit'] == 'compact': formatter(m['id'],m['variable'])
+        if m['unit'] in ('compact', 'people'):
+            formatter(m['id'], m['variable'], people=(m['unit'] == 'people'))
     def value_widget(m, small=False):
         size = 15 if small else 24
         if m['id']=='company_limit':
@@ -176,7 +192,7 @@ def build(data):
             return f"""text_single = {{ visible = "[{free}]" fontsize = {size} text = "∞" }}
 text_single = {{ visible = "[Not({free})]" fontsize = {size} text = "[{variable(m['variable'])}.GetValue|0]" }}"""
 
-        if m['unit'] == 'compact':
+        if m['unit'] in ('compact', 'people'):
             return f'text_single = {{ fontsize = {size} text = "[Player.Custom(\'tsin_ui_format_{m["id"]}\')]" }}'
         fmt = '1%' if m['unit']=='fraction' else '1'
         suffix = '%' if m['unit']=='percent_points' else ''
@@ -190,8 +206,10 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
         for lang in LANGUAGES:
             loc[lang][desc] = m.get('description',{}).get(lang,'') or loc[lang]['TSIN_UI_UNAVAILABLE']
         # Paper cards match Cheat Menu readability (bg_paper_card + larger type).
-        common += [f'type tsin_ui_card_{m["id"]} = vbox {{', 'size = { 292 96 }', 'using = bg_paper_card', 'margin = { 10 8 }', 'spacing = 4', 'datacontext = "[Player]"',
-                   f'tooltip = "{desc}"',f'text_single = {{ fontsize = 14 text = "{key}" }}',value_widget(m),
+        card_visible = f'visible = "[{show(m["id"])}]"' if m.get('show_when') else ''
+        common += [f'type tsin_ui_card_{m["id"]} = vbox {{', 'size = { 310 88 }', 'using = bg_paper_card', 'margin = { 10 8 }', 'spacing = 4', 'datacontext = "[Player]"',
+                   *([card_visible] if card_visible else []),
+                   f'tooltip = "{desc}"','tagtooltip_enabled = yes',f'text_single = {{ fontsize = 14 text = "{key}" }}',value_widget(m),
                    f'text_single = {{ fontsize = 11 text = "TSIN_UI_{m["frequency"].upper()}" }}','}']
     for history in data.get('histories',[]):
         id=history['id']; m=by_id[id]
@@ -204,7 +222,7 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
                        'progressbar = { size = { 260 14 } min = 0 max = 1 using = progressbar_bar_small',
                        f'value = "[Divide_float(FixedPointToFloat({variable(var)}.GetValue), Max_float(FixedPointToFloat({variable(history["peak_variable"])}.GetValue), \'(float)1\'))]" }}',
                        f'text_single = {{ size = {{ 120 22 }} fontsize = 13 text = "[Player.Custom(\'tsin_ui_format_{id}_sample_{i}\')]" }}','}']
-        common += ['text_single = { maximumsize = { 480 -1 } multiline = yes fontsize = 12 text = "TSIN_UI_HISTORY_NOTE" }','}']
+        common += ['}']
     # Stable compatibility alias for pre-existing Glorp tooltip callers.
     common += ['type tsin_gdp_history_tooltip = SimpleContextualTooltipType {', 'blockoverride "title_icon" {}',
                'blockoverride "title_text" { text = "TSIN_UI_METRIC_GDP" }',
@@ -221,7 +239,9 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
                 'growth':'map_modes/tsin_urbanization', 'industry':'map_modes/tsin_industrialization',
                 'labor':'map_modes/tsin_labor_unrest', 'stock':'map_modes/tsin_corporations'}
             tip='tsin_ui_compact_tip_'+id
+            cell_visible = f'visible = "[{show(id)}]"' if m.get('show_when') else ''
             common += [f'hbox = {{ size = {{ 100 30 }} spacing = 3 datacontext = "[Player]" alwaystransparent = no',
+                *([cell_visible] if cell_visible else []),
                 f'icon = {{ size = {{ 25 25 }} texture = "gfx/interface/icons/{icons[id]}.dds" }}',value_widget(m,True),
                 'tooltipwidget = { '+('tsin_gdp_history_tooltip' if id=='gdp' else tip)+' = {} }','}']
         common += ['}']
@@ -236,6 +256,10 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
             f'text_single = {{ text = "TSIN_UI_{m["frequency"].upper()}" }}','} } }']
     common += ['}']
     guis=['# GENERATED read-only predicates; no gameplay effects.']
+    for m in metrics:
+        if not m.get('show_when'):
+            continue
+        guis += [f'tsin_ui_show_{m["id"]} = {{','scope = country','is_shown = { always = yes }',f'is_valid = {{ {m["show_when"].strip()} }}','}']
     for s in statuses:
         guis += [f'tsin_ui_check_{s["id"]} = {{','scope = country','is_shown = { always = yes }',f'is_valid = {{ {s["condition"]} }}','}']
         title('STATUS',s)
@@ -279,17 +303,19 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
         alwaystransparent = yes
     }}
 }}'''
+    # Flush bottom-left corner; hide while the pause/esc menu is open so Exit stays clickable
+    # (vanilla hud_bot / control_groups use the same IsPauseMenuShown gate).
     ui=['# GENERATED by tools/gen_dashboard.py; independent of Glorp and Cheat Menu.',
         'window = {','name = "tsin_dashboard_dock"','layer = topbar','parentanchor = left|bottom','widgetanchor = left|bottom',
-        'position = { 8 8 }','size = { 220 120 }','movable = yes','allow_outside = yes',
-        'visible = "[GetPlayer.IsValid]"','datacontext = "[GetPlayer]"',
-        'hbox = { spacing = 10 margin = { 4 4 }',
+        'position = { 0 0 }','size = { 210 112 }','movable = yes','allow_outside = yes',
+        'visible = "[And(GetPlayer.IsValid, Not(IsPauseMenuShown))]"','datacontext = "[GetPlayer]"',
+        'hbox = { spacing = 8 margin = { 2 2 }',
         manage_btn,
         'tsin_ops_button = {}',
         '}',
         '}',
         # Standalone window shell mirrors Cheat Menu (Sakuya): header_alt + main tabs + inner panel.
-        'window = {','name = "tsin_dashboard_window"','layer = topbar','parentanchor = center','widgetanchor = center','size = { 1000 720 }','movable = yes','allow_outside = yes','datacontext = "[GetPlayer]"',
+        'window = {','name = "tsin_dashboard_window"','layer = topbar','parentanchor = center','widgetanchor = center','size = { 1360 820 }','movable = yes','allow_outside = yes','datacontext = "[GetPlayer]"',
            f'visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists(\'{open_var}\'))]"',
            'widget = { size = { 100% 100% } using = bg_window_default_alt',
            'widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" {',
@@ -308,42 +334,50 @@ text_single = {{ visible = "[Not({is_set(m['variable'])})]" fontsize = {size} te
             f'down = "[GetVariableSystem.HasValue(\'{tab_var}\', \'{tid}\')]"',
             '}',
         ]))
+    def emit_shortcut(s):
+        key=title('LINK',s)
+        close=f"GetVariableSystem.Clear('{open_var}')"
+        if 'view' in s:
+            return [action_button(key,[f"OpenLateralView('{s['view']}')",close],234)]
+        if 'open_variable' in s:
+            actions=[f"GetVariableSystem.Set('{s['open_variable']}', 'yes')"]
+            if s.get('open_scripted_gui'):
+                actions.append(f"GetScriptedGui('{s['open_scripted_gui']}').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)")
+            actions.append(close)
+            return [action_button(key,actions,234)]
+        if 'generic_action' in s:
+            return [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetGenericAction(\'{s["generic_action"]}\')]"',action_button(key,['PerformGenericAction(GenericAction.Self)',close],234),'}']
+        return [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetMapMode(\'{s["map_mode"]}\')]"',action_button(key,['MapMode.SetMapMode',close],234),'}']
     ui += ['} }',
            'hbox = { layoutpolicy_horizontal = expanding margin = { 8 4 } spacing = 10',
            'text_single = { using = Font_Size_Medium text = "TSIN_UI_DATE" }',
            f'text_single = {{ visible = "[{is_set("tsin_statistics_year")}]" using = Font_Size_Medium text = "[{variable("tsin_statistics_year")}.GetValue|0]" }}',
            f'text_single = {{ visible = "[Not({is_set("tsin_statistics_year")} )]" using = Font_Size_Medium text = "TSIN_UI_NO_DATE" }}','}',
-           'text_single = { maximumsize = { 940 -1 } multiline = yes fontsize = 13 text = "TSIN_UI_GUIDE" }',
            'vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt',
-           'scrollarea = { size = { 960 500 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 10 8 }']
+           'scrollarea = { size = { 1320 620 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 10 margin = { 10 8 }']
     for tab in data['tabs']:
-        id=tab['id']; ui += [f'vbox = {{ visible = "[{selected(id)}]" spacing = 12']
-        help_key={'society':'SOCIETY_HELP','economy':'ECONOMY_HELP','finance':'FINANCE_HELP','research':'RESEARCH_HELP'}.get(id)
-        if help_key: ui += [f'text_single = {{ maximumsize = {{ 920 -1 }} multiline = yes fontsize = 13 text = "TSIN_UI_{help_key}" }}']
+        id=tab['id']; ui += [f'vbox = {{ visible = "[{selected(id)}]" spacing = 10']
+        tab_shortcuts=[s for s in shortcuts if s['tab']==id]
+        if tab_shortcuts:
+            ui += ['flowcontainer = { layoutpolicy_horizontal = expanding spacing = 8']
+            for s in tab_shortcuts:
+                ui += emit_shortcut(s)
+            ui += ['}']
         subset=[m for m in metrics if id in m['tabs']]
-        for offset in range(0,len(subset),3):
-            ui += ['hbox = { spacing = 14']+[f'tsin_ui_card_{m["id"]} = {{}}' for m in subset[offset:offset+3]]+['}']
+        for offset in range(0,len(subset),4):
+            ui += ['hbox = { spacing = 12']+[f'tsin_ui_card_{m["id"]} = {{}}' for m in subset[offset:offset+4]]+['}']
         for h in data.get('histories',[]):
             if h['tab']==id: ui += [f'tsin_ui_history_{h["id"]} = {{}}']
         for s in statuses:
             if s['tab']!=id: continue
             visible = f'visible = "[{gate(s["id"])}]"' if id=='crises' else ''
-            ui += ['vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4',visible,f'text_single = {{ fontsize = 17 text = "TSIN_UI_STATUS_{s["id"].upper()}" }}',
+            ui += ['vbox = { using = bg_paper_card margin = { 10 8 } spacing = 4',visible,
+                   f'tooltip = "TSIN_UI_STATUS_HELP_{s["id"].upper()}"','tagtooltip_enabled = yes',
+                   f'text_single = {{ fontsize = 17 text = "TSIN_UI_STATUS_{s["id"].upper()}" }}',
                    f'text_single = {{ visible = "[{gate(s["id"])}]" fontsize = 14 text = "TSIN_UI_{"ACTIVE" if id=="crises" else "MET"}" }}']
             if id!='crises': ui += [f'text_single = {{ visible = "[Not({gate(s["id"])})]" fontsize = 14 text = "TSIN_UI_NOT_MET" }}']
-            ui += [f'text_single = {{ maximumsize = {{ 900 -1 }} multiline = yes fontsize = 13 text = "TSIN_UI_STATUS_HELP_{s["id"].upper()}" }}','}']
+            ui += ['}']
         if id=='crises': ui += [f'text_single = {{ visible = "[{gate("no_crises")}]" fontsize = 14 text = "TSIN_UI_NO_CRISIS" }}']
-        for s in shortcuts:
-            if s['tab']!=id: continue
-            key=title('LINK',s)
-            close=f"GetVariableSystem.Clear('{open_var}')"
-            if 'view' in s: ui.append(action_button(key,[f"OpenLateralView('{s['view']}')",close],234))
-            elif 'open_variable' in s:
-                ui.append(action_button(key,[f"GetVariableSystem.Set('{s['open_variable']}', 'yes')",close],234))
-            elif 'generic_action' in s:
-                ui += [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetGenericAction(\'{s["generic_action"]}\')]"',action_button(key,['PerformGenericAction(GenericAction.Self)',close],234),'}']
-            else:
-                ui += [f'widget = {{ size = {{ 234 40 }} datacontext = "[GetMapMode(\'{s["map_mode"]}\')]"',action_button(key,['MapMode.SetMapMode',close],234),'}']
         ui += ['}']
     ui += ['} } }','} } }','}']
     version=data['schema_version']

@@ -15,7 +15,7 @@ import sys, argparse
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pdx
 
-SCHEMA = 2
+SCHEMA = 3
 
 # (id, 한국어 설명, trigger). Player-country scope. Written at session start and every month.
 CHECKS = [
@@ -42,7 +42,8 @@ CHECKS = [
     ('rule_observer_log', '게임 규칙: 관찰 측정 기록 켬', 'has_game_rule = tsin_observer_log_on'),
     # V track (state only — no click required)
     ('women_law', '여성권 법 보유', 'has_law = tsin_women_rights_law'),
-    ('women_suffrage', '여성 참정권 정책 시행', 'has_policy = policy:tsin_women_suffrage_policy'),
+    # has_policy alone can be true without the law unlocked (1337 France false positive in play logs).
+    ('women_suffrage', '여성 참정권 정책 시행', 'has_law = tsin_women_rights_law has_policy = policy:tsin_women_suffrage_policy'),
     ('naval_law', '해군 이념 법 보유', 'has_law = tsin_naval_ideology_law'),
     ('police_law', '경찰 법 보유', 'has_law = tsin_police_law'),
     ('health_law', '공중보건 법 보유', 'has_law = tsin_public_health_law'),
@@ -58,6 +59,15 @@ CHECKS = [
     ('h_eq_ready', 'H1 소화기 비축 변수', 'has_variable = tsin_eq_small_arms_stockpile'),
     ('h_fuel_ready', 'H3 연료 비축 변수', 'has_variable = tsin_fuel_stockpile'),
     ('h_air_ready', 'H4 전투기 비축 변수', 'has_variable = tsin_air_fighter_stockpile'),
+    # Bilateral multi-article treaties (session/monthly without opening the window)
+    ('tr_ledger', '양자 조약 원장 사용됨', 'has_global_variable = tsin_tr_next_id'),
+    ('tr_draft_partner', '조약 초안 상대 선택됨', 'has_variable = tsin_tr_draft_partner'),
+    ('tr_incoming', '조약 수신 제안 대기', 'has_variable = tsin_tr_incoming_from'),
+    ('tr_selected', '조약 목록에서 선택됨', 'has_variable = tsin_tr_selected'),
+    ('tr_renegotiate', '조약 재협상 중', 'has_variable = tsin_tr_renegotiate_id'),
+    ('tr_fx_peg', '조약 환율 페그 플래그', 'has_variable = tsin_tr_flag_tsin_fx_peg'),
+    ('tr_lend_lease', '조약 랜드리스 플래그', 'has_variable = tsin_tr_flag_tsin_lend_lease_eq'),
+    ('tr_airbase', '조약 비행장 보너스', 'has_variable = tsin_tr_airbase_bonus'),
 ]
 
 # (id, 한국어 설명). Fixed one-line hooks.
@@ -77,6 +87,14 @@ HOOKS = [
     ('cmp_clear', '국가 비교: 비우기'),
     ('listing_exchange_open', '기업 상장: 거래소 표식 부여(거래소 개설 가능 상태)'),
     ('listing_exchange_blocked', '기업 상장: 거래소 표식 거부(자본시장 기술 없음)'),
+    ('tr_open_partner', '양자 조약: 상대 선택·초안 열기'),
+    ('tr_send', '양자 조약: 제안 보내기'),
+    ('tr_accept', '양자 조약: 초안 수락·원장 기록'),
+    ('tr_accept_incoming', '양자 조약: 수신 제안 수락'),
+    ('tr_reject_incoming', '양자 조약: 수신 제안 거절'),
+    ('tr_break', '양자 조약: 선택 조약 파기'),
+    ('tr_renegotiate', '양자 조약: 선택 조약 재협상'),
+    ('tr_month', '양자 조약: 월간 이행 펄스'),
 ]
 
 # 훅 직후 다음 점검에서 기대하는 값. 어긋나면 FAIL. session_start는 상태 점검만 하므로 기대값 없음.
@@ -86,6 +104,8 @@ HOOK_EXPECT = {
     'survey_world_companies': ('world_company_survey', 1),
     'cmp_record_domestic': ('cmp_registry', 1),
     'cmp_record_world': ('cmp_world_history', 1),
+    'tr_accept': ('tr_ledger', 1),
+    'tr_accept_incoming': ('tr_ledger', 1),
 }
 
 IMPLIES = [
@@ -120,6 +140,12 @@ METRICS = [
     ('eq_air', '항공기 풀 비축', 'var:tsin_eq_aircraft_stockpile', 'has_variable = tsin_eq_aircraft_stockpile', 0),
     ('fuel', '연료 비축', 'var:tsin_fuel_stockpile', 'has_variable = tsin_fuel_stockpile', 0),
     ('air_fighter', '전투기 비축', 'var:tsin_air_fighter_stockpile', 'has_variable = tsin_air_fighter_stockpile', 0),
+    ('tr_next', '조약 원장 다음 ID', 'global_var:tsin_tr_next_id', 'has_global_variable = tsin_tr_next_id', 0),
+    ('tr_matches', '보유 조약 목록 수', 'var:tsin_tr_matches', 'has_variable = tsin_tr_matches', 0),
+    ('tr_score', '조약 초안 수락 점수', 'var:tsin_tr_draft_score', 'has_variable = tsin_tr_draft_score', 0),
+    ('tr_binding', '조약 초안 구속(년)', 'var:tsin_tr_draft_binding', 'has_variable = tsin_tr_draft_binding', 0),
+    ('tr_gold_m', '조약 월간 금', 'var:tsin_tr_draft_gold_month', 'has_variable = tsin_tr_draft_gold_month', 0),
+    ('tr_page', '조약 목록 쪽', 'var:tsin_tr_page', 'has_variable = tsin_tr_page', 0),
 ]
 
 PREFIX = 'TSIN_LOG'

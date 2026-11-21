@@ -79,7 +79,7 @@ if = {{ limit = {{ NOT = {{ has_country_modifier = tsin_company_{c} }} }}
 }}
 if = {{ limit = {{ NOT = {{ has_variable = tsin_firms_{c} }} }} set_variable = {{ name = tsin_firms_{c} value = 1 }} }}
 change_variable = {{ name = tsin_firms_{c} add = 1 }}
-if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market debug_log = tsin_log_hook_listing_exchange_open }} else = {{ debug_log = tsin_log_hook_listing_exchange_blocked }}
+if = {{ limit = {{ tsin_exchange_can_open_trigger = yes }} set_variable = tsin_has_stock_market debug_log = tsin_log_hook_listing_exchange_open }} else = {{ if = {{ limit = {{ is_ai = no }} debug_log = tsin_log_hook_listing_exchange_blocked }} }}
 ''')]
         # Unique historical company names cannot be duplicated within the same country.
         unique_allow=f'NOT = {{ has_country_modifier = tsin_company_{c} }}' if unique else ''
@@ -105,7 +105,8 @@ option = {{ name = {key}.a ai_chance = {{ value = 100 }} effect = {{ change_gold
     terms='\n'.join(f'if = {{ limit = {{ tsin_firm_number_{r["id"]} > 0 has_variable = tsin_stock_{r["id"]} }} add = {{ value = tsin_company_levels_{r["id"]} add = 1 multiply = tsin_firm_number_{r["id"]} multiply = var:tsin_stock_{r["id"]} }} }}' for r in rows)
     values += [block('TRY_REPLACE:tsin_stock_index_value','value = 0\n'+terms+'\nif = { limit = { tsin_stock_index_weight > 0 } divide = tsin_stock_index_weight }')]
     values += [block('TRY_REPLACE:tsin_company_total_value','value = 0\n'+ '\n'.join(f'if = {{ limit = {{ tsin_firm_number_{r["id"]} > 0 has_variable = tsin_stock_{r["id"]} }} add = {{ value = tsin_company_levels_{r["id"]} multiply = tsin_firm_number_{r["id"]} multiply = var:tsin_stock_{r["id"]} }} }}' for r in rows))]
-    cache='''if = { limit = { tsin_company_count > 0 } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }
+    cache='''if = { limit = { tsin_company_count > 0 tsin_exchange_can_open_trigger = yes } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }
+else_if = { limit = { has_variable = tsin_stock_index NOT = { tsin_exchange_can_open_trigger = yes } } remove_variable = tsin_stock_index }
 set_variable = { name = tsin_statistics_company_count value = tsin_company_count }
 set_variable = { name = tsin_statistics_company_limit value = tsin_company_limit }
 set_variable = { name = tsin_statistics_company_value value = tsin_company_total_value }
@@ -138,7 +139,7 @@ remove_variable = tsin_hq_{r['id']}''' for r in rows)
     dissolve+='\ntsin_capital_cache_effect = yes\n'
     effects += [block('TRY_REPLACE:tsin_dissolve_all_companies_effect',dissolve)]
     scale='\n'.join(f'if = {{ limit = {{ has_variable = tsin_stock_{r["id"]} }} change_variable = {{ name = tsin_stock_{r["id"]} multiply = $FACTOR$ }} clamp_variable = {{ name = tsin_stock_{r["id"]} min = 10 max = 1000 }} }}' for r in rows)
-    effects += [block('TRY_REPLACE:tsin_scale_stocks_effect',scale+'\nif = { limit = { tsin_company_count > 0 } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }')]
+    effects += [block('TRY_REPLACE:tsin_scale_stocks_effect',scale+'\nif = { limit = { tsin_company_count > 0 tsin_exchange_can_open_trigger = yes } set_variable = { name = tsin_stock_index value = tsin_stock_index_value } }\nelse_if = { limit = { has_variable = tsin_stock_index NOT = { tsin_exchange_can_open_trigger = yes } } remove_variable = tsin_stock_index }')]
     private=[];update=[]
     for r in rows:
         c=r['id'];good=r['good'];unique=r['kind']=='national'
@@ -160,8 +161,10 @@ tsin_stock_random_walk_effect = {{ STOCK = tsin_stock_{c} }}
 }}''']
     effects += [block('tsin_private_company_entry_effect','\n'.join(private))]
     effects += [block('TRY_REPLACE:tsin_update_stocks_effect','\n'.join(update)+'''
+if = { limit = { tsin_exchange_can_open_trigger = yes }
 set_variable = { name = tsin_stock_index value = tsin_stock_index_value }
 tsin_shift_stock_history_effect = yes
+}
 tsin_capital_cache_effect = yes''')]
     # A capital-market sample is bounded: one capital market, ten goods, no owned-location scan.
     oversupply=[]

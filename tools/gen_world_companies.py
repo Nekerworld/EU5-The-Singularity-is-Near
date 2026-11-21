@@ -134,14 +134,14 @@ tsin_world_company_project_page_effect = {
  hbox = { spacing = 8 margin = { 8 4 }
 ''']
  for code,ko,en,field in filters[:4]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),200))
- ui+=['}','scrollarea = { size = { 990 120 }','scrollbarpolicy_horizontal = always_off','scrollbarpolicy_vertical = as_needed','scrollwidget = {','vbox = { spacing = 6 margin = { 8 4 }']
+ ui+=['}','scrollarea = { size = { 990 120 }','scrollbarpolicy_horizontal = always_off','scrollbar_vertical = { using = Scrollbar_Vertical }','scrollwidget = {','vbox = { spacing = 6 margin = { 8 4 }']
  for start in range(4,len(filters),5):
   ui.append('hbox = { spacing = 6')
   for code,ko,en,field in filters[start:start+5]:ui.append(button('tsin_wcs_filter_'+str(code),'tsin_wcs_filter_'+str(code),190))
   ui.append('}')
  ui+=['} } }','hbox = { spacing = 8 margin = { 8 4 }']
  for code in range(3):ui.append(button('tsin_wcs_sort_'+str(code),'tsin_wcs_sort_'+str(code),234))
- ui+=['}','text_single = { text = "TSIN_WCS_TOTALS" fontsize = 13 }','text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 13 }','scrollarea = { size = { 990 420 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed scrollwidget = { vbox = { spacing = 6 margin = { 8 4 }','hbox = { spacing = 6']
+ ui+=['}','text_single = { text = "TSIN_WCS_TOTALS" fontsize = 13 }','text_single = { text = "TSIN_WCS_FILTER_CURRENT" fontsize = 13 }','scrollarea = { size = { 990 420 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 6 margin = { 8 4 }','hbox = { spacing = 6']
  for key,width in [('COUNTRY',240),('COUNT',90),('CASH',175),('PROXY',175),('SOURCE',100)]:ui.append(f'text_single = {{ size = {{ {width} 26 }} fontsize = 14 text = "TSIN_WCS_{key}" }}')
  ui.append('}')
  for slot in range(1,PAGE+1):

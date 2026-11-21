@@ -76,7 +76,8 @@
           "description": {
             "english": "Estimated annual output; not treasury income.",
             "korean": "연간 산출 추정치입니다. 국고 수입과 다릅니다."
-          }
+          },
+          "show_when": "has_variable = tsin_gdp"
         },
         {
           "id": "gdp_per_capita",
@@ -94,7 +95,8 @@
           "description": {
             "english": "Uses the existing TSIN population-unit formula.",
             "korean": "기존 모드의 인구 단위 공식을 그대로 사용합니다."
-          }
+          },
+          "show_when": "has_variable = tsin_gdp_per_capita"
         },
         {
           "id": "growth",
@@ -112,20 +114,21 @@
           "description": {
             "english": "",
             "korean": ""
-          }
+          },
+          "show_when": "has_variable = tsin_gdp_growth"
         },
         {
           "id": "population",
           "variable": "tsin_statistics_population",
           "title": {
-            "english": "Population (thousands)",
-            "korean": "인구 (천 명)"
+            "english": "Population",
+            "korean": "인구"
           },
           "tabs": [
             "overview",
             "society"
           ],
-          "unit": "compact",
+          "unit": "people",
           "frequency": "annual",
           "description": {
             "english": "",
@@ -148,7 +151,8 @@
           "description": {
             "english": "",
             "korean": ""
-          }
+          },
+          "show_when": "has_variable = tsin_secondary_education"
         },
         {
           "id": "higher",
@@ -166,7 +170,8 @@
           "description": {
             "english": "",
             "korean": ""
-          }
+          },
+          "show_when": "has_variable = tsin_higher_education"
         },
         {
           "id": "secondary_target",
@@ -250,26 +255,28 @@
           "unit": "fraction",
           "frequency": "annual",
           "description": {
-            "english": "",
-            "korean": ""
-          }
+            "english": "Share of population in factory jobs. Shown from the Age of Industry, after embracing industrial capitalism, or once factories are meaningful.",
+            "korean": "공장 일자리 인구 비중입니다. 산업 시대, 산업자본주의 수용, 또는 공장이 의미 있게 생긴 뒤에 표시됩니다."
+          },
+          "show_when": "OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_industrial_capitalism AND = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.02 } }"
         },
         {
           "id": "factory_jobs",
           "variable": "tsin_agg_factory_jobs",
           "title": {
-            "english": "Factory jobs (thousands)",
-            "korean": "공장 일자리 (천 명)"
+            "english": "Factory jobs",
+            "korean": "공장 일자리"
           },
           "tabs": [
             "economy"
           ],
-          "unit": "compact",
+          "unit": "people",
           "frequency": "annual",
           "description": {
             "english": "",
             "korean": ""
-          }
+          },
+          "show_when": "OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_industrial_capitalism AND = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.02 } }"
         },
         {
           "id": "tax_base",
@@ -301,9 +308,10 @@
           "unit": "number",
           "frequency": "annual",
           "description": {
-            "english": "",
-            "korean": ""
-          }
+            "english": "Labor grievance on a 0–100 scale. Shown from the Age of Industry, after embracing mass society, or once grievance is recorded.",
+            "korean": "노동 불만(0~100)입니다. 산업 시대, 대중사회 수용, 또는 불만이 기록된 뒤에 표시됩니다."
+          },
+          "show_when": "OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_mass_society AND = { has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 1 } }"
         },
         {
           "id": "labor_conditions",
@@ -320,7 +328,8 @@
           "description": {
             "english": "",
             "korean": ""
-          }
+          },
+          "show_when": "OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_mass_society AND = { has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 1 } }"
         },
         {
           "id": "liberalism",
@@ -438,9 +447,10 @@
           "unit": "number",
           "frequency": "quarterly",
           "description": {
-            "english": "",
-            "korean": ""
-          }
+            "english": "Public national stock index. Unlocks with a stock-exchange advance or by embracing industrial capitalism.",
+            "korean": "공개 종합 주가지수입니다. 증권거래소 기술 또는 산업자본주의 시대관 수용 후에 열립니다."
+          },
+          "show_when": "tsin_exchange_can_open_trigger = yes"
         },
         {
           "id": "companies",
@@ -2509,6 +2519,20 @@
       ]
     },
     {
+      "id": "legislation_sidebar",
+      "shortcuts": [
+        {
+          "id": "bill_sidebar",
+          "tab": "crises",
+          "title": {
+            "korean": "입법 현황 카드 표시",
+            "english": "Show legislation status card"
+          },
+          "open_variable": "tsin_ui_bill_sidebar_open"
+        }
+      ]
+    },
+    {
       "id": "world_companies",
       "metrics": [
         {
@@ -2538,20 +2562,6 @@
             "english": "World company statistics"
           },
           "open_variable": "tsin_ui_world_companies_open"
-        }
-      ]
-    },
-    {
-      "id": "legislation_sidebar",
-      "shortcuts": [
-        {
-          "id": "bill_sidebar",
-          "tab": "crises",
-          "title": {
-            "korean": "입법 현황 카드 표시",
-            "english": "Show legislation status card"
-          },
-          "open_variable": "tsin_ui_bill_sidebar_open"
         }
       ]
     }

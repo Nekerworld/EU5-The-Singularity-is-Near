@@ -18,7 +18,7 @@ tsin_found_company_steel_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 
@@ -74,7 +74,7 @@ tsin_found_company_machinery_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 
@@ -130,7 +130,7 @@ tsin_found_company_textile_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 
@@ -186,7 +186,7 @@ tsin_found_company_chemical_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 
@@ -242,7 +242,7 @@ tsin_found_company_railway_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 
@@ -298,7 +298,7 @@ tsin_found_company_farm_machinery_effect = {
 		set_variable = tsin_has_stock_market
 		debug_log = tsin_log_hook_listing_exchange_open
 	}
-	else = { debug_log = tsin_log_hook_listing_exchange_blocked }
+	else = { if = { limit = { is_ai = no } debug_log = tsin_log_hook_listing_exchange_blocked } }
 	tsin_capital_cache_effect = yes
 }
 

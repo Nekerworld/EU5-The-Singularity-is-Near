@@ -114,7 +114,7 @@ tsin_log_heartbeat_effect = {
 	}
 	else = { debug_log = tsin_log_chk_women_law_0 }
 	if = {
-		limit = { has_policy = policy:tsin_women_suffrage_policy }
+		limit = { has_law = tsin_women_rights_law has_policy = policy:tsin_women_suffrage_policy }
 		debug_log = tsin_log_chk_women_suffrage_1
 	}
 	else = { debug_log = tsin_log_chk_women_suffrage_0 }
@@ -183,6 +183,46 @@ tsin_log_heartbeat_effect = {
 		debug_log = tsin_log_chk_h_air_ready_1
 	}
 	else = { debug_log = tsin_log_chk_h_air_ready_0 }
+	if = {
+		limit = { has_global_variable = tsin_tr_next_id }
+		debug_log = tsin_log_chk_tr_ledger_1
+	}
+	else = { debug_log = tsin_log_chk_tr_ledger_0 }
+	if = {
+		limit = { has_variable = tsin_tr_draft_partner }
+		debug_log = tsin_log_chk_tr_draft_partner_1
+	}
+	else = { debug_log = tsin_log_chk_tr_draft_partner_0 }
+	if = {
+		limit = { has_variable = tsin_tr_incoming_from }
+		debug_log = tsin_log_chk_tr_incoming_1
+	}
+	else = { debug_log = tsin_log_chk_tr_incoming_0 }
+	if = {
+		limit = { has_variable = tsin_tr_selected }
+		debug_log = tsin_log_chk_tr_selected_1
+	}
+	else = { debug_log = tsin_log_chk_tr_selected_0 }
+	if = {
+		limit = { has_variable = tsin_tr_renegotiate_id }
+		debug_log = tsin_log_chk_tr_renegotiate_1
+	}
+	else = { debug_log = tsin_log_chk_tr_renegotiate_0 }
+	if = {
+		limit = { has_variable = tsin_tr_flag_tsin_fx_peg }
+		debug_log = tsin_log_chk_tr_fx_peg_1
+	}
+	else = { debug_log = tsin_log_chk_tr_fx_peg_0 }
+	if = {
+		limit = { has_variable = tsin_tr_flag_tsin_lend_lease_eq }
+		debug_log = tsin_log_chk_tr_lend_lease_1
+	}
+	else = { debug_log = tsin_log_chk_tr_lend_lease_0 }
+	if = {
+		limit = { has_variable = tsin_tr_airbase_bonus }
+		debug_log = tsin_log_chk_tr_airbase_1
+	}
+	else = { debug_log = tsin_log_chk_tr_airbase_0 }
 	tsin_log_snapshot_effect = yes
 }
 
@@ -238,6 +278,18 @@ tsin_log_snapshot_effect = {
 	if = { limit = { has_variable = tsin_fuel_stockpile } set_global_variable = { name = tsin_log_fuel value = var:tsin_fuel_stockpile } }
 	set_global_variable = { name = tsin_log_air_fighter value = -1 }
 	if = { limit = { has_variable = tsin_air_fighter_stockpile } set_global_variable = { name = tsin_log_air_fighter value = var:tsin_air_fighter_stockpile } }
+	set_global_variable = { name = tsin_log_tr_next value = -1 }
+	if = { limit = { has_global_variable = tsin_tr_next_id } set_global_variable = { name = tsin_log_tr_next value = global_var:tsin_tr_next_id } }
+	set_global_variable = { name = tsin_log_tr_matches value = -1 }
+	if = { limit = { has_variable = tsin_tr_matches } set_global_variable = { name = tsin_log_tr_matches value = var:tsin_tr_matches } }
+	set_global_variable = { name = tsin_log_tr_score value = -1 }
+	if = { limit = { has_variable = tsin_tr_draft_score } set_global_variable = { name = tsin_log_tr_score value = var:tsin_tr_draft_score } }
+	set_global_variable = { name = tsin_log_tr_binding value = -1 }
+	if = { limit = { has_variable = tsin_tr_draft_binding } set_global_variable = { name = tsin_log_tr_binding value = var:tsin_tr_draft_binding } }
+	set_global_variable = { name = tsin_log_tr_gold_m value = -1 }
+	if = { limit = { has_variable = tsin_tr_draft_gold_month } set_global_variable = { name = tsin_log_tr_gold_m value = var:tsin_tr_draft_gold_month } }
+	set_global_variable = { name = tsin_log_tr_page value = -1 }
+	if = { limit = { has_variable = tsin_tr_page } set_global_variable = { name = tsin_log_tr_page value = var:tsin_tr_page } }
 	debug_log = tsin_log_format_probe
 	debug_log = tsin_log_snapshot_line
 }

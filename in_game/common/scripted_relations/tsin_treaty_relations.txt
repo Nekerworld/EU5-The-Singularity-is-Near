@@ -1,0 +1,129 @@
+﻿tsin_tr_rel_alliance = {
+ type = diplomacy relation_type = mutual uses_diplo_capacity = mutual
+ block_when_at_war = yes break_on_war = yes break_on_becoming_subject = yes
+ annulled_by_peace_treaty = yes disallow_war = yes military_access = yes fleet_basing_rights = yes
+ lifts_fog_of_war = yes called_in_defensively = mutual called_in_offensively = mutual
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_defensive_pact = {
+ type = diplomacy relation_type = mutual uses_diplo_capacity = mutual
+ block_when_at_war = yes break_on_war = yes break_on_becoming_subject = yes
+ annulled_by_peace_treaty = yes disallow_war = yes called_in_defensively = mutual
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_non_aggression = {
+ type = diplomacy relation_type = mutual
+ block_when_at_war = yes break_on_war = yes annulled_by_peace_treaty = yes
+ disallow_war = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_guarantee = {
+ type = diplomacy relation_type = oneway uses_diplo_capacity = giving
+ block_when_at_war = yes break_on_war = yes break_on_becoming_subject = yes
+ annulled_by_peace_treaty = yes called_in_defensively = giving
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_military_access = {
+ type = diplomacy relation_type = oneway block_when_at_war = yes break_on_war = yes
+ annulled_by_peace_treaty = yes military_access = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_fleet_basing = {
+ type = diplomacy relation_type = oneway block_when_at_war = yes break_on_war = yes
+ annulled_by_peace_treaty = yes fleet_basing_rights = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_food_access = {
+ type = diplomacy relation_type = oneway block_when_at_war = yes break_on_war = yes
+ annulled_by_peace_treaty = yes food_access = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_knowledge_share = {
+ type = diplomacy relation_type = mutual break_on_war = yes
+ institution_spread_to_first = 0.05 institution_spread_to_second = 0.05
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_anti_piracy = {
+ type = diplomacy relation_type = mutual break_on_war = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_tariff_exempt = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ is_exempt_from_import_tariff = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_trade_access = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_sound_toll_exempt = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ is_exempt_from_sound_toll = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_lift_trade_protection = {
+ type = diplomacy relation_type = mutual break_on_war = yes
+ lifts_trade_protection = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_divert_trade = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ trade_to_first = 0.15
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_block_foreign_buildings = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ block_building = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}
+
+tsin_tr_rel_investment_rights = {
+ type = diplomacy relation_type = oneway break_on_war = yes
+ offer_visible = { always = no } request_visible = { always = no }
+ cancel_visible = { always = no } break_visible = { always = no }
+ visible = { always = no }
+}

@@ -1,0 +1,23 @@
+﻿tsin_negotiate_treaty = {
+ type = diplomacy
+ category = CATEGORY_FRIENDLY_ACTIONS
+ ai_tick = never
+ potential = { always = yes }
+ allow = {
+  scope:actor = { is_ai = no has_limited_diplomacy = no }
+  scope:recipient = { exists = capital NOT = { this = scope:actor } }
+ }
+ select_trigger = {
+  looking_for_a = country
+  target_flag = recipient
+  name = "TSIN_TR_CHOOSE_PARTNER"
+  visible = {
+   exists = capital
+   within_diplomatic_range = scope:actor
+   NOT = { this = scope:actor }
+  }
+ }
+ effect = {
+  scope:actor = { tsin_tr_open_with_partner_effect = yes }
+ }
+}

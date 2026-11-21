@@ -1,6 +1,6 @@
 ﻿# Glorp UI statistics integration
 
-The local compatibility mod adds two rows to Glorp's left statistics panel: estimated annual GDP, GDP per population unit, secondary/higher education, GDP growth, factory job share, labor grievance, and the stock index. GDP hover shows up to ten annual observations as a horizontal bar chart. K/M/B/T use explicit 10^3/10^6/10^9/10^12 thresholds. The GDP model itself is unchanged.
+The local compatibility mod adds two rows to Glorp's left statistics panel. Each compact metric has a `show_when` gate: GDP and education appear once cached, industry/labor wait for Age VII (or related institutions / meaningful values), and the public stock index waits for a stock-exchange advance or embracing industrial capitalism. GDP hover shows up to ten annual observations as a horizontal bar chart. K/M/B/T use explicit 10^3/10^6/10^9/10^12 thresholds. The GDP model itself is unchanged.
 
 History is stored in country variables and retained in saves. Annual GDP updates shift the history only when the observation year changes. Repeated recalculation in the same year replaces the latest sample. Old saves seed their first observation on the next monthly country pulse; no past values are invented. Date jumps leave actual observation years on the chart rather than fabricated intervening years.
 

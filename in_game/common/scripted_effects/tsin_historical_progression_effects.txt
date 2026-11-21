@@ -28,5 +28,11 @@ tsin_history_review_effect = {
         }
     }
     set_variable = { name = tsin_history_review_cooldown years = 1 }
+    # debug_log cannot read ROOT; copy onto globals first (same pattern as TSIN_LOG snapshots).
+    set_global_variable = { name = tsin_hist_review_country value = this }
+    set_global_variable = { name = tsin_hist_review_countries value = var:tsin_history_review_countries }
+    set_global_variable = { name = tsin_hist_review_hex value = var:tsin_history_review_hex }
+    set_global_variable = { name = tsin_hist_review_border value = var:tsin_history_review_border }
+    set_global_variable = { name = tsin_hist_review_russia_blocked value = var:tsin_history_review_russia_blocked }
     debug_log = tsin_history_review_log
 }

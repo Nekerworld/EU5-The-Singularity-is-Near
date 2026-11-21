@@ -2,10 +2,21 @@
 import pdx
 FIELDS=('owner','kind','status','cash','units','public_units','claims','debt','missed','audit_until','audit_paid','losses','revenue','merged_into','merger_phase','merger_source_cash','merger_survivor_cash','merger_source_units','merger_survivor_units')
 LOAN_FIELDS=('lender','borrower','principal','rate','maturity','next_coupon','missed','status')
+_map_tmp=0
 def r(field,ident='scope:tsin_le_id'):return f'"global_variable_map(tsin_le_{field}|{ident})"'
-def w(field,value,ident='scope:tsin_le_id'):return f'add_to_global_variable_map = {{ name = tsin_le_{field} key = {ident} value = {value} }}'
+def _map_put(prefix,field,value,ident):
+ # Engine misreads value = { ... } as an event-target opener; stage script values first.
+ global _map_tmp
+ value=str(value).strip()
+ if value.startswith('{'):
+  _map_tmp+=1
+  tmp=f'tsin_{prefix}_map_tmp_{_map_tmp}'
+  return (f'save_temporary_scope_value_as = {{ name = {tmp} value = {value} }} '
+          f'add_to_global_variable_map = {{ name = tsin_{prefix}_{field} key = {ident} value = scope:{tmp} }}')
+ return f'add_to_global_variable_map = {{ name = tsin_{prefix}_{field} key = {ident} value = {value} }}'
+def w(field,value,ident='scope:tsin_le_id'):return _map_put('le',field,value,ident)
 def lr(field):return f'"global_variable_map(tsin_le_loan_{field}|scope:tsin_le_loan_id)"'
-def lw(field,value):return f'add_to_global_variable_map = {{ name = tsin_le_loan_{field} key = scope:tsin_le_loan_id value = {value} }}'
+def lw(field,value):return _map_put('le_loan',field,value,'scope:tsin_le_loan_id')
 VIEW=[('ID','선택 법인 ID','Selected legal entity ID','tsin_le_view_id'),('KIND','종류: 1 은행 / 2 기업','Kind: 1 bank / 2 company','tsin_le_view_kind'),('CASH','별도 법인 현금','Separate entity cash','tsin_le_view_cash'),('CLAIMS','별도 법인 대출자산','Entity loan receivables','tsin_le_view_claims'),('DEBT','별도 법인 원금채무','Entity principal debt','tsin_le_view_debt'),('NET','별도 법인 순자산','Entity net assets','tsin_le_view_net'),('PUBLIC','별도 법인 국가 지분(%)','Entity public equity (%)','tsin_le_view_public'),('MISSED','별도 법인 최장 연체 개월','Entity longest arrears (months)','tsin_le_view_missed'),('YEAR','법인 조회 기준 연도','Entity inspection year','tsin_le_view_year')]
 from legal_entity_restructuring import FIELDS as RESTRUCTURE_FIELDS
 VIEW += [(key,ko,en,var) for key,en,ko,var in RESTRUCTURE_FIELDS]
@@ -33,6 +44,8 @@ def register(fields,action,loc):
  '시범 법인은 새로 납입한 현금을 영구 ID로 보관합니다. 기존 합산 자산·채무를 임의 배분하지 않으며 기존 기업 유형별 개수에 중복 합산하지 않습니다. 국가마다 가동 시범 은행·기업 한 곳씩 출자할 수 있고 합병으로 받은 법인은 보존합니다. 조회는 기준일의 스냅샷입니다. 유상증자는 지분을 만들지만 유상 공공계약은 기업 수입이며 국가 지분이 아닙니다. 청산은 가용 현금을 채권액에 비례해 지급하고 미지급 채권을 한 번 상각한 뒤 기업을 닫습니다. 이 법인은 재무 계정 시제품이며 자율 생산·완전한 기업 모형이 아닙니다.')
 
 def build():
+ global _map_tmp
+ _map_tmp=0
  selected='var:tsin_le_selected'
  triggers=f'''tsin_le_selected_owned = {{ has_variable = tsin_le_selected {r('owner',selected)} ?= root {r('status',selected)} = 1 }}
 tsin_le_selected_audit_allowed = {{

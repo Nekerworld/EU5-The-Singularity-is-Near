@@ -4,13 +4,13 @@ name = "tsin_dashboard_dock"
 layer = topbar
 parentanchor = left|bottom
 widgetanchor = left|bottom
-position = { 8 8 }
-size = { 220 120 }
+position = { 0 0 }
+size = { 210 112 }
 movable = yes
 allow_outside = yes
-visible = "[GetPlayer.IsValid]"
+visible = "[And(GetPlayer.IsValid, Not(IsPauseMenuShown))]"
 datacontext = "[GetPlayer]"
-hbox = { spacing = 10 margin = { 4 4 }
+hbox = { spacing = 8 margin = { 2 2 }
 button = {
     name = "tsin_ui_manage_button"
     size = { 104 104 }

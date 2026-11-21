@@ -40,6 +40,7 @@ tsin_fuel_capacity = {
 	add = { value = total_effective_building_levels:tsin_oil_storage multiply = 120 }
 	add = { value = total_effective_building_levels:tsin_motor_transport_depot multiply = 60 }
 	add = { value = total_effective_building_levels:tsin_airbase multiply = 40 }
+	if = { limit = { has_variable = tsin_tr_fuel_bonus } add = var:tsin_tr_fuel_bonus }
 }
 
 # Wartime consumption is weighted 2.0, peacetime 0.3.

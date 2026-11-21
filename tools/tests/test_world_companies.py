@@ -31,6 +31,8 @@ class WorldCompanyTests(unittest.TestCase):
   self.assertIn('TSIN_CAP_WORLD_COMPANIES',stock)
   self.assertLess(stock.index('TSIN_CAP_WORLD_COMPANIES'),stock.index('TSIN_CAP_GENERIC'))
   ui=b['in_game/gui/tsin_world_companies.gui']
+  self.assertIn('scrollbar_vertical = { using = Scrollbar_Vertical }',ui)
+  self.assertNotIn('scrollbarpolicy_vertical',ui)
   self.assertIn('scrollwidget',ui)
   self.assertNotIn('every_country',ui)
 class WorldCompanyCooldownTests(unittest.TestCase):

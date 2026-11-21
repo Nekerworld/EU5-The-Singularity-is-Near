@@ -72,7 +72,7 @@ def build(game=None):
     label('CHART', 'Index history · quarterly observations', '주가 지수 추이 · 분기별 관측')
     label('CHART_NOTE', 'Oldest → newest · common scale, zero baseline. Founding price: 100. Observations normally update quarterly; exchange closures can leave gaps. Immediate shocks do not rewrite history.', '과거 → 최근 · 공통 눈금, 0 기준선. 설립 주가: 100. 통상 분기마다 관측하며 거래소 폐쇄 시 간격이 늘어납니다. 즉시 발생한 주가 충격은 과거 기록을 바꾸지 않습니다.')
     label('NO_HISTORY', 'No observations yet. History appears after the first company enters the quarterly stock cycle.', '아직 관측 기록이 없습니다. 첫 기업 설립 후 분기별 주가 갱신부터 이력이 표시됩니다.')
-    label('NO_EXCHANGE', 'Companies exist, but exchange technology is not yet available. Existing listings, debts and price records are kept; only new public offerings are paused.', '기업은 있으나 거래소 기술이 아직 없습니다. 기존 상장·채무·가격 기록은 유지되며 신규 공개 발행만 보류됩니다.')
+    label('NO_EXCHANGE', 'The public stock market unlocks with a stock-exchange advance or by embracing industrial capitalism. Existing firms keep private valuations; the national index and new public offerings wait for the exchange.', '공개 주식시장은 증권거래소 기술 또는 산업자본주의 시대관 수용 후에 열립니다. 기존 기업 평가는 유지되지만 종합 주가지수와 신규 공개 발행은 거래소가 열릴 때까지 보류됩니다.'),
     label('NO_MARKET', 'No listed companies. Found a company through the existing decisions when its technology and costs are available.', '상장 기업이 없습니다. 필요한 기술과 비용을 갖춘 뒤 기존 결단으로 기업을 설립하세요.')
     label('COMPANIES', 'Industrial companies', '산업 기업')
     label('LISTED', 'Company established', '설립된 기업')
@@ -124,7 +124,8 @@ def build(game=None):
     guis = ['# Ownership checks and one-time statistics bootstrap; no company is founded here.',
         'tsin_stock_ui_seed = { scope = country is_shown = { always = yes } is_valid = { is_ai = no } effect = { tsin_dashboard_age7_migrate_effect = yes } }',
         'tsin_stock_ui_no_companies = { scope = country is_shown = { always = yes } is_valid = { tsin_company_count = 0 } }',
-        'tsin_stock_ui_no_exchange = { scope = country is_shown = { always = yes } is_valid = { tsin_company_count > 0 NOT = { tsin_exchange_can_open_trigger = yes } } }']
+        'tsin_stock_ui_no_exchange = { scope = country is_shown = { always = yes } is_valid = { NOT = { tsin_exchange_can_open_trigger = yes } } }',
+        'tsin_stock_ui_exchange_open = { scope = country is_shown = { always = yes } is_valid = { tsin_exchange_can_open_trigger = yes } }']
     values = ['# Fixed-size UI calculations: never scan locations from a graph.', 'tsin_stock_ui_peak = { value = 100']
     for i in range(HISTORY):
         values += [f'if = {{ limit = {{ has_variable = tsin_index_h{i} }} min = var:tsin_index_h{i} }}']

@@ -98,27 +98,49 @@ def record_world_effect():
     return '\n'.join(L)+'\n'
 
 # Viewing: reads stored maps into display variables of the player. No survey, no every_country.
+# Empty ids must not call global_variable_map — missing keys are none/any and poison arithmetic (error.log).
+def _zero_dom(P, indent=' '):
+    return [f'{indent}set_variable = {{ name = {P}_{f} value = 0 }}' for f in ['serial']+[f for f in DOM_READ if f!='serial']]
+
+def _zero_world(P, indent=' '):
+    return [f'{indent}set_variable = {{ name = {P}_{f} value = 0 }}' for f,_ in [('serial',None)]+WORLD_FIELDS]
+
 def _row(P,V):
     L=[f' remove_variable = {P}_country',
-       f' save_temporary_scope_value_as = {{ name = {P}_pid value = var:{V} }}',
-       f' set_variable = {{ name = {P}_serial value = "global_variable_map(tsin_cmp_latest|scope:{P}_pid)" }}',
-       f' save_temporary_scope_value_as = {{ name = {P}_key value = {{ value = scope:{P}_pid multiply = {KEY_BASE} add = var:{P}_serial }} }}']
-    L+=[f' set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmph_{f}|scope:{P}_key)" }}' for f in DOM_READ if f!='serial']
-    L.append(f' if = {{ limit = {{ var:{V} > 0 }} set_variable = {{ name = {P}_country value = "global_variable_map(tsin_cmp_country|scope:{P}_pid)" }} }}')
+       f' if = {{ limit = {{ var:{V} > 0 }}',
+       f'  save_temporary_scope_value_as = {{ name = {P}_pid value = var:{V} }}',
+       f'  set_variable = {{ name = {P}_serial value = "global_variable_map(tsin_cmp_latest|scope:{P}_pid)" }}',
+       f'  save_temporary_scope_value_as = {{ name = {P}_key value = {{ value = scope:{P}_pid multiply = {KEY_BASE} add = var:{P}_serial }} }}']
+    L+=[f'  set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmph_{f}|scope:{P}_key)" }}' for f in DOM_READ if f!='serial']
+    L.append(f'  set_variable = {{ name = {P}_country value = "global_variable_map(tsin_cmp_country|scope:{P}_pid)" }}')
+    L.append(' }')
+    L.append(' else = {')
+    L+=_zero_dom(P, indent='  ')
+    L.append(' }')
     return L
 
 def _hist_row(k):
     P=f'tsin_cmp_h{k}'
-    L=[f' set_variable = {{ name = {P}_serial value = {{ value = var:tsin_cmp_d_serial subtract = {k} min = 0 }} }}',
-       f' save_temporary_scope_value_as = {{ name = {P}_key value = {{ value = scope:tsin_cmp_d_pid multiply = {KEY_BASE} add = var:{P}_serial }} }}']
-    L+=[f' set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmph_{f}|scope:{P}_key)" }}' for f in DOM_READ if f!='serial']
+    L=[f' if = {{ limit = {{ var:tsin_cmp_detail > 0 has_variable = tsin_cmp_d_serial var:tsin_cmp_d_serial > {k} }}',
+       f'  set_variable = {{ name = {P}_serial value = {{ value = var:tsin_cmp_d_serial subtract = {k} }} }}',
+       f'  save_temporary_scope_value_as = {{ name = {P}_key value = {{ value = scope:tsin_cmp_d_pid multiply = {KEY_BASE} add = var:{P}_serial }} }}']
+    L+=[f'  set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmph_{f}|scope:{P}_key)" }}' for f in DOM_READ if f!='serial']
+    L.append(' }')
+    L.append(' else = {')
+    L+=_zero_dom(P, indent='  ')
+    L.append(' }')
     return L
 
 def _world_row(k):
     P=f'tsin_cmp_w{k}'
-    L=[f' set_variable = {{ name = {P}_serial value = {{ value = global_var:tsin_cmpw_serial subtract = {k} min = 0 }} }}',
-       f' save_temporary_scope_value_as = {{ name = {P}_key value = var:{P}_serial }}']
-    L+=[f' set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmpw_{f}|scope:{P}_key)" }}' for f,_ in WORLD_FIELDS]
+    L=[f' if = {{ limit = {{ has_global_variable = tsin_cmpw_serial global_var:tsin_cmpw_serial > {k} }}',
+       f'  set_variable = {{ name = {P}_serial value = {{ value = global_var:tsin_cmpw_serial subtract = {k} }} }}',
+       f'  save_temporary_scope_value_as = {{ name = {P}_key value = var:{P}_serial }}']
+    L+=[f'  set_variable = {{ name = {P}_{f} value = "global_variable_map(tsin_cmpw_{f}|scope:{P}_key)" }}' for f,_ in WORLD_FIELDS]
+    L.append(' }')
+    L.append(' else = {')
+    L+=_zero_world(P, indent='  ')
+    L.append(' }')
     return L
 
 def project_effect():
@@ -189,10 +211,9 @@ def window_gui():
  widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ui_country_compare_open')]" } } }
  vbox = { using = window_margin_alt
  window_header_alt = { blockoverride "header_text" { text = "TSIN_CMP_TITLE" } }
- text_multi = { maximumsize = { 980 -1 } fontsize = 13 text = "TSIN_CMP_HELP" }
  text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet)]" fontsize = 14 text = "TSIN_CMP_EMPTY" }
  vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
- scrollarea = { size = { 990 720 } scrollbarpolicy_horizontal = always_off scrollbarpolicy_vertical = as_needed
+ scrollarea = { size = { 990 720 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical }
  visible = "[GetPlayer.MakeScope.GetVariable('tsin_cmp_page').IsSet]"
  scrollwidget = { vbox = { spacing = 8 margin = { 10 8 }''']
     ui.append('text_single = { fontsize = 17 text = "TSIN_CMP_LIST" }')

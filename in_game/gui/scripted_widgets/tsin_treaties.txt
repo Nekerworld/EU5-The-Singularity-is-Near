@@ -1,0 +1,1 @@
+﻿gui/tsin_treaties.gui = tsin_treaties_window

@@ -1,0 +1,40 @@
+# Copy observer script values onto globals before debug_log.
+# debug_log cannot resolve [ROOT.ScriptValue(...)] (Promote ROOT returned nullptr).
+
+tsin_observer_log_snapshot_effect = {
+	set_global_variable = { name = tsin_obslog_year value = tsin_obs_year }
+	set_global_variable = { name = tsin_obslog_countries value = tsin_obs_countries }
+	set_global_variable = { name = tsin_obslog_gp value = tsin_obs_great_powers }
+	set_global_variable = { name = tsin_obslog_ic_known value = tsin_obs_ic_known }
+	set_global_variable = { name = tsin_obslog_ic_emb value = tsin_obs_ic_embraced }
+	set_global_variable = { name = tsin_obslog_ic_emb_gp value = tsin_obs_ic_embraced_gp }
+	set_global_variable = { name = tsin_obslog_ms_known value = tsin_obs_ms_known }
+	set_global_variable = { name = tsin_obslog_ms_emb value = tsin_obs_ms_embraced }
+	set_global_variable = { name = tsin_obslog_el_known value = tsin_obs_el_known }
+	set_global_variable = { name = tsin_obslog_el_emb value = tsin_obs_el_embraced }
+	set_global_variable = { name = tsin_obslog_el_emb_gp value = tsin_obs_el_embraced_gp }
+	set_global_variable = { name = tsin_obslog_non_eu value = tsin_obs_non_european_adopters }
+	set_global_variable = { name = tsin_obslog_pop value = tsin_obs_world_population }
+	set_global_variable = { name = tsin_obslog_gp_income value = tsin_obs_gp_income }
+	set_global_variable = { name = tsin_obslog_gp_army value = tsin_obs_gp_army }
+	set_global_variable = { name = tsin_obslog_gp_adv value = tsin_obs_gp_avg_advances }
+	set_global_variable = { name = tsin_obslog_steel value = tsin_obs_gp_steel_price_ratio }
+	set_global_variable = { name = tsin_obslog_engines value = tsin_obs_gp_engines_price_ratio }
+	set_global_variable = { name = tsin_obslog_sit value = tsin_obs_situations_active }
+	set_global_variable = { name = tsin_obslog_hunger value = tsin_obs_hunger_countries }
+	set_global_variable = { name = tsin_obslog_flavor value = tsin_obs_flavor_events }
+	set_global_variable = { name = tsin_obslog_pop_ratio value = tsin_obs_pop_ratio }
+	set_global_variable = { name = tsin_obslog_brake value = tsin_obs_pop_brake }
+	set_global_variable = { name = tsin_obslog_accel3 value = tsin_obs_accel_3 }
+	set_global_variable = { name = tsin_obslog_gp_lit value = tsin_obs_gp_literacy }
+	set_global_variable = { name = tsin_obslog_gp_sec value = tsin_obs_gp_secondary_education }
+	set_global_variable = { name = tsin_obslog_gp_high value = tsin_obs_gp_higher_education }
+	set_global_variable = { name = tsin_obslog_gp_fac value = tsin_obs_gp_factory_share }
+	set_global_variable = { name = tsin_obslog_gp_griev value = tsin_obs_gp_labor_grievance }
+	set_global_variable = { name = tsin_obslog_cells value = tsin_obs_socialist_cells }
+	set_global_variable = { name = tsin_obslog_gp_food value = tsin_obs_gp_food }
+	set_global_variable = { name = tsin_obslog_bills value = tsin_obs_bills }
+	set_global_variable = { name = tsin_obslog_gp_index value = tsin_obs_gp_stock_index }
+	set_global_variable = { name = tsin_obslog_gp_gdp_pc value = tsin_obs_gp_gdp_per_capita }
+	set_global_variable = { name = tsin_obslog_gdp_pc_max value = tsin_obs_world_gdp_pc_max }
+}

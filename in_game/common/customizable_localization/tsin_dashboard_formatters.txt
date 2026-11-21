@@ -60,19 +60,19 @@ tsin_ui_format_population = {
 		localization_key = TSIN_UI_MISSING
 	}
 	text = {
-		trigger = { var:tsin_statistics_population >= 1000000000000 }
+		trigger = { var:tsin_statistics_population >= 1000000000 }
 		localization_key = TSIN_UI_NUMBER_POPULATION_T
 	}
 	text = {
-		trigger = { var:tsin_statistics_population >= 1000000000 }
+		trigger = { var:tsin_statistics_population >= 1000000 }
 		localization_key = TSIN_UI_NUMBER_POPULATION_B
 	}
 	text = {
-		trigger = { var:tsin_statistics_population >= 1000000 }
+		trigger = { var:tsin_statistics_population >= 1000 }
 		localization_key = TSIN_UI_NUMBER_POPULATION_M
 	}
 	text = {
-		trigger = { var:tsin_statistics_population >= 1000 }
+		trigger = { var:tsin_statistics_population >= 1 }
 		localization_key = TSIN_UI_NUMBER_POPULATION_K
 	}
 	text = {
@@ -87,19 +87,19 @@ tsin_ui_format_factory_jobs = {
 		localization_key = TSIN_UI_MISSING
 	}
 	text = {
-		trigger = { var:tsin_agg_factory_jobs >= 1000000000000 }
+		trigger = { var:tsin_agg_factory_jobs >= 1000000000 }
 		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_T
 	}
 	text = {
-		trigger = { var:tsin_agg_factory_jobs >= 1000000000 }
+		trigger = { var:tsin_agg_factory_jobs >= 1000000 }
 		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_B
 	}
 	text = {
-		trigger = { var:tsin_agg_factory_jobs >= 1000000 }
+		trigger = { var:tsin_agg_factory_jobs >= 1000 }
 		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_M
 	}
 	text = {
-		trigger = { var:tsin_agg_factory_jobs >= 1000 }
+		trigger = { var:tsin_agg_factory_jobs >= 1 }
 		localization_key = TSIN_UI_NUMBER_FACTORY_JOBS_K
 	}
 	text = {

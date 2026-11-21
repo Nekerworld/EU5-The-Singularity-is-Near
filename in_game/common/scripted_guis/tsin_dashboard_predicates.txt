@@ -1,4 +1,54 @@
 ﻿# GENERATED read-only predicates; no gameplay effects.
+tsin_ui_show_gdp = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_gdp }
+}
+tsin_ui_show_gdp_per_capita = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_gdp_per_capita }
+}
+tsin_ui_show_growth = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_gdp_growth }
+}
+tsin_ui_show_secondary = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_secondary_education }
+}
+tsin_ui_show_higher = {
+scope = country
+is_shown = { always = yes }
+is_valid = { has_variable = tsin_higher_education }
+}
+tsin_ui_show_industry = {
+scope = country
+is_shown = { always = yes }
+is_valid = { OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_industrial_capitalism AND = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.02 } } }
+}
+tsin_ui_show_factory_jobs = {
+scope = country
+is_shown = { always = yes }
+is_valid = { OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_industrial_capitalism AND = { has_variable = tsin_factory_share var:tsin_factory_share >= 0.02 } } }
+}
+tsin_ui_show_labor = {
+scope = country
+is_shown = { always = yes }
+is_valid = { OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_mass_society AND = { has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 1 } } }
+}
+tsin_ui_show_labor_conditions = {
+scope = country
+is_shown = { always = yes }
+is_valid = { OR = { current_age_or_later = { age = age_7_industrialization } has_embraced_institution = institution:tsin_mass_society AND = { has_variable = tsin_labor_grievance var:tsin_labor_grievance >= 1 } } }
+}
+tsin_ui_show_stock = {
+scope = country
+is_shown = { always = yes }
+is_valid = { tsin_exchange_can_open_trigger = yes }
+}
 tsin_ui_check_disaster_cholera = {
 scope = country
 is_shown = { always = yes }

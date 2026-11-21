@@ -4,7 +4,8 @@ type tsin_ops_button = widget {
 size = { 88 88 }
 button = {
 size = { 88 88 }
-tooltip = "TSIN_OPS_LIST_TT"
+tooltip = "TSIN_OPS_HELP"
+tagtooltip_enabled = yes
 down = "[GetVariableSystem.Exists('tsin_ops_open')]"
 action_tooltip = {
 click_type = left
@@ -33,8 +34,8 @@ text_single = { size = { 72 40 } parentanchor = center autoresize = no fontsize 
 icon = { visible = "[GreaterThan_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital'))), '(int32)1', '(int32)0')), '(int32)0')]" size = { 14 14 } parentanchor = right|top position = { -4 4 } texture = "gfx/interface/icons/disasters/end_requirements_green.dds" using = color_red_texture alwaystransparent = yes }
 }
 }
-window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 8 -160 } size = { 520 520 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
-visible = "[And(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ops_open'))]"
+window = { name = "tsin_ops_window" layer = topbar parentanchor = left|bottom widgetanchor = left|bottom position = { 0 -160 } size = { 520 520 } movable = yes allow_outside = yes datacontext = "[GetPlayer]"
+visible = "[And3(GetPlayer.IsValid, GetVariableSystem.Exists('tsin_ops_open'), Not(IsPauseMenuShown))]"
 widget = { size = { 100% 100% } using = bg_window_default_alt
 widget = { parentanchor = right position = { -5 5 } size = { 40 40 } ui_direction_button_holder_right = {} button_close_alt = { blockoverride "close_on_action" { on_action = "[GetVariableSystem.Clear('tsin_ops_open')]" } } }
 vbox = { using = window_margin_alt
@@ -83,12 +84,10 @@ vbox = { using = layoutpolicy_expanding using = bg_main_inner_alt
 scrollarea = { size = { 480 320 } scrollbarpolicy_horizontal = always_off scrollbar_vertical = { using = Scrollbar_Vertical } scrollwidget = { vbox = { spacing = 12 margin = { 8 6 }
 text_single = { visible = "[EqualTo_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32(Add_int32('(int32)0', Select_int32(And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_prices').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_prices'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_power').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_power'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_loss'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_employment').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_employment'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_access').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_access'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_reserve').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_reserve'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_maintenance').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_maintenance'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_crowding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_crowding'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_education').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_education'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_subsidy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_subsidy'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_budget').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_budget'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_stocks').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_stocks'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_company_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_company_interest'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_bond_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bond_interest'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_foreign_credit').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_foreign_credit'))), '(int32)1', '(int32)0')), Select_int32(And(GetScriptedGui('tsin_ops_check_pension_funding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_pension_funding'))), '(int32)1', '(int32)0')), '(int32)0')]" maximumsize = { 450 -1 } multiline = yes fontsize = 14 text = "TSIN_OPS_EMPTY" }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_inputs').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_inputs')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_inputs', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_INPUTS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_INPUTS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -98,14 +97,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_inputs', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_army_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_army_food')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_army_food', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_ARMY_FOOD" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_ARMY_FOOD" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -115,14 +121,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_army_food', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_naval_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_naval_loss')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_naval_loss', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_NAVAL_LOSS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_NAVAL_LOSS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -132,14 +145,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_naval_loss', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_food').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_food')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_food', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_FOOD" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_FOOD" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -149,14 +169,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_food', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bank_withdrawals').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_withdrawals')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_withdrawals', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_BANK_WITHDRAWALS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_BANK_WITHDRAWALS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -165,15 +192,22 @@ on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_withdrawals', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bank_capital').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bank_capital')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_capital', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_CRITICAL" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_BANK_CAPITAL" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_BANK_CAPITAL" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -183,11 +217,17 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bank_capital', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_prices').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_prices')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_prices', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_PRICES" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_PRICES" }
@@ -341,6 +381,7 @@ text_single = { size = { 226 36 } parentanchor = center autoresize = no maximums
 }
 }
 }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -349,15 +390,22 @@ on_action = "[OpenLateralView('economy')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_prices', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_power').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_power')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_power', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_POWER" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_POWER" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -367,14 +415,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_power', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_loss').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_loss')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_loss', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_LOSS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_LOSS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -385,14 +440,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_loss', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_employment').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_employment')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_employment', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_EMPLOYMENT" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_EMPLOYMENT" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -401,15 +463,22 @@ on_action = "[OpenLateralView('production')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_employment', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_access').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_access')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_access', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_ACCESS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_ACCESS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -419,14 +488,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_access', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_reserve').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_reserve')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_reserve', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_RESERVE" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_RESERVE" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -436,14 +512,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_reserve', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_maintenance').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_maintenance')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_maintenance', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_MAINTENANCE" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_MAINTENANCE" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -452,15 +535,22 @@ on_action = "[OpenLateralView('economy')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_maintenance', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_crowding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_crowding')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_crowding', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_CROWDING" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_CROWDING" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -470,15 +560,22 @@ on_action = "[GetVariableSystem.Set('tsin_ui_dashboard_tab', 'society')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_crowding', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_education').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_education')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_education', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_EDUCATION" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_EDUCATION" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -489,14 +586,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_education', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_subsidy').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_subsidy')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_subsidy', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_SUBSIDY" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_SUBSIDY" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -505,15 +609,22 @@ on_action = "[OpenLateralView('economy')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_subsidy', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_budget').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_budget')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_budget', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_BUDGET" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_BUDGET" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -523,14 +634,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_budget', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_stocks').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_stocks')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_stocks', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_STOCKS" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_STOCKS" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -541,14 +659,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_stocks', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_company_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_company_interest')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_company_interest', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_COMPANY_INTEREST" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_COMPANY_INTEREST" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -557,15 +682,22 @@ on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_company_interest', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_bond_interest').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_bond_interest')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_bond_interest', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_BOND_INTEREST" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_BOND_INTEREST" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -574,15 +706,22 @@ on_action = "[OpenLateralViewWithParams('credit', 'subtab = tsin_bank')]"
 on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
+}
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_bond_interest', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
 }
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_foreign_credit').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_foreign_credit')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_foreign_credit', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_FOREIGN_CREDIT" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_FOREIGN_CREDIT" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -592,14 +731,21 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_foreign_credit', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 vbox = { visible = "[And(GetScriptedGui('tsin_ops_check_pension_funding').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetVariableSystem.Exists('tsin_ops_hide_pension_funding')))]" using = bg_paper_card margin = { 10 8 } spacing = 4 alwaystransparent = no
-action_tooltip = { click_type = right title = "TSIN_OPS_HIDE"
-on_action = "[GetVariableSystem.Set('tsin_ops_hide_pension_funding', 'yes')]"
-}
 text_single = { fontsize = 12 text = "TSIN_OPS_ATTENTION" }
 text_single = { fontsize = 16 text = "TSIN_OPS_RULE_PENSION_FUNDING" }
 text_single = { maximumsize = { 440 -1 } multiline = yes fontsize = 13 text = "TSIN_OPS_DETAIL_PENSION_FUNDING" }
+hbox = { spacing = 6
 button_regular = {
 size = { 168 40 }
 action_tooltip = {
@@ -609,9 +755,17 @@ on_action = "[GetVariableSystem.Clear('tsin_ops_open')]"
 }
 text_single = { size = { 160 36 } parentanchor = center autoresize = no maximumsize = { 160 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_VIEW" }
 }
+button_regular = {
+size = { 140 40 }
+action_tooltip = {
+title = "TSIN_OPS_HIDE"
+on_action = "[GetVariableSystem.Set('tsin_ops_hide_pension_funding', 'yes')]"
+}
+text_single = { size = { 132 36 } parentanchor = center autoresize = no maximumsize = { 132 36 } fontsize = 14 fontsize_min = 10 align = center|nobaseline elide = right text = "TSIN_OPS_HIDE" }
+}
+}
 }
 } } }
 text_single = { visible = "[GetPlayer.MakeScope.GetVariable('tsin_ops_ready').IsSet]" fontsize = 12 text = "TSIN_OPS_DATE" }
 text_single = { visible = "[Not(GetPlayer.MakeScope.GetVariable('tsin_ops_ready').IsSet)]" fontsize = 12 text = "TSIN_OPS_NOT_READY" }
-text_single = { maximumsize = { 470 -1 } multiline = yes fontsize = 12 text = "TSIN_OPS_HELP" }
 } } } }

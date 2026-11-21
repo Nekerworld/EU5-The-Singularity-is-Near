@@ -28,7 +28,8 @@ def extend(result):
     loc('GENERIC','Merchant houses and generic businesses','상단과 일반 기업');loc('NATIONAL','Historical national organizations','국가 고유 기업·상인 조직');loc('INDUSTRIAL','Industrial companies','산업 기업')
     loc('CHART_NOTE','Oldest → newest observations. Quarterly, with gaps while the exchange is closed. This is an index, not treasury gold.','과거 → 최근 관측값. 통상 분기별이며 거래소 폐쇄 시 간격이 늘어납니다. 국고 금액이 아닌 지수입니다.')
     loc('NO_HISTORY','No recorded stock observations yet. Found a company, then wait for its quarterly update.','아직 주가 관측 기록이 없습니다. 기업 설립 후 분기 갱신부터 기록됩니다.')
-    loc('HELP','Groups can contain multiple private firms. Historical names are unique. Early merchant organizations are an abstraction, not a claim that medieval joint-stock exchanges existed. Values use cached business bases.','일반 업종에는 여러 민간 기업이 속할 수 있고 역사적 고유 조직은 하나입니다. 초기 상단의 지수는 기업 평가의 추상화이며 중세에 현대 주식거래소가 존재했다는 뜻은 아닙니다. 가치는 저장된 영업 기반을 사용합니다.')
+    loc('HELP','Groups can contain multiple private firms. Historical names are unique. Early merchant organizations use private business valuations until a public exchange opens. Values use cached business bases.','일반 업종에는 여러 민간 기업이 속할 수 있고 역사적 고유 조직은 하나입니다. 초기 상단은 공개 거래소가 열리기 전까지 민간 기업 평가만 사용합니다. 가치는 저장된 영업 기반을 사용합니다.')
+    loc('LOCKED','Public stock index locked. Research a stock-exchange advance, or embrace industrial capitalism, to open the national index and public offerings.','공개 주가지수가 잠겨 있습니다. 증권거래소 기술을 연구하거나 산업자본주의를 수용하면 종합 지수와 공개 발행이 열립니다.')
     loc('RISK','Risk diagnostics','금융 위험 진단')
     loc('CAPACITY','Estimated sustainable business base','추정 적정 기업 수')
     loc('ENTRY_STREAK','Consecutive quarters of excessive entry (crash threshold: 3)','과잉 진입 연속 분기 (붕괴 기준 3)')
@@ -37,8 +38,9 @@ def extend(result):
     loc('MISSING','—','—')
     ui=['# GENERATED icon-led capital market. Economy entry points are generated separately.',
         'types TSINStockMarket { type tsin_stock_panel = vbox { using = layoutpolicy_expanding using = bg_main_inner_alt using = window_main_tabs_margin_alt datacontext = "[GetPlayer]" spacing = 6',
+        f'text_single = {{ visible = "[Not({gui("tsin_stock_ui_exchange_open")})]" maximumsize = {{ 520 -1 }} multiline = yes fontsize = 13 text = "TSIN_CAP_LOCKED" }}',
         # The graph stays above the scrollable company list, matching the economy balance view.
-        'widget = { size = { 530 260 } using = bg_text_mask_container_dark_brown',
+        f'widget = {{ size = {{ 530 260 }} using = bg_text_mask_container_dark_brown visible = "[{gui("tsin_stock_ui_exchange_open")}]"',
         'vbox = { position = { 8 6 } spacing = 5',
         'hbox = { spacing = 8 icon = { size = { 25 25 } texture = "gfx/interface/icons/map_modes/tsin_corporations.dds" }',
         'text_single = { fontsize = 14 text = "TSIN_CAP_INDEX" }',
