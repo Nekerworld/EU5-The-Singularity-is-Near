@@ -18,6 +18,7 @@
 |---|---|---|
 | `tsin_labor_law`, `tsin_welfare_law`, `tsin_taxation_law`, `tsin_assembly_law`, `tsin_land_reform_law`, `tsin_church_state_law` | 모드 `tsin_society_laws.txt` | 각 정책 `allow`에 직접 넣음 |
 | `tsin_industrial_investment_law`, `tsin_trust_law`, `tsin_frontier_land_law`, `tsin_slave_trade_law`, `tsin_monetary_standard_law` | 모드 | 같음 |
+| `tsin_women_rights_law`(`tsin_women_rights_law.txt`), `tsin_police_law`, `tsin_public_health_law`(`tsin_police_health_laws.txt`) | 모드(V 트랙) | 같음. 법안 분야 180(가족·치안·보건) |
 | `press_law`, `education_masses_law`, `immigration_law`, `slavery_laws` | 바닐라 `01_common.txt` | `tools/gen_age7_patches.py`의 `BILL_LAWS`가 원본을 복사해 정책마다 잠금을 넣고 `TRY_REPLACE`로 낸다 |
 
 - 잠금은 `tsin_policy_enactable_trigger`다. 법안 제도가 꺼져 있거나 `tsin_enact_policy_effect`가 실행 중일 때(`tsin_enacting_policy` 변수)만 참이다. 툴팁은 "의회에서 법안으로 통과되어야 한다"이다.

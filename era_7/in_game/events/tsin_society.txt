@@ -360,7 +360,23 @@ tsin_society.70 = {
 	# Grant local voting rights
 	option = {
 		name = tsin_society.70.a
-		change_variable = { name = tsin_womens_suffrage subtract = 20 }
+		# V1: table the next stage of tsin_women_rights_law as a bill. The movement is not reduced here:
+		# the stage thresholds must still hold when the bill passes; the law's policies lower it yearly.
+		if = {
+			limit = { has_policy = policy:tsin_women_labor_policy }
+			tsin_table_bill_effect = { POLICY = policy:tsin_women_suffrage_policy BONUS = 0.15 }
+		}
+		else_if = {
+			limit = { has_policy = policy:tsin_women_property_policy }
+			tsin_table_bill_effect = { POLICY = policy:tsin_women_labor_policy BONUS = 0.15 }
+		}
+		else_if = {
+			limit = { has_policy = policy:tsin_women_no_rights_policy }
+			tsin_table_bill_effect = { POLICY = policy:tsin_women_property_policy BONUS = 0.15 }
+		}
+		else = {
+			change_variable = { name = tsin_womens_suffrage subtract = 20 }
+		}
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
 		change_societal_value = {
 			type = spiritualist_vs_humanist

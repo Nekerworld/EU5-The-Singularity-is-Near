@@ -54,6 +54,9 @@ tsin_bill_law_policy_trigger = {
 			this = law:education_masses_law
 			this = law:immigration_law
 			this = law:slavery_laws
+			this = law:tsin_women_rights_law
+			this = law:tsin_police_law
+			this = law:tsin_public_health_law
 		}
 	}
 }
@@ -91,6 +94,11 @@ tsin_bill_reform_policy_trigger = {
 		this = policy:secular_education
 		this = policy:open_borders_law
 		this = policy:slavery_outlawed
+		this = policy:tsin_women_property_policy
+		this = policy:tsin_women_labor_policy
+		this = policy:tsin_women_suffrage_policy
+		this = policy:tsin_health_quarantine_policy
+		this = policy:tsin_health_board_policy
 	}
 }
 

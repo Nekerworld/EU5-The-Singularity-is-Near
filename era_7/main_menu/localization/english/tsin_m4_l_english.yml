@@ -232,7 +232,7 @@
  tsin_society.60.c: "It is the miasma."
  tsin_society.70.title: "Votes for Women"
  tsin_society.70.desc: "Suffragists are marching through the streets. They demand the right to vote, at least in local elections."
- tsin_society.70.a: "Grant votes in local elections."
+ tsin_society.70.a: "Table a women's rights bill."
  tsin_society.70.b: "Not in our lifetime."
  mapmode_tsin_urbanization_name: "Urbanization"
  MAPMODE_TSIN_URBANIZATION: "#T $mapmode_tsin_urbanization_name$#!\n$mapmode_common_start$ the share of burghers and laborers in each [location|e]'s population. 50% or more shows the strongest colour; cities and megalopolises are shown separately."

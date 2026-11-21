@@ -173,7 +173,7 @@ tsin_socialism_yearly_growth = {
 	}
 }
 
-# Women's suffrage: needs universal education. No law satisfies it yet (left for a later age).
+# Women's suffrage: needs universal education. Satisfied step by step by tsin_women_rights_law (V1).
 tsin_womens_suffrage_yearly_growth = {
 	value = 0
 	if = {
@@ -191,5 +191,17 @@ tsin_womens_suffrage_yearly_growth = {
 	if = {
 		limit = { has_policy = policy:tsin_assembly_banned_policy }
 		subtract = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_women_property_policy }
+		subtract = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_women_labor_policy }
+		subtract = 1
+	}
+	if = {
+		limit = { has_policy = policy:tsin_women_suffrage_policy }
+		subtract = 3
 	}
 }

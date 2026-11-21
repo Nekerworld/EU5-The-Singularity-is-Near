@@ -1,0 +1,131 @@
+﻿# Order and health laws (V4). Both are decided by bills (docs/legislation.md): every policy carries
+# tsin_policy_enactable_trigger. The first policy of each law is its default state.
+
+# Policing. Unlocked by tsin_modern_police (unlock_law). Only public order and unrest are handled here; the
+# right to meet and organise stays with tsin_assembly_law, and the tsin_modern_police advance itself only
+# gives global_separatism -0.1, so the policies below add on top of it.
+tsin_police_law = {
+	law_category = administrative
+
+	# Default: night watch and militia.
+	tsin_police_night_watch_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			nobles_estate_target_satisfaction = tiny_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			nobles_estate
+		}
+		years = 2
+	}
+
+	tsin_police_city_police_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			global_separatism = -0.05
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			tax_income_efficiency = tiny_tax_income_efficiency_penalty
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	tsin_police_national_police_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_advance = tsin_mass_communication_advance
+		}
+		country_modifier = {
+			global_separatism = -0.1
+			global_crown_estate_power = 0.05
+			tax_income_efficiency = small_tax_income_efficiency_penalty
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			monthly_towards_absolutism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+			nobles_estate
+		}
+		years = 3
+	}
+
+	tsin_police_political_police_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_advance = tsin_national_census_advance
+		}
+		country_modifier = {
+			global_separatism = -0.15
+			global_crown_estate_power = 0.1
+			tax_income_efficiency = small_tax_income_efficiency_penalty
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_absolutism = societal_value_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 3
+	}
+}
+
+# Public health. Unlocked by tsin_modern_sewerage_advance (unlock_law). The policies deliberately leave the
+# disease resistance modifier alone: the cholera disaster reads it (>= 0.1) as the public health campaign
+# signal (docs/tempo.md), and tsin_environment_law carries no health modifiers.
+tsin_public_health_law = {
+	law_category = socioeconomic
+
+	# Default: leave it to the towns and the market.
+	tsin_health_laissez_faire_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+		}
+		estate_preferences = {
+			burghers_estate
+			nobles_estate
+		}
+		years = 2
+	}
+
+	tsin_health_quarantine_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			global_life_expectancy = 1
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			tax_income_efficiency = tiny_tax_income_efficiency_penalty
+		}
+		estate_preferences = {
+			crown_estate
+			clergy_estate
+		}
+		years = 2
+	}
+
+	tsin_health_board_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_advance = tsin_antiseptic_surgery_advance
+		}
+		country_modifier = {
+			global_life_expectancy = 2
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			tax_income_efficiency = small_tax_income_efficiency_penalty
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 3
+	}
+}

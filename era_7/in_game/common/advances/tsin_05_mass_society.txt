@@ -27,6 +27,7 @@ tsin_modern_sewerage_advance = {
 	global_disease_resistance = 0.1
 	global_life_expectancy = 3
 	unlock_building = tsin_waterworks
+	unlock_law = tsin_public_health_law
 
 	requires = tsin_urban_planning_advance
 	ai_weight = { add = 20 }
@@ -63,6 +64,7 @@ tsin_universal_education_advance = {
 	global_monthly_literacy = 0.02
 
 	unlock_law = tsin_church_state_law
+	unlock_law = tsin_women_rights_law
 	unlock_building = tsin_public_school
 
 	requires = tsin_mass_society_advance

@@ -88,8 +88,11 @@ tools/out/
 /in_game/common/laws/tsin_economic_laws.txt
 /in_game/common/laws/tsin_frontier_laws.txt
 /in_game/common/laws/tsin_monetary_laws.txt
+/in_game/common/laws/tsin_naval_ideology_law.txt
+/in_game/common/laws/tsin_police_health_laws.txt
 /in_game/common/laws/tsin_society_laws.txt
 /in_game/common/laws/tsin_trust_laws.txt
+/in_game/common/laws/tsin_women_rights_law.txt
 /in_game/common/levies/tsin_industrial_levies.txt
 /in_game/common/missions/tsin_industrialization_missions.txt
 /in_game/common/missions/tsin_modernization_missions.txt
@@ -390,6 +393,7 @@ tools/out/
 /main_menu/localization/english/tsin_m7_tech_l_english.yml
 /main_menu/localization/english/tsin_m7_wc_l_english.yml
 /main_menu/localization/english/tsin_urban_transit_l_english.yml
+/main_menu/localization/english/tsin_v_laws_l_english.yml
 /main_menu/localization/korean/tsin_age8_agriculture_l_korean.yml
 /main_menu/localization/korean/tsin_age8_transport_military_l_korean.yml
 /main_menu/localization/korean/tsin_chemistry_l_korean.yml
@@ -426,5 +430,6 @@ tools/out/
 /main_menu/localization/korean/tsin_m7_tech_l_korean.yml
 /main_menu/localization/korean/tsin_m7_wc_l_korean.yml
 /main_menu/localization/korean/tsin_urban_transit_l_korean.yml
+/main_menu/localization/korean/tsin_v_laws_l_korean.yml
 # END GENERATED ERA RUNTIME FILES
 /tools/compat_manual/the_singularity_is_near/in_game/common/scripted_effects/chris_mining_towns.txt

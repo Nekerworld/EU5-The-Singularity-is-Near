@@ -1,0 +1,95 @@
+﻿# Women's rights (V1). Four sequential stages: each stage is only open while the previous policy is in force
+# and the women's suffrage movement (tsin_womens_suffrage, 0..100, docs/mass_society.md) is strong enough.
+# Decided by bills (docs/legislation.md): every policy carries tsin_policy_enactable_trigger.
+# Unlocked by tsin_universal_education_advance (unlock_law). The first policy is the default state.
+# Women in the cabinet are opened only by the suffrage policy (allow_female_cabinet); generals and rulers stay
+# closed. Policy lists: docs/v_track_probes.md.
+
+tsin_women_rights_law = {
+	law_category = socioeconomic
+
+	# Default: traditional household law.
+	tsin_women_no_rights_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+		}
+		country_modifier = {
+			clergy_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			monthly_towards_traditionalist = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			nobles_estate
+			clergy_estate
+		}
+		years = 2
+	}
+
+	# Property and inheritance in their own name.
+	tsin_women_property_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_policy = policy:tsin_women_no_rights_policy
+			has_variable = tsin_womens_suffrage
+			var:tsin_womens_suffrage >= 20
+		}
+		country_modifier = {
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			nobles_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			clergy_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			non_rural_migration_attraction = 0.05
+			monthly_towards_individualism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	# Women in factory and office work. Needs the factory acts (or better) of tsin_labor_law.
+	tsin_women_labor_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_policy = policy:tsin_women_property_policy
+			OR = {
+				has_policy = policy:tsin_factory_acts_policy
+				has_policy = policy:tsin_labor_protection_policy
+			}
+			has_variable = tsin_womens_suffrage
+			var:tsin_womens_suffrage >= 35
+		}
+		country_modifier = {
+			global_production_efficiency = small_production_efficiency_bonus
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_innovative = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+			peasants_estate
+		}
+		years = 2
+	}
+
+	# The vote, and with it a seat in the cabinet.
+	tsin_women_suffrage_policy = {
+		allow = {
+			tsin_policy_enactable_trigger = yes
+			has_policy = policy:tsin_women_labor_policy
+			has_variable = tsin_womens_suffrage
+			var:tsin_womens_suffrage >= 50
+		}
+		country_modifier = {
+			allow_female_cabinet = yes
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			burghers_estate_target_satisfaction = tiny_permanent_target_satisfaction
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			clergy_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			monthly_towards_humanist = societal_value_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 3
+	}
+}

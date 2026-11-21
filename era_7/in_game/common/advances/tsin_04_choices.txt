@@ -152,6 +152,7 @@ tsin_modern_police = {
 	}
 
 	global_separatism = -0.1
+	unlock_law = tsin_police_law
 }
 
 tsin_parliamentary_procedure = {
@@ -252,6 +253,7 @@ tsin_steamship_lines = {
 	}
 
 	trade_range_modifier = 0.5
+	unlock_law = tsin_naval_ideology_law
 }
 
 tsin_coaling_stations = {

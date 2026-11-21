@@ -4,7 +4,7 @@ tsin_legislation.100 picks a category; .110 .. .170 list the policies of that ca
 copies the policy's own potential and allow (without the bill lock) so only policies that could be enacted
 are offered, and tables the policy with tsin_table_bill_effect.
 
-Laws are read from the mod (in_game/common/laws/tsin_*_laws.txt) and the installed game (vanilla laws).
+Laws are read from the mod (in_game/common/laws/tsin_*_law.txt and tsin_*_laws.txt) and the installed game (vanilla laws).
 Re-run after changing a bill law or after a game patch:  python tools/gen_bill_events.py
 """
 from __future__ import annotations
@@ -27,6 +27,7 @@ CATEGORIES = [
     (150, "Slavery", ["tsin_slave_trade_law", "slavery_laws"]),
     (160, "Press and immigration", ["press_law", "immigration_law"]),
     (170, "Popular education", ["education_masses_law"]),
+    (180, "Family, order and health", ["tsin_women_rights_law", "tsin_police_law", "tsin_public_health_law"]),
 ]
 VANILLA_LAW_FILE = "in_game/common/laws/01_common.txt"
 ESTATES = ["nobles_estate", "clergy_estate", "burghers_estate", "peasants_estate", "crown_estate"]
@@ -90,7 +91,9 @@ def option(policy: str, pot: str, allow: str) -> list[str]:
 def main() -> int:
     game = pdx.game_root()
     laws: dict[str, str] = {}
-    for p in sorted((pdx.MOD_ROOT / "in_game/common/laws").glob("tsin_*_laws.txt")):
+    law_files = sorted({*(pdx.MOD_ROOT / "in_game/common/laws").glob("tsin_*_laws.txt"),
+                        *(pdx.MOD_ROOT / "in_game/common/laws").glob("tsin_*_law.txt")})
+    for p in law_files:
         laws.update(blocks(pdx.read_text(p)))
     laws.update({k: v for k, v in blocks(pdx.read_text(game / VANILLA_LAW_FILE)).items() if k not in laws})
 

@@ -1,0 +1,87 @@
+﻿# Naval ideology (V2). Sits next to the vanilla maritime_law, piracy_law and naval doctrine laws, which are
+# not touched. Military laws are enacted directly like vanilla: no bill lock in any policy allow.
+# Unlocked by tsin_steamship_lines (unlock_law); each ideology needs its own advance. The first policy is the
+# default. Only modifiers used by vanilla laws (01_naval_laws.txt) appear here.
+
+tsin_naval_ideology_law = {
+	law_category = military
+	potential = {
+		OR = {
+			num_of_ports > 0
+			has_law = tsin_naval_ideology_law
+		}
+	}
+
+	# Default: coast guard and harbour forts, nothing more.
+	tsin_naval_coastal_defense_policy = {
+		country_modifier = {
+			own_coast_naval_combat_bonus = 0.05
+			monthly_towards_naval = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 2
+	}
+
+	# Small fast ships, commerce raiding, blockade.
+	tsin_naval_jeune_ecole_policy = {
+		allow = {
+			OR = {
+				has_advance = tsin_torpedo_advance
+				has_advance = tsin_protected_cruiser_advance
+			}
+		}
+		country_modifier = {
+			navy_light_ship_maintenance_cost_modifier = -0.2
+			blockade_efficiency = 0.1
+			ship_capture_chance = 0.025
+			own_coast_naval_combat_bonus = 0.05
+			nobles_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			monthly_towards_naval = societal_value_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+			peasants_estate
+		}
+		years = 2
+	}
+
+	# Showing the flag overseas: treaty ports, trade protection.
+	tsin_naval_gunboat_diplomacy_policy = {
+		allow = {
+			has_advance = tsin_steam_packet_diplomacy_advance
+		}
+		country_modifier = {
+			trade_range_modifier = 0.1
+			merchant_power_from_maritime_modifier = 0.1
+			monthly_prestige = 0.1
+			peasants_estate_target_satisfaction = tiny_permanent_target_satisfaction_penalty
+			monthly_towards_naval = societal_value_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+
+	# Battle fleet of capital ships and ocean-going navy: large and expensive.
+	tsin_naval_blue_water_policy = {
+		allow = {
+			has_advance = tsin_ironclad_advance
+			has_advance = tsin_naval_gunnery_advance
+		}
+		country_modifier = {
+			expected_navy_size_modifier = 0.25
+			monthly_navy_tradition = 0.05
+			navy_maintenance_efficiency = -0.1
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+			monthly_towards_naval = societal_value_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+			nobles_estate
+		}
+		years = 2
+	}
+}
