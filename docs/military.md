@@ -124,3 +124,11 @@
 - 강화 협상 화면의 기타 항목에 "조약항 개항"이 보이고, 지점 선택 목록이 뜨는지.
 - `num_of_advances_researched`를 다른 나라 값과 비교하는 조건이 실제로 동작하는지(동작하지 않으면 항목이 아예 안 보인다).
 - 조약 체결 뒤 지점 보정치와 양국 보정치가 붙는지.
+
+# 포병 예비대 (P축, 2026-11-21, 엔진 미확인)
+
+- 새 진형 `tsin_artillery_reserve`(기본값 아님): 좌·중·우에 포병이 없고 예비대에 포병·보조 부대가 들어간다. 바닐라 `army.txt`는 그대로다.
+- 1~6시대 포병 템플릿 6개의 `combat_power`를 같은 시대 보병의 80%로 낮췄다(2→0.8, 3→0.8, 4→0.8, 5→1.2, 5.5→1.8, 7.5→2.4). 보상으로 `strength_damage_done`을 임시 공식 `0.25 × (원본 전투력 ÷ 새 전투력 − 1)`로 준다(0.38/0.69/1.0/0.79/0.51/0.53). **수치는 자리표시값, 사용자 확인 필요.**
+- 포격(`artillery_barrage`)과 요새 포격 효율(`bombard_efficiency`)은 원본 그대로다.
+- 7시대 포병(전투력 9.5)과 `a_tsin_*` 포병 유닛은 바꾸지 않았다. 1~6시대 포병이 낮아져 7시대와의 격차가 커진 점은 `docs/p_track_probes.md`에 적었다.
+- 파일: `in_game/common/unit_formation_preference/tsin_artillery_reserve.txt`, `in_game/common/unit_types/zzz_tsin_artillery_reserve_templates.txt`. 검사: `tools/tests/test_artillery_reserve.py`.

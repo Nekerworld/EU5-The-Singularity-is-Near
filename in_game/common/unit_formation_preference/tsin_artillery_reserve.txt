@@ -1,0 +1,38 @@
+﻿# TSIN P-track (artillery reserves): NON-default army formation preference.
+# Vanilla army.txt (balanced_army default = yes) is NOT overridden; this is a new key in a new file.
+# Same as balanced_army, except army_artillery is removed from left/center/right and sent to reserves.
+# Unverified (docs/p_track_probes.md): reserve weights, whether artillery in reserves still fires, bombards, or gets placed on the front when slots run out.
+
+tsin_artillery_reserve = {
+	army = yes
+	default = no
+
+	left = {
+		2 = army_light_cavalry
+		2 = army_heavy_cavalry
+		2 = army_heavy_infantry
+		2 = army_light_infantry
+		max_frontage = 1.25
+	}
+
+	center = {
+		2 = army_light_cavalry
+		2 = army_heavy_cavalry
+		2 = army_heavy_infantry
+		2 = army_light_infantry
+		max_frontage = 1.25
+	}
+
+	right = {
+		2 = army_light_cavalry
+		2 = army_heavy_cavalry
+		2 = army_heavy_infantry
+		2 = army_light_infantry
+		max_frontage = 1.25
+	}
+
+	reserves = {
+		100 = army_artillery
+		100 = army_auxiliary
+	}
+}

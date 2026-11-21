@@ -1,0 +1,79 @@
+﻿# TSIN P-track (artillery reserves): Age I-VI vanilla artillery templates, full-object TRY_REPLACE.
+# Source: game/in_game/common/unit_types/00_age_templates_land.txt (EU5 1.4.x, 2026-11-21).
+# Changed vs vanilla: combat_power (lowered below same-age infantry) and strength_damage_done (compensation, PLACEHOLDER).
+# Unchanged on purpose: max_strength, bombard_efficiency, artillery_barrage, category, age.
+# Placeholder formula: strength_damage_done = round(0.25 * (vanilla_cp / new_cp - 1), 2). Needs user confirmation (docs/p_track_probes.md).
+# Units that copy_from these templates (a_houfnice, a_falconet, ...) inherit the change. Age VII templates are NOT touched.
+# After a game patch, re-diff the vanilla file and update this file (docs/overrides.md).
+
+TRY_REPLACE:a_age_1_traditions_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 0.1
+	combat_power = 0.8
+	strength_damage_done = 0.38
+	bombard_efficiency = 0.1
+	artillery_barrage = 1
+	age = "age_1_traditions"
+}
+
+TRY_REPLACE:a_age_2_renaissance_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 0.2
+	combat_power = 0.8
+	strength_damage_done = 0.69
+	bombard_efficiency = 0.125
+	artillery_barrage = 3
+	age = "age_2_renaissance"
+}
+
+TRY_REPLACE:a_age_3_discovery_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 0.6
+	combat_power = 0.8
+	strength_damage_done = 1
+	bombard_efficiency = 0.15
+	artillery_barrage = 4
+	age = "age_3_discovery"
+}
+
+TRY_REPLACE:a_age_4_reformation_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 0.8
+	combat_power = 1.2
+	strength_damage_done = 0.79
+	bombard_efficiency = 0.2
+	artillery_barrage = 5
+	age = "age_4_reformation"
+}
+
+TRY_REPLACE:a_age_5_absolutism_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 1
+	combat_power = 1.8
+	strength_damage_done = 0.51
+	bombard_efficiency = 0.25
+	artillery_barrage = 7
+	age = "age_5_absolutism"
+}
+
+TRY_REPLACE:a_age_6_revolutions_artillery = {
+	category = army_artillery
+	hide = yes
+	buildable = no
+	max_strength = 1.2
+	combat_power = 2.4
+	strength_damage_done = 0.53
+	bombard_efficiency = 0.3
+	artillery_barrage = 9
+	age = "age_6_revolutions"
+}

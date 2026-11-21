@@ -5,7 +5,7 @@
 |---|---|---|
 | `TRY_REPLACE:key = { 전체 }` | common 데이터(전쟁명분, 재난, 상황, 법, 의회 안건·의제, 특권, 예술, 원정, 임무, 스크립트 트리거·값, 언어) | 객체 하나만 바꾼다. 원본이 사라져도 오류가 나지 않는다 |
 | `event.id = { 전체 }` (같은 id 재정의) | 이벤트 | 파일 상단에 `namespace` 재선언. 2026-11-14 error.log에서 이벤트 관리자가 `REPLACE:ns.1`을 접두어로 처리하지 않고 `REPLACE:ns` 네임스페이스의 새 이벤트로 읽은 것을 확인해(이름공간 미정의·중복 id 오류 125건) 접두어를 뺐다. 같은 id를 나중 파일에서 다시 정의하면 "Duplicated event ID" 오류가 남고, 다른 모드(Historical Tweaks, REAI)처럼 나중 정의가 쓰인다고 본다(사용자 확인 필요) |
-| `TRY_INJECT:key = { 필드 }` | 필드 추가만 필요한 경우 | 미사용(블록 필드 병합 규칙이 확인되지 않아 전체 교체를 쓴다) |
+| `TRY_INJECT:key = { 필드 }` | 필드 추가만 필요한 경우 | V3 농노제 값 `serfdom_vs_free_subjects`에 `allow`만 얹을 때 사용(`era_7/.../zzz_tsin_serfdom_abolition.txt`). 그 밖은 블록 필드 병합 규칙이 확인되지 않아 전체 교체를 쓴다(**사용자 확인 필요**: `allow`가 도중에 거짓이 되면 값·보정치가 사라지는지) |
 | 같은 이름 파일로 전체 덮어쓰기 | **사용하지 않음** | 객체 단위 방식으로 모두 해결 가능 |
 | defines 키 단위 파일 | `loading_screen/common/defines/zzz_tsin_defines.txt` | defines는 키 단위로 병합된다. `zzz_` 접두어로 다른 defines 파일보다 뒤에 정렬되어 나중에 적용된다 (docs/load_order.md) |
 
@@ -33,8 +33,15 @@
 | `in_game/common/scripted_triggers/tsin_age_triggers.txt` | `current_later_age_5_absolutism_trigger`, `current_later_age_6_revolutions_trigger` | `game_triggers.txt:89-104` | 제7시대에도 "제5·6시대 이후"가 참이 되도록 |
 | `loading_screen/common/defines/zzz_tsin_defines.txt` | `NGame.END_DATE` | `00_defines.txt:3` | 종료일 연장 |
 | `in_game/common/goods_demand/tsin_railroad_demands.txt` | `build_railroad_demand`, `maintain_railroad_demand` | `special_construction_demands.txt:66-79` | 철도 건설·유지에 석탄·도구 추가(M3). 패치 후 원본 값이 바뀌었는지 확인 |
+| `in_game/common/unit_types/zzz_tsin_artillery_reserve_templates.txt` | `a_age_1_traditions_artillery` ~ `a_age_6_revolutions_artillery` 6개 | `unit_types/00_age_templates_land.txt` (1.4.x) | P축(포병 예비대). `TRY_REPLACE:`로 전체 교체. `combat_power`를 같은 시대 보병 아래로 낮추고 `strength_damage_done`을 임시 공식으로 보상. `max_strength`·`bombard_efficiency`·`artillery_barrage`는 원본과 같음. 7시대 템플릿은 건드리지 않음. 패치 후 원본 값 재확인 |
+| `era_7/.../societal_values/zzz_tsin_serfdom_abolition.txt` (sync → `in_game/...`) | `TRY_INJECT:serfdom_vs_free_subjects` | 바닐라 `serfdom_vs_free_subjects` | V3: 폐지 후 값 축을 끄는 `allow`만 주입. 전체 `TRY_REPLACE`는 쓰지 않음 |
 
 (새 항목은 이 표에 추가한다.)
+
+### 3-1. 새 파일(덮어쓰기 아님): 포병 예비대 진형
+- `in_game/common/unit_formation_preference/tsin_artillery_reserve.txt`의 `tsin_artillery_reserve`(`default = no`). 바닐라 `army.txt`(`balanced_army`가 기본)는 **덮어쓰지 않는다**. 좌·중·우에서 `army_artillery`를 빼고 `reserves`에 `army_artillery`와 `army_auxiliary`를 둔다.
+- 이름과 설명은 `tsin_artillery_reserve_l_*.yml`(영어·한국어). 아이콘은 지정하지 않음(바닐라 `_default.dds` 사용 여부는 사용자 확인 필요).
+- 템플릿 6개를 `TRY_REPLACE:`로 교체하는 방식이 `unit_types`에서 실제로 적용되는지, 파생 유닛(`a_houfnice`, `a_falconet` 등 `copy_from`)이 바뀐 값을 받는지는 **사용자 확인 필요**(`docs/p_track_probes.md`).
 
 ## 4. 다른 모드와의 충돌
 - 창작마당 3631410954 "EU5 National Ideas"는 `00_defines.txt` 전체를 덮어쓴다. `END_DATE`는 바닐라와 같은 값이다. 우리 파일은 이름 정렬상 뒤에 적용되므로 영향이 없을 것으로 본다(사용자 확인 필요, `docs/load_order.md`).

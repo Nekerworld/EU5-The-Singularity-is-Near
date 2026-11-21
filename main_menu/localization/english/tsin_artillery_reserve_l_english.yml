@@ -1,0 +1,3 @@
+﻿l_english:
+ tsin_artillery_reserve: "Artillery Reserve"
+ tsin_artillery_reserve_desc: "Sets up a balanced army, but keeps [ShowUnitCategoryName('army_artillery')] out of the [center|e] and the [flanks|e] and holds it in the reserves."

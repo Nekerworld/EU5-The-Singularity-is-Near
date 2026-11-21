@@ -1,0 +1,3 @@
+﻿l_korean:
+ tsin_artillery_reserve: "포병 예비대"
+ tsin_artillery_reserve_desc: "균형 잡힌 군대를 편성하되 [ShowUnitCategoryName('army_artillery')]은 [center|e]와 [flanks|e]에 두지 않고 예비대에 둡니다."
